@@ -1,0 +1,5 @@
+/bin/
+/obj/
+/packages/
+/*.v12.suo
+/*.csproj.user
