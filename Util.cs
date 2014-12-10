@@ -12,6 +12,14 @@ namespace cf_net_sdk
 {
     public class Util
     {
+        public static PagedResponse<T> DeserializePage<T>(string value)
+        {
+            PagedResponse<T> page = new PagedResponse<T>();
+            page.Properties = JsonConvert.DeserializeObject<PageProperties>(value);
+            page.Resources = DeserializeJsonArray<T>(value).ToList<T>();
+            return page;
+        }
+
         public static T[] DeserializeJsonArray<T>(string value)
         {
             var obj = JObject.Parse(value);
