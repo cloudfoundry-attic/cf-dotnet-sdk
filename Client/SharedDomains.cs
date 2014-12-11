@@ -13,142 +13,188 @@ using System.Threading.Tasks;
 
 namespace cf_net_sdk.Client
 {
-public class SharedDomainsEndpoint: BaseEndpoint
-{
-public SharedDomainsEndpoint(CloudfoundryClient client)
-{
-this.CloudTarget = client.CloudTarget;
-this.CancellationToken = client.CancellationToken;
-this.ServiceLocator = client.ServiceLocator;
-this.auth = client.auth;
-}
-
-    /// <summary>
-  /// Create a Shared Domain
-  /// </summary>
-    public async Task<CreateSharedDomainResponse> CreateSharedDomain(CreateSharedDomainRequest value)
+    public class SharedDomainsEndpoint: BaseEndpoint
     {
-        string route = "/v2/shared_domains";
+        public SharedDomainsEndpoint(CloudfoundryClient client)
+        {
+            this.CloudTarget = client.CloudTarget;
+            this.CancellationToken = client.CancellationToken;
+            this.ServiceLocator = client.ServiceLocator;
+            this.auth = client.auth;
+        }
     
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Post;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-        client.ContentType = "application/x-www-form-urlencoded";
-    
-    
-        client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
+        /// <summary>
+        /// List all Shared Domains
+        /// </summary>
     
         
+        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains()
+        {
+            return await ListAllSharedDomains(new RequestOptions());
+        }
+        
+    
+
+    
+        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains(RequestOptions options)
+    
+        {
+            string route = "/v2/shared_domains";
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllSharedDomainsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Shared Domain
+        /// </summary>
+    
+
+    
+        public async Task DeleteSharedDomain(Guid guid)
+    
+        {
+            string route = string.Format("/v2/shared_domains/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
+        /// Create a Shared Domain
+        /// </summary>
+    
+
+    
+        public async Task<CreateSharedDomainResponse> CreateSharedDomain(CreateSharedDomainRequest value)
+    
+        {
+            string route = "/v2/shared_domains";
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
             return Util.DeserializeJson<CreateSharedDomainResponse>(await response.ReadContentAsStringAsync());
+            
         
+        }
     
-    }
-
-    /// <summary>
-  /// Delete a Particular Shared Domain
-  /// </summary>
-    public async Task DeleteSharedDomain(Guid guid)
-    {
-        string route = string.Format("/v2/shared_domains/{0}", guid);
-    
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Delete;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-        client.ContentType = "application/x-www-form-urlencoded";
-    
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
-    }
-
-    /// <summary>
-  /// Filtering Shared Domains by name
-  /// </summary>
-    public async Task<FilterSharedDomainsByNameResponse[]> FilterSharedDomainsByName()
-    {
-        string route = "/v2/shared_domains";
-    
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Get;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
+        /// <summary>
+        /// Filtering Shared Domains by name
+        /// </summary>
     
         
-            return Util.DeserializeJsonArray<FilterSharedDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+        public async Task<PagedResponse<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName()
+        {
+            return await FilterSharedDomainsByName(new RequestOptions());
+        }
         
     
-    }
 
-    /// <summary>
-  /// List all Shared Domains
-  /// </summary>
-    public async Task<ListAllSharedDomainsResponse[]> ListAllSharedDomains()
-    {
-        string route = "/v2/shared_domains";
     
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
+        public async Task<PagedResponse<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName(RequestOptions options)
+    
+        {
+            string route = "/v2/shared_domains";
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
 
-    client.Method = HttpMethod.Get;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-    
-    // TODO: vladi: Implement serialization
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
 
-    var response = await client.SendAsync();
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<FilterSharedDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Shared Domain
+        /// </summary>
     
         
-            return Util.DeserializeJsonArray<ListAllSharedDomainsResponse>(await response.ReadContentAsStringAsync());
+    
+
+    
+        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid guid)
+    
+        {
+            string route = string.Format("/v2/shared_domains/{0}", guid);
         
-    
-    }
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
 
-    /// <summary>
-  /// Retrieve a Particular Shared Domain
-  /// </summary>
-    public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid guid)
-    {
-        string route = string.Format("/v2/shared_domains/{0}", guid);
-    
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Get;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
         
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
             return Util.DeserializeJson<RetrieveSharedDomainResponse>(await response.ReadContentAsStringAsync());
+            
         
+        }
     
     }
-
-}
 }

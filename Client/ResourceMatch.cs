@@ -13,44 +13,50 @@ using System.Threading.Tasks;
 
 namespace cf_net_sdk.Client
 {
-public class ResourceMatchEndpoint: BaseEndpoint
-{
-public ResourceMatchEndpoint(CloudfoundryClient client)
-{
-this.CloudTarget = client.CloudTarget;
-this.CancellationToken = client.CancellationToken;
-this.ServiceLocator = client.ServiceLocator;
-this.auth = client.auth;
-}
-
-    /// <summary>
-  /// List all matching resources
-  /// </summary>
-    public async Task<ListAllMatchingResourcesResponse[]> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value)
+    public class ResourceMatchEndpoint: BaseEndpoint
     {
-        string route = "/v2/resource_match";
+        public ResourceMatchEndpoint(CloudfoundryClient client)
+        {
+            this.CloudTarget = client.CloudTarget;
+            this.CancellationToken = client.CancellationToken;
+            this.ServiceLocator = client.ServiceLocator;
+            this.auth = client.auth;
+        }
     
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
+        /// <summary>
+        /// List all matching resources
+        /// </summary>
+    
 
-    client.Method = HttpMethod.Put;
-    client.Headers.Add(BuildAuthenticationHeader());
     
-        client.ContentType = "application/x-www-form-urlencoded";
+        public async Task<PagedResponse<ListAllMatchingResourcesResponse>> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value, RequestOptions options)
     
-    
-        client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-    
-    // TODO: vladi: Implement serialization
+        {
+            string route = "/v2/resource_match";
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
 
-    var response = await client.SendAsync();
-    
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
         
-            return Util.DeserializeJsonArray<ListAllMatchingResourcesResponse>(await response.ReadContentAsStringAsync());
+            client.ContentType = "application/x-www-form-urlencoded";
         
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllMatchingResourcesResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
     
     }
-
-}
 }

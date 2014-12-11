@@ -13,150 +13,182 @@ using System.Threading.Tasks;
 
 namespace cf_net_sdk.Client
 {
-public class ProcessesExperimentalEndpoint: BaseEndpoint
-{
-public ProcessesExperimentalEndpoint(CloudfoundryClient client)
-{
-this.CloudTarget = client.CloudTarget;
-this.CancellationToken = client.CancellationToken;
-this.ServiceLocator = client.ServiceLocator;
-this.auth = client.auth;
-}
-
-    /// <summary>
-  /// Create a Docker Process
-  /// </summary>
-    public async Task<CreateDockerProcessResponse> CreateDockerProcess(CreateDockerProcessRequest value)
+    public class ProcessesExperimentalEndpoint: BaseEndpoint
     {
-        string route = "/v3/processes";
+        public ProcessesExperimentalEndpoint(CloudfoundryClient client)
+        {
+            this.CloudTarget = client.CloudTarget;
+            this.CancellationToken = client.CancellationToken;
+            this.ServiceLocator = client.ServiceLocator;
+            this.auth = client.auth;
+        }
     
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
+        /// <summary>
+        /// Create a Docker Process
+        /// </summary>
+    
 
-    client.Method = HttpMethod.Post;
-    client.Headers.Add(BuildAuthenticationHeader());
     
-        client.ContentType = "application/x-www-form-urlencoded";
+        public async Task<CreateDockerProcessResponse> CreateDockerProcess(CreateDockerProcessRequest value)
     
-    
-        client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
+        {
+            string route = "/v3/processes";
         
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
             return Util.DeserializeJson<CreateDockerProcessResponse>(await response.ReadContentAsStringAsync());
+            
         
+        }
     
-    }
+        /// <summary>
+        /// Updating a Process
+        /// </summary>
+    
 
-    /// <summary>
-  /// Create a Process
-  /// </summary>
-    public async Task<CreateProcessResponse> CreateProcess(CreateProcessRequest value)
-    {
-        string route = "/v3/processes";
     
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Post;
-    client.Headers.Add(BuildAuthenticationHeader());
+        public async Task<UpdateProcessResponse> UpdateProcess(Guid guid, UpdateProcessRequest value)
     
-        client.ContentType = "application/x-www-form-urlencoded";
-    
-    
-        client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
+        {
+            string route = string.Format("/v3/processes/{0}", guid);
         
-            return Util.DeserializeJson<CreateProcessResponse>(await response.ReadContentAsStringAsync());
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = new HttpMethod("PATCH");
+            client.Headers.Add(BuildAuthenticationHeader());
         
-    
-    }
-
-    /// <summary>
-  /// Delete a Process
-  /// </summary>
-    public async Task DeleteProcess(Guid guid)
-    {
-        string route = string.Format("/v3/processes/{0}", guid);
-    
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Delete;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-        client.ContentType = "application/x-www-form-urlencoded";
-    
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
-    }
-
-    /// <summary>
-  /// Get a Process
-  /// </summary>
-    public async Task<GetProcessResponse> GetProcess(Guid guid)
-    {
-        string route = string.Format("/v3/processes/{0}", guid);
-    
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = HttpMethod.Get;
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
+            client.ContentType = "application/x-www-form-urlencoded";
         
-            return Util.DeserializeJson<GetProcessResponse>(await response.ReadContentAsStringAsync());
         
-    
-    }
-
-    /// <summary>
-  /// Updating a Process
-  /// </summary>
-    public async Task<UpdateProcessResponse> UpdateProcess(Guid guid, UpdateProcessRequest value)
-    {
-        string route = string.Format("/v3/processes/{0}", guid);
-    
-    string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
-    var client = this.GetHttpClient();
-    client.Uri = new Uri(endpoint);
-
-    client.Method = new HttpMethod("PATCH");
-    client.Headers.Add(BuildAuthenticationHeader());
-    
-        client.ContentType = "application/x-www-form-urlencoded";
-    
-    
-        client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-    
-    // TODO: vladi: Implement serialization
-
-    var response = await client.SendAsync();
-    
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
             return Util.DeserializeJson<UpdateProcessResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Process
+        /// </summary>
+    
+
+    
+        public async Task DeleteProcess(Guid guid)
+    
+        {
+            string route = string.Format("/v3/processes/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
+        /// Create a Process
+        /// </summary>
+    
+
+    
+        public async Task<CreateProcessResponse> CreateProcess(CreateProcessRequest value)
+    
+        {
+            string route = "/v3/processes";
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreateProcessResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Get a Process
+        /// </summary>
+    
         
     
-    }
 
-}
+    
+        public async Task<GetProcessResponse> GetProcess(Guid guid)
+    
+        {
+            string route = string.Format("/v3/processes/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.Value.TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<GetProcessResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+    }
 }

@@ -377,7 +377,9 @@
     <Compile Include="Common\ServiceLocation\ServiceLocator.cs" />
     <Compile Include="Common\StreamExtentions.cs" />
     <Compile Include="Metadata.cs" />
+    <Compile Include="PagedResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestOptions.cs" />
     <Compile Include="ServiceRegistrar.cs" />
     <Compile Include="Threading\System.Runtime.CompilerServices\AsyncTaskMethodBuilder.cs" />
     <Compile Include="Threading\System.Runtime.CompilerServices\AsyncTaskMethodBuilderOfT.cs" />
