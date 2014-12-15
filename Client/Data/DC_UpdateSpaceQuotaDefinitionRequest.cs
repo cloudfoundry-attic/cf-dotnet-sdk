@@ -18,7 +18,7 @@ public class UpdateSpaceQuotaDefinitionRequest
     }
 
     [JsonProperty("non_basic_services_allowed", NullValueHandling=NullValueHandling.Ignore)]
-    public bool NonBasicServicesAllowed
+    public bool? NonBasicServicesAllowed
     {
     get;
     set;

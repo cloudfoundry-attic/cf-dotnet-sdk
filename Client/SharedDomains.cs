@@ -67,7 +67,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteSharedDomain(Guid guid)
+        public async Task DeleteSharedDomain(Guid? guid)
     
         {
             string route = string.Format("/v2/shared_domains/{0}", guid);
@@ -171,7 +171,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid guid)
+        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid? guid)
     
         {
             string route = string.Format("/v2/shared_domains/{0}", guid);

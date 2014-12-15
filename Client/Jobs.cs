@@ -31,7 +31,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid guid)
+        public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);
@@ -64,7 +64,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobWithKnownFailureResponse> RetrieveJobWithKnownFailure(Guid guid)
+        public async Task<RetrieveJobWithKnownFailureResponse> RetrieveJobWithKnownFailure(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);
@@ -97,7 +97,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid guid)
+        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);
@@ -130,7 +130,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid guid)
+        public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);

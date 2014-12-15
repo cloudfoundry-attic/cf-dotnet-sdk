@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateAppResponse> UpdateApp(Guid guid, UpdateAppRequest value)
+        public async Task<UpdateAppResponse> UpdateApp(Guid? guid, UpdateAppRequest value)
     
         {
             string route = string.Format("/v2/apps/{0}", guid);
@@ -63,7 +63,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid guid)
+        public async Task<PagedResponse<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid? guid)
         {
             return await ListAllRoutesForApp(guid, new RequestOptions());
         }
@@ -71,7 +71,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/apps/{0}/routes", guid);
@@ -140,7 +140,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<GetEnvForAppResponse> GetEnvForApp(Guid guid)
+        public async Task<GetEnvForAppResponse> GetEnvForApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}/env", guid);
@@ -170,7 +170,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid guid)
+        public async Task<PagedResponse<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid)
         {
             return await ListAllServiceBindingsForApp(guid, new RequestOptions());
         }
@@ -178,7 +178,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/apps/{0}/service_bindings", guid);
@@ -209,7 +209,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteApp(Guid guid)
+        public async Task DeleteApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}", guid);
@@ -238,7 +238,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateRouteWithAppResponse> AssociateRouteWithApp(Guid guid, Guid route_guid)
+        public async Task<AssociateRouteWithAppResponse> AssociateRouteWithApp(Guid? guid, Guid? route_guid)
     
         {
             string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
@@ -273,7 +273,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<GetAppSummaryResponse> GetAppSummary(Guid guid)
+        public async Task<GetAppSummaryResponse> GetAppSummary(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}/summary", guid);
@@ -307,7 +307,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<Dictionary<int, GetInstanceInformationForStartedAppResponse>> GetInstanceInformationForStartedApp(Guid guid)
+        public async Task<Dictionary<int?, GetInstanceInformationForStartedAppResponse>> GetInstanceInformationForStartedApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}/instances", guid);
@@ -327,7 +327,7 @@ namespace cf_net_sdk.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<Dictionary<int, GetInstanceInformationForStartedAppResponse>>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<Dictionary<int?, GetInstanceInformationForStartedAppResponse>>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -373,7 +373,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveRouteFromAppResponse> RemoveRouteFromApp(Guid guid, Guid route_guid)
+        public async Task<RemoveRouteFromAppResponse> RemoveRouteFromApp(Guid? guid, Guid? route_guid)
     
         {
             string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
@@ -409,7 +409,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DownloadsBitsForApp(Guid guid)
+        public async Task DownloadsBitsForApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}/download", guid);
@@ -477,7 +477,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UploadsBitsForAppResponse> UploadsBitsForApp(Guid guid, dynamic value)
+        public async Task<UploadsBitsForAppResponse> UploadsBitsForApp(Guid? guid, dynamic value)
     
         {
             string route = string.Format("/v2/apps/{0}/bits", guid);
@@ -512,7 +512,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RestageAppResponse> RestageApp(Guid guid)
+        public async Task<RestageAppResponse> RestageApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}/restage", guid);
@@ -548,7 +548,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<Dictionary<int, GetDetailedStatsForStartedAppResponse>> GetDetailedStatsForStartedApp(Guid guid)
+        public async Task<Dictionary<int?, GetDetailedStatsForStartedAppResponse>> GetDetailedStatsForStartedApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}/stats", guid);
@@ -568,7 +568,7 @@ namespace cf_net_sdk.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<Dictionary<int, GetDetailedStatsForStartedAppResponse>>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<Dictionary<int?, GetDetailedStatsForStartedAppResponse>>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -579,7 +579,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task TerminateRunningAppInstanceAtGivenIndex(Guid guid, int index)
+        public async Task TerminateRunningAppInstanceAtGivenIndex(Guid? guid, int? index)
     
         {
             string route = string.Format("/v2/apps/{0}/instances/{1}", guid, index);
@@ -610,7 +610,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveAppResponse> RetrieveApp(Guid guid)
+        public async Task<RetrieveAppResponse> RetrieveApp(Guid? guid)
     
         {
             string route = string.Format("/v2/apps/{0}", guid);
@@ -644,7 +644,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<CopyAppBitsForAppExperimentalResponse> CopyAppBitsForAppExperimental(Guid guid, CopyAppBitsForAppExperimentalRequest value)
+        public async Task<CopyAppBitsForAppExperimentalResponse> CopyAppBitsForAppExperimental(Guid? guid, CopyAppBitsForAppExperimentalRequest value)
     
         {
             string route = string.Format("/v2/apps/{0}/copy_bits", guid);
@@ -679,7 +679,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveServiceBindingFromAppResponse> RemoveServiceBindingFromApp(Guid guid, Guid service_binding_guid)
+        public async Task<RemoveServiceBindingFromAppResponse> RemoveServiceBindingFromApp(Guid? guid, Guid? service_binding_guid)
     
         {
             string route = string.Format("/v2/apps/{0}/service_bindings/{1}", guid, service_binding_guid);

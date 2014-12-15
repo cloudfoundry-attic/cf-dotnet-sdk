@@ -17,7 +17,7 @@ public class RetrievingPermissionsOnServiceInstanceResponse :IResponse
 
 
     [JsonProperty("manage", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Manage
+    public bool? Manage
     {
     get;
     set;

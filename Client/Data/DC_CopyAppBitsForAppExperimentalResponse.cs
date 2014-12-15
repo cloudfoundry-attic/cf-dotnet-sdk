@@ -17,7 +17,7 @@ public class CopyAppBitsForAppExperimentalResponse :IResponse
 
 
     [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Guid
+    public Guid? Guid
     {
     get;
     set;

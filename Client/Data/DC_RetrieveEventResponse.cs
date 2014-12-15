@@ -80,14 +80,14 @@ public class RetrieveEventResponse :IResponse
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;

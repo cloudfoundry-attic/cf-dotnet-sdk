@@ -31,7 +31,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid guid)
+        public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid? guid)
     
         {
             string route = string.Format("/v2/domains/{0}", guid);
@@ -97,7 +97,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteDomainDeprecated(Guid guid)
+        public async Task DeleteDomainDeprecated(Guid? guid)
     
         {
             string route = string.Format("/v2/domains/{0}", guid);
@@ -163,7 +163,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid guid)
+        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid)
         {
             return await ListAllSpacesForDomainDeprecated(guid, new RequestOptions());
         }
@@ -171,7 +171,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/domains/{0}/spaces", guid);

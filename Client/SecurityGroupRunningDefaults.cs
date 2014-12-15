@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task RemovingSecurityGroupAsDefaultForRunningApps(Guid guid)
+        public async Task RemovingSecurityGroupAsDefaultForRunningApps(Guid? guid)
     
         {
             string route = string.Format("/v2/config/running_security_groups/{0}", guid);
@@ -96,7 +96,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid guid)
+        public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid? guid)
     
         {
             string route = string.Format("/v2/config/running_security_groups/{0}", guid);

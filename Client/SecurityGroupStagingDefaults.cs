@@ -67,7 +67,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid guid)
+        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
     
         {
             string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
@@ -96,7 +96,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid guid)
+        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
     
         {
             string route = string.Format("/v2/config/staging_security_groups/{0}", guid);

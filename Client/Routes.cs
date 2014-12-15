@@ -28,7 +28,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid guid)
+        public async Task<PagedResponse<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid)
         {
             return await ListAllAppsForRoute(guid, new RequestOptions());
         }
@@ -36,7 +36,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/routes/{0}/apps", guid);
@@ -69,7 +69,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveRouteResponse> RetrieveRoute(Guid guid)
+        public async Task<RetrieveRouteResponse> RetrieveRoute(Guid? guid)
     
         {
             string route = string.Format("/v2/routes/{0}", guid);
@@ -100,7 +100,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid guid, Guid app_guid)
+        public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
     
         {
             string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
@@ -133,7 +133,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteRoute(Guid guid)
+        public async Task DeleteRoute(Guid? guid)
     
         {
             string route = string.Format("/v2/routes/{0}", guid);
@@ -202,7 +202,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task CheckRouteExists(Guid domain_guid, dynamic host)
+        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
     
         {
             string route = string.Format("/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
@@ -229,7 +229,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateRouteResponse> UpdateRoute(Guid guid, UpdateRouteRequest value)
+        public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
     
         {
             string route = string.Format("/v2/routes/{0}", guid);
@@ -299,7 +299,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid guid, Guid app_guid)
+        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
     
         {
             string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);

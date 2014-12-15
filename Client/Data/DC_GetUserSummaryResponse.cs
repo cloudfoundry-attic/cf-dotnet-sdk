@@ -17,28 +17,28 @@ public class GetUserSummaryResponse :IResponse
 
 
     [JsonProperty("organizations", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<string, dynamic>>[] Organizations
+    public Dictionary<string, dynamic>[] Organizations
     {
     get;
     set;
     }
 
     [JsonProperty("managed_organizations", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<string, dynamic>>[] ManagedOrganizations
+    public Dictionary<string, dynamic>[] ManagedOrganizations
     {
     get;
     set;
     }
 
     [JsonProperty("billing_managed_organizations", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<string, dynamic>>[] BillingManagedOrganizations
+    public Dictionary<string, dynamic>[] BillingManagedOrganizations
     {
     get;
     set;
     }
 
     [JsonProperty("audited_organizations", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<string, dynamic>>[] AuditedOrganizations
+    public Dictionary<string, dynamic>[] AuditedOrganizations
     {
     get;
     set;

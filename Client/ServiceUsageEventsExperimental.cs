@@ -73,7 +73,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid guid)
+        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
     
         {
             string route = string.Format("/v2/service_usage_events/{0}", guid);

@@ -136,7 +136,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid guid)
+        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid)
         {
             return await ListAllServiceInstancesForServicePlan(guid, new RequestOptions());
         }
@@ -144,7 +144,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/service_plans/{0}/service_instances", guid);
@@ -177,7 +177,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid guid)
+        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
     
         {
             string route = string.Format("/v2/service_plans/{0}", guid);
@@ -208,7 +208,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteServicePlans(Guid guid)
+        public async Task DeleteServicePlans(Guid? guid)
     
         {
             string route = string.Format("/v2/service_plans/{0}", guid);

@@ -11,7 +11,7 @@ public class UpdateUserProvidedServiceInstanceRequest
 
 
     [JsonProperty("credentials", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> Credentials
+    public Dictionary<string, dynamic> Credentials
     {
     get;
     set;

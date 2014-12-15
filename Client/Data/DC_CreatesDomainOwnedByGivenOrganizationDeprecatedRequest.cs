@@ -18,21 +18,21 @@ public class CreatesDomainOwnedByGivenOrganizationDeprecatedRequest
     }
 
     [JsonProperty("wildcard", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Wildcard
+    public bool? Wildcard
     {
     get;
     set;
     }
 
     [JsonProperty("owning_organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OwningOrganizationGuid
+    public Guid? OwningOrganizationGuid
     {
     get;
     set;
     }
 
     [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Guid
+    public Guid? Guid
     {
     get;
     set;

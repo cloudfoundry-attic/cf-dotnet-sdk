@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateSpaceResponse> UpdateSpace(Guid guid, UpdateSpaceRequest value)
+        public async Task<UpdateSpaceResponse> UpdateSpace(Guid? guid, UpdateSpaceRequest value)
     
         {
             string route = string.Format("/v2/spaces/{0}", guid);
@@ -63,7 +63,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid)
         {
             return await ListAllDevelopersForSpace(guid, new RequestOptions());
         }
@@ -71,7 +71,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/developers", guid);
@@ -102,7 +102,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveDeveloperFromSpaceResponse> RemoveDeveloperFromSpace(Guid guid, Guid developer_guid)
+        public async Task<RemoveDeveloperFromSpaceResponse> RemoveDeveloperFromSpace(Guid? guid, Guid? developer_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
@@ -134,7 +134,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid)
         {
             return await ListAllServicesForSpace(guid, new RequestOptions());
         }
@@ -142,7 +142,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/services", guid);
@@ -172,7 +172,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid guid)
+        public async Task<PagedResponse<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid)
         {
             return await ListAllDomainsForSpaceDeprecated(guid, new RequestOptions());
         }
@@ -180,7 +180,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/domains", guid);
@@ -211,7 +211,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveAuditorFromSpaceResponse> RemoveAuditorFromSpace(Guid guid, Guid auditor_guid)
+        public async Task<RemoveAuditorFromSpaceResponse> RemoveAuditorFromSpace(Guid? guid, Guid? auditor_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
@@ -281,7 +281,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid)
         {
             return await ListAllAppsForSpace(guid, new RequestOptions());
         }
@@ -289,7 +289,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/apps", guid);
@@ -320,7 +320,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateSecurityGroupWithSpaceResponse> AssociateSecurityGroupWithSpace(Guid guid, Guid security_group_guid)
+        public async Task<AssociateSecurityGroupWithSpaceResponse> AssociateSecurityGroupWithSpace(Guid? guid, Guid? security_group_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
@@ -353,7 +353,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateManagerWithSpaceResponse> AssociateManagerWithSpace(Guid guid, Guid manager_guid)
+        public async Task<AssociateManagerWithSpaceResponse> AssociateManagerWithSpace(Guid? guid, Guid? manager_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/managers/{1}", guid, manager_guid);
@@ -386,7 +386,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveManagerFromSpaceResponse> RemoveManagerFromSpace(Guid guid, Guid manager_guid)
+        public async Task<RemoveManagerFromSpaceResponse> RemoveManagerFromSpace(Guid? guid, Guid? manager_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/managers/{1}", guid, manager_guid);
@@ -418,7 +418,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid)
         {
             return await ListAllServiceInstancesForSpace(guid, new RequestOptions());
         }
@@ -426,7 +426,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/service_instances", guid);
@@ -456,7 +456,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid)
         {
             return await ListAllManagersForSpace(guid, new RequestOptions());
         }
@@ -464,7 +464,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/managers", guid);
@@ -494,7 +494,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid)
         {
             return await ListAllRoutesForSpace(guid, new RequestOptions());
         }
@@ -502,7 +502,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/routes", guid);
@@ -533,7 +533,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateDeveloperWithSpaceResponse> AssociateDeveloperWithSpace(Guid guid, Guid developer_guid)
+        public async Task<AssociateDeveloperWithSpaceResponse> AssociateDeveloperWithSpace(Guid? guid, Guid? developer_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
@@ -601,7 +601,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteSpace(Guid guid)
+        public async Task DeleteSpace(Guid? guid)
     
         {
             string route = string.Format("/v2/spaces/{0}", guid);
@@ -629,7 +629,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid)
         {
             return await ListAllEventsForSpace(guid, new RequestOptions());
         }
@@ -637,7 +637,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/events", guid);
@@ -667,7 +667,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid)
         {
             return await ListAllAuditorsForSpace(guid, new RequestOptions());
         }
@@ -675,7 +675,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/auditors", guid);
@@ -708,7 +708,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveSpaceResponse> RetrieveSpace(Guid guid)
+        public async Task<RetrieveSpaceResponse> RetrieveSpace(Guid? guid)
     
         {
             string route = string.Format("/v2/spaces/{0}", guid);
@@ -741,7 +741,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<GetSpaceSummaryResponse> GetSpaceSummary(Guid guid)
+        public async Task<GetSpaceSummaryResponse> GetSpaceSummary(Guid? guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/summary", guid);
@@ -772,7 +772,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateAuditorWithSpaceResponse> AssociateAuditorWithSpace(Guid guid, Guid auditor_guid)
+        public async Task<AssociateAuditorWithSpaceResponse> AssociateAuditorWithSpace(Guid? guid, Guid? auditor_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
@@ -805,7 +805,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveSecurityGroupFromSpaceResponse> RemoveSecurityGroupFromSpace(Guid guid, Guid security_group_guid)
+        public async Task<RemoveSecurityGroupFromSpaceResponse> RemoveSecurityGroupFromSpace(Guid? guid, Guid? security_group_guid)
     
         {
             string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
@@ -837,7 +837,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid guid)
+        public async Task<PagedResponse<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid)
         {
             return await ListAllSecurityGroupsForSpace(guid, new RequestOptions());
         }
@@ -845,7 +845,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/security_groups", guid);

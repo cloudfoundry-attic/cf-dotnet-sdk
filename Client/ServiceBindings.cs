@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteServiceBinding(Guid guid)
+        public async Task DeleteServiceBinding(Guid? guid)
     
         {
             string route = string.Format("/v2/service_bindings/{0}", guid);
@@ -60,7 +60,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid guid)
+        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
     
         {
             string route = string.Format("/v2/service_bindings/{0}", guid);

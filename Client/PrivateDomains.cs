@@ -69,7 +69,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid guid)
+        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
     
         {
             string route = string.Format("/v2/private_domains/{0}", guid);
@@ -138,7 +138,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeletePrivateDomain(Guid guid)
+        public async Task DeletePrivateDomain(Guid? guid)
     
         {
             string route = string.Format("/v2/private_domains/{0}", guid);

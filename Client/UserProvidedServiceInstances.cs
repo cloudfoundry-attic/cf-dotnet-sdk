@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateUserProvidedServiceInstanceResponse> UpdateUserProvidedServiceInstance(Guid guid, UpdateUserProvidedServiceInstanceRequest value)
+        public async Task<UpdateUserProvidedServiceInstanceResponse> UpdateUserProvidedServiceInstance(Guid? guid, UpdateUserProvidedServiceInstanceRequest value)
     
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
@@ -64,7 +64,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteUserProvidedServiceInstance(Guid guid)
+        public async Task DeleteUserProvidedServiceInstance(Guid? guid)
     
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
@@ -95,7 +95,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveUserProvidedServiceInstanceResponse> RetrieveUserProvidedServiceInstance(Guid guid)
+        public async Task<RetrieveUserProvidedServiceInstanceResponse> RetrieveUserProvidedServiceInstance(Guid? guid)
     
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
@@ -125,7 +125,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid guid)
+        public async Task<PagedResponse<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid)
         {
             return await ListAllServiceBindingsForUserProvidedServiceInstance(guid, new RequestOptions());
         }
@@ -133,7 +133,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}/service_bindings", guid);

@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveSpaceFromSpaceQuotaDefinitionResponse> RemoveSpaceFromSpaceQuotaDefinition(Guid guid, Guid space_guid)
+        public async Task<RemoveSpaceFromSpaceQuotaDefinitionResponse> RemoveSpaceFromSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
     
         {
             string route = string.Format("/v2/space_quota_definitions/{0}/spaces/{1}", guid, space_guid);
@@ -62,7 +62,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateSpaceWithSpaceQuotaDefinitionResponse> AssociateSpaceWithSpaceQuotaDefinition(Guid guid, Guid space_guid)
+        public async Task<AssociateSpaceWithSpaceQuotaDefinitionResponse> AssociateSpaceWithSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
     
         {
             string route = string.Format("/v2/space_quota_definitions/{0}/spaces/{1}", guid, space_guid);
@@ -97,7 +97,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveSpaceQuotaDefinitionResponse> RetrieveSpaceQuotaDefinition(Guid guid)
+        public async Task<RetrieveSpaceQuotaDefinitionResponse> RetrieveSpaceQuotaDefinition(Guid? guid)
     
         {
             string route = string.Format("/v2/space_quota_definitions/{0}", guid);
@@ -163,7 +163,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid guid, UpdateSpaceQuotaDefinitionRequest value)
+        public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid? guid, UpdateSpaceQuotaDefinitionRequest value)
     
         {
             string route = string.Format("/v2/space_quota_definitions/{0}", guid);
@@ -198,7 +198,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteSpaceQuotaDefinition(Guid guid)
+        public async Task DeleteSpaceQuotaDefinition(Guid? guid)
     
         {
             string route = string.Format("/v2/space_quota_definitions/{0}", guid);
@@ -226,7 +226,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid guid)
+        public async Task<PagedResponse<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid)
         {
             return await ListAllSpacesForSpaceQuotaDefinition(guid, new RequestOptions());
         }
@@ -234,7 +234,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/space_quota_definitions/{0}/spaces", guid);

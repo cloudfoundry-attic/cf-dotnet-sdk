@@ -69,7 +69,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServiceAuthTokenDeprecatedResponse> RetrieveServiceAuthTokenDeprecated(Guid guid)
+        public async Task<RetrieveServiceAuthTokenDeprecatedResponse> RetrieveServiceAuthTokenDeprecated(Guid? guid)
     
         {
             string route = string.Format("/v2/service_auth_tokens/{0}", guid);
@@ -100,7 +100,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteServiceAuthTokenDeprecated(Guid guid)
+        public async Task DeleteServiceAuthTokenDeprecated(Guid? guid)
     
         {
             string route = string.Format("/v2/service_auth_tokens/{0}", guid);

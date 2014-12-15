@@ -24,14 +24,14 @@ public class RetrieveAppUsageEventResponse :IResponse
     }
 
     [JsonProperty("memory_in_mb_per_instance", NullValueHandling=NullValueHandling.Ignore)]
-    public double MemoryInMbPerInstance
+    public double? MemoryInMbPerInstance
     {
     get;
     set;
     }
 
     [JsonProperty("instance_count", NullValueHandling=NullValueHandling.Ignore)]
-    public double InstanceCount
+    public double? InstanceCount
     {
     get;
     set;

@@ -102,7 +102,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid guid, UpdateOrganizationQuotaDefinitionRequest value)
+        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
     
         {
             string route = string.Format("/v2/quota_definitions/{0}", guid);
@@ -139,7 +139,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid guid)
+        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid? guid)
     
         {
             string route = string.Format("/v2/quota_definitions/{0}", guid);
@@ -170,7 +170,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteOrganizationQuotaDefinition(Guid guid)
+        public async Task DeleteOrganizationQuotaDefinition(Guid? guid)
     
         {
             string route = string.Format("/v2/quota_definitions/{0}", guid);

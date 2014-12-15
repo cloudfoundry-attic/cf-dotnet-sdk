@@ -18,7 +18,7 @@ public class CreateSpaceRequest
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;
