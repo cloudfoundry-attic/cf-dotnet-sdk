@@ -73,7 +73,7 @@ public class CreateServiceDeprecatedResponse :IResponse
     }
 
     [JsonProperty("bindable", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Bindable
+    public bool? Bindable
     {
     get;
     set;
@@ -115,7 +115,7 @@ public class CreateServiceDeprecatedResponse :IResponse
     }
 
     [JsonProperty("service_broker_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServiceBrokerGuid
+    public Guid? ServiceBrokerGuid
     {
     get;
     set;

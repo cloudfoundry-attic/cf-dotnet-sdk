@@ -18,35 +18,35 @@ public class CreateAppRequest
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public double Memory
+    public double? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double Instances
+    public double? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public double DiskQuota
+    public double? DiskQuota
     {
     get;
     set;
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("stack_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid StackGuid
+    public Guid? StackGuid
     {
     get;
     set;
@@ -102,21 +102,21 @@ public class CreateAppRequest
     }
 
     [JsonProperty("production", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Production
+    public bool? Production
     {
     get;
     set;
     }
 
     [JsonProperty("console", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Console
+    public bool? Console
     {
     get;
     set;
     }
 
     [JsonProperty("debug", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Debug
+    public bool? Debug
     {
     get;
     set;

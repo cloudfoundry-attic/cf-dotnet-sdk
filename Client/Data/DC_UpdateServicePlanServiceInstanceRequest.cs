@@ -11,7 +11,7 @@ public class UpdateServicePlanServiceInstanceRequest
 
 
     [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServicePlanGuid
+    public Guid? ServicePlanGuid
     {
     get;
     set;

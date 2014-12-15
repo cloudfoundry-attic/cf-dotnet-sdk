@@ -11,7 +11,7 @@ public class CopyAppBitsForAppExperimentalRequest
 
 
     [JsonProperty("source_app_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SourceAppGuid
+    public Guid? SourceAppGuid
     {
     get;
     set;

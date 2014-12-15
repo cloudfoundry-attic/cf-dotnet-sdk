@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateServicePlanServiceInstanceResponse> UpdateServicePlanServiceInstance(Guid guid, UpdateServicePlanServiceInstanceRequest value)
+        public async Task<UpdateServicePlanServiceInstanceResponse> UpdateServicePlanServiceInstance(Guid? guid, UpdateServicePlanServiceInstanceRequest value)
     
         {
             string route = string.Format("/v2/service_instances/{0}", guid);
@@ -136,7 +136,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid guid)
+        public async Task<PagedResponse<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid)
         {
             return await ListAllServiceBindingsForServiceInstance(guid, new RequestOptions());
         }
@@ -144,7 +144,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/service_instances/{0}/service_bindings", guid);
@@ -175,7 +175,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteServiceInstance(Guid guid)
+        public async Task DeleteServiceInstance(Guid? guid)
     
         {
             string route = string.Format("/v2/service_instances/{0}", guid);
@@ -206,7 +206,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServiceInstanceResponse> RetrieveServiceInstance(Guid guid)
+        public async Task<RetrieveServiceInstanceResponse> RetrieveServiceInstance(Guid? guid)
     
         {
             string route = string.Format("/v2/service_instances/{0}", guid);
@@ -238,7 +238,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse> MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental(Guid service_plan_guid, MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest value)
+        public async Task<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse> MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental(Guid? service_plan_guid, MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest value)
     
         {
             string route = string.Format("/v2/service_plans/{0}/service_instances", service_plan_guid);
@@ -275,7 +275,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid guid)
+        public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
     
         {
             string route = string.Format("/v2/service_instances/{0}/permissions", guid);

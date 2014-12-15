@@ -17,14 +17,14 @@ public class CreateServicePlanVisibilityResponse :IResponse
 
 
     [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServicePlanGuid
+    public Guid? ServicePlanGuid
     {
     get;
     set;
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;

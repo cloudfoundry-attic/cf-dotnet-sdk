@@ -24,7 +24,7 @@ public class ListAppExitedEventsResponse :IResponse
     }
 
     [JsonProperty("actor", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Actor
+    public Guid? Actor
     {
     get;
     set;
@@ -45,7 +45,7 @@ public class ListAppExitedEventsResponse :IResponse
     }
 
     [JsonProperty("actee", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Actee
+    public Guid? Actee
     {
     get;
     set;
@@ -80,14 +80,14 @@ public class ListAppExitedEventsResponse :IResponse
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;

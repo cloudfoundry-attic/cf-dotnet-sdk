@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateServiceBrokerResponse> UpdateServiceBroker(Guid guid, UpdateServiceBrokerRequest value)
+        public async Task<UpdateServiceBrokerResponse> UpdateServiceBroker(Guid? guid, UpdateServiceBrokerRequest value)
     
         {
             string route = string.Format("/v2/service_brokers/{0}", guid);
@@ -66,7 +66,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid guid)
+        public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
     
         {
             string route = string.Format("/v2/service_brokers/{0}", guid);
@@ -132,7 +132,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteServiceBroker(Guid guid)
+        public async Task DeleteServiceBroker(Guid? guid)
     
         {
             string route = string.Format("/v2/service_brokers/{0}", guid);

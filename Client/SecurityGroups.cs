@@ -67,7 +67,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteSecurityGroup(Guid guid)
+        public async Task DeleteSecurityGroup(Guid? guid)
     
         {
             string route = string.Format("/v2/security_groups/{0}", guid);
@@ -95,7 +95,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid guid)
+        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid)
         {
             return await ListAllSpacesForSecurityGroup(guid, new RequestOptions());
         }
@@ -103,7 +103,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/security_groups/{0}/spaces", guid);
@@ -136,7 +136,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid guid)
+        public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid? guid)
     
         {
             string route = string.Format("/v2/security_groups/{0}", guid);
@@ -167,7 +167,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid guid, Guid space_guid)
+        public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid? guid, Guid? space_guid)
     
         {
             string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
@@ -200,7 +200,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateSpaceWithSecurityGroupResponse> AssociateSpaceWithSecurityGroup(Guid guid, Guid space_guid)
+        public async Task<AssociateSpaceWithSecurityGroupResponse> AssociateSpaceWithSecurityGroup(Guid? guid, Guid? space_guid)
     
         {
             string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
@@ -233,7 +233,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid guid, UpdateSecurityGroupRequest value)
+        public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid? guid, UpdateSecurityGroupRequest value)
     
         {
             string route = string.Format("/v2/security_groups/{0}", guid);

@@ -31,7 +31,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task RetrieveFile(Guid app_guid, int instance_index, dynamic file_path)
+        public async Task RetrieveFile(Guid? app_guid, int? instance_index, dynamic file_path)
     
         {
             string route = string.Format("/v2/apps/{0}/instances/{1}/files/{2}", app_guid, instance_index, file_path);

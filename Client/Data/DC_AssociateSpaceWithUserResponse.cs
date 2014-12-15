@@ -31,7 +31,7 @@ public class AssociateSpaceWithUserResponse :IResponse
     }
 
     [JsonProperty("default_space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid DefaultSpaceGuid
+    public Guid? DefaultSpaceGuid
     {
     get;
     set;

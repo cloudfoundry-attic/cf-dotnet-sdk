@@ -38,7 +38,7 @@ public class RetrieveServicePlanResponse :IResponse
     }
 
     [JsonProperty("service_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServiceGuid
+    public Guid? ServiceGuid
     {
     get;
     set;
@@ -52,21 +52,21 @@ public class RetrieveServicePlanResponse :IResponse
     }
 
     [JsonProperty("unique_id", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid UniqueId
+    public Guid? UniqueId
     {
     get;
     set;
     }
 
     [JsonProperty("public", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Public
+    public bool? Public
     {
     get;
     set;
     }
 
     [JsonProperty("active", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Active
+    public bool? Active
     {
     get;
     set;

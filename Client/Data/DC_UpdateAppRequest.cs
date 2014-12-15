@@ -46,7 +46,7 @@ public class UpdateAppRequest
     }
 
     [JsonProperty("stack_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid StackGuid
+    public Guid? StackGuid
     {
     get;
     set;
@@ -102,21 +102,21 @@ public class UpdateAppRequest
     }
 
     [JsonProperty("production", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Production
+    public bool? Production
     {
     get;
     set;
     }
 
     [JsonProperty("console", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Console
+    public bool? Console
     {
     get;
     set;
     }
 
     [JsonProperty("debug", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Debug
+    public bool? Debug
     {
     get;
     set;

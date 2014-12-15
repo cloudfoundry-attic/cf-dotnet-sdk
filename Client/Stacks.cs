@@ -31,7 +31,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveStackResponse> RetrieveStack(Guid guid)
+        public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
     
         {
             string route = string.Format("/v2/stacks/{0}", guid);
@@ -62,7 +62,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteStack(Guid guid)
+        public async Task DeleteStack(Guid? guid)
     
         {
             string route = string.Format("/v2/stacks/{0}", guid);

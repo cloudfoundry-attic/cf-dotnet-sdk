@@ -18,7 +18,7 @@ public class ListAllMatchingResourcesRequest
     }
 
     [JsonProperty("size", NullValueHandling=NullValueHandling.Ignore)]
-    public double Size
+    public double? Size
     {
     get;
     set;

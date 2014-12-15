@@ -24,7 +24,7 @@ public class ListAllMatchingResourcesResponse :IResponse
     }
 
     [JsonProperty("size", NullValueHandling=NullValueHandling.Ignore)]
-    public double Size
+    public double? Size
     {
     get;
     set;

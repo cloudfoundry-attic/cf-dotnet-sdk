@@ -18,35 +18,35 @@ public class CreateDockerProcessRequest
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public double Memory
+    public double? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double Instances
+    public double? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public double DiskQuota
+    public double? DiskQuota
     {
     get;
     set;
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("stack_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid StackGuid
+    public Guid? StackGuid
     {
     get;
     set;
@@ -60,7 +60,7 @@ public class CreateDockerProcessRequest
     }
 
     [JsonProperty("environment_json", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> EnvironmentJson
+    public Dictionary<string, dynamic> EnvironmentJson
     {
     get;
     set;

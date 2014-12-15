@@ -24,14 +24,14 @@ public class ListAllRoutesForSpaceResponse :IResponse
     }
 
     [JsonProperty("domain_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid DomainGuid
+    public Guid? DomainGuid
     {
     get;
     set;
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;

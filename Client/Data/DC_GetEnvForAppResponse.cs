@@ -17,35 +17,35 @@ public class GetEnvForAppResponse :IResponse
 
 
     [JsonProperty("staging_env_json", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> StagingEnvJson
+    public Dictionary<string, dynamic> StagingEnvJson
     {
     get;
     set;
     }
 
     [JsonProperty("running_env_json", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> RunningEnvJson
+    public Dictionary<string, dynamic> RunningEnvJson
     {
     get;
     set;
     }
 
     [JsonProperty("environment_json", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> EnvironmentJson
+    public Dictionary<string, dynamic> EnvironmentJson
     {
     get;
     set;
     }
 
     [JsonProperty("system_env_json", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<dynamic, dynamic>> SystemEnvJson
+    public Dictionary<string, dynamic> SystemEnvJson
     {
     get;
     set;
     }
 
     [JsonProperty("application_env_json", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<string, dynamic>> ApplicationEnvJson
+    public Dictionary<string, dynamic> ApplicationEnvJson
     {
     get;
     set;

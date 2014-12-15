@@ -11,7 +11,7 @@ public class CreateUserProvidedServiceInstanceRequest
 
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
@@ -25,7 +25,7 @@ public class CreateUserProvidedServiceInstanceRequest
     }
 
     [JsonProperty("credentials", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> Credentials
+    public Dictionary<string, dynamic> Credentials
     {
     get;
     set;

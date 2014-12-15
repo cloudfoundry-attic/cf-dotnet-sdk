@@ -24,7 +24,7 @@ public class ReturnSecurityGroupsUsedForStagingResponse :IResponse
     }
 
     [JsonProperty("rules", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string>[] Rules
+    public Dictionary<string, dynamic>[] Rules
     {
     get;
     set;
@@ -38,7 +38,7 @@ public class ReturnSecurityGroupsUsedForStagingResponse :IResponse
     }
 
     [JsonProperty("staging_default", NullValueHandling=NullValueHandling.Ignore)]
-    public bool StagingDefault
+    public bool? StagingDefault
     {
     get;
     set;

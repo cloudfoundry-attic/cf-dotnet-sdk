@@ -31,14 +31,14 @@ public class RemoveServiceBindingFromAppResponse :IResponse
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("stack_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid StackGuid
+    public Guid? StackGuid
     {
     get;
     set;
@@ -66,21 +66,21 @@ public class RemoveServiceBindingFromAppResponse :IResponse
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public double Memory
+    public double? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double Instances
+    public double? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public double DiskQuota
+    public double? DiskQuota
     {
     get;
     set;
@@ -94,7 +94,7 @@ public class RemoveServiceBindingFromAppResponse :IResponse
     }
 
     [JsonProperty("version", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Version
+    public Guid? Version
     {
     get;
     set;

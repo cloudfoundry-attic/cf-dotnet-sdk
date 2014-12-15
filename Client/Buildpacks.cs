@@ -32,7 +32,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<ChangePositionOfBuildpackResponse> ChangePositionOfBuildpack(Guid guid, ChangePositionOfBuildpackRequest value)
+        public async Task<ChangePositionOfBuildpackResponse> ChangePositionOfBuildpack(Guid? guid, ChangePositionOfBuildpackRequest value)
     
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
@@ -67,7 +67,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteBuildpack(Guid guid)
+        public async Task DeleteBuildpack(Guid? guid)
     
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
@@ -169,7 +169,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<LockOrUnlockBuildpackResponse> LockOrUnlockBuildpack(Guid guid, LockOrUnlockBuildpackRequest value)
+        public async Task<LockOrUnlockBuildpackResponse> LockOrUnlockBuildpack(Guid? guid, LockOrUnlockBuildpackRequest value)
     
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
@@ -206,7 +206,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveBuildpackResponse> RetrieveBuildpack(Guid guid)
+        public async Task<RetrieveBuildpackResponse> RetrieveBuildpack(Guid? guid)
     
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
@@ -241,7 +241,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<EnableOrDisableBuildpackResponse> EnableOrDisableBuildpack(Guid guid, EnableOrDisableBuildpackRequest value)
+        public async Task<EnableOrDisableBuildpackResponse> EnableOrDisableBuildpack(Guid? guid, EnableOrDisableBuildpackRequest value)
     
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);

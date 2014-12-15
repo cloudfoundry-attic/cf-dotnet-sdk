@@ -24,7 +24,7 @@ public class GetRouteCreationFeatureFlagResponse :IResponse
     }
 
     [JsonProperty("enabled", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Enabled
+    public bool? Enabled
     {
     get;
     set;

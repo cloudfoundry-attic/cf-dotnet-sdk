@@ -31,7 +31,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveOrganizationResponse> RetrieveOrganization(Guid guid)
+        public async Task<RetrieveOrganizationResponse> RetrieveOrganization(Guid? guid)
     
         {
             string route = string.Format("/v2/organizations/{0}", guid);
@@ -100,7 +100,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveUserFromOrganizationResponse> RemoveUserFromOrganization(Guid guid, Guid user_guid)
+        public async Task<RemoveUserFromOrganizationResponse> RemoveUserFromOrganization(Guid? guid, Guid? user_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/users/{1}", guid, user_guid);
@@ -133,7 +133,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveBillingManagerFromOrganizationResponse> RemoveBillingManagerFromOrganization(Guid guid, Guid billing_manager_guid)
+        public async Task<RemoveBillingManagerFromOrganizationResponse> RemoveBillingManagerFromOrganization(Guid? guid, Guid? billing_manager_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
@@ -168,7 +168,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid guid)
+        public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid? guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/summary", guid);
@@ -199,7 +199,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteOrganization(Guid guid)
+        public async Task DeleteOrganization(Guid? guid)
     
         {
             string route = string.Format("/v2/organizations/{0}", guid);
@@ -227,7 +227,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid)
         {
             return await ListAllSpacesForOrganization(guid, new RequestOptions());
         }
@@ -235,7 +235,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/spaces", guid);
@@ -265,7 +265,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid)
         {
             return await ListAllSpaceQuotaDefinitionsForOrganization(guid, new RequestOptions());
         }
@@ -273,7 +273,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/space_quota_definitions", guid);
@@ -304,7 +304,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateBillingManagerWithOrganizationResponse> AssociateBillingManagerWithOrganization(Guid guid, Guid billing_manager_guid)
+        public async Task<AssociateBillingManagerWithOrganizationResponse> AssociateBillingManagerWithOrganization(Guid? guid, Guid? billing_manager_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
@@ -336,7 +336,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid)
         {
             return await ListAllUsersForOrganization(guid, new RequestOptions());
         }
@@ -344,7 +344,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/users", guid);
@@ -375,7 +375,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid guid, Guid user_guid)
+        public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid? guid, Guid? user_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/users/{1}", guid, user_guid);
@@ -407,7 +407,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid)
         {
             return await ListAllServicesForOrganization(guid, new RequestOptions());
         }
@@ -415,7 +415,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/services", guid);
@@ -446,7 +446,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveAuditorFromOrganizationResponse> RemoveAuditorFromOrganization(Guid guid, Guid auditor_guid)
+        public async Task<RemoveAuditorFromOrganizationResponse> RemoveAuditorFromOrganization(Guid? guid, Guid? auditor_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
@@ -478,7 +478,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid)
         {
             return await ListAllPrivateDomainsForOrganization(guid, new RequestOptions());
         }
@@ -486,7 +486,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/private_domains", guid);
@@ -517,7 +517,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateManagerWithOrganizationResponse> AssociateManagerWithOrganization(Guid guid, Guid manager_guid)
+        public async Task<AssociateManagerWithOrganizationResponse> AssociateManagerWithOrganization(Guid? guid, Guid? manager_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/managers/{1}", guid, manager_guid);
@@ -550,7 +550,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid guid, UpdateOrganizationRequest value)
+        public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid? guid, UpdateOrganizationRequest value)
     
         {
             string route = string.Format("/v2/organizations/{0}", guid);
@@ -619,7 +619,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid guid)
+        public async Task<PagedResponse<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid)
         {
             return await ListAllDomainsForOrganizationDeprecated(guid, new RequestOptions());
         }
@@ -627,7 +627,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/domains", guid);
@@ -657,7 +657,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid)
         {
             return await ListAllManagersForOrganization(guid, new RequestOptions());
         }
@@ -665,7 +665,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/managers", guid);
@@ -696,7 +696,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RemoveManagerFromOrganizationResponse> RemoveManagerFromOrganization(Guid guid, Guid manager_guid)
+        public async Task<RemoveManagerFromOrganizationResponse> RemoveManagerFromOrganization(Guid? guid, Guid? manager_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/managers/{1}", guid, manager_guid);
@@ -728,7 +728,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid)
         {
             return await ListAllAuditorsForOrganization(guid, new RequestOptions());
         }
@@ -736,7 +736,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/auditors", guid);
@@ -766,7 +766,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid guid)
+        public async Task<PagedResponse<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid)
         {
             return await ListAllBillingManagersForOrganization(guid, new RequestOptions());
         }
@@ -774,7 +774,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/organizations/{0}/billing_managers", guid);
@@ -805,7 +805,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<AssociateAuditorWithOrganizationResponse> AssociateAuditorWithOrganization(Guid guid, Guid auditor_guid)
+        public async Task<AssociateAuditorWithOrganizationResponse> AssociateAuditorWithOrganization(Guid? guid, Guid? auditor_guid)
     
         {
             string route = string.Format("/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);

@@ -259,7 +259,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveEventResponse> RetrieveEvent(Guid guid)
+        public async Task<RetrieveEventResponse> RetrieveEvent(Guid? guid)
     
         {
             string route = string.Format("/v2/events/{0}", guid);

@@ -29,7 +29,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteServicePlanVisibilities(Guid guid)
+        public async Task DeleteServicePlanVisibilities(Guid? guid)
     
         {
             string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
@@ -58,7 +58,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateServicePlanVisibilityResponse> UpdateServicePlanVisibility(Guid guid, UpdateServicePlanVisibilityRequest value)
+        public async Task<UpdateServicePlanVisibilityResponse> UpdateServicePlanVisibility(Guid? guid, UpdateServicePlanVisibilityRequest value)
     
         {
             string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
@@ -95,7 +95,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid guid)
+        public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid? guid)
     
         {
             string route = string.Format("/v2/service_plan_visibilities/{0}", guid);

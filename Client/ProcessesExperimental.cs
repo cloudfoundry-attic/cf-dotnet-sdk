@@ -64,7 +64,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateProcessResponse> UpdateProcess(Guid guid, UpdateProcessRequest value)
+        public async Task<UpdateProcessResponse> UpdateProcess(Guid? guid, UpdateProcessRequest value)
     
         {
             string route = string.Format("/v3/processes/{0}", guid);
@@ -99,7 +99,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteProcess(Guid guid)
+        public async Task DeleteProcess(Guid? guid)
     
         {
             string route = string.Format("/v3/processes/{0}", guid);
@@ -165,7 +165,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<GetProcessResponse> GetProcess(Guid guid)
+        public async Task<GetProcessResponse> GetProcess(Guid? guid)
     
         {
             string route = string.Format("/v3/processes/{0}", guid);
