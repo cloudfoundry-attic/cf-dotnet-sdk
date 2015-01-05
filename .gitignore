@@ -1,5 +1,7 @@
-/bin/
-/obj/
+bin/
+obj/
+debug/
 /packages/
-/*.v12.suo
-/*.csproj.user
+*.v12.suo
+*.csproj.user
+.idea

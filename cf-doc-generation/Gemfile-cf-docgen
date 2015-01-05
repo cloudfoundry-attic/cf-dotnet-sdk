@@ -1,0 +1,5 @@
+gem 'win32-eventlog'
+
+cf_gemfile = File.expand_path('../../cloud_controller_ng/Gemfile', __FILE__)
+
+eval File.read(cf_gemfile), binding

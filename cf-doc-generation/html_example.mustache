@@ -1,0 +1,71 @@
+<example>
+  <resource>{{resource_name}}</resource>
+  <http_method>{{ http_method }}</http_method>
+  <route>{{ route }}</route>
+  <description>{{ description }}</description>
+  <explanation>{{ explanation }}</explanation>
+  <fields>
+    {{# fields }}
+    <field>
+      <name>{{ name }}</name>
+      <deprecated>{{# deprecated }}true{{/ deprecated }}{{^ deprecated }}false{{/ deprecated }}</deprecated>
+      <readonly>{{# readonly }}true{{/ readonly }}{{^ readonly }}true{{/ readonly }}</readonly>
+      <required>{{# required }}true{{/ required }}{{^ required }}true{{/ required }}</required>
+      <description>{{ description }}</description>
+      <default>{{ default }}</default>
+      <valid_values>
+        {{# valid_values }}
+        <valid_value>{{ . }}</valid_value>
+        {{/ valid_values }}
+      </valid_values>
+      <example_values>
+        {{# example_values }}
+        <example_value>{{ . }}</example_value>
+        {{/ example_values }}
+      </example_values>
+    </field>
+    {{/ fields }}
+  </fields>
+  {{# has_parameters? }}
+  <parameters>
+    {{# parameters }}
+    <parameter>
+      <name>{{# scope }}{{ scope }}[{{ name }}]{{/ scope }}{{^ scope }}{{ name }}{{/ scope }}</name>
+      <deprecated>{{# deprecated }}true{{/ deprecated }}{{^ deprecated }}false{{/ deprecated }}</deprecated>
+      <description>{{ description }}</description>
+      <valid_values>
+        {{# valid_values }}
+        <valid_value>{{ . }}</valid_value>
+        {{/ valid_values }}
+      </valid_values>
+      <example_values>
+        {{# example_values }}
+        <example_value>{{ . }}</example_value>
+        {{/ example_values }}
+      </example_values>
+    </parameter>
+    {{/ parameters }}
+  </parameters>
+  {{/ has_parameters? }}
+  <requests>
+    {{# requests }}
+    <request>
+      <request_method>{{ request_method }}</request_method>
+      <request_path>{{ request_path }}</request_path>
+      <request_body>{{{ request_body }}}</request_body>
+      <request_headers>{{{ request_headers }}}</request_headers>
+      <request_query_parameters>{{{ request_query_parameters }}}</request_query_parameters>
+      <request_content_type>{{ request_content_type }}</request_content_type>
+      <response_status>{{ response_status }}</response_status>
+      <response_status_text>{{ response_status_text }}</response_status_text>
+      <response_body>{{{ response_body }}}</response_body>
+      <response_headers>{{{ response_headers }}}</response_headers>
+      <response_content_type>{{ response_content_type }}</response_content_type>
+      <curl>{{{ curl }}}</curl>
+      <request_headers_text>{{{ request_headers_text }}}</request_headers_text>
+      <request_query_parameters_text>{{ request_query_parameters_text }}</request_query_parameters_text>
+      <response_headers_text>{{{ response_headers_text }}}</response_headers_text>
+    </request>
+    {{/ requests }}
+  </requests>
+</example>

@@ -1,0 +1,6 @@
+[submodule "cloud_controller_ng"]
+	path = cloud_controller_ng
+	url = https://github.com/cloudfoundry/cloud_controller_ng.git
+[submodule "cf-sdk-builder"]
+	path = cf-sdk-builder
+	url = ../cf-sdk-builder.git
