@@ -65,6 +65,8 @@
     <Compile Include="Client\Data\DC_AssociateUserWithOrganizationResponse.cs" />
     <Compile Include="Client\Data\DC_ChangePositionOfBuildpackRequest.cs" />
     <Compile Include="Client\Data\DC_ChangePositionOfBuildpackResponse.cs" />
+    <Compile Include="Client\Data\DC_CopyAppBitsForAppExperimentalRequest.cs" />
+    <Compile Include="Client\Data\DC_CopyAppBitsForAppExperimentalResponse.cs" />
     <Compile Include="Client\Data\DC_CopyAppBitsForAppRequest.cs" />
     <Compile Include="Client\Data\DC_CopyAppBitsForAppResponse.cs" />
     <Compile Include="Client\Data\DC_CreateAppRequest.cs" />
@@ -317,6 +319,8 @@
     <Compile Include="Client\Data\DC_UpdateServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanDeprecatedRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanServiceInstanceRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanVisibilityRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanVisibilityResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateSpaceQuotaDefinitionRequest.cs" />
@@ -327,6 +331,7 @@
     <Compile Include="Client\Data\DC_UpdateUserProvidedServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateUserRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateUserResponse.cs" />
+    <Compile Include="Client\Data\DC_UploadsBitsForAppResponse.cs" />
     <Compile Include="Client\DomainsDeprecated.cs" />
     <Compile Include="Client\EnvironmentVariableGroups.cs" />
     <Compile Include="Client\Events.cs" />

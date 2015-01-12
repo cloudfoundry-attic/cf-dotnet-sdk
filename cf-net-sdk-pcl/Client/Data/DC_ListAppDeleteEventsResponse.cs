@@ -45,7 +45,7 @@ public class ListAppDeleteEventsResponse :IResponse
     }
 
     [JsonProperty("actee", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Actee
+    public Guid? Actee
     {
     get;
     set;
@@ -73,21 +73,21 @@ public class ListAppDeleteEventsResponse :IResponse
     }
 
     [JsonProperty("metadata", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, Dictionary<string, dynamic>> Metadata
+    public Dictionary<string, dynamic> Metadata
     {
     get;
     set;
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;

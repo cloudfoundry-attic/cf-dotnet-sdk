@@ -18,7 +18,7 @@ public class CreateSpaceRequest
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;
@@ -59,8 +59,8 @@ public class CreateSpaceRequest
     set;
     }
 
-    [JsonProperty("space_quota_definition_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceQuotaDefinitionGuid
+    [JsonProperty("space_quota_definition", NullValueHandling=NullValueHandling.Ignore)]
+    public dynamic SpaceQuotaDefinition
     {
     get;
     set;

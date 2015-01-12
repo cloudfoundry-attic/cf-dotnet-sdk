@@ -24,7 +24,7 @@ public class GetInstanceInformationForStartedAppResponse :IResponse
     }
 
     [JsonProperty("since", NullValueHandling=NullValueHandling.Ignore)]
-    public double Since
+    public double? Since
     {
     get;
     set;

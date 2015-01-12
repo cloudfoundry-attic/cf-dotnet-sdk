@@ -24,14 +24,14 @@ public class ReturnSecurityGroupsUsedForRunningAppsResponse :IResponse
     }
 
     [JsonProperty("rules", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string>[] Rules
+    public Dictionary<string, dynamic>[] Rules
     {
     get;
     set;
     }
 
     [JsonProperty("running_default", NullValueHandling=NullValueHandling.Ignore)]
-    public bool RunningDefault
+    public bool? RunningDefault
     {
     get;
     set;

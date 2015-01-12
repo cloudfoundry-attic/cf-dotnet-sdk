@@ -23,5 +23,26 @@ public class ListAllDomainsDeprecatedResponse :IResponse
     set;
     }
 
+    [JsonProperty("owning_organization_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? OwningOrganizationGuid
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("owning_organization_url", NullValueHandling=NullValueHandling.Ignore)]
+    public string OwningOrganizationUrl
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("spaces_url", NullValueHandling=NullValueHandling.Ignore)]
+    public string SpacesUrl
+    {
+    get;
+    set;
+    }
+
 }
 }

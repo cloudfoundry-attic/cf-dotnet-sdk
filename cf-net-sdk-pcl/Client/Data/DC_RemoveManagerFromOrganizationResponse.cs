@@ -31,7 +31,7 @@ public class RemoveManagerFromOrganizationResponse :IResponse
     }
 
     [JsonProperty("quota_definition_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid QuotaDefinitionGuid
+    public Guid? QuotaDefinitionGuid
     {
     get;
     set;

@@ -23,70 +23,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Create a Private Domain owned by the given Organization
-        /// </summary>
-    
-
-    
-        public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
-    
-        {
-            string route = "/v2/private_domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Private Domain
-        /// </summary>
-    
-
-    
-        public async Task DeletePrivateDomain(Guid guid)
-    
-        {
-            string route = string.Format("/v2/private_domains/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// Filtering Private Domains by name
         /// </summary>
     
@@ -120,6 +56,39 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Private Domain
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/private_domains/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -163,14 +132,12 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Private Domain
+        /// Delete a Particular Private Domain
         /// </summary>
-    
-        
     
 
     
-        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid guid)
+        public async Task DeletePrivateDomain(Guid? guid)
     
         {
             string route = string.Format("/v2/private_domains/{0}", guid);
@@ -181,16 +148,49 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
         
+        }
+    
+        /// <summary>
+        /// Create a Private Domain owned by the given Organization
+        /// </summary>
+    
+
+    
+        public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
+    
+        {
+            string route = "/v2/private_domains";
+        
             
-            return Util.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
             
         
         }

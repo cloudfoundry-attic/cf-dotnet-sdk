@@ -11,14 +11,14 @@ public class CreateServiceBindingRequest
 
 
     [JsonProperty("service_instance_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServiceInstanceGuid
+    public Guid? ServiceInstanceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("app_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid AppGuid
+    public Guid? AppGuid
     {
     get;
     set;

@@ -23,47 +23,12 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Creating a Service (deprecated)
-        /// </summary>
-    
-
-    
-        public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
-    
-        {
-            string route = "/v2/services";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Delete a Particular Service
         /// </summary>
     
 
     
-        public async Task DeleteService(Guid guid)
+        public async Task DeleteService(Guid? guid)
     
         {
             string route = string.Format("/v2/services/{0}", guid);
@@ -83,6 +48,112 @@ namespace cf_net_sdk.Client
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
+        /// Updating a Service (deprecated)
+        /// </summary>
+    
+
+    
+        public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
+    
+        {
+            string route = "/v2/services";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<UpdateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Service Plans for the Service
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid)
+        {
+            return await ListAllServicePlansForService(guid, new RequestOptions());
+        }
+        
+    
+
+    
+        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/services/{0}/service_plans", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllServicePlansForServiceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/services/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServiceResponse>(await response.ReadContentAsStringAsync());
+            
         
         }
     
@@ -125,83 +196,12 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// List all Service Plans for the Service
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid guid)
-        {
-            return await ListAllServicePlansForService(guid, new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/services/{0}/service_plans", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllServicePlansForServiceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServiceResponse> RetrieveService(Guid guid)
-    
-        {
-            string route = string.Format("/v2/services/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServiceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Updating a Service (deprecated)
+        /// Creating a Service (deprecated)
         /// </summary>
     
 
     
-        public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
+        public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
     
         {
             string route = "/v2/services";
@@ -212,7 +212,7 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
         
             client.ContentType = "application/x-www-form-urlencoded";
@@ -225,7 +225,7 @@ namespace cf_net_sdk.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<UpdateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<CreateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }

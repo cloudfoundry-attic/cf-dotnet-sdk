@@ -24,21 +24,21 @@ public class ListAllServiceInstancesForServicePlanResponse :IResponse
     }
 
     [JsonProperty("credentials", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> Credentials
+    public Dictionary<string, dynamic> Credentials
     {
     get;
     set;
     }
 
     [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServicePlanGuid
+    public Guid? ServicePlanGuid
     {
     get;
     set;
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;

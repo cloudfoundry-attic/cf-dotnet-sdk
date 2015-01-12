@@ -23,15 +23,17 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// creates a domain owned by the given organization (deprecated)
+        /// Retrieve a Particular Domain (deprecated)
         /// </summary>
+    
+        
     
 
     
-        public async Task<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse> CreatesDomainOwnedByGivenOrganizationDeprecated(CreatesDomainOwnedByGivenOrganizationDeprecatedRequest value)
+        public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid? guid)
     
         {
-            string route = "/v2/domains";
+            string route = string.Format("/v2/domains/{0}", guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -39,20 +41,16 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Post;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
         
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<RetrieveDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -98,7 +96,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task DeleteDomainDeprecated(Guid guid)
+        public async Task DeleteDomainDeprecated(Guid? guid)
     
         {
             string route = string.Format("/v2/domains/{0}", guid);
@@ -164,7 +162,7 @@ namespace cf_net_sdk.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid guid)
+        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid)
         {
             return await ListAllSpacesForDomainDeprecated(guid, new RequestOptions());
         }
@@ -172,7 +170,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/domains/{0}/spaces", guid);
@@ -198,17 +196,15 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Domain (deprecated)
+        /// creates a domain owned by the given organization (deprecated)
         /// </summary>
-    
-        
     
 
     
-        public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid guid)
+        public async Task<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse> CreatesDomainOwnedByGivenOrganizationDeprecated(CreatesDomainOwnedByGivenOrganizationDeprecatedRequest value)
     
         {
-            string route = string.Format("/v2/domains/{0}", guid);
+            string route = "/v2/domains";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -216,16 +212,20 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
         
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<RetrieveDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }

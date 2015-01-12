@@ -23,44 +23,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Get all feature flags
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags()
-        {
-            return await GetAllFeatureFlags(new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags(RequestOptions options)
-    
-        {
-            string route = "/v2/config/feature_flags";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<GetAllFeatureFlagsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Get the App Bits Upload feature flag
         /// </summary>
         /// When enabled, space developers can upload app bits. When disabled, only admin users can upload app bits
@@ -90,108 +52,6 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Get the App Scaling feature flag
-        /// </summary>
-        /// When enabled, space developers can perform scaling operations (i.e. change memory, disk or instances). When disabled, only admin users can perform scaling operations.
-    
-        
-    
-
-    
-        public async Task<GetAppScalingFeatureFlagResponse> GetAppScalingFeatureFlag()
-    
-        {
-            string route = "/v2/config/feature_flags/app_scaling";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<GetAppScalingFeatureFlagResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Get the Private Domain Creation feature flag
-        /// </summary>
-        /// When enabled, an organization manager can create private domains for that organization. When disabled, only admin users can create private domains.
-    
-        
-    
-
-    
-        public async Task<GetPrivateDomainCreationFeatureFlagResponse> GetPrivateDomainCreationFeatureFlag()
-    
-        {
-            string route = "/v2/config/feature_flags/private_domain_creation";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Get the Route Creation feature flag
-        /// </summary>
-        /// When enabled, a space developer can create routes in a space. When disabled, only admin users can create routes.
-    
-        
-    
-
-    
-        public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
-    
-        {
-            string route = "/v2/config/feature_flags/route_creation";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<GetRouteCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -231,6 +91,40 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
+        /// Get the Route Creation feature flag
+        /// </summary>
+        /// When enabled, a space developer can create routes in a space. When disabled, only admin users can create routes.
+    
+        
+    
+
+    
+        public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
+    
+        {
+            string route = "/v2/config/feature_flags/route_creation";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<GetRouteCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Get the User Org Creation feature flag
         /// </summary>
         /// When enabled, any user can create an organization via the API. When disabled, only admin users can create organizations via the API.
@@ -260,6 +154,40 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializeJson<GetUserOrgCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Get the Private Domain Creation feature flag
+        /// </summary>
+        /// When enabled, an organization manager can create private domains for that organization. When disabled, only admin users can create private domains.
+    
+        
+    
+
+    
+        public async Task<GetPrivateDomainCreationFeatureFlagResponse> GetPrivateDomainCreationFeatureFlag()
+    
+        {
+            string route = "/v2/config/feature_flags/private_domain_creation";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -295,6 +223,78 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializeJson<SetFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Get all feature flags
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags()
+        {
+            return await GetAllFeatureFlags(new RequestOptions());
+        }
+        
+    
+
+    
+        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags(RequestOptions options)
+    
+        {
+            string route = "/v2/config/feature_flags";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<GetAllFeatureFlagsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Get the App Scaling feature flag
+        /// </summary>
+        /// When enabled, space developers can perform scaling operations (i.e. change memory, disk or instances). When disabled, only admin users can perform scaling operations.
+    
+        
+    
+
+    
+        public async Task<GetAppScalingFeatureFlagResponse> GetAppScalingFeatureFlag()
+    
+        {
+            string route = "/v2/config/feature_flags/app_scaling";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<GetAppScalingFeatureFlagResponse>(await response.ReadContentAsStringAsync());
             
         
         }

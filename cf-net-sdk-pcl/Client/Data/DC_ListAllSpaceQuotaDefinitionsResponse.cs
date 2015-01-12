@@ -24,42 +24,42 @@ public class ListAllSpaceQuotaDefinitionsResponse :IResponse
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;
     }
 
     [JsonProperty("non_basic_services_allowed", NullValueHandling=NullValueHandling.Ignore)]
-    public bool NonBasicServicesAllowed
+    public bool? NonBasicServicesAllowed
     {
     get;
     set;
     }
 
     [JsonProperty("total_services", NullValueHandling=NullValueHandling.Ignore)]
-    public double TotalServices
+    public double? TotalServices
     {
     get;
     set;
     }
 
     [JsonProperty("total_routes", NullValueHandling=NullValueHandling.Ignore)]
-    public double TotalRoutes
+    public double? TotalRoutes
     {
     get;
     set;
     }
 
     [JsonProperty("memory_limit", NullValueHandling=NullValueHandling.Ignore)]
-    public double MemoryLimit
+    public double? MemoryLimit
     {
     get;
     set;
     }
 
     [JsonProperty("instance_memory_limit", NullValueHandling=NullValueHandling.Ignore)]
-    public double InstanceMemoryLimit
+    public double? InstanceMemoryLimit
     {
     get;
     set;

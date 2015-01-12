@@ -31,14 +31,14 @@ public class RestageAppResponse :IResponse
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("stack_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid StackGuid
+    public Guid? StackGuid
     {
     get;
     set;
@@ -66,21 +66,21 @@ public class RestageAppResponse :IResponse
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public double Memory
+    public double? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double Instances
+    public double? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public double DiskQuota
+    public double? DiskQuota
     {
     get;
     set;
@@ -94,7 +94,7 @@ public class RestageAppResponse :IResponse
     }
 
     [JsonProperty("version", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Version
+    public Guid? Version
     {
     get;
     set;
@@ -130,13 +130,6 @@ public class RestageAppResponse :IResponse
 
     [JsonProperty("package_state", NullValueHandling=NullValueHandling.Ignore)]
     public string PackageState
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("health_check_type", NullValueHandling=NullValueHandling.Ignore)]
-    public string HealthCheckType
     {
     get;
     set;

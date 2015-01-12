@@ -65,6 +65,39 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
+        /// Retrieve a Particular Service Usage Event
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_usage_events/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Purge and reseed Service Usage Events
         /// </summary>
         /// Destroys all existing events. Populates new usage events, one for each existing service instance.
@@ -96,39 +129,6 @@ namespace cf_net_sdk.Client
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service Usage Event
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid guid)
-    
-        {
-            string route = string.Format("/v2/service_usage_events/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
-            
         
         }
     

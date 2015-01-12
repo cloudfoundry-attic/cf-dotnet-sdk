@@ -23,12 +23,45 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
+        /// Retrieve a Particular Stack
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/stacks/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Delete a Particular Stack
         /// </summary>
     
 
     
-        public async Task DeleteStack(Guid guid)
+        public async Task DeleteStack(Guid? guid)
     
         {
             string route = string.Format("/v2/stacks/{0}", guid);
@@ -85,39 +118,6 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializePage<ListAllStacksResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Stack
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveStackResponse> RetrieveStack(Guid guid)
-    
-        {
-            string route = string.Format("/v2/stacks/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
             
         
         }

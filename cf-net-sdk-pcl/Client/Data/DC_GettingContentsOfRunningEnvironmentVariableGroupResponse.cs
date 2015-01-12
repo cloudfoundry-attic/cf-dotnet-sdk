@@ -17,7 +17,7 @@ public class GettingContentsOfRunningEnvironmentVariableGroupResponse :IResponse
 
 
     [JsonProperty("abc", NullValueHandling=NullValueHandling.Ignore)]
-    public double Abc
+    public double? Abc
     {
     get;
     set;

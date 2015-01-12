@@ -23,39 +23,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve Job that is queued
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid guid)
-    
-        {
-            string route = string.Format("/v2/jobs/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveJobThatIsQueuedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Retrieve Job that was successful
         /// </summary>
     
@@ -63,7 +30,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid guid)
+        public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);
@@ -96,7 +63,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobWithKnownFailureResponse> RetrieveJobWithKnownFailure(Guid guid)
+        public async Task<RetrieveJobWithKnownFailureResponse> RetrieveJobWithKnownFailure(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);
@@ -129,7 +96,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid guid)
+        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
     
         {
             string route = string.Format("/v2/jobs/{0}", guid);
@@ -150,6 +117,39 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve Job that is queued
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/jobs/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveJobThatIsQueuedResponse>(await response.ReadContentAsStringAsync());
             
         
         }

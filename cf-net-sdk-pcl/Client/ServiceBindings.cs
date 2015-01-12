@@ -23,47 +23,12 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Create a Service Binding
-        /// </summary>
-    
-
-    
-        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
-    
-        {
-            string route = "/v2/service_bindings";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Delete a Particular Service Binding
         /// </summary>
     
 
     
-        public async Task DeleteServiceBinding(Guid guid)
+        public async Task DeleteServiceBinding(Guid? guid)
     
         {
             string route = string.Format("/v2/service_bindings/{0}", guid);
@@ -83,6 +48,39 @@ namespace cf_net_sdk.Client
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Binding
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_bindings/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
+            
         
         }
     
@@ -125,17 +123,15 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Service Binding
+        /// Create a Service Binding
         /// </summary>
-    
-        
     
 
     
-        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid guid)
+        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
     
         {
-            string route = string.Format("/v2/service_bindings/{0}", guid);
+            string route = "/v2/service_bindings";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -143,16 +139,20 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
         
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
             
         
         }

@@ -11,7 +11,7 @@ public class CreateServiceInstanceRequest
 
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;
@@ -25,7 +25,7 @@ public class CreateServiceInstanceRequest
     }
 
     [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServicePlanGuid
+    public Guid? ServicePlanGuid
     {
     get;
     set;

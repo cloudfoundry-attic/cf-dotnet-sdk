@@ -11,7 +11,7 @@ public class SetFeatureFlagRequest
 
 
     [JsonProperty("enabled", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Enabled
+    public bool? Enabled
     {
     get;
     set;

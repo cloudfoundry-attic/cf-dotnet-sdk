@@ -24,14 +24,14 @@ public class ListAllBuildpacksResponse :IResponse
     }
 
     [JsonProperty("position", NullValueHandling=NullValueHandling.Ignore)]
-    public double Position
+    public double? Position
     {
     get;
     set;
     }
 
     [JsonProperty("enabled", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Enabled
+    public bool? Enabled
     {
     get;
     set;
