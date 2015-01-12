@@ -23,103 +23,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Associate Space with the Security Group
-        /// </summary>
-    
-
-    
-        public async Task<AssociateSpaceWithSecurityGroupResponse> AssociateSpaceWithSecurityGroup(Guid guid, Guid space_guid)
-    
-        {
-            string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<AssociateSpaceWithSecurityGroupResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Creating a Security Group
-        /// </summary>
-    
-
-    
-        public async Task<CreateSecurityGroupResponse> CreateSecurityGroup(CreateSecurityGroupRequest value)
-    
-        {
-            string route = "/v2/security_groups/";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateSecurityGroupResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Security Group
-        /// </summary>
-    
-
-    
-        public async Task DeleteSecurityGroup(Guid guid)
-    
-        {
-            string route = string.Format("/v2/security_groups/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// List all Security Groups
         /// </summary>
     
@@ -158,11 +61,40 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
+        /// Delete a Particular Security Group
+        /// </summary>
+    
+
+    
+        public async Task DeleteSecurityGroup(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/security_groups/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
         /// List all Spaces for the Security Group
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid guid)
+        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid)
         {
             return await ListAllSpacesForSecurityGroup(guid, new RequestOptions());
         }
@@ -170,7 +102,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid guid, RequestOptions options)
+        public async Task<PagedResponse<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/security_groups/{0}/spaces", guid);
@@ -196,12 +128,45 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
+        /// Retrieve a Particular Security Group
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/security_groups/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveSecurityGroupResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Remove Space from the Security Group
         /// </summary>
     
 
     
-        public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid guid, Guid space_guid)
+        public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid? guid, Guid? space_guid)
     
         {
             string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
@@ -229,17 +194,15 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Security Group
+        /// Associate Space with the Security Group
         /// </summary>
-    
-        
     
 
     
-        public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid guid)
+        public async Task<AssociateSpaceWithSecurityGroupResponse> AssociateSpaceWithSecurityGroup(Guid? guid, Guid? space_guid)
     
         {
-            string route = string.Format("/v2/security_groups/{0}", guid);
+            string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -247,8 +210,10 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             // TODO: vladi: Implement serialization
@@ -256,7 +221,7 @@ namespace cf_net_sdk.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<RetrieveSecurityGroupResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<AssociateSpaceWithSecurityGroupResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -267,7 +232,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid guid, UpdateSecurityGroupRequest value)
+        public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid? guid, UpdateSecurityGroupRequest value)
     
         {
             string route = string.Format("/v2/security_groups/{0}", guid);
@@ -292,6 +257,41 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializeJson<UpdateSecurityGroupResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Creating a Security Group
+        /// </summary>
+    
+
+    
+        public async Task<CreateSecurityGroupResponse> CreateSecurityGroup(CreateSecurityGroupRequest value)
+    
+        {
+            string route = "/v2/security_groups";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreateSecurityGroupResponse>(await response.ReadContentAsStringAsync());
             
         
         }

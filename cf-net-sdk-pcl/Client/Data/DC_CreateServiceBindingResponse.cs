@@ -17,21 +17,21 @@ public class CreateServiceBindingResponse :IResponse
 
 
     [JsonProperty("app_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid AppGuid
+    public Guid? AppGuid
     {
     get;
     set;
     }
 
     [JsonProperty("service_instance_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServiceInstanceGuid
+    public Guid? ServiceInstanceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("credentials", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string> Credentials
+    public Dictionary<string, dynamic> Credentials
     {
     get;
     set;

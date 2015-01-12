@@ -11,7 +11,7 @@ public class UpdateContentsOfRunningEnvironmentVariableGroupRequest
 
 
     [JsonProperty("abc", NullValueHandling=NullValueHandling.Ignore)]
-    public double Abc
+    public double? Abc
     {
     get;
     set;

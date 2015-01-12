@@ -10,15 +10,8 @@ public class UpdateServiceBrokerRequest
 
 
 
-    [JsonProperty("auth_username", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthUsername
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("auth_password", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthPassword
+    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
+    public string Name
     {
     get;
     set;
@@ -31,8 +24,15 @@ public class UpdateServiceBrokerRequest
     set;
     }
 
-    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
-    public string Name
+    [JsonProperty("auth_username", NullValueHandling=NullValueHandling.Ignore)]
+    public string AuthUsername
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("auth_password", NullValueHandling=NullValueHandling.Ignore)]
+    public string AuthPassword
     {
     get;
     set;

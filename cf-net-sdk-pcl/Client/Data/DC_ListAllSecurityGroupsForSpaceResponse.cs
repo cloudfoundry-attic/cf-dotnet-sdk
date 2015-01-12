@@ -24,7 +24,7 @@ public class ListAllSecurityGroupsForSpaceResponse :IResponse
     }
 
     [JsonProperty("rules", NullValueHandling=NullValueHandling.Ignore)]
-    public Dictionary<string, string>[] Rules
+    public Dictionary<string, dynamic>[] Rules
     {
     get;
     set;

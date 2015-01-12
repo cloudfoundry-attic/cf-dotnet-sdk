@@ -23,35 +23,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Delete a Particular Service Auth Token (deprecated)
-        /// </summary>
-    
-
-    
-        public async Task DeleteServiceAuthTokenDeprecated(Guid guid)
-    
-        {
-            string route = string.Format("/v2/service_auth_tokens/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// Filtering the result set by label (deprecated)
         /// </summary>
     
@@ -86,6 +57,68 @@ namespace cf_net_sdk.Client
             
             return Util.DeserializePage<FilterResultSetByLabelDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Auth Token (deprecated)
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveServiceAuthTokenDeprecatedResponse> RetrieveServiceAuthTokenDeprecated(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_auth_tokens/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServiceAuthTokenDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Service Auth Token (deprecated)
+        /// </summary>
+    
+
+    
+        public async Task DeleteServiceAuthTokenDeprecated(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_auth_tokens/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
         
         }
     
@@ -161,39 +194,6 @@ namespace cf_net_sdk.Client
         
             
             return Util.DeserializePage<ListAllServiceAuthTokensDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service Auth Token (deprecated)
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServiceAuthTokenDeprecatedResponse> RetrieveServiceAuthTokenDeprecated(Guid guid)
-    
-        {
-            string route = string.Format("/v2/service_auth_tokens/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServiceAuthTokenDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }

@@ -18,7 +18,7 @@ public class UpdateServicePlanDeprecatedRequest
     }
 
     [JsonProperty("free", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Free
+    public bool? Free
     {
     get;
     set;
@@ -32,14 +32,14 @@ public class UpdateServicePlanDeprecatedRequest
     }
 
     [JsonProperty("service_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServiceGuid
+    public Guid? ServiceGuid
     {
     get;
     set;
     }
 
     [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Guid
+    public Guid? Guid
     {
     get;
     set;
@@ -67,7 +67,7 @@ public class UpdateServicePlanDeprecatedRequest
     }
 
     [JsonProperty("active", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Active
+    public bool? Active
     {
     get;
     set;

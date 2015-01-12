@@ -58,73 +58,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Delete a Particular Service Plans
-        /// </summary>
-    
-
-    
-        public async Task DeleteServicePlans(Guid guid)
-    
-        {
-            string route = string.Format("/v2/service_plans/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
-        /// List all Service Instances for the Service Plan
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid guid)
-        {
-            return await ListAllServiceInstancesForServicePlan(guid, new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/service_plans/{0}/service_instances", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllServiceInstancesForServicePlanResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// List all Service Plans
         /// </summary>
     
@@ -163,39 +96,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Service Plan
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid guid)
-    
-        {
-            string route = string.Format("/v2/service_plans/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Updating a Service Plan (deprecated)
         /// </summary>
     
@@ -227,6 +127,106 @@ namespace cf_net_sdk.Client
             
             return Util.DeserializeJson<UpdateServicePlanDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// List all Service Instances for the Service Plan
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid)
+        {
+            return await ListAllServiceInstancesForServicePlan(guid, new RequestOptions());
+        }
+        
+    
+
+    
+        public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/service_plans/{0}/service_instances", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllServiceInstancesForServicePlanResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Plan
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_plans/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Service Plans
+        /// </summary>
+    
+
+    
+        public async Task DeleteServicePlans(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_plans/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
         
         }
     

@@ -24,14 +24,14 @@ public class ListAllAuditedSpacesForUserResponse :IResponse
     }
 
     [JsonProperty("organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OrganizationGuid
+    public Guid? OrganizationGuid
     {
     get;
     set;
     }
 
     [JsonProperty("space_quota_definition_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid SpaceQuotaDefinitionGuid
+    public Guid? SpaceQuotaDefinitionGuid
     {
     get;
     set;

@@ -11,7 +11,7 @@ public class LockOrUnlockBuildpackRequest
 
 
     [JsonProperty("locked", NullValueHandling=NullValueHandling.Ignore)]
-    public bool Locked
+    public bool? Locked
     {
     get;
     set;

@@ -23,6 +23,73 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
+        /// List all Shared Domains
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains()
+        {
+            return await ListAllSharedDomains(new RequestOptions());
+        }
+        
+    
+
+    
+        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains(RequestOptions options)
+    
+        {
+            string route = "/v2/shared_domains";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllSharedDomainsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Shared Domain
+        /// </summary>
+    
+
+    
+        public async Task DeleteSharedDomain(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/shared_domains/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
         /// Create a Shared Domain
         /// </summary>
     
@@ -54,35 +121,6 @@ namespace cf_net_sdk.Client
             
             return Util.DeserializeJson<CreateSharedDomainResponse>(await response.ReadContentAsStringAsync());
             
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Shared Domain
-        /// </summary>
-    
-
-    
-        public async Task DeleteSharedDomain(Guid guid)
-    
-        {
-            string route = string.Format("/v2/shared_domains/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
         
         }
     
@@ -125,44 +163,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// List all Shared Domains
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains()
-        {
-            return await ListAllSharedDomains(new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains(RequestOptions options)
-    
-        {
-            string route = "/v2/shared_domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllSharedDomainsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Retrieve a Particular Shared Domain
         /// </summary>
     
@@ -170,7 +170,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid guid)
+        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid? guid)
     
         {
             string route = string.Format("/v2/shared_domains/{0}", guid);

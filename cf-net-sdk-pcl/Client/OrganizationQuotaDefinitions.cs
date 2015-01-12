@@ -58,35 +58,6 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Delete a Particular Organization Quota Definition
-        /// </summary>
-    
-
-    
-        public async Task DeleteOrganizationQuotaDefinition(Guid guid)
-    
-        {
-            string route = string.Format("/v2/quota_definitions/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// List all Organization Quota Definitions
         /// </summary>
     
@@ -125,45 +96,12 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Organization Quota Definition
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid guid)
-    
-        {
-            string route = string.Format("/v2/quota_definitions/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Updating a Organization Quota Definition
         /// </summary>
     
 
     
-        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid guid, UpdateOrganizationQuotaDefinitionRequest value)
+        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
     
         {
             string route = string.Format("/v2/quota_definitions/{0}", guid);
@@ -189,6 +127,68 @@ namespace cf_net_sdk.Client
             
             return Util.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Organization Quota Definition
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/quota_definitions/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Organization Quota Definition
+        /// </summary>
+    
+
+    
+        public async Task DeleteOrganizationQuotaDefinition(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/quota_definitions/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
         
         }
     

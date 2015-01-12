@@ -17,7 +17,7 @@ public class ListAllUsersResponse :IResponse
 
 
     [JsonProperty("admin", NullValueHandling=NullValueHandling.Ignore)]
-    public dynamic Admin
+    public bool? Admin
     {
     get;
     set;
@@ -31,7 +31,7 @@ public class ListAllUsersResponse :IResponse
     }
 
     [JsonProperty("default_space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid DefaultSpaceGuid
+    public Guid? DefaultSpaceGuid
     {
     get;
     set;

@@ -24,7 +24,7 @@ public class ListAllPrivateDomainsResponse :IResponse
     }
 
     [JsonProperty("owning_organization_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid OwningOrganizationGuid
+    public Guid? OwningOrganizationGuid
     {
     get;
     set;

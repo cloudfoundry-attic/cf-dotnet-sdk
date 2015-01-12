@@ -11,7 +11,7 @@ public class ChangePositionOfBuildpackRequest
 
 
     [JsonProperty("position", NullValueHandling=NullValueHandling.Ignore)]
-    public double Position
+    public double? Position
     {
     get;
     set;

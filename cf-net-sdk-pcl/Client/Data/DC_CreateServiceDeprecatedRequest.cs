@@ -46,7 +46,7 @@ public class CreateServiceDeprecatedRequest
     }
 
     [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Guid
+    public Guid? Guid
     {
     get;
     set;
@@ -123,7 +123,7 @@ public class CreateServiceDeprecatedRequest
     }
 
     [JsonProperty("service_broker_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid ServiceBrokerGuid
+    public Guid? ServiceBrokerGuid
     {
     get;
     set;

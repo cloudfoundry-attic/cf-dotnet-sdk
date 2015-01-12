@@ -23,47 +23,12 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Creating a Service Plan Visibility
-        /// </summary>
-    
-
-    
-        public async Task<CreateServicePlanVisibilityResponse> CreateServicePlanVisibility(CreateServicePlanVisibilityRequest value)
-    
-        {
-            string route = "/v2/service_plan_visibilities";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Delete a Particular Service Plan Visibilities
         /// </summary>
     
 
     
-        public async Task DeleteServicePlanVisibilities(Guid guid)
+        public async Task DeleteServicePlanVisibilities(Guid? guid)
     
         {
             string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
@@ -83,6 +48,74 @@ namespace cf_net_sdk.Client
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
+        /// Updating a Service Plan Visibility
+        /// </summary>
+    
+
+    
+        public async Task<UpdateServicePlanVisibilityResponse> UpdateServicePlanVisibility(Guid? guid, UpdateServicePlanVisibilityRequest value)
+    
+        {
+            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<UpdateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Plan Visibility
+        /// </summary>
+    
+        
+    
+
+    
+        public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            // TODO: vladi: Implement serialization
+
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
+            
         
         }
     
@@ -125,17 +158,15 @@ namespace cf_net_sdk.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Service Plan Visibility
+        /// Creating a Service Plan Visibility
         /// </summary>
-    
-        
     
 
     
-        public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid guid)
+        public async Task<CreateServicePlanVisibilityResponse> CreateServicePlanVisibility(CreateServicePlanVisibilityRequest value)
     
         {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
+            string route = "/v2/service_plan_visibilities";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -143,38 +174,7 @@ namespace cf_net_sdk.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            // TODO: vladi: Implement serialization
-
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Updating a Service Plan Visibility
-        /// </summary>
-    
-
-    
-        public async Task<UpdateServicePlanVisibilityResponse> UpdateServicePlanVisibility(Guid guid, UpdateServicePlanVisibilityRequest value)
-    
-        {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
         
             client.ContentType = "application/x-www-form-urlencoded";
@@ -187,7 +187,7 @@ namespace cf_net_sdk.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<UpdateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<CreateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
             
         
         }

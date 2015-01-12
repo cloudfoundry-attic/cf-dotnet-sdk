@@ -17,14 +17,7 @@ public class CreateDockerProcessResponse :IResponse
 
 
     [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid Guid
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("type", NullValueHandling=NullValueHandling.Ignore)]
-    public string Type
+    public Guid? Guid
     {
     get;
     set;
