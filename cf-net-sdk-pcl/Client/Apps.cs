@@ -104,7 +104,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateDockerAppExperimentalResponse> CreateDockerAppExperimental(CreateDockerAppExperimentalRequest value)
     
         {
-            string route = "/v2/apps/";
+            string route = "/v2/apps";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -340,7 +340,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateAppResponse> CreateApp(CreateAppRequest value)
     
         {
-            string route = "/v2/apps/";
+            string route = "/v2/apps";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

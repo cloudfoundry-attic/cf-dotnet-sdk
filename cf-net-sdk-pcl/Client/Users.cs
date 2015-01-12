@@ -207,7 +207,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateUserResponse> CreateUser(CreateUserRequest value)
     
         {
-            string route = "/v2/users/";
+            string route = "/v2/users";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

@@ -166,7 +166,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateUserProvidedServiceInstanceResponse> CreateUserProvidedServiceInstance(CreateUserProvidedServiceInstanceRequest value)
     
         {
-            string route = "/v2/user_provided_service_instances/";
+            string route = "/v2/user_provided_service_instances";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

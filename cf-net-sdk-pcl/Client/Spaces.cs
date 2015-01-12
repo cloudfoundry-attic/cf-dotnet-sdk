@@ -568,7 +568,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateSpaceResponse> CreateSpace(CreateSpaceRequest value)
     
         {
-            string route = "/v2/spaces/";
+            string route = "/v2/spaces";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

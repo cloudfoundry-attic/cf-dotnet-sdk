@@ -587,7 +587,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateOrganizationResponse> CreateOrganization(CreateOrganizationRequest value)
     
         {
-            string route = "/v2/organizations/";
+            string route = "/v2/organizations";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

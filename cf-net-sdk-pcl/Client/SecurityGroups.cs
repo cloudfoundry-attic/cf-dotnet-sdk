@@ -270,7 +270,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateSecurityGroupResponse> CreateSecurityGroup(CreateSecurityGroupRequest value)
     
         {
-            string route = "/v2/security_groups/";
+            string route = "/v2/security_groups";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

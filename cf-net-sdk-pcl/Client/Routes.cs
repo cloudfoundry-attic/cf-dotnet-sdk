@@ -266,7 +266,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
     
         {
-            string route = "/v2/routes/";
+            string route = "/v2/routes";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;

@@ -66,7 +66,7 @@ namespace cf_net_sdk.Client
         public async Task<CreateServiceInstanceResponse> CreateServiceInstance(CreateServiceInstanceRequest value)
     
         {
-            string route = "/v2/service_instances/";
+            string route = "/v2/service_instances";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
