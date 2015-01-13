@@ -38,7 +38,7 @@ public class GetInfoResponse :IResponse
     }
 
     [JsonProperty("version", NullValueHandling=NullValueHandling.Ignore)]
-    public double? Version
+    public int? Version
     {
     get;
     set;

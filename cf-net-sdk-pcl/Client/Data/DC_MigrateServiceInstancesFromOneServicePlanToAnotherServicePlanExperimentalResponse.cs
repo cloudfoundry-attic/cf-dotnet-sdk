@@ -17,7 +17,7 @@ public class MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperi
 
 
     [JsonProperty("changed_count", NullValueHandling=NullValueHandling.Ignore)]
-    public double? ChangedCount
+    public int? ChangedCount
     {
     get;
     set;

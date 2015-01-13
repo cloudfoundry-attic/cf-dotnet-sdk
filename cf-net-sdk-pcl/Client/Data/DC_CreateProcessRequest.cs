@@ -18,21 +18,21 @@ public class CreateProcessRequest
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public double? Memory
+    public int? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double? Instances
+    public int? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public double? DiskQuota
+    public int? DiskQuota
     {
     get;
     set;

@@ -24,7 +24,7 @@ public class EnableOrDisableBuildpackResponse :IResponse
     }
 
     [JsonProperty("position", NullValueHandling=NullValueHandling.Ignore)]
-    public double? Position
+    public int? Position
     {
     get;
     set;
