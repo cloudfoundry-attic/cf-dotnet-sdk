@@ -38,7 +38,7 @@ public class GetAppSummaryResponse :IResponse
     }
 
     [JsonProperty("running_instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double? RunningInstances
+    public int? RunningInstances
     {
     get;
     set;
@@ -101,21 +101,21 @@ public class GetAppSummaryResponse :IResponse
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public double? Memory
+    public int? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public double? Instances
+    public int? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public double? DiskQuota
+    public int? DiskQuota
     {
     get;
     set;

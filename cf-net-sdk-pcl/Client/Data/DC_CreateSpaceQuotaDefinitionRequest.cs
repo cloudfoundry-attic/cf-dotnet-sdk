@@ -25,21 +25,21 @@ public class CreateSpaceQuotaDefinitionRequest
     }
 
     [JsonProperty("total_services", NullValueHandling=NullValueHandling.Ignore)]
-    public double? TotalServices
+    public int? TotalServices
     {
     get;
     set;
     }
 
     [JsonProperty("total_routes", NullValueHandling=NullValueHandling.Ignore)]
-    public double? TotalRoutes
+    public int? TotalRoutes
     {
     get;
     set;
     }
 
     [JsonProperty("memory_limit", NullValueHandling=NullValueHandling.Ignore)]
-    public double? MemoryLimit
+    public int? MemoryLimit
     {
     get;
     set;
