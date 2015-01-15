@@ -201,9 +201,8 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
-    
-        {
+        public async Task<bool> CheckRouteExists(Guid? domain_guid, dynamic host)    
+        {            
             string route = string.Format("/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
         
             
@@ -219,7 +218,15 @@ namespace cf_net_sdk.Client
             // TODO: vladi: Implement serialization
 
             var response = await client.SendAsync();
-        
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     
         /// <summary>

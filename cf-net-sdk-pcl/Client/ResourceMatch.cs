@@ -28,7 +28,7 @@ namespace cf_net_sdk.Client
     
 
     
-        public async Task<PagedResponse<ListAllMatchingResourcesResponse>> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value, RequestOptions options)
+        public async Task<List<ListAllMatchingResourcesResponse>> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value, RequestOptions options)
     
         {
             string route = "/v2/resource_match";
@@ -52,7 +52,7 @@ namespace cf_net_sdk.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializePage<ListAllMatchingResourcesResponse>(await response.ReadContentAsStringAsync());
+            return JsonConvert.DeserializeObject<List<ListAllMatchingResourcesResponse>>(await response.ReadContentAsStringAsync());
             
         
         }
