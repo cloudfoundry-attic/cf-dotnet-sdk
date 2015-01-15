@@ -18,14 +18,14 @@ public class UpdateAppRequest
     }
 
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public string Memory
+    public int Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public string Instances
+    public int Instances
     {
     get;
     set;
@@ -39,7 +39,7 @@ public class UpdateAppRequest
     }
 
     [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public string SpaceGuid
+    public Guid? SpaceGuid
     {
     get;
     set;

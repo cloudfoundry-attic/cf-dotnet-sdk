@@ -135,5 +135,10 @@ namespace cf_net_sdk
             this.UserProvidedServiceInstances = new UserProvidedServiceInstancesEndpoint(this);
             this.Users = new UsersEndpoint(this);            
         }
+
+        public string GetAuthorizationToken()
+        {
+            return this.auth.GetToken();
+        }
     }
 }

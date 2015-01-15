@@ -19,7 +19,7 @@ using System.IO;
 namespace CloudFoundry.Common.Http
 {
     /// <inheritdoc/>
-    class HttpMultiPartFormDataAbstraction :IHttpMultiPartFormDataAbstraction
+    public class HttpMultiPartFormDataAbstraction :IHttpMultiPartFormDataAbstraction
     {
         /// <inheritdoc/>
         public string Name { get; private set; }
