@@ -63,9 +63,8 @@ namespace cf_net_sdk
 
             InitEndpoints();
 
-            var infoTask = this.Info.GetInfo();
-            infoTask.Wait();
-            var info = infoTask.Result;
+            var info = this.Info.GetInfo().Result;
+         
             var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
             this.auth.OauthUrl = new Uri(authUrl);
 
