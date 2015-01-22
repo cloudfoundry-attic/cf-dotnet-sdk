@@ -28,22 +28,32 @@ namespace cf_net_sdk
 
         public static T[] DeserializeJsonArray<T>(string value)
         {
-            JsonReader reader = new JsonTextReader(new StringReader(value));
-            reader.DateParseHandling = DateParseHandling.None;
-            var obj = JObject.Load(reader);            
-            if (obj["resources"] == null)
+            using (StringReader stringReader = new StringReader(value))
             {
-                throw new Exception("Value contains no resources");
+                using (JsonReader reader = new JsonTextReader(stringReader))
+                {
+                    reader.DateParseHandling = DateParseHandling.None;
+                    var obj = JObject.Load(reader);
+                    if (obj["resources"] == null)
+                    {
+                        throw new Exception("Value contains no resources");
+                    }
+                    return obj["resources"].Select(Deserialize<T>).ToArray();
+                }
             }
-            return obj["resources"].Select(Deserialize<T>).ToArray();
         }
 
         public static T DeserializeJson<T>(string value)
         {
-            JsonReader reader = new JsonTextReader(new StringReader(value));
-            reader.DateParseHandling = DateParseHandling.None;
-            var obj = JObject.Load(reader);
-            return Deserialize<T>(obj);
+            using (StringReader stringReader = new StringReader(value))
+            {
+                using (JsonReader reader = new JsonTextReader(stringReader))
+                {
+                    reader.DateParseHandling = DateParseHandling.None;
+                    var obj = JObject.Load(reader);
+                    return Deserialize<T>(obj);
+                }
+            }
         }
 
         internal static T Deserialize<T>(JToken value)

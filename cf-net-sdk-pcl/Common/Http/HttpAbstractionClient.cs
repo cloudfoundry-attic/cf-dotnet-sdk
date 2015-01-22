@@ -20,6 +20,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace CloudFoundry.Common.Http
     {
         private readonly HttpClient _client;
         private CancellationToken _cancellationToken = CancellationToken.None;
-        private static readonly TimeSpan _defaultTimeout = new TimeSpan(0, 5, 0);
+        private static readonly TimeSpan _defaultTimeout = new TimeSpan(0, 0, 30);
 
         internal HttpAbstractionClient(TimeSpan timeout, CancellationToken cancellationToken)
         {
@@ -130,7 +131,8 @@ namespace CloudFoundry.Common.Http
             try
             {
                 
-                var result = await this._client.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, this._cancellationToken);
+                var result = await this._client.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, this._cancellationToken).ConfigureAwait(false);
+          
                 if (!result.IsSuccessStatusCode)
                 {
                     throw new HttpRequestException(string.Format("An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode));
@@ -141,7 +143,9 @@ namespace CloudFoundry.Common.Http
                 if (result.Content != null )
                 {
                     headers.AddRange(result.Content.Headers);
-                    content = this.WaitForResult(result.Content.ReadAsStreamAsync(), new TimeSpan(0,0,0,0,int.MaxValue) );
+                    
+                    //content = this.WaitForResult<Stream>(result.Content.ReadAsStreamAsync().ConfigureAwait(false), new TimeSpan(0, 1, 0));
+                    content = result.Content.ReadAsStreamAsync().Result;  //ConfigureAwait(false);
                 }
 
                 var retval = new HttpResponseAbstraction(content, headers, result.StatusCode);

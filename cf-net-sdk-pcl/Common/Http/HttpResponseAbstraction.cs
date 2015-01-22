@@ -39,7 +39,7 @@ namespace CloudFoundry.Common.Http
         {
             using (var sr = new StreamReader(this.Content))
             {
-                return await sr.ReadToEndAsync();
+                return await sr.ReadToEndAsync().ConfigureAwait(false);
             }
         }
     }

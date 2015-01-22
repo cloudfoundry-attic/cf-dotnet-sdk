@@ -44,8 +44,9 @@ public class CreateServiceInstanceResponse :IResponse
     set;
     }
 
+    // MANUAL EDIT: changed from string to dynamic 
     [JsonProperty("gateway_data", NullValueHandling=NullValueHandling.Ignore)]
-    public string GatewayData
+    public dynamic GatewayData
     {
     get;
     set;

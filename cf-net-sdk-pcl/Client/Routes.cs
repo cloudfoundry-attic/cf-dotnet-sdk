@@ -5,6 +5,7 @@ using CloudFoundry.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -285,18 +286,13 @@ namespace cf_net_sdk.Client
             client.Headers.Add(BuildAuthenticationHeader());
         
             client.ContentType = "application/x-www-form-urlencoded";
-        
-        
+
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
             // TODO: vladi: Implement serialization
-
             var response = await client.SendAsync();
-        
-            
+
             return Util.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
-            
-        
         }
     
         /// <summary>
