@@ -23,8 +23,11 @@ namespace cf_net_sdk.Auth
             var client = new OAuth2Client(this.oauthTarget, oauthClient, oauthSecret);
 
             this.tokenResponse = client.RequestResourceOwnerPasswordAsync(credentials.User, credentials.Password).Result;
-            return tokenResponse.RefreshToken;
 
+            if (this.tokenResponse.IsError)
+                throw new AuthException(string.Format("Unable to connect to target with the provided credentials. Error message: {0}", this.tokenResponse.Error));
+
+            return tokenResponse.RefreshToken;
         }
 
         public string Authenticate(string refreshToken)
