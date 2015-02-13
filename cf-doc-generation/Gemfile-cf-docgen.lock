@@ -1,0 +1,371 @@
+GIT
+  remote: https://github.com/cloudfoundry/cf-registrar.git
+  revision: 20fdf4c15553eb90855300a81e276659c9dbd2f0
+  specs:
+    cf-registrar (1.0.3)
+      cf-message-bus (~> 0.3.0)
+      eventmachine (~> 1.0.0)
+      steno
+      vcap-concurrency
+
+GIT
+  remote: https://github.com/cloudfoundry/cf-uaa-lib.git
+  revision: b1e11235dc6cd7d8d4680e005526de37201305ea
+  ref: b1e11235dc6cd7d8d4680e005526de37201305ea
+  specs:
+    cf-uaa-lib (3.1.0)
+      multi_json
+
+GIT
+  remote: https://github.com/cloudfoundry/delayed_job_sequel.git
+  revision: ae606dd8dd72f3491ff5073da2276dc6fcdd204e
+  specs:
+    delayed_job_sequel (4.0.1)
+      delayed_job (~> 4.0.0)
+      sequel (>= 3.38, < 5.0)
+      tzinfo
+
+GIT
+  remote: https://github.com/cloudfoundry/vcap-concurrency.git
+  revision: 2a5b0179642cb3d3e7f912a6453ec5731979d115
+  ref: 2a5b0179
+  specs:
+    vcap-concurrency (0.1.0)
+
+GIT
+  remote: https://github.com/zipmark/rspec_api_documentation.git
+  revision: 6617a33f769c4185255eb34c5036b63c9557041d
+  specs:
+    rspec_api_documentation (4.3.0)
+      activesupport (>= 3.0.0)
+      json (~> 1.4, >= 1.4.6)
+      mustache (~> 0.99, >= 0.99.4)
+      rspec (>= 3.0.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    CFPropertyList (2.3.0)
+    activesupport (3.2.21)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    addressable (2.3.7)
+    allowy (2.1.0)
+      activesupport (>= 3.2)
+      i18n
+    ast (2.0.0)
+    awesome_print (1.6.1)
+    backports (3.6.4)
+    bcrypt (3.1.10)
+    beefcake (0.3.7)
+    builder (3.2.2)
+    cf-message-bus (0.3.3)
+      eventmachine (~> 1.0.0)
+      nats (>= 0.5.0.beta.16, < 0.6)
+      vcap-concurrency
+      yajl-ruby
+    clockwork (1.1.0)
+      activesupport
+      tzinfo
+    cloudfront-signer (2.1.1)
+    codeclimate-test-reporter (0.4.6)
+      simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.1.0)
+    cookiejar (0.3.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    daemons (1.1.9)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    diff-lcs (1.2.5)
+    docile (1.1.5)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
+    eventmachine (1.0.7)
+    excon (0.44.2)
+    fakefs (0.6.5)
+    ffi (1.9.6)
+    fission (0.5.0)
+      CFPropertyList (~> 2.2)
+    fluent-logger (0.5.0)
+      msgpack (>= 0.4.4, < 0.6.0, != 0.5.3, != 0.5.2, != 0.5.1, != 0.5.0)
+    fog (1.27.0)
+      fog-atmos
+      fog-aws (~> 0.0)
+      fog-brightbox (~> 0.4)
+      fog-core (~> 1.27, >= 1.27.3)
+      fog-ecloud
+      fog-json
+      fog-profitbricks
+      fog-radosgw (>= 0.0.2)
+      fog-sakuracloud (>= 0.0.4)
+      fog-serverlove
+      fog-softlayer
+      fog-storm_on_demand
+      fog-terremark
+      fog-vmfusion
+      fog-voxel
+      fog-xml (~> 0.1.1)
+      ipaddress (~> 0.5)
+      nokogiri (~> 1.5, >= 1.5.11)
+    fog-atmos (0.1.0)
+      fog-core
+      fog-xml
+    fog-aws (0.1.0)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-brightbox (0.7.1)
+      fog-core (~> 1.22)
+      fog-json
+      inflecto (~> 0.0.2)
+    fog-core (1.28.0)
+      builder
+      excon (~> 0.38)
+      formatador (~> 0.2)
+      mime-types
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+    fog-ecloud (0.0.2)
+      fog-core
+      fog-xml
+    fog-json (1.0.0)
+      multi_json (~> 1.0)
+    fog-profitbricks (0.0.1)
+      fog-core
+      fog-xml
+      nokogiri
+    fog-radosgw (0.0.3)
+      fog-core (>= 1.21.0)
+      fog-json
+      fog-xml (>= 0.0.1)
+    fog-sakuracloud (1.0.0)
+      fog-core
+      fog-json
+    fog-serverlove (0.1.1)
+      fog-core
+      fog-json
+    fog-softlayer (0.4.1)
+      fog-core
+      fog-json
+    fog-storm_on_demand (0.1.0)
+      fog-core
+      fog-json
+    fog-terremark (0.0.4)
+      fog-core
+      fog-xml
+    fog-vmfusion (0.0.1)
+      fission
+      fog-core
+    fog-voxel (0.0.2)
+      fog-core
+      fog-xml
+    fog-xml (0.1.1)
+      fog-core
+      nokogiri (~> 1.5, >= 1.5.11)
+    formatador (0.2.5)
+    http_parser.rb (0.6.0)
+    httpclient (2.6.0.1)
+    i18n (0.7.0)
+    inflecto (0.0.2)
+    ipaddress (0.8.0)
+    json (1.8.2)
+    json_pure (1.8.2)
+    loggregator_emitter (3.0.0)
+      beefcake (~> 0.3.7)
+    machinist (1.0.6)
+    membrane (1.1.0)
+    method_source (0.8.2)
+    mime-types (2.4.3)
+    mini_portile (0.6.2)
+    msgpack (0.5.11)
+    multi_json (1.10.1)
+    multipart-post (2.0.0)
+    mustache (0.99.8)
+    mysql2 (0.3.13)
+    nats (0.5.0.beta.16)
+      daemons (~> 1.1, >= 1.1.9)
+      eventmachine (~> 1.0, >= 1.0.3)
+      json_pure (~> 1.8, >= 1.8.1)
+      thin (~> 1.6, >= 1.6.3)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
+    netaddr (1.5.0)
+    newrelic_rpm (3.7.3.204)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    parallel (1.3.4)
+    parallel_tests (1.0.9)
+      parallel
+    parser (2.1.9)
+      ast (>= 1.1, < 3.0)
+      slop (~> 3.4, >= 3.4.5)
+    pg (0.16.0)
+    posix-spawn (0.3.9)
+    powerpack (0.0.9)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rack (1.6.0)
+    rack-protection (1.5.3)
+      rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rainbow (2.0.0)
+    rake (10.4.2)
+    rfc822 (0.1.5)
+    roodi (4.1.1)
+      ruby_parser (~> 3.2, >= 3.2.2)
+    rspec (3.2.0)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
+    rspec-core (3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-instafail (0.2.6)
+      rspec
+    rspec-its (1.1.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
+    rspec-mocks (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.1)
+    rubocop (0.18.1)
+      json (>= 1.7.7, < 2)
+      parser (~> 2.1.3)
+      powerpack (~> 0.0.6)
+      rainbow (>= 1.99.1, < 3.0)
+    ruby_parser (3.6.4)
+      sexp_processor (~> 4.1)
+    safe_yaml (1.0.4)
+    sequel (4.19.0)
+    sexp_processor (4.4.5)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    sinatra-contrib (1.4.2)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (~> 1.3)
+    slop (3.6.0)
+    squash_ruby (2.0.0)
+      json
+    steno (1.2.4)
+      fluent-logger
+      yajl-ruby (~> 1.0)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
+    thread_safe (0.3.4)
+    tilt (1.4.1)
+    timecop (0.7.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
+    uuidtools (2.1.5)
+    vcap_common (4.0.2)
+      addressable (~> 2.2)
+      cookiejar (<= 0.3.0)
+      em-http-request (~> 1.0)
+      eventmachine
+      httpclient
+      membrane (~> 1.0)
+      mime-types
+      multipart-post
+      nats (>= 0.5.0.beta.12, < 0.6)
+      posix-spawn (~> 0.3.6)
+      squash_ruby
+      steno
+      thin
+      uuidtools
+      vmstat (~> 2.0)
+      yajl-ruby
+    vmstat (2.1.0)
+    webmock (1.20.4)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+    win32-eventlog (0.6.2)
+      ffi
+    yajl-ruby (1.2.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport (~> 3.0)
+  addressable
+  allowy
+  awesome_print
+  bcrypt
+  cf-message-bus (~> 0.3.0)
+  cf-registrar (~> 1.0.2)!
+  cf-uaa-lib (~> 3.1.0)!
+  clockwork
+  cloudfront-signer
+  codeclimate-test-reporter
+  delayed_job_sequel!
+  eventmachine (~> 1.0.0)
+  fakefs
+  fog
+  httpclient
+  i18n
+  loggregator_emitter (~> 3.0)
+  machinist (~> 1.0.6)
+  membrane (~> 1.0)
+  multi_json
+  mysql2 (= 0.3.13)
+  netaddr
+  newrelic_rpm (= 3.7.3.204)
+  nokogiri (~> 1.6.2)
+  parallel_tests
+  pg (= 0.16.0)
+  pry
+  rack-test
+  rake
+  rfc822
+  roodi
+  rspec (~> 3.0)
+  rspec-collection_matchers
+  rspec-instafail
+  rspec-its
+  rspec_api_documentation!
+  rubocop (= 0.18.1)
+  sequel
+  sinatra (~> 1.4)
+  sinatra-contrib
+  steno
+  thin (~> 1.6.0)
+  timecop
+  unf
+  vcap-concurrency!
+  vcap_common (~> 4.0)
+  webmock
+  win32-eventlog
+  yajl-ruby
