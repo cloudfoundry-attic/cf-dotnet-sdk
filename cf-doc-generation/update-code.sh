@@ -2,16 +2,6 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-# Make sure libmysql.dll exists
-if [ -e 'libmysql.dll' ] ; then
-    echo "Can't find libmysql.dll. Make sure it's in your PATH."
-fi
-
-# Make sure mysql.exe exists
-if [ -x 'mysql' ] ; then
-    echo "Can't find the mysql client executable. Make sure it's in your PATH."
-fi
-
 # Generate Cloud Foundry API Doc templates
 # gem version should be 2.3.0
 # gem update --system 2.3.0
@@ -26,6 +16,7 @@ export DB=mysql
 #bundle install --deployment --without development
 
 export BUNDLE_GEMFILE=${DIR}/Gemfile-cf-docgen
+bundle install --no-deployment
 
 cd ${DIR}/../cloud_controller_ng
 
@@ -44,6 +35,5 @@ rm -rf ${DIR}/../cf-net-sdk-pcl/Client/**
 
 # Use codegen to generate C# classes
 export BUNDLE_GEMFILE=${DIR}/../cf-sdk-builder/Gemfile
-${DIR}/../cf-sdk-builder/bin/codegen --in ${DIR}/../cloud_controller_ng/doc/api/ --out ${DIR}/../cf-net-sdk-pcl/Client/ --language csharp --service cloudfoundry
-
-
+bundle install
+ruby ${DIR}/../cf-sdk-builder/bin/codegen --in ${DIR}/../cloud_controller_ng/doc/api/ --out ${DIR}/../cf-net-sdk-pcl/Client/ --language csharp --service cloudfoundry
