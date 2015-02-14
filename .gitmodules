@@ -3,4 +3,4 @@
 	url = https://github.com/cloudfoundry/cloud_controller_ng.git
 [submodule "cf-sdk-builder"]
 	path = cf-sdk-builder
-	url = ../cf-sdk-builder.git
+	url = git@github.com:uhurusoftware/cf-sdk-builder.git
