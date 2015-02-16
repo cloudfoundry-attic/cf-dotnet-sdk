@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Exceptions\Test_CloudFoundryException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Deserialization\Test_apps.cs" />
     <Compile Include="Deserialization\Test_app_usage_events.cs" />

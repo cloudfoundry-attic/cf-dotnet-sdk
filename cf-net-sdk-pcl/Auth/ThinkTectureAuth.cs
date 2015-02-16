@@ -1,4 +1,5 @@
-﻿using cf_net_sdk.Interfaces;
+﻿using cf_net_sdk.Exceptions;
+using cf_net_sdk.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -14,6 +14,8 @@
 // limitations under the License.
 // ============================================================================ */
 
+using cf_net_sdk;
+using cf_net_sdk_pcl.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -135,7 +137,21 @@ namespace CloudFoundry.Common.Http
           
                 if (!result.IsSuccessStatusCode)
                 {
-                    throw new HttpRequestException(string.Format("An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode));
+                    //Check if we can deserialize the response
+                    CloudFoundryException cloudFoundryException;
+                    try
+                    {
+                        string response = await result.Content.ReadAsStringAsync();
+                        var exceptionObject = Util.DeserializeJson<CloudFoundryExceptionObject>(response);
+                        cloudFoundryException = new CloudFoundryException(exceptionObject);
+                        cloudFoundryException.Response = result;
+                    }
+                    catch 
+                    {
+                        cloudFoundryException = new CloudFoundryException(string.Format("An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode));
+                    }
+                    throw cloudFoundryException;
+                    
                 }
                 var headers = new HttpHeadersAbstraction(result.Headers);
 
@@ -144,19 +160,16 @@ namespace CloudFoundry.Common.Http
                 {
                     headers.AddRange(result.Content.Headers);
                     
-                    //content = this.WaitForResult<Stream>(result.Content.ReadAsStreamAsync().ConfigureAwait(false), new TimeSpan(0, 1, 0));
-                    content = result.Content.ReadAsStreamAsync().Result;  //ConfigureAwait(false);
+                    content = result.Content.ReadAsStreamAsync().Result; 
                 }
 
                 var retval = new HttpResponseAbstraction(content, headers, result.StatusCode);
 
-                //TODO: Add logging code
                 
                 return retval;
             }
             catch (Exception ex)
             {
-                //TODO: Add logging code
                 var tcex = ex as TaskCanceledException;
                 if (tcex == null)
                 {
