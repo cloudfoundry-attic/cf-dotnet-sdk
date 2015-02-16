@@ -140,46 +140,6 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
-        public void TestCreateSharedDomainRequest()
-        {
-            string json = @"{
-  ""name"": ""example.com""
-}";
-    
-            CreateSharedDomainRequest obj = Util.DeserializeJson<CreateSharedDomainRequest>(json);
-        
-            Assert.AreEqual("example.com", TestUtil.ToTestableString(obj.Name), true);
-        }
-
-    
-        [TestMethod]
-        public void TestCreateSharedDomainResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""78b7e658-fb81-42e4-bdee-7d17bfacbd70"",
-    ""url"": ""/v2/shared_domains/78b7e658-fb81-42e4-bdee-7d17bfacbd70"",
-    ""created_at"": ""2014-11-12T12:59:39+02:00"",
-    ""updated_at"": null
-  },
-  ""entity"": {
-    ""name"": ""example.com""
-  }
-}";
-    
-            CreateSharedDomainResponse obj = Util.DeserializeJson<CreateSharedDomainResponse>(json);
-        
-            Assert.AreEqual("78b7e658-fb81-42e4-bdee-7d17bfacbd70", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/shared_domains/78b7e658-fb81-42e4-bdee-7d17bfacbd70", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:39+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("example.com", TestUtil.ToTestableString(obj.Name), true);
-            
-            
-        }
-
-    
-        [TestMethod]
         public void TestFilterSharedDomainsByNameResponse()
         {
             string json = @"{
@@ -225,6 +185,33 @@ namespace cf_net_sdk_test.Deserialization
                
             
     
+        }
+
+    
+        [TestMethod]
+        public void TestCreateSharedDomainResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""78b7e658-fb81-42e4-bdee-7d17bfacbd70"",
+    ""url"": ""/v2/shared_domains/78b7e658-fb81-42e4-bdee-7d17bfacbd70"",
+    ""created_at"": ""2014-11-12T12:59:39+02:00"",
+    ""updated_at"": null
+  },
+  ""entity"": {
+    ""name"": ""example.com""
+  }
+}";
+    
+            CreateSharedDomainResponse obj = Util.DeserializeJson<CreateSharedDomainResponse>(json);
+        
+            Assert.AreEqual("78b7e658-fb81-42e4-bdee-7d17bfacbd70", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/shared_domains/78b7e658-fb81-42e4-bdee-7d17bfacbd70", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:39+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("example.com", TestUtil.ToTestableString(obj.Name), true);
+            
+            
         }
 
     

@@ -11,14 +11,29 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
-        public void TestUpdateContentsOfStagingEnvironmentVariableGroupRequest()
+        public void TestGettingContentsOfRunningEnvironmentVariableGroupResponse()
         {
             string json = @"{
   ""abc"": 123,
   ""do-re-me"": ""far-so-la-tee""
 }";
     
-            UpdateContentsOfStagingEnvironmentVariableGroupRequest obj = Util.DeserializeJson<UpdateContentsOfStagingEnvironmentVariableGroupRequest>(json);
+            GettingContentsOfRunningEnvironmentVariableGroupResponse obj = Util.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(json);
+        
+            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
+            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
+        }
+
+    
+        [TestMethod]
+        public void TestUpdateContentsOfRunningEnvironmentVariableGroupResponse()
+        {
+            string json = @"{
+  ""abc"": 123,
+  ""do-re-me"": ""far-so-la-tee""
+}";
+    
+            UpdateContentsOfRunningEnvironmentVariableGroupResponse obj = Util.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupResponse>(json);
         
             Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
             Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
@@ -49,51 +64,6 @@ namespace cf_net_sdk_test.Deserialization
 }";
     
             GettingContentsOfStagingEnvironmentVariableGroupResponse obj = Util.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(json);
-        
-            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-        }
-
-    
-        [TestMethod]
-        public void TestGettingContentsOfRunningEnvironmentVariableGroupResponse()
-        {
-            string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-    
-            GettingContentsOfRunningEnvironmentVariableGroupResponse obj = Util.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(json);
-        
-            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-        }
-
-    
-        [TestMethod]
-        public void TestUpdateContentsOfRunningEnvironmentVariableGroupRequest()
-        {
-            string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-    
-            UpdateContentsOfRunningEnvironmentVariableGroupRequest obj = Util.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupRequest>(json);
-        
-            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-        }
-
-    
-        [TestMethod]
-        public void TestUpdateContentsOfRunningEnvironmentVariableGroupResponse()
-        {
-            string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-    
-            UpdateContentsOfRunningEnvironmentVariableGroupResponse obj = Util.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupResponse>(json);
         
             Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
             Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);

@@ -36,6 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -60,14 +64,12 @@
     <Compile Include="Deserialization\Test_environment_variable_groups.cs" />
     <Compile Include="Deserialization\Test_events.cs" />
     <Compile Include="Deserialization\Test_feature_flags.cs" />
-    <Compile Include="Deserialization\Test_files.cs" />
     <Compile Include="Deserialization\Test_info.cs" />
     <Compile Include="Deserialization\Test_jobs.cs" />
     <Compile Include="Deserialization\Test_organizations.cs" />
     <Compile Include="Deserialization\Test_organization_quota_definitions.cs" />
     <Compile Include="Deserialization\Test_private_domains.cs" />
     <Compile Include="Deserialization\Test_processes__experimental_.cs" />
-    <Compile Include="Deserialization\Test_resource_match.cs" />
     <Compile Include="Deserialization\Test_routes.cs" />
     <Compile Include="Deserialization\Test_security_groups.cs" />
     <Compile Include="Deserialization\Test_security_group_running_defaults.cs" />
@@ -86,6 +88,28 @@
     <Compile Include="Deserialization\Test_stacks.cs" />
     <Compile Include="Deserialization\Test_users.cs" />
     <Compile Include="Deserialization\Test_user_provided_service_instances.cs" />
+    <Compile Include="Serialization\Test_apps.cs" />
+    <Compile Include="Serialization\Test_buildpacks.cs" />
+    <Compile Include="Serialization\Test_domains__deprecated_.cs" />
+    <Compile Include="Serialization\Test_environment_variable_groups.cs" />
+    <Compile Include="Serialization\Test_feature_flags.cs" />
+    <Compile Include="Serialization\Test_organizations.cs" />
+    <Compile Include="Serialization\Test_organization_quota_definitions.cs" />
+    <Compile Include="Serialization\Test_private_domains.cs" />
+    <Compile Include="Serialization\Test_processes__experimental_.cs" />
+    <Compile Include="Serialization\Test_routes.cs" />
+    <Compile Include="Serialization\Test_security_groups.cs" />
+    <Compile Include="Serialization\Test_services.cs" />
+    <Compile Include="Serialization\Test_service_bindings.cs" />
+    <Compile Include="Serialization\Test_service_brokers.cs" />
+    <Compile Include="Serialization\Test_service_instances.cs" />
+    <Compile Include="Serialization\Test_service_plans.cs" />
+    <Compile Include="Serialization\Test_service_plan_visibilities.cs" />
+    <Compile Include="Serialization\Test_shared_domains.cs" />
+    <Compile Include="Serialization\Test_spaces.cs" />
+    <Compile Include="Serialization\Test_space_quota_definitions.cs" />
+    <Compile Include="Serialization\Test_users.cs" />
+    <Compile Include="Serialization\Test_user_provided_service_instances.cs" />
     <Compile Include="TestUtil.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +117,9 @@
       <Project>{4a3c44c0-9210-4d68-abf8-c36b835d2e99}</Project>
       <Name>cf-net-sdk-pcl</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

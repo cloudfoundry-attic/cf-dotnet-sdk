@@ -11,6 +11,68 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
+        public void TestCreatePrivateDomainOwnedByGivenOrganizationResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""9ad30f3f-b878-42da-b53e-b4d1126bee0b"",
+    ""url"": ""/v2/private_domains/9ad30f3f-b878-42da-b53e-b4d1126bee0b"",
+    ""created_at"": ""2014-11-12T12:59:45+02:00"",
+    ""updated_at"": null
+  },
+  ""entity"": {
+    ""name"": ""exmaple.com"",
+    ""owning_organization_guid"": ""40b0d85e-db8c-4532-a00d-96398c2dc6ba"",
+    ""owning_organization_url"": ""/v2/organizations/40b0d85e-db8c-4532-a00d-96398c2dc6ba""
+  }
+}";
+    
+            CreatePrivateDomainOwnedByGivenOrganizationResponse obj = Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(json);
+        
+            Assert.AreEqual("9ad30f3f-b878-42da-b53e-b4d1126bee0b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/private_domains/9ad30f3f-b878-42da-b53e-b4d1126bee0b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:45+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("exmaple.com", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("40b0d85e-db8c-4532-a00d-96398c2dc6ba", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
+            Assert.AreEqual("/v2/organizations/40b0d85e-db8c-4532-a00d-96398c2dc6ba", TestUtil.ToTestableString(obj.OwningOrganizationUrl), true);
+            
+            
+        }
+
+    
+        [TestMethod]
+        public void TestRetrievePrivateDomainResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""834d63e6-8d79-4077-8298-dd4210ef977d"",
+    ""url"": ""/v2/private_domains/834d63e6-8d79-4077-8298-dd4210ef977d"",
+    ""created_at"": ""2014-11-12T12:59:39+02:00"",
+    ""updated_at"": null
+  },
+  ""entity"": {
+    ""name"": ""vcap.me"",
+    ""owning_organization_guid"": ""d106e97c-6365-44da-a091-fff732e9a0e8"",
+    ""owning_organization_url"": ""/v2/organizations/d106e97c-6365-44da-a091-fff732e9a0e8""
+  }
+}";
+    
+            RetrievePrivateDomainResponse obj = Util.DeserializeJson<RetrievePrivateDomainResponse>(json);
+        
+            Assert.AreEqual("834d63e6-8d79-4077-8298-dd4210ef977d", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/private_domains/834d63e6-8d79-4077-8298-dd4210ef977d", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:39+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("vcap.me", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("d106e97c-6365-44da-a091-fff732e9a0e8", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
+            Assert.AreEqual("/v2/organizations/d106e97c-6365-44da-a091-fff732e9a0e8", TestUtil.ToTestableString(obj.OwningOrganizationUrl), true);
+            
+            
+        }
+
+    
+        [TestMethod]
         public void TestFilterPrivateDomainsByNameResponse()
         {
             string json = @"{
@@ -60,37 +122,6 @@ namespace cf_net_sdk_test.Deserialization
                
             
     
-        }
-
-    
-        [TestMethod]
-        public void TestRetrievePrivateDomainResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""834d63e6-8d79-4077-8298-dd4210ef977d"",
-    ""url"": ""/v2/private_domains/834d63e6-8d79-4077-8298-dd4210ef977d"",
-    ""created_at"": ""2014-11-12T12:59:39+02:00"",
-    ""updated_at"": null
-  },
-  ""entity"": {
-    ""name"": ""vcap.me"",
-    ""owning_organization_guid"": ""d106e97c-6365-44da-a091-fff732e9a0e8"",
-    ""owning_organization_url"": ""/v2/organizations/d106e97c-6365-44da-a091-fff732e9a0e8""
-  }
-}";
-    
-            RetrievePrivateDomainResponse obj = Util.DeserializeJson<RetrievePrivateDomainResponse>(json);
-        
-            Assert.AreEqual("834d63e6-8d79-4077-8298-dd4210ef977d", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/private_domains/834d63e6-8d79-4077-8298-dd4210ef977d", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:39+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("vcap.me", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("d106e97c-6365-44da-a091-fff732e9a0e8", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
-            Assert.AreEqual("/v2/organizations/d106e97c-6365-44da-a091-fff732e9a0e8", TestUtil.ToTestableString(obj.OwningOrganizationUrl), true);
-            
-            
         }
 
     
@@ -216,52 +247,6 @@ namespace cf_net_sdk_test.Deserialization
                
             
     
-        }
-
-    
-        [TestMethod]
-        public void TestCreatePrivateDomainOwnedByGivenOrganizationRequest()
-        {
-            string json = @"{
-  ""name"": ""exmaple.com"",
-  ""owning_organization_guid"": ""40b0d85e-db8c-4532-a00d-96398c2dc6ba""
-}";
-    
-            CreatePrivateDomainOwnedByGivenOrganizationRequest obj = Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationRequest>(json);
-        
-            Assert.AreEqual("exmaple.com", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("40b0d85e-db8c-4532-a00d-96398c2dc6ba", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
-        }
-
-    
-        [TestMethod]
-        public void TestCreatePrivateDomainOwnedByGivenOrganizationResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""9ad30f3f-b878-42da-b53e-b4d1126bee0b"",
-    ""url"": ""/v2/private_domains/9ad30f3f-b878-42da-b53e-b4d1126bee0b"",
-    ""created_at"": ""2014-11-12T12:59:45+02:00"",
-    ""updated_at"": null
-  },
-  ""entity"": {
-    ""name"": ""exmaple.com"",
-    ""owning_organization_guid"": ""40b0d85e-db8c-4532-a00d-96398c2dc6ba"",
-    ""owning_organization_url"": ""/v2/organizations/40b0d85e-db8c-4532-a00d-96398c2dc6ba""
-  }
-}";
-    
-            CreatePrivateDomainOwnedByGivenOrganizationResponse obj = Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(json);
-        
-            Assert.AreEqual("9ad30f3f-b878-42da-b53e-b4d1126bee0b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/private_domains/9ad30f3f-b878-42da-b53e-b4d1126bee0b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:45+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("exmaple.com", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("40b0d85e-db8c-4532-a00d-96398c2dc6ba", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
-            Assert.AreEqual("/v2/organizations/40b0d85e-db8c-4532-a00d-96398c2dc6ba", TestUtil.ToTestableString(obj.OwningOrganizationUrl), true);
-            
-            
         }
 
     }

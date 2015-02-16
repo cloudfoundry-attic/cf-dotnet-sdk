@@ -11,90 +11,6 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
-        public void TestUpdateServiceDeprecatedRequest()
-        {
-            string json = @"{
-  ""label"": ""SomeMysqlService"",
-  ""description"": ""Mysql stores things for you"",
-  ""provider"": ""MySql Provider"",
-  ""version"": ""2.0"",
-  ""url"": ""http://myql.provider.com""
-}";
-    
-            UpdateServiceDeprecatedRequest obj = Util.DeserializeJson<UpdateServiceDeprecatedRequest>(json);
-        
-            Assert.AreEqual("SomeMysqlService", TestUtil.ToTestableString(obj.Label), true);
-            Assert.AreEqual("Mysql stores things for you", TestUtil.ToTestableString(obj.Description), true);
-            Assert.AreEqual("MySql Provider", TestUtil.ToTestableString(obj.Provider), true);
-            Assert.AreEqual("2.0", TestUtil.ToTestableString(obj.Version), true);
-            Assert.AreEqual("http://myql.provider.com", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-    
-        [TestMethod]
-        public void TestUpdateServiceDeprecatedResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""78cf48b5-e37b-465b-88e7-a6273ea21e1b"",
-    ""url"": ""/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b"",
-    ""created_at"": ""2014-11-12T12:59:31+02:00"",
-    ""updated_at"": ""2014-11-12T12:59:31+02:00""
-  },
-  ""entity"": {
-    ""label"": ""SomeMysqlService"",
-    ""provider"": ""MySql Provider"",
-    ""url"": ""http://myql.provider.com"",
-    ""description"": ""Mysql stores things for you"",
-    ""long_description"": null,
-    ""version"": ""2.0"",
-    ""info_url"": null,
-    ""active"": true,
-    ""bindable"": true,
-    ""unique_id"": ""d4a32f65-7ed7-47de-b03b-5e33b549edb0"",
-    ""extra"": null,
-    ""tags"": [
-
-    ],
-    ""requires"": [
-
-    ],
-    ""documentation_url"": null,
-    ""service_broker_guid"": ""20569f8c-3179-45c2-b864-671f34d92fbf"",
-    ""plan_updateable"": false,
-    ""service_plans_url"": ""/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b/service_plans""
-  }
-}";
-    
-            UpdateServiceDeprecatedResponse obj = Util.DeserializeJson<UpdateServiceDeprecatedResponse>(json);
-        
-            Assert.AreEqual("78cf48b5-e37b-465b-88e7-a6273ea21e1b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:31+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("2014-11-12T12:59:31+02:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("SomeMysqlService", TestUtil.ToTestableString(obj.Label), true);
-            Assert.AreEqual("MySql Provider", TestUtil.ToTestableString(obj.Provider), true);
-            Assert.AreEqual("http://myql.provider.com", TestUtil.ToTestableString(obj.Url), true);
-            Assert.AreEqual("Mysql stores things for you", TestUtil.ToTestableString(obj.Description), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.LongDescription), true);
-            Assert.AreEqual("2.0", TestUtil.ToTestableString(obj.Version), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.InfoUrl), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Active), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Bindable), true);
-            Assert.AreEqual("d4a32f65-7ed7-47de-b03b-5e33b549edb0", TestUtil.ToTestableString(obj.UniqueId), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.Extra), true);
-            
-            
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.DocumentationUrl), true);
-            Assert.AreEqual("20569f8c-3179-45c2-b864-671f34d92fbf", TestUtil.ToTestableString(obj.ServiceBrokerGuid), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.PlanUpdateable), true);
-            Assert.AreEqual("/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b/service_plans", TestUtil.ToTestableString(obj.ServicePlansUrl), true);
-            
-            
-        }
-
-    
-        [TestMethod]
         public void TestListAllServicePlansForServiceResponse()
         {
             string json = @"{
@@ -158,69 +74,6 @@ namespace cf_net_sdk_test.Deserialization
                
             
     
-        }
-
-    
-        [TestMethod]
-        public void TestRetrieveServiceResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""c139bb39-b25a-43ee-a050-19c379aa18e7"",
-    ""url"": ""/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7"",
-    ""created_at"": ""2014-11-12T12:59:31+02:00"",
-    ""updated_at"": null
-  },
-  ""entity"": {
-    ""label"": ""label-52"",
-    ""provider"": ""provider-43"",
-    ""url"": ""https://foo.com/url-39"",
-    ""description"": ""desc-112"",
-    ""long_description"": null,
-    ""version"": ""version-27"",
-    ""info_url"": null,
-    ""active"": true,
-    ""bindable"": true,
-    ""unique_id"": ""2621b0e3-51d0-45b0-aa7f-e461e5fa6d3d"",
-    ""extra"": null,
-    ""tags"": [
-
-    ],
-    ""requires"": [
-
-    ],
-    ""documentation_url"": null,
-    ""service_broker_guid"": ""766aeb88-37b7-4da2-8b7f-a74aa94a4773"",
-    ""plan_updateable"": false,
-    ""service_plans_url"": ""/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7/service_plans""
-  }
-}";
-    
-            RetrieveServiceResponse obj = Util.DeserializeJson<RetrieveServiceResponse>(json);
-        
-            Assert.AreEqual("c139bb39-b25a-43ee-a050-19c379aa18e7", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:31+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-52", TestUtil.ToTestableString(obj.Label), true);
-            Assert.AreEqual("provider-43", TestUtil.ToTestableString(obj.Provider), true);
-            Assert.AreEqual("https://foo.com/url-39", TestUtil.ToTestableString(obj.Url), true);
-            Assert.AreEqual("desc-112", TestUtil.ToTestableString(obj.Description), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.LongDescription), true);
-            Assert.AreEqual("version-27", TestUtil.ToTestableString(obj.Version), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.InfoUrl), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Active), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Bindable), true);
-            Assert.AreEqual("2621b0e3-51d0-45b0-aa7f-e461e5fa6d3d", TestUtil.ToTestableString(obj.UniqueId), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.Extra), true);
-            
-            
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.DocumentationUrl), true);
-            Assert.AreEqual("766aeb88-37b7-4da2-8b7f-a74aa94a4773", TestUtil.ToTestableString(obj.ServiceBrokerGuid), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.PlanUpdateable), true);
-            Assert.AreEqual("/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7/service_plans", TestUtil.ToTestableString(obj.ServicePlansUrl), true);
-            
-            
         }
 
     
@@ -310,27 +163,6 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
-        public void TestCreateServiceDeprecatedRequest()
-        {
-            string json = @"{
-  ""label"": ""SomeMysqlService"",
-  ""description"": ""Mysql stores things for you"",
-  ""provider"": ""MySql Provider"",
-  ""version"": ""2.0"",
-  ""url"": ""http://myql.provider.com""
-}";
-    
-            CreateServiceDeprecatedRequest obj = Util.DeserializeJson<CreateServiceDeprecatedRequest>(json);
-        
-            Assert.AreEqual("SomeMysqlService", TestUtil.ToTestableString(obj.Label), true);
-            Assert.AreEqual("Mysql stores things for you", TestUtil.ToTestableString(obj.Description), true);
-            Assert.AreEqual("MySql Provider", TestUtil.ToTestableString(obj.Provider), true);
-            Assert.AreEqual("2.0", TestUtil.ToTestableString(obj.Version), true);
-            Assert.AreEqual("http://myql.provider.com", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-    
-        [TestMethod]
         public void TestCreateServiceDeprecatedResponse()
         {
             string json = @"{
@@ -388,6 +220,132 @@ namespace cf_net_sdk_test.Deserialization
             Assert.AreEqual("", TestUtil.ToTestableString(obj.ServiceBrokerGuid), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.PlanUpdateable), true);
             Assert.AreEqual("/v2/services/f747d3d3-8a3e-4065-a1db-bba3541fbee7/service_plans", TestUtil.ToTestableString(obj.ServicePlansUrl), true);
+            
+            
+        }
+
+    
+        [TestMethod]
+        public void TestRetrieveServiceResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""c139bb39-b25a-43ee-a050-19c379aa18e7"",
+    ""url"": ""/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7"",
+    ""created_at"": ""2014-11-12T12:59:31+02:00"",
+    ""updated_at"": null
+  },
+  ""entity"": {
+    ""label"": ""label-52"",
+    ""provider"": ""provider-43"",
+    ""url"": ""https://foo.com/url-39"",
+    ""description"": ""desc-112"",
+    ""long_description"": null,
+    ""version"": ""version-27"",
+    ""info_url"": null,
+    ""active"": true,
+    ""bindable"": true,
+    ""unique_id"": ""2621b0e3-51d0-45b0-aa7f-e461e5fa6d3d"",
+    ""extra"": null,
+    ""tags"": [
+
+    ],
+    ""requires"": [
+
+    ],
+    ""documentation_url"": null,
+    ""service_broker_guid"": ""766aeb88-37b7-4da2-8b7f-a74aa94a4773"",
+    ""plan_updateable"": false,
+    ""service_plans_url"": ""/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7/service_plans""
+  }
+}";
+    
+            RetrieveServiceResponse obj = Util.DeserializeJson<RetrieveServiceResponse>(json);
+        
+            Assert.AreEqual("c139bb39-b25a-43ee-a050-19c379aa18e7", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:31+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("label-52", TestUtil.ToTestableString(obj.Label), true);
+            Assert.AreEqual("provider-43", TestUtil.ToTestableString(obj.Provider), true);
+            Assert.AreEqual("https://foo.com/url-39", TestUtil.ToTestableString(obj.Url), true);
+            Assert.AreEqual("desc-112", TestUtil.ToTestableString(obj.Description), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.LongDescription), true);
+            Assert.AreEqual("version-27", TestUtil.ToTestableString(obj.Version), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.InfoUrl), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Active), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Bindable), true);
+            Assert.AreEqual("2621b0e3-51d0-45b0-aa7f-e461e5fa6d3d", TestUtil.ToTestableString(obj.UniqueId), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.Extra), true);
+            
+            
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.DocumentationUrl), true);
+            Assert.AreEqual("766aeb88-37b7-4da2-8b7f-a74aa94a4773", TestUtil.ToTestableString(obj.ServiceBrokerGuid), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.PlanUpdateable), true);
+            Assert.AreEqual("/v2/services/c139bb39-b25a-43ee-a050-19c379aa18e7/service_plans", TestUtil.ToTestableString(obj.ServicePlansUrl), true);
+            
+            
+        }
+
+    
+        [TestMethod]
+        public void TestUpdateServiceDeprecatedResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""78cf48b5-e37b-465b-88e7-a6273ea21e1b"",
+    ""url"": ""/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b"",
+    ""created_at"": ""2014-11-12T12:59:31+02:00"",
+    ""updated_at"": ""2014-11-12T12:59:31+02:00""
+  },
+  ""entity"": {
+    ""label"": ""SomeMysqlService"",
+    ""provider"": ""MySql Provider"",
+    ""url"": ""http://myql.provider.com"",
+    ""description"": ""Mysql stores things for you"",
+    ""long_description"": null,
+    ""version"": ""2.0"",
+    ""info_url"": null,
+    ""active"": true,
+    ""bindable"": true,
+    ""unique_id"": ""d4a32f65-7ed7-47de-b03b-5e33b549edb0"",
+    ""extra"": null,
+    ""tags"": [
+
+    ],
+    ""requires"": [
+
+    ],
+    ""documentation_url"": null,
+    ""service_broker_guid"": ""20569f8c-3179-45c2-b864-671f34d92fbf"",
+    ""plan_updateable"": false,
+    ""service_plans_url"": ""/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b/service_plans""
+  }
+}";
+    
+            UpdateServiceDeprecatedResponse obj = Util.DeserializeJson<UpdateServiceDeprecatedResponse>(json);
+        
+            Assert.AreEqual("78cf48b5-e37b-465b-88e7-a6273ea21e1b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:31+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("2014-11-12T12:59:31+02:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("SomeMysqlService", TestUtil.ToTestableString(obj.Label), true);
+            Assert.AreEqual("MySql Provider", TestUtil.ToTestableString(obj.Provider), true);
+            Assert.AreEqual("http://myql.provider.com", TestUtil.ToTestableString(obj.Url), true);
+            Assert.AreEqual("Mysql stores things for you", TestUtil.ToTestableString(obj.Description), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.LongDescription), true);
+            Assert.AreEqual("2.0", TestUtil.ToTestableString(obj.Version), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.InfoUrl), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Active), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Bindable), true);
+            Assert.AreEqual("d4a32f65-7ed7-47de-b03b-5e33b549edb0", TestUtil.ToTestableString(obj.UniqueId), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.Extra), true);
+            
+            
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.DocumentationUrl), true);
+            Assert.AreEqual("20569f8c-3179-45c2-b864-671f34d92fbf", TestUtil.ToTestableString(obj.ServiceBrokerGuid), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.PlanUpdateable), true);
+            Assert.AreEqual("/v2/services/78cf48b5-e37b-465b-88e7-a6273ea21e1b/service_plans", TestUtil.ToTestableString(obj.ServicePlansUrl), true);
             
             
         }

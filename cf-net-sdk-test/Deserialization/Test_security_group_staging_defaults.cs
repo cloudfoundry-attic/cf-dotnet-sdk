@@ -11,6 +11,45 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
+        public void TestSetSecurityGroupAsDefaultForStagingResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""64b8f5f6-5fd2-4cb5-a202-f753cae1ff51"",
+    ""url"": ""/v2/config/staging_security_groups/64b8f5f6-5fd2-4cb5-a202-f753cae1ff51"",
+    ""created_at"": ""2014-11-12T12:59:43+02:00"",
+    ""updated_at"": ""2014-11-12T12:59:43+02:00""
+  },
+  ""entity"": {
+    ""name"": ""name-1161"",
+    ""rules"": [
+      {
+        ""protocol"": ""udp"",
+        ""ports"": ""8080"",
+        ""destination"": ""198.41.191.47/1""
+      }
+    ],
+    ""running_default"": false,
+    ""staging_default"": true
+  }
+}";
+    
+            SetSecurityGroupAsDefaultForStagingResponse obj = Util.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(json);
+        
+            Assert.AreEqual("64b8f5f6-5fd2-4cb5-a202-f753cae1ff51", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/config/staging_security_groups/64b8f5f6-5fd2-4cb5-a202-f753cae1ff51", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:43+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("2014-11-12T12:59:43+02:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("name-1161", TestUtil.ToTestableString(obj.Name), true);
+            
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.RunningDefault), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.StagingDefault), true);
+            
+            
+        }
+
+    
+        [TestMethod]
         public void TestReturnSecurityGroupsUsedForStagingResponse()
         {
             string json = @"{
@@ -68,45 +107,6 @@ namespace cf_net_sdk_test.Deserialization
                
             
     
-        }
-
-    
-        [TestMethod]
-        public void TestSetSecurityGroupAsDefaultForStagingResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""64b8f5f6-5fd2-4cb5-a202-f753cae1ff51"",
-    ""url"": ""/v2/config/staging_security_groups/64b8f5f6-5fd2-4cb5-a202-f753cae1ff51"",
-    ""created_at"": ""2014-11-12T12:59:43+02:00"",
-    ""updated_at"": ""2014-11-12T12:59:43+02:00""
-  },
-  ""entity"": {
-    ""name"": ""name-1161"",
-    ""rules"": [
-      {
-        ""protocol"": ""udp"",
-        ""ports"": ""8080"",
-        ""destination"": ""198.41.191.47/1""
-      }
-    ],
-    ""running_default"": false,
-    ""staging_default"": true
-  }
-}";
-    
-            SetSecurityGroupAsDefaultForStagingResponse obj = Util.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(json);
-        
-            Assert.AreEqual("64b8f5f6-5fd2-4cb5-a202-f753cae1ff51", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/config/staging_security_groups/64b8f5f6-5fd2-4cb5-a202-f753cae1ff51", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:43+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("2014-11-12T12:59:43+02:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-1161", TestUtil.ToTestableString(obj.Name), true);
-            
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.RunningDefault), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.StagingDefault), true);
-            
-            
         }
 
     }

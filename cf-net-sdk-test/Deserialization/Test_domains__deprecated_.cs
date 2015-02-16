@@ -11,6 +11,39 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
+        public void TestCreatesDomainOwnedByGivenOrganizationDeprecatedResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""38c4ecf0-4264-441e-bff6-f86371613dc2"",
+    ""url"": ""/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2"",
+    ""created_at"": ""2014-11-12T12:59:19+02:00"",
+    ""updated_at"": null
+  },
+  ""entity"": {
+    ""name"": ""exmaple.com"",
+    ""owning_organization_guid"": ""3888312a-9b88-4e22-87b6-a408f4f76cd7"",
+    ""owning_organization_url"": ""/v2/organizations/3888312a-9b88-4e22-87b6-a408f4f76cd7"",
+    ""spaces_url"": ""/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2/spaces""
+  }
+}";
+    
+            CreatesDomainOwnedByGivenOrganizationDeprecatedResponse obj = Util.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse>(json);
+        
+            Assert.AreEqual("38c4ecf0-4264-441e-bff6-f86371613dc2", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2014-11-12T12:59:19+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("exmaple.com", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("3888312a-9b88-4e22-87b6-a408f4f76cd7", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
+            Assert.AreEqual("/v2/organizations/3888312a-9b88-4e22-87b6-a408f4f76cd7", TestUtil.ToTestableString(obj.OwningOrganizationUrl), true);
+            Assert.AreEqual("/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            
+            
+        }
+
+    
+        [TestMethod]
         public void TestRetrieveDomainDeprecatedResponse()
         {
             string json = @"{
@@ -32,50 +65,6 @@ namespace cf_net_sdk_test.Deserialization
             Assert.AreEqual("2014-11-12T12:59:19+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("domain-5.example.com", TestUtil.ToTestableString(obj.Name), true);
-            
-            
-        }
-
-    
-        [TestMethod]
-        public void TestCreatesSharedDomainDeprecatedRequest()
-        {
-            string json = @"{
-  ""name"": ""example.com"",
-  ""wildcard"": true
-}";
-    
-            CreatesSharedDomainDeprecatedRequest obj = Util.DeserializeJson<CreatesSharedDomainDeprecatedRequest>(json);
-        
-            Assert.AreEqual("example.com", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Wildcard), true);
-        }
-
-    
-        [TestMethod]
-        public void TestCreatesSharedDomainDeprecatedResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""d4624ac6-8699-4eb6-9fed-161232ee2030"",
-    ""url"": ""/v2/domains/d4624ac6-8699-4eb6-9fed-161232ee2030"",
-    ""created_at"": ""2014-11-12T12:59:19+02:00"",
-    ""updated_at"": null
-  },
-  ""entity"": {
-    ""name"": ""example.com"",
-    ""owning_organization_guid"": null
-  }
-}";
-    
-            CreatesSharedDomainDeprecatedResponse obj = Util.DeserializeJson<CreatesSharedDomainDeprecatedResponse>(json);
-        
-            Assert.AreEqual("d4624ac6-8699-4eb6-9fed-161232ee2030", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/domains/d4624ac6-8699-4eb6-9fed-161232ee2030", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2014-11-12T12:59:19+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("example.com", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
             
             
         }
@@ -272,50 +261,29 @@ namespace cf_net_sdk_test.Deserialization
 
     
         [TestMethod]
-        public void TestCreatesDomainOwnedByGivenOrganizationDeprecatedRequest()
-        {
-            string json = @"{
-  ""name"": ""exmaple.com"",
-  ""wildcard"": true,
-  ""owning_organization_guid"": ""3888312a-9b88-4e22-87b6-a408f4f76cd7""
-}";
-    
-            CreatesDomainOwnedByGivenOrganizationDeprecatedRequest obj = Util.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedRequest>(json);
-        
-            Assert.AreEqual("exmaple.com", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Wildcard), true);
-            Assert.AreEqual("3888312a-9b88-4e22-87b6-a408f4f76cd7", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
-        }
-
-    
-        [TestMethod]
-        public void TestCreatesDomainOwnedByGivenOrganizationDeprecatedResponse()
+        public void TestCreatesSharedDomainDeprecatedResponse()
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""38c4ecf0-4264-441e-bff6-f86371613dc2"",
-    ""url"": ""/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2"",
+    ""guid"": ""d4624ac6-8699-4eb6-9fed-161232ee2030"",
+    ""url"": ""/v2/domains/d4624ac6-8699-4eb6-9fed-161232ee2030"",
     ""created_at"": ""2014-11-12T12:59:19+02:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""exmaple.com"",
-    ""owning_organization_guid"": ""3888312a-9b88-4e22-87b6-a408f4f76cd7"",
-    ""owning_organization_url"": ""/v2/organizations/3888312a-9b88-4e22-87b6-a408f4f76cd7"",
-    ""spaces_url"": ""/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2/spaces""
+    ""name"": ""example.com"",
+    ""owning_organization_guid"": null
   }
 }";
     
-            CreatesDomainOwnedByGivenOrganizationDeprecatedResponse obj = Util.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse>(json);
+            CreatesSharedDomainDeprecatedResponse obj = Util.DeserializeJson<CreatesSharedDomainDeprecatedResponse>(json);
         
-            Assert.AreEqual("38c4ecf0-4264-441e-bff6-f86371613dc2", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("d4624ac6-8699-4eb6-9fed-161232ee2030", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/domains/d4624ac6-8699-4eb6-9fed-161232ee2030", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
             Assert.AreEqual("2014-11-12T12:59:19+02:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("exmaple.com", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("3888312a-9b88-4e22-87b6-a408f4f76cd7", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
-            Assert.AreEqual("/v2/organizations/3888312a-9b88-4e22-87b6-a408f4f76cd7", TestUtil.ToTestableString(obj.OwningOrganizationUrl), true);
-            Assert.AreEqual("/v2/domains/38c4ecf0-4264-441e-bff6-f86371613dc2/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("example.com", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.OwningOrganizationGuid), true);
             
             
         }
