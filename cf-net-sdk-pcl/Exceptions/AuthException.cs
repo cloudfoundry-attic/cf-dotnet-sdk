@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace cf_net_sdk.Auth
+namespace cf_net_sdk.Exceptions
 {
     public class AuthException : Exception
     {

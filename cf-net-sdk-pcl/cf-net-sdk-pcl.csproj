@@ -37,6 +37,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\AuthException.cs" />
     <Compile Include="Auth\ThinkTectureAuth.cs" />
     <Compile Include="BaseEndpoint.cs" />
     <Compile Include="Client\Apps.cs" />
@@ -390,6 +391,8 @@
     <Compile Include="Common\ServiceLocation\ServiceLocationRegistrarFactory.cs" />
     <Compile Include="Common\ServiceLocation\ServiceLocator.cs" />
     <Compile Include="Common\StreamExtentions.cs" />
+    <Compile Include="Exceptions\CloudFoundryException.cs" />
+    <Compile Include="Exceptions\CloudFoundryExceptionObject.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IResponse.cs" />
     <Compile Include="Metadata.cs" />
