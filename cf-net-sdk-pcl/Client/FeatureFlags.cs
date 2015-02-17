@@ -36,54 +36,17 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Get all feature flags
+        /// Get the Service Instance Creation feature flag
         /// </summary>
+        /// When enabled, a space developer can create service instances in a space. When disabled, only admin users can create service instances.
     
         
-        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags()
-        {
-            return await GetAllFeatureFlags(new RequestOptions());
-        }
-        
     
-
     
-        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags(RequestOptions options)
+        public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
     
         {
-            string route = "/v2/config/feature_flags";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<GetAllFeatureFlagsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Get the User Org Creation feature flag
-        /// </summary>
-        /// When enabled, any user can create an organization via the API. When disabled, only admin users can create organizations via the API.
-    
-        
-    
-
-    
-        public async Task<GetUserOrgCreationFeatureFlagResponse> GetUserOrgCreationFeatureFlag()
-    
-        {
-            string route = "/v2/config/feature_flags/user_org_creation";
+            string route = "/v2/config/feature_flags/service_instance_creation";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -98,39 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<GetUserOrgCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Get the Route Creation feature flag
-        /// </summary>
-        /// When enabled, a space developer can create routes in a space. When disabled, only admin users can create routes.
-    
-        
-    
-
-    
-        public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
-    
-        {
-            string route = "/v2/config/feature_flags/route_creation";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<GetRouteCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<GetServiceInstanceCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -139,7 +70,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Set a feature flag
         /// </summary>
     
-
     
         public async Task<SetFeatureFlagResponse> SetFeatureFlag(dynamic name, SetFeatureFlagRequest value)
     
@@ -175,7 +105,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<GetAppBitsUploadFeatureFlagResponse> GetAppBitsUploadFeatureFlag()
     
@@ -207,7 +136,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<GetAppScalingFeatureFlagResponse> GetAppScalingFeatureFlag()
     
@@ -239,7 +167,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<GetPrivateDomainCreationFeatureFlagResponse> GetPrivateDomainCreationFeatureFlag()
     
@@ -265,18 +192,52 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Get the Service Instance Creation feature flag
+        /// Get all feature flags
         /// </summary>
-        /// When enabled, a space developer can create service instances in a space. When disabled, only admin users can create service instances.
+    
+        
+        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags()
+        {
+            return await GetAllFeatureFlags(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<GetAllFeatureFlagsResponse>> GetAllFeatureFlags(RequestOptions options)
+    
+        {
+            string route = "/v2/config/feature_flags";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<GetAllFeatureFlagsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Get the User Org Creation feature flag
+        /// </summary>
+        /// When enabled, any user can create an organization via the API. When disabled, only admin users can create organizations via the API.
     
         
     
-
     
-        public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
+        public async Task<GetUserOrgCreationFeatureFlagResponse> GetUserOrgCreationFeatureFlag()
     
         {
-            string route = "/v2/config/feature_flags/service_instance_creation";
+            string route = "/v2/config/feature_flags/user_org_creation";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -291,7 +252,38 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<GetServiceInstanceCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<GetUserOrgCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Get the Route Creation feature flag
+        /// </summary>
+        /// When enabled, a space developer can create routes in a space. When disabled, only admin users can create routes.
+    
+        
+    
+    
+        public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
+    
+        {
+            string route = "/v2/config/feature_flags/route_creation";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<GetRouteCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
             
         
         }

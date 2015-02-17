@@ -50,7 +50,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents(RequestOptions options)
     
@@ -76,45 +75,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Purge and reseed App Usage Events
-        /// </summary>
-        /// Destroys all existing events. Populates new usage events, one for each started app.
-        /// All populated events will have a created_at value of current time.
-        /// 
-        /// There is the potential race condition if apps are currently being started, stopped, or scaled.
-        /// 
-        /// The seeded usage events will have the same guid as the app.
-    
-
-    
-        public async Task PurgeAndReseedAppUsageEvents()
-    
-        {
-            string route = "/v2/app_usage_events/destructively_purge_all_and_reseed_started_apps";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// Retrieve a Particular App Usage Event
         /// </summary>
     
         
     
-
     
         public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
     
@@ -136,6 +101,38 @@ namespace CloudFoundry.CloudController.V2.Client
             
             return Util.DeserializeJson<RetrieveAppUsageEventResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// Purge and reseed App Usage Events
+        /// </summary>
+        /// Destroys all existing events. Populates new usage events, one for each started app.
+        /// All populated events will have a created_at value of current time.
+        /// 
+        /// There is the potential race condition if apps are currently being started, stopped, or scaled.
+        /// 
+        /// The seeded usage events will have the same guid as the app.
+    
+    
+        public async Task PurgeAndReseedAppUsageEvents()
+    
+        {
+            string route = "/v2/app_usage_events/destructively_purge_all_and_reseed_started_apps";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
         
         }
     

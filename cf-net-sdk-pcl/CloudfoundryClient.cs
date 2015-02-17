@@ -1,4 +1,4 @@
-using cf_net_sdk.Interfaces;
+using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.Common.Http;
 using CloudFoundry.Common.ServiceLocation;
 using System;
@@ -6,10 +6,10 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
-using cf_net_sdk.Client;
-using cf_net_sdk.Auth;
+using CloudFoundry.CloudController.V2.Client;
+using CloudFoundry.CloudController.V2.Auth;
 
-namespace cf_net_sdk
+namespace CloudFoundry.CloudController.V2
 {
     public class CloudfoundryClient
     {

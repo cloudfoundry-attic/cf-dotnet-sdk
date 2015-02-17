@@ -45,7 +45,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// 
         /// The seeded usage events will have the same guid as the service instance.
     
-
     
         public async Task PurgeAndReseedServiceUsageEvents()
     
@@ -83,7 +82,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListServiceUsageEventsResponse>> ListServiceUsageEvents(RequestOptions options)
     
@@ -114,7 +112,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
     

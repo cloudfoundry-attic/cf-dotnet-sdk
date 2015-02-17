@@ -93,13 +93,6 @@ public class UpdateAppRequest
     set;
     }
 
-    [JsonProperty("health_check_type", NullValueHandling=NullValueHandling.Ignore)]
-    public string HealthCheckType
-    {
-    get;
-    set;
-    }
-
     [JsonProperty("health_check_timeout", NullValueHandling=NullValueHandling.Ignore)]
     public dynamic HealthCheckTimeout
     {

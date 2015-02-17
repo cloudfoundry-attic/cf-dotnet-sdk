@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cf_net_sdk_pcl.Exceptions
+namespace CloudFoundry.CloudController.V2.Exceptions
 {
    public class CloudFoundryExceptionObject
     {

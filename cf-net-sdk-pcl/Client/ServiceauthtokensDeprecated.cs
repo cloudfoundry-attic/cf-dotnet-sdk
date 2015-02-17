@@ -36,69 +36,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Filtering the result set by provider (deprecated)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<FilterResultSetByProviderDeprecatedResponse>> FilterResultSetByProviderDeprecated()
-        {
-            return await FilterResultSetByProviderDeprecated(new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<FilterResultSetByProviderDeprecatedResponse>> FilterResultSetByProviderDeprecated(RequestOptions options)
-    
-        {
-            string route = "/v2/service_auth_tokens";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<FilterResultSetByProviderDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Service Auth Token (deprecated)
-        /// </summary>
-    
-
-    
-        public async Task DeleteServiceAuthTokenDeprecated(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_auth_tokens/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// List all Service Auth Tokens (deprecated)
         /// </summary>
     
@@ -109,7 +46,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllServiceAuthTokensDeprecatedResponse>> ListAllServiceAuthTokensDeprecated(RequestOptions options)
     
@@ -135,12 +71,46 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Filtering the result set by label (deprecated)
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<FilterResultSetByLabelDeprecatedResponse>> FilterResultSetByLabelDeprecated()
+        {
+            return await FilterResultSetByLabelDeprecated(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<FilterResultSetByLabelDeprecatedResponse>> FilterResultSetByLabelDeprecated(RequestOptions options)
+    
+        {
+            string route = "/v2/service_auth_tokens";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<FilterResultSetByLabelDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Retrieve a Particular Service Auth Token (deprecated)
         /// </summary>
     
         
     
-
     
         public async Task<RetrieveServiceAuthTokenDeprecatedResponse> RetrieveServiceAuthTokenDeprecated(Guid? guid)
     
@@ -166,19 +136,44 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Filtering the result set by label (deprecated)
+        /// Delete a Particular Service Auth Token (deprecated)
+        /// </summary>
+    
+    
+        public async Task DeleteServiceAuthTokenDeprecated(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_auth_tokens/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
+        /// Filtering the result set by provider (deprecated)
         /// </summary>
     
         
-        public async Task<PagedResponse<FilterResultSetByLabelDeprecatedResponse>> FilterResultSetByLabelDeprecated()
+        public async Task<PagedResponse<FilterResultSetByProviderDeprecatedResponse>> FilterResultSetByProviderDeprecated()
         {
-            return await FilterResultSetByLabelDeprecated(new RequestOptions());
+            return await FilterResultSetByProviderDeprecated(new RequestOptions());
         }
         
     
-
     
-        public async Task<PagedResponse<FilterResultSetByLabelDeprecatedResponse>> FilterResultSetByLabelDeprecated(RequestOptions options)
+        public async Task<PagedResponse<FilterResultSetByProviderDeprecatedResponse>> FilterResultSetByProviderDeprecated(RequestOptions options)
     
         {
             string route = "/v2/service_auth_tokens";
@@ -196,7 +191,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializePage<FilterResultSetByLabelDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializePage<FilterResultSetByProviderDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }

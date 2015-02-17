@@ -14,8 +14,8 @@
 // limitations under the License.
 // ============================================================================ */
 
-using cf_net_sdk;
-using cf_net_sdk.Interfaces;
+using CloudFoundry.CloudController.V2;
+using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.Common.Http;
 using CloudFoundry.Common.ServiceLocation;
 

@@ -36,10 +36,44 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// List all Service Bindings
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllServiceBindingsResponse>> ListAllServiceBindings()
+        {
+            return await ListAllServiceBindings(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<ListAllServiceBindingsResponse>> ListAllServiceBindings(RequestOptions options)
+    
+        {
+            string route = "/v2/service_bindings";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Create a Service Binding
         /// </summary>
     
-
     
         public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
     
@@ -74,7 +108,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
     
@@ -100,46 +133,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List all Service Bindings
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllServiceBindingsResponse>> ListAllServiceBindings()
-        {
-            return await ListAllServiceBindings(new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllServiceBindingsResponse>> ListAllServiceBindings(RequestOptions options)
-    
-        {
-            string route = "/v2/service_bindings";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Delete a Particular Service Binding
         /// </summary>
     
-
     
         public async Task DeleteServiceBinding(Guid? guid)
     

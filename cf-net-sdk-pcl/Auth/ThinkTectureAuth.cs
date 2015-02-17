@@ -1,5 +1,5 @@
-﻿using cf_net_sdk.Exceptions;
-using cf_net_sdk.Interfaces;
+﻿using CloudFoundry.CloudController.V2.Exceptions;
+using CloudFoundry.CloudController.V2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Thinktecture.IdentityModel.Client;
 
-namespace cf_net_sdk.Auth
+namespace CloudFoundry.CloudController.V2.Auth
 {
     class ThinkTectureAuth: IAuth
     {

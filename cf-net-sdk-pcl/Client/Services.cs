@@ -36,6 +36,41 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// List all Service Plans for the Service
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid)
+        {
+            return await ListAllServicePlansForService(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/services/{0}/service_plans", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllServicePlansForServiceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// List all Services
         /// </summary>
     
@@ -46,7 +81,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllServicesResponse>> ListAllServices(RequestOptions options)
     
@@ -72,10 +106,35 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Delete a Particular Service
+        /// </summary>
+    
+    
+        public async Task DeleteService(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/services/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
         /// Creating a Service (deprecated)
         /// </summary>
     
-
     
         public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
     
@@ -105,10 +164,39 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Retrieve a Particular Service
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/services/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServiceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Updating a Service (deprecated)
         /// </summary>
     
-
     
         public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
     
@@ -133,100 +221,6 @@ namespace CloudFoundry.CloudController.V2.Client
         
             
             return Util.DeserializeJson<UpdateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Service
-        /// </summary>
-    
-
-    
-        public async Task DeleteService(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/services/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
-        /// List all Service Plans for the Service
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid)
-        {
-            return await ListAllServicePlansForService(guid, new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/services/{0}/service_plans", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllServicePlansForServiceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/services/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServiceResponse>(await response.ReadContentAsStringAsync());
             
         
         }

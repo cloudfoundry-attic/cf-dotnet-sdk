@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cf_net_sdk.Interfaces
+namespace CloudFoundry.CloudController.V2.Interfaces
 {
     public interface IResponse
     {

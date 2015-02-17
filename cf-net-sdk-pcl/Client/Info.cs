@@ -41,7 +41,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<GetInfoResponse> GetInfo()
     

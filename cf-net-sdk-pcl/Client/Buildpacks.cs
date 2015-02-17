@@ -39,7 +39,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Enable or disable a Buildpack
         /// </summary>
     
-
     
         public async Task<EnableOrDisableBuildpackResponse> EnableOrDisableBuildpack(Guid? guid, EnableOrDisableBuildpackRequest value)
     
@@ -72,7 +71,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Creates an admin Buildpack
         /// </summary>
     
-
     
         public async Task<CreatesAdminBuildpackResponse> CreatesAdminBuildpack(CreatesAdminBuildpackRequest value)
     
@@ -102,14 +100,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Buildpack
+        /// Delete a Particular Buildpack
         /// </summary>
     
-        
     
-
-    
-        public async Task<RetrieveBuildpackResponse> RetrieveBuildpack(Guid? guid)
+        public async Task DeleteBuildpack(Guid? guid)
     
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
@@ -120,15 +115,13 @@ namespace CloudFoundry.CloudController.V2.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveBuildpackResponse>(await response.ReadContentAsStringAsync());
-            
         
         }
     
@@ -143,7 +136,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllBuildpacksResponse>> ListAllBuildpacks(RequestOptions options)
     
@@ -169,13 +161,46 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Upload the bits for an admin Buildpack
+        /// </summary>
+        /// PUT not shown because it involves putting a large zip file. Right now only zipped admin buildpacks are accepted
+        /// <summary>
+        /// Retrieve a Particular Buildpack
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveBuildpackResponse> RetrieveBuildpack(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/buildpacks/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveBuildpackResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Change the position of a Buildpack
         /// </summary>
         /// Buildpacks are maintained in an ordered list.  If the target position is already occupied,
         /// the entries will be shifted down the list to make room.  If the target position is beyond
         /// the end of the current list, the buildpack will be positioned at the end of the list.
     
-
     
         public async Task<ChangePositionOfBuildpackResponse> ChangePositionOfBuildpack(Guid? guid, ChangePositionOfBuildpackRequest value)
     
@@ -205,37 +230,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Delete a Particular Buildpack
-        /// </summary>
-    
-
-    
-        public async Task DeleteBuildpack(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/buildpacks/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// Lock or unlock a Buildpack
         /// </summary>
     
-
     
         public async Task<LockOrUnlockBuildpackResponse> LockOrUnlockBuildpack(Guid? guid, LockOrUnlockBuildpackRequest value)
     

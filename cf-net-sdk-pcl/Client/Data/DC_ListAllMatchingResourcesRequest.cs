@@ -18,34 +18,20 @@ using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class UpdateServiceBrokerRequest
+public class ListAllMatchingResourcesRequest
 {
 
 
 
-    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
-    public string Name
+    [JsonProperty("sha1", NullValueHandling=NullValueHandling.Ignore)]
+    public string Sha1
     {
     get;
     set;
     }
 
-    [JsonProperty("broker_url", NullValueHandling=NullValueHandling.Ignore)]
-    public string BrokerUrl
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("auth_username", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthUsername
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("auth_password", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthPassword
+    [JsonProperty("size", NullValueHandling=NullValueHandling.Ignore)]
+    public int? Size
     {
     get;
     set;

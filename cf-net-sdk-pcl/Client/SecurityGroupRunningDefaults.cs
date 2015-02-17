@@ -36,32 +36,36 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Set a Security Group as a default for running Apps
+        /// Return the Security Groups used for running Apps
         /// </summary>
     
-
+        
+        public async Task<PagedResponse<ReturnSecurityGroupsUsedForRunningAppsResponse>> ReturnSecurityGroupsUsedForRunningApps()
+        {
+            return await ReturnSecurityGroupsUsedForRunningApps(new RequestOptions());
+        }
+        
     
-        public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid? guid)
+    
+        public async Task<PagedResponse<ReturnSecurityGroupsUsedForRunningAppsResponse>> ReturnSecurityGroupsUsedForRunningApps(RequestOptions options)
     
         {
-            string route = string.Format("/v2/config/running_security_groups/{0}", guid);
+            string route = "/v2/config/running_security_groups";
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<SetSecurityGroupAsDefaultForRunningAppsResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializePage<ReturnSecurityGroupsUsedForRunningAppsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -70,7 +74,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Removing a Security Group as a default for running Apps
         /// </summary>
     
-
     
         public async Task RemovingSecurityGroupAsDefaultForRunningApps(Guid? guid)
     
@@ -94,37 +97,31 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Return the Security Groups used for running Apps
+        /// Set a Security Group as a default for running Apps
         /// </summary>
     
-        
-        public async Task<PagedResponse<ReturnSecurityGroupsUsedForRunningAppsResponse>> ReturnSecurityGroupsUsedForRunningApps()
-        {
-            return await ReturnSecurityGroupsUsedForRunningApps(new RequestOptions());
-        }
-        
     
-
-    
-        public async Task<PagedResponse<ReturnSecurityGroupsUsedForRunningAppsResponse>> ReturnSecurityGroupsUsedForRunningApps(RequestOptions options)
+        public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid? guid)
     
         {
-            string route = "/v2/config/running_security_groups";
+            string route = string.Format("/v2/config/running_security_groups/{0}", guid);
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await client.SendAsync();
         
             
-            return Util.DeserializePage<ReturnSecurityGroupsUsedForRunningAppsResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<SetSecurityGroupAsDefaultForRunningAppsResponse>(await response.ReadContentAsStringAsync());
             
         
         }

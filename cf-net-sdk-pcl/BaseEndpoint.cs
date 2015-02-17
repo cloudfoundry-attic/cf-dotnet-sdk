@@ -1,4 +1,4 @@
-﻿using cf_net_sdk.Interfaces;
+﻿using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.Common.Http;
 using CloudFoundry.Common.ServiceLocation;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace cf_net_sdk
+namespace CloudFoundry.CloudController.V2
 {
     public class BaseEndpoint
     {        

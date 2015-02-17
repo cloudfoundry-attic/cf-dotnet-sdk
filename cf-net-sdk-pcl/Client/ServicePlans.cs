@@ -39,7 +39,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Updating a Service Plan (deprecated)
         /// </summary>
     
-
     
         public async Task<UpdateServicePlanDeprecatedResponse> UpdateServicePlanDeprecated(UpdateServicePlanDeprecatedRequest value)
     
@@ -79,7 +78,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
     
@@ -108,7 +106,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Delete a Particular Service Plans
         /// </summary>
     
-
     
         public async Task DeleteServicePlans(Guid? guid)
     
@@ -132,39 +129,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Creating a Service Plan (deprecated)
-        /// </summary>
-    
-
-    
-        public async Task<CreateServicePlanDeprecatedResponse> CreateServicePlanDeprecated(CreateServicePlanDeprecatedRequest value)
-    
-        {
-            string route = "/v2/service_plans";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateServicePlanDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// List all Service Plans
         /// </summary>
     
@@ -175,7 +139,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllServicePlansResponse>> ListAllServicePlans(RequestOptions options)
     
@@ -206,7 +169,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
     
@@ -227,6 +189,38 @@ namespace CloudFoundry.CloudController.V2.Client
         
             
             return Util.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Creating a Service Plan (deprecated)
+        /// </summary>
+    
+    
+        public async Task<CreateServicePlanDeprecatedResponse> CreateServicePlanDeprecated(CreateServicePlanDeprecatedRequest value)
+    
+        {
+            string route = "/v2/service_plans";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreateServicePlanDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }

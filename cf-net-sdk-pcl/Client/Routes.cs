@@ -36,39 +36,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Creating a Route
-        /// </summary>
-    
-
-    
-        public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
-    
-        {
-            string route = "/v2/routes";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// List all Apps for the Route
         /// </summary>
     
@@ -79,7 +46,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid, RequestOptions options)
     
@@ -110,7 +76,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveRouteResponse> RetrieveRoute(Guid? guid)
     
@@ -136,41 +101,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Associate App with the Route
-        /// </summary>
-    
-
-    
-        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
-    
-        {
-            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<AssociateAppWithRouteResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Update a Route
         /// </summary>
     
-
     
         public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
     
@@ -200,10 +133,71 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Remove App from the Route
+        /// </summary>
+    
+    
+        public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
+    
+        {
+            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RemoveAppFromRouteResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Creating a Route
+        /// </summary>
+    
+    
+        public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
+    
+        {
+            string route = "/v2/routes";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Delete a Particular Route
         /// </summary>
     
-
     
         public async Task DeleteRoute(Guid? guid)
     
@@ -227,17 +221,14 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Check a Route exists
+        /// Associate App with the Route
         /// </summary>
     
-        
     
-
-    
-        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
+        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
     
         {
-            string route = string.Format("/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
+            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -245,11 +236,17 @@ namespace CloudFoundry.CloudController.V2.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<AssociateAppWithRouteResponse>(await response.ReadContentAsStringAsync());
+            
         
         }
     
@@ -264,7 +261,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllRoutesResponse>> ListAllRoutes(RequestOptions options)
     
@@ -290,15 +286,16 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Remove App from the Route
+        /// Check a Route exists
         /// </summary>
     
-
+        
     
-        public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
+    
+        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
     
         {
-            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
+            string route = string.Format("/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -306,17 +303,11 @@ namespace CloudFoundry.CloudController.V2.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RemoveAppFromRouteResponse>(await response.ReadContentAsStringAsync());
-            
         
         }
     

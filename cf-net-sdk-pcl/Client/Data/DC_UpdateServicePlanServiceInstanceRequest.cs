@@ -18,34 +18,13 @@ using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class UpdateServiceBrokerRequest
+public class UpdateServicePlanServiceInstanceRequest
 {
 
 
 
-    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
-    public string Name
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("broker_url", NullValueHandling=NullValueHandling.Ignore)]
-    public string BrokerUrl
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("auth_username", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthUsername
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("auth_password", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthPassword
+    [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? ServicePlanGuid
     {
     get;
     set;

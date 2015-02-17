@@ -1,5 +1,5 @@
-﻿using cf_net_sdk.Client.Data;
-using cf_net_sdk.Interfaces;
+﻿using CloudFoundry.CloudController.V2.Client.Data;
+using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.Common;
 using CloudFoundry.Common.Http;
 using CloudFoundry.Common.ServiceLocation;
@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cf_net_sdk
+namespace CloudFoundry.CloudController.V2
 {
     public class PageProperties
     {

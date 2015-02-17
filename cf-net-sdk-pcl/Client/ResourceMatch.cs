@@ -39,7 +39,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// List all matching resources
         /// </summary>
     
-
     
         public async Task<PagedResponse<ListAllMatchingResourcesResponse>> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value, RequestOptions options)
     
