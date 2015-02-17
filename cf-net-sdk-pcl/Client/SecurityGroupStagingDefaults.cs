@@ -39,7 +39,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Set a Security Group as a default for staging
         /// </summary>
     
-
     
         public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
     
@@ -67,6 +66,32 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Removing a Security Group as a default for staging
+        /// </summary>
+    
+    
+        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
+        
+        }
+    
+        /// <summary>
         /// Return the Security Groups used for staging
         /// </summary>
     
@@ -77,7 +102,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
     
@@ -99,33 +123,6 @@ namespace CloudFoundry.CloudController.V2.Client
             
             return Util.DeserializePage<ReturnSecurityGroupsUsedForStagingResponse>(await response.ReadContentAsStringAsync());
             
-        
-        }
-    
-        /// <summary>
-        /// Removing a Security Group as a default for staging
-        /// </summary>
-    
-
-    
-        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
         
         }
     

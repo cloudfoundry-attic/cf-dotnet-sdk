@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace cf_net_sdk.Exceptions
+namespace CloudFoundry.CloudController.V2.Exceptions
 {
     public class AuthException : Exception
     {

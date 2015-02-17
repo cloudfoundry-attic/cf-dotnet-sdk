@@ -36,53 +36,24 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Creating a Service Plan Visibility
+        /// List all Service Plan Visibilities
         /// </summary>
     
-
+        
+        public async Task<PagedResponse<ListAllServicePlanVisibilitiesResponse>> ListAllServicePlanVisibilities()
+        {
+            return await ListAllServicePlanVisibilities(new RequestOptions());
+        }
+        
     
-        public async Task<CreateServicePlanVisibilityResponse> CreateServicePlanVisibility(CreateServicePlanVisibilityRequest value)
+    
+        public async Task<PagedResponse<ListAllServicePlanVisibilitiesResponse>> ListAllServicePlanVisibilities(RequestOptions options)
     
         {
             string route = "/v2/service_plan_visibilities";
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service Plan Visibility
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -94,7 +65,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<RetrieveServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializePage<ListAllServicePlanVisibilitiesResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -103,7 +74,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Updating a Service Plan Visibility
         /// </summary>
     
-
     
         public async Task<UpdateServicePlanVisibilityResponse> UpdateServicePlanVisibility(Guid? guid, UpdateServicePlanVisibilityRequest value)
     
@@ -133,25 +103,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List all Service Plan Visibilities
+        /// Retrieve a Particular Service Plan Visibility
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServicePlanVisibilitiesResponse>> ListAllServicePlanVisibilities()
-        {
-            return await ListAllServicePlanVisibilities(new RequestOptions());
-        }
-        
     
-
     
-        public async Task<PagedResponse<ListAllServicePlanVisibilitiesResponse>> ListAllServicePlanVisibilities(RequestOptions options)
+        public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid? guid)
     
         {
-            string route = "/v2/service_plan_visibilities";
+            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -163,7 +127,39 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializePage<ListAllServicePlanVisibilitiesResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<RetrieveServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Creating a Service Plan Visibility
+        /// </summary>
+    
+    
+        public async Task<CreateServicePlanVisibilityResponse> CreateServicePlanVisibility(CreateServicePlanVisibilityRequest value)
+    
+        {
+            string route = "/v2/service_plan_visibilities";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -172,7 +168,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Delete a Particular Service Plan Visibilities
         /// </summary>
     
-
     
         public async Task DeleteServicePlanVisibilities(Guid? guid)
     

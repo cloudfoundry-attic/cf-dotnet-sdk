@@ -36,10 +36,74 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// List all Service Brokers
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllServiceBrokersResponse>> ListAllServiceBrokers()
+        {
+            return await ListAllServiceBrokers(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<ListAllServiceBrokersResponse>> ListAllServiceBrokers(RequestOptions options)
+    
+        {
+            string route = "/v2/service_brokers";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllServiceBrokersResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Broker
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_brokers/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveServiceBrokerResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Create a Service Broker
         /// </summary>
     
-
     
         public async Task<CreateServiceBrokerResponse> CreateServiceBroker(CreateServiceBrokerRequest value)
     
@@ -69,38 +133,28 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List all Service Brokers
+        /// Delete a Particular Service Broker
         /// </summary>
     
-        
-        public async Task<PagedResponse<ListAllServiceBrokersResponse>> ListAllServiceBrokers()
-        {
-            return await ListAllServiceBrokers(new RequestOptions());
-        }
-        
     
-
-    
-        public async Task<PagedResponse<ListAllServiceBrokersResponse>> ListAllServiceBrokers(RequestOptions options)
+        public async Task DeleteServiceBroker(Guid? guid)
     
         {
-            string route = "/v2/service_brokers";
+            string route = string.Format("/v2/service_brokers/{0}", guid);
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllServiceBrokersResponse>(await response.ReadContentAsStringAsync());
-            
         
         }
     
@@ -108,7 +162,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Update a Service Broker
         /// </summary>
     
-
     
         public async Task<UpdateServiceBrokerResponse> UpdateServiceBroker(Guid? guid, UpdateServiceBrokerRequest value)
     
@@ -133,64 +186,6 @@ namespace CloudFoundry.CloudController.V2.Client
         
             
             return Util.DeserializeJson<UpdateServiceBrokerResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Service Broker
-        /// </summary>
-    
-
-    
-        public async Task DeleteServiceBroker(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_brokers/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service Broker
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_brokers/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveServiceBrokerResponse>(await response.ReadContentAsStringAsync());
             
         
         }

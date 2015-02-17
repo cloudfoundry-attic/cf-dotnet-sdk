@@ -41,7 +41,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task RetrieveFile(Guid? app_guid, int? instance_index, dynamic file_path)
     

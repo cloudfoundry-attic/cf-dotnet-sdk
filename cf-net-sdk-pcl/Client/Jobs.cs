@@ -36,43 +36,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Retrieve Job with unknown failure
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/jobs/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Retrieve Job with known failure
         /// </summary>
     
         
     
-
     
         public async Task<RetrieveJobWithKnownFailureResponse> RetrieveJobWithKnownFailure(Guid? guid)
     
@@ -103,7 +71,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid? guid)
     
@@ -134,7 +101,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid? guid)
     
@@ -155,6 +121,36 @@ namespace CloudFoundry.CloudController.V2.Client
         
             
             return Util.DeserializeJson<RetrieveJobThatWasSuccessfulResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieve Job with unknown failure
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/jobs/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(await response.ReadContentAsStringAsync());
             
         
         }

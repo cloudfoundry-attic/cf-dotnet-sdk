@@ -36,39 +36,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Delete a Particular Stack
-        /// </summary>
-    
-
-    
-        public async Task DeleteStack(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/stacks/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
         /// Retrieve a Particular Stack
         /// </summary>
     
         
     
-
     
         public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
     
@@ -104,7 +76,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllStacksResponse>> ListAllStacks(RequestOptions options)
     
@@ -126,6 +97,32 @@ namespace CloudFoundry.CloudController.V2.Client
             
             return Util.DeserializePage<ListAllStacksResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Stack
+        /// </summary>
+    
+    
+        public async Task DeleteStack(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/stacks/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
         
         }
     

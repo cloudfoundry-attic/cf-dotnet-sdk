@@ -39,7 +39,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Delete a Particular Organization Quota Definition
         /// </summary>
     
-
     
         public async Task DeleteOrganizationQuotaDefinition(Guid? guid)
     
@@ -63,37 +62,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Organization Quota Definition
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/quota_definitions/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// List all Organization Quota Definitions
         /// </summary>
     
@@ -104,7 +72,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions(RequestOptions options)
     
@@ -133,7 +100,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Updating a Organization Quota Definition
         /// </summary>
     
-
     
         public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
     
@@ -163,10 +129,39 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Retrieve a Particular Organization Quota Definition
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/quota_definitions/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Creating a Organization Quota Definition
         /// </summary>
     
-
     
         public async Task<CreateOrganizationQuotaDefinitionResponse> CreateOrganizationQuotaDefinition(CreateOrganizationQuotaDefinitionRequest value)
     

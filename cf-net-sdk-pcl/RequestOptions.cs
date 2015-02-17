@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cf_net_sdk
+namespace CloudFoundry.CloudController.V2
 {
     public class RequestOptions
     {

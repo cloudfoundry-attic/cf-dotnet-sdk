@@ -36,12 +36,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Create a Docker Process
+        /// Create a Process
         /// </summary>
     
-
     
-        public async Task<CreateDockerProcessResponse> CreateDockerProcess(CreateDockerProcessRequest value)
+        public async Task<CreateProcessResponse> CreateProcess(CreateProcessRequest value)
     
         {
             string route = "/v3/processes";
@@ -63,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<CreateDockerProcessResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<CreateProcessResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -72,7 +71,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Delete a Process
         /// </summary>
     
-
     
         public async Task DeleteProcess(Guid? guid)
     
@@ -96,10 +94,39 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Get a Process
+        /// </summary>
+    
+        
+    
+    
+        public async Task<GetProcessResponse> GetProcess(Guid? guid)
+    
+        {
+            string route = string.Format("/v3/processes/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<GetProcessResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Updating a Process
         /// </summary>
     
-
     
         public async Task<UpdateProcessResponse> UpdateProcess(Guid? guid, UpdateProcessRequest value)
     
@@ -129,43 +156,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Get a Process
+        /// Create a Docker Process
         /// </summary>
     
-        
     
-
-    
-        public async Task<GetProcessResponse> GetProcess(Guid? guid)
-    
-        {
-            string route = string.Format("/v3/processes/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<GetProcessResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Create a Process
-        /// </summary>
-    
-
-    
-        public async Task<CreateProcessResponse> CreateProcess(CreateProcessRequest value)
+        public async Task<CreateDockerProcessResponse> CreateDockerProcess(CreateDockerProcessRequest value)
     
         {
             string route = "/v3/processes";
@@ -187,7 +182,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await client.SendAsync();
         
             
-            return Util.DeserializeJson<CreateProcessResponse>(await response.ReadContentAsStringAsync());
+            return Util.DeserializeJson<CreateDockerProcessResponse>(await response.ReadContentAsStringAsync());
             
         
         }

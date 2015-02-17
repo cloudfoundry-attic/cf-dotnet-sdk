@@ -14,8 +14,8 @@
 // limitations under the License.
 // ============================================================================ */
 
-using cf_net_sdk;
-using cf_net_sdk_pcl.Exceptions;
+using CloudFoundry.CloudController.V2;
+using CloudFoundry.CloudController.V2.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

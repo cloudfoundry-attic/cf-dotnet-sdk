@@ -8,8 +8,8 @@
     <ProjectGuid>{4A3C44C0-9210-4D68-ABF8-C36B835D2E99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cf_net_sdk_pcl</RootNamespace>
-    <AssemblyName>cf-net-sdk-pcl</AssemblyName>
+    <RootNamespace>CloudFoundry.CloudController.V2</RootNamespace>
+    <AssemblyName>CloudFoundry.CloudController.V2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

@@ -39,7 +39,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// Creating a Service Instance
         /// </summary>
     
-
     
         public async Task<CreateServiceInstanceResponse> CreateServiceInstance(CreateServiceInstanceRequest value)
     
@@ -69,10 +68,104 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Updating the service plan a service instance
+        /// </summary>
+    
+    
+        public async Task<UpdateServicePlanServiceInstanceResponse> UpdateServicePlanServiceInstance(Guid? guid, UpdateServicePlanServiceInstanceRequest value)
+    
+        {
+            string route = string.Format("/v2/service_instances/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<UpdateServicePlanServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Migrate Service Instances from one Service Plan to another Service Plan (experimental)
+        /// </summary>
+        /// Move all Service Instances for the service plan from the URL to the service plan in the request body
+    
+    
+        public async Task<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse> MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental(Guid? service_plan_guid, MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest value)
+    
+        {
+            string route = string.Format("/v2/service_plans/{0}/service_instances", service_plan_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Retrieving permissions on a Service Instance
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_instances/{0}/permissions", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrievingPermissionsOnServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// Delete a Particular Service Instance
         /// </summary>
     
-
     
         public async Task DeleteServiceInstance(Guid? guid)
     
@@ -101,7 +194,6 @@ namespace CloudFoundry.CloudController.V2.Client
     
         
     
-
     
         public async Task<RetrieveServiceInstanceResponse> RetrieveServiceInstance(Guid? guid)
     
@@ -127,70 +219,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Retrieving permissions on a Service Instance
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_instances/{0}/permissions", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrievingPermissionsOnServiceInstanceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Updating a service instance
-        /// </summary>
-    
-
-    
-        public async Task<UpdateServiceInstanceResponse> UpdateServiceInstance(Guid? guid, UpdateServiceInstanceRequest value)
-    
-        {
-            string route = string.Format("/v2/service_instances/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<UpdateServiceInstanceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// List all Service Bindings for the Service Instance
         /// </summary>
     
@@ -201,7 +229,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid, RequestOptions options)
     
@@ -237,7 +264,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllServiceInstancesResponse>> ListAllServiceInstances(RequestOptions options)
     
@@ -258,40 +284,6 @@ namespace CloudFoundry.CloudController.V2.Client
         
             
             return Util.DeserializePage<ListAllServiceInstancesResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Migrate Service Instances from one Service Plan to another Service Plan (experimental)
-        /// </summary>
-        /// Move all Service Instances for the service plan from the URL to the service plan in the request body
-    
-
-    
-        public async Task<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse> MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental(Guid? service_plan_guid, MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest value)
-    
-        {
-            string route = string.Format("/v2/service_plans/{0}/service_instances", service_plan_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }

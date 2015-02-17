@@ -18,8 +18,14 @@ using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class CreateProcessRequest
+public class GetAllFeatureFlagsResponse :IResponse
 {
+
+    public Metadata EntityMetadata
+    {
+    get;
+    set;
+    }
 
 
 
@@ -30,36 +36,22 @@ public class CreateProcessRequest
     set;
     }
 
-    [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public int? Memory
+    [JsonProperty("enabled", NullValueHandling=NullValueHandling.Ignore)]
+    public dynamic Enabled
     {
     get;
     set;
     }
 
-    [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public int? Instances
+    [JsonProperty("error_message", NullValueHandling=NullValueHandling.Ignore)]
+    public dynamic ErrorMessage
     {
     get;
     set;
     }
 
-    [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public int? DiskQuota
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? SpaceGuid
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("stack_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? StackGuid
+    [JsonProperty("url", NullValueHandling=NullValueHandling.Ignore)]
+    public string Url
     {
     get;
     set;

@@ -36,140 +36,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List all Private Domains
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
-        {
-            return await ListAllPrivateDomains(new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
-    
-        {
-            string route = "/v2/private_domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Private Domain
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/private_domains/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Private Domain
-        /// </summary>
-    
-
-    
-        public async Task DeletePrivateDomain(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/private_domains/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await client.SendAsync();
-        
-        }
-    
-        /// <summary>
-        /// Filtering Private Domains by name
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
-        {
-            return await FilterPrivateDomainsByName(new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
-    
-        {
-            string route = "/v2/private_domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Create a Private Domain owned by the given Organization
         /// </summary>
     
-
     
         public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
     
@@ -195,6 +64,132 @@ namespace CloudFoundry.CloudController.V2.Client
             
             return Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Private Domain
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/private_domains/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Filtering Private Domains by name
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
+        {
+            return await FilterPrivateDomainsByName(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
+    
+        {
+            string route = "/v2/private_domains";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Private Domains
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
+        {
+            return await ListAllPrivateDomains(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
+    
+        {
+            string route = "/v2/private_domains";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Private Domain
+        /// </summary>
+    
+    
+        public async Task DeletePrivateDomain(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/private_domains/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await client.SendAsync();
         
         }
     

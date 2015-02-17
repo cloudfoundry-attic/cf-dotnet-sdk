@@ -36,74 +36,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// creates a shared domain (deprecated)
-        /// </summary>
-    
-
-    
-        public async Task<CreatesSharedDomainDeprecatedResponse> CreatesSharedDomainDeprecated(CreatesSharedDomainDeprecatedRequest value)
-    
-        {
-            string route = "/v2/domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<CreatesSharedDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Domain (deprecated)
-        /// </summary>
-    
-        
-    
-
-    
-        public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/domains/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializeJson<RetrieveDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// Delete a Particular Domain (deprecated)
         /// </summary>
     
-
     
         public async Task DeleteDomainDeprecated(Guid? guid)
     
@@ -127,46 +62,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List all Spaces for the Domain (deprecated)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid)
-        {
-            return await ListAllSpacesForDomainDeprecated(guid, new RequestOptions());
-        }
-        
-    
-
-    
-        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/domains/{0}/spaces", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await client.SendAsync();
-        
-            
-            return Util.DeserializePage<ListAllSpacesForDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// creates a domain owned by the given organization (deprecated)
         /// </summary>
     
-
     
         public async Task<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse> CreatesDomainOwnedByGivenOrganizationDeprecated(CreatesDomainOwnedByGivenOrganizationDeprecatedRequest value)
     
@@ -196,6 +94,36 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
+        /// Retrieve a Particular Domain (deprecated)
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/domains/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<RetrieveDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
         /// List all Domains (deprecated)
         /// </summary>
     
@@ -206,7 +134,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
         
     
-
     
         public async Task<PagedResponse<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated(RequestOptions options)
     
@@ -227,6 +154,73 @@ namespace CloudFoundry.CloudController.V2.Client
         
             
             return Util.DeserializePage<ListAllDomainsDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Spaces for the Domain (deprecated)
+        /// </summary>
+    
+        
+        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid)
+        {
+            return await ListAllSpacesForDomainDeprecated(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponse<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/domains/{0}/spaces", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializePage<ListAllSpacesForDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// creates a shared domain (deprecated)
+        /// </summary>
+    
+    
+        public async Task<CreatesSharedDomainDeprecatedResponse> CreatesSharedDomainDeprecated(CreatesSharedDomainDeprecatedRequest value)
+    
+        {
+            string route = "/v2/domains";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await client.SendAsync();
+        
+            
+            return Util.DeserializeJson<CreatesSharedDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
             
         
         }
