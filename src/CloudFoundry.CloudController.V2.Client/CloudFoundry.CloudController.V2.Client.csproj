@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F54D7282-FE0C-474D-A8F6-326146554CDB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudFoundry.CloudController.V2.Client</RootNamespace>
+    <AssemblyName>CloudFoundry.CloudController.V2.Client</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Auth\AuthException.cs" />
+    <Compile Include="Auth\ThinkTectureAuth.cs" />
+    <Compile Include="BaseEndpoint.cs" />
+    <Compile Include="Client\Apps.cs" />
+    <Compile Include="Client\AppsExperimental.cs" />
+    <Compile Include="Client\AppUsageEvents.cs" />
+    <Compile Include="Client\Buildpacks.cs" />
+    <Compile Include="Client\Data\DC_AddProcessRequest.cs" />
+    <Compile Include="Client\Data\DC_AssociateAppWithRouteResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateAuditedOrganizationWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateAuditedSpaceWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateAuditorWithOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateAuditorWithSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateBillingManagedOrganizationWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateBillingManagerWithOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateDeveloperWithSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateManagedOrganizationWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateManagedSpaceWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateManagerWithOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateManagerWithSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateOrganizationWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateRouteWithAppResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateSecurityGroupWithSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateSpaceWithSecurityGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateSpaceWithSpaceQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateSpaceWithUserResponse.cs" />
+    <Compile Include="Client\Data\DC_AssociateUserWithOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ChangePositionOfBuildpackRequest.cs" />
+    <Compile Include="Client\Data\DC_ChangePositionOfBuildpackResponse.cs" />
+    <Compile Include="Client\Data\DC_CopyAppBitsForAppRequest.cs" />
+    <Compile Include="Client\Data\DC_CopyAppBitsForAppResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateAppRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateAppResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateDockerAppExperimentalRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateDockerAppExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateDockerProcessRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateDockerProcessResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateOrganizationQuotaDefinitionRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateOrganizationQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateOrganizationRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_CreatePrivateDomainOwnedByGivenOrganizationRequest.cs" />
+    <Compile Include="Client\Data\DC_CreatePrivateDomainOwnedByGivenOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateProcessRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateProcessResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateRouteRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateRouteResponse.cs" />
+    <Compile Include="Client\Data\DC_CreatesAdminBuildpackRequest.cs" />
+    <Compile Include="Client\Data\DC_CreatesAdminBuildpackResponse.cs" />
+    <Compile Include="Client\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedRequest.cs" />
+    <Compile Include="Client\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateSecurityGroupRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateSecurityGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceBindingRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceBindingResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceBrokerRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceBrokerResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceDeprecatedRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceInstanceRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateServicePlanDeprecatedRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateServicePlanDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateServicePlanVisibilityRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateServicePlanVisibilityResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateSharedDomainRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateSharedDomainResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateSpaceQuotaDefinitionRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateSpaceQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateSpaceRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_CreatesSharedDomainDeprecatedRequest.cs" />
+    <Compile Include="Client\Data\DC_CreatesSharedDomainDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateUserProvidedServiceInstanceRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateUserProvidedServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_CreateUserRequest.cs" />
+    <Compile Include="Client\Data\DC_CreateUserResponse.cs" />
+    <Compile Include="Client\Data\DC_EnableOrDisableBuildpackRequest.cs" />
+    <Compile Include="Client\Data\DC_EnableOrDisableBuildpackResponse.cs" />
+    <Compile Include="Client\Data\DC_FilterPrivateDomainsByNameResponse.cs" />
+    <Compile Include="Client\Data\DC_FilterResultSetByLabelDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_FilterResultSetByProviderDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_FilterSharedDomainsByNameResponse.cs" />
+    <Compile Include="Client\Data\DC_GetAppBitsUploadFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_GetAppResponse.cs" />
+    <Compile Include="Client\Data\DC_GetAppScalingFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_GetAppSummaryResponse.cs" />
+    <Compile Include="Client\Data\DC_GetDetailedStatsForStartedAppResponse.cs" />
+    <Compile Include="Client\Data\DC_GetEnvForAppResponse.cs" />
+    <Compile Include="Client\Data\DC_GetInfoResponse.cs" />
+    <Compile Include="Client\Data\DC_GetInstanceInformationForStartedAppResponse.cs" />
+    <Compile Include="Client\Data\DC_GetOrganizationSummaryResponse.cs" />
+    <Compile Include="Client\Data\DC_GetPrivateDomainCreationFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_GetProcessResponse.cs" />
+    <Compile Include="Client\Data\DC_GetRouteCreationFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_GetServiceInstanceCreationFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_GetSpaceSummaryResponse.cs" />
+    <Compile Include="Client\Data\DC_GettingContentsOfRunningEnvironmentVariableGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_GettingContentsOfStagingEnvironmentVariableGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_GetUserOrgCreationFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_GetUserSummaryResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAppsForRouteResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAppsForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAppsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAppUsageEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAuditedOrganizationsForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAuditedSpacesForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAuditorsForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllAuditorsForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllBillingManagedOrganizationsForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllBillingManagersForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllBuildpacksResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllDevelopersForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllDomainsDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllDomainsForOrganizationDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllDomainsForSpaceDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllEventsForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllManagedOrganizationsForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllManagedSpacesForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllManagersForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllManagersForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllOrganizationQuotaDefinitionsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllOrganizationsForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllOrganizationsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllPrivateDomainsForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllPrivateDomainsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllRoutesForAppResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllRoutesForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllRoutesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSecurityGroupsForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSecurityGroupsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceAuthTokensDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceBindingsForAppResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceBindingsForServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceBindingsForUserProvidedServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceBindingsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceBrokersResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceInstancesForServicePlanResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceInstancesForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServiceInstancesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServicePlansForServiceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServicePlansResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServicePlanVisibilitiesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServicesForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServicesForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllServicesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSharedDomainsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpaceQuotaDefinitionsForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpaceQuotaDefinitionsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpacesForDomainDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpacesForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpacesForSecurityGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpacesForSpaceQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpacesForUserResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllSpacesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllStacksResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllUserProvidedServiceInstancesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllUsersForOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllUsersResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAppCreateEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAppDeleteEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAppExitedEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAppUpdateEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAssociatedProcessesResponse.cs" />
+    <Compile Include="Client\Data\DC_ListEventsAssociatedWithAppSinceJanuary12014Response.cs" />
+    <Compile Include="Client\Data\DC_ListServiceBindingCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceBindingDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceBrokerCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceBrokerDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceBrokerUpdateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceDashboardClientCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceDashboardClientDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceInstanceCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceInstanceDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceInstanceUpdateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServicePlanCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServicePlanDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServicePlanUpdateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServicePlanVisibilityCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServicePlanVisibilityDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServicePlanVisibilityUpdateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceUpdateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListServiceUsageEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListSpaceCreateEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListSpaceDeleteEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListSpaceUpdateEventsResponse.cs" />
+    <Compile Include="Client\Data\DC_ListUserProvidedServiceInstanceCreateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_LockOrUnlockBuildpackRequest.cs" />
+    <Compile Include="Client\Data\DC_LockOrUnlockBuildpackResponse.cs" />
+    <Compile Include="Client\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs" />
+    <Compile Include="Client\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveAppFromRouteResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveAuditedOrganizationFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveAuditedSpaceFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveAuditorFromOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveAuditorFromSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveBillingManagedOrganizationFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveBillingManagerFromOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveDeveloperFromSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveManagedOrganizationFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveManagedSpaceFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveManagerFromOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveManagerFromSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveOrganizationFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveProcessRequest.cs" />
+    <Compile Include="Client\Data\DC_RemoveRouteFromAppResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveSecurityGroupFromSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveServiceBindingFromAppResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveSpaceFromSecurityGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveSpaceFromSpaceQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveSpaceFromUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RemoveUserFromOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_RestageAppResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveAppResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveAppUsageEventResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveBuildpackResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveDomainDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveEventResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveJobThatIsQueuedResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveJobThatWasSuccessfulResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveJobWithKnownFailureResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveJobWithUnknownFailureResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveOrganizationQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrievePrivateDomainResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveRouteResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveSecurityGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServiceAuthTokenDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServiceBindingResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServiceBrokerResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServicePlanResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServicePlanVisibilityResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServiceResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveServiceUsageEventResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveSharedDomainResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveSpaceQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveStackResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveUserProvidedServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrieveUserResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrievingOrganizationMemoryUsageResponse.cs" />
+    <Compile Include="Client\Data\DC_RetrievingPermissionsOnServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_ReturnSecurityGroupsUsedForRunningAppsResponse.cs" />
+    <Compile Include="Client\Data\DC_ReturnSecurityGroupsUsedForStagingResponse.cs" />
+    <Compile Include="Client\Data\DC_SetFeatureFlagRequest.cs" />
+    <Compile Include="Client\Data\DC_SetFeatureFlagResponse.cs" />
+    <Compile Include="Client\Data\DC_SetSecurityGroupAsDefaultForRunningAppsResponse.cs" />
+    <Compile Include="Client\Data\DC_SetSecurityGroupAsDefaultForStagingResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateAppRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateAppResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateContentsOfRunningEnvironmentVariableGroupRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateContentsOfRunningEnvironmentVariableGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateContentsOfStagingEnvironmentVariableGroupRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateContentsOfStagingEnvironmentVariableGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateOrganizationQuotaDefinitionRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateOrganizationQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateOrganizationRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateOrganizationResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateProcessRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateProcessResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateRouteRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateRouteResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateSecurityGroupRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateSecurityGroupResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServiceBrokerRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServiceBrokerResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServiceDeprecatedRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServiceDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServiceInstanceRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanDeprecatedRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanVisibilityRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanVisibilityResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateSpaceQuotaDefinitionRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateSpaceQuotaDefinitionResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateSpaceRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateUserProvidedServiceInstanceRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateUserProvidedServiceInstanceResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateUserRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateUserResponse.cs" />
+    <Compile Include="Client\DomainsDeprecated.cs" />
+    <Compile Include="Client\EnvironmentVariableGroups.cs" />
+    <Compile Include="Client\Events.cs" />
+    <Compile Include="Client\Files.cs" />
+    <Compile Include="Client\Info.cs" />
+    <Compile Include="Client\Jobs.cs" />
+    <Compile Include="Client\OrganizationQuotaDefinitions.cs" />
+    <Compile Include="Client\Organizations.cs" />
+    <Compile Include="Client\PrivateDomains.cs" />
+    <Compile Include="Client\ProcessesExperimental.cs" />
+    <Compile Include="Client\Routes.cs" />
+    <Compile Include="Client\SecurityGroupRunningDefaults.cs" />
+    <Compile Include="Client\SecurityGroups.cs" />
+    <Compile Include="Client\SecurityGroupStagingDefaults.cs" />
+    <Compile Include="Client\ServiceauthtokensDeprecated.cs" />
+    <Compile Include="Client\ServiceBindings.cs" />
+    <Compile Include="Client\ServiceBrokers.cs" />
+    <Compile Include="Client\ServiceInstances.cs" />
+    <Compile Include="Client\ServicePlans.cs" />
+    <Compile Include="Client\ServicePlanVisibilities.cs" />
+    <Compile Include="Client\Services.cs" />
+    <Compile Include="Client\ServiceUsageEventsExperimental.cs" />
+    <Compile Include="Client\SharedDomains.cs" />
+    <Compile Include="Client\SpaceQuotaDefinitions.cs" />
+    <Compile Include="Client\Spaces.cs" />
+    <Compile Include="Client\Stacks.cs" />
+    <Compile Include="Client\UserProvidedServiceInstances.cs" />
+    <Compile Include="Client\Users.cs" />
+    <Compile Include="CloudCredentials.cs" />
+    <Compile Include="CloudfoundryClient.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
+    <Compile Include="Interfaces\IResponse.cs" />
+    <Compile Include="Metadata.cs" />
+    <Compile Include="PagedResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestOptions.cs" />
+    <Compile Include="ServiceRegistrar.cs" />
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Thinktecture.IdentityModel.Client">
+      <HintPath>..\..\packages\Thinktecture.IdentityModel.Client.4.0.0\lib\portable-net45+wp80+win8+wpa81\Thinktecture.IdentityModel.Client.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
+      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
+      <Name>CloudFoundry.CloudController.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

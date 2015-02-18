@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.V2.Client", "src\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj", "{F54D7282-FE0C-474D-A8F6-326146554CDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.Common", "src\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj", "{D78DC433-8953-4339-BE83-529484EA7D8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F54D7282-FE0C-474D-A8F6-326146554CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F54D7282-FE0C-474D-A8F6-326146554CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F54D7282-FE0C-474D-A8F6-326146554CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F54D7282-FE0C-474D-A8F6-326146554CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D78DC433-8953-4339-BE83-529484EA7D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D78DC433-8953-4339-BE83-529484EA7D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D78DC433-8953-4339-BE83-529484EA7D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D78DC433-8953-4339-BE83-529484EA7D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
