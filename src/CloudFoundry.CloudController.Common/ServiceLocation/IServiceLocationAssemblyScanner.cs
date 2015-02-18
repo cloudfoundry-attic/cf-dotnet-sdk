@@ -17,7 +17,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <summary>
     /// Interface for scanning an assembly for service location registrars.

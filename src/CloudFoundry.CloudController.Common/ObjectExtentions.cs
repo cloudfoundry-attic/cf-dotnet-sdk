@@ -19,7 +19,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace CloudFoundry.Common
+namespace CloudFoundry.CloudController.Common
 {
     /// <summary>
     /// Holds extension methods for common objects and tasks.

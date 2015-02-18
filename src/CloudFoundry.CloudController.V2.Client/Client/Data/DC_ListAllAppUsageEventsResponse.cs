@@ -99,12 +99,5 @@ public class ListAllAppUsageEventsResponse :IResponse
     set;
     }
 
-    [JsonProperty("package_state", NullValueHandling=NullValueHandling.Ignore)]
-    public string PackageState
-    {
-    get;
-    set;
-    }
-
 }
 }

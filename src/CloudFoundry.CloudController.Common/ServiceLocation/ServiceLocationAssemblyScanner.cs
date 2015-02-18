@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <inheritdoc/>
     internal class ServiceLocationAssemblyScanner : IServiceLocationAssemblyScanner

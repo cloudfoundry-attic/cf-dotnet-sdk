@@ -16,8 +16,8 @@
 
 using CloudFoundry.CloudController.V2;
 using CloudFoundry.CloudController.V2.Interfaces;
-using CloudFoundry.Common.Http;
-using CloudFoundry.Common.ServiceLocation;
+using CloudFoundry.CloudController.Common.Http;
+using CloudFoundry.CloudController.Common.ServiceLocation;
 
 namespace CloudFoundry
 {

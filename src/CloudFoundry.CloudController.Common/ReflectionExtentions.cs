@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace CloudFoundry.Common
+namespace CloudFoundry.CloudController.Common
 {
     /// <summary>
     /// Static class for extending reflection classes.

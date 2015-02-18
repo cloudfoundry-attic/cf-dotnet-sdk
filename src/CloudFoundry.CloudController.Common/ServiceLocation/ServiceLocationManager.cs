@@ -18,7 +18,7 @@ using System;
 using System.Globalization;
 using System.Reflection;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <inheritdoc/>
     internal abstract class ServiceLocationManager : IServiceLocationManager

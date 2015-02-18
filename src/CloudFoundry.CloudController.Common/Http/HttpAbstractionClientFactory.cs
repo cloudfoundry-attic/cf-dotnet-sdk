@@ -14,10 +14,11 @@
 // limitations under the License.
 // ============================================================================ */
 
+using CloudFoundry.Common.Http;
 using System;
 using System.Threading;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     public class HttpAbstractionClientFactory : IHttpAbstractionClientFactory
     {

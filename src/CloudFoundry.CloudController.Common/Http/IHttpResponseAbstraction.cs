@@ -16,16 +16,18 @@
 
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     public interface IHttpResponseAbstraction
     {
-        Stream Content { get; }
+        HttpContent Content { get; }
 
         IHttpHeadersAbstraction Headers { get; }
-
+        bool IsSuccessStatusCode { get; }
+        HttpRequestMessage RequestMessage { get; set; }
         HttpStatusCode StatusCode { get; }
 
         Task<string> ReadContentAsStringAsync();

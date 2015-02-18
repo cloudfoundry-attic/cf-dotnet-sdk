@@ -14,6 +14,7 @@
 // limitations under the License.
 // ============================================================================ */
 
+using CloudFoundry.CloudController.Common.Http;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -133,30 +134,23 @@ namespace CloudFoundry.Common.Http
                 
                 var result = await this._client.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, this._cancellationToken).ConfigureAwait(false);
           
-                if (!result.IsSuccessStatusCode)
-                {
-                    throw new HttpRequestException(string.Format("An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode));
-                }
                 var headers = new HttpHeadersAbstraction(result.Headers);
 
-                Stream content = null;
+                HttpContent content = null;
                 if (result.Content != null )
                 {
                     headers.AddRange(result.Content.Headers);
                     
-                    //content = this.WaitForResult<Stream>(result.Content.ReadAsStreamAsync().ConfigureAwait(false), new TimeSpan(0, 1, 0));
-                    content = result.Content.ReadAsStreamAsync().Result;  //ConfigureAwait(false);
+                    content = result.Content; 
                 }
 
                 var retval = new HttpResponseAbstraction(content, headers, result.StatusCode);
 
-                //TODO: Add logging code
                 
                 return retval;
             }
             catch (Exception ex)
             {
-                //TODO: Add logging code
                 var tcex = ex as TaskCanceledException;
                 if (tcex == null)
                 {

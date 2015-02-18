@@ -1,6 +1,6 @@
 using CloudFoundry.CloudController.V2.Interfaces;
-using CloudFoundry.Common.Http;
-using CloudFoundry.Common.ServiceLocation;
+using CloudFoundry.CloudController.Common.Http;
+using CloudFoundry.CloudController.Common.ServiceLocation;
 using System;
 using System.Linq;
 using System.Collections.Generic;

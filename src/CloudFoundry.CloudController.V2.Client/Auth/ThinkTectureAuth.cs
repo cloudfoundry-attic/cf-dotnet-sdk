@@ -1,4 +1,5 @@
-﻿using CloudFoundry.CloudController.V2.Interfaces;
+﻿using CloudFoundry.CloudController.V2.Exceptions;
+using CloudFoundry.CloudController.V2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

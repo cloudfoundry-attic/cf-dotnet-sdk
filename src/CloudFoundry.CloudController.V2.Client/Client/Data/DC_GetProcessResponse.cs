@@ -36,12 +36,5 @@ public class GetProcessResponse :IResponse
     set;
     }
 
-    [JsonProperty("type", NullValueHandling=NullValueHandling.Ignore)]
-    public string Type
-    {
-    get;
-    set;
-    }
-
 }
 }

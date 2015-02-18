@@ -16,7 +16,7 @@
 
 using System.IO;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     /// <summary>
     /// Abstraction for modeling mutlipart form data.

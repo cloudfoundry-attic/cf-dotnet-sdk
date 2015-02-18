@@ -16,7 +16,7 @@
 
 using System.Collections.Generic;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     public interface IHttpHeadersAbstraction : IEnumerable<KeyValuePair<string, IEnumerable<string>>>
     {

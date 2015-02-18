@@ -17,7 +17,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <inheritdoc/>
     internal class RuntimeRegistrationManager : ServiceLocationManager

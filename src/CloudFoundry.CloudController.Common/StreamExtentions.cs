@@ -17,7 +17,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace CloudFoundry.Common
+namespace CloudFoundry.CloudController.Common
 {
     /// <summary>
     /// Static class for extending the Stream class.

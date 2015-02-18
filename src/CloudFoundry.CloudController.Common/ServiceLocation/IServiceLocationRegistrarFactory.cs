@@ -16,7 +16,7 @@
 
 using System;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <summary>
     /// Interface for an object that knows how to create service registrars.

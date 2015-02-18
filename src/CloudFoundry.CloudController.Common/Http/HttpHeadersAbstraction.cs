@@ -18,7 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     public class HttpHeadersAbstraction : IHttpHeadersAbstraction
     {

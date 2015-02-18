@@ -16,7 +16,7 @@
 
 using System;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <summary>
     /// Represents an object that can manage service location registration.

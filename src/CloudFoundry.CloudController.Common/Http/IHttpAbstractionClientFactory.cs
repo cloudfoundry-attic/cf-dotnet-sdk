@@ -17,7 +17,7 @@
 using System;
 using System.Threading;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     public interface IHttpAbstractionClientFactory
     {

@@ -20,7 +20,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace CloudFoundry.Common.ServiceLocation
+namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <inheritdoc/>
     public class ServiceLocator : IServiceLocator

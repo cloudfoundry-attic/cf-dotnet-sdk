@@ -16,7 +16,7 @@
 
 using System.IO;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     /// <inheritdoc/>
     public class HttpMultiPartFormDataAbstraction :IHttpMultiPartFormDataAbstraction

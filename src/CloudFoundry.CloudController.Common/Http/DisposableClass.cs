@@ -16,7 +16,7 @@
 
 using System;
 
-namespace CloudFoundry.Common.Http
+namespace CloudFoundry.CloudController.Common.Http
 {
     public class DisposableClass : IDisposable
     {
