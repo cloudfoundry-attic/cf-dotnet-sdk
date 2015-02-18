@@ -30,29 +30,29 @@ public class CreateAppRequest
     set;
     }
 
-    [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? SpaceGuid
-    {
-    get;
-    set;
-    }
-
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public string Memory
+    public int? Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public string Instances
+    public int? Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public string DiskQuota
+    public int? DiskQuota
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? SpaceGuid
     {
     get;
     set;
@@ -88,13 +88,6 @@ public class CreateAppRequest
 
     [JsonProperty("buildpack", NullValueHandling=NullValueHandling.Ignore)]
     public dynamic Buildpack
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("health_check_type", NullValueHandling=NullValueHandling.Ignore)]
-    public string HealthCheckType
     {
     get;
     set;

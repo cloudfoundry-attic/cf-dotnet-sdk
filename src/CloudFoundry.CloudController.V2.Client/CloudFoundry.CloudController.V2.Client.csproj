@@ -37,21 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
-      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
-      <Name>CloudFoundry.CloudController.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Auth\AuthException.cs" />
     <Compile Include="Auth\ThinkTectureAuth.cs" />
     <Compile Include="BaseEndpoint.cs" />
     <Compile Include="Client\Apps.cs" />
-    <Compile Include="Client\AppsExperimental.cs" />
     <Compile Include="Client\AppUsageEvents.cs" />
     <Compile Include="Client\Buildpacks.cs" />
-    <Compile Include="Client\Data\DC_AddProcessRequest.cs" />
     <Compile Include="Client\Data\DC_AssociateAppWithRouteResponse.cs" />
     <Compile Include="Client\Data\DC_AssociateAuditedOrganizationWithUserResponse.cs" />
     <Compile Include="Client\Data\DC_AssociateAuditedSpaceWithUserResponse.cs" />
@@ -73,8 +63,8 @@
     <Compile Include="Client\Data\DC_AssociateUserWithOrganizationResponse.cs" />
     <Compile Include="Client\Data\DC_ChangePositionOfBuildpackRequest.cs" />
     <Compile Include="Client\Data\DC_ChangePositionOfBuildpackResponse.cs" />
-    <Compile Include="Client\Data\DC_CopyAppBitsForAppRequest.cs" />
-    <Compile Include="Client\Data\DC_CopyAppBitsForAppResponse.cs" />
+    <Compile Include="Client\Data\DC_CopyAppBitsForAppExperimentalRequest.cs" />
+    <Compile Include="Client\Data\DC_CopyAppBitsForAppExperimentalResponse.cs" />
     <Compile Include="Client\Data\DC_CreateAppRequest.cs" />
     <Compile Include="Client\Data\DC_CreateAppResponse.cs" />
     <Compile Include="Client\Data\DC_CreateDockerAppExperimentalRequest.cs" />
@@ -127,8 +117,8 @@
     <Compile Include="Client\Data\DC_FilterResultSetByLabelDeprecatedResponse.cs" />
     <Compile Include="Client\Data\DC_FilterResultSetByProviderDeprecatedResponse.cs" />
     <Compile Include="Client\Data\DC_FilterSharedDomainsByNameResponse.cs" />
+    <Compile Include="Client\Data\DC_GetAllFeatureFlagsResponse.cs" />
     <Compile Include="Client\Data\DC_GetAppBitsUploadFeatureFlagResponse.cs" />
-    <Compile Include="Client\Data\DC_GetAppResponse.cs" />
     <Compile Include="Client\Data\DC_GetAppScalingFeatureFlagResponse.cs" />
     <Compile Include="Client\Data\DC_GetAppSummaryResponse.cs" />
     <Compile Include="Client\Data\DC_GetDetailedStatsForStartedAppResponse.cs" />
@@ -166,6 +156,8 @@
     <Compile Include="Client\Data\DC_ListAllManagedSpacesForUserResponse.cs" />
     <Compile Include="Client\Data\DC_ListAllManagersForOrganizationResponse.cs" />
     <Compile Include="Client\Data\DC_ListAllManagersForSpaceResponse.cs" />
+    <Compile Include="Client\Data\DC_ListAllMatchingResourcesRequest.cs" />
+    <Compile Include="Client\Data\DC_ListAllMatchingResourcesResponse.cs" />
     <Compile Include="Client\Data\DC_ListAllOrganizationQuotaDefinitionsResponse.cs" />
     <Compile Include="Client\Data\DC_ListAllOrganizationsForUserResponse.cs" />
     <Compile Include="Client\Data\DC_ListAllOrganizationsResponse.cs" />
@@ -208,34 +200,11 @@
     <Compile Include="Client\Data\DC_ListAppDeleteEventsResponse.cs" />
     <Compile Include="Client\Data\DC_ListAppExitedEventsResponse.cs" />
     <Compile Include="Client\Data\DC_ListAppUpdateEventsResponse.cs" />
-    <Compile Include="Client\Data\DC_ListAssociatedProcessesResponse.cs" />
     <Compile Include="Client\Data\DC_ListEventsAssociatedWithAppSinceJanuary12014Response.cs" />
-    <Compile Include="Client\Data\DC_ListServiceBindingCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceBindingDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceBrokerCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceBrokerDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceBrokerUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceDashboardClientCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceDashboardClientDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceInstanceCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceInstanceDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceInstanceUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServicePlanCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServicePlanDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServicePlanUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServicePlanVisibilityCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServicePlanVisibilityDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServicePlanVisibilityUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListServiceUpdateEventsExperimentalResponse.cs" />
     <Compile Include="Client\Data\DC_ListServiceUsageEventsResponse.cs" />
     <Compile Include="Client\Data\DC_ListSpaceCreateEventsResponse.cs" />
     <Compile Include="Client\Data\DC_ListSpaceDeleteEventsResponse.cs" />
     <Compile Include="Client\Data\DC_ListSpaceUpdateEventsResponse.cs" />
-    <Compile Include="Client\Data\DC_ListUserProvidedServiceInstanceCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Client\Data\DC_ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse.cs" />
     <Compile Include="Client\Data\DC_LockOrUnlockBuildpackRequest.cs" />
     <Compile Include="Client\Data\DC_LockOrUnlockBuildpackResponse.cs" />
     <Compile Include="Client\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs" />
@@ -253,7 +222,6 @@
     <Compile Include="Client\Data\DC_RemoveManagerFromOrganizationResponse.cs" />
     <Compile Include="Client\Data\DC_RemoveManagerFromSpaceResponse.cs" />
     <Compile Include="Client\Data\DC_RemoveOrganizationFromUserResponse.cs" />
-    <Compile Include="Client\Data\DC_RemoveProcessRequest.cs" />
     <Compile Include="Client\Data\DC_RemoveRouteFromAppResponse.cs" />
     <Compile Include="Client\Data\DC_RemoveSecurityGroupFromSpaceResponse.cs" />
     <Compile Include="Client\Data\DC_RemoveServiceBindingFromAppResponse.cs" />
@@ -290,7 +258,6 @@
     <Compile Include="Client\Data\DC_RetrieveStackResponse.cs" />
     <Compile Include="Client\Data\DC_RetrieveUserProvidedServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_RetrieveUserResponse.cs" />
-    <Compile Include="Client\Data\DC_RetrievingOrganizationMemoryUsageResponse.cs" />
     <Compile Include="Client\Data\DC_RetrievingPermissionsOnServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_ReturnSecurityGroupsUsedForRunningAppsResponse.cs" />
     <Compile Include="Client\Data\DC_ReturnSecurityGroupsUsedForStagingResponse.cs" />
@@ -318,10 +285,10 @@
     <Compile Include="Client\Data\DC_UpdateServiceBrokerResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateServiceDeprecatedRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateServiceDeprecatedResponse.cs" />
-    <Compile Include="Client\Data\DC_UpdateServiceInstanceRequest.cs" />
-    <Compile Include="Client\Data\DC_UpdateServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanDeprecatedRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanDeprecatedResponse.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanServiceInstanceRequest.cs" />
+    <Compile Include="Client\Data\DC_UpdateServicePlanServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanVisibilityRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateServicePlanVisibilityResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateSpaceQuotaDefinitionRequest.cs" />
@@ -332,9 +299,11 @@
     <Compile Include="Client\Data\DC_UpdateUserProvidedServiceInstanceResponse.cs" />
     <Compile Include="Client\Data\DC_UpdateUserRequest.cs" />
     <Compile Include="Client\Data\DC_UpdateUserResponse.cs" />
+    <Compile Include="Client\Data\DC_UploadsBitsForAppResponse.cs" />
     <Compile Include="Client\DomainsDeprecated.cs" />
     <Compile Include="Client\EnvironmentVariableGroups.cs" />
     <Compile Include="Client\Events.cs" />
+    <Compile Include="Client\FeatureFlags.cs" />
     <Compile Include="Client\Files.cs" />
     <Compile Include="Client\Info.cs" />
     <Compile Include="Client\Jobs.cs" />
@@ -342,6 +311,7 @@
     <Compile Include="Client\Organizations.cs" />
     <Compile Include="Client\PrivateDomains.cs" />
     <Compile Include="Client\ProcessesExperimental.cs" />
+    <Compile Include="Client\ResourceMatch.cs" />
     <Compile Include="Client\Routes.cs" />
     <Compile Include="Client\SecurityGroupRunningDefaults.cs" />
     <Compile Include="Client\SecurityGroups.cs" />
@@ -362,6 +332,9 @@
     <Compile Include="Client\Users.cs" />
     <Compile Include="CloudCredentials.cs" />
     <Compile Include="CloudfoundryClient.cs" />
+    <Compile Include="Exceptions\AuthException.cs" />
+    <Compile Include="Exceptions\CloudFoundryException.cs" />
+    <Compile Include="Exceptions\CloudFoundryExceptionObject.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IResponse.cs" />
     <Compile Include="Metadata.cs" />
@@ -387,6 +360,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
+      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
+      <Name>CloudFoundry.CloudController.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

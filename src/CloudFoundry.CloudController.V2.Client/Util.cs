@@ -1,5 +1,4 @@
-﻿using CloudFoundry.CloudController.V2.Client.Data;
-using CloudFoundry.CloudController.V2.Interfaces;
+﻿using CloudFoundry.CloudController.V2.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

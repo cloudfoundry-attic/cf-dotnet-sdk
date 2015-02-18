@@ -1,8 +1,8 @@
 ﻿using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
-using CloudFoundry.Common;
-using CloudFoundry.Common.Http;
-using CloudFoundry.Common.ServiceLocation;
+using CloudFoundry.CloudController.Common;
+using CloudFoundry.CloudController.Common.Http;
+using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
