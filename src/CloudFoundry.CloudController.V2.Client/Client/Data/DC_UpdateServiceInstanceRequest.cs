@@ -13,24 +13,27 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class UpdateProcessResponse :IResponse
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+public class UpdateServiceInstanceRequest
 {
 
-    public Metadata EntityMetadata
+
+
+    [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? ServicePlanGuid
     {
     get;
     set;
     }
 
-
-
-    [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? Guid
+    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
+    public string Name
     {
     get;
     set;

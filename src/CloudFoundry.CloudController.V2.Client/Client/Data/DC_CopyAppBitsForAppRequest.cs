@@ -13,18 +13,20 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class UpdateServicePlanServiceInstanceRequest
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+public class CopyAppBitsForAppRequest
 {
 
 
 
-    [JsonProperty("service_plan_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? ServicePlanGuid
+    [JsonProperty("source_app_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? SourceAppGuid
     {
     get;
     set;

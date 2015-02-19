@@ -13,11 +13,13 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
 public class RetrieveAppUsageEventResponse :IResponse
 {
 
@@ -94,6 +96,13 @@ public class RetrieveAppUsageEventResponse :IResponse
 
     [JsonProperty("buildpack_name", NullValueHandling=NullValueHandling.Ignore)]
     public string BuildpackName
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("package_state", NullValueHandling=NullValueHandling.Ignore)]
+    public string PackageState
     {
     get;
     set;

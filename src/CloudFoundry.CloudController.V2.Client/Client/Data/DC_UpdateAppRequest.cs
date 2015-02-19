@@ -13,11 +13,13 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
 public class UpdateAppRequest
 {
 
@@ -88,6 +90,13 @@ public class UpdateAppRequest
 
     [JsonProperty("buildpack", NullValueHandling=NullValueHandling.Ignore)]
     public dynamic Buildpack
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("health_check_type", NullValueHandling=NullValueHandling.Ignore)]
+    public string HealthCheckType
     {
     get;
     set;

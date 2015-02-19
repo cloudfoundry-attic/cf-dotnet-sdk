@@ -21,11 +21,11 @@ namespace CloudFoundry.CloudController.V2
         {
             PagedResponse<T> page = new PagedResponse<T>();
             page.Properties = JsonConvert.DeserializeObject<PageProperties>(value, jsonSettings);
-            page.Resources = DeserializeJsonArray<T>(value).ToList<T>();
+            page.Resources = DeserializeJsonResources<T>(value).ToList<T>();
             return page;
         }
 
-        public static T[] DeserializeJsonArray<T>(string value)
+        public static T[] DeserializeJsonResources<T>(string value)
         {
             using (JsonReader reader = new JsonTextReader(new StringReader(value)))
             {
@@ -37,6 +37,11 @@ namespace CloudFoundry.CloudController.V2
                 }
                 return obj["resources"].Select(Deserialize<T>).ToArray();
             }
+        }
+
+        public static T[] DeserializeJsonArray<T>(string value)
+        {
+            return JsonConvert.DeserializeObject<T[]>(value);
         }
 
         public static T DeserializeJson<T>(string value)

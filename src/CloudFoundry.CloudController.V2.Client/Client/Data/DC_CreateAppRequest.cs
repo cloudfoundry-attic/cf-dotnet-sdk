@@ -13,11 +13,13 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
 public class CreateAppRequest
 {
 
@@ -30,29 +32,29 @@ public class CreateAppRequest
     set;
     }
 
+    [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? SpaceGuid
+    {
+    get;
+    set;
+    }
+
     [JsonProperty("memory", NullValueHandling=NullValueHandling.Ignore)]
-    public int? Memory
+    public string Memory
     {
     get;
     set;
     }
 
     [JsonProperty("instances", NullValueHandling=NullValueHandling.Ignore)]
-    public int? Instances
+    public string Instances
     {
     get;
     set;
     }
 
     [JsonProperty("disk_quota", NullValueHandling=NullValueHandling.Ignore)]
-    public int? DiskQuota
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("space_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? SpaceGuid
+    public string DiskQuota
     {
     get;
     set;
@@ -88,6 +90,13 @@ public class CreateAppRequest
 
     [JsonProperty("buildpack", NullValueHandling=NullValueHandling.Ignore)]
     public dynamic Buildpack
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("health_check_type", NullValueHandling=NullValueHandling.Ignore)]
+    public string HealthCheckType
     {
     get;
     set;
