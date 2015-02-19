@@ -39,7 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -56,6 +56,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Deserialization\Test_apps__experimental_.cs" />
+    <Compile Include="Deserialization\Test_files.cs" />
     <Compile Include="Deserialization\Test_resource_match.cs" />
     <Compile Include="Exceptions\Test_CloudFoundryException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,10 +93,16 @@
     <Compile Include="Deserialization\Test_users.cs" />
     <Compile Include="Deserialization\Test_user_provided_service_instances.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
+    <Compile Include="Serialization\Test_apps__experimental_.cs" />
+    <Compile Include="Serialization\Test_app_usage_events.cs" />
     <Compile Include="Serialization\Test_buildpacks.cs" />
     <Compile Include="Serialization\Test_domains__deprecated_.cs" />
     <Compile Include="Serialization\Test_environment_variable_groups.cs" />
+    <Compile Include="Serialization\Test_events.cs" />
     <Compile Include="Serialization\Test_feature_flags.cs" />
+    <Compile Include="Serialization\Test_files.cs" />
+    <Compile Include="Serialization\Test_info.cs" />
+    <Compile Include="Serialization\Test_jobs.cs" />
     <Compile Include="Serialization\Test_organizations.cs" />
     <Compile Include="Serialization\Test_organization_quota_definitions.cs" />
     <Compile Include="Serialization\Test_private_domains.cs" />
@@ -102,15 +110,20 @@
     <Compile Include="Serialization\Test_resource_match.cs" />
     <Compile Include="Serialization\Test_routes.cs" />
     <Compile Include="Serialization\Test_security_groups.cs" />
+    <Compile Include="Serialization\Test_security_group_running_defaults.cs" />
+    <Compile Include="Serialization\Test_security_group_staging_defaults.cs" />
+    <Compile Include="Serialization\Test_serviceauthtokens__deprecated_.cs" />
     <Compile Include="Serialization\Test_services.cs" />
     <Compile Include="Serialization\Test_service_bindings.cs" />
     <Compile Include="Serialization\Test_service_brokers.cs" />
     <Compile Include="Serialization\Test_service_instances.cs" />
     <Compile Include="Serialization\Test_service_plans.cs" />
     <Compile Include="Serialization\Test_service_plan_visibilities.cs" />
+    <Compile Include="Serialization\Test_service_usage_events__experimental_.cs" />
     <Compile Include="Serialization\Test_shared_domains.cs" />
     <Compile Include="Serialization\Test_spaces.cs" />
     <Compile Include="Serialization\Test_space_quota_definitions.cs" />
+    <Compile Include="Serialization\Test_stacks.cs" />
     <Compile Include="Serialization\Test_users.cs" />
     <Compile Include="Serialization\Test_user_provided_service_instances.cs" />
     <Compile Include="TestUtil.cs" />

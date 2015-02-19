@@ -13,11 +13,13 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
 public class CreateSpaceRequest
 {
 
@@ -72,8 +74,8 @@ public class CreateSpaceRequest
     set;
     }
 
-    [JsonProperty("space_quota_definition", NullValueHandling=NullValueHandling.Ignore)]
-    public dynamic SpaceQuotaDefinition
+    [JsonProperty("space_quota_definition_guid", NullValueHandling=NullValueHandling.Ignore)]
+    public Guid? SpaceQuotaDefinitionGuid
     {
     get;
     set;

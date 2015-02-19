@@ -13,12 +13,14 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class CreateDockerProcessResponse :IResponse
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+public class CopyAppBitsForAppResponse :IResponse
 {
 
     public Metadata EntityMetadata
@@ -31,6 +33,13 @@ public class CreateDockerProcessResponse :IResponse
 
     [JsonProperty("guid", NullValueHandling=NullValueHandling.Ignore)]
     public Guid? Guid
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("status", NullValueHandling=NullValueHandling.Ignore)]
+    public string Status
     {
     get;
     set;

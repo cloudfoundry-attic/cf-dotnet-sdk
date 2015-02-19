@@ -13,18 +13,27 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
 public class UpdateServiceBrokerRequest
 {
 
 
 
-    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
-    public string Name
+    [JsonProperty("auth_username", NullValueHandling=NullValueHandling.Ignore)]
+    public string AuthUsername
+    {
+    get;
+    set;
+    }
+
+    [JsonProperty("auth_password", NullValueHandling=NullValueHandling.Ignore)]
+    public string AuthPassword
     {
     get;
     set;
@@ -37,15 +46,8 @@ public class UpdateServiceBrokerRequest
     set;
     }
 
-    [JsonProperty("auth_username", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthUsername
-    {
-    get;
-    set;
-    }
-
-    [JsonProperty("auth_password", NullValueHandling=NullValueHandling.Ignore)]
-    public string AuthPassword
+    [JsonProperty("name", NullValueHandling=NullValueHandling.Ignore)]
+    public string Name
     {
     get;
     set;

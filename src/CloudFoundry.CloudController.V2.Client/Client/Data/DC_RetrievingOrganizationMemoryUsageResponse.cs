@@ -13,18 +13,26 @@
 
 using Newtonsoft.Json;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using CloudFoundry.CloudController.V2.Interfaces;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
-public class CopyAppBitsForAppExperimentalRequest
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+public class RetrievingOrganizationMemoryUsageResponse :IResponse
 {
 
+    public Metadata EntityMetadata
+    {
+    get;
+    set;
+    }
 
 
-    [JsonProperty("source_app_guid", NullValueHandling=NullValueHandling.Ignore)]
-    public Guid? SourceAppGuid
+
+    [JsonProperty("memory_usage_in_mb", NullValueHandling=NullValueHandling.Ignore)]
+    public int? MemoryUsageInMb
     {
     get;
     set;
