@@ -1,22 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 
 namespace CloudFoundry.CloudController.Common.Http
 {
-    public class HttpHeadersAbstraction : IHttpHeadersAbstraction
+    public class HttpHeadersCollection : IHttpHeadersCollection
     {
         private readonly Dictionary<string, IEnumerable<string>> _headers = new Dictionary<string, IEnumerable<string>>();
 
-        public HttpHeadersAbstraction()
+        public HttpHeadersCollection()
         {
         }
 
-        public HttpHeadersAbstraction(HttpResponseHeaders headers)
+        public HttpHeadersCollection(HttpResponseHeaders headers)
         {
+            if (headers == null)
+            {
+                throw new ArgumentNullException("headers");
+            }
+
             foreach (var header in headers)
             {
-                this._headers.Add(header.Key,header.Value);
+                this._headers.Add(header.Key, header.Value);
             }
         }
 
@@ -32,11 +38,16 @@ namespace CloudFoundry.CloudController.Common.Http
 
         public void Add(string name, IEnumerable<string> values)
         {
-            this._headers.Add(name,values);
+            this._headers.Add(name, values);
         }
 
         public void AddRange(HttpResponseHeaders headers)
         {
+            if (headers == null)
+            {
+                throw new ArgumentNullException("headers");
+            }
+
             foreach (var header in headers)
             {
                 this._headers.Add(header.Key, header.Value);
@@ -45,6 +56,11 @@ namespace CloudFoundry.CloudController.Common.Http
 
         public void AddRange(HttpContentHeaders headers)
         {
+            if (headers == null)
+            {
+                throw new ArgumentNullException("headers");
+            }
+
             foreach (var header in headers)
             {
                 this._headers.Add(header.Key, header.Value);

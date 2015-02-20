@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2
 {
     /// <summary>
     /// Credentials of the target cloud
@@ -12,9 +6,10 @@ namespace CloudFoundry.CloudController.V2
     public class CloudCredentials
     {
         /// <summary>
-        /// UserName 
+        /// UserName
         /// </summary>
-        public string User {
+        public string User
+        {
             get;
             set;
         }
@@ -22,7 +17,8 @@ namespace CloudFoundry.CloudController.V2
         /// <summary>
         /// Password
         /// </summary>
-        public string Password{
+        public string Password
+        {
             get;
             set;
         }

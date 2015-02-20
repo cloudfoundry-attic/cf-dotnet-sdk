@@ -2,7 +2,7 @@
 
 namespace CloudFoundry.CloudController.Common.Http
 {
-    public interface IHttpHeadersAbstraction : IEnumerable<KeyValuePair<string, IEnumerable<string>>>
+    public interface IHttpHeadersCollection : IEnumerable<KeyValuePair<string, IEnumerable<string>>>
     {
         void Add(string name, IEnumerable<string> values);
 

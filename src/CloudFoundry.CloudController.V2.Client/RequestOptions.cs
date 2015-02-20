@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace CloudFoundry.CloudController.V2
 {
@@ -16,7 +13,7 @@ namespace CloudFoundry.CloudController.V2
         /// <summary>
         /// Parameters used to filter the result set.
         /// </summary>
-        public string Q { get; set; }
+        public string Query { get; set; }
 
         /// <summary>
         /// Number of results per page
@@ -35,26 +32,26 @@ namespace CloudFoundry.CloudController.V2
 
         public override string ToString()
         {
-            List<string> args = new List<string>();            
-            if(this.Page != null)
+            List<string> args = new List<string>();
+            if (this.Page != null)
             {
-                args.Add(string.Format(this.pageFormat, this.Page));
+                args.Add(string.Format(CultureInfo.InvariantCulture, this.pageFormat, this.Page));
             }
-            if(this.Q != null)
+            if (this.Query != null)
             {
-                args.Add(string.Format(this.qeryFormat, this.Q));
+                args.Add(string.Format(CultureInfo.InvariantCulture, this.qeryFormat, this.Query));
             }
-            if(this.ResultsPerPage != null)
+            if (this.ResultsPerPage != null)
             {
-                args.Add(string.Format(this.resultsFormat, this.ResultsPerPage));
+                args.Add(string.Format(CultureInfo.InvariantCulture, this.resultsFormat, this.ResultsPerPage));
             }
-            if(this.OrderDirection != null)
+            if (this.OrderDirection != null)
             {
-                args.Add(string.Format(this.orderFormat, this.OrderDirection));
+                args.Add(string.Format(CultureInfo.InvariantCulture, this.orderFormat, this.OrderDirection));
             }
-            if(args.Count > 0)
+            if (args.Count > 0)
             {
-                return string.Format("?{0}", string.Join("&", args));
+                return string.Format(CultureInfo.InvariantCulture, "?{0}", string.Join("&", args));
             }
             return string.Empty;
         }

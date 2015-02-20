@@ -5,31 +5,51 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace CloudFoundry.Common.Http
 {
-    public class HttpAbstractionClient : DisposableClass, IHttpAbstractionClient
+    public class HttpAbstractionClient : IDisposable, IHttpAbstractionClient
     {
-        private readonly HttpClient _client;
-        private CancellationToken _cancellationToken = CancellationToken.None;
-        private static readonly TimeSpan _defaultTimeout = new TimeSpan(0, 0, 30);
+        private readonly HttpClientHandler handler = null;
+        private readonly HttpClient client = null;
+        private bool disposed = false;
+        private CancellationToken cancellationToken = CancellationToken.None;
+        private static readonly TimeSpan defaultTimeout = new TimeSpan(0, 0, 30);
 
         internal HttpAbstractionClient(TimeSpan timeout, CancellationToken cancellationToken)
         {
-            this._client = new HttpClient(new HttpClientHandler()) { Timeout = timeout };
+            try
+            {
+                this.handler = new HttpClientHandler();
+                this.client = new HttpClient(this.handler);
+                this.client.Timeout = timeout;
 
-            this._cancellationToken = cancellationToken;
-            this.Method = HttpMethod.Get;
-            this.Headers = new Dictionary<string, string>();
-            this.ContentType = string.Empty;
+                this.cancellationToken = cancellationToken;
+                this.Method = HttpMethod.Get;
+                this.Headers = new Dictionary<string, string>();
+                this.ContentType = string.Empty;
+            }
+            catch
+            {
+                if (this.handler != null)
+                {
+                    this.handler.Dispose();
+                }
+
+                if (this.client != null)
+                {
+                    this.client.Dispose();
+                }
+
+                throw;
+            }
         }
 
         public static IHttpAbstractionClient Create()
         {
-            return new HttpAbstractionClient(_defaultTimeout, CancellationToken.None );
+            return new HttpAbstractionClient(defaultTimeout, CancellationToken.None);
         }
 
         public static IHttpAbstractionClient Create(TimeSpan timeout)
@@ -39,7 +59,7 @@ namespace CloudFoundry.Common.Http
 
         public static IHttpAbstractionClient Create(CancellationToken cancellationToken)
         {
-            return new HttpAbstractionClient(_defaultTimeout, cancellationToken);
+            return new HttpAbstractionClient(defaultTimeout, cancellationToken);
         }
 
         public static IHttpAbstractionClient Create(CancellationToken cancellationToken, TimeSpan timeout)
@@ -69,7 +89,7 @@ namespace CloudFoundry.Common.Http
             return await this.SendAsync(httpContent);
         }
 
-        public async Task<IHttpResponseAbstraction> SendAsync(IEnumerable<IHttpMultiPartFormDataAbstraction> multipartData)
+        public async Task<IHttpResponseAbstraction> SendAsync(IEnumerable<IHttpMultipartFormDataAbstraction> multipartData)
         {
             var httpContent = new MultipartFormDataContent();
             foreach (var field in multipartData)
@@ -112,25 +132,23 @@ namespace CloudFoundry.Common.Http
             }
 
             var startTime = DateTime.Now;
-            
+
             try
             {
-                
-                var result = await this._client.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, this._cancellationToken).ConfigureAwait(false);
-          
-                var headers = new HttpHeadersAbstraction(result.Headers);
+                var result = await this.client.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, this.cancellationToken).ConfigureAwait(false);
+
+                var headers = new HttpHeadersCollection(result.Headers);
 
                 HttpContent content = null;
-                if (result.Content != null )
+                if (result.Content != null)
                 {
                     headers.AddRange(result.Content.Headers);
-                    
-                    content = result.Content; 
+
+                    content = result.Content;
                 }
 
                 var retval = new HttpResponseAbstraction(content, headers, result.StatusCode);
 
-                
                 return retval;
             }
             catch (Exception ex)
@@ -141,11 +159,11 @@ namespace CloudFoundry.Common.Http
                     throw;
                 }
 
-                if (this._cancellationToken.IsCancellationRequested)
+                if (this.cancellationToken.IsCancellationRequested)
                 {
-                    throw new OperationCanceledException("The operation was canceled by user request.", tcex, this._cancellationToken);
+                    throw new OperationCanceledException("The operation was canceled by user request.", tcex, this.cancellationToken);
                 }
-                
+
                 if (DateTime.Now - startTime > this.Timeout)
                 {
                     throw new TimeoutException(string.Format(CultureInfo.InvariantCulture, "The task failed to complete in the given timeout period ({0}).", this.Timeout));
@@ -155,40 +173,28 @@ namespace CloudFoundry.Common.Http
             }
         }
 
-        internal T WaitForResult<T>(Task<T> task, TimeSpan timeout)
+        public void Dispose()
         {
-            if (task == null )
-            {
-                throw new ArgumentNullException("task");
-            }
-
-            try
-            {
-                task.Wait(timeout);
-            }
-            catch (AggregateException aggregateException)
-            {
-                throw GetInnerException(aggregateException);
-            }
-
-            if (task.Status != TaskStatus.RanToCompletion && task.Status != TaskStatus.Faulted && task.Status != TaskStatus.Canceled)
-            {
-                throw new TimeoutException(string.Format(CultureInfo.InvariantCulture, "The task failed to complete in the given timeout period ({0}).", timeout));
-            }
-
-            return task.Result;
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        internal Exception GetInnerException(AggregateException aggregateException)
+        ~HttpAbstractionClient()
         {
-            //helper function to spool off the layers of aggregate exceptions and get the underlying exception... 
-            Exception innerExcception = aggregateException;
-            while (aggregateException != null)
+            this.Dispose(false);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (this.disposed)
             {
-                innerExcception = aggregateException.InnerExceptions[0];
-                aggregateException = innerExcception as AggregateException;
+                return;
             }
-            return innerExcception;
+
+            this.handler.Dispose();
+            this.client.Dispose();
+
+            this.disposed = true;
         }
     }
 }

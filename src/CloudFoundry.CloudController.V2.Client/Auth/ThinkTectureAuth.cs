@@ -1,39 +1,40 @@
 ﻿using CloudFoundry.CloudController.V2.Exceptions;
 using CloudFoundry.CloudController.V2.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using Thinktecture.IdentityModel.Client;
 
 namespace CloudFoundry.CloudController.V2.Auth
 {
-    class ThinkTectureAuth: IAuth
+    internal class ThinkTectureAuth : IAuthentication
     {
-
-        //CF defaults
+        // CF defaults
         private string oauthClient = "cf";
-        private string oauthSecret = "";
+
+        private string oauthSecret = string.Empty;
         private Uri oauthTarget;
         private TokenResponse tokenResponse;
 
-
         public string Authenticate(CloudCredentials credentials)
         {
-            var client = new OAuth2Client(this.oauthTarget, oauthClient, oauthSecret);
+            if (credentials == null)
+            {
+                throw new ArgumentNullException("credentials");
+            }
+
+            var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
 
             this.tokenResponse = client.RequestResourceOwnerPasswordAsync(credentials.User, credentials.Password).Result;
 
             if (this.tokenResponse.IsError)
-                throw new AuthException(string.Format("Unable to connect to target with the provided credentials. Error message: {0}", this.tokenResponse.Error));
+                throw new AuthenticationException(string.Format(CultureInfo.InvariantCulture, "Unable to connect to target with the provided credentials. Error message: {0}", this.tokenResponse.Error));
 
-            return tokenResponse.RefreshToken;
+            return this.tokenResponse.RefreshToken;
         }
 
         public string Authenticate(string refreshToken)
         {
-            this.tokenResponse = RefreshToken(refreshToken);
+            this.tokenResponse = this.RefreshToken(refreshToken);
             return refreshToken;
         }
 
@@ -43,9 +44,11 @@ namespace CloudFoundry.CloudController.V2.Auth
             {
                 return string.Empty;
             }
-            //Check to see if token is about to expire
-            if (this.tokenResponse.ExpiresIn < 60)  {
-                this.tokenResponse = RefreshToken(tokenResponse.RefreshToken);
+
+            // Check to see if token is about to expire
+            if (this.tokenResponse.ExpiresIn < 60)
+            {
+                this.tokenResponse = this.RefreshToken(this.tokenResponse.RefreshToken);
             }
 
             return this.tokenResponse.AccessToken;
@@ -53,15 +56,21 @@ namespace CloudFoundry.CloudController.V2.Auth
 
         private TokenResponse RefreshToken(string refreshToken)
         {
-            var client = new OAuth2Client(oauthTarget, oauthClient, oauthSecret);
+            var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
             var response = client.RequestRefreshTokenAsync(refreshToken).Result;
             return response;
         }
 
-
-        public Uri OauthUrl
+        public Uri OAuthUrl
         {
-            set { this.oauthTarget = value ; }
+            set
+            {
+                this.oauthTarget = value;
+            }
+            get
+            {
+                return this.oauthTarget;
+            }
         }
     }
 }

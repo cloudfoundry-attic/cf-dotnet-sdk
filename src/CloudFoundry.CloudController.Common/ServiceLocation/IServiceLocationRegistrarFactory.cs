@@ -5,7 +5,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
     /// <summary>
     /// Interface for an object that knows how to create service registrars.
     /// </summary>
-    interface IServiceLocationRegistrarFactory
+    internal interface IServiceLocationRegistrarFactory
     {
         /// <summary>
         /// Creates a service registrar.

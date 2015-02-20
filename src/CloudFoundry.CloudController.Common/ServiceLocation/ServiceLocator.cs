@@ -25,7 +25,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
 
         internal void RegisterServices(IEnumerable<IServiceLocationRegistrar> registrars)
         {
-           foreach (var serviceLocationRegistrar in registrars)
+            foreach (var serviceLocationRegistrar in registrars)
             {
                 serviceLocationRegistrar.Register(this._runtimeManager, this);
             }
@@ -98,7 +98,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
             // First try to get a an override
             if (!this._overrideServices.TryGetValue(type, out overrideVersion))
             {
-                //if no override, then try to get the actual service.
+                // if no override, then try to get the actual service.
                 this._services.TryGetValue(type, out runtimeVersion);
             }
 

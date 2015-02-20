@@ -24,13 +24,10 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         {
             var registering = instance as IServiceLocationRegistrar;
             object discoveredInstance;
-            if (this._discovered.TryGetValue(serviceType,
-                                            out discoveredInstance))
+            if (this._discovered.TryGetValue(serviceType, out discoveredInstance))
             {
-                if (!ReferenceEquals(discoveredInstance,
-                                     instance) && !ReferenceEquals(registering,
-                                                                   null))
-                { 
+                if (!ReferenceEquals(discoveredInstance, instance) && !ReferenceEquals(registering, null))
+                {
                     this._discovered[serviceType] = instance;
                     registering.Register(this, this.locator);
                 }
@@ -38,8 +35,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
             else
             {
                 this._discovered[serviceType] = instance;
-                if (!ReferenceEquals(registering,
-                                     null))
+                if (!ReferenceEquals(registering, null))
                 {
                     registering.Register(this, this.locator);
                 }

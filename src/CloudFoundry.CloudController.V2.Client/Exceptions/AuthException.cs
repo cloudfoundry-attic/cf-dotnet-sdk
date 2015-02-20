@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
 
 namespace CloudFoundry.CloudController.V2.Exceptions
 {
-    public class AuthException : Exception
+    public class AuthenticationException : Exception
     {
-        public AuthException()
+        public AuthenticationException()
         {
         }
 
-        public AuthException(string message)
+        public AuthenticationException(string message)
             : base(message)
         {
         }
 
-        public AuthException(string message,
+        public AuthenticationException(
+            string message,
             Exception innerException)
             : base(message, innerException)
         {

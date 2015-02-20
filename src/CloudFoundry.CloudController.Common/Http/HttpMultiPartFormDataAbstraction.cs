@@ -3,7 +3,7 @@
 namespace CloudFoundry.CloudController.Common.Http
 {
     /// <inheritdoc/>
-    public class HttpMultiPartFormDataAbstraction :IHttpMultiPartFormDataAbstraction
+    public class HttpMultipartFormDataAbstraction : IHttpMultipartFormDataAbstraction
     {
         /// <inheritdoc/>
         public string Name { get; private set; }
@@ -24,7 +24,7 @@ namespace CloudFoundry.CloudController.Common.Http
         /// <param name="fileName">The file name of the form field.</param>
         /// <param name="contentType">The content type of the form field.</param>
         /// <param name="content">The content for the field.</param>
-        public HttpMultiPartFormDataAbstraction(string name, string fileName, string contentType, Stream content)
+        public HttpMultipartFormDataAbstraction(string name, string fileName, string contentType, Stream content)
         {
             this.Name = name;
             this.FileName = fileName;

@@ -24,16 +24,11 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         /// <summary>
         /// Registers a type of a service with the service locator.
         /// </summary>
-        /// <typeparam name="T">The interface of the service to be registered.</typeparam>
-        /// <param name="type">A concrete type of the service to be returned by the service locator.</param>
-        void RegisterServiceType<T>(Type type);
-
-        /// <summary>
-        /// Registers a type of a service with the service locator.
-        /// </summary>
         /// <typeparam name="TInterface">The interface of the service to be registered.</typeparam>
-        /// <typeparam name="TConcretion">A concrete type of the service to be returned by the service locator.</typeparam>
-        void RegisterServiceType<TInterface, TConcretion>() where TConcretion : class, TInterface;
+        /// <typeparam name="TClass">A concrete type of the service to be returned by the service locator.</typeparam>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter",
+            Justification = "This is shorthand (no 'typeof') for RegisterServiceType(typeof(TInterface), typeof(TClass))")]
+        void RegisterServiceType<TInterface, TClass>() where TClass : class, TInterface;
 
         /// <summary>
         /// Registers a type of a service with the service locator.

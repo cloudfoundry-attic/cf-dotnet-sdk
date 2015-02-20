@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Reflection;
 
 namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
@@ -18,25 +17,18 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         public abstract void RegisterServiceInstance(Type type, object instance);
 
         /// <inheritdoc/>
-        public void RegisterServiceType<T>(Type registrationValue)
+        public void RegisterServiceType<TInterface, TConcrete>() where TConcrete : class, TInterface
         {
-            this.RegisterServiceType(typeof(T),
-                              registrationValue);
-        }
-
-        /// <inheritdoc/>
-        public void RegisterServiceType<TInterface, TConcreate>() where TConcreate : class, TInterface
-        {
-            this.RegisterServiceType(typeof(TInterface), typeof(TConcreate));
+            this.RegisterServiceType(typeof(TInterface), typeof(TConcrete));
         }
 
         /// <inheritdoc/>
         public void RegisterServiceType(Type type, Type registrationValue)
         {
             ThrowIfInvalidRegistration(type, registrationValue);
-            
+
             var obj = Activator.CreateInstance(registrationValue);
-            
+
             this.RegisterServiceInstance(type, obj);
         }
 
@@ -65,7 +57,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         }
 
         /// <summary>
-        /// Throws an exception if the given Type and implementation represent an invalid registration. 
+        /// Throws an exception if the given Type and implementation represent an invalid registration.
         /// An invalid registration is one where the given Type is of a restricted type, is not an interface, or the given implementation does not inherit from the given Type.
         /// </summary>
         /// <param name="type">A Type object.</param>
@@ -74,9 +66,9 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         {
             ThrowIfNullInstance(type,
                                 implementation);
-            if (type == typeof(IServiceLocationRuntimeManager) || 
-                type == typeof(IServiceLocationOverrideManager) || 
-                type == typeof(IServiceLocationManager) || 
+            if (type == typeof(IServiceLocationRuntimeManager) ||
+                type == typeof(IServiceLocationOverrideManager) ||
+                type == typeof(IServiceLocationManager) ||
                 type == typeof(IServiceLocator))
             {
                 var msg = string.Format(
@@ -86,7 +78,6 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
                 throw new InvalidOperationException(msg);
             }
 
-            
             if (!type.IsInterface())
             {
                 var msg = string.Format(

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.Common
@@ -6,7 +7,7 @@ namespace CloudFoundry.CloudController.Common
     /// <summary>
     /// Static class for extending the Stream class.
     /// </summary>
-    public static class StreamExtentions
+    public static class StreamExtensions
     {
         /// <summary>
         /// Copies the given stream into another stream asynchronously.
@@ -16,6 +17,11 @@ namespace CloudFoundry.CloudController.Common
         /// <returns>An asynchronous task.</returns>
         public static Task CopyAsync(this Stream input, Stream output)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException("input");
+            }
+
             return input.CopyToAsync(output);
         }
     }

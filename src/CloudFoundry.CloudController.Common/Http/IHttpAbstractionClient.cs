@@ -20,12 +20,8 @@ namespace CloudFoundry.CloudController.Common.Http
 
         TimeSpan Timeout { get; set; }
 
-
-        //event EventHandler<HttpProgressEventArgs> HttpReceiveProgress;
-        //event EventHandler<HttpProgressEventArgs> HttpSendProgress;
-
         Task<IHttpResponseAbstraction> SendAsync();
 
-        Task<IHttpResponseAbstraction> SendAsync(IEnumerable<IHttpMultiPartFormDataAbstraction> multipartData );
+        Task<IHttpResponseAbstraction> SendAsync(IEnumerable<IHttpMultipartFormDataAbstraction> multipartData);
     }
 }

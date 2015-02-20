@@ -9,9 +9,10 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
     internal class ServiceLocationAssemblyScanner : IServiceLocationAssemblyScanner
     {
         internal IServiceLocationRegistrarFactory ServiceRegistrarFactory { get; set; }
+
         internal readonly List<Type> _registrars = new List<Type>();
         internal readonly List<Assembly> _assemblies = new List<Assembly>();
-        internal Func<IEnumerable<Type>> GetRegistrarTypes; 
+        internal Func<IEnumerable<Type>> GetRegistrarTypes;
 
         /// <inheritdoc/>
         public bool HasNewAssemblies { get; internal set; }
@@ -44,8 +45,8 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         /// <returns>An enumeration of service location registrars.</returns>
         internal IEnumerable<IServiceLocationRegistrar> GetRegistrars(IEnumerable<Type> registrarTypes)
         {
-           return (from t in registrarTypes
-                           select ServiceRegistrarFactory.Create(t)).ToList();
+            return (from t in registrarTypes
+                    select this.ServiceRegistrarFactory.Create(t)).ToList();
         }
 
         /// <inheritdoc/>
@@ -56,19 +57,19 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
             this._registrars.AddRange(newRegistrars);
             this.HasNewAssemblies = false;
 
-            return GetRegistrars(newRegistrars);
+            return this.GetRegistrars(newRegistrars);
         }
 
         /// <inheritdoc/>
         public IEnumerable<IServiceLocationRegistrar> GetRegistrars()
         {
             var newRegistrars = this.GetNewRegistrarTypes().ToList();
-            
+
             this._registrars.All(newRegistrars.Remove);
             this._registrars.AddRange(newRegistrars);
             this.HasNewAssemblies = false;
 
-            return GetRegistrars(this._registrars);
+            return this.GetRegistrars(this._registrars);
         }
 
         /// <inheritdoc/>
@@ -88,7 +89,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         internal IEnumerable<Type> InternalGetRegistrarTypes()
         {
             var rawTypes = new List<Type>();
-            var serviceRegistrarType = typeof (IServiceLocationRegistrar);
+            var serviceRegistrarType = typeof(IServiceLocationRegistrar);
 
             foreach (var assembly in this._assemblies)
             {

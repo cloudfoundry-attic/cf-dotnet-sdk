@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Exceptions
 {
-   public class CloudFoundryExceptionObject
+    public class CloudFoundryExceptionObject
     {
         [JsonProperty("code")]
         public string Code { get; set; }

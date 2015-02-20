@@ -5,7 +5,7 @@ namespace CloudFoundry.CloudController.Common.Http
     /// <summary>
     /// Abstraction for modeling mutlipart form data.
     /// </summary>
-    public interface IHttpMultiPartFormDataAbstraction
+    public interface IHttpMultipartFormDataAbstraction
     {
         /// <summary>
         /// Gets the name of the form field.

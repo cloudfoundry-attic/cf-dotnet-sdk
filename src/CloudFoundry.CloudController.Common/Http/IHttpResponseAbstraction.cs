@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -9,9 +8,12 @@ namespace CloudFoundry.CloudController.Common.Http
     {
         HttpContent Content { get; }
 
-        IHttpHeadersAbstraction Headers { get; }
+        IHttpHeadersCollection Headers { get; }
+
         bool IsSuccessStatusCode { get; }
+
         HttpRequestMessage RequestMessage { get; set; }
+
         HttpStatusCode StatusCode { get; }
 
         Task<string> ReadContentAsStringAsync();

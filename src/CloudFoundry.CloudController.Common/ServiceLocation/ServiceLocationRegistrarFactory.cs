@@ -3,7 +3,7 @@
 namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
     /// <inheritdoc/>
-    class ServiceLocationRegistrarFactory : IServiceLocationRegistrarFactory
+    internal class ServiceLocationRegistrarFactory : IServiceLocationRegistrarFactory
     {
         /// <inheritdoc/>
         public IServiceLocationRegistrar Create(Type type)

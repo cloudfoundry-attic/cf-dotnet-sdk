@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Interfaces
 {
-    public interface IAuth
+    public interface IAuthentication
     {
         /// <summary>
         /// Authenticates the specified credentials.
@@ -27,6 +23,8 @@ namespace CloudFoundry.CloudController.V2.Interfaces
         /// Gets the access token.
         /// </summary>
         /// <returns>The access token</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate",
+            Justification = "Implementations of this method will have side effects (e.g. making an HTTP request to grab a token)")]
         string GetToken();
 
         /// <summary>
@@ -35,7 +33,8 @@ namespace CloudFoundry.CloudController.V2.Interfaces
         /// <value>
         /// The oauth URL.
         /// </value>
-        Uri OauthUrl { set; }
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Auth",
+            Justification = "OAuth is spelled correctly. See http://oauth.net/")]
+        Uri OAuthUrl { get; set; }
     }
 }
