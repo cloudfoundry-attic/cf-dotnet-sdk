@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class OrganizationQuotaDefinitionsEndpoint: BaseEndpoint
     {
-        public OrganizationQuotaDefinitionsEndpoint(CloudfoundryClient client)
+        public OrganizationQuotaDefinitionsEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -68,14 +67,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions()
+        public async Task<PagedResponseCollection<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions()
         {
             return await ListAllOrganizationQuotaDefinitions(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions(RequestOptions options)
     
         {
             string route = "/v2/quota_definitions";
@@ -93,39 +92,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllOrganizationQuotaDefinitionsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Updating a Organization Quota Definition
-        /// </summary>
-    
-    
-        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
-    
-        {
-            string route = string.Format("/v2/quota_definitions/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllOrganizationQuotaDefinitionsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -155,7 +122,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -187,7 +154,39 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<CreateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Updating a Organization Quota Definition
+        /// </summary>
+    
+    
+        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
+    
+        {
+            string route = string.Format("/v2/quota_definitions/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
             
         
         }

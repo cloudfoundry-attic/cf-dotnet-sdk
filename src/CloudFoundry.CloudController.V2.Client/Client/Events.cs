@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class EventsEndpoint: BaseEndpoint
     {
-        public EventsEndpoint(CloudfoundryClient client)
+        public EventsEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -38,18 +37,18 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List Service Instance Update Events (experimental)
+        /// List Service Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental()
         {
-            return await ListServiceInstanceUpdateEventsExperimental(new RequestOptions());
+            return await ListServiceDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -67,24 +66,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Broker Update Events (experimental)
+        /// List Service Plan Visibility Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental()
         {
-            return await ListServiceBrokerUpdateEventsExperimental(new RequestOptions());
+            return await ListServicePlanVisibilityDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -102,24 +101,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceBrokerUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanVisibilityDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Dashboard Client Delete Events (experimental)
+        /// List Service Instance Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental()
         {
-            return await ListServiceDashboardClientDeleteEventsExperimental(new RequestOptions());
+            return await ListServiceInstanceDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -137,182 +136,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceDashboardClientDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Instance Create Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental()
-        {
-            return await ListServiceInstanceCreateEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List User Provided Service Instance Update Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental()
-        {
-            return await ListUserProvidedServiceInstanceUpdateEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List User Provided Service Instance Delete Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental()
-        {
-            return await ListUserProvidedServiceInstanceDeleteEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Plan Delete Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental()
-        {
-            return await ListServicePlanDeleteEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServicePlanDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Create Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental()
-        {
-            return await ListServiceCreateEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServiceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -322,14 +146,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents()
+        public async Task<PagedResponseCollection<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents()
         {
             return await ListSpaceDeleteEvents(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -347,24 +171,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListSpaceDeleteEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListSpaceDeleteEventsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Broker Create Events (experimental)
+        /// List Service Create Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental()
         {
-            return await ListServiceBrokerCreateEventsExperimental(new RequestOptions());
+            return await ListServiceCreateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -382,7 +206,322 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceBrokerCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List App Update Events
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAppUpdateEventsResponse>> ListAppUpdateEvents()
+        {
+            return await ListAppUpdateEvents(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAppUpdateEventsResponse>> ListAppUpdateEvents(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAppUpdateEventsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Events
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllEventsResponse>> ListAllEvents()
+        {
+            return await ListAllEvents(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllEventsResponse>> ListAllEvents(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllEventsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List Space Create Events
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents()
+        {
+            return await ListSpaceCreateEvents(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListSpaceCreateEventsResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List Service Broker Update Events (experimental)
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental()
+        {
+            return await ListServiceBrokerUpdateEventsExperimental(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListServiceBrokerUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List Service Instance Create Events (experimental)
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental()
+        {
+            return await ListServiceInstanceCreateEventsExperimental(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List events associated with an App since January 1, 2014
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014()
+        {
+            return await ListEventsAssociatedWithAppSinceJanuary12014(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListEventsAssociatedWithAppSinceJanuary12014Response>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List User Provided Service Instance Create Events (experimental)
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental()
+        {
+            return await ListUserProvidedServiceInstanceCreateEventsExperimental(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List Service Dashboard Client Create Events (experimental)
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental()
+        {
+            return await ListServiceDashboardClientCreateEventsExperimental(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListServiceDashboardClientCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List Service Plan Visibility Update Events (experimental)
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental()
+        {
+            return await ListServicePlanVisibilityUpdateEventsExperimental(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListServicePlanVisibilityUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -392,14 +531,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental()
         {
             return await ListServiceUpdateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -417,77 +556,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Broker Delete Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental()
-        {
-            return await ListServiceBrokerDeleteEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServiceBrokerDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Delete Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental()
-        {
-            return await ListServiceDeleteEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServiceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -497,14 +566,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental()
         {
             return await ListServicePlanUpdateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -522,24 +591,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServicePlanUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Plan Visibility Create Events (experimental)
+        /// List App Create Events
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental()
+        public async Task<PagedResponseCollection<ListAppCreateEventsResponse>> ListAppCreateEvents()
         {
-            return await ListServicePlanVisibilityCreateEventsExperimental(new RequestOptions());
+            return await ListAppCreateEvents(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAppCreateEventsResponse>> ListAppCreateEvents(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -557,24 +626,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServicePlanVisibilityCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppCreateEventsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Binding Create Events (experimental)
+        /// List Service Binding Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental()
         {
-            return await ListServiceBindingCreateEventsExperimental(new RequestOptions());
+            return await ListServiceBindingDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -592,77 +661,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceBindingCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Plan Create Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental()
-        {
-            return await ListServicePlanCreateEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServicePlanCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List App Exited Events
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAppExitedEventsResponse>> ListAppExitedEvents()
-        {
-            return await ListAppExitedEvents(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAppExitedEventsResponse>> ListAppExitedEvents(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAppExitedEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBindingDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -692,24 +691,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RetrieveEventResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveEventResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List App Delete Events
+        /// List Service Plan Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAppDeleteEventsResponse>> ListAppDeleteEvents()
+        public async Task<PagedResponseCollection<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental()
         {
-            return await ListAppDeleteEvents(new RequestOptions());
+            return await ListServicePlanDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAppDeleteEventsResponse>> ListAppDeleteEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -727,24 +726,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAppDeleteEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List App Update Events
+        /// List Service Dashboard Client Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAppUpdateEventsResponse>> ListAppUpdateEvents()
+        public async Task<PagedResponseCollection<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental()
         {
-            return await ListAppUpdateEvents(new RequestOptions());
+            return await ListServiceDashboardClientDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAppUpdateEventsResponse>> ListAppUpdateEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -762,24 +761,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAppUpdateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceDashboardClientDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List User Provided Service Instance Create Events (experimental)
+        /// List Service Instance Update Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental()
         {
-            return await ListUserProvidedServiceInstanceCreateEventsExperimental(new RequestOptions());
+            return await ListServiceInstanceUpdateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -797,7 +796,42 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List User Provided Service Instance Delete Events (experimental)
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental()
+        {
+            return await ListUserProvidedServiceInstanceDeleteEventsExperimental(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental(RequestOptions options)
+    
+        {
+            string route = "/v2/events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -807,14 +841,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents()
+        public async Task<PagedResponseCollection<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents()
         {
             return await ListSpaceUpdateEvents(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -832,24 +866,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListSpaceUpdateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListSpaceUpdateEventsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Events
+        /// List Service Plan Visibility Create Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllEventsResponse>> ListAllEvents()
+        public async Task<PagedResponseCollection<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental()
         {
-            return await ListAllEvents(new RequestOptions());
+            return await ListServicePlanVisibilityCreateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllEventsResponse>> ListAllEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -867,24 +901,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanVisibilityCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Dashboard Client Create Events (experimental)
+        /// List Service Broker Create Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental()
         {
-            return await ListServiceDashboardClientCreateEventsExperimental(new RequestOptions());
+            return await ListServiceBrokerCreateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -902,24 +936,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceDashboardClientCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBrokerCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Plan Visibility Update Events (experimental)
+        /// List App Delete Events
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental()
+        public async Task<PagedResponseCollection<ListAppDeleteEventsResponse>> ListAppDeleteEvents()
         {
-            return await ListServicePlanVisibilityUpdateEventsExperimental(new RequestOptions());
+            return await ListAppDeleteEvents(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAppDeleteEventsResponse>> ListAppDeleteEvents(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -937,24 +971,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServicePlanVisibilityUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppDeleteEventsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List App Create Events
+        /// List User Provided Service Instance Update Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAppCreateEventsResponse>> ListAppCreateEvents()
+        public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental()
         {
-            return await ListAppCreateEvents(new RequestOptions());
+            return await ListUserProvidedServiceInstanceUpdateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAppCreateEventsResponse>> ListAppCreateEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -972,24 +1006,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAppCreateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Instance Delete Events (experimental)
+        /// List Service Broker Delete Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental()
         {
-            return await ListServiceInstanceDeleteEventsExperimental(new RequestOptions());
+            return await ListServiceBrokerDeleteEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -1007,24 +1041,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBrokerDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List events associated with an App since January 1, 2014
+        /// List Service Plan Create Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014()
+        public async Task<PagedResponseCollection<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental()
         {
-            return await ListEventsAssociatedWithAppSinceJanuary12014(new RequestOptions());
+            return await ListServicePlanCreateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -1042,24 +1076,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListEventsAssociatedWithAppSinceJanuary12014Response>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Space Create Events
+        /// List App Exited Events
         /// </summary>
     
         
-        public async Task<PagedResponse<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents()
+        public async Task<PagedResponseCollection<ListAppExitedEventsResponse>> ListAppExitedEvents()
         {
-            return await ListSpaceCreateEvents(new RequestOptions());
+            return await ListAppExitedEvents(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAppExitedEventsResponse>> ListAppExitedEvents(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -1077,24 +1111,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListSpaceCreateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppExitedEventsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List Service Binding Delete Events (experimental)
+        /// List Service Binding Create Events (experimental)
         /// </summary>
     
         
-        public async Task<PagedResponse<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental()
+        public async Task<PagedResponseCollection<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental()
         {
-            return await ListServiceBindingDeleteEventsExperimental(new RequestOptions());
+            return await ListServiceBindingCreateEventsExperimental(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental(RequestOptions options)
+        public async Task<PagedResponseCollection<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental(RequestOptions options)
     
         {
             string route = "/v2/events";
@@ -1112,42 +1146,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListServiceBindingDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List Service Plan Visibility Delete Events (experimental)
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental()
-        {
-            return await ListServicePlanVisibilityDeleteEventsExperimental(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental(RequestOptions options)
-    
-        {
-            string route = "/v2/events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServicePlanVisibilityDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBindingCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
             
         
         }

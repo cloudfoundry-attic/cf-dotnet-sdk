@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class SharedDomainsEndpoint: BaseEndpoint
     {
-        public SharedDomainsEndpoint(CloudfoundryClient client)
+        public SharedDomainsEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -38,24 +37,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// List all Shared Domains
+        /// Retrieve a Particular Shared Domain
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains()
-        {
-            return await ListAllSharedDomains(new RequestOptions());
-        }
-        
     
     
-        public async Task<PagedResponse<ListAllSharedDomainsResponse>> ListAllSharedDomains(RequestOptions options)
+        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid? guid)
     
         {
-            string route = "/v2/shared_domains";
+            string route = string.Format("/v2/shared_domains/{0}", guid);
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -67,42 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllSharedDomainsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Filtering Shared Domains by name
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName()
-        {
-            return await FilterSharedDomainsByName(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName(RequestOptions options)
-    
-        {
-            string route = "/v2/shared_domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<FilterSharedDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveSharedDomainResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -134,7 +93,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<CreateSharedDomainResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateSharedDomainResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -166,19 +125,24 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Retrieve a Particular Shared Domain
+        /// Filtering Shared Domains by name
         /// </summary>
     
         
+        public async Task<PagedResponseCollection<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName()
+        {
+            return await FilterSharedDomainsByName(new RequestOptions());
+        }
+        
     
     
-        public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid? guid)
+        public async Task<PagedResponseCollection<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName(RequestOptions options)
     
         {
-            string route = string.Format("/v2/shared_domains/{0}", guid);
+            string route = "/v2/shared_domains";
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -190,7 +154,42 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RetrieveSharedDomainResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<FilterSharedDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Shared Domains
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllSharedDomainsResponse>> ListAllSharedDomains()
+        {
+            return await ListAllSharedDomains(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllSharedDomainsResponse>> ListAllSharedDomains(RequestOptions options)
+    
+        {
+            string route = "/v2/shared_domains";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllSharedDomainsResponse>(await response.ReadContentAsStringAsync());
             
         
         }

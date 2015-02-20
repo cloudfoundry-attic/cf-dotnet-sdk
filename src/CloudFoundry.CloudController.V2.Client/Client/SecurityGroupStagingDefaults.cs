@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,40 +28,44 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class SecurityGroupStagingDefaultsEndpoint: BaseEndpoint
     {
-        public SecurityGroupStagingDefaultsEndpoint(CloudfoundryClient client)
+        public SecurityGroupStagingDefaultsEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
-            this.ServiceLocator = client.ServiceLocator;
             this.auth = client.auth;
         }
     
         /// <summary>
-        /// Set a Security Group as a default for staging
+        /// Return the Security Groups used for staging
         /// </summary>
     
+        
+        public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging()
+        {
+            return await ReturnSecurityGroupsUsedForStaging(new RequestOptions());
+        }
+        
     
-        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
+    
+        public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
     
         {
-            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
+            string route = "/v2/config/staging_security_groups";
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ReturnSecurityGroupsUsedForStagingResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -94,36 +97,31 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Return the Security Groups used for staging
+        /// Set a Security Group as a default for staging
         /// </summary>
     
-        
-        public async Task<PagedResponse<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging()
-        {
-            return await ReturnSecurityGroupsUsedForStaging(new RequestOptions());
-        }
-        
     
-    
-        public async Task<PagedResponse<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
+        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
     
         {
-            string route = "/v2/config/staging_security_groups";
+            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ReturnSecurityGroupsUsedForStagingResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
             
         
         }

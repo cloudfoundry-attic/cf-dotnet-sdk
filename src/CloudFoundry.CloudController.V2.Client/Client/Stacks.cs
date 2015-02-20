@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class StacksEndpoint: BaseEndpoint
     {
-        public StacksEndpoint(CloudfoundryClient client)
+        public StacksEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -62,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -72,14 +71,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllStacksResponse>> ListAllStacks()
+        public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks()
         {
             return await ListAllStacks(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllStacksResponse>> ListAllStacks(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks(RequestOptions options)
     
         {
             string route = "/v2/stacks";
@@ -97,7 +96,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllStacksResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllStacksResponse>(await response.ReadContentAsStringAsync());
             
         
         }

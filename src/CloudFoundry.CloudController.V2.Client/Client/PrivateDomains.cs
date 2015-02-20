@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class PrivateDomainsEndpoint: BaseEndpoint
     {
-        public PrivateDomainsEndpoint(CloudfoundryClient client)
+        public PrivateDomainsEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -38,33 +37,71 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Create a Private Domain owned by the given Organization
+        /// Filtering Private Domains by name
         /// </summary>
     
+        
+        public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
+        {
+            return await FilterPrivateDomainsByName(new RequestOptions());
+        }
+        
     
-        public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
+    
+        public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
     
         {
             string route = "/v2/private_domains";
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Post;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
         
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Private Domains
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
+        {
+            return await ListAllPrivateDomains(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
+    
+        {
+            string route = "/v2/private_domains";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -94,77 +131,39 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// Filtering Private Domains by name
+        /// Create a Private Domain owned by the given Organization
         /// </summary>
     
-        
-        public async Task<PagedResponse<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
-        {
-            return await FilterPrivateDomainsByName(new RequestOptions());
-        }
-        
     
-    
-        public async Task<PagedResponse<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
+        public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
     
         {
             string route = "/v2/private_domains";
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
         
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
         
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List all Private Domains
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
-        {
-            return await ListAllPrivateDomains(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
-    
-        {
-            string route = "/v2/private_domains";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
             
         
         }

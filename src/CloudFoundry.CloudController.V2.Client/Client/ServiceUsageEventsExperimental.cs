@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,12 +28,81 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class ServiceUsageEventsExperimentalEndpoint: BaseEndpoint
     {
-        public ServiceUsageEventsExperimentalEndpoint(CloudfoundryClient client)
+        public ServiceUsageEventsExperimentalEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.auth = client.auth;
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Usage Event
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_usage_events/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List Service Usage Events
+        /// </summary>
+        /// Events are sorted by internal database IDs. This order may differ from created_at.
+        /// 
+        /// Events close to the current time should not be processed because other events may still have open
+        /// transactions that will change their order in the results.
+    
+        
+        public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents()
+        {
+            return await ListServiceUsageEvents(new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents(RequestOptions options)
+    
+        {
+            string route = "/v2/service_usage_events";
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListServiceUsageEventsResponse>(await response.ReadContentAsStringAsync());
+            
+        
         }
     
         /// <summary>
@@ -66,75 +134,6 @@ namespace CloudFoundry.CloudController.V2.Client
         
         
             var response = await this.SendAsync(client);
-        
-        }
-    
-        /// <summary>
-        /// List Service Usage Events
-        /// </summary>
-        /// Events are sorted by internal database IDs. This order may differ from created_at.
-        /// 
-        /// Events close to the current time should not be processed because other events may still have open
-        /// transactions that will change their order in the results.
-    
-        
-        public async Task<PagedResponse<ListServiceUsageEventsResponse>> ListServiceUsageEvents()
-        {
-            return await ListServiceUsageEvents(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListServiceUsageEventsResponse>> ListServiceUsageEvents(RequestOptions options)
-    
-        {
-            string route = "/v2/service_usage_events";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListServiceUsageEventsResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service Usage Event
-        /// </summary>
-    
-        
-    
-    
-        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_usage_events/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
-            
         
         }
     

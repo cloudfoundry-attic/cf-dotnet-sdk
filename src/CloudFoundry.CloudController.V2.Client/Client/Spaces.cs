@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class SpacesEndpoint: BaseEndpoint
     {
-        public SpacesEndpoint(CloudfoundryClient client)
+        public SpacesEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -38,109 +37,18 @@ namespace CloudFoundry.CloudController.V2.Client
         }
     
         /// <summary>
-        /// Delete a Particular Space
-        /// </summary>
-    
-    
-        public async Task DeleteSpace(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
-        
-        }
-    
-        /// <summary>
-        /// Remove Security Group from the Space
-        /// </summary>
-    
-    
-        public async Task<RemoveSecurityGroupFromSpaceResponse> RemoveSecurityGroupFromSpace(Guid? guid, Guid? security_group_guid)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<RemoveSecurityGroupFromSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List all Security Groups for the Space
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid)
-        {
-            return await ListAllSecurityGroupsForSpace(guid, new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/security_groups", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllSecurityGroupsForSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
         /// List all Service Instances for the Space
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid)
         {
             return await ListAllServiceInstancesForSpace(guid, new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid, RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/service_instances", guid);
@@ -158,55 +66,20 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllServiceInstancesForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServiceInstancesForSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Auditors for the Space
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid)
-        {
-            return await ListAllAuditorsForSpace(guid, new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/auditors", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllAuditorsForSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Associate Security Group with the Space
+        /// Remove Manager from the Space
         /// </summary>
     
     
-        public async Task<AssociateSecurityGroupWithSpaceResponse> AssociateSecurityGroupWithSpace(Guid? guid, Guid? security_group_guid)
+        public async Task<RemoveManagerFromSpaceResponse> RemoveManagerFromSpace(Guid? guid, Guid? manager_guid)
     
         {
-            string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
+            string route = string.Format("/v2/spaces/{0}/managers/{1}", guid, manager_guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -214,7 +87,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
         
             client.ContentType = "application/x-www-form-urlencoded";
@@ -223,27 +96,27 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<AssociateSecurityGroupWithSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RemoveManagerFromSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Developers for the Space
+        /// List all Apps for the Space
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid)
         {
-            return await ListAllDevelopersForSpace(guid, new RequestOptions());
+            return await ListAllAppsForSpace(guid, new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid, RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid, RequestOptions options)
     
         {
-            string route = string.Format("/v2/spaces/{0}/developers", guid);
+            string route = string.Format("/v2/spaces/{0}/apps", guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
@@ -258,27 +131,27 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllDevelopersForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAppsForSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Services for the Space
+        /// List all Spaces
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllSpacesResponse>> ListAllSpaces()
         {
-            return await ListAllServicesForSpace(guid, new RequestOptions());
+            return await ListAllSpaces(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid, RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllSpacesResponse>> ListAllSpaces(RequestOptions options)
     
         {
-            string route = string.Format("/v2/spaces/{0}/services", guid);
+            string route = "/v2/spaces";
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
@@ -293,37 +166,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllServicesForSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Associate Auditor with the Space
-        /// </summary>
-    
-    
-        public async Task<AssociateAuditorWithSpaceResponse> AssociateAuditorWithSpace(Guid? guid, Guid? auditor_guid)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<AssociateAuditorWithSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllSpacesResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -355,97 +198,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<UpdateSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Associate Developer with the Space
-        /// </summary>
-    
-    
-        public async Task<AssociateDeveloperWithSpaceResponse> AssociateDeveloperWithSpace(Guid? guid, Guid? developer_guid)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<AssociateDeveloperWithSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Remove Auditor from the Space
-        /// </summary>
-    
-    
-        public async Task<RemoveAuditorFromSpaceResponse> RemoveAuditorFromSpace(Guid? guid, Guid? auditor_guid)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<RemoveAuditorFromSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Remove Manager from the Space
-        /// </summary>
-    
-    
-        public async Task<RemoveManagerFromSpaceResponse> RemoveManagerFromSpace(Guid? guid, Guid? manager_guid)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/managers/{1}", guid, manager_guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<RemoveManagerFromSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<UpdateSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -475,42 +228,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RetrieveSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List all Managers for the Space
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid)
-        {
-            return await ListAllManagersForSpace(guid, new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/managers", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllManagersForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -520,14 +238,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid)
         {
             return await ListAllDomainsForSpaceDeprecated(guid, new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid, RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid, RequestOptions options)
     
         {
             string route = string.Format("/v2/spaces/{0}/domains", guid);
@@ -545,7 +263,42 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllDomainsForSpaceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllDomainsForSpaceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Routes for the Space
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid)
+        {
+            return await ListAllRoutesForSpace(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/routes", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllRoutesForSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -575,90 +328,20 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<AssociateManagerWithSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<AssociateManagerWithSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Events for the Space
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid)
-        {
-            return await ListAllEventsForSpace(guid, new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid, RequestOptions options)
-    
-        {
-            string route = string.Format("/v2/spaces/{0}/events", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllEventsForSpaceResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// List all Spaces
-        /// </summary>
-    
-        
-        public async Task<PagedResponse<ListAllSpacesResponse>> ListAllSpaces()
-        {
-            return await ListAllSpaces(new RequestOptions());
-        }
-        
-    
-    
-        public async Task<PagedResponse<ListAllSpacesResponse>> ListAllSpaces(RequestOptions options)
-    
-        {
-            string route = "/v2/spaces";
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllSpacesResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Remove Developer from the Space
+        /// Remove Auditor from the Space
         /// </summary>
     
     
-        public async Task<RemoveDeveloperFromSpaceResponse> RemoveDeveloperFromSpace(Guid? guid, Guid? developer_guid)
+        public async Task<RemoveAuditorFromSpaceResponse> RemoveAuditorFromSpace(Guid? guid, Guid? auditor_guid)
     
         {
-            string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
+            string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -675,7 +358,77 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<RemoveDeveloperFromSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RemoveAuditorFromSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Auditors for the Space
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid)
+        {
+            return await ListAllAuditorsForSpace(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/auditors", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllAuditorsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Security Groups for the Space
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid)
+        {
+            return await ListAllSecurityGroupsForSpace(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/security_groups", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllSecurityGroupsForSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
@@ -707,27 +460,27 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<CreateSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Apps for the Space
+        /// List all Managers for the Space
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid)
         {
-            return await ListAllAppsForSpace(guid, new RequestOptions());
+            return await ListAllManagersForSpace(guid, new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid, RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid, RequestOptions options)
     
         {
-            string route = string.Format("/v2/spaces/{0}/apps", guid);
+            string route = string.Format("/v2/spaces/{0}/managers", guid);
         
             
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
@@ -742,43 +495,34 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllAppsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllManagersForSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }
     
         /// <summary>
-        /// List all Routes for the Space
+        /// Delete a Particular Space
         /// </summary>
     
-        
-        public async Task<PagedResponse<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid)
-        {
-            return await ListAllRoutesForSpace(guid, new RequestOptions());
-        }
-        
     
-    
-        public async Task<PagedResponse<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid, RequestOptions options)
+        public async Task DeleteSpace(Guid? guid)
     
         {
-            string route = string.Format("/v2/spaces/{0}/routes", guid);
+            string route = string.Format("/v2/spaces/{0}", guid);
         
             
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
 
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
         
         
             var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializePage<ListAllRoutesForSpaceResponse>(await response.ReadContentAsStringAsync());
-            
         
         }
     
@@ -807,7 +551,262 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<GetSpaceSummaryResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetSpaceSummaryResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Remove Developer from the Space
+        /// </summary>
+    
+    
+        public async Task<RemoveDeveloperFromSpaceResponse> RemoveDeveloperFromSpace(Guid? guid, Guid? developer_guid)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<RemoveDeveloperFromSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Associate Auditor with the Space
+        /// </summary>
+    
+    
+        public async Task<AssociateAuditorWithSpaceResponse> AssociateAuditorWithSpace(Guid? guid, Guid? auditor_guid)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<AssociateAuditorWithSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Events for the Space
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid)
+        {
+            return await ListAllEventsForSpace(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/events", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllEventsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Services for the Space
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid)
+        {
+            return await ListAllServicesForSpace(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/services", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllServicesForSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// List all Developers for the Space
+        /// </summary>
+    
+        
+        public async Task<PagedResponseCollection<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid)
+        {
+            return await ListAllDevelopersForSpace(guid, new RequestOptions());
+        }
+        
+    
+    
+        public async Task<PagedResponseCollection<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid, RequestOptions options)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/developers", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializePage<ListAllDevelopersForSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Associate Security Group with the Space
+        /// </summary>
+    
+    
+        public async Task<AssociateSecurityGroupWithSpaceResponse> AssociateSecurityGroupWithSpace(Guid? guid, Guid? security_group_guid)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<AssociateSecurityGroupWithSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Associate Developer with the Space
+        /// </summary>
+    
+    
+        public async Task<AssociateDeveloperWithSpaceResponse> AssociateDeveloperWithSpace(Guid? guid, Guid? developer_guid)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<AssociateDeveloperWithSpaceResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Remove Security Group from the Space
+        /// </summary>
+    
+    
+        public async Task<RemoveSecurityGroupFromSpaceResponse> RemoveSecurityGroupFromSpace(Guid? guid, Guid? security_group_guid)
+    
+        {
+            string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<RemoveSecurityGroupFromSpaceResponse>(await response.ReadContentAsStringAsync());
             
         
         }

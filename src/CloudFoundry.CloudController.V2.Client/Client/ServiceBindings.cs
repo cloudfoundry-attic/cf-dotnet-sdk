@@ -14,7 +14,6 @@
 using CloudFoundry.CloudController.V2.Client.Data;
 using CloudFoundry.CloudController.V2.Interfaces;
 using CloudFoundry.CloudController.Common;
-using CloudFoundry.CloudController.Common.ServiceLocation;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
@@ -29,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public class ServiceBindingsEndpoint: BaseEndpoint
     {
-        public ServiceBindingsEndpoint(CloudfoundryClient client)
+        public ServiceBindingsEndpoint(CloudFoundryClient client)
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
@@ -42,14 +41,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
     
         
-        public async Task<PagedResponse<ListAllServiceBindingsResponse>> ListAllServiceBindings()
+        public async Task<PagedResponseCollection<ListAllServiceBindingsResponse>> ListAllServiceBindings()
         {
             return await ListAllServiceBindings(new RequestOptions());
         }
         
     
     
-        public async Task<PagedResponse<ListAllServiceBindingsResponse>> ListAllServiceBindings(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllServiceBindingsResponse>> ListAllServiceBindings(RequestOptions options)
     
         {
             string route = "/v2/service_bindings";
@@ -67,8 +66,64 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
             
+        
+        }
+    
+        /// <summary>
+        /// Retrieve a Particular Service Binding
+        /// </summary>
+    
+        
+    
+    
+        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_bindings/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+        
+            var response = await this.SendAsync(client);
+        
+            
+            return Utilities.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
+            
+        
+        }
+    
+        /// <summary>
+        /// Delete a Particular Service Binding
+        /// </summary>
+    
+    
+        public async Task DeleteServiceBinding(Guid? guid)
+    
+        {
+            string route = string.Format("/v2/service_bindings/{0}", guid);
+        
+            
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+        
+            client.ContentType = "application/x-www-form-urlencoded";
+        
+        
+            var response = await this.SendAsync(client);
         
         }
     
@@ -99,64 +154,8 @@ namespace CloudFoundry.CloudController.V2.Client
             var response = await this.SendAsync(client);
         
             
-            return Util.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
             
-        
-        }
-    
-        /// <summary>
-        /// Retrieve a Particular Service Binding
-        /// </summary>
-    
-        
-    
-    
-        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_bindings/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-        
-            var response = await this.SendAsync(client);
-        
-            
-            return Util.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
-            
-        
-        }
-    
-        /// <summary>
-        /// Delete a Particular Service Binding
-        /// </summary>
-    
-    
-        public async Task DeleteServiceBinding(Guid? guid)
-    
-        {
-            string route = string.Format("/v2/service_bindings/{0}", guid);
-        
-            
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-        
-            client.ContentType = "application/x-www-form-urlencoded";
-        
-        
-            var response = await this.SendAsync(client);
         
         }
     
