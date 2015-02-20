@@ -16,6 +16,7 @@ using CloudFoundry.CloudController.V2.Client.Data;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -35,7 +36,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <summary>
         /// List all Service Bindings
         /// </summary>
-
         public async Task<PagedResponseCollection<ListAllServiceBindingsResponse>> ListAllServiceBindings()
         {
             return await ListAllServiceBindings(new RequestOptions());
@@ -44,85 +44,60 @@ namespace CloudFoundry.CloudController.V2.Client
         public async Task<PagedResponseCollection<ListAllServiceBindingsResponse>> ListAllServiceBindings(RequestOptions options)
         {
             string route = "/v2/service_bindings";
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-
             var response = await this.SendAsync(client);
-
             return Utilities.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Create a Service Binding
+        /// </summary>
+        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
+        {
+            string route = "/v2/service_bindings";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var response = await this.SendAsync(client);
+            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// Retrieve a Particular Service Binding
         /// </summary>
-
         public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
         {
             string route = string.Format("/v2/service_bindings/{0}", guid);
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-
             var response = await this.SendAsync(client);
-
             return Utilities.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// Delete a Particular Service Binding
         /// </summary>
-
         public async Task DeleteServiceBinding(Guid? guid)
         {
             string route = string.Format("/v2/service_bindings/{0}", guid);
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
-
             client.ContentType = "application/x-www-form-urlencoded";
-
             var response = await this.SendAsync(client);
-        }
-
-        /// <summary>
-        /// Create a Service Binding
-        /// </summary>
-
-        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
-        {
-            string route = "/v2/service_bindings";
-
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-
-            client.ContentType = "application/x-www-form-urlencoded";
-
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-
-            var response = await this.SendAsync(client);
-
-            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

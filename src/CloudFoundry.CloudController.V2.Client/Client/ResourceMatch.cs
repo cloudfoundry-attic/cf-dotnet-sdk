@@ -16,6 +16,7 @@ using CloudFoundry.CloudController.V2.Client.Data;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -35,25 +36,17 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <summary>
         /// List all matching resources
         /// </summary>
-
         public async Task<ListAllMatchingResourcesResponse[]> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value)
         {
             string route = "/v2/resource_match";
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
-
             client.ContentType = "application/x-www-form-urlencoded";
-
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-
             var response = await this.SendAsync(client);
-
             return Utilities.DeserializeJsonArray<ListAllMatchingResourcesResponse>(await response.ReadContentAsStringAsync());
         }
     }

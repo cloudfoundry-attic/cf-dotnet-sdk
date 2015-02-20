@@ -16,6 +16,7 @@ using CloudFoundry.CloudController.V2.Client.Data;
 using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -33,55 +34,8 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Create a Service Broker
-        /// </summary>
-
-        public async Task<CreateServiceBrokerResponse> CreateServiceBroker(CreateServiceBrokerRequest value)
-        {
-            string route = "/v2/service_brokers";
-
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-
-            client.ContentType = "application/x-www-form-urlencoded";
-
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-
-            var response = await this.SendAsync(client);
-
-            return Utilities.DeserializeJson<CreateServiceBrokerResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Service Broker
-        /// </summary>
-
-        public async Task DeleteServiceBroker(Guid? guid)
-        {
-            string route = string.Format("/v2/service_brokers/{0}", guid);
-
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-
-            client.ContentType = "application/x-www-form-urlencoded";
-
-            var response = await this.SendAsync(client);
-        }
-
-        /// <summary>
         /// List all Service Brokers
         /// </summary>
-
         public async Task<PagedResponseCollection<ListAllServiceBrokersResponse>> ListAllServiceBrokers()
         {
             return await ListAllServiceBrokers(new RequestOptions());
@@ -90,63 +44,76 @@ namespace CloudFoundry.CloudController.V2.Client
         public async Task<PagedResponseCollection<ListAllServiceBrokersResponse>> ListAllServiceBrokers(RequestOptions options)
         {
             string route = "/v2/service_brokers";
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-
             var response = await this.SendAsync(client);
-
             return Utilities.DeserializePage<ListAllServiceBrokersResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// Retrieve a Particular Service Broker
         /// </summary>
-
         public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
         {
             string route = string.Format("/v2/service_brokers/{0}", guid);
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-
             var response = await this.SendAsync(client);
-
             return Utilities.DeserializeJson<RetrieveServiceBrokerResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Create a Service Broker
+        /// </summary>
+        public async Task<CreateServiceBrokerResponse> CreateServiceBroker(CreateServiceBrokerRequest value)
+        {
+            string route = "/v2/service_brokers";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var response = await this.SendAsync(client);
+            return Utilities.DeserializeJson<CreateServiceBrokerResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Delete a Particular Service Broker
+        /// </summary>
+        public async Task DeleteServiceBroker(Guid? guid)
+        {
+            string route = string.Format("/v2/service_brokers/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var response = await this.SendAsync(client);
         }
 
         /// <summary>
         /// Update a Service Broker
         /// </summary>
-
         public async Task<UpdateServiceBrokerResponse> UpdateServiceBroker(Guid? guid, UpdateServiceBrokerRequest value)
         {
             string route = string.Format("/v2/service_brokers/{0}", guid);
-
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
-
             client.ContentType = "application/x-www-form-urlencoded";
-
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-
             var response = await this.SendAsync(client);
-
             return Utilities.DeserializeJson<UpdateServiceBrokerResponse>(await response.ReadContentAsStringAsync());
         }
     }

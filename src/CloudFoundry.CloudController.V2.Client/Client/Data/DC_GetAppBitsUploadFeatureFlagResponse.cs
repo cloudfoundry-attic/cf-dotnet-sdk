@@ -13,7 +13,9 @@
 
 using CloudFoundry.CloudController.V2.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
