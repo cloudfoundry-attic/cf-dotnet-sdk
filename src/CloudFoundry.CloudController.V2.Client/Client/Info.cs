@@ -44,7 +44,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GetInfoResponse>(await response.ReadContentAsStringAsync());
         }
     }

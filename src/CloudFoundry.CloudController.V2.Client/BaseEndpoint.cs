@@ -26,11 +26,11 @@ namespace CloudFoundry.CloudController.V2
             return new KeyValuePair<string, string>("Authorization", "bearer " + this.auth.GetToken());
         }
 
-        internal async Task<IHttpResponseAbstraction> SendAsync(IHttpAbstractionClient client)
+        internal async Task<IHttpResponseAbstraction> SendAsync(IHttpAbstractionClient client, int expectedReturnStatus)
         {
             var result = await client.SendAsync();
 
-            if (!result.IsSuccessStatusCode)
+            if (((int)result.StatusCode) != expectedReturnStatus)
             {
                 // Check if we can deserialize the response
                 CloudFoundryException cloudFoundryException;
