@@ -1,4 +1,5 @@
-﻿using System;
+using CloudFoundry.CloudController.Common.Http;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
             this._runtimeManager = new ServiceLocationRuntimeManager(this);
             this._services.Add(typeof(IServiceLocationRuntimeManager), this._runtimeManager);
             this._services.Add(typeof(IServiceLocationOverrideManager), new ServiceLocationOverrideManager(this));
+            this._services.Add(typeof(IHttpAbstractionClientFactory), new HttpAbstractionClientFactory());
             this._scanner.AddAssembly(this.GetType().GetAssembly());
             this.RegisterServices();
         }
