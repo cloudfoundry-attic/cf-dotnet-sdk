@@ -45,7 +45,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveSpaceFromUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -61,7 +62,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateSpaceWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -77,7 +79,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveBillingManagedOrganizationFromUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -93,7 +96,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveAuditedOrganizationFromUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -113,7 +117,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllBillingManagedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -133,7 +138,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllAuditedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -153,7 +159,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -173,7 +180,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllManagedSpacesForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -189,7 +197,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveManagedOrganizationFromUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -204,7 +213,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GetUserSummaryResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -220,7 +230,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateManagedOrganizationWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -240,7 +251,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllUsersResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -256,7 +268,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateAuditedOrganizationWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -272,7 +285,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
 
         /// <summary>
@@ -287,7 +301,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateManagedSpaceWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -303,7 +318,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateOrganizationWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -318,7 +334,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -334,7 +351,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateAuditedSpaceWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -354,7 +372,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllSpacesForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -374,7 +393,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllAuditedSpacesForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -390,7 +410,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateBillingManagedOrganizationWithUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -407,7 +428,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<UpdateUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -424,7 +446,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<CreateUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -440,7 +463,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveOrganizationFromUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -460,7 +484,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllManagedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -476,7 +501,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveAuditedSpaceFromUserResponse>(await response.ReadContentAsStringAsync());
         }
 
@@ -492,7 +518,8 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var response = await this.SendAsync(client);
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RemoveManagedSpaceFromUserResponse>(await response.ReadContentAsStringAsync());
         }
     }
