@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3560C779-F4FD-4AD3-86C5-A7AD8511DBAD}</ProjectGuid>
+    <ProjectGuid>{43F5B670-D892-407A-959B-6BED1376C6CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CloudFoundry.CloudController.Test</RootNamespace>
-    <AssemblyName>CloudFoundry.CloudController.Test</AssemblyName>
+    <RootNamespace>CloudFoundry.CloudController.V2.Client.Test</RootNamespace>
+    <AssemblyName>CloudFoundry.CloudController.V2.Client.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,9 +16,9 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <NuGetPackageImportStamp>acdb4bfc</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>7a30c1d5</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,51 +37,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise />
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Deserialization\Test_apps__experimental_.cs" />
-    <Compile Include="Deserialization\Test_files.cs" />
-    <Compile Include="Deserialization\Test_resource_match.cs" />
     <Compile Include="Exceptions\Test_CloudFoundryException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Deserialization\Test_apps.cs" />
-    <Compile Include="Deserialization\Test_app_usage_events.cs" />
-    <Compile Include="Deserialization\Test_buildpacks.cs" />
-    <Compile Include="Deserialization\Test_domains__deprecated_.cs" />
-    <Compile Include="Deserialization\Test_environment_variable_groups.cs" />
-    <Compile Include="Deserialization\Test_events.cs" />
-    <Compile Include="Deserialization\Test_feature_flags.cs" />
-    <Compile Include="Deserialization\Test_info.cs" />
-    <Compile Include="Deserialization\Test_jobs.cs" />
-    <Compile Include="Deserialization\Test_organizations.cs" />
-    <Compile Include="Deserialization\Test_organization_quota_definitions.cs" />
-    <Compile Include="Deserialization\Test_private_domains.cs" />
-    <Compile Include="Deserialization\Test_processes__experimental_.cs" />
-    <Compile Include="Deserialization\Test_routes.cs" />
-    <Compile Include="Deserialization\Test_security_groups.cs" />
-    <Compile Include="Deserialization\Test_security_group_running_defaults.cs" />
-    <Compile Include="Deserialization\Test_security_group_staging_defaults.cs" />
-    <Compile Include="Deserialization\Test_serviceauthtokens__deprecated_.cs" />
-    <Compile Include="Deserialization\Test_services.cs" />
-    <Compile Include="Deserialization\Test_service_bindings.cs" />
-    <Compile Include="Deserialization\Test_service_brokers.cs" />
-    <Compile Include="Deserialization\Test_service_instances.cs" />
-    <Compile Include="Deserialization\Test_service_plans.cs" />
-    <Compile Include="Deserialization\Test_service_plan_visibilities.cs" />
-    <Compile Include="Deserialization\Test_service_usage_events__experimental_.cs" />
-    <Compile Include="Deserialization\Test_shared_domains.cs" />
-    <Compile Include="Deserialization\Test_spaces.cs" />
-    <Compile Include="Deserialization\Test_space_quota_definitions.cs" />
-    <Compile Include="Deserialization\Test_stacks.cs" />
-    <Compile Include="Deserialization\Test_users.cs" />
-    <Compile Include="Deserialization\Test_user_provided_service_instances.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
     <Compile Include="Serialization\Test_apps__experimental_.cs" />
     <Compile Include="Serialization\Test_app_usage_events.cs" />
@@ -119,13 +95,20 @@
     <Compile Include="TestUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
+      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
+      <Name>CloudFoundry.CloudController.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj">
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>
       <Name>CloudFoundry.CloudController.V2.Client</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Deserialization\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -147,14 +130,15 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
