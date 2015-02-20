@@ -41,7 +41,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 client.Login(credentials);
             }
-            catch (AuthException authEx)
+            catch (AuthenticationException authEx)
             {
                 Assert.IsTrue(authEx.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
             }
@@ -62,7 +62,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 client.Login(credentials);
             }
-            catch (AuthException authEx)
+            catch (AuthenticationException authEx)
             {
                 Assert.IsTrue(authEx.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
             }

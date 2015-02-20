@@ -15,14 +15,14 @@ namespace CloudFoundry.CloudController.Test.Integration
         internal static string Password = ConfigurationManager.AppSettings["Password"];
         internal static bool IgnoreCertificate = bool.Parse(ConfigurationManager.AppSettings["IgnoreCertificate"]);
 
-        internal static CloudfoundryClient GetClient()
+        internal static CloudFoundryClient GetClient()
         {
             if (IgnoreCertificate)
             {
                 System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
             }
-            
-            CloudfoundryClient client = new CloudfoundryClient(new Uri(ServerUrl), new System.Threading.CancellationToken());
+
+            CloudFoundryClient client = new CloudFoundryClient(new Uri(ServerUrl), new System.Threading.CancellationToken());
             return client;
         }
 
