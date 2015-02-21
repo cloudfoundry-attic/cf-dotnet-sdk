@@ -30,7 +30,23 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
+        }
+
+        /// <summary>
+        /// Retrieve Job with unknown failure
+        /// </summary>
+        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
+        {
+            string route = string.Format("/v2/jobs/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -50,22 +66,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Retrieve Job that is queued
-        /// </summary>
-        public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid? guid)
-        {
-            string route = string.Format("/v2/jobs/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveJobThatIsQueuedResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Retrieve Job that was successful
         /// </summary>
         public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid? guid)
@@ -82,9 +82,9 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Retrieve Job with unknown failure
+        /// Retrieve Job that is queued
         /// </summary>
-        public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
+        public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid? guid)
         {
             string route = string.Format("/v2/jobs/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
@@ -94,7 +94,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveJobThatIsQueuedResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

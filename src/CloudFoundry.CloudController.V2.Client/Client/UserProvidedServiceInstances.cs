@@ -30,41 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
-        }
-
-        /// <summary>
-        /// Creating a User Provided Service Instance
-        /// </summary>
-        public async Task<CreateUserProvidedServiceInstanceResponse> CreateUserProvidedServiceInstance(CreateUserProvidedServiceInstanceRequest value)
-        {
-            string route = "/v2/user_provided_service_instances";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular User Provided Service Instance
-        /// </summary>
-        public async Task DeleteUserProvidedServiceInstance(Guid? guid)
-        {
-            string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -105,6 +71,22 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
+        /// Delete a Particular User Provided Service Instance
+        /// </summary>
+        public async Task DeleteUserProvidedServiceInstance(Guid? guid)
+        {
+            string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
         /// Updating a User Provided Service Instance
         /// </summary>
         public async Task<UpdateUserProvidedServiceInstanceResponse> UpdateUserProvidedServiceInstance(Guid? guid, UpdateUserProvidedServiceInstanceRequest value)
@@ -120,6 +102,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<UpdateUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Creating a User Provided Service Instance
+        /// </summary>
+        public async Task<CreateUserProvidedServiceInstanceResponse> CreateUserProvidedServiceInstance(CreateUserProvidedServiceInstanceRequest value)
+        {
+            string route = "/v2/user_provided_service_instances";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>

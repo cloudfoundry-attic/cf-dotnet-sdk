@@ -30,24 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
-        }
-
-        /// <summary>
-        /// Get the Service Instance Creation feature flag
-        /// </summary>
-        /// When enabled, a space developer can create service instances in a space. When disabled, only admin users can create service instances.
-        public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
-        {
-            string route = "/v2/config/feature_flags/service_instance_creation";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetServiceInstanceCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -69,12 +52,12 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Get the App Bits Upload feature flag
+        /// Get the Route Creation feature flag
         /// </summary>
-        /// When enabled, space developers can upload app bits. When disabled, only admin users can upload app bits
-        public async Task<GetAppBitsUploadFeatureFlagResponse> GetAppBitsUploadFeatureFlag()
+        /// When enabled, a space developer can create routes in a space. When disabled, only admin users can create routes.
+        public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
         {
-            string route = "/v2/config/feature_flags/app_bits_upload";
+            string route = "/v2/config/feature_flags/route_creation";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -82,7 +65,24 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetRouteCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Get the Service Instance Creation feature flag
+        /// </summary>
+        /// When enabled, a space developer can create service instances in a space. When disabled, only admin users can create service instances.
+        public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
+        {
+            string route = "/v2/config/feature_flags/service_instance_creation";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<GetServiceInstanceCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -153,12 +153,12 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Get the Route Creation feature flag
+        /// Get the App Bits Upload feature flag
         /// </summary>
-        /// When enabled, a space developer can create routes in a space. When disabled, only admin users can create routes.
-        public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
+        /// When enabled, space developers can upload app bits. When disabled, only admin users can upload app bits
+        public async Task<GetAppBitsUploadFeatureFlagResponse> GetAppBitsUploadFeatureFlag()
         {
-            string route = "/v2/config/feature_flags/route_creation";
+            string route = "/v2/config/feature_flags/app_bits_upload";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -166,7 +166,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetRouteCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

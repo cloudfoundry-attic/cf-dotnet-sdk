@@ -30,16 +30,16 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
         }
 
         /// <summary>
-        /// Getting the contents of the running environment variable group
+        /// Getting the contents of the staging environment variable group
         /// </summary>
-        /// returns the set of default environment variables available to running apps
-        public async Task<GettingContentsOfRunningEnvironmentVariableGroupResponse> GettingContentsOfRunningEnvironmentVariableGroup()
+        /// returns the set of default environment variables available during staging
+        public async Task<GettingContentsOfStagingEnvironmentVariableGroupResponse> GettingContentsOfStagingEnvironmentVariableGroup()
         {
-            string route = "/v2/config/environment_variable_groups/running";
+            string route = "/v2/config/environment_variable_groups/staging";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -47,26 +47,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Updating the contents of the running environment variable group
-        /// </summary>
-        /// Updates the set of environment variables which will be made available to all running apps
-        public async Task<UpdateContentsOfRunningEnvironmentVariableGroupResponse> UpdateContentsOfRunningEnvironmentVariableGroup(UpdateContentsOfRunningEnvironmentVariableGroupRequest value)
-        {
-            string route = "/v2/config/environment_variable_groups/running";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -89,12 +70,31 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Getting the contents of the staging environment variable group
+        /// Updating the contents of the running environment variable group
         /// </summary>
-        /// returns the set of default environment variables available during staging
-        public async Task<GettingContentsOfStagingEnvironmentVariableGroupResponse> GettingContentsOfStagingEnvironmentVariableGroup()
+        /// Updates the set of environment variables which will be made available to all running apps
+        public async Task<UpdateContentsOfRunningEnvironmentVariableGroupResponse> UpdateContentsOfRunningEnvironmentVariableGroup(UpdateContentsOfRunningEnvironmentVariableGroupRequest value)
         {
-            string route = "/v2/config/environment_variable_groups/staging";
+            string route = "/v2/config/environment_variable_groups/running";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Getting the contents of the running environment variable group
+        /// </summary>
+        /// returns the set of default environment variables available to running apps
+        public async Task<GettingContentsOfRunningEnvironmentVariableGroupResponse> GettingContentsOfRunningEnvironmentVariableGroup()
+        {
+            string route = "/v2/config/environment_variable_groups/running";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -102,7 +102,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

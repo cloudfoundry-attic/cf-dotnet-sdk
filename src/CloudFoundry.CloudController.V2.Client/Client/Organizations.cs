@@ -30,100 +30,80 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
         }
 
         /// <summary>
-        /// List all Users for the Organization
+        /// Update an Organization
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid)
+        public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid? guid, UpdateOrganizationRequest value)
         {
-            return await ListAllUsersForOrganization(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/organizations/{0}/users", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllUsersForOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Spaces for the Organization
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid)
-        {
-            return await ListAllSpacesForOrganization(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/organizations/{0}/spaces", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesForOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Associate User with the Organization
-        /// </summary>
-        public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid? guid, Guid? user_guid)
-        {
-            string route = string.Format("/v2/organizations/{0}/users/{1}", guid, user_guid);
+            string route = string.Format("/v2/organizations/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateUserWithOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<UpdateOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Remove Manager from the Organization
+        /// Get Organization summary
         /// </summary>
-        public async Task<RemoveManagerFromOrganizationResponse> RemoveManagerFromOrganization(Guid? guid, Guid? manager_guid)
+        public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}/managers/{1}", guid, manager_guid);
+            string route = string.Format("/v2/organizations/{0}/summary", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveManagerFromOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetOrganizationSummaryResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Remove Auditor from the Organization
+        /// List all Services for the Organization
         /// </summary>
-        public async Task<RemoveAuditorFromOrganizationResponse> RemoveAuditorFromOrganization(Guid? guid, Guid? auditor_guid)
+        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
+            return await ListAllServicesForOrganization(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/organizations/{0}/services", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllServicesForOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Creating an Organization
+        /// </summary>
+        public async Task<CreateOrganizationResponse> CreateOrganization(CreateOrganizationRequest value)
+        {
+            string route = "/v2/organizations";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveAuditorFromOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -165,84 +145,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// List all Auditors for the Organization
+        /// Delete a Particular Organization
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid)
+        public async Task DeleteOrganization(Guid? guid)
         {
-            return await ListAllAuditorsForOrganization(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/organizations/{0}/auditors", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAuditorsForOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Services for the Organization
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid)
-        {
-            return await ListAllServicesForOrganization(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/organizations/{0}/services", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServicesForOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Private Domains for the Organization
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid)
-        {
-            return await ListAllPrivateDomainsForOrganization(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/organizations/{0}/private_domains", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllPrivateDomainsForOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Creating an Organization
-        /// </summary>
-        public async Task<CreateOrganizationResponse> CreateOrganization(CreateOrganizationRequest value)
-        {
-            string route = "/v2/organizations";
+            string route = string.Format("/v2/organizations/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -267,28 +182,32 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Associate Auditor with the Organization
+        /// List all Users for the Organization
         /// </summary>
-        public async Task<AssociateAuditorWithOrganizationResponse> AssociateAuditorWithOrganization(Guid? guid, Guid? auditor_guid)
+        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            return await ListAllUsersForOrganization(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/organizations/{0}/users", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateAuditorWithOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllUsersForOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Get Organization summary
+        /// Retrieve a Particular Organization
         /// </summary>
-        public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid? guid)
+        public async Task<RetrieveOrganizationResponse> RetrieveOrganization(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}/summary", guid);
+            string route = string.Format("/v2/organizations/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -296,7 +215,41 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetOrganizationSummaryResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Remove Manager from the Organization
+        /// </summary>
+        public async Task<RemoveManagerFromOrganizationResponse> RemoveManagerFromOrganization(Guid? guid, Guid? manager_guid)
+        {
+            string route = string.Format("/v2/organizations/{0}/managers/{1}", guid, manager_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveManagerFromOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Remove Auditor from the Organization
+        /// </summary>
+        public async Task<RemoveAuditorFromOrganizationResponse> RemoveAuditorFromOrganization(Guid? guid, Guid? auditor_guid)
+        {
+            string route = string.Format("/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveAuditorFromOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -338,55 +291,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Retrieve a Particular Organization
-        /// </summary>
-        public async Task<RetrieveOrganizationResponse> RetrieveOrganization(Guid? guid)
-        {
-            string route = string.Format("/v2/organizations/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove User from the Organization
-        /// </summary>
-        public async Task<RemoveUserFromOrganizationResponse> RemoveUserFromOrganization(Guid? guid, Guid? user_guid)
-        {
-            string route = string.Format("/v2/organizations/{0}/users/{1}", guid, user_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveUserFromOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Organization
-        /// </summary>
-        public async Task DeleteOrganization(Guid? guid)
-        {
-            string route = string.Format("/v2/organizations/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
         /// List all Managers for the Organization
         /// </summary>
         public async Task<PagedResponseCollection<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid)
@@ -408,19 +312,58 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Retrieving organization memory usage
+        /// List all Private Domains for the Organization
         /// </summary>
-        public async Task<RetrievingOrganizationMemoryUsageResponse> RetrievingOrganizationMemoryUsage(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}/memory_usage", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            return await ListAllPrivateDomainsForOrganization(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/organizations/{0}/private_domains", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrievingOrganizationMemoryUsageResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllPrivateDomainsForOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate Billing Manager with the Organization
+        /// </summary>
+        public async Task<AssociateBillingManagerWithOrganizationResponse> AssociateBillingManagerWithOrganization(Guid? guid, Guid? billing_manager_guid)
+        {
+            string route = string.Format("/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateBillingManagerWithOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate User with the Organization
+        /// </summary>
+        public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid? guid, Guid? user_guid)
+        {
+            string route = string.Format("/v2/organizations/{0}/users/{1}", guid, user_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateUserWithOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -445,29 +388,86 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Update an Organization
+        /// Retrieving organization memory usage
         /// </summary>
-        public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid? guid, UpdateOrganizationRequest value)
+        public async Task<RetrievingOrganizationMemoryUsageResponse> RetrievingOrganizationMemoryUsage(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}", guid);
+            string route = string.Format("/v2/organizations/{0}/memory_usage", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrievingOrganizationMemoryUsageResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Associate Billing Manager with the Organization
+        /// List all Auditors for the Organization
         /// </summary>
-        public async Task<AssociateBillingManagerWithOrganizationResponse> AssociateBillingManagerWithOrganization(Guid? guid, Guid? billing_manager_guid)
+        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid)
         {
-            string route = string.Format("/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
+            return await ListAllAuditorsForOrganization(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/organizations/{0}/auditors", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllAuditorsForOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Spaces for the Organization
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid)
+        {
+            return await ListAllSpacesForOrganization(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/organizations/{0}/spaces", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSpacesForOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Remove User from the Organization
+        /// </summary>
+        public async Task<RemoveUserFromOrganizationResponse> RemoveUserFromOrganization(Guid? guid, Guid? user_guid)
+        {
+            string route = string.Format("/v2/organizations/{0}/users/{1}", guid, user_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveUserFromOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate Auditor with the Organization
+        /// </summary>
+        public async Task<AssociateAuditorWithOrganizationResponse> AssociateAuditorWithOrganization(Guid? guid, Guid? auditor_guid)
+        {
+            string route = string.Format("/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -476,7 +476,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateBillingManagerWithOrganizationResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<AssociateAuditorWithOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

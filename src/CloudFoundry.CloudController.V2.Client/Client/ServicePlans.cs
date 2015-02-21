@@ -30,25 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
-        }
-
-        /// <summary>
-        /// Updating a Service Plan (deprecated)
-        /// </summary>
-        public async Task<UpdateServicePlanDeprecatedResponse> UpdateServicePlanDeprecated(UpdateServicePlanDeprecatedRequest value)
-        {
-            string route = "/v2/service_plans";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateServicePlanDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -89,6 +71,40 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
+        /// Updating a Service Plan (deprecated)
+        /// </summary>
+        public async Task<UpdateServicePlanDeprecatedResponse> UpdateServicePlanDeprecated(UpdateServicePlanDeprecatedRequest value)
+        {
+            string route = "/v2/service_plans";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateServicePlanDeprecatedResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Retrieve a Particular Service Plan
+        /// </summary>
+        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
+        {
+            string route = string.Format("/v2/service_plans/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// List all Service Plans
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans()
@@ -107,22 +123,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllServicePlansResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Service Plan
-        /// </summary>
-        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
-        {
-            string route = string.Format("/v2/service_plans/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>

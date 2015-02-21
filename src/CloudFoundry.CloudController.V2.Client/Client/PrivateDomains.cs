@@ -30,41 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
-        }
-
-        /// <summary>
-        /// Create a Private Domain owned by the given Organization
-        /// </summary>
-        public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
-        {
-            string route = "/v2/private_domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Private Domain
-        /// </summary>
-        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
-        {
-            string route = string.Format("/v2/private_domains/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -107,6 +73,40 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Retrieve a Particular Private Domain
+        /// </summary>
+        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
+        {
+            string route = string.Format("/v2/private_domains/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Create a Private Domain owned by the given Organization
+        /// </summary>
+        public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
+        {
+            string route = "/v2/private_domains";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreatePrivateDomainOwnedByGivenOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>

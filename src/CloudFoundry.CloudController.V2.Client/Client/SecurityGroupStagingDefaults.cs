@@ -30,40 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
-        }
-
-        /// <summary>
-        /// Set a Security Group as a default for staging
-        /// </summary>
-        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
-        {
-            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Removing a Security Group as a default for staging
-        /// </summary>
-        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
-        {
-            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -85,6 +52,39 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ReturnSecurityGroupsUsedForStagingResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Removing a Security Group as a default for staging
+        /// </summary>
+        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
+        {
+            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Set a Security Group as a default for staging
+        /// </summary>
+        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
+        {
+            string route = string.Format("/v2/config/staging_security_groups/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

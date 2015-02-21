@@ -30,41 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
-        }
-
-        /// <summary>
-        /// Delete a Particular Domain (deprecated)
-        /// </summary>
-        public async Task DeleteDomainDeprecated(Guid? guid)
-        {
-            string route = string.Format("/v2/domains/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// creates a domain owned by the given organization (deprecated)
-        /// </summary>
-        public async Task<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse> CreatesDomainOwnedByGivenOrganizationDeprecated(CreatesDomainOwnedByGivenOrganizationDeprecatedRequest value)
-        {
-            string route = "/v2/domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -84,24 +50,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// List all Domains (deprecated)
+        /// Delete a Particular Domain (deprecated)
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated()
+        public async Task DeleteDomainDeprecated(Guid? guid)
         {
-            return await ListAllDomainsDeprecated(new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated(RequestOptions options)
-        {
-            string route = "/v2/domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string route = string.Format("/v2/domains/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllDomainsDeprecatedResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -126,6 +87,24 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
+        /// creates a domain owned by the given organization (deprecated)
+        /// </summary>
+        public async Task<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse> CreatesDomainOwnedByGivenOrganizationDeprecated(CreatesDomainOwnedByGivenOrganizationDeprecatedRequest value)
+        {
+            string route = "/v2/domains";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// creates a shared domain (deprecated)
         /// </summary>
         public async Task<CreatesSharedDomainDeprecatedResponse> CreatesSharedDomainDeprecated(CreatesSharedDomainDeprecatedRequest value)
@@ -141,6 +120,27 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<CreatesSharedDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Domains (deprecated)
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated()
+        {
+            return await ListAllDomainsDeprecated(new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated(RequestOptions options)
+        {
+            string route = "/v2/domains";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllDomainsDeprecatedResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

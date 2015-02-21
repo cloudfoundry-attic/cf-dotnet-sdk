@@ -30,28 +30,25 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
         }
 
         /// <summary>
-        /// List all Space Quota Definitions
+        /// Updating a Space Quota Definition
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions()
+        public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid? guid, UpdateSpaceQuotaDefinitionRequest value)
         {
-            return await ListAllSpaceQuotaDefinitions(new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions(RequestOptions options)
-        {
-            string route = "/v2/space_quota_definitions";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string route = string.Format("/v2/space_quota_definitions/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpaceQuotaDefinitionsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<UpdateSpaceQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -71,24 +68,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// List all Spaces for the Space Quota Definition
+        /// Delete a Particular Space Quota Definition
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid)
+        public async Task DeleteSpaceQuotaDefinition(Guid? guid)
         {
-            return await ListAllSpacesForSpaceQuotaDefinition(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/space_quota_definitions/{0}/spaces", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string route = string.Format("/v2/space_quota_definitions/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesForSpaceQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -127,6 +119,48 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
+        /// List all Spaces for the Space Quota Definition
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid)
+        {
+            return await ListAllSpacesForSpaceQuotaDefinition(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/space_quota_definitions/{0}/spaces", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSpacesForSpaceQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Space Quota Definitions
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions()
+        {
+            return await ListAllSpaceQuotaDefinitions(new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions(RequestOptions options)
+        {
+            string route = "/v2/space_quota_definitions";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSpaceQuotaDefinitionsResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Associate Space with the Space Quota Definition
         /// </summary>
         public async Task<AssociateSpaceWithSpaceQuotaDefinitionResponse> AssociateSpaceWithSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
@@ -141,40 +175,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<AssociateSpaceWithSpaceQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Updating a Space Quota Definition
-        /// </summary>
-        public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid? guid, UpdateSpaceQuotaDefinitionRequest value)
-        {
-            string route = string.Format("/v2/space_quota_definitions/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateSpaceQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Space Quota Definition
-        /// </summary>
-        public async Task DeleteSpaceQuotaDefinition(Guid? guid)
-        {
-            string route = string.Format("/v2/space_quota_definitions/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
         }
     }
 }

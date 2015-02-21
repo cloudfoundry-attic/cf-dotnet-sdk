@@ -30,7 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
         }
 
         /// <summary>
@@ -52,24 +52,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Create a Service Binding
-        /// </summary>
-        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
-        {
-            string route = "/v2/service_bindings";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -102,6 +84,24 @@ namespace CloudFoundry.CloudController.V2.Client
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Create a Service Binding
+        /// </summary>
+        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
+        {
+            string route = "/v2/service_bindings";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

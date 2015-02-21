@@ -30,29 +30,23 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
         }
 
         /// <summary>
-        /// Purge and reseed Service Usage Events
+        /// Retrieve a Particular Service Usage Event
         /// </summary>
-        /// Destroys all existing events. Populates new usage events, one for each existing service instance.
-        /// All populated events will have a created_at value of current time.
-        /// 
-        /// There is the potential race condition if service instances are currently being created or deleted.
-        /// 
-        /// The seeded usage events will have the same guid as the service instance.
-        public async Task PurgeAndReseedServiceUsageEvents()
+        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
         {
-            string route = "/v2/service_usage_events/destructively_purge_all_and_reseed_existing_instances";
+            string route = string.Format("/v2/service_usage_events/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -81,19 +75,25 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Retrieve a Particular Service Usage Event
+        /// Purge and reseed Service Usage Events
         /// </summary>
-        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
+        /// Destroys all existing events. Populates new usage events, one for each existing service instance.
+        /// All populated events will have a created_at value of current time.
+        /// 
+        /// There is the potential race condition if service instances are currently being created or deleted.
+        /// 
+        /// The seeded usage events will have the same guid as the service instance.
+        public async Task PurgeAndReseedServiceUsageEvents()
         {
-            string route = string.Format("/v2/service_usage_events/{0}", guid);
+            string route = "/v2/service_usage_events/destructively_purge_all_and_reseed_existing_instances";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Post;
             client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

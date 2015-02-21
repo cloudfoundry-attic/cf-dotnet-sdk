@@ -30,7 +30,40 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
+        }
+
+        /// <summary>
+        /// Delete a Particular Route
+        /// </summary>
+        public async Task DeleteRoute(Guid? guid)
+        {
+            string route = string.Format("/v2/routes/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Remove App from the Route
+        /// </summary>
+        public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
+        {
+            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveAppFromRouteResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -71,41 +104,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Update a Route
-        /// </summary>
-        public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
-        {
-            string route = string.Format("/v2/routes/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove App from the Route
-        /// </summary>
-        public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
-        {
-            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveAppFromRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Creating a Route
         /// </summary>
         public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
@@ -121,22 +119,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Route
-        /// </summary>
-        public async Task DeleteRoute(Guid? guid)
-        {
-            string route = string.Format("/v2/routes/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
         }
 
         /// <summary>
@@ -175,6 +157,24 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllRoutesResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Update a Route
+        /// </summary>
+        public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
+        {
+            string route = string.Format("/v2/routes/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateRouteResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>

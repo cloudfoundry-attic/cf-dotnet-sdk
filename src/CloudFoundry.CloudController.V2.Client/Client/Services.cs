@@ -30,7 +30,43 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
-            this.auth = client.auth;
+            this.Auth = client.Auth;
+        }
+
+        /// <summary>
+        /// Updating a Service (deprecated)
+        /// </summary>
+        public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
+        {
+            string route = "/v2/services";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Creating a Service (deprecated)
+        /// </summary>
+        public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
+        {
+            string route = "/v2/services";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -76,40 +112,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Delete a Particular Service
-        /// </summary>
-        public async Task DeleteService(Guid? guid)
-        {
-            string route = string.Format("/v2/services/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Creating a Service (deprecated)
-        /// </summary>
-        public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
-        {
-            string route = "/v2/services";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Retrieve a Particular Service
         /// </summary>
         public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
@@ -126,21 +128,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Updating a Service (deprecated)
+        /// Delete a Particular Service
         /// </summary>
-        public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
+        public async Task DeleteService(Guid? guid)
         {
-            string route = "/v2/services";
+            string route = string.Format("/v2/services/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }
