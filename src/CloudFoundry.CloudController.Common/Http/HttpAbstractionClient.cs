@@ -1,22 +1,22 @@
-﻿using CloudFoundry.CloudController.Common.Http;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace CloudFoundry.Common.Http
+﻿namespace CloudFoundry.Common.Http
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using CloudFoundry.CloudController.Common.Http;
+
     public class HttpAbstractionClient : IDisposable, IHttpAbstractionClient
     {
-        private readonly HttpClientHandler handler = null;
+        private static readonly TimeSpan DefaultTimeout = new TimeSpan(0, 0, 30);
         private readonly HttpClient client = null;
-        private bool disposed = false;
+        private readonly HttpClientHandler handler = null;
         private CancellationToken cancellationToken = CancellationToken.None;
-        private static readonly TimeSpan defaultTimeout = new TimeSpan(0, 0, 30);
+        private bool disposed = false;
 
         internal HttpAbstractionClient(TimeSpan timeout, CancellationToken cancellationToken)
         {
@@ -47,9 +47,26 @@ namespace CloudFoundry.Common.Http
             }
         }
 
+        ~HttpAbstractionClient()
+        {
+            this.Dispose(false);
+        }
+
+        public Stream Content { get; set; }
+
+        public string ContentType { get; set; }
+
+        public IDictionary<string, string> Headers { get; private set; }
+
+        public HttpMethod Method { get; set; }
+
+        public TimeSpan Timeout { get; set; }
+
+        public Uri Uri { get; set; }
+
         public static IHttpAbstractionClient Create()
         {
-            return new HttpAbstractionClient(defaultTimeout, CancellationToken.None);
+            return new HttpAbstractionClient(DefaultTimeout, CancellationToken.None);
         }
 
         public static IHttpAbstractionClient Create(TimeSpan timeout)
@@ -59,7 +76,7 @@ namespace CloudFoundry.Common.Http
 
         public static IHttpAbstractionClient Create(CancellationToken cancellationToken)
         {
-            return new HttpAbstractionClient(defaultTimeout, cancellationToken);
+            return new HttpAbstractionClient(DefaultTimeout, cancellationToken);
         }
 
         public static IHttpAbstractionClient Create(CancellationToken cancellationToken, TimeSpan timeout)
@@ -67,17 +84,11 @@ namespace CloudFoundry.Common.Http
             return new HttpAbstractionClient(timeout, cancellationToken);
         }
 
-        public HttpMethod Method { get; set; }
-
-        public Uri Uri { get; set; }
-
-        public Stream Content { get; set; }
-
-        public IDictionary<string, string> Headers { get; private set; }
-
-        public string ContentType { get; set; }
-
-        public TimeSpan Timeout { get; set; }
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         public async Task<IHttpResponseAbstraction> SendAsync()
         {
@@ -86,6 +97,7 @@ namespace CloudFoundry.Common.Http
             {
                 httpContent = new StreamContent(this.Content);
             }
+
             return await this.SendAsync(httpContent);
         }
 
@@ -171,17 +183,6 @@ namespace CloudFoundry.Common.Http
 
                 throw;
             }
-        }
-
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        ~HttpAbstractionClient()
-        {
-            this.Dispose(false);
         }
 
         protected virtual void Dispose(bool disposing)

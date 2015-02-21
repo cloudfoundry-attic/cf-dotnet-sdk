@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace CloudFoundry.CloudController.Common
+﻿namespace CloudFoundry.CloudController.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
     /// <summary>
     /// Static class for extending reflection classes.
     /// </summary>

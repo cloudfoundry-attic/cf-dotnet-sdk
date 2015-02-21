@@ -1,24 +1,12 @@
-﻿using System.IO;
-
-namespace CloudFoundry.CloudController.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
+    using System.IO;
+
     /// <inheritdoc/>
     public class HttpMultipartFormDataAbstraction : IHttpMultipartFormDataAbstraction
     {
-        /// <inheritdoc/>
-        public string Name { get; private set; }
-
-        /// <inheritdoc/>
-        public string FileName { get; private set; }
-
-        /// <inheritdoc/>
-        public string ContentType { get; private set; }
-
-        /// <inheritdoc/>
-        public Stream Content { get; private set; }
-
         /// <summary>
-        /// Creates a new instance of the HttpMultiPartFormDataAbstraction class.
+        /// Initializes a new instance of the <see cref="HttpMultipartFormDataAbstraction" /> class.
         /// </summary>
         /// <param name="name">The name of the form field.</param>
         /// <param name="fileName">The file name of the form field.</param>
@@ -31,5 +19,17 @@ namespace CloudFoundry.CloudController.Common.Http
             this.ContentType = contentType;
             this.Content = content;
         }
+
+        /// <inheritdoc/>
+        public Stream Content { get; private set; }
+
+        /// <inheritdoc/>
+        public string ContentType { get; private set; }
+
+        /// <inheritdoc/>
+        public string FileName { get; private set; }
+
+        /// <inheritdoc/>
+        public string Name { get; private set; }
     }
 }

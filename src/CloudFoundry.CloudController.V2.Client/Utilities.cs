@@ -1,34 +1,44 @@
-﻿using CloudFoundry.CloudController.V2.Exceptions;
-using CloudFoundry.CloudController.V2.Interfaces;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-
-namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2
 {
-    public sealed class Utilities
-    {
-        private Utilities()
-        {
-        }
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using CloudFoundry.CloudController.V2.Exceptions;
+    using CloudFoundry.CloudController.V2.Interfaces;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
+    internal sealed class Utilities
+    {
         private static JsonSerializerSettings jsonSettings = new JsonSerializerSettings
         {
             DateParseHandling = DateParseHandling.None
         };
 
-        public static PagedResponseCollection<T> DeserializePage<T>(string value)
+        private Utilities()
         {
-            PagedResponseCollection<T> page = new PagedResponseCollection<T>();
-            page.Properties = JsonConvert.DeserializeObject<PageProperties>(value, jsonSettings);
-            page.Resources = DeserializeJsonResources<T>(value).ToList<T>();
-            return page;
         }
 
-        public static T[] DeserializeJsonResources<T>(string value)
+        internal static T DeserializeJson<T>(string value)
+        {
+            using (StringReader stringReader = new StringReader(value))
+            {
+                using (JsonReader reader = new JsonTextReader(stringReader))
+                {
+                    reader.DateParseHandling = DateParseHandling.None;
+                    var obj = JObject.Load(reader);
+                    return Deserialize<T>(obj);
+                }
+            }
+        }
+
+        internal static T[] DeserializeJsonArray<T>(string value)
+        {
+            return JsonConvert.DeserializeObject<T[]>(value);
+        }
+
+        internal static T[] DeserializeJsonResources<T>(string value)
         {
             using (StringReader stringReader = new StringReader(value))
             {
@@ -46,22 +56,12 @@ namespace CloudFoundry.CloudController.V2
             }
         }
 
-        public static T[] DeserializeJsonArray<T>(string value)
+        internal static PagedResponseCollection<T> DeserializePage<T>(string value)
         {
-            return JsonConvert.DeserializeObject<T[]>(value);
-        }
-
-        public static T DeserializeJson<T>(string value)
-        {
-            using (StringReader stringReader = new StringReader(value))
-            {
-                using (JsonReader reader = new JsonTextReader(stringReader))
-                {
-                    reader.DateParseHandling = DateParseHandling.None;
-                    var obj = JObject.Load(reader);
-                    return Deserialize<T>(obj);
-                }
-            }
+            PagedResponseCollection<T> page = new PagedResponseCollection<T>();
+            page.Properties = JsonConvert.DeserializeObject<PageProperties>(value, jsonSettings);
+            page.Resources = DeserializeJsonResources<T>(value).ToList<T>();
+            return page;
         }
 
         internal static T Deserialize<T>(JToken value)
@@ -73,6 +73,7 @@ namespace CloudFoundry.CloudController.V2
                 {
                     ((IResponse)o).EntityMetadata = JsonConvert.DeserializeObject<Metadata>(value["metadata"].ToString(), jsonSettings);
                 }
+
                 return (T)Convert.ChangeType(o, typeof(T), CultureInfo.InvariantCulture);
             }
             else

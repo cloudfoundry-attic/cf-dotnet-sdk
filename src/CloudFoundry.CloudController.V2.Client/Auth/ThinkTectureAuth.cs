@@ -1,11 +1,11 @@
-﻿using CloudFoundry.CloudController.V2.Exceptions;
-using CloudFoundry.CloudController.V2.Interfaces;
-using System;
-using System.Globalization;
-using Thinktecture.IdentityModel.Client;
-
-namespace CloudFoundry.CloudController.V2.Auth
+﻿namespace CloudFoundry.CloudController.V2.Auth
 {
+    using System;
+    using System.Globalization;
+    using CloudFoundry.CloudController.V2.Exceptions;
+    using CloudFoundry.CloudController.V2.Interfaces;
+    using Thinktecture.IdentityModel.Client;
+
     internal class ThinkTectureAuth : IAuthentication
     {
         // CF defaults
@@ -14,6 +14,19 @@ namespace CloudFoundry.CloudController.V2.Auth
         private string oauthSecret = string.Empty;
         private Uri oauthTarget;
         private TokenResponse tokenResponse;
+
+        public Uri OAuthUrl
+        {
+            get
+            {
+                return this.oauthTarget;
+            }
+
+            set
+            {
+                this.oauthTarget = value;
+            }
+        }
 
         public string Authenticate(CloudCredentials credentials)
         {
@@ -27,7 +40,13 @@ namespace CloudFoundry.CloudController.V2.Auth
             this.tokenResponse = client.RequestResourceOwnerPasswordAsync(credentials.User, credentials.Password).Result;
 
             if (this.tokenResponse.IsError)
-                throw new AuthenticationException(string.Format(CultureInfo.InvariantCulture, "Unable to connect to target with the provided credentials. Error message: {0}", this.tokenResponse.Error));
+            {
+                throw new AuthenticationException(
+                    string.Format(
+                    CultureInfo.InvariantCulture, 
+                    "Unable to connect to target with the provided credentials. Error message: {0}", 
+                    this.tokenResponse.Error));
+            }
 
             return this.tokenResponse.RefreshToken;
         }
@@ -59,18 +78,6 @@ namespace CloudFoundry.CloudController.V2.Auth
             var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
             var response = client.RequestRefreshTokenAsync(refreshToken).Result;
             return response;
-        }
-
-        public Uri OAuthUrl
-        {
-            set
-            {
-                this.oauthTarget = value;
-            }
-            get
-            {
-                return this.oauthTarget;
-            }
         }
     }
 }

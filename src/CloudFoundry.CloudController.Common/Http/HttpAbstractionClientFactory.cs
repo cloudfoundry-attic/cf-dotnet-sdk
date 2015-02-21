@@ -1,9 +1,9 @@
-﻿using CloudFoundry.Common.Http;
-using System;
-using System.Threading;
-
-namespace CloudFoundry.CloudController.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
+    using System;
+    using System.Threading;
+    using CloudFoundry.Common.Http;
+
     public class HttpAbstractionClientFactory : IHttpAbstractionClientFactory
     {
         public IHttpAbstractionClient Create()

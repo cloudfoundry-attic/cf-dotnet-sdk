@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2
 {
+    using Newtonsoft.Json;
+
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces",
         Justification = "Keeping Cloud Foundry nomenclature.")]
     public class Metadata

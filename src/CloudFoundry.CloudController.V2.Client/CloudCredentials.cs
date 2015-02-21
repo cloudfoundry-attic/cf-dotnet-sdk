@@ -6,7 +6,7 @@
     public class CloudCredentials
     {
         /// <summary>
-        /// UserName
+        /// Gets or sets the UserName
         /// </summary>
         public string User
         {
@@ -15,7 +15,7 @@
         }
 
         /// <summary>
-        /// Password
+        /// Gets or sets the Password
         /// </summary>
         public string Password
         {

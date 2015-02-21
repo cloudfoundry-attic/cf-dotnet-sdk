@@ -1,106 +1,106 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
-
-namespace CloudFoundry.CloudController.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Net.Http.Headers;
+
     public class HttpHeadersCollection : IHttpHeadersCollection
     {
-        private readonly Dictionary<string, IEnumerable<string>> _headers = new Dictionary<string, IEnumerable<string>>();
+        private readonly Dictionary<string, IEnumerable<string>> headers = new Dictionary<string, IEnumerable<string>>();
 
         public HttpHeadersCollection()
         {
         }
 
-        public HttpHeadersCollection(HttpResponseHeaders headers)
+        public HttpHeadersCollection(HttpResponseHeaders responseHeaders)
         {
-            if (headers == null)
+            if (responseHeaders == null)
             {
-                throw new ArgumentNullException("headers");
+                throw new ArgumentNullException("responseHeaders");
             }
 
-            foreach (var header in headers)
+            foreach (var header in responseHeaders)
             {
-                this._headers.Add(header.Key, header.Value);
+                this.headers.Add(header.Key, header.Value);
             }
-        }
-
-        public IEnumerator<KeyValuePair<string, IEnumerable<string>>> GetEnumerator()
-        {
-            return this._headers.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this._headers.GetEnumerator();
-        }
-
-        public void Add(string name, IEnumerable<string> values)
-        {
-            this._headers.Add(name, values);
-        }
-
-        public void AddRange(HttpResponseHeaders headers)
-        {
-            if (headers == null)
-            {
-                throw new ArgumentNullException("headers");
-            }
-
-            foreach (var header in headers)
-            {
-                this._headers.Add(header.Key, header.Value);
-            }
-        }
-
-        public void AddRange(HttpContentHeaders headers)
-        {
-            if (headers == null)
-            {
-                throw new ArgumentNullException("headers");
-            }
-
-            foreach (var header in headers)
-            {
-                this._headers.Add(header.Key, header.Value);
-            }
-        }
-
-        public void Add(string name, string value)
-        {
-            this._headers.Add(name, new List<string>() { value });
-        }
-
-        public void Clear()
-        {
-            this._headers.Clear();
-        }
-
-        public bool Contains(string name)
-        {
-            return this._headers.ContainsKey(name);
-        }
-
-        public IEnumerable<string> GetValues(string name)
-        {
-            return this._headers[name];
-        }
-
-        public void Remove(string name)
-        {
-            this._headers.Remove(name);
-        }
-
-        public bool TryGetValue(string name, out IEnumerable<string> values)
-        {
-            return this._headers.TryGetValue(name, out values);
         }
 
         public IEnumerable<string> this[string name]
         {
-            get { return this._headers[name]; }
-            set { this._headers[name] = value; }
+            get { return this.headers[name]; }
+            set { this.headers[name] = value; }
+        }
+
+        public void Add(string name, IEnumerable<string> values)
+        {
+            this.headers.Add(name, values);
+        }
+
+        public void Add(string name, string value)
+        {
+            this.headers.Add(name, new List<string>() { value });
+        }
+
+        public void AddRange(HttpResponseHeaders responseHeaders)
+        {
+            if (responseHeaders == null)
+            {
+                throw new ArgumentNullException("responseHeaders");
+            }
+
+            foreach (var header in responseHeaders)
+            {
+                this.headers.Add(header.Key, header.Value);
+            }
+        }
+
+        public void AddRange(HttpContentHeaders responseHeaders)
+        {
+            if (responseHeaders == null)
+            {
+                throw new ArgumentNullException("responseHeaders");
+            }
+
+            foreach (var header in responseHeaders)
+            {
+                this.headers.Add(header.Key, header.Value);
+            }
+        }
+
+        public void Clear()
+        {
+            this.headers.Clear();
+        }
+
+        public bool Contains(string name)
+        {
+            return this.headers.ContainsKey(name);
+        }
+
+        public IEnumerator<KeyValuePair<string, IEnumerable<string>>> GetEnumerator()
+        {
+            return this.headers.GetEnumerator();
+        }
+
+        public IEnumerable<string> GetValues(string name)
+        {
+            return this.headers[name];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.headers.GetEnumerator();
+        }
+
+        public void Remove(string name)
+        {
+            this.headers.Remove(name);
+        }
+
+        public bool TryGetValue(string name, out IEnumerable<string> values)
+        {
+            return this.headers.TryGetValue(name, out values);
         }
     }
 }

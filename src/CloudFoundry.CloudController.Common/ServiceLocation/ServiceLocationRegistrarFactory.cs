@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
+    using System;
+
     /// <inheritdoc/>
     internal class ServiceLocationRegistrarFactory : IServiceLocationRegistrarFactory
     {

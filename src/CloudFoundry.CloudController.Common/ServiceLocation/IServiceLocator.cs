@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-
-namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
+    using System.Reflection;
+
     /// <summary>
     /// Represents an object that can locate services.
     /// </summary>

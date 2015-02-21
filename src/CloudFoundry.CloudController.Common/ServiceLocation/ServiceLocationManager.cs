@@ -1,16 +1,15 @@
-﻿using System;
-using System.Globalization;
-
-namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
+    using System;
+    using System.Globalization;
+
     /// <inheritdoc/>
     internal abstract class ServiceLocationManager : IServiceLocationManager
     {
         /// <inheritdoc/>
         public void RegisterServiceInstance<TService>(TService instance)
         {
-            this.RegisterServiceInstance(typeof(TService),
-                                  instance);
+            this.RegisterServiceInstance(typeof(TService), instance);
         }
 
         /// <inheritdoc/>
@@ -41,8 +40,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         {
             if (ReferenceEquals(type, null))
             {
-                var msg = string.Format(CultureInfo.InvariantCulture,
-                                           "Cannot register a null service.");
+                var msg = string.Format(CultureInfo.InvariantCulture, "Cannot register a null service.");
                 throw new InvalidOperationException(msg);
             }
 
@@ -64,8 +62,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         /// <param name="implementation">The implementation of the given Type.</param>
         internal static void ThrowIfInvalidRegistration(Type type, Type implementation)
         {
-            ThrowIfNullInstance(type,
-                                implementation);
+            ThrowIfNullInstance(type, implementation);
             if (type == typeof(IServiceLocationRuntimeManager) ||
                 type == typeof(IServiceLocationOverrideManager) ||
                 type == typeof(IServiceLocationManager) ||

@@ -1,9 +1,9 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace CloudFoundry.CloudController.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
     public class HttpResponseAbstraction : IHttpResponseAbstraction
     {
         public HttpResponseAbstraction(HttpContent content, IHttpHeadersCollection headers, HttpStatusCode status)
@@ -17,7 +17,13 @@ namespace CloudFoundry.CloudController.Common.Http
 
         public IHttpHeadersCollection Headers { get; internal set; }
 
-        public bool IsSuccessStatusCode { get { return this.StatusCode == HttpStatusCode.OK; } }
+        public bool IsSuccessStatusCode 
+        { 
+            get 
+            { 
+                return this.StatusCode == HttpStatusCode.OK; 
+            } 
+        }
 
         public HttpRequestMessage RequestMessage { get; set; }
 

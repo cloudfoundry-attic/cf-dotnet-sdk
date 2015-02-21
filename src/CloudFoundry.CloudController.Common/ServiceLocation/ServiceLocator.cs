@@ -1,41 +1,34 @@
-using CloudFoundry.CloudController.Common.Http;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-
 namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
+    using CloudFoundry.CloudController.Common.Http;
+
     /// <inheritdoc/>
     public class ServiceLocator : IServiceLocator
     {
-        private readonly ServiceLocationManager _runtimeManager;
-        private readonly Dictionary<Type, object> _services = new Dictionary<Type, object>();
-        private readonly Dictionary<Type, object> _overrideServices = new Dictionary<Type, object>();
-        private readonly IServiceLocationAssemblyScanner _scanner = new ServiceLocationAssemblyScanner();
+        private readonly Dictionary<Type, object> overrideServices = new Dictionary<Type, object>();
+        private readonly ServiceLocationManager runtimeManager;
+        private readonly IServiceLocationAssemblyScanner scanner = new ServiceLocationAssemblyScanner();
+        private readonly Dictionary<Type, object> services = new Dictionary<Type, object>();
 
         public ServiceLocator()
         {
-            this._runtimeManager = new ServiceLocationRuntimeManager(this);
-            this._services.Add(typeof(IServiceLocationRuntimeManager), this._runtimeManager);
-            this._services.Add(typeof(IServiceLocationOverrideManager), new ServiceLocationOverrideManager(this));
-            this._services.Add(typeof(IHttpAbstractionClientFactory), new HttpAbstractionClientFactory());
-            this._scanner.AddAssembly(this.GetType().GetAssembly());
+            this.runtimeManager = new ServiceLocationRuntimeManager(this);
+            this.services.Add(typeof(IServiceLocationRuntimeManager), this.runtimeManager);
+            this.services.Add(typeof(IServiceLocationOverrideManager), new ServiceLocationOverrideManager(this));
+            this.services.Add(typeof(IHttpAbstractionClientFactory), new HttpAbstractionClientFactory());
+            this.scanner.AddAssembly(this.GetType().GetAssembly());
             this.RegisterServices();
         }
 
-        internal void RegisterServices(IEnumerable<IServiceLocationRegistrar> registrars)
+        public void EnsureAssemblyRegistration(Assembly target)
         {
-            foreach (var serviceLocationRegistrar in registrars)
-            {
-                serviceLocationRegistrar.Register(this._runtimeManager, this);
-            }
-        }
-
-        internal void RegisterServices()
-        {
-            var registrars = this._scanner.GetRegistrars().ToList();
+            this.scanner.AddAssembly(target);
+            var registrars = this.scanner.GetNewRegistrars();
             this.RegisterServices(registrars);
         }
 
@@ -43,13 +36,6 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         public T Locate<T>()
         {
             return (T)this.Locate(typeof(T));
-        }
-
-        public void EnsureAssemblyRegistration(Assembly target)
-        {
-            this._scanner.AddAssembly(target);
-            var registrars = this._scanner.GetNewRegistrars();
-            this.RegisterServices(registrars);
         }
 
         /// <summary>
@@ -65,7 +51,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
                 return retval;
             }
 
-            if (this._scanner.HasNewAssemblies)
+            if (this.scanner.HasNewAssemblies)
             {
                 this.RegisterServices();
                 retval = this.InternalLocate(type);
@@ -76,10 +62,25 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
                 return retval;
             }
 
-            var message = string.Format(CultureInfo.InvariantCulture,
+            var message = string.Format(
+                CultureInfo.InvariantCulture,
                 "Service '{0}' has not been registered",
                 type.FullName);
             throw new InvalidOperationException(message);
+        }
+
+        internal void RegisterServices(IEnumerable<IServiceLocationRegistrar> registrars)
+        {
+            foreach (var serviceLocationRegistrar in registrars)
+            {
+                serviceLocationRegistrar.Register(this.runtimeManager, this);
+            }
+        }
+
+        internal void RegisterServices()
+        {
+            var registrars = this.scanner.GetRegistrars().ToList();
+            this.RegisterServices(registrars);
         }
 
         /// <summary>
@@ -89,72 +90,67 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
         /// <returns>The implementation of the given type that has been located.</returns>
         private object InternalLocate(Type type)
         {
-            if (ReferenceEquals(type,
-                null))
+            if (ReferenceEquals(type, null))
             {
                 throw new ArgumentNullException("type");
             }
+
             object runtimeVersion = null;
             object overrideVersion = null;
 
             // First try to get a an override
-            if (!this._overrideServices.TryGetValue(type, out overrideVersion))
+            if (!this.overrideServices.TryGetValue(type, out overrideVersion))
             {
                 // if no override, then try to get the actual service.
-                this._services.TryGetValue(type, out runtimeVersion);
+                this.services.TryGetValue(type, out runtimeVersion);
             }
 
             return overrideVersion ?? runtimeVersion;
         }
 
         /// <inheritdoc/>
+        private class ServiceLocationOverrideManager : ServiceLocationManager, IServiceLocationOverrideManager
+        {
+            private readonly ServiceLocator locator;
+
+            /// <inheritdoc/>
+            public ServiceLocationOverrideManager(ServiceLocator locator)
+            {
+                this.locator = locator;
+            }
+
+            /// <inheritdoc/>
+            public override void RegisterServiceInstance(Type type, object instance)
+            {
+                ServiceLocationManager.ThrowIfNullInstance(type, instance);
+                ServiceLocationManager.ThrowIfInvalidRegistration(type, instance.GetType());
+
+                this.locator.overrideServices[type] = instance;
+            }
+        }
+
+        /// <inheritdoc/>
         private class ServiceLocationRuntimeManager : ServiceLocationManager, IServiceLocationRuntimeManager
         {
-            private readonly ServiceLocator _locator;
+            private readonly ServiceLocator locator;
 
             /// <inheritdoc/>
             public ServiceLocationRuntimeManager(ServiceLocator locator)
             {
-                this._locator = locator;
+                this.locator = locator;
             }
 
             /// <inheritdoc />
             public override void RegisterServiceInstance(Type type, object instance)
             {
-                ThrowIfNullInstance(type,
-                                    instance);
-                ThrowIfInvalidRegistration(type,
-                                           instance.GetType());
-                var internalManager = new RuntimeRegistrationManager(this._locator);
-                internalManager.RegisterServiceInstance(type,
-                                                 instance);
+                ServiceLocationManager.ThrowIfNullInstance(type, instance);
+                ServiceLocationManager.ThrowIfInvalidRegistration(type, instance.GetType());
+                var internalManager = new RuntimeRegistrationManager(this.locator);
+                internalManager.RegisterServiceInstance(type, instance);
                 foreach (KeyValuePair<Type, object> keyValuePair in internalManager.GetDiscovered())
                 {
-                    this._locator._services[keyValuePair.Key] = keyValuePair.Value;
+                    this.locator.services[keyValuePair.Key] = keyValuePair.Value;
                 }
-            }
-        }
-
-        /// <inheritdoc/>
-        private class ServiceLocationOverrideManager : ServiceLocationManager, IServiceLocationOverrideManager
-        {
-            private readonly ServiceLocator _locator;
-
-            /// <inheritdoc/>
-            public ServiceLocationOverrideManager(ServiceLocator locator)
-            {
-                this._locator = locator;
-            }
-
-            /// <inheritdoc/>
-            public override void RegisterServiceInstance(Type type, object instance)
-            {
-                ThrowIfNullInstance(type,
-                                    instance);
-                ThrowIfInvalidRegistration(type,
-                                           instance.GetType());
-
-                this._locator._overrideServices[type] = instance;
             }
         }
     }

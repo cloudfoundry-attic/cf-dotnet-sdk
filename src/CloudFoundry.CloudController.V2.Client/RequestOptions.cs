@@ -1,34 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-
-namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+
     public class RequestOptions
     {
+        private readonly string orderFormat = "order-direction={0}";
+
+        private readonly string pageFormat = "page={0}";
+
+        private readonly string qeryFormat = "q={0}";
+
+        private readonly string resultsFormat = "results-per-page={0}";
+
         /// <summary>
-        /// Page of results to fetch
+        /// Gets or sets the order of the results: asc (default) or desc
+        /// </summary>
+        public string OrderDirection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the page of results to fetch
         /// </summary>
         public int? Page { get; set; }
 
         /// <summary>
-        /// Parameters used to filter the result set.
+        /// Gets or sets the parameters used to filter the result set.
         /// </summary>
         public string Query { get; set; }
 
         /// <summary>
-        /// Number of results per page
+        /// Gets or sets the number of results per page
         /// </summary>
         public int? ResultsPerPage { get; set; }
-
-        /// <summary>
-        /// Order of the results: asc (default) or desc
-        /// </summary>
-        public string OrderDirection { get; set; }
-
-        private readonly string qeryFormat = "q={0}";
-        private readonly string pageFormat = "page={0}";
-        private readonly string resultsFormat = "results-per-page={0}";
-        private readonly string orderFormat = "order-direction={0}";
 
         public override string ToString()
         {
@@ -37,22 +40,27 @@ namespace CloudFoundry.CloudController.V2
             {
                 args.Add(string.Format(CultureInfo.InvariantCulture, this.pageFormat, this.Page));
             }
+
             if (this.Query != null)
             {
                 args.Add(string.Format(CultureInfo.InvariantCulture, this.qeryFormat, this.Query));
             }
+
             if (this.ResultsPerPage != null)
             {
                 args.Add(string.Format(CultureInfo.InvariantCulture, this.resultsFormat, this.ResultsPerPage));
             }
+
             if (this.OrderDirection != null)
             {
                 args.Add(string.Format(CultureInfo.InvariantCulture, this.orderFormat, this.OrderDirection));
             }
+
             if (args.Count > 0)
             {
                 return string.Format(CultureInfo.InvariantCulture, "?{0}", string.Join("&", args));
             }
+
             return string.Empty;
         }
     }

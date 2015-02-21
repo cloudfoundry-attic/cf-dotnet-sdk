@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace CloudFoundry.CloudController.V2.Exceptions
+﻿namespace CloudFoundry.CloudController.V2.Exceptions
 {
+    using Newtonsoft.Json;
+
     public class CloudFoundryExceptionObject
     {
         [JsonProperty("code")]

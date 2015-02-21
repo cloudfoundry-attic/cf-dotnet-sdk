@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace CloudFoundry.CloudController.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
+    using System.Collections.Generic;
+
     public interface IHttpHeadersCollection : IEnumerable<KeyValuePair<string, IEnumerable<string>>>
     {
+        IEnumerable<string> this[string name] { get; set; }
+
         void Add(string name, IEnumerable<string> values);
 
         void Add(string name, string value);
@@ -17,7 +19,5 @@ namespace CloudFoundry.CloudController.Common.Http
         void Remove(string name);
 
         bool TryGetValue(string name, out IEnumerable<string> values);
-
-        IEnumerable<string> this[string name] { get; set; }
     }
 }

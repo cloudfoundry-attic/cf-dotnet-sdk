@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace CloudFoundry.CloudController.V2.Exceptions
+﻿namespace CloudFoundry.CloudController.V2.Exceptions
 {
+    using System;
+
     public class AuthenticationException : Exception
     {
         public AuthenticationException()

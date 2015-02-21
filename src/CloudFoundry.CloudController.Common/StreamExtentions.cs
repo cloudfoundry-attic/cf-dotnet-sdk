@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace CloudFoundry.CloudController.Common
+﻿namespace CloudFoundry.CloudController.Common
 {
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Static class for extending the Stream class.
     /// </summary>

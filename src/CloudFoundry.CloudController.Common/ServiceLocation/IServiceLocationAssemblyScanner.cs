@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-
-namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
+    using System.Collections.Generic;
+    using System.Reflection;
+
     /// <summary>
     /// Interface for scanning an assembly for service location registrars.
     /// </summary>
     internal interface IServiceLocationAssemblyScanner
     {
         /// <summary>
-        /// Gets a value indicating if the scanner has new assemblies that can be scanned.
+        /// Gets a value indicating whether the scanner has new assemblies that can be scanned.
         /// </summary>
         bool HasNewAssemblies { get; }
 

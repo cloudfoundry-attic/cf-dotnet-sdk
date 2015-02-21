@@ -1,14 +1,10 @@
-﻿using CloudFoundry.CloudController.Common.Http;
-using System;
-
-namespace CloudFoundry.CloudController.V2.Exceptions
+﻿namespace CloudFoundry.CloudController.V2.Exceptions
 {
+    using System;
+    using CloudFoundry.CloudController.Common.Http;
+
     public class CloudFoundryException : Exception
     {
-        public IHttpResponseAbstraction Response { get; set; }
-
-        public CloudFoundryExceptionObject ExceptionObject { get; set; }
-
         public CloudFoundryException()
         {
         }
@@ -24,11 +20,14 @@ namespace CloudFoundry.CloudController.V2.Exceptions
             this.ExceptionObject = exceptionObject;
         }
 
-        public CloudFoundryException(string message,
-            Exception innerException)
+        public CloudFoundryException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
+
+        public CloudFoundryExceptionObject ExceptionObject { get; set; }
+
+        public IHttpResponseAbstraction Response { get; set; }
 
         private static CloudFoundryExceptionObject ValidateExceptionObject(CloudFoundryExceptionObject exceptionObject)
         {

@@ -1,29 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
     /// <inheritdoc/>
     internal class ServiceLocationAssemblyScanner : IServiceLocationAssemblyScanner
     {
-        internal IServiceLocationRegistrarFactory ServiceRegistrarFactory { get; set; }
+        private readonly List<Assembly> assemblies = new List<Assembly>();
 
-        internal readonly List<Type> _registrars = new List<Type>();
-        internal readonly List<Assembly> _assemblies = new List<Assembly>();
-        internal Func<IEnumerable<Type>> GetRegistrarTypes;
+        private readonly List<Type> registrars = new List<Type>();
+
+        private Func<IEnumerable<Type>> getRegistrarTypes;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceLocationAssemblyScanner"/> class.
+        /// </summary>
+        public ServiceLocationAssemblyScanner()
+        {
+            this.getRegistrarTypes = this.InternalGetRegistrarTypes;
+            this.ServiceRegistrarFactory = new ServiceLocationRegistrarFactory();
+        }
 
         /// <inheritdoc/>
         public bool HasNewAssemblies { get; internal set; }
 
-        /// <summary>
-        /// Creates a new instance of the ServiceLocationAssemblyScanner class.
-        /// </summary>
-        public ServiceLocationAssemblyScanner()
+        internal IServiceLocationRegistrarFactory ServiceRegistrarFactory { get; set; }
+
+        /// <inheritdoc/>
+        public void AddAssembly(Assembly target)
         {
-            this.GetRegistrarTypes = this.InternalGetRegistrarTypes;
-            this.ServiceRegistrarFactory = new ServiceLocationRegistrarFactory();
+            if (!this.assemblies.Contains(target))
+            {
+                this.assemblies.Add(target);
+                this.HasNewAssemblies = true;
+            }
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<IServiceLocationRegistrar> GetNewRegistrars()
+        {
+            var newRegistrars = this.GetNewRegistrarTypes().ToList();
+            this.registrars.All(newRegistrars.Remove);
+            this.registrars.AddRange(newRegistrars);
+            this.HasNewAssemblies = false;
+
+            return this.GetRegistrars(newRegistrars);
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<IServiceLocationRegistrar> GetRegistrars()
+        {
+            var newRegistrars = this.GetNewRegistrarTypes().ToList();
+
+            this.registrars.All(newRegistrars.Remove);
+            this.registrars.AddRange(newRegistrars);
+            this.HasNewAssemblies = false;
+
+            return this.GetRegistrars(this.registrars);
         }
 
         /// <inheritdoc/>
@@ -32,7 +67,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
             var newRegistrars = new List<Type>();
             if (this.HasNewAssemblies)
             {
-                newRegistrars = this.GetRegistrarTypes().ToList();
+                newRegistrars = this.getRegistrarTypes().ToList();
             }
 
             return newRegistrars;
@@ -49,39 +84,6 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
                     select this.ServiceRegistrarFactory.Create(t)).ToList();
         }
 
-        /// <inheritdoc/>
-        public IEnumerable<IServiceLocationRegistrar> GetNewRegistrars()
-        {
-            var newRegistrars = this.GetNewRegistrarTypes().ToList();
-            this._registrars.All(newRegistrars.Remove);
-            this._registrars.AddRange(newRegistrars);
-            this.HasNewAssemblies = false;
-
-            return this.GetRegistrars(newRegistrars);
-        }
-
-        /// <inheritdoc/>
-        public IEnumerable<IServiceLocationRegistrar> GetRegistrars()
-        {
-            var newRegistrars = this.GetNewRegistrarTypes().ToList();
-
-            this._registrars.All(newRegistrars.Remove);
-            this._registrars.AddRange(newRegistrars);
-            this.HasNewAssemblies = false;
-
-            return this.GetRegistrars(this._registrars);
-        }
-
-        /// <inheritdoc/>
-        public void AddAssembly(Assembly target)
-        {
-            if (!this._assemblies.Contains(target))
-            {
-                this._assemblies.Add(target);
-                this.HasNewAssemblies = true;
-            }
-        }
-
         /// <summary>
         /// Gets a list of types for any services registrars in the current application domain.
         /// </summary>
@@ -91,7 +93,7 @@ namespace CloudFoundry.CloudController.Common.ServiceLocation
             var rawTypes = new List<Type>();
             var serviceRegistrarType = typeof(IServiceLocationRegistrar);
 
-            foreach (var assembly in this._assemblies)
+            foreach (var assembly in this.assemblies)
             {
                 try
                 {

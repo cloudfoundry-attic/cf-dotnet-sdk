@@ -1,17 +1,45 @@
-using CloudFoundry.CloudController.Common.ServiceLocation;
-using CloudFoundry.CloudController.V2.Auth;
-using CloudFoundry.CloudController.V2.Client;
-using CloudFoundry.CloudController.V2.Interfaces;
-using System;
-using System.Threading;
-
 namespace CloudFoundry.CloudController.V2
 {
+    using System;
+    using System.Threading;
+    using CloudFoundry.CloudController.Common.ServiceLocation;
+    using CloudFoundry.CloudController.V2.Auth;
+    using CloudFoundry.CloudController.V2.Client;
+    using CloudFoundry.CloudController.V2.Interfaces;
+
     public class CloudFoundryClient
     {
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IServiceLocator serviceLocator)
+        {
+            this.CloudTarget = cloudTarget;
+            this.CancellationToken = cancellationToken;
+            this.ServiceLocator = serviceLocator;
+            this.Auth = new ThinkTectureAuth();
+
+            this.InitEndpoints();
+
+            var info = this.Info.GetInfo().Result;
+
+            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
+            this.Auth.OAuthUrl = new Uri(authUrl);
+        }
+
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
+            : this(cloudTarget, cancellationToken, new ServiceLocator())
+        {
+        }
+
         public AppsEndpoint Apps { get; private set; }
 
         public AppUsageEventsEndpoint AppUsageEvents { get; private set; }
+
+        public string AuthorizationToken
+        {
+            get
+            {
+                return this.Auth.GetToken();
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Buildpacks",
              Justification = "Keeping Cloud Foundry nomenclature.")]
@@ -79,33 +107,16 @@ namespace CloudFoundry.CloudController.V2
 
         public UsersEndpoint Users { get; private set; }
 
-        internal Uri CloudTarget;
-        internal CancellationToken CancellationToken;
-        internal IServiceLocator ServiceLocator;
-        internal IAuthentication auth;
+        internal IAuthentication Auth { get; set; }
 
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IServiceLocator serviceLocator)
-        {
-            this.CloudTarget = cloudTarget;
-            this.CancellationToken = cancellationToken;
-            this.ServiceLocator = serviceLocator;
-            this.auth = new ThinkTectureAuth();
+        internal CancellationToken CancellationToken { get; set; }
 
-            this.InitEndpoints();
+        internal Uri CloudTarget { get; set; }
 
-            var info = this.Info.GetInfo().Result;
-
-            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
-            this.auth.OAuthUrl = new Uri(authUrl);
-        }
-
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
-            : this(cloudTarget, cancellationToken, new ServiceLocator())
-        {
-        }
+        internal IServiceLocator ServiceLocator { get; set; }
 
         /// <summary>
-        /// Logins the specified credentials.
+        /// Login using the specified credentials.
         /// </summary>
         /// <param name="credentials">The credentials.</param>
         /// <returns>Refresh Token</returns>
@@ -113,21 +124,21 @@ namespace CloudFoundry.CloudController.V2
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
         public string Login(CloudCredentials credentials)
         {
-            var refreshToken = this.auth.Authenticate(credentials);
+            var refreshToken = this.Auth.Authenticate(credentials);
 
             return refreshToken;
         }
 
         /// <summary>
-        /// Logins the specified raw token response.
+        /// Login using the specified raw token.
         /// </summary>
-        /// <param name="rawTokenResponse">The raw token response.</param>
+        /// <param name="refreshToken">A raw token.</param>
         /// <returns>Token Object</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login",
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
         public string Login(string refreshToken)
         {
-            var newRefreshToken = this.auth.Authenticate(refreshToken);
+            var newRefreshToken = this.Auth.Authenticate(refreshToken);
             return newRefreshToken;
         }
 
@@ -167,14 +178,6 @@ namespace CloudFoundry.CloudController.V2
             this.Stacks = new StacksEndpoint(this);
             this.UserProvidedServiceInstances = new UserProvidedServiceInstancesEndpoint(this);
             this.Users = new UsersEndpoint(this);
-        }
-
-        public string AuthorizationToken
-        {
-            get
-            {
-                return this.auth.GetToken();
-            }
         }
     }
 }
