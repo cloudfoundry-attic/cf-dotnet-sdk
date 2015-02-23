@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>HP</authors>
+    <owners>HP</owners>
+    <licenseUrl>https://github.com/hpcloud/cf-dotnet-sdk/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/hpcloud/cf-dotnet-sdk</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First release of the .NET SDK for Cloud Foundry.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>cloud foundy cloudfoundry paas sdk net .net dotnet</tags>
+  </metadata>
+</package>

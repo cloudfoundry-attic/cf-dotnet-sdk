@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CloudFoundry.CloudController.V2.Client")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(".NET SDK for Cloud Foundry")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("CloudFoundry.CloudController.V2.Client")]
