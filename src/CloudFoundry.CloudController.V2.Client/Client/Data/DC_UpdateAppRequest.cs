@@ -31,14 +31,14 @@ namespace CloudFoundry.CloudController.V2.Client.Data
         }
 
         [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
-        public string Memory
+        public int? Memory
         {
             get;
             set;
         }
 
         [JsonProperty("instances", NullValueHandling = NullValueHandling.Ignore)]
-        public string Instances
+        public int? Instances
         {
             get;
             set;
@@ -52,7 +52,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
         }
 
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string SpaceGuid
+        public Guid? SpaceGuid
         {
             get;
             set;
@@ -143,3 +143,4 @@ namespace CloudFoundry.CloudController.V2.Client.Data
         }
     }
 }
+
