@@ -57,7 +57,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
         }
 
         [JsonProperty("gateway_data", NullValueHandling = NullValueHandling.Ignore)]
-        public string GatewayData
+        public dynamic GatewayData
         {
             get;
             set;
