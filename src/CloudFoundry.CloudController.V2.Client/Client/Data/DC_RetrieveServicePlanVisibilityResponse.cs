@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class RetrieveServicePlanVisibilityResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RetrieveServicePlanVisibilityResponse
+    public partial class RetrieveServicePlanVisibilityResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveServicePlanVisibilityResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class RetrieveServicePlanVisibilityResponse : IResponse
+    public abstract class AbstractRetrieveServicePlanVisibilityResponse : IResponse
     {
         public Metadata EntityMetadata
         {

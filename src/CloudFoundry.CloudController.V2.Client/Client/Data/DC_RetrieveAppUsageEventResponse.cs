@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class RetrieveAppUsageEventResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RetrieveAppUsageEventResponse
+    public partial class RetrieveAppUsageEventResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveAppUsageEventResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class RetrieveAppUsageEventResponse : IResponse
+    public abstract class AbstractRetrieveAppUsageEventResponse : IResponse
     {
         public Metadata EntityMetadata
         {

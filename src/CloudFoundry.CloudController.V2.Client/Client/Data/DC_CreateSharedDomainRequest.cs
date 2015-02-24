@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateSharedDomainRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateSharedDomainRequest
+    public partial class CreateSharedDomainRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateSharedDomainRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class CreateSharedDomainRequest
+    public abstract class AbstractCreateSharedDomainRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

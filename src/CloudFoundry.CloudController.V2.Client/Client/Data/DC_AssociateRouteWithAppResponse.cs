@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class AssociateRouteWithAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AssociateRouteWithAppResponse
+    public partial class AssociateRouteWithAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractAssociateRouteWithAppResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AssociateRouteWithAppResponse : IResponse
+    public abstract class AbstractAssociateRouteWithAppResponse : IResponse
     {
         public Metadata EntityMetadata
         {

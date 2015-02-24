@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class DomainsDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.DomainsDeprecatedEndpoint
+    public partial class DomainsDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractDomainsDeprecatedEndpoint
     {
         public DomainsDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class DomainsDeprecatedEndpoint : BaseEndpoint
+    public abstract class AbstractDomainsDeprecatedEndpoint : BaseEndpoint
     {
 
         /// <summary>

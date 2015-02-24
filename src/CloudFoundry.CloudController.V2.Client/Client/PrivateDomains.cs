@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class PrivateDomainsEndpoint : CloudFoundry.CloudController.V2.Client.Base.PrivateDomainsEndpoint
+    public partial class PrivateDomainsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractPrivateDomainsEndpoint
     {
         public PrivateDomainsEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class PrivateDomainsEndpoint : BaseEndpoint
+    public abstract class AbstractPrivateDomainsEndpoint : BaseEndpoint
     {
 
         /// <summary>

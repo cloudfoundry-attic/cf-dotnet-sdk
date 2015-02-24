@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ListAllDomainsForOrganizationDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.ListAllDomainsForOrganizationDeprecatedResponse
+    public partial class ListAllDomainsForOrganizationDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllDomainsForOrganizationDeprecatedResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class ListAllDomainsForOrganizationDeprecatedResponse : IResponse
+    public abstract class AbstractListAllDomainsForOrganizationDeprecatedResponse : IResponse
     {
         public Metadata EntityMetadata
         {

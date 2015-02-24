@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class SharedDomainsEndpoint : CloudFoundry.CloudController.V2.Client.Base.SharedDomainsEndpoint
+    public partial class SharedDomainsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractSharedDomainsEndpoint
     {
         public SharedDomainsEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class SharedDomainsEndpoint : BaseEndpoint
+    public abstract class AbstractSharedDomainsEndpoint : BaseEndpoint
     {
 
         /// <summary>

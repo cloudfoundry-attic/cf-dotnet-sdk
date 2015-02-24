@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class EnvironmentVariableGroupsEndpoint : CloudFoundry.CloudController.V2.Client.Base.EnvironmentVariableGroupsEndpoint
+    public partial class EnvironmentVariableGroupsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractEnvironmentVariableGroupsEndpoint
     {
         public EnvironmentVariableGroupsEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class EnvironmentVariableGroupsEndpoint : BaseEndpoint
+    public abstract class AbstractEnvironmentVariableGroupsEndpoint : BaseEndpoint
     {
 
         /// <summary>

@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class OrganizationQuotaDefinitionsEndpoint : CloudFoundry.CloudController.V2.Client.Base.OrganizationQuotaDefinitionsEndpoint
+    public partial class OrganizationQuotaDefinitionsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractOrganizationQuotaDefinitionsEndpoint
     {
         public OrganizationQuotaDefinitionsEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class OrganizationQuotaDefinitionsEndpoint : BaseEndpoint
+    public abstract class AbstractOrganizationQuotaDefinitionsEndpoint : BaseEndpoint
     {
 
         /// <summary>

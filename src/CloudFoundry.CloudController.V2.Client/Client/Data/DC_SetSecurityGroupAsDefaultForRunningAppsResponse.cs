@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class SetSecurityGroupAsDefaultForRunningAppsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.SetSecurityGroupAsDefaultForRunningAppsResponse
+    public partial class SetSecurityGroupAsDefaultForRunningAppsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractSetSecurityGroupAsDefaultForRunningAppsResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class SetSecurityGroupAsDefaultForRunningAppsResponse : IResponse
+    public abstract class AbstractSetSecurityGroupAsDefaultForRunningAppsResponse : IResponse
     {
         public Metadata EntityMetadata
         {

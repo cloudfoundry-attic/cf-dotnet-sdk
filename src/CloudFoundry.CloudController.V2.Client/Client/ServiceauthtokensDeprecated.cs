@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ServiceauthtokensDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.ServiceauthtokensDeprecatedEndpoint
+    public partial class ServiceauthtokensDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceauthtokensDeprecatedEndpoint
     {
         public ServiceauthtokensDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class ServiceauthtokensDeprecatedEndpoint : BaseEndpoint
+    public abstract class AbstractServiceauthtokensDeprecatedEndpoint : BaseEndpoint
     {
 
         /// <summary>

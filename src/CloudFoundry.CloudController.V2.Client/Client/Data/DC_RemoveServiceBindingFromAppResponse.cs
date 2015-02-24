@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class RemoveServiceBindingFromAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RemoveServiceBindingFromAppResponse
+    public partial class RemoveServiceBindingFromAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveServiceBindingFromAppResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class RemoveServiceBindingFromAppResponse : IResponse
+    public abstract class AbstractRemoveServiceBindingFromAppResponse : IResponse
     {
         public Metadata EntityMetadata
         {

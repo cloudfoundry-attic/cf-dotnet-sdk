@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class LockOrUnlockBuildpackResponse : CloudFoundry.CloudController.V2.Client.Data.Base.LockOrUnlockBuildpackResponse
+    public partial class LockOrUnlockBuildpackResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractLockOrUnlockBuildpackResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class LockOrUnlockBuildpackResponse : IResponse
+    public abstract class AbstractLockOrUnlockBuildpackResponse : IResponse
     {
         public Metadata EntityMetadata
         {

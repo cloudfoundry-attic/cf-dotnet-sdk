@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class RemoveSpaceFromUserResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RemoveSpaceFromUserResponse
+    public partial class RemoveSpaceFromUserResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveSpaceFromUserResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class RemoveSpaceFromUserResponse : IResponse
+    public abstract class AbstractRemoveSpaceFromUserResponse : IResponse
     {
         public Metadata EntityMetadata
         {

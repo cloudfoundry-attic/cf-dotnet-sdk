@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateSecurityGroupRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateSecurityGroupRequest
+    public partial class CreateSecurityGroupRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateSecurityGroupRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class CreateSecurityGroupRequest
+    public abstract class AbstractCreateSecurityGroupRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

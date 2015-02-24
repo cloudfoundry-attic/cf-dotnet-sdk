@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class UpdateServiceDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.UpdateServiceDeprecatedResponse
+    public partial class UpdateServiceDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateServiceDeprecatedResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class UpdateServiceDeprecatedResponse : IResponse
+    public abstract class AbstractUpdateServiceDeprecatedResponse : IResponse
     {
         public Metadata EntityMetadata
         {

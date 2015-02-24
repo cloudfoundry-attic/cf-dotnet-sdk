@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class GetAppBitsUploadFeatureFlagResponse : CloudFoundry.CloudController.V2.Client.Data.Base.GetAppBitsUploadFeatureFlagResponse
+    public partial class GetAppBitsUploadFeatureFlagResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetAppBitsUploadFeatureFlagResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class GetAppBitsUploadFeatureFlagResponse : IResponse
+    public abstract class AbstractGetAppBitsUploadFeatureFlagResponse : IResponse
     {
         public Metadata EntityMetadata
         {

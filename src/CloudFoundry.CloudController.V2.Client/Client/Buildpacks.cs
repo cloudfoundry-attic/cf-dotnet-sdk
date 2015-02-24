@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class BuildpacksEndpoint : CloudFoundry.CloudController.V2.Client.Base.BuildpacksEndpoint
+    public partial class BuildpacksEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractBuildpacksEndpoint
     {
         public BuildpacksEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class BuildpacksEndpoint : BaseEndpoint
+    public abstract class AbstractBuildpacksEndpoint : BaseEndpoint
     {
 
         /// <summary>

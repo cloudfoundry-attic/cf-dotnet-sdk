@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class SecurityGroupStagingDefaultsEndpoint : CloudFoundry.CloudController.V2.Client.Base.SecurityGroupStagingDefaultsEndpoint
+    public partial class SecurityGroupStagingDefaultsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractSecurityGroupStagingDefaultsEndpoint
     {
         public SecurityGroupStagingDefaultsEndpoint(CloudFoundryClient client) : base()
         {
@@ -40,7 +40,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 {
 
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class SecurityGroupStagingDefaultsEndpoint : BaseEndpoint
+    public abstract class AbstractSecurityGroupStagingDefaultsEndpoint : BaseEndpoint
     {
 
         /// <summary>

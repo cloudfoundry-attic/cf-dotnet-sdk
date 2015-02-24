@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class UpdateOrganizationQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.UpdateOrganizationQuotaDefinitionRequest
+    public partial class UpdateOrganizationQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateOrganizationQuotaDefinitionRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class UpdateOrganizationQuotaDefinitionRequest
+    public abstract class AbstractUpdateOrganizationQuotaDefinitionRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

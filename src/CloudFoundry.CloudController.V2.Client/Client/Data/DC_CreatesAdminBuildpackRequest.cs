@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreatesAdminBuildpackRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreatesAdminBuildpackRequest
+    public partial class CreatesAdminBuildpackRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreatesAdminBuildpackRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class CreatesAdminBuildpackRequest
+    public abstract class AbstractCreatesAdminBuildpackRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

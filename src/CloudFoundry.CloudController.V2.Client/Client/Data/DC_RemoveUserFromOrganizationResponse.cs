@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class RemoveUserFromOrganizationResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RemoveUserFromOrganizationResponse
+    public partial class RemoveUserFromOrganizationResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveUserFromOrganizationResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class RemoveUserFromOrganizationResponse : IResponse
+    public abstract class AbstractRemoveUserFromOrganizationResponse : IResponse
     {
         public Metadata EntityMetadata
         {

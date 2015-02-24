@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.CreateServiceInstanceResponse
+    public partial class CreateServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceInstanceResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class CreateServiceInstanceResponse : IResponse
+    public abstract class AbstractCreateServiceInstanceResponse : IResponse
     {
         public Metadata EntityMetadata
         {
@@ -65,7 +65,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         [JsonProperty("gateway_data", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic GatewayData
+        public string GatewayData
         {
             get;
             set;

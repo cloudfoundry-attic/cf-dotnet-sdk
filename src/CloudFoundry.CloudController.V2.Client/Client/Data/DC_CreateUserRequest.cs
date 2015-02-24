@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateUserRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateUserRequest
+    public partial class CreateUserRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateUserRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class CreateUserRequest
+    public abstract class AbstractCreateUserRequest
     {
 
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]

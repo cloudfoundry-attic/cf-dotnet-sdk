@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateServiceBindingRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateServiceBindingRequest
+    public partial class CreateServiceBindingRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceBindingRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class CreateServiceBindingRequest
+    public abstract class AbstractCreateServiceBindingRequest
     {
 
         [JsonProperty("service_instance_guid", NullValueHandling = NullValueHandling.Ignore)]

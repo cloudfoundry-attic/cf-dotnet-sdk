@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class GettingContentsOfRunningEnvironmentVariableGroupResponse : CloudFoundry.CloudController.V2.Client.Data.Base.GettingContentsOfRunningEnvironmentVariableGroupResponse
+    public partial class GettingContentsOfRunningEnvironmentVariableGroupResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGettingContentsOfRunningEnvironmentVariableGroupResponse
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class GettingContentsOfRunningEnvironmentVariableGroupResponse : IResponse
+    public abstract class AbstractGettingContentsOfRunningEnvironmentVariableGroupResponse : IResponse
     {
         public Metadata EntityMetadata
         {

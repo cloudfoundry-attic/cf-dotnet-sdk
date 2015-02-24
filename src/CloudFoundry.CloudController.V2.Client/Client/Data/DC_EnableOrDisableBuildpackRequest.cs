@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class EnableOrDisableBuildpackRequest : CloudFoundry.CloudController.V2.Client.Data.Base.EnableOrDisableBuildpackRequest
+    public partial class EnableOrDisableBuildpackRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractEnableOrDisableBuildpackRequest
     {
     }
 }
@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class EnableOrDisableBuildpackRequest
+    public abstract class AbstractEnableOrDisableBuildpackRequest
     {
 
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
