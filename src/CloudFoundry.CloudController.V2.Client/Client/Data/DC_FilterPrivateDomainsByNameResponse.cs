@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class FilterPrivateDomainsByNameResponse : IResponse
+    public partial class FilterPrivateDomainsByNameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.FilterPrivateDomainsByNameResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class FilterPrivateDomainsByNameResponse : IResponse
     {
         public Metadata EntityMetadata
         {

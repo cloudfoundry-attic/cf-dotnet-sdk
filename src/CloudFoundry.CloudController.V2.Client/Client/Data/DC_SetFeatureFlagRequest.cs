@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class SetFeatureFlagRequest
+    public partial class SetFeatureFlagRequest : CloudFoundry.CloudController.V2.Client.Data.Base.SetFeatureFlagRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class SetFeatureFlagRequest
     {
 
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]

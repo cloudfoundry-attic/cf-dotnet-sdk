@@ -20,17 +20,44 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class SecurityGroupRunningDefaultsEndpoint : BaseEndpoint
+    public partial class SecurityGroupRunningDefaultsEndpoint : CloudFoundry.CloudController.V2.Client.Base.SecurityGroupRunningDefaultsEndpoint
     {
-        public SecurityGroupRunningDefaultsEndpoint(CloudFoundryClient client)
+        public SecurityGroupRunningDefaultsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class SecurityGroupRunningDefaultsEndpoint : BaseEndpoint
+    {
+
+        /// <summary>
+        /// Set a Security Group as a default for running Apps
+        /// </summary>
+        public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid? guid)
+        {
+            string route = string.Format("/v2/config/running_security_groups/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForRunningAppsResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -68,23 +95,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ReturnSecurityGroupsUsedForRunningAppsResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Set a Security Group as a default for running Apps
-        /// </summary>
-        public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid? guid)
-        {
-            string route = string.Format("/v2/config/running_security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForRunningAppsResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

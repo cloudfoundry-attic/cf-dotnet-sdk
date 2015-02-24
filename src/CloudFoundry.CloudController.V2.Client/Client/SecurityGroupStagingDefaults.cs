@@ -20,39 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class SecurityGroupStagingDefaultsEndpoint : BaseEndpoint
+    public partial class SecurityGroupStagingDefaultsEndpoint : CloudFoundry.CloudController.V2.Client.Base.SecurityGroupStagingDefaultsEndpoint
     {
-        public SecurityGroupStagingDefaultsEndpoint(CloudFoundryClient client)
+        public SecurityGroupStagingDefaultsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
 
-        /// <summary>
-        /// Return the Security Groups used for staging
-        /// </summary>
-        public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging()
-        {
-            return await ReturnSecurityGroupsUsedForStaging(new RequestOptions());
-        }
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
 
-        public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
-        {
-            string route = "/v2/config/staging_security_groups";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ReturnSecurityGroupsUsedForStagingResponse>(await response.ReadContentAsStringAsync());
-        }
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class SecurityGroupStagingDefaultsEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// Removing a Security Group as a default for staging
@@ -85,6 +74,27 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Return the Security Groups used for staging
+        /// </summary>
+        public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging()
+        {
+            return await ReturnSecurityGroupsUsedForStaging(new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
+        {
+            string route = "/v2/config/staging_security_groups";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ReturnSecurityGroupsUsedForStagingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

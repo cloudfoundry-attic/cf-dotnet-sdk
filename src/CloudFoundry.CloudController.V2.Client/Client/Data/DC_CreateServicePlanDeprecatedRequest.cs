@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class CreateServicePlanDeprecatedRequest
+    public partial class CreateServicePlanDeprecatedRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateServicePlanDeprecatedRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class CreateServicePlanDeprecatedRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

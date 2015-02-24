@@ -20,40 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class AppUsageEventsEndpoint : BaseEndpoint
+    public partial class AppUsageEventsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AppUsageEventsEndpoint
     {
-        public AppUsageEventsEndpoint(CloudFoundryClient client)
+        public AppUsageEventsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
 
-        /// <summary>
-        /// Purge and reseed App Usage Events
-        /// </summary>
-        /// Destroys all existing events. Populates new usage events, one for each started app.
-        /// All populated events will have a created_at value of current time.
-        /// 
-        /// There is the potential race condition if apps are currently being started, stopped, or scaled.
-        /// 
-        /// The seeded usage events will have the same guid as the app.
-        public async Task PurgeAndReseedAppUsageEvents()
-        {
-            string route = "/v2/app_usage_events/destructively_purge_all_and_reseed_started_apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class AppUsageEventsEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// List all App Usage Events
@@ -94,6 +82,28 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Purge and reseed App Usage Events
+        /// </summary>
+        /// Destroys all existing events. Populates new usage events, one for each started app.
+        /// All populated events will have a created_at value of current time.
+        /// 
+        /// There is the potential race condition if apps are currently being started, stopped, or scaled.
+        /// 
+        /// The seeded usage events will have the same guid as the app.
+        public async Task PurgeAndReseedAppUsageEvents()
+        {
+            string route = "/v2/app_usage_events/destructively_purge_all_and_reseed_started_apps";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
     }
 }

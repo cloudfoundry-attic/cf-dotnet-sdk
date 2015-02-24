@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class CreatePrivateDomainOwnedByGivenOrganizationRequest
+    public partial class CreatePrivateDomainOwnedByGivenOrganizationRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreatePrivateDomainOwnedByGivenOrganizationRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class CreatePrivateDomainOwnedByGivenOrganizationRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

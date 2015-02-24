@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class AssociateSpaceWithSpaceQuotaDefinitionResponse : IResponse
+    public partial class AssociateSpaceWithSpaceQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AssociateSpaceWithSpaceQuotaDefinitionResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class AssociateSpaceWithSpaceQuotaDefinitionResponse : IResponse
     {
         public Metadata EntityMetadata
         {

@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class CreateUserProvidedServiceInstanceRequest
+    public partial class CreateUserProvidedServiceInstanceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateUserProvidedServiceInstanceRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class CreateUserProvidedServiceInstanceRequest
     {
 
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]

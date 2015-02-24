@@ -20,18 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class BuildpacksEndpoint : BaseEndpoint
+    public partial class BuildpacksEndpoint : CloudFoundry.CloudController.V2.Client.Base.BuildpacksEndpoint
     {
-        public BuildpacksEndpoint(CloudFoundryClient client)
+        public BuildpacksEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class BuildpacksEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// Change the position of a Buildpack
@@ -55,19 +65,39 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Delete a Particular Buildpack
+        /// Lock or unlock a Buildpack
         /// </summary>
-        public async Task DeleteBuildpack(Guid? guid)
+        public async Task<LockOrUnlockBuildpackResponse> LockOrUnlockBuildpack(Guid? guid, LockOrUnlockBuildpackRequest value)
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Put;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<LockOrUnlockBuildpackResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Enable or disable a Buildpack
+        /// </summary>
+        public async Task<EnableOrDisableBuildpackResponse> EnableOrDisableBuildpack(Guid? guid, EnableOrDisableBuildpackRequest value)
+        {
+            string route = string.Format("/v2/buildpacks/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<EnableOrDisableBuildpackResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -105,24 +135,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Lock or unlock a Buildpack
-        /// </summary>
-        public async Task<LockOrUnlockBuildpackResponse> LockOrUnlockBuildpack(Guid? guid, LockOrUnlockBuildpackRequest value)
-        {
-            string route = string.Format("/v2/buildpacks/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<LockOrUnlockBuildpackResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// List all Buildpacks
         /// </summary>
         public async Task<PagedResponseCollection<ListAllBuildpacksResponse>> ListAllBuildpacks()
@@ -144,21 +156,19 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Enable or disable a Buildpack
+        /// Delete a Particular Buildpack
         /// </summary>
-        public async Task<EnableOrDisableBuildpackResponse> EnableOrDisableBuildpack(Guid? guid, EnableOrDisableBuildpackRequest value)
+        public async Task DeleteBuildpack(Guid? guid)
         {
             string route = string.Format("/v2/buildpacks/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<EnableOrDisableBuildpackResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

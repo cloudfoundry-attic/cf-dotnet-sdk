@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ChangePositionOfBuildpackResponse : IResponse
+    public partial class ChangePositionOfBuildpackResponse : CloudFoundry.CloudController.V2.Client.Data.Base.ChangePositionOfBuildpackResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ChangePositionOfBuildpackResponse : IResponse
     {
         public Metadata EntityMetadata
         {

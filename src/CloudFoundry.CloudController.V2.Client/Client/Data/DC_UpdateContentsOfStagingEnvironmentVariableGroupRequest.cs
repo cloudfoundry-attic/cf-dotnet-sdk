@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class UpdateContentsOfStagingEnvironmentVariableGroupRequest
+    public partial class UpdateContentsOfStagingEnvironmentVariableGroupRequest : CloudFoundry.CloudController.V2.Client.Data.Base.UpdateContentsOfStagingEnvironmentVariableGroupRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class UpdateContentsOfStagingEnvironmentVariableGroupRequest
     {
 
         [JsonProperty("abc", NullValueHandling = NullValueHandling.Ignore)]

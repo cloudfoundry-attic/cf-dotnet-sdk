@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class CreateAppRequest
+    public partial class CreateAppRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateAppRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class CreateAppRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
@@ -38,14 +46,14 @@ namespace CloudFoundry.CloudController.V2.Client.Data
         }
 
         [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Memory
+        public string Memory
         {
             get;
             set;
         }
 
         [JsonProperty("instances", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Instances
+        public string Instances
         {
             get;
             set;
@@ -143,4 +151,3 @@ namespace CloudFoundry.CloudController.V2.Client.Data
         }
     }
 }
-

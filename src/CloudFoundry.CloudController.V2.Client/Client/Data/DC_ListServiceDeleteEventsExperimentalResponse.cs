@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ListServiceDeleteEventsExperimentalResponse : IResponse
+    public partial class ListServiceDeleteEventsExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.ListServiceDeleteEventsExperimentalResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ListServiceDeleteEventsExperimentalResponse : IResponse
     {
         public Metadata EntityMetadata
         {

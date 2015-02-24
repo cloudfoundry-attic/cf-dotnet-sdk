@@ -20,18 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class PrivateDomainsEndpoint : BaseEndpoint
+    public partial class PrivateDomainsEndpoint : CloudFoundry.CloudController.V2.Client.Base.PrivateDomainsEndpoint
     {
-        public PrivateDomainsEndpoint(CloudFoundryClient client)
+        public PrivateDomainsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class PrivateDomainsEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// Filtering Private Domains by name
@@ -52,27 +62,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Private Domains
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
-        {
-            return await ListAllPrivateDomains(new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
-        {
-            string route = "/v2/private_domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -123,6 +112,27 @@ namespace CloudFoundry.CloudController.V2.Client
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// List all Private Domains
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
+        {
+            return await ListAllPrivateDomains(new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
+        {
+            string route = "/v2/private_domains";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

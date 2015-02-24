@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class RemoveBillingManagedOrganizationFromUserResponse : IResponse
+    public partial class RemoveBillingManagedOrganizationFromUserResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RemoveBillingManagedOrganizationFromUserResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class RemoveBillingManagedOrganizationFromUserResponse : IResponse
     {
         public Metadata EntityMetadata
         {

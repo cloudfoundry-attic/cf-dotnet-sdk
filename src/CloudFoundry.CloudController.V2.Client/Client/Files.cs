@@ -20,18 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class FilesEndpoint : BaseEndpoint
+    public partial class FilesEndpoint : CloudFoundry.CloudController.V2.Client.Base.FilesEndpoint
     {
-        public FilesEndpoint(CloudFoundryClient client)
+        public FilesEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class FilesEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// Retrieve File

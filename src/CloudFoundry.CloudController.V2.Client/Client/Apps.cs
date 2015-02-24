@@ -20,17 +20,95 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class AppsEndpoint : BaseEndpoint
+    public partial class AppsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AppsEndpoint
     {
-        public AppsEndpoint(CloudFoundryClient client)
+        public AppsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class AppsEndpoint : BaseEndpoint
+    {
+
+        /// <summary>
+        /// Remove Route from the App
+        /// </summary>
+        public async Task<RemoveRouteFromAppResponse> RemoveRouteFromApp(Guid? guid, Guid? route_guid)
+        {
+            string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveRouteFromAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate Route with the App
+        /// </summary>
+        public async Task<AssociateRouteWithAppResponse> AssociateRouteWithApp(Guid? guid, Guid? route_guid)
+        {
+            string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateRouteWithAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Remove Service Binding from the App
+        /// </summary>
+        public async Task<RemoveServiceBindingFromAppResponse> RemoveServiceBindingFromApp(Guid? guid, Guid? service_binding_guid)
+        {
+            string route = string.Format("/v2/apps/{0}/service_bindings/{1}", guid, service_binding_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveServiceBindingFromAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Get detailed stats for a STARTED App
+        /// </summary>
+        /// Get status for each instance of an App using the app guid.
+        public async Task<Dictionary<int?, GetDetailedStatsForStartedAppResponse>> GetDetailedStatsForStartedApp(Guid? guid)
+        {
+            string route = string.Format("/v2/apps/{0}/stats", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<Dictionary<int?, GetDetailedStatsForStartedAppResponse>>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -55,19 +133,24 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Get App summary
+        /// List all Apps
         /// </summary>
-        public async Task<GetAppSummaryResponse> GetAppSummary(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps()
         {
-            string route = string.Format("/v2/apps/{0}/summary", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            return await ListAllApps(new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps(RequestOptions options)
+        {
+            string route = "/v2/apps";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetAppSummaryResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAppsResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -87,24 +170,107 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// List all Apps
+        /// Terminate the running App Instance at the given index
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps()
+        public async Task TerminateRunningAppInstanceAtGivenIndex(Guid? guid, int? index)
         {
-            return await ListAllApps(new RequestOptions());
+            string route = string.Format("/v2/apps/{0}/instances/{1}", guid, index);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
 
-        public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps(RequestOptions options)
+        /// <summary>
+        /// Creating an App
+        /// </summary>
+        public async Task<CreateAppResponse> CreateApp(CreateAppRequest value)
         {
             string route = "/v2/apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Updating an App
+        /// </summary>
+        public async Task<UpdateAppResponse> UpdateApp(Guid? guid, UpdateAppRequest value)
+        {
+            string route = string.Format("/v2/apps/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Get the instance information for a STARTED App
+        /// </summary>
+        /// Get status for each instance of an App using the app guid.
+        public async Task<Dictionary<int?, GetInstanceInformationForStartedAppResponse>> GetInstanceInformationForStartedApp(Guid? guid)
+        {
+            string route = string.Format("/v2/apps/{0}/instances", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAppsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<Dictionary<int?, GetInstanceInformationForStartedAppResponse>>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Get the env for an App
+        /// </summary>
+        /// Get the environment variables for an App using the app guid. Restricted to SpaceDeveloper role.
+        public async Task<GetEnvForAppResponse> GetEnvForApp(Guid? guid)
+        {
+            string route = string.Format("/v2/apps/{0}/env", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<GetEnvForAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Creating a Docker App (experimental)
+        /// </summary>
+        public async Task<CreateDockerAppExperimentalResponse> CreateDockerAppExperimental(CreateDockerAppExperimentalRequest value)
+        {
+            string route = "/v2/apps";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateDockerAppExperimentalResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -129,22 +295,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Delete a Particular App
-        /// </summary>
-        public async Task DeleteApp(Guid? guid)
-        {
-            string route = string.Format("/v2/apps/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
         /// List all Service Bindings for the App
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid)
@@ -166,12 +316,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Get the env for an App
+        /// Get App summary
         /// </summary>
-        /// Get the environment variables for an App using the app guid. Restricted to SpaceDeveloper role.
-        public async Task<GetEnvForAppResponse> GetEnvForApp(Guid? guid)
+        public async Task<GetAppSummaryResponse> GetAppSummary(Guid? guid)
         {
-            string route = string.Format("/v2/apps/{0}/env", guid);
+            string route = string.Format("/v2/apps/{0}/summary", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -179,94 +328,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetEnvForAppResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Creating an App
-        /// </summary>
-        public async Task<CreateAppResponse> CreateApp(CreateAppRequest value)
-        {
-            string route = "/v2/apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateAppResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Creating a Docker App (experimental)
-        /// </summary>
-        public async Task<CreateDockerAppExperimentalResponse> CreateDockerAppExperimental(CreateDockerAppExperimentalRequest value)
-        {
-            string route = "/v2/apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateDockerAppExperimentalResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Get detailed stats for a STARTED App
-        /// </summary>
-        /// Get status for each instance of an App using the app guid.
-        public async Task<Dictionary<int?, GetDetailedStatsForStartedAppResponse>> GetDetailedStatsForStartedApp(Guid? guid)
-        {
-            string route = string.Format("/v2/apps/{0}/stats", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<Dictionary<int?, GetDetailedStatsForStartedAppResponse>>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove Route from the App
-        /// </summary>
-        public async Task<RemoveRouteFromAppResponse> RemoveRouteFromApp(Guid? guid, Guid? route_guid)
-        {
-            string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveRouteFromAppResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Get the instance information for a STARTED App
-        /// </summary>
-        /// Get status for each instance of an App using the app guid.
-        public async Task<Dictionary<int?, GetInstanceInformationForStartedAppResponse>> GetInstanceInformationForStartedApp(Guid? guid)
-        {
-            string route = string.Format("/v2/apps/{0}/instances", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<Dictionary<int?, GetInstanceInformationForStartedAppResponse>>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetAppSummaryResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -287,28 +349,11 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Remove Service Binding from the App
+        /// Delete a Particular App
         /// </summary>
-        public async Task<RemoveServiceBindingFromAppResponse> RemoveServiceBindingFromApp(Guid? guid, Guid? service_binding_guid)
+        public async Task DeleteApp(Guid? guid)
         {
-            string route = string.Format("/v2/apps/{0}/service_bindings/{1}", guid, service_binding_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveServiceBindingFromAppResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Terminate the running App Instance at the given index
-        /// </summary>
-        public async Task TerminateRunningAppInstanceAtGivenIndex(Guid? guid, int? index)
-        {
-            string route = string.Format("/v2/apps/{0}/instances/{1}", guid, index);
+            string route = string.Format("/v2/apps/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -317,41 +362,6 @@ namespace CloudFoundry.CloudController.V2.Client
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Associate Route with the App
-        /// </summary>
-        public async Task<AssociateRouteWithAppResponse> AssociateRouteWithApp(Guid? guid, Guid? route_guid)
-        {
-            string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateRouteWithAppResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Updating an App
-        /// </summary>
-        public async Task<UpdateAppResponse> UpdateApp(Guid? guid, UpdateAppRequest value)
-        {
-            string route = string.Format("/v2/apps/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateAppResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

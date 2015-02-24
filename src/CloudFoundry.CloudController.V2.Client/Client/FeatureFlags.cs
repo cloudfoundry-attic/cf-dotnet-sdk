@@ -20,17 +20,44 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class FeatureFlagsEndpoint : BaseEndpoint
+    public partial class FeatureFlagsEndpoint : CloudFoundry.CloudController.V2.Client.Base.FeatureFlagsEndpoint
     {
-        public FeatureFlagsEndpoint(CloudFoundryClient client)
+        public FeatureFlagsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class FeatureFlagsEndpoint : BaseEndpoint
+    {
+
+        /// <summary>
+        /// Get the Service Instance Creation feature flag
+        /// </summary>
+        /// When enabled, a space developer can create service instances in a space. When disabled, only admin users can create service instances.
+        public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
+        {
+            string route = "/v2/config/feature_flags/service_instance_creation";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<GetServiceInstanceCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -69,12 +96,12 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Get the Service Instance Creation feature flag
+        /// Get the Private Domain Creation feature flag
         /// </summary>
-        /// When enabled, a space developer can create service instances in a space. When disabled, only admin users can create service instances.
-        public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
+        /// When enabled, an organization manager can create private domains for that organization. When disabled, only admin users can create private domains.
+        public async Task<GetPrivateDomainCreationFeatureFlagResponse> GetPrivateDomainCreationFeatureFlag()
         {
-            string route = "/v2/config/feature_flags/service_instance_creation";
+            string route = "/v2/config/feature_flags/private_domain_creation";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -82,7 +109,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetServiceInstanceCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -103,12 +130,12 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Get the Private Domain Creation feature flag
+        /// Get the App Bits Upload feature flag
         /// </summary>
-        /// When enabled, an organization manager can create private domains for that organization. When disabled, only admin users can create private domains.
-        public async Task<GetPrivateDomainCreationFeatureFlagResponse> GetPrivateDomainCreationFeatureFlag()
+        /// When enabled, space developers can upload app bits. When disabled, only admin users can upload app bits
+        public async Task<GetAppBitsUploadFeatureFlagResponse> GetAppBitsUploadFeatureFlag()
         {
-            string route = "/v2/config/feature_flags/private_domain_creation";
+            string route = "/v2/config/feature_flags/app_bits_upload";
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
@@ -116,7 +143,7 @@ namespace CloudFoundry.CloudController.V2.Client
             client.Headers.Add(BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -150,23 +177,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GetUserOrgCreationFeatureFlagResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Get the App Bits Upload feature flag
-        /// </summary>
-        /// When enabled, space developers can upload app bits. When disabled, only admin users can upload app bits
-        public async Task<GetAppBitsUploadFeatureFlagResponse> GetAppBitsUploadFeatureFlag()
-        {
-            string route = "/v2/config/feature_flags/app_bits_upload";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

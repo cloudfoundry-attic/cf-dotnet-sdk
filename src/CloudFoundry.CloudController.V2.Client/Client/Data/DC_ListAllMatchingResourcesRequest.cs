@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ListAllMatchingResourcesRequest
+    public partial class ListAllMatchingResourcesRequest : CloudFoundry.CloudController.V2.Client.Data.Base.ListAllMatchingResourcesRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ListAllMatchingResourcesRequest
     {
 
         [JsonProperty("sha1", NullValueHandling = NullValueHandling.Ignore)]

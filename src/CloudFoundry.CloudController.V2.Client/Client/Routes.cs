@@ -20,17 +20,119 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class RoutesEndpoint : BaseEndpoint
+    public partial class RoutesEndpoint : CloudFoundry.CloudController.V2.Client.Base.RoutesEndpoint
     {
-        public RoutesEndpoint(CloudFoundryClient client)
+        public RoutesEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class RoutesEndpoint : BaseEndpoint
+    {
+
+        /// <summary>
+        /// Creating a Route
+        /// </summary>
+        public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
+        {
+            string route = "/v2/routes";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Post;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Routes
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes()
+        {
+            return await ListAllRoutes(new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes(RequestOptions options)
+        {
+            string route = "/v2/routes";
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllRoutesResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate App with the Route
+        /// </summary>
+        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
+        {
+            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateAppWithRouteResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Apps for the Route
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid)
+        {
+            return await ListAllAppsForRoute(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/routes/{0}/apps", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllAppsForRouteResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Check a Route exists
+        /// </summary>
+        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
+        {
+            string route = string.Format("/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
 
         /// <summary>
@@ -67,27 +169,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// List all Apps for the Route
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid)
-        {
-            return await ListAllAppsForRoute(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/routes/{0}/apps", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAppsForRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Retrieve a Particular Route
         /// </summary>
         public async Task<RetrieveRouteResponse> RetrieveRoute(Guid? guid)
@@ -101,62 +182,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Creating a Route
-        /// </summary>
-        public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
-        {
-            string route = "/v2/routes";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Post;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Associate App with the Route
-        /// </summary>
-        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
-        {
-            string route = string.Format("/v2/routes/{0}/apps/{1}", guid, app_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateAppWithRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Routes
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes()
-        {
-            return await ListAllRoutes(new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes(RequestOptions options)
-        {
-            string route = "/v2/routes";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllRoutesResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -175,21 +200,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<UpdateRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Check a Route exists
-        /// </summary>
-        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
-        {
-            string route = string.Format("/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
         }
     }
 }

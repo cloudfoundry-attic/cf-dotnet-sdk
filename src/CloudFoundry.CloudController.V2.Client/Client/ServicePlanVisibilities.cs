@@ -20,18 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ServicePlanVisibilitiesEndpoint : BaseEndpoint
+    public partial class ServicePlanVisibilitiesEndpoint : CloudFoundry.CloudController.V2.Client.Base.ServicePlanVisibilitiesEndpoint
     {
-        public ServicePlanVisibilitiesEndpoint(CloudFoundryClient client)
+        public ServicePlanVisibilitiesEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ServicePlanVisibilitiesEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// List all Service Plan Visibilities
@@ -55,22 +65,6 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Delete a Particular Service Plan Visibilities
-        /// </summary>
-        public async Task DeleteServicePlanVisibilities(Guid? guid)
-        {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
         /// Creating a Service Plan Visibility
         /// </summary>
         public async Task<CreateServicePlanVisibilityResponse> CreateServicePlanVisibility(CreateServicePlanVisibilityRequest value)
@@ -86,6 +80,22 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<CreateServicePlanVisibilityResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Delete a Particular Service Plan Visibilities
+        /// </summary>
+        public async Task DeleteServicePlanVisibilities(Guid? guid)
+        {
+            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Delete;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
 
         /// <summary>

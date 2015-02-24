@@ -20,17 +20,43 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ServiceBindingsEndpoint : BaseEndpoint
+    public partial class ServiceBindingsEndpoint : CloudFoundry.CloudController.V2.Client.Base.ServiceBindingsEndpoint
     {
-        public ServiceBindingsEndpoint(CloudFoundryClient client)
+        public ServiceBindingsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ServiceBindingsEndpoint : BaseEndpoint
+    {
+
+        /// <summary>
+        /// Retrieve a Particular Service Binding
+        /// </summary>
+        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
+        {
+            string route = string.Format("/v2/service_bindings/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -52,22 +78,6 @@ namespace CloudFoundry.CloudController.V2.Client
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllServiceBindingsResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Service Binding
-        /// </summary>
-        public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
-        {
-            string route = string.Format("/v2/service_bindings/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>

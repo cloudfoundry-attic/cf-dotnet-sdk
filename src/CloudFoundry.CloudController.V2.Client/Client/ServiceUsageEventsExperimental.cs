@@ -20,34 +20,28 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ServiceUsageEventsExperimentalEndpoint : BaseEndpoint
+    public partial class ServiceUsageEventsExperimentalEndpoint : CloudFoundry.CloudController.V2.Client.Base.ServiceUsageEventsExperimentalEndpoint
     {
-        public ServiceUsageEventsExperimentalEndpoint(CloudFoundryClient client)
+        public ServiceUsageEventsExperimentalEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
 
-        /// <summary>
-        /// Retrieve a Particular Service Usage Event
-        /// </summary>
-        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
-        {
-            string route = string.Format("/v2/service_usage_events/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
-        }
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ServiceUsageEventsExperimentalEndpoint : BaseEndpoint
+    {
 
         /// <summary>
         /// List Service Usage Events
@@ -94,6 +88,22 @@ namespace CloudFoundry.CloudController.V2.Client
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Retrieve a Particular Service Usage Event
+        /// </summary>
+        public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
+        {
+            string route = string.Format("/v2/service_usage_events/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

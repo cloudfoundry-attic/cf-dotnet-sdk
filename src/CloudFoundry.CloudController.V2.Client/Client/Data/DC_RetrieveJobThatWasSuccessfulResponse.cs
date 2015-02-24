@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class RetrieveJobThatWasSuccessfulResponse : IResponse
+    public partial class RetrieveJobThatWasSuccessfulResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RetrieveJobThatWasSuccessfulResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class RetrieveJobThatWasSuccessfulResponse : IResponse
     {
         public Metadata EntityMetadata
         {

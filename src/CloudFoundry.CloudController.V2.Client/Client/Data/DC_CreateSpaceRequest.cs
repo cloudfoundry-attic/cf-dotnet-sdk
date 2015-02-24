@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class CreateSpaceRequest
+    public partial class CreateSpaceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateSpaceRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class CreateSpaceRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

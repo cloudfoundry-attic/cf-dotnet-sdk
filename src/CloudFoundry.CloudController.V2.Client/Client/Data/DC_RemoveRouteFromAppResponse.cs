@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class RemoveRouteFromAppResponse : IResponse
+    public partial class RemoveRouteFromAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.RemoveRouteFromAppResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class RemoveRouteFromAppResponse : IResponse
     {
         public Metadata EntityMetadata
         {

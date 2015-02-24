@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ListAllServiceInstancesResponse : IResponse
+    public partial class ListAllServiceInstancesResponse : CloudFoundry.CloudController.V2.Client.Data.Base.ListAllServiceInstancesResponse
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class ListAllServiceInstancesResponse : IResponse
     {
         public Metadata EntityMetadata
         {

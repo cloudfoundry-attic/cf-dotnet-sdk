@@ -20,33 +20,43 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace CloudFoundry.CloudController.V2.Client
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class SecurityGroupsEndpoint : BaseEndpoint
+    public partial class SecurityGroupsEndpoint : CloudFoundry.CloudController.V2.Client.Base.SecurityGroupsEndpoint
     {
-        public SecurityGroupsEndpoint(CloudFoundryClient client)
+        public SecurityGroupsEndpoint(CloudFoundryClient client) : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.ServiceLocator = client.ServiceLocator;
             this.Auth = client.Auth;
-        }
+        }    
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Base
+{
+
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class SecurityGroupsEndpoint : BaseEndpoint
+    {
 
         /// <summary>
-        /// Delete a Particular Security Group
+        /// Retrieve a Particular Security Group
         /// </summary>
-        public async Task DeleteSecurityGroup(Guid? guid)
+        public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid? guid)
         {
             string route = string.Format("/v2/security_groups/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Get;
             client.Headers.Add(BuildAuthenticationHeader());
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveSecurityGroupResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -67,20 +77,58 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Remove Space from the Security Group
+        /// Delete a Particular Security Group
         /// </summary>
-        public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid? guid, Guid? space_guid)
+        public async Task DeleteSecurityGroup(Guid? guid)
         {
-            string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
+            string route = string.Format("/v2/security_groups/{0}", guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// List all Spaces for the Security Group
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid)
+        {
+            return await ListAllSpacesForSecurityGroup(guid, new RequestOptions());
+        }
+
+        public async Task<PagedResponseCollection<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid, RequestOptions options)
+        {
+            string route = string.Format("/v2/security_groups/{0}/spaces", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Get;
+            client.Headers.Add(BuildAuthenticationHeader());
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSpacesForSecurityGroupResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Updating a Security Group
+        /// </summary>
+        public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid? guid, UpdateSecurityGroupRequest value)
+        {
+            string route = string.Format("/v2/security_groups/{0}", guid);
+            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            var client = this.GetHttpClient();
+            client.Uri = new Uri(endpoint);
+            client.Method = HttpMethod.Put;
+            client.Headers.Add(BuildAuthenticationHeader());
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RemoveSpaceFromSecurityGroupResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<UpdateSecurityGroupResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -105,58 +153,20 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
-        /// Updating a Security Group
+        /// Remove Space from the Security Group
         /// </summary>
-        public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid? guid, UpdateSecurityGroupRequest value)
+        public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid? guid, Guid? space_guid)
         {
-            string route = string.Format("/v2/security_groups/{0}", guid);
+            string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
             string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             client.Headers.Add(BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateSecurityGroupResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Security Group
-        /// </summary>
-        public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid? guid)
-        {
-            string route = string.Format("/v2/security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveSecurityGroupResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Spaces for the Security Group
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid)
-        {
-            return await ListAllSpacesForSecurityGroup(guid, new RequestOptions());
-        }
-
-        public async Task<PagedResponseCollection<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid, RequestOptions options)
-        {
-            string route = string.Format("/v2/security_groups/{0}/spaces", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesForSecurityGroupResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RemoveSpaceFromSecurityGroupResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>

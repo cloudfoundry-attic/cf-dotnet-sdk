@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class UpdateOrganizationRequest
+    public partial class UpdateOrganizationRequest : CloudFoundry.CloudController.V2.Client.Data.Base.UpdateOrganizationRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class UpdateOrganizationRequest
     {
 
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

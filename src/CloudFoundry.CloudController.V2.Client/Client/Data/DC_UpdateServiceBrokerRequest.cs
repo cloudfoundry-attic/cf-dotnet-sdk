@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class UpdateServiceBrokerRequest
+    public partial class UpdateServiceBrokerRequest : CloudFoundry.CloudController.V2.Client.Data.Base.UpdateServiceBrokerRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class UpdateServiceBrokerRequest
     {
 
         [JsonProperty("auth_username", NullValueHandling = NullValueHandling.Ignore)]

@@ -20,7 +20,15 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class CreateServicePlanVisibilityRequest
+    public partial class CreateServicePlanVisibilityRequest : CloudFoundry.CloudController.V2.Client.Data.Base.CreateServicePlanVisibilityRequest
+    {
+    }
+}
+
+namespace CloudFoundry.CloudController.V2.Client.Data.Base
+{
+    [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
+    public abstract class CreateServicePlanVisibilityRequest
     {
 
         [JsonProperty("service_plan_guid", NullValueHandling = NullValueHandling.Ignore)]
