@@ -50,7 +50,7 @@ credentials.User = "user";
 credentials.Password = "password";
 try
 {
-    refreshToken = client.Login(credentials);
+    refreshToken = client.Login(credentials).Result;
 }
 catch (Exception ex)
 {
