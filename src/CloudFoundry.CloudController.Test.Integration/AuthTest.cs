@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             credentials.Password = TestUtil.Password;
             try
             {
-                client.Login(credentials);
+                client.Login(credentials).Wait();
             }
             catch (Exception ex)
             {
@@ -39,11 +39,12 @@ namespace CloudFoundry.CloudController.Test.Integration
             credentials.Password = TestUtil.Password;
             try
             {
-                client.Login(credentials);
+                client.Login(credentials).Wait();
             }
-            catch (AuthenticationException authEx)
+            catch (AggregateException aggEx)
             {
-                Assert.IsTrue(authEx.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
+                Assert.IsInstanceOfType(aggEx.InnerException, typeof(AuthenticationException));
+                Assert.IsTrue(aggEx.InnerException.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
             }
             catch (Exception ex)
             {
@@ -60,11 +61,12 @@ namespace CloudFoundry.CloudController.Test.Integration
             credentials.Password = Guid.NewGuid().ToString();
             try
             {
-                client.Login(credentials);
+                client.Login(credentials).Wait();
             }
-            catch (AuthenticationException authEx)
+            catch (AggregateException aggEx)
             {
-                Assert.IsTrue(authEx.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
+                Assert.IsInstanceOfType(aggEx.InnerException, typeof(AuthenticationException));
+                Assert.IsTrue(aggEx.InnerException.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
             }
             catch (Exception ex)
             {

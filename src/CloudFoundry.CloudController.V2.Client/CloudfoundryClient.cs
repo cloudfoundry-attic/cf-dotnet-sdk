@@ -2,6 +2,7 @@ namespace CloudFoundry.CloudController.V2
 {
     using System;
     using System.Threading;
+    using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.ServiceLocation;
     using CloudFoundry.CloudController.V2.Auth;
     using CloudFoundry.CloudController.V2.Client;
@@ -17,11 +18,6 @@ namespace CloudFoundry.CloudController.V2
             this.Auth = new ThinkTectureAuth();
 
             this.InitEndpoints();
-
-            var info = this.Info.GetInfo().Result;
-
-            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
-            this.Auth.OAuthUrl = new Uri(authUrl);
         }
 
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
@@ -122,8 +118,13 @@ namespace CloudFoundry.CloudController.V2
         /// <returns>Refresh Token</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login",
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
-        public string Login(CloudCredentials credentials)
+        public async Task<string> Login(CloudCredentials credentials)
         {
+            var info = await this.Info.GetInfo();
+
+            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
+            this.Auth.OAuthUrl = new Uri(authUrl);
+
             var refreshToken = this.Auth.Authenticate(credentials);
 
             return refreshToken;
@@ -136,8 +137,13 @@ namespace CloudFoundry.CloudController.V2
         /// <returns>Token Object</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login",
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
-        public string Login(string refreshToken)
+        public async Task<string> Login(string refreshToken)
         {
+            var info = await this.Info.GetInfo();
+
+            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
+            this.Auth.OAuthUrl = new Uri(authUrl);
+
             var newRefreshToken = this.Auth.Authenticate(refreshToken);
             return newRefreshToken;
         }
