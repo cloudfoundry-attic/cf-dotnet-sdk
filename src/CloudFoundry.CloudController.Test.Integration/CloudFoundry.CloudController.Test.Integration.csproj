@@ -64,6 +64,7 @@
     <Compile Include="InfoTest.cs" />
     <Compile Include="OrgTest.cs" />
     <Compile Include="RouteTest.cs" />
+    <Compile Include="ServiceInstanceTest.cs" />
     <Compile Include="SpaceTest.cs" />
     <Compile Include="StackTest.cs" />
     <Compile Include="TestUtil.cs" />

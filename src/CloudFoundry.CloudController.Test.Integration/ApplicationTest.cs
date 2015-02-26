@@ -94,7 +94,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             Assert.AreEqual(app.Name, readApp.Name);
 
             UpdateAppRequest updateAppRequest = new UpdateAppRequest();
-            updateAppRequest.Name = "new_name";
+            updateAppRequest.Memory = 512;
             try
             {
                 updateApp = appsEndpoint.UpdateApp(new Guid(newApp.EntityMetadata.Guid), updateAppRequest).Result;
@@ -104,7 +104,7 @@ namespace CloudFoundry.CloudController.Test.Integration
                 Assert.Fail("Error updating app: {0}", ex.ToString());
             }
             Assert.IsNotNull(updateApp);
-            Assert.AreEqual(updateAppRequest.Name, updateApp.Name);
+            Assert.AreEqual(updateAppRequest.Memory, updateApp.Memory);
 
             try
             {
