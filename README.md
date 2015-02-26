@@ -41,6 +41,7 @@ Feel free to open an pull request or create an issue.
 
 ### Login
 ```csharp
+// use this only if your api is using an unsigned certificate
 System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
 
 CloudFoundryClient client = new CloudFoundryClient(new Uri("https://api.domain"), new System.Threading.CancellationToken());
