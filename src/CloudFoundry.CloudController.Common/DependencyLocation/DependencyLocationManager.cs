@@ -1,34 +1,34 @@
-﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.DependencyLocation
 {
     using System;
     using System.Globalization;
 
     /// <inheritdoc/>
-    internal abstract class ServiceLocationManager : IServiceLocationManager
+    internal abstract class DependencyLocationManager : IDependencyLocationManager
     {
         /// <inheritdoc/>
-        public void RegisterServiceInstance<TService>(TService instance)
+        public void RegisterDependencyInstance<TDependency>(TDependency instance)
         {
-            this.RegisterServiceInstance(typeof(TService), instance);
+            this.RegisterDependencyInstance(typeof(TDependency), instance);
         }
 
         /// <inheritdoc/>
-        public abstract void RegisterServiceInstance(Type type, object instance);
+        public abstract void RegisterDependencyInstance(Type type, object instance);
 
         /// <inheritdoc/>
-        public void RegisterServiceType<TInterface, TConcrete>() where TConcrete : class, TInterface
+        public void RegisterDependencyType<TInterface, TConcrete>() where TConcrete : class, TInterface
         {
-            this.RegisterServiceType(typeof(TInterface), typeof(TConcrete));
+            this.RegisterDependencyType(typeof(TInterface), typeof(TConcrete));
         }
 
         /// <inheritdoc/>
-        public void RegisterServiceType(Type type, Type registrationValue)
+        public void RegisterDependencyType(Type type, Type registrationValue)
         {
             ThrowIfInvalidRegistration(type, registrationValue);
 
             var obj = Activator.CreateInstance(registrationValue);
 
-            this.RegisterServiceInstance(type, obj);
+            this.RegisterDependencyInstance(type, obj);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@
         {
             if (ReferenceEquals(type, null))
             {
-                var msg = string.Format(CultureInfo.InvariantCulture, "Cannot register a null service.");
+                var msg = string.Format(CultureInfo.InvariantCulture, "Cannot register a null dependency.");
                 throw new InvalidOperationException(msg);
             }
 
@@ -48,7 +48,7 @@
             {
                 var msg = string.Format(
                     CultureInfo.InvariantCulture,
-                    "A service cannot have a null implementation '{0}'",
+                    "A dependency cannot have a null implementation '{0}'",
                     type.FullName);
                 throw new InvalidOperationException(msg);
             }
@@ -63,14 +63,14 @@
         internal static void ThrowIfInvalidRegistration(Type type, Type implementation)
         {
             ThrowIfNullInstance(type, implementation);
-            if (type == typeof(IServiceLocationRuntimeManager) ||
-                type == typeof(IServiceLocationOverrideManager) ||
-                type == typeof(IServiceLocationManager) ||
-                type == typeof(IServiceLocator))
+            if (type == typeof(IDependencyLocationRuntimeManager) ||
+                type == typeof(IDependencyLocationOverrideManager) ||
+                type == typeof(IDependencyLocationManager) ||
+                type == typeof(IDependencyLocator))
             {
                 var msg = string.Format(
                     CultureInfo.InvariantCulture,
-                    "Service location services cannot be registered or overridden: '{0}'",
+                    "Dependency location dependency cannot be registered or overridden: '{0}'",
                     type.FullName);
                 throw new InvalidOperationException(msg);
             }
@@ -88,7 +88,7 @@
             {
                 var msg = string.Format(
                     CultureInfo.InvariantCulture,
-                    "Cannot register or override the service '{0}' for the type '{1}' which is not derived from the service",
+                    "Cannot register or override the dependency '{0}' for the type '{1}' which is not derived from the dependency",
                     implementation.FullName,
                     type.FullName);
                 throw new InvalidOperationException(msg);

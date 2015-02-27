@@ -3,14 +3,14 @@ namespace CloudFoundry.CloudController.V2
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using CloudFoundry.CloudController.Common.ServiceLocation;
+    using CloudFoundry.CloudController.Common.DependencyLocation;
     using CloudFoundry.CloudController.V2.Auth;
     using CloudFoundry.CloudController.V2.Client;
     using CloudFoundry.CloudController.V2.Interfaces;
 
     public class CloudFoundryClient
     {
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IServiceLocator serviceLocator)
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IDependencyLocator serviceLocator)
         {
             this.CloudTarget = cloudTarget;
             this.CancellationToken = cancellationToken;
@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2
         }
 
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
-            : this(cloudTarget, cancellationToken, new ServiceLocator())
+            : this(cloudTarget, cancellationToken, new DependencyLocator())
         {
         }
 
@@ -109,7 +109,7 @@ namespace CloudFoundry.CloudController.V2
 
         internal Uri CloudTarget { get; set; }
 
-        internal IServiceLocator ServiceLocator { get; set; }
+        internal IDependencyLocator ServiceLocator { get; set; }
 
         /// <summary>
         /// Login using the specified credentials.

@@ -16,7 +16,6 @@ namespace CloudFoundry.CloudController.Test.Integration
         static CloudFoundryClient client;
         static Guid orgGuid;
         static Guid spaceGuid;
-        static Guid stackGuid;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
