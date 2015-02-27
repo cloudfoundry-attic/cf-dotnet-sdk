@@ -1,19 +1,19 @@
-﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.DependencyLocation
 {
     using System;
     using System.Collections.Generic;
 
     /// <inheritdoc/>
-    internal class RuntimeRegistrationManager : ServiceLocationManager
+    internal class RuntimeRegistrationManager : DependencyLocationManager
     {
         private readonly Dictionary<Type, object> discovered = new Dictionary<Type, object>();
-        private IServiceLocator locator;
+        private IDependencyLocator locator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RuntimeRegistrationManager"/> class.
         /// </summary>
-        /// <param name="locator">A reference to a service locator.</param>
-        public RuntimeRegistrationManager(IServiceLocator locator)
+        /// <param name="locator">A reference to a dependency locator.</param>
+        public RuntimeRegistrationManager(IDependencyLocator locator)
         {
             this.locator = locator;
         }
@@ -28,21 +28,21 @@
         }
 
         /// <inheritdoc/>
-        public override void RegisterServiceInstance(Type serviceType, object instance)
+        public override void RegisterDependencyInstance(Type dependencyType, object instance)
         {
-            var registering = instance as IServiceLocationRegistrar;
+            var registering = instance as IDependencyLocationRegistrar;
             object discoveredInstance;
-            if (this.discovered.TryGetValue(serviceType, out discoveredInstance))
+            if (this.discovered.TryGetValue(dependencyType, out discoveredInstance))
             {
                 if (!object.ReferenceEquals(discoveredInstance, instance) && !object.ReferenceEquals(registering, null))
                 {
-                    this.discovered[serviceType] = instance;
+                    this.discovered[dependencyType] = instance;
                     registering.Register(this, this.locator);
                 }
             }
             else
             {
-                this.discovered[serviceType] = instance;
+                this.discovered[dependencyType] = instance;
                 if (!object.ReferenceEquals(registering, null))
                 {
                     registering.Register(this, this.locator);

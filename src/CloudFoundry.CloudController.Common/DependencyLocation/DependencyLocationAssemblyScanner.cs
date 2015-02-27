@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.CloudController.Common.ServiceLocation
+﻿namespace CloudFoundry.CloudController.Common.DependencyLocation
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Reflection;
 
     /// <inheritdoc/>
-    internal class ServiceLocationAssemblyScanner : IServiceLocationAssemblyScanner
+    internal class DependencyLocationAssemblyScanner : IDependencyLocationAssemblyScanner
     {
         private readonly List<Assembly> assemblies = new List<Assembly>();
 
@@ -15,18 +15,18 @@
         private Func<IEnumerable<Type>> getRegistrarTypes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceLocationAssemblyScanner"/> class.
+        /// Initializes a new instance of the <see cref="DependencyLocationAssemblyScanner"/> class.
         /// </summary>
-        public ServiceLocationAssemblyScanner()
+        public DependencyLocationAssemblyScanner()
         {
             this.getRegistrarTypes = this.InternalGetRegistrarTypes;
-            this.ServiceRegistrarFactory = new ServiceLocationRegistrarFactory();
+            this.DependencyRegistrarFactory = new DependencyLocationRegistrarFactory();
         }
 
         /// <inheritdoc/>
         public bool HasNewAssemblies { get; internal set; }
 
-        internal IServiceLocationRegistrarFactory ServiceRegistrarFactory { get; set; }
+        internal IDependencyLocationRegistrarFactory DependencyRegistrarFactory { get; set; }
 
         /// <inheritdoc/>
         public void AddAssembly(Assembly target)
@@ -39,7 +39,7 @@
         }
 
         /// <inheritdoc/>
-        public IEnumerable<IServiceLocationRegistrar> GetNewRegistrars()
+        public IEnumerable<IDependencyLocationRegistrar> GetNewRegistrars()
         {
             var newRegistrars = this.GetNewRegistrarTypes().ToList();
             this.registrars.All(newRegistrars.Remove);
@@ -50,7 +50,7 @@
         }
 
         /// <inheritdoc/>
-        public IEnumerable<IServiceLocationRegistrar> GetRegistrars()
+        public IEnumerable<IDependencyLocationRegistrar> GetRegistrars()
         {
             var newRegistrars = this.GetNewRegistrarTypes().ToList();
 
@@ -74,24 +74,24 @@
         }
 
         /// <summary>
-        /// Gets an enumeration of service registrar objects from the given enumeration of types.
+        /// Gets an enumeration of dependency registrar objects from the given enumeration of types.
         /// </summary>
         /// <param name="registrarTypes">An enumeration of Type objects.</param>
-        /// <returns>An enumeration of service location registrars.</returns>
-        internal IEnumerable<IServiceLocationRegistrar> GetRegistrars(IEnumerable<Type> registrarTypes)
+        /// <returns>An enumeration of dependency location registrars.</returns>
+        internal IEnumerable<IDependencyLocationRegistrar> GetRegistrars(IEnumerable<Type> registrarTypes)
         {
             return (from t in registrarTypes
-                    select this.ServiceRegistrarFactory.Create(t)).ToList();
+                    select this.DependencyRegistrarFactory.Create(t)).ToList();
         }
 
         /// <summary>
-        /// Gets a list of types for any services registrars in the current application domain.
+        /// Gets a list of types for any dependency registrars in the current application domain.
         /// </summary>
         /// <returns>A list of types.</returns>
         internal IEnumerable<Type> InternalGetRegistrarTypes()
         {
             var rawTypes = new List<Type>();
-            var serviceRegistrarType = typeof(IServiceLocationRegistrar);
+            var dependencyRegistrarType = typeof(IDependencyLocationRegistrar);
 
             foreach (var assembly in this.assemblies)
             {
@@ -114,7 +114,7 @@
                     continue;
                 }
 
-                if (serviceRegistrarType.IsAssignableFrom(type) && type.GetDefinedConstructors().Any(c => !c.GetParameters().Any()))
+                if (dependencyRegistrarType.IsAssignableFrom(type) && type.GetDefinedConstructors().Any(c => !c.GetParameters().Any()))
                 {
                     rawRegistrarTypes.Add(type);
                 }

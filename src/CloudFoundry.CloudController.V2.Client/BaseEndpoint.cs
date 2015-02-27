@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using CloudFoundry.CloudController.Common.DependencyLocation;
     using CloudFoundry.CloudController.Common.Http;
-    using CloudFoundry.CloudController.Common.ServiceLocation;
     using CloudFoundry.CloudController.V2.Exceptions;
     using CloudFoundry.CloudController.V2.Interfaces;
 
@@ -17,7 +17,7 @@
 
         internal Uri CloudTarget { get; set; }
 
-        internal IServiceLocator ServiceLocator { get; set; }
+        internal IDependencyLocator ServiceLocator { get; set; }
 
         internal KeyValuePair<string, string> BuildAuthenticationHeader()
         {
