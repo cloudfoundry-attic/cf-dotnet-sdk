@@ -10,11 +10,11 @@ namespace CloudFoundry.CloudController.V2
 
     public class CloudFoundryClient
     {
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IDependencyLocator serviceLocator)
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IDependencyLocator dependencyLocator)
         {
             this.CloudTarget = cloudTarget;
             this.CancellationToken = cancellationToken;
-            this.ServiceLocator = serviceLocator;
+            this.DependencyLocator = dependencyLocator;
             this.Auth = new ThinkTectureAuth();
 
             this.InitEndpoints();
@@ -109,7 +109,7 @@ namespace CloudFoundry.CloudController.V2
 
         internal Uri CloudTarget { get; set; }
 
-        internal IDependencyLocator ServiceLocator { get; set; }
+        internal IDependencyLocator DependencyLocator { get; set; }
 
         /// <summary>
         /// Login using the specified credentials.

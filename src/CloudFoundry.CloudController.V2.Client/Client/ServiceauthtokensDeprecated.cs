@@ -30,7 +30,7 @@ namespace CloudFoundry.CloudController.V2.Client
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
-            this.ServiceLocator = client.ServiceLocator;
+            this.DependencyLocator = client.DependencyLocator;
             this.Auth = client.Auth;
         }    
     }
