@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+  Available Targets:
+
+  /t:Clean
+    Removes temporary build outputs.
+    
+  /t:Build
+    Builds assemblies.
+
+  /t:Package 
+    Builds NuGet packages using the binaries folder contents.
+    The packages will drop to .\binaries\packages.
+
+  /t:UnitTest
+    Runs unit tests
+  -->  
+
+  <PropertyGroup>
+    <ExtensionTasksPath Condition="'$(ExtensionTasksPath)' == ''">$(SolutionDir)\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</ExtensionTasksPath>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
+    <LibrarySourceFolder>$(LibraryRoot)\src</LibrarySourceFolder>
+    <SDKSolution>cf-dotnet-sdk.sln</SDKSolution>
+    <PackageOutputDir>$(BinariesFolder)\packages</PackageOutputDir>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <major>1</major>
+    <minor>0</minor>
+    <revision>0</revision>
+    <build Condition="'$(BUILD_NUMBER)' == ''">0</build>
+    <build Condition="'$(BUILD_NUMBER)' != ''">$(BUILD_NUMBER)</build>
+    <commit Condition="'$(GIT_COMMIT)' == ''">?</commit>
+    <commit Condition="'$(GIT_COMMIT)' != ''">$(GIT_COMMIT)</commit>
+  </PropertyGroup>  
+ 
+  <PropertyGroup>
+    <NuGetCommand>&quot;$(LibraryRoot)\.nuget\nuget.exe&quot;</NuGetCommand>
+    <MSTestCommand>&quot;$(VS120COMNTOOLS)\..\IDE\mstest.exe&quot;</MSTestCommand>
+    <ExtensionTasksPath>$(LibraryRoot)\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</ExtensionTasksPath>
+  </PropertyGroup>
+
+  <!-- Import msbuild extensions -->
+  <Import Project="$(ExtensionTasksPath)MSBuild.ExtensionPack.tasks"/>
+  
+  <!-- Build target -->
+  <Target Name="Build" DependsOnTargets="RestoreNugetPackages; Versioning">
+    <MSBuild Projects="$(SDKSolution)"
+             Properties="Configuration=$(Configuration);Platform=Any CPU;"
+             Targets="Build" />
+  </Target>
+
+  <!-- Clean target -->
+  <Target Name="Clean" DependsOnTargets="RestoreNugetPackages">
+    <MSBuild Projects="$(SDKSolution)"
+             Properties="Configuration=$(Configuration);Platform=Any CPU"
+             Targets="Clean" />
+  </Target>
+
+  <!-- Target for running unit tests -->
+  <Target Name="UnitTest">
+    <ItemGroup>
+      <TestDlls Include=".\src\CloudFoundry.CloudController.V2.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V2.Client.Test.dll"/>
+    </ItemGroup>
+    <Exec Command="$(MSTestCommand) /testcontainer:%(TestDlls.Identity)" />
+  </Target>
+
+  <!-- Target for running unit tests -->
+  <Target Name="RestoreNugetPackages">
+    <Exec Command="$(NuGetCommand) restore $(SDKSolution)"/>
+  </Target>
+
+  <!-- Target for automatically versioning the assemblies -->
+  <Target Name="Versioning">
+    <Message Text="Version: $(major).$(minor).$(revision).$(build)" />
+  
+    <ItemGroup>
+      <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.CloudController.V2.Client\Properties\AssemblyInfo.cs"/>
+      <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.CloudController.Common\Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" 
+      AssemblyVersion="$(major).$(minor).$(revision).$(build)" 
+      AssemblyFileVersion="$(major).$(minor).$(revision).$(build)"
+      AssemblyDescription="Cloud Foundry .NET SDK. Built from git commit: $(commit)" />
+  </Target>
+</Project>

@@ -10,8 +10,7 @@
     <projectUrl>https://github.com/hpcloud/cf-dotnet-sdk</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First release of the .NET SDK for Cloud Foundry.</releaseNotes>
-    <copyright>Copyright 2015</copyright>
+    <copyright>© Copyright 2015 Hewlett-Packard Development Company, L.P.</copyright>
     <tags>cloud foundy cloudfoundry paas sdk net .net dotnet</tags>
   </metadata>
 </package>
