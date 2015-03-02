@@ -17,7 +17,7 @@
 
         internal Uri CloudTarget { get; set; }
 
-        internal IDependencyLocator ServiceLocator { get; set; }
+        internal IDependencyLocator DependencyLocator { get; set; }
 
         internal KeyValuePair<string, string> BuildAuthenticationHeader()
         {
@@ -26,7 +26,7 @@
 
         internal IHttpAbstractionClient GetHttpClient()
         {
-            return this.ServiceLocator.Locate<IHttpAbstractionClientFactory>().Create(this.CancellationToken);
+            return this.DependencyLocator.Locate<IHttpAbstractionClientFactory>().Create(this.CancellationToken);
         }
 
         internal async Task<IHttpResponseAbstraction> SendAsync(IHttpAbstractionClient client, int expectedReturnStatus)
