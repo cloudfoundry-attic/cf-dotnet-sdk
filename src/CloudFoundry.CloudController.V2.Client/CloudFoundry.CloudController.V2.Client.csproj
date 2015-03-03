@@ -51,7 +51,9 @@
     <Compile Include="BaseEndpoint.cs" />
     <Compile Include="ClientExtensions\Data\DC_CreateAppRequest.cs" />
     <Compile Include="ClientExtensions\Data\DC_CreateServiceInstanceResponse.cs" />
+    <Compile Include="ClientExtensions\Data\DC_GetV1InfoResponse.cs" />
     <Compile Include="ClientExtensions\Data\DC_UpdateAppRequest.cs.cs" />
+    <Compile Include="ClientExtensions\Info.cs" />
     <Compile Include="Client\Apps.cs" />
     <Compile Include="Client\AppUsageEvents.cs" />
     <Compile Include="Client\Buildpacks.cs" />
