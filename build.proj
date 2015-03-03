@@ -18,6 +18,9 @@
     
   /t:RestoreNugetPackages
     Restores nuget packages
+    
+  /t:NugetPack
+    Creates nuget packages
   -->  
 
   <PropertyGroup>
@@ -78,6 +81,11 @@
     <Exec Command="$(NuGetCommand) restore $(SDKSolution)"/>
   </Target>
 
+  <!-- Target for creating the nuget package -->
+  <Target Name="NugetPack">
+    <Exec Command="$(NuGetCommand) pack $(LibraryRoot)\src\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj  -IncludeReferencedProjects -Prop Configuration=$(Configuration)"/>
+  </Target>
+  
   <!-- Target for automatically versioning the assemblies -->
   <Target Name="Versioning">
     <Message Text="Version: $(major).$(minor).$(revision).$(build)" />
@@ -86,10 +94,9 @@
       <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.CloudController.V2.Client\Properties\AssemblyInfo.cs"/>
       <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.CloudController.Common\Properties\AssemblyInfo.cs"/>
     </ItemGroup>
-    
-    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" 
-      AssemblyVersion="$(major).$(minor).$(revision).$(build)" 
-      AssemblyFileVersion="$(major).$(minor).$(revision).$(build)"
-      AssemblyDescription="Cloud Foundry .NET SDK. Built from git commit: $(commit)" />
+
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"
+      AssemblyVersion="$(major).$(minor).$(revision).$(build)"
+      AssemblyFileVersion="$(major).$(minor).$(revision).$(build)" />
   </Target>
 </Project>
