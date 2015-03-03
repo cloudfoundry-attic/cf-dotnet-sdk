@@ -15,6 +15,9 @@
 
   /t:UnitTest
     Runs unit tests
+    
+  /t:RestoreNugetPackages
+    Restores nuget packages
   -->  
 
   <PropertyGroup>
@@ -46,7 +49,7 @@
   </PropertyGroup>
 
   <!-- Import msbuild extensions -->
-  <Import Project="$(ExtensionTasksPath)MSBuild.ExtensionPack.tasks"/>
+  <Import Project="$(ExtensionTasksPath)MSBuild.ExtensionPack.tasks" Condition="exists('$(ExtensionTasksPath)')"/>
   
   <!-- Build target -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages; Versioning">
@@ -70,7 +73,7 @@
     <Exec Command="$(MSTestCommand) /testcontainer:%(TestDlls.Identity)" />
   </Target>
 
-  <!-- Target for running unit tests -->
+  <!-- Target for restoring nuget packages -->
   <Target Name="RestoreNugetPackages">
     <Exec Command="$(NuGetCommand) restore $(SDKSolution)"/>
   </Target>
