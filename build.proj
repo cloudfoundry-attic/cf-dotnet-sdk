@@ -84,6 +84,7 @@
   <!-- Target for creating the nuget package -->
   <Target Name="NugetPack">
     <Exec Command="$(NuGetCommand) pack $(LibraryRoot)\src\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj  -IncludeReferencedProjects -Prop Configuration=$(Configuration);commit=$(commit) "/>
+	<Exec Command="$(NuGetCommand) pack $(LibraryRoot)\src\CloudFoundry.Logyard.Client\CloudFoundry.Logyard.Client.csproj  -IncludeReferencedProjects -Prop Configuration=$(Configuration);commit=$(commit) "/>
   </Target>
   
   <!-- Target for automatically versioning the assemblies -->
