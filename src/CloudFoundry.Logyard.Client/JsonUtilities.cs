@@ -1,18 +1,22 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace CloudFoundry.Logyard.Client
+﻿namespace CloudFoundry.Logyard.Client
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
     internal class JsonUtilities
     {
-        public static Message DeserializaeLogyardMessage(string message)
+        private JsonUtilities()
+        {
+        }
+
+        public static Message DeserializeLogyardMessage(string message)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.MissingMemberHandling = MissingMemberHandling.Ignore;
 
             Message msg = JsonConvert.DeserializeObject<Message>(message, settings);
 
-            if(msg.Error != string.Empty)
+            if (!string.IsNullOrEmpty(msg.Error))
             {
                 return msg;
             }

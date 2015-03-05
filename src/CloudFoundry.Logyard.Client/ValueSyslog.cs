@@ -4,22 +4,22 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Class that represents a message coming from Logyard.
+    /// Class representing a syslog value in a Logyard message.
     /// </summary>
-    public class Message
+    public class ValueSyslog
     {
         /// <summary>
-        /// Gets the error that was included in the message (if any).
+        /// Gets the priority of the message.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Used by serialization")]
-        [JsonProperty("error")]
-        public string Error { get; internal set; }
+        [JsonProperty("priority")]
+        public string Priority { get; internal set; }
 
         /// <summary>
-        /// Gets the log message.
+        /// Gets the time of the message.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Used by serialization")]
-        [JsonIgnore]
-        public MessageValue Value { get; internal set; }
+        [JsonProperty("time")]
+        public string Time { get; internal set; }
     }
 }

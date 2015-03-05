@@ -192,8 +192,15 @@
                 return;
             }
 
-            this.handler.Dispose();
-            this.client.Dispose();
+            if (this.handler != null)
+            {
+                this.handler.Dispose();
+            }
+
+            if (this.client != null)
+            {
+                this.client.Dispose();
+            }
 
             this.disposed = true;
         }
