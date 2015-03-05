@@ -1,170 +1,174 @@
-﻿using CloudFoundry.CloudController.V2.Exceptions;
-using System;
-using System.Collections.Generic;
-using WebSocket4Net;
-
-namespace CloudFoundry.Logyard.Client
+﻿namespace CloudFoundry.Logyard.Client
 {
-    public delegate void MessageReceivedEventHandler(object sender, Message message);
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
 
-    public delegate void ErrorReceivedEventHandler(object sender, Exception e);
-
-    public delegate void StreamOpenedEventHandler(object sender, EventArgs e);
-
-    public delegate void StreamClosedEventHandler(object sender, EventArgs e);
-
-    public class LogyardLog
+    public class LogyardLog : IDisposable
     {
-        public event MessageReceivedEventHandler MessageReceived;
+        private bool disposed;
+        private ILogyardWebSocket webSocket;
 
-        public event ErrorReceivedEventHandler ErrorReceived;
+        public LogyardLog(Uri logyardEndpoint, string authenticationToken)
+        {
+            this.LogyardEndpoint = logyardEndpoint;
+            this.AuthenticationToken = authenticationToken;
+        }
 
-        public event StreamClosedEventHandler StreamOpened;
+        ~LogyardLog()
+        {
+            this.Dispose(false);
+        }
 
-        public event StreamClosedEventHandler StreamClosed;
+        public event EventHandler<ErrorEventArgs> ErrorReceived;
 
-        public string AuthorizationToken { get; set; }
+        public event EventHandler<MessageEventArgs> MessageReceived;
 
-        private string endpoint;
-        private WebSocket ws;
+        public event EventHandler<EventArgs> StreamClosed;
+
+        public event EventHandler<EventArgs> StreamOpened;
+
+        public Uri LogyardEndpoint
+        {
+            get; 
+            set;
+        }
+
+        public string AuthenticationToken
+        {
+            get;
+            set;
+        }
 
         public ConnectionState State
         {
             get
             {
-                if (this.ws != null)
-                {
-                    switch (ws.State)
-                    {
-                        case WebSocketState.Closed:
-                            {
-                                return ConnectionState.Closed;
-                            }
-                        case WebSocketState.Closing:
-                            {
-                                return ConnectionState.Closing;
-                            }
-                        case WebSocketState.Connecting:
-                            {
-                                return ConnectionState.Connecting;
-                            }
-                        case WebSocketState.Open:
-                            {
-                                return ConnectionState.Open;
-                            }
-                        default:
-                            {
-                                return ConnectionState.None;
-                            }
-                    }
-                }
-                else
-                    return ConnectionState.None;
+                return this.webSocket.State;
             }
         }
 
-        private LogyardLog(string loggingEndpoint) 
+        public void StopStream()
         {
-            this.endpoint = loggingEndpoint;
+            this.webSocket.Close();
         }
 
-        public static LogyardLog GetLogyardLog(string apiEndpoint, bool ignoreCertificate = false)
+        public void StreamLogs(string appGuid)
         {
-            if (ignoreCertificate)
+            this.StreamLogs(appGuid, 0, false);
+        }
+
+        public void StreamLogs(string appGuid, int instanceNumber)
+        {
+            this.StreamLogs(appGuid, instanceNumber, false);
+        }
+
+        public void StreamLogs(string appGuid, int instanceNumber, bool tail)
+        {
+            if (appGuid == null)
             {
-                System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+                throw new ArgumentNullException("appGuid");
             }
 
-            CloudFoundry.CloudController.V2.CloudFoundryClient client = new CloudController.V2.CloudFoundryClient(new Uri(apiEndpoint), new System.Threading.CancellationToken());
-            var info = client.Info.GetV1Info().Result;
-
-            return new LogyardLog(info.AppLogEndpoint);
-        }
-
-        public void StreamLogs(string appGuid, int num = 0, bool tail = false)
-        {
-            string applogEndpoint = string.Format("{0}/v2/apps/{1}", this.endpoint, appGuid.ToString());
+            string appLogEndpoint = string.Format(CultureInfo.InvariantCulture, "{0}/v2/apps/{1}", this.LogyardEndpoint, appGuid.ToString());
             if (tail)
             {
-                applogEndpoint += "/tail";
+                appLogEndpoint += "/tail";
             }
             else
             {
-                applogEndpoint += "/recent";
+                appLogEndpoint += "/recent";
             }
 
-            if (num != 0)
+            if (instanceNumber != 0)
             {
-                applogEndpoint += string.Format("?num={0}", num.ToString());
+                appLogEndpoint += string.Format(CultureInfo.InvariantCulture, "?num={0}", instanceNumber);
             }
 
-            List<KeyValuePair<string, string>> headers = new List<KeyValuePair<string, string>>();
-            if (this.AuthorizationToken != null)
-            {
-                headers.Add(new KeyValuePair<string, string>("AUTHORIZATION", this.AuthorizationToken));
-            }
-            this.ws = new WebSocket(applogEndpoint, "", null, headers);
+            this.webSocket = new LogyardWebSocket();
+            
+            this.webSocket.DataReceived += this.WebSocketMessageReceived;
+            this.webSocket.ErrorReceived += this.WebSocketError;
+            this.webSocket.StreamOpened += this.WebSocketOpened;
+            this.webSocket.StreamClosed += this.WebSocketClosed;
 
-            this.ws.MessageReceived += ws_MessageReceived;
-            this.ws.Error += ws_Error;
-            this.ws.Opened += ws_Opened;
-            this.ws.Closed += ws_Closed;
-            this.ws.ReceiveBufferSize = 64;
-            this.ws.Open();            
+            this.webSocket.Open(new Uri(appLogEndpoint), this.AuthenticationToken);
         }
 
-        public void Stop()
+        public void Dispose()
         {
-            if(this.ws.State != (WebSocketState.Closed | WebSocketState.Closing | WebSocketState.None))
-            {
-                this.ws.Close();
-            }
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        private void ws_Closed(object sender, EventArgs e)
+        protected virtual void Dispose(bool disposing)
+        {
+            if (this.disposed)
+            {
+                return;
+            }
+
+            if (this.webSocket != null)
+            {
+                this.webSocket.Dispose();
+            }
+
+            this.disposed = true;
+        }
+
+        private void WebSocketClosed(object sender, EventArgs e)
         {
             if (this.StreamClosed != null)
             {
-                StreamClosed(this, e);
+                this.StreamClosed(this, e);
             }
         }
 
-        private void ws_Opened(object sender, EventArgs e)
+        private void WebSocketOpened(object sender, EventArgs e)
         {
             if (this.StreamOpened != null)
             {
-                StreamOpened(this, e);
+                this.StreamOpened(this, e);
             }
         }
 
-        private void ws_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
+        private void WebSocketError(object sender, ErrorEventArgs e)
         {
             if (this.ErrorReceived != null)
             {
-                ErrorReceived(this, e.Exception);
+                this.ErrorReceived(this, new ErrorEventArgs() { Error = e.Error });
             }
         }
 
-        private void ws_MessageReceived(object sender, MessageReceivedEventArgs e)
+        private void WebSocketMessageReceived(object sender, StringEventArgs e)
         {
-            Message ms = JsonUtilities.DeserializaeLogyardMessage(e.Message);
-            if (ms.Error != string.Empty)
+            Message ms = JsonUtilities.DeserializeLogyardMessage(e.Data);
+            if (!string.IsNullOrEmpty(ms.Error))
             {
                 if (ms.Error.Contains("CF-InvalidAuthToken"))
                 {
-                    if (ErrorReceived != null)
-                        ErrorReceived(this, new AuthenticationException(ms.Error));
+                    if (this.ErrorReceived != null)
+                    {
+                        var error = new LogyardException(ms.Error);
+                        this.ErrorReceived(this, new ErrorEventArgs() { Error = error });
+                    }
                 }
                 else
                 {
-                    if (ErrorReceived != null)
-                        ErrorReceived(this, new Exception(ms.Error));
+                    if (this.ErrorReceived != null)
+                    {
+                        var error = new LogyardException(ms.Error);
+                        this.ErrorReceived(this, new ErrorEventArgs() { Error = error });
+                    }
                 }
             }
             else
             {
-                if (MessageReceived != null)
-                    MessageReceived(this, ms);
+                if (this.MessageReceived != null)
+                {
+                    MessageEventArgs args = new MessageEventArgs() { Message = ms };
+                    this.MessageReceived(this, args);
+                }
             }
         }
     }
