@@ -31,12 +31,12 @@
   </metadata>
 
   <files>
-    <file src="lib\CloudFoundry.CloudController.V2.Client.dll" target="lib\portable-net45+win+wpa81\CloudFoundry.CloudController.V2.Client.dll" />
-    <file src="lib\CloudFoundry.CloudController.V2.Client.xml" target="lib\portable-net45+win+wpa81\CloudFoundry.CloudController.V2.Client.xml" />
-    <file src="lib\CloudFoundry.CloudController.Common.dll" target="lib\portable-net45+win+wpa81\CloudFoundry.CloudController.Common.dll" />
-    <file src="lib\CloudFoundry.CloudController.Common.xml" target="lib\portable-net45+win+wpa81\CloudFoundry.CloudController.Common.xml" />
-    <file src="lib\CloudFoundry.Logyard.Client.dll" target="lib\portable-net45+win+wpa81\CloudFoundry.Logyard.Client.dll" />
-    <file src="lib\CloudFoundry.Logyard.Client.xml" target="lib\portable-net45+win+wpa81\CloudFoundry.Logyard.Client.xml" />
+    <file src="lib\CloudFoundry.CloudController.V2.Client.dll" target="lib\CloudFoundry.CloudController.V2.Client.dll" />
+    <file src="lib\CloudFoundry.CloudController.V2.Client.xml" target="lib\CloudFoundry.CloudController.V2.Client.xml" />
+    <file src="lib\CloudFoundry.CloudController.Common.dll" target="lib\CloudFoundry.CloudController.Common.dll" />
+    <file src="lib\CloudFoundry.CloudController.Common.xml" target="lib\CloudFoundry.CloudController.Common.xml" />
+    <file src="lib\CloudFoundry.Logyard.Client.dll" target="lib\CloudFoundry.Logyard.Client.dll" />
+    <file src="lib\CloudFoundry.Logyard.Client.xml" target="lib\CloudFoundry.Logyard.Client.xml" />
 
     <!-- Logyard assemblies specific to each type of target framework -->
     <file src="lib\logyard-net45\CloudFoundry.Logyard.Client.dll" target="lib\Net45\CloudFoundry.Logyard.Client.dll" />
