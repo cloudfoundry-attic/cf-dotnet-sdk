@@ -20,6 +20,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B21C9324-1DED-42D2-B8D3-E9F939F430D1}"
 	ProjectSection(SolutionItems) = preProject
 		build.proj = build.proj
+		cf-dotnet-sdk.nuspec = cf-dotnet-sdk.nuspec
+		cf-dotnet-sdk.ruleset = cf-dotnet-sdk.ruleset
+		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Logyard.Client.Net45", "src\CloudFoundry.Logyard.Client.Net45\CloudFoundry.Logyard.Client.Net45.csproj", "{D4AD10D5-F1CA-41FF-95DC-57789CC3A062}"

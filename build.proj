@@ -20,7 +20,7 @@
     Restores nuget packages
     
   /t:NugetPack
-    Creates nuget packages
+    Creates nuget package
   -->  
 
   <PropertyGroup>
@@ -43,6 +43,7 @@
     <build Condition="'$(BUILD_NUMBER)' != ''">$(BUILD_NUMBER)</build>
     <commit Condition="'$(GIT_COMMIT)' == ''">?</commit>
     <commit Condition="'$(GIT_COMMIT)' != ''">$(GIT_COMMIT)</commit>
+    <version>$(major).$(minor).$(revision).$(build)</version>
   </PropertyGroup>  
  
   <PropertyGroup>
@@ -83,13 +84,12 @@
 
   <!-- Target for creating the nuget package -->
   <Target Name="NugetPack">
-    <Exec Command="$(NuGetCommand) pack $(LibraryRoot)\src\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj  -IncludeReferencedProjects -Prop Configuration=$(Configuration);commit=$(commit) "/>
-	<Exec Command="$(NuGetCommand) pack $(LibraryRoot)\src\CloudFoundry.Logyard.Client\CloudFoundry.Logyard.Client.csproj  -IncludeReferencedProjects -Prop Configuration=$(Configuration);commit=$(commit) "/>
+    <Exec Command="$(NuGetCommand) pack $(LibraryRoot)\cf-dotnet-sdk.nuspec -Prop commit=$(commit);version=$(version) "/>
   </Target>
   
   <!-- Target for automatically versioning the assemblies -->
   <Target Name="Versioning">
-    <Message Text="Version: $(major).$(minor).$(revision).$(build)" />
+    <Message Text="Version: $(version)" />
   
     <ItemGroup>
       <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.CloudController.V2.Client\Properties\AssemblyInfo.cs"/>
@@ -98,7 +98,7 @@
     </ItemGroup>
 
     <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"
-      AssemblyVersion="$(major).$(minor).$(revision).$(build)"
-      AssemblyFileVersion="$(major).$(minor).$(revision).$(build)" />
+      AssemblyVersion="$(version)"
+      AssemblyFileVersion="$(version)" />
   </Target>
 </Project>

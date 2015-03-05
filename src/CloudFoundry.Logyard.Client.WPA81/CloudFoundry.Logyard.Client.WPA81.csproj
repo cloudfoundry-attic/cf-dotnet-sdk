@@ -26,30 +26,32 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\lib\logyard-wpa81\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Debug\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <GenerateLibraryLayout>false</GenerateLibraryLayout>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\lib\logyard-wpa81\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Release\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <GenerateLibraryLayout>false</GenerateLibraryLayout>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <OutputPath>..\..\lib\logyard-wpa81\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -59,11 +61,12 @@
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\ARM\Debug\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateLibraryLayout>false</GenerateLibraryLayout>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <OutputPath>bin\ARM\Release\</OutputPath>
+    <OutputPath>..\..\lib\logyard-wpa81\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
@@ -74,12 +77,13 @@
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\ARM\Release\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateLibraryLayout>false</GenerateLibraryLayout>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>..\..\lib\logyard-wpa81\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -89,11 +93,12 @@
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\x86\Debug\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateLibraryLayout>false</GenerateLibraryLayout>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
+    <OutputPath>..\..\lib\logyard-wpa81\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
@@ -104,8 +109,9 @@
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\x86\Release\CloudFoundry.Logyard.Client.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateLibraryLayout>false</GenerateLibraryLayout>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\CloudFoundry.Logyard.Client\ConnectionState.cs">
