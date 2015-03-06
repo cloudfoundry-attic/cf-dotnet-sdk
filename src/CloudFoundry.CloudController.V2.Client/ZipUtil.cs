@@ -20,7 +20,6 @@
             IFile zipFile = await PCLStorage.FileSystem.Current.RoamingStorage.CreateFileAsync(zipName, CreationCollisionOption.ReplaceExisting);
             using (Stream zipStream = await zipFile.OpenAsync(FileAccess.ReadAndWrite))
             {
-
                 using (ZipArchive archive = new ZipArchive(zipStream, ZipArchiveMode.Create))
                 {
                     await AddToZip(currentFolder, archive);
