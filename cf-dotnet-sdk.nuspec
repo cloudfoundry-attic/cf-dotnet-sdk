@@ -41,17 +41,26 @@
     <file src="lib\CloudFoundry.CloudController.Common.dll"         target="lib\Net45\CloudFoundry.CloudController.Common.dll" />
     <file src="lib\CloudFoundry.CloudController.Common.xml"         target="lib\Net45\CloudFoundry.CloudController.Common.xml" />
     <file src="lib\logyard-net45\CloudFoundry.Logyard.Client.dll"   target="lib\Net45\CloudFoundry.Logyard.Client.dll" />
+	<file src="lib\logyard-net45\CloudFoundry.Logyard.Client.XML"   target="lib\Net45\CloudFoundry.Logyard.Client.XML" />
+	<file src="lib\CloudFoundry.UAA.Client.dll"         			target="lib\Net45\CloudFoundry.UAA.Client.dll" />
+	<file src="lib\CloudFoundry.UAA.Client.xml"         			target="lib\Net45\CloudFoundry.UAA.Client.xml" />
 
     <file src="lib\CloudFoundry.CloudController.V2.Client.dll"      target="lib\Win8\CloudFoundry.CloudController.V2.Client.dll" />
     <file src="lib\CloudFoundry.CloudController.V2.Client.xml"      target="lib\Win8\CloudFoundry.CloudController.V2.Client.xml" />
     <file src="lib\CloudFoundry.CloudController.Common.dll"         target="lib\Win8\CloudFoundry.CloudController.Common.dll" />
     <file src="lib\CloudFoundry.CloudController.Common.xml"         target="lib\Win8\CloudFoundry.CloudController.Common.xml" />
     <file src="lib\logyard-store\CloudFoundry.Logyard.Client.dll"   target="lib\Win8\CloudFoundry.Logyard.Client.dll" />
+	<file src="lib\logyard-store\CloudFoundry.Logyard.Client.XML"   target="lib\Win8\CloudFoundry.Logyard.Client.XML" />
+	<file src="lib\CloudFoundry.UAA.Client.dll"         			target="lib\Win8\CloudFoundry.UAA.Client.dll" />
+	<file src="lib\CloudFoundry.UAA.Client.xml"         			target="lib\Win8\CloudFoundry.UAA.Client.xml" />
 
     <file src="lib\CloudFoundry.CloudController.V2.Client.dll"      target="lib\WPA81\CloudFoundry.CloudController.V2.Client.dll" />
     <file src="lib\CloudFoundry.CloudController.V2.Client.xml"      target="lib\WPA81\CloudFoundry.CloudController.V2.Client.xml" />
     <file src="lib\CloudFoundry.CloudController.Common.dll"         target="lib\WPA81\CloudFoundry.CloudController.Common.dll" />
     <file src="lib\CloudFoundry.CloudController.Common.xml"         target="lib\WPA81\CloudFoundry.CloudController.Common.xml" />
     <file src="lib\logyard-wpa81\CloudFoundry.Logyard.Client.dll"   target="lib\WPA81\CloudFoundry.Logyard.Client.dll" />
+	<file src="lib\logyard-wpa81\CloudFoundry.Logyard.Client.XML"   target="lib\WPA81\CloudFoundry.Logyard.Client.XML" />
+	<file src="lib\CloudFoundry.UAA.Client.dll"         			target="lib\WPA81\CloudFoundry.UAA.Client.dll" />
+	<file src="lib\CloudFoundry.UAA.Client.xml"         			target="lib\WPA81\CloudFoundry.UAA.Client.xml" />
   </files>
 </package>

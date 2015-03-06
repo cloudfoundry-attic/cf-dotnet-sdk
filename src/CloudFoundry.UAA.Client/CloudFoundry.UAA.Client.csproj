@@ -25,12 +25,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\lib\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\lib\CloudFoundry.UAA.Client.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,7 +57,6 @@
     <Compile Include="CloudCredentials.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="UAAClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

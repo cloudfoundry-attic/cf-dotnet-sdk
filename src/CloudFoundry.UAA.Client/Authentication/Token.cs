@@ -6,6 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Class that represents a token items from Oauth v2.
+    /// </summary>
     public class Token
     {
         /// <summary>
