@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Built from git commit $commit$</releaseNotes>
     <description>Cloud Foundry .NET SDK</description>
-    <iconUrl>https://region-b.geo-1.objects.hpcloudsvc.com/v1/54026737306152/ALS/v1.2/cloud_foundry-logo.png</iconUrl>
+    <iconUrl>https://region-b.geo-1.objects.hpcloudsvc.com/v1/54026737306152/ALS/v1.2/nuget-cloudfoundry-logo.png</iconUrl>
     <copyright>© Copyright 2015 Hewlett-Packard Development Company, L.P.</copyright>
     <tags>cloud foundy cloudfoundry paas sdk net .net dotnet</tags>
     <dependencies>
