@@ -4,7 +4,7 @@
     using System.Globalization;
     using System.IO;
     using System.Linq;
-    using CloudFoundry.CloudController.V2.Exceptions;
+    using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.V2.Interfaces;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;

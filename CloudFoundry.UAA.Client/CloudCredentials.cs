@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.UAA
 {
     /// <summary>
     /// Credentials of the target cloud

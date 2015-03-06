@@ -5,13 +5,14 @@
     using System.Threading;
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.DependencyLocation;
+    using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.Common.Http;
-    using CloudFoundry.CloudController.V2.Exceptions;
     using CloudFoundry.CloudController.V2.Interfaces;
+    using CloudFoundry.UAA;
 
     public class BaseEndpoint
     {
-        internal IAuthentication Auth { get; set; }
+        internal UAAClient UAAClient { get; set; }
 
         internal CancellationToken CancellationToken { get; set; }
 
@@ -19,9 +20,16 @@
 
         internal IDependencyLocator DependencyLocator { get; set; }
 
-        internal KeyValuePair<string, string> BuildAuthenticationHeader()
+        internal async Task<KeyValuePair<string, string>> BuildAuthenticationHeader()
         {
-            return new KeyValuePair<string, string>("Authorization", "bearer " + this.Auth.GetToken());
+            ////Not all methods require authentication
+            if (this.UAAClient == null)
+            {
+                return new KeyValuePair<string, string>("Authorization", "bearer ");
+            }
+
+            var context = await this.UAAClient.GenerateContext();
+            return new KeyValuePair<string, string>("Authorization", "bearer " + context.Token.AccessToken);
         }
 
         internal IHttpAbstractionClient GetHttpClient()

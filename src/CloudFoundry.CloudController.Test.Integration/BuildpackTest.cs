@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CloudFoundry.CloudController.V2;
 using CloudFoundry.CloudController.V2.Client;
 using CloudFoundry.CloudController.V2.Client.Data;
+using CloudFoundry.UAA;
 
 namespace CloudFoundry.CloudController.Test.Integration
 {

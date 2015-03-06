@@ -49,6 +49,8 @@
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CloudFoundryException.cs" />
+    <Compile Include="Exceptions\CloudFoundryExceptionObject.cs" />
     <Compile Include="Http\HttpAbstractionClient.cs" />
     <Compile Include="Http\HttpAbstractionClientFactory.cs" />
     <Compile Include="Http\HttpHeadersAbstraction.cs" />
@@ -107,6 +109,11 @@
     <CodeAnalysisDictionary Include="..\..\cf-dotnet-sdk-dictionary.xml">
       <Link>cf-dotnet-sdk-dictionary.xml</Link>
     </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.CloudController.V2.Exceptions
+﻿namespace CloudFoundry.UAA.Exceptions
 {
     using System;
 

@@ -26,13 +26,14 @@ namespace CloudFoundry.CloudController.V2.Client
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class StacksEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractStacksEndpoint
     {
-        public StacksEndpoint(CloudFoundryClient client) : base()
+        public StacksEndpoint(CloudFoundryClient client)
+            : base()
         {
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.DependencyLocator = client.DependencyLocator;
-            this.Auth = client.Auth;
-        }    
+            this.UAAClient = client.UAAClient;
+        }
     }
 }
 
@@ -53,7 +54,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
+            client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
@@ -74,7 +75,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
+            client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllStacksResponse>(await response.ReadContentAsStringAsync());
@@ -90,7 +91,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
-            client.Headers.Add(BuildAuthenticationHeader());
+            client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);

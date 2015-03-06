@@ -1,6 +1,7 @@
 ﻿using CloudFoundry.CloudController.V2;
 using CloudFoundry.CloudController.V2.Client;
 using CloudFoundry.CloudController.V2.Client.Data;
+using CloudFoundry.UAA;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
