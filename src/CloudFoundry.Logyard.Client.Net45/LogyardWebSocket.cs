@@ -3,11 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using SuperSocket.ClientEngine;
     using WebSocket4Net;
 
     internal class LogyardWebSocket : ILogyardWebSocket, IDisposable
     {
-        private WebSocket webSocket;
+        private WebSocket webSocket = null;
         private bool disposed;
 
         ~LogyardWebSocket()

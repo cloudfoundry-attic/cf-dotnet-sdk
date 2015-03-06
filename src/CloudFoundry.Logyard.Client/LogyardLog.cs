@@ -53,7 +53,7 @@
 
         /// <summary>
         /// Gets or sets the logyard endpoint.
-        /// You can get this using the CloudFoundry.CloudController.V2.Client.InfoEndpoint.GetV1Info() method.
+        /// You can get this using the CloudFoundry.CloudController.V2.Client.Info.GetV1Info method.
         /// </summary>
         public Uri LogyardEndpoint
         {
@@ -77,7 +77,14 @@
         {
             get
             {
-                return this.webSocket.State;
+                if (this.webSocket != null)
+                {
+                    return this.webSocket.State;
+                }
+                else
+                {
+                    return ConnectionState.None;
+                }
             }
         }
 
@@ -86,17 +93,22 @@
         /// </summary>
         public void StopLogStream()
         {
-            this.webSocket.Close();
+            if (this.webSocket != null)
+            {
+                this.webSocket.Close();
+                this.webSocket.Dispose();
+                this.webSocket = null;
+            }
         }
-
+            
         /// <summary>
         /// Starts streaming logs from Logyard for the specified app.
-        /// It streams for instance 0 of the app, without tailing.
+        /// It streams for all instances of the app, without tailing.
         /// </summary>
         /// <param name="appGuid">The Cloud Foundry app unique identifier.</param>
         public void StartLogStream(string appGuid)
         {
-            this.StartLogStream(appGuid, 0, false);
+            this.StartLogStream(appGuid, -1, false);
         }
 
         /// <summary>
@@ -123,19 +135,25 @@
                 throw new ArgumentNullException("appGuid");
             }
 
-            string appLogEndpoint = string.Format(CultureInfo.InvariantCulture, "{0}/v2/apps/{1}", this.LogyardEndpoint, appGuid.ToString());
+            if (this.webSocket != null)
+            {
+                throw new InvalidOperationException("The log stream has already been started.");
+            }
+
+            UriBuilder appLogUri = new UriBuilder(this.LogyardEndpoint);
+            
             if (tail)
             {
-                appLogEndpoint += "/tail";
+                appLogUri.Path = string.Format(CultureInfo.InvariantCulture, "v2/apps/{0}/tail", appGuid);
             }
             else
             {
-                appLogEndpoint += "/recent";
+                appLogUri.Path = string.Format(CultureInfo.InvariantCulture, "v2/apps/{0}/recent", appGuid);
             }
 
-            if (instanceNumber != 0)
+            if (instanceNumber != -1)
             {
-                appLogEndpoint += string.Format(CultureInfo.InvariantCulture, "?num={0}", instanceNumber);
+                appLogUri.Query = string.Format(CultureInfo.InvariantCulture, "num={0}", instanceNumber);
             }
 
             this.webSocket = new LogyardWebSocket();
@@ -145,7 +163,7 @@
             this.webSocket.StreamOpened += this.WebSocketOpened;
             this.webSocket.StreamClosed += this.WebSocketClosed;
 
-            this.webSocket.Open(new Uri(appLogEndpoint), this.AuthenticationToken);
+            this.webSocket.Open(appLogUri.Uri, this.AuthenticationToken);
         }
 
         /// <summary>
