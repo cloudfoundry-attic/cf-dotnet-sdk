@@ -7,6 +7,9 @@
     using System.Threading.Tasks;
     using CloudFoundry.UAA.Authentication;
 
+    /// <summary>
+    /// Class that represents the current authentication context.
+    /// </summary>
     public class AuthenticationContext
     {
         private bool isLoggedIn = false;

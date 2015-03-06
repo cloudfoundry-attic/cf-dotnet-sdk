@@ -8,6 +8,9 @@
     using CloudFoundry.UAA.Authentication;
     using CloudFoundry.UAA.Exceptions;
 
+    /// <summary>
+    /// This is the UAA client. To use it, you need a UAA endpoint.
+    /// </summary>
     public class UAAClient
     {
         private IAuthentication authentication;

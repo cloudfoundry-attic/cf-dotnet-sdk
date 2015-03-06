@@ -3,7 +3,11 @@
     <Recognized>
       <Word>logyard</Word>
       <Word>api</Word>
-      <Word>UAA</Word>
     </Recognized>
   </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>UAA</Acronym>         
+    </CasingExceptions>      
+  </Acronyms>
 </Dictionary>
