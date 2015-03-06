@@ -31,7 +31,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.CloudTarget = client.CloudTarget;
             this.CancellationToken = client.CancellationToken;
             this.DependencyLocator = client.DependencyLocator;
-            this.Auth = client.Auth;
+            this.UAAClient = client.UAAClient;
         }    
     }
 }
@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
-            client.Headers.Add(BuildAuthenticationHeader());
+            client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 200;

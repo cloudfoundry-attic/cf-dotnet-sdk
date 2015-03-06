@@ -17,7 +17,7 @@
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
-            client.Headers.Add(BuildAuthenticationHeader());
+            client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GetV1InfoResponse>(await response.ReadContentAsStringAsync());

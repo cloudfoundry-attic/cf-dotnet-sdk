@@ -4,9 +4,9 @@ namespace CloudFoundry.CloudController.V2
     using System.Threading;
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.DependencyLocation;
-    using CloudFoundry.CloudController.V2.Auth;
     using CloudFoundry.CloudController.V2.Client;
     using CloudFoundry.CloudController.V2.Interfaces;
+    using CloudFoundry.UAA;
 
     public class CloudFoundryClient
     {
@@ -15,7 +15,6 @@ namespace CloudFoundry.CloudController.V2
             this.CloudTarget = cloudTarget;
             this.CancellationToken = cancellationToken;
             this.DependencyLocator = dependencyLocator;
-            this.Auth = new ThinkTectureAuth();
 
             this.InitEndpoints();
         }
@@ -33,7 +32,13 @@ namespace CloudFoundry.CloudController.V2
         {
             get
             {
-                return this.Auth.GetToken();
+                if (this.UAAClient.Context.Token.IsExpired)
+                {
+                    ////If the token is expired we're blocking the current thread
+                    this.UAAClient.GenerateContext().Wait();
+                }
+
+                return this.UAAClient.Context.Token.AccessToken;
             }
         }
 
@@ -103,13 +108,13 @@ namespace CloudFoundry.CloudController.V2
 
         public UsersEndpoint Users { get; private set; }
 
-        internal IAuthentication Auth { get; set; }
-
         internal CancellationToken CancellationToken { get; set; }
 
         internal Uri CloudTarget { get; set; }
 
         internal IDependencyLocator DependencyLocator { get; set; }
+
+        internal UAAClient UAAClient { get; set; }
 
         /// <summary>
         /// Login using the specified credentials.
@@ -118,16 +123,16 @@ namespace CloudFoundry.CloudController.V2
         /// <returns>Refresh Token</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login",
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
-        public async Task<string> Login(CloudCredentials credentials)
+        public async Task<AuthenticationContext> Login(CloudCredentials credentials)
         {
             var info = await this.Info.GetInfo();
 
             var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
-            this.Auth.OAuthUrl = new Uri(authUrl);
+            this.UAAClient = new UAAClient(new Uri(authUrl));
 
-            var refreshToken = this.Auth.Authenticate(credentials);
+            var context = await this.UAAClient.Login(credentials);
 
-            return refreshToken;
+            return context;
         }
 
         /// <summary>
@@ -137,15 +142,15 @@ namespace CloudFoundry.CloudController.V2
         /// <returns>Token Object</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Login",
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
-        public async Task<string> Login(string refreshToken)
+        public async Task<AuthenticationContext> Login(string refreshToken)
         {
             var info = await this.Info.GetInfo();
 
             var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
-            this.Auth.OAuthUrl = new Uri(authUrl);
+            this.UAAClient = new UAAClient(new Uri(authUrl));
 
-            var newRefreshToken = this.Auth.Authenticate(refreshToken);
-            return newRefreshToken;
+            var context = await this.UAAClient.Login(refreshToken);
+            return context;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling",

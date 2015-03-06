@@ -1,4 +1,5 @@
-﻿using CloudFoundry.CloudController.V2.Exceptions;
+﻿using CloudFoundry.CloudController.Common.Exceptions;
+using CloudFoundry.CloudController.V2.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -8,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Exceptions
 {
-     [TestClass]
+    [TestClass]
     public class Test_CloudFoundryException
     {
-         [TestMethod]
-         public void TestException()
-         {
-             CloudFoundryExceptionObject exceptionObject = new CloudFoundryExceptionObject();
-             exceptionObject.Code = "object";
-             exceptionObject.Description = "this is an exception";
-             exceptionObject.ErrorCode = "errorCode";
+        [TestMethod]
+        public void TestException()
+        {
+            CloudFoundryExceptionObject exceptionObject = new CloudFoundryExceptionObject();
+            exceptionObject.Code = "object";
+            exceptionObject.Description = "this is an exception";
+            exceptionObject.ErrorCode = "errorCode";
 
-             CloudFoundryException exception = new CloudFoundryException(exceptionObject);
+            CloudFoundryException exception = new CloudFoundryException(exceptionObject);
 
-             Assert.AreEqual(exception.Message, "this is an exception");
-         }
+            Assert.AreEqual(exception.Message, "this is an exception");
+        }
 
     }
 }

@@ -1,5 +1,7 @@
 ﻿using CloudFoundry.CloudController.V2;
-using CloudFoundry.CloudController.V2.Exceptions;
+using CloudFoundry.CloudController.Common.Exceptions;
+using CloudFoundry.UAA;
+using CloudFoundry.UAA.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -9,9 +11,40 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
-    [TestClass]  
+    [TestClass]
     public class AuthTest
     {
+
+        [TestMethod]
+        public void Login_context_test()
+        {
+            if (TestUtil.IgnoreCertificate)
+            {
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+            }
+            CloudCredentials credentials = new CloudCredentials();
+            credentials.User = TestUtil.User;
+            credentials.Password = TestUtil.Password;
+
+            var client = TestUtil.GetClient();
+            var authEndpoint = client.Info.GetInfo().Result.AuthorizationEndpoint;
+            var authUri = new Uri(authEndpoint.TrimEnd('/') + "/oauth/token");
+
+
+            UAAClient uaaClient = new UAAClient(authUri);
+
+            var context = uaaClient.Login(credentials).Result;
+
+            Assert.IsTrue(context.IsLoggedIn);
+            Assert.AreEqual(context.Uri, authUri);
+            Assert.IsNotNull(context.Token.AccessToken);
+            Assert.IsNotNull(context.Token.RefreshToken);
+            Assert.IsFalse(context.Token.IsExpired);
+            Assert.IsTrue(context.Token.Expires > DateTime.Now);
+
+        }
+
+
         [TestMethod]
         public void Login_test()
         {
@@ -27,7 +60,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
             }
-            
+
         }
 
         [TestMethod]
@@ -73,5 +106,6 @@ namespace CloudFoundry.CloudController.Test.Integration
                 Assert.Fail("Expected AuthError but got :" + ex.ToString());
             }
         }
+
     }
 }
