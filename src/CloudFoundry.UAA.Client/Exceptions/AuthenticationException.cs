@@ -5,6 +5,8 @@
     /// <summary>
     /// Exception class raised when something goes wrong in the Authentication process.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032:ImplementStandardExceptionConstructors", Justification = "Part of a PCL"),
+    System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable", Justification = "Part of a PCL")]
     public class AuthenticationException : Exception
     {
         /// <summary>

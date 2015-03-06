@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B21C9324
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.UAA.Client", "src\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj", "{7452B0B7-B48B-4017-9C3B-1092378A1A20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.UAA.Client.Net45", "src\CloudFoundry.UAA.Client.Net45\CloudFoundry.UAA.Client.Net45.csproj", "{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{7452B0B7-B48B-4017-9C3B-1092378A1A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7452B0B7-B48B-4017-9C3B-1092378A1A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7452B0B7-B48B-4017-9C3B-1092378A1A20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
