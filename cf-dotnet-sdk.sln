@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{31DBE021-A906-408B-BEC8-0BD0CD6BB6BF}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.V2.Client.Test", "src\CloudFoundry.CloudController.V2.Client.Test\CloudFoundry.CloudController.V2.Client.Test.csproj", "{3560C779-F4FD-4AD3-86C5-A7AD8511DBAD}"
@@ -27,6 +28,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B21C9324-1DED-42D2-B8D3-E9F939F430D1}"
 	ProjectSection(SolutionItems) = preProject
 		build.proj = build.proj
+		cf-dotnet-sdk.nuspec = cf-dotnet-sdk.nuspec
+		cf-dotnet-sdk.ruleset = cf-dotnet-sdk.ruleset
+		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.UAA.Client", "src\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj", "{7452B0B7-B48B-4017-9C3B-1092378A1A20}"
