@@ -74,10 +74,6 @@
     <Compile Include="BuildpackTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj">
-      <Project>{05c4739a-46d0-470f-a57b-81e3500a4837}</Project>
-      <Name>CloudFoundry.UAA.Client</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
       <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
       <Name>CloudFoundry.CloudController.Common</Name>
@@ -86,9 +82,15 @@
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>
       <Name>CloudFoundry.CloudController.V2.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj">
+      <Project>{7452b0b7-b48b-4017-9c3b-1092378a1a20}</Project>
+      <Name>CloudFoundry.UAA.Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
