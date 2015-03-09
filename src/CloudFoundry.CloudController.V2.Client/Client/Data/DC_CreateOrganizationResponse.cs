@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.CreateOrganization()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/organizations/creating_an_organization.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateOrganizationResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateOrganizationResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateOrganizationResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Name</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Billing Enabled</para>
+        /// </summary>
         [JsonProperty("billing_enabled", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic BillingEnabled
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Quota Definition Guid</para>
+        /// </summary>
         [JsonProperty("quota_definition_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? QuotaDefinitionGuid
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Status</para>
+        /// </summary>
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Quota Definition Url</para>
+        /// </summary>
         [JsonProperty("quota_definition_url", NullValueHandling = NullValueHandling.Ignore)]
         public string QuotaDefinitionUrl
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Spaces Url</para>
+        /// </summary>
         [JsonProperty("spaces_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpacesUrl
         {
@@ -78,6 +103,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Domains Url</para>
+        /// </summary>
         [JsonProperty("domains_url", NullValueHandling = NullValueHandling.Ignore)]
         public string DomainsUrl
         {
@@ -85,6 +113,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Private Domains Url</para>
+        /// </summary>
         [JsonProperty("private_domains_url", NullValueHandling = NullValueHandling.Ignore)]
         public string PrivateDomainsUrl
         {
@@ -92,6 +123,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Users Url</para>
+        /// </summary>
         [JsonProperty("users_url", NullValueHandling = NullValueHandling.Ignore)]
         public string UsersUrl
         {
@@ -99,6 +133,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Managers Url</para>
+        /// </summary>
         [JsonProperty("managers_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ManagersUrl
         {
@@ -106,6 +143,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Billing Managers Url</para>
+        /// </summary>
         [JsonProperty("billing_managers_url", NullValueHandling = NullValueHandling.Ignore)]
         public string BillingManagersUrl
         {
@@ -113,6 +153,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Auditors Url</para>
+        /// </summary>
         [JsonProperty("auditors_url", NullValueHandling = NullValueHandling.Ignore)]
         public string AuditorsUrl
         {
@@ -120,6 +163,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The App Events Url</para>
+        /// </summary>
         [JsonProperty("app_events_url", NullValueHandling = NullValueHandling.Ignore)]
         public string AppEventsUrl
         {
@@ -127,6 +173,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Quota Definitions Url</para>
+        /// </summary>
         [JsonProperty("space_quota_definitions_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceQuotaDefinitionsUrl
         {

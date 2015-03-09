@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// Info Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class InfoEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractInfoEndpoint
     {
-        public InfoEndpoint(CloudFoundryClient client) : base()
+        internal InfoEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get Info
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/info/get_info.html"</para>
         /// </summary>
         public async Task<GetInfoResponse> GetInfo()
         {
             string route = "/v2/info";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

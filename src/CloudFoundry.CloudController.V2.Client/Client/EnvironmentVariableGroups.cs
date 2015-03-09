@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// EnvironmentVariableGroups Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class EnvironmentVariableGroupsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractEnvironmentVariableGroupsEndpoint
     {
-        public EnvironmentVariableGroupsEndpoint(CloudFoundryClient client) : base()
+        internal EnvironmentVariableGroupsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,12 +45,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Getting the contents of the running environment variable group
+        /// <para>returns the set of default environment variables available to running apps</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/environment_variable_groups/getting_the_contents_of_the_running_environment_variable_group.html"</para>
         /// </summary>
-        /// returns the set of default environment variables available to running apps
         public async Task<GettingContentsOfRunningEnvironmentVariableGroupResponse> GettingContentsOfRunningEnvironmentVariableGroup()
         {
             string route = "/v2/config/environment_variable_groups/running";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -62,12 +63,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Getting the contents of the staging environment variable group
+        /// <para>returns the set of default environment variables available during staging</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/environment_variable_groups/getting_the_contents_of_the_staging_environment_variable_group.html"</para>
         /// </summary>
-        /// returns the set of default environment variables available during staging
         public async Task<GettingContentsOfStagingEnvironmentVariableGroupResponse> GettingContentsOfStagingEnvironmentVariableGroup()
         {
             string route = "/v2/config/environment_variable_groups/staging";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -79,12 +81,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating the contents of the staging environment variable group
+        /// <para>Updates the set of environment variables which will be made available during staging</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/environment_variable_groups/updating_the_contents_of_the_staging_environment_variable_group.html"</para>
         /// </summary>
-        /// Updates the set of environment variables which will be made available during staging
         public async Task<UpdateContentsOfStagingEnvironmentVariableGroupResponse> UpdateContentsOfStagingEnvironmentVariableGroup(UpdateContentsOfStagingEnvironmentVariableGroupRequest value)
         {
             string route = "/v2/config/environment_variable_groups/staging";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -98,12 +101,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating the contents of the running environment variable group
+        /// <para>Updates the set of environment variables which will be made available to all running apps</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/environment_variable_groups/updating_the_contents_of_the_running_environment_variable_group.html"</para>
         /// </summary>
-        /// Updates the set of environment variables which will be made available to all running apps
         public async Task<UpdateContentsOfRunningEnvironmentVariableGroupResponse> UpdateContentsOfRunningEnvironmentVariableGroup(UpdateContentsOfRunningEnvironmentVariableGroupRequest value)
         {
             string route = "/v2/config/environment_variable_groups/running";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;

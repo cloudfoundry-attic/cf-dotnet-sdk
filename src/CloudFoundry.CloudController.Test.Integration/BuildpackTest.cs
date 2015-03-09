@@ -33,11 +33,10 @@ namespace CloudFoundry.CloudController.Test.Integration
         [TestMethod]
         public void ListBuildpacks_test()
         {
-            BuildpacksEndpoint buildpacksEndpoint = new BuildpacksEndpoint(client);
             PagedResponseCollection<ListAllBuildpacksResponse> response = null;
             try
             {
-                response = buildpacksEndpoint.ListAllBuildpacks().Result;
+                response = client.Buildpacks.ListAllBuildpacks().Result;
             }
             catch (Exception ex)
             {

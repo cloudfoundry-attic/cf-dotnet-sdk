@@ -13,13 +13,13 @@
         public async Task<GetV1InfoResponse> GetV1Info()
         {
             string route = "/info";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
-            var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
-            client.Method = HttpMethod.Get;
-            client.Headers.Add(await BuildAuthenticationHeader());
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
+            var httpClient = this.GetHttpClient();
+            httpClient.Uri = new Uri(endpoint);
+            httpClient.Method = HttpMethod.Get;
+            httpClient.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
+            var response = await this.SendAsync(httpClient, expectedReturnStatus);
             return Utilities.DeserializeJson<GetV1InfoResponse>(await response.ReadContentAsStringAsync());
         }
     }

@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// Jobs Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class JobsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractJobsEndpoint
     {
-        public JobsEndpoint(CloudFoundryClient client) : base()
+        internal JobsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve Job that was successful
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_that_was_successful.html"</para>
         /// </summary>
         public async Task<RetrieveJobThatWasSuccessfulResponse> RetrieveJobThatWasSuccessful(Guid? guid)
         {
             string route = string.Format("/v2/jobs/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -61,11 +62,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve Job with known failure
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_with_known_failure.html"</para>
         /// </summary>
         public async Task<RetrieveJobWithKnownFailureResponse> RetrieveJobWithKnownFailure(Guid? guid)
         {
             string route = string.Format("/v2/jobs/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -77,11 +79,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve Job that is queued
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_that_is_queued.html"</para>
         /// </summary>
         public async Task<RetrieveJobThatIsQueuedResponse> RetrieveJobThatIsQueued(Guid? guid)
         {
             string route = string.Format("/v2/jobs/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -93,11 +96,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve Job with unknown failure
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_with_unknown_failure.html"</para>
         /// </summary>
         public async Task<RetrieveJobWithUnknownFailureResponse> RetrieveJobWithUnknownFailure(Guid? guid)
         {
             string route = string.Format("/v2/jobs/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

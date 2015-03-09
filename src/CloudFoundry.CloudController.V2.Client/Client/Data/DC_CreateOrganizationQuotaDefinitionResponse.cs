@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateOrganizationQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateOrganizationQuotaDefinitionResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateOrganizationQuotaDefinitionResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Name</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Non Basic Services Allowed</para>
+        /// </summary>
         [JsonProperty("non_basic_services_allowed", NullValueHandling = NullValueHandling.Ignore)]
         public bool? NonBasicServicesAllowed
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Total Services</para>
+        /// </summary>
         [JsonProperty("total_services", NullValueHandling = NullValueHandling.Ignore)]
         public int? TotalServices
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Total Routes</para>
+        /// </summary>
         [JsonProperty("total_routes", NullValueHandling = NullValueHandling.Ignore)]
         public int? TotalRoutes
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Memory Limit</para>
+        /// </summary>
         [JsonProperty("memory_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? MemoryLimit
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Trial Db Allowed</para>
+        /// </summary>
         [JsonProperty("trial_db_allowed", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic TrialDbAllowed
         {
@@ -78,6 +103,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Instance Memory Limit</para>
+        /// </summary>
         [JsonProperty("instance_memory_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? InstanceMemoryLimit
         {

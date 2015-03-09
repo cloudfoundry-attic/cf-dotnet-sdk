@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.CreateServiceDeprecated()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/services/creating_a_service_(deprecated).html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateServiceDeprecatedRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceDeprecatedRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractCreateServiceDeprecatedRequest
     {
 
+        /// <summary> 
+        /// <para>The name of the service</para>
+        /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
         public string Label
         {
@@ -38,6 +45,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A short blurb describing the service</para>
+        /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description
         {
@@ -45,6 +55,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The name of the service provider (used only by v1 service gateways)</para>
+        /// </summary>
         [JsonProperty("provider", NullValueHandling = NullValueHandling.Ignore)]
         public string Provider
         {
@@ -52,6 +65,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The version of the service (used only by v1 service gateways)</para>
+        /// </summary>
         [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
         public string Version
         {
@@ -59,6 +75,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The url of ther service provider (used only by v1 service gateways)</para>
+        /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url
         {
@@ -66,6 +85,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The guid of the service</para>
+        /// </summary>
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? Guid
         {
@@ -73,6 +95,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A longer description of the service</para>
+        /// </summary>
         [JsonProperty("long_description", NullValueHandling = NullValueHandling.Ignore)]
         public string LongDescription
         {
@@ -80,6 +105,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A url that points to an info page for the service</para>
+        /// </summary>
         [JsonProperty("info_url", NullValueHandling = NullValueHandling.Ignore)]
         public string InfoUrl
         {
@@ -87,6 +115,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A url that points to a documentation page for the service</para>
+        /// </summary>
         [JsonProperty("documentation_url", NullValueHandling = NullValueHandling.Ignore)]
         public string DocumentationUrl
         {
@@ -94,6 +125,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A timeout used by the v1 service gateway client</para>
+        /// </summary>
         [JsonProperty("timeout", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Timeout
         {
@@ -101,6 +135,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A boolean describing that the service can be provisioned by users</para>
+        /// </summary>
         [JsonProperty("active", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Active
         {
@@ -108,6 +145,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A boolean describing that the service can be bound to applications</para>
+        /// </summary>
         [JsonProperty("bindable", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Bindable
         {
@@ -115,6 +155,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A JSON field with extra data pertaining to the service</para>
+        /// </summary>
         [JsonProperty("extra", NullValueHandling = NullValueHandling.Ignore)]
         public string Extra
         {
@@ -122,6 +165,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A guid that identifies the service with the broker (not the same as the guid above)</para>
+        /// </summary>
         [JsonProperty("unique_id", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic UniqueId
         {
@@ -129,6 +175,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A list of tags for the service</para>
+        /// </summary>
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public string Tags
         {
@@ -136,6 +185,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A list of dependencies for services</para>
+        /// </summary>
         [JsonProperty("requires", NullValueHandling = NullValueHandling.Ignore)]
         public string Requires
         {
@@ -143,6 +195,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The guid of the v2 service broker associated with the service</para>
+        /// </summary>
         [JsonProperty("service_broker_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServiceBrokerGuid
         {

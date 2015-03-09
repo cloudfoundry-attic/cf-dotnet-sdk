@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.ListAllServices()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/services/list_all_services.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServicesResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServicesResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServicesResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Label</para>
+        /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
         public string Label
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Provider</para>
+        /// </summary>
         [JsonProperty("provider", NullValueHandling = NullValueHandling.Ignore)]
         public string Provider
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Url</para>
+        /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Description</para>
+        /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Long Description</para>
+        /// </summary>
         [JsonProperty("long_description", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic LongDescription
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Version</para>
+        /// </summary>
         [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
         public string Version
         {
@@ -78,6 +103,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Info Url</para>
+        /// </summary>
         [JsonProperty("info_url", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic InfoUrl
         {
@@ -85,6 +113,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Active</para>
+        /// </summary>
         [JsonProperty("active", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Active
         {
@@ -92,6 +123,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Bindable</para>
+        /// </summary>
         [JsonProperty("bindable", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Bindable
         {
@@ -99,6 +133,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Unique Id</para>
+        /// </summary>
         [JsonProperty("unique_id", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? UniqueId
         {
@@ -106,6 +143,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Extra</para>
+        /// </summary>
         [JsonProperty("extra", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Extra
         {
@@ -113,6 +153,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Tags</para>
+        /// </summary>
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic[] Tags
         {
@@ -120,6 +163,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Requires</para>
+        /// </summary>
         [JsonProperty("requires", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic[] Requires
         {
@@ -127,6 +173,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Documentation Url</para>
+        /// </summary>
         [JsonProperty("documentation_url", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DocumentationUrl
         {
@@ -134,6 +183,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Service Broker Guid</para>
+        /// </summary>
         [JsonProperty("service_broker_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServiceBrokerGuid
         {
@@ -141,6 +193,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Plan Updateable</para>
+        /// </summary>
         [JsonProperty("plan_updateable", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic PlanUpdateable
         {
@@ -148,6 +203,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Service Plans Url</para>
+        /// </summary>
         [JsonProperty("service_plans_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ServicePlansUrl
         {

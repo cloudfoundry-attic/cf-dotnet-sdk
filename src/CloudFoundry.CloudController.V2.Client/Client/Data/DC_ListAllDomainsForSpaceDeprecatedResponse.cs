@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllDomainsForSpaceDeprecated()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllDomainsForSpaceDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllDomainsForSpaceDeprecatedResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllDomainsForSpaceDeprecatedResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Name</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {

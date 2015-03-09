@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppUsageEventsEndpoint.ListAllAppUsageEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/app_usage_events/list_all_app_usage_events.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllAppUsageEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllAppUsageEventsResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllAppUsageEventsResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The State</para>
+        /// </summary>
         [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
         public string State
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Memory In Mb Per Instance</para>
+        /// </summary>
         [JsonProperty("memory_in_mb_per_instance", NullValueHandling = NullValueHandling.Ignore)]
         public int? MemoryInMbPerInstance
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Instance Count</para>
+        /// </summary>
         [JsonProperty("instance_count", NullValueHandling = NullValueHandling.Ignore)]
         public int? InstanceCount
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The App Guid</para>
+        /// </summary>
         [JsonProperty("app_guid", NullValueHandling = NullValueHandling.Ignore)]
         public string AppGuid
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The App Name</para>
+        /// </summary>
         [JsonProperty("app_name", NullValueHandling = NullValueHandling.Ignore)]
         public string AppName
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Guid</para>
+        /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceGuid
         {
@@ -78,6 +103,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Name</para>
+        /// </summary>
         [JsonProperty("space_name", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceName
         {
@@ -85,6 +113,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Org Guid</para>
+        /// </summary>
         [JsonProperty("org_guid", NullValueHandling = NullValueHandling.Ignore)]
         public string OrgGuid
         {
@@ -92,6 +123,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Buildpack Guid</para>
+        /// </summary>
         [JsonProperty("buildpack_guid", NullValueHandling = NullValueHandling.Ignore)]
         public string BuildpackGuid
         {
@@ -99,6 +133,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Buildpack Name</para>
+        /// </summary>
         [JsonProperty("buildpack_name", NullValueHandling = NullValueHandling.Ignore)]
         public string BuildpackName
         {
@@ -106,6 +143,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Package State</para>
+        /// </summary>
         [JsonProperty("package_state", NullValueHandling = NullValueHandling.Ignore)]
         public string PackageState
         {

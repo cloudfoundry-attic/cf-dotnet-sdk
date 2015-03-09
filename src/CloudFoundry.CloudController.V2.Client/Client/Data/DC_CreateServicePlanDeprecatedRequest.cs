@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServicePlansEndpoint.CreateServicePlanDeprecated()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_plans/creating_a_service_plan_(deprecated).html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateServicePlanDeprecatedRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServicePlanDeprecatedRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractCreateServicePlanDeprecatedRequest
     {
 
+        /// <summary> 
+        /// <para>The name of the service plan</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -38,6 +45,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A boolean describing if the service plan is free</para>
+        /// </summary>
         [JsonProperty("free", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Free
         {
@@ -45,6 +55,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A description of the service plan</para>
+        /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description
         {
@@ -52,6 +65,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The guid of the related service</para>
+        /// </summary>
         [JsonProperty("service_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServiceGuid
         {
@@ -59,6 +75,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The guid of the service plan</para>
+        /// </summary>
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? Guid
         {
@@ -66,6 +85,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A JSON string with additional data about the plan</para>
+        /// </summary>
         [JsonProperty("extra", NullValueHandling = NullValueHandling.Ignore)]
         public string Extra
         {
@@ -73,6 +95,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A guid for the service plan in the service broker (not the same as the cloud controller guid)</para>
+        /// </summary>
         [JsonProperty("unique_id", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic UniqueId
         {
@@ -80,6 +105,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A boolean describing that the plan is visible to the all users</para>
+        /// </summary>
         [JsonProperty("public", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Public
         {
@@ -87,6 +115,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A boolean that determines whether plans can be used to create new instances.</para>
+        /// </summary>
         [JsonProperty("active", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Active
         {

@@ -23,17 +23,16 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// SpaceQuotaDefinitions Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class SpaceQuotaDefinitionsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractSpaceQuotaDefinitionsEndpoint
     {
-        public SpaceQuotaDefinitionsEndpoint(CloudFoundryClient client)
-            : base()
+        internal SpaceQuotaDefinitionsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
-        }
+            this.Client = client;
+        }    
     }
 }
 
@@ -46,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/updating_a_space_quota_definition.html"</para>
         /// </summary>
         public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid? guid, UpdateSpaceQuotaDefinitionRequest value)
         {
             string route = string.Format("/v2/space_quota_definitions/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -64,11 +64,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/creating_a_space_quota_definition.html"</para>
         /// </summary>
         public async Task<CreateSpaceQuotaDefinitionResponse> CreateSpaceQuotaDefinition(CreateSpaceQuotaDefinitionRequest value)
         {
             string route = "/v2/space_quota_definitions";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -82,16 +83,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid)
         {
             return await ListAllSpacesForSpaceQuotaDefinition(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Spaces for the Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/space_quota_definitions/{0}/spaces", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -103,11 +109,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Space with the Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/associate_space_with_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<AssociateSpaceWithSpaceQuotaDefinitionResponse> AssociateSpaceWithSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
         {
             string route = string.Format("/v2/space_quota_definitions/{0}/spaces/{1}", guid, space_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -120,11 +127,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
         /// </summary>
         public async Task<RetrieveSpaceQuotaDefinitionResponse> RetrieveSpaceQuotaDefinition(Guid? guid)
         {
             string route = string.Format("/v2/space_quota_definitions/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -136,11 +144,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/delete_a_particular_space_quota_definition.html"</para>
         /// </summary>
         public async Task DeleteSpaceQuotaDefinition(Guid? guid)
         {
             string route = string.Format("/v2/space_quota_definitions/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -152,11 +161,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Space from the Space Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/remove_space_from_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<RemoveSpaceFromSpaceQuotaDefinitionResponse> RemoveSpaceFromSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
         {
             string route = string.Format("/v2/space_quota_definitions/{0}/spaces/{1}", guid, space_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -169,16 +179,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Space Quota Definitions
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_space_quota_definitions.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions()
         {
             return await ListAllSpaceQuotaDefinitions(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Space Quota Definitions
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_space_quota_definitions.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions(RequestOptions options)
         {
             string route = "/v2/space_quota_definitions";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

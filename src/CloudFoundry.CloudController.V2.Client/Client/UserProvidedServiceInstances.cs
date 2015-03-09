@@ -23,17 +23,16 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// UserProvidedServiceInstances Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UserProvidedServiceInstancesEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractUserProvidedServiceInstancesEndpoint
     {
-        public UserProvidedServiceInstancesEndpoint(CloudFoundryClient client)
-            : base()
+        internal UserProvidedServiceInstancesEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
-        }
+            this.Client = client;
+        }    
     }
 }
 
@@ -46,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/delete_a_particular_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task DeleteUserProvidedServiceInstance(Guid? guid)
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -62,11 +62,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/creating_a_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task<CreateUserProvidedServiceInstanceResponse> CreateUserProvidedServiceInstance(CreateUserProvidedServiceInstanceRequest value)
         {
             string route = "/v2/user_provided_service_instances";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -80,11 +81,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/retrieve_a_particular_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task<RetrieveUserProvidedServiceInstanceResponse> RetrieveUserProvidedServiceInstance(Guid? guid)
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -96,16 +98,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/list_all_service_bindings_for_the_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid)
         {
             return await ListAllServiceBindingsForUserProvidedServiceInstance(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Bindings for the User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/list_all_service_bindings_for_the_user_provided_service_instance.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}/service_bindings", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -117,16 +124,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all User Provided Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/list_all_user_provided_service_instances.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances()
         {
             return await ListAllUserProvidedServiceInstances(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all User Provided Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/list_all_user_provided_service_instances.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances(RequestOptions options)
         {
             string route = "/v2/user_provided_service_instances";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -138,11 +150,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task<UpdateUserProvidedServiceInstanceResponse> UpdateUserProvidedServiceInstance(Guid? guid, UpdateUserProvidedServiceInstanceRequest value)
         {
             string route = string.Format("/v2/user_provided_service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;

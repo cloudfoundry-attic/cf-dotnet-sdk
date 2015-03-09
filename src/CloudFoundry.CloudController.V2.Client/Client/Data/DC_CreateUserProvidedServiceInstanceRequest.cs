@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.CreateUserProvidedServiceInstance()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/creating_a_user_provided_service_instance.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateUserProvidedServiceInstanceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateUserProvidedServiceInstanceRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractCreateUserProvidedServiceInstanceRequest
     {
 
+        /// <summary> 
+        /// <para>The guid of the space in which the instance will be created</para>
+        /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceGuid
         {
@@ -38,6 +45,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A name for the service instance</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -45,6 +55,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>A hash that can be used to store credentials</para>
+        /// </summary>
         [JsonProperty("credentials", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> Credentials
         {
@@ -52,6 +65,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The url for the syslog_drain to direct to</para>
+        /// </summary>
         [JsonProperty("syslog_drain_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SyslogDrainUrl
         {

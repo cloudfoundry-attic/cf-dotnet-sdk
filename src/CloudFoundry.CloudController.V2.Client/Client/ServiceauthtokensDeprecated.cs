@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// ServiceauthtokensDeprecated Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ServiceauthtokensDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceauthtokensDeprecatedEndpoint
     {
-        public ServiceauthtokensDeprecatedEndpoint(CloudFoundryClient client) : base()
+        internal ServiceauthtokensDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -44,17 +44,22 @@ namespace CloudFoundry.CloudController.V2.Client.Base
     {
 
         /// <summary>
-        /// List all Service UAAClient Tokens (deprecated)
+        /// List all Service Auth Tokens (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/list_all_service_auth_tokens_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceAuthTokensDeprecatedResponse>> ListAllServiceAuthTokensDeprecated()
         {
             return await ListAllServiceAuthTokensDeprecated(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Auth Tokens (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/list_all_service_auth_tokens_(deprecated).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceAuthTokensDeprecatedResponse>> ListAllServiceAuthTokensDeprecated(RequestOptions options)
         {
             string route = "/v2/service_auth_tokens";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -66,16 +71,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Filtering the result set by label (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/filtering_the_result_set_by_label_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<FilterResultSetByLabelDeprecatedResponse>> FilterResultSetByLabelDeprecated()
         {
             return await FilterResultSetByLabelDeprecated(new RequestOptions());
         }
 
+        /// <summary>
+        /// Filtering the result set by label (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/filtering_the_result_set_by_label_(deprecated).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<FilterResultSetByLabelDeprecatedResponse>> FilterResultSetByLabelDeprecated(RequestOptions options)
         {
             string route = "/v2/service_auth_tokens";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -86,12 +96,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Delete a Particular Service UAAClient Token (deprecated)
+        /// Delete a Particular Service Auth Token (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/delete_a_particular_service_auth_token_(deprecated).html"</para>
         /// </summary>
         public async Task DeleteServiceAuthTokenDeprecated(Guid? guid)
         {
             string route = string.Format("/v2/service_auth_tokens/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -102,12 +113,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Service UAAClient Token (deprecated)
+        /// Retrieve a Particular Service Auth Token (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/retrieve_a_particular_service_auth_token_(deprecated).html"</para>
         /// </summary>
         public async Task<RetrieveServiceAuthTokenDeprecatedResponse> RetrieveServiceAuthTokenDeprecated(Guid? guid)
         {
             string route = string.Format("/v2/service_auth_tokens/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -119,16 +131,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Filtering the result set by provider (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/filtering_the_result_set_by_provider_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<FilterResultSetByProviderDeprecatedResponse>> FilterResultSetByProviderDeprecated()
         {
             return await FilterResultSetByProviderDeprecated(new RequestOptions());
         }
 
+        /// <summary>
+        /// Filtering the result set by provider (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/filtering_the_result_set_by_provider_(deprecated).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<FilterResultSetByProviderDeprecatedResponse>> FilterResultSetByProviderDeprecated(RequestOptions options)
         {
             string route = "/v2/service_auth_tokens";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

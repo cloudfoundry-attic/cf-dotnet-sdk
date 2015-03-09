@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// SecurityGroupRunningDefaults Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class SecurityGroupRunningDefaultsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractSecurityGroupRunningDefaultsEndpoint
     {
-        public SecurityGroupRunningDefaultsEndpoint(CloudFoundryClient client) : base()
+        internal SecurityGroupRunningDefaultsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Set a Security Group as a default for running Apps
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_running_defaults/set_a_security_group_as_a_default_for_running_apps.html"</para>
         /// </summary>
         public async Task<SetSecurityGroupAsDefaultForRunningAppsResponse> SetSecurityGroupAsDefaultForRunningApps(Guid? guid)
         {
             string route = string.Format("/v2/config/running_security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -62,11 +63,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Removing a Security Group as a default for running Apps
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_running_defaults/removing_a_security_group_as_a_default_for_running_apps.html"</para>
         /// </summary>
         public async Task RemovingSecurityGroupAsDefaultForRunningApps(Guid? guid)
         {
             string route = string.Format("/v2/config/running_security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -78,16 +80,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Return the Security Groups used for running Apps
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_running_defaults/return_the_security_groups_used_for_running_apps.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForRunningAppsResponse>> ReturnSecurityGroupsUsedForRunningApps()
         {
             return await ReturnSecurityGroupsUsedForRunningApps(new RequestOptions());
         }
 
+        /// <summary>
+        /// Return the Security Groups used for running Apps
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_running_defaults/return_the_security_groups_used_for_running_apps.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForRunningAppsResponse>> ReturnSecurityGroupsUsedForRunningApps(RequestOptions options)
         {
             string route = "/v2/config/running_security_groups";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

@@ -34,37 +34,31 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
             }
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
-            var newOrg = orgsEndpoint.CreateOrganization(org).Result;
+            var newOrg = client.Organizations.CreateOrganization(org).Result;
             orgGuid = new Guid(newOrg.EntityMetadata.Guid);
 
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
-            var newSpace = spaceEndpoint.CreateSpace(spc).Result;
+            var newSpace = client.Spaces.CreateSpace(spc).Result;
             spaceGuid = new Guid(newSpace.EntityMetadata.Guid);
 
-            DomainsDeprecatedEndpoint domainsEndpoint = new DomainsDeprecatedEndpoint(client);
             CreatesSharedDomainDeprecatedRequest r = new CreatesSharedDomainDeprecatedRequest();
             r.Name = Guid.NewGuid().ToString() + ".com";
             r.Wildcard = true;
-            domainGuid = new Guid(domainsEndpoint.CreatesSharedDomainDeprecated(r).Result.EntityMetadata.Guid);
+            domainGuid = new Guid(client.DomainsDeprecated.CreatesSharedDomainDeprecated(r).Result.EntityMetadata.Guid);
         }
 
         [ClassCleanup]
         public static void ClassCleanup()
         {
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
-            spaceEndpoint.DeleteSpace(spaceGuid).Wait();
+            client.Spaces.DeleteSpace(spaceGuid).Wait();
 
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
-            orgsEndpoint.DeleteOrganization(orgGuid).Wait();
+            client.Organizations.DeleteOrganization(orgGuid).Wait();
 
-            DomainsDeprecatedEndpoint domainsEndpoint = new DomainsDeprecatedEndpoint(client);
-            domainsEndpoint.DeleteDomainDeprecated(domainGuid).Wait();
+            client.DomainsDeprecated.DeleteDomainDeprecated(domainGuid).Wait();
         }
 
         [TestMethod]
@@ -74,14 +68,13 @@ namespace CloudFoundry.CloudController.Test.Integration
             UpdateRouteResponse updatedRoute = null;
             RetrieveRouteResponse retrieveRoute = null;
 
-            RoutesEndpoint routesEndpoint = new RoutesEndpoint(client);
             CreateRouteRequest request = new CreateRouteRequest();
             request.DomainGuid = domainGuid;
             request.SpaceGuid = spaceGuid;
 
             try
             {
-                newRoute = routesEndpoint.CreateRoute(request).Result;
+                newRoute = client.Routes.CreateRoute(request).Result;
             }
             catch (Exception ex)
             {
@@ -91,20 +84,20 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                retrieveRoute = routesEndpoint.RetrieveRoute(new Guid(newRoute.EntityMetadata.Guid)).Result;
+                retrieveRoute = client.Routes.RetrieveRoute(new Guid(newRoute.EntityMetadata.Guid)).Result;
             }
             catch (Exception ex)
             {
                 Assert.Fail("Exception while reading route: {0}", ex.ToString());
             }
-            Assert.IsNotNull(retrieveRoute);            
+            Assert.IsNotNull(retrieveRoute);
 
             UpdateRouteRequest updateR = new UpdateRouteRequest();
             updateR.Host = "newtestdomain";
 
             try
             {
-                updatedRoute = routesEndpoint.UpdateRoute(new Guid(newRoute.EntityMetadata.Guid), updateR).Result;
+                updatedRoute = client.Routes.UpdateRoute(new Guid(newRoute.EntityMetadata.Guid), updateR).Result;
             }
             catch (Exception ex)
             {
@@ -115,7 +108,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                routesEndpoint.DeleteRoute(new Guid(newRoute.EntityMetadata.Guid)).Wait();
+                client.Routes.DeleteRoute(new Guid(newRoute.EntityMetadata.Guid)).Wait();
             }
             catch (Exception ex)
             {

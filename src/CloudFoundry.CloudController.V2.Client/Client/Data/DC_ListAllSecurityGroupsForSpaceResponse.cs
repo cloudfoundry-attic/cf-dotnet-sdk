@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllSecurityGroupsForSpace()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/spaces/list_all_security_groups_for_the_space.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllSecurityGroupsForSpaceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllSecurityGroupsForSpaceResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllSecurityGroupsForSpaceResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Name</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Rules</para>
+        /// </summary>
         [JsonProperty("rules", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic>[] Rules
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Running Default</para>
+        /// </summary>
         [JsonProperty("running_default", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic RunningDefault
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Staging Default</para>
+        /// </summary>
         [JsonProperty("staging_default", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic StagingDefault
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Spaces Url</para>
+        /// </summary>
         [JsonProperty("spaces_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpacesUrl
         {

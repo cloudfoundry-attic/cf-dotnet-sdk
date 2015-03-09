@@ -23,17 +23,16 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// Apps Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class AppsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractAppsEndpoint
     {
-        public AppsEndpoint(CloudFoundryClient client)
-            : base()
+        internal AppsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
-        }
+            this.Client = client;
+        }    
     }
 }
 
@@ -46,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Route from the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/remove_route_from_the_app.html"</para>
         /// </summary>
         public async Task<RemoveRouteFromAppResponse> RemoveRouteFromApp(Guid? guid, Guid? route_guid)
         {
             string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -63,11 +63,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Route with the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/associate_route_with_the_app.html"</para>
         /// </summary>
         public async Task<AssociateRouteWithAppResponse> AssociateRouteWithApp(Guid? guid, Guid? route_guid)
         {
             string route = string.Format("/v2/apps/{0}/routes/{1}", guid, route_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -80,11 +81,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Service Binding from the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/remove_service_binding_from_the_app.html"</para>
         /// </summary>
         public async Task<RemoveServiceBindingFromAppResponse> RemoveServiceBindingFromApp(Guid? guid, Guid? service_binding_guid)
         {
             string route = string.Format("/v2/apps/{0}/service_bindings/{1}", guid, service_binding_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -97,12 +99,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get detailed stats for a STARTED App
+        /// <para>Get status for each instance of an App using the app guid.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_detailed_stats_for_a_started_app.html"</para>
         /// </summary>
-        /// Get status for each instance of an App using the app guid.
         public async Task<Dictionary<int?, GetDetailedStatsForStartedAppResponse>> GetDetailedStatsForStartedApp(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}/stats", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -114,14 +117,15 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Copy the app bits for an App
+        /// <para>This endpoint will copy the package bits in the blobstore from the source app to the destination app.</para>
+        /// <para>It will always return a job which you can query for success or failure.</para>
+        /// <para>This operation will require the app to restart in order for the changes to take effect.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/copy_the_app_bits_for_an_app.html"</para>
         /// </summary>
-        /// This endpoint will copy the package bits in the blobstore from the source app to the destination app.
-        /// It will always return a job which you can query for success or failure.
-        /// This operation will require the app to restart in order for the changes to take effect.
         public async Task<CopyAppBitsForAppResponse> CopyAppBitsForApp(Guid? guid, CopyAppBitsForAppRequest value)
         {
             string route = string.Format("/v2/apps/{0}/copy_bits", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -135,16 +139,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_apps.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps()
         {
             return await ListAllApps(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Apps
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_apps.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps(RequestOptions options)
         {
             string route = "/v2/apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -156,11 +165,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/retrieve_a_particular_app.html"</para>
         /// </summary>
         public async Task<RetrieveAppResponse> RetrieveApp(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -172,11 +182,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Terminate the running App Instance at the given index
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/terminate_the_running_app_instance_at_the_given_index.html"</para>
         /// </summary>
         public async Task TerminateRunningAppInstanceAtGivenIndex(Guid? guid, int? index)
         {
             string route = string.Format("/v2/apps/{0}/instances/{1}", guid, index);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -188,11 +199,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating an App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/creating_an_app.html"</para>
         /// </summary>
         public async Task<CreateAppResponse> CreateApp(CreateAppRequest value)
         {
             string route = "/v2/apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -206,11 +218,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating an App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/updating_an_app.html"</para>
         /// </summary>
         public async Task<UpdateAppResponse> UpdateApp(Guid? guid, UpdateAppRequest value)
         {
             string route = string.Format("/v2/apps/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -224,12 +237,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get the instance information for a STARTED App
+        /// <para>Get status for each instance of an App using the app guid.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_the_instance_information_for_a_started_app.html"</para>
         /// </summary>
-        /// Get status for each instance of an App using the app guid.
         public async Task<Dictionary<int?, GetInstanceInformationForStartedAppResponse>> GetInstanceInformationForStartedApp(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}/instances", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -241,12 +255,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get the env for an App
+        /// <para>Get the environment variables for an App using the app guid. Restricted to SpaceDeveloper role.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_the_env_for_an_app.html"</para>
         /// </summary>
-        /// Get the environment variables for an App using the app guid. Restricted to SpaceDeveloper role.
         public async Task<GetEnvForAppResponse> GetEnvForApp(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}/env", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -258,11 +273,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Docker App (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/creating_a_docker_app_(experimental).html"</para>
         /// </summary>
         public async Task<CreateDockerAppExperimentalResponse> CreateDockerAppExperimental(CreateDockerAppExperimentalRequest value)
         {
             string route = "/v2/apps";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -276,16 +292,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_routes_for_the_app.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid? guid)
         {
             return await ListAllRoutesForApp(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Routes for the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_routes_for_the_app.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/apps/{0}/routes", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -297,16 +318,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_service_bindings_for_the_app.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid)
         {
             return await ListAllServiceBindingsForApp(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Bindings for the App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_service_bindings_for_the_app.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/apps/{0}/service_bindings", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -318,11 +344,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get App summary
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_app_summary.html"</para>
         /// </summary>
         public async Task<GetAppSummaryResponse> GetAppSummary(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}/summary", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -334,11 +361,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Restage an App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/restage_an_app.html"</para>
         /// </summary>
         public async Task<RestageAppResponse> RestageApp(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}/restage", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -351,11 +379,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular App
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/delete_a_particular_app.html"</para>
         /// </summary>
         public async Task DeleteApp(Guid? guid)
         {
             string route = string.Format("/v2/apps/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;

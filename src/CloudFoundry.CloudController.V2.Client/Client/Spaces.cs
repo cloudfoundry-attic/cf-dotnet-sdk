@@ -23,17 +23,16 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// Spaces Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class SpacesEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractSpacesEndpoint
     {
-        public SpacesEndpoint(CloudFoundryClient client)
-            : base()
+        internal SpacesEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
-        }
+            this.Client = client;
+        }    
     }
 }
 
@@ -46,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get Space summary
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/get_space_summary.html"</para>
         /// </summary>
         public async Task<GetSpaceSummaryResponse> GetSpaceSummary(Guid? guid)
         {
             string route = string.Format("/v2/spaces/{0}/summary", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -62,11 +62,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Auditor with the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/associate_auditor_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateAuditorWithSpaceResponse> AssociateAuditorWithSpace(Guid? guid, Guid? auditor_guid)
         {
             string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -79,16 +80,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Developers for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_developers_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid)
         {
             return await ListAllDevelopersForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Developers for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_developers_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/developers", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -100,11 +106,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Security Group from the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/remove_security_group_from_the_space.html"</para>
         /// </summary>
         public async Task<RemoveSecurityGroupFromSpaceResponse> RemoveSecurityGroupFromSpace(Guid? guid, Guid? security_group_guid)
         {
             string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -117,11 +124,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/creating_a_space.html"</para>
         /// </summary>
         public async Task<CreateSpaceResponse> CreateSpace(CreateSpaceRequest value)
         {
             string route = "/v2/spaces";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -135,11 +143,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Developer from the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/remove_developer_from_the_space.html"</para>
         /// </summary>
         public async Task<RemoveDeveloperFromSpaceResponse> RemoveDeveloperFromSpace(Guid? guid, Guid? developer_guid)
         {
             string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -152,16 +161,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Managers for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_managers_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid)
         {
             return await ListAllManagersForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Managers for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_managers_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/managers", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -173,16 +187,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_service_instances_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid)
         {
             return await ListAllServiceInstancesForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Instances for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_service_instances_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/service_instances", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -194,11 +213,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Auditor from the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/remove_auditor_from_the_space.html"</para>
         /// </summary>
         public async Task<RemoveAuditorFromSpaceResponse> RemoveAuditorFromSpace(Guid? guid, Guid? auditor_guid)
         {
             string route = string.Format("/v2/spaces/{0}/auditors/{1}", guid, auditor_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -211,16 +231,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_apps_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid)
         {
             return await ListAllAppsForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Apps for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_apps_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/apps", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -232,11 +257,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/retrieve_a_particular_space.html"</para>
         /// </summary>
         public async Task<RetrieveSpaceResponse> RetrieveSpace(Guid? guid)
         {
             string route = string.Format("/v2/spaces/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -248,16 +274,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Events for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_events_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid)
         {
             return await ListAllEventsForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Events for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_events_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/events", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -269,11 +300,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Security Group with the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/associate_security_group_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateSecurityGroupWithSpaceResponse> AssociateSecurityGroupWithSpace(Guid? guid, Guid? security_group_guid)
         {
             string route = string.Format("/v2/spaces/{0}/security_groups/{1}", guid, security_group_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -286,11 +318,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Manager from the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/remove_manager_from_the_space.html"</para>
         /// </summary>
         public async Task<RemoveManagerFromSpaceResponse> RemoveManagerFromSpace(Guid? guid, Guid? manager_guid)
         {
             string route = string.Format("/v2/spaces/{0}/managers/{1}", guid, manager_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -303,16 +336,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Services for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_services_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid)
         {
             return await ListAllServicesForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Services for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_services_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/services", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -324,11 +362,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Developer with the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/associate_developer_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateDeveloperWithSpaceResponse> AssociateDeveloperWithSpace(Guid? guid, Guid? developer_guid)
         {
             string route = string.Format("/v2/spaces/{0}/developers/{1}", guid, developer_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -341,16 +380,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Security Groups for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_security_groups_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid)
         {
             return await ListAllSecurityGroupsForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Security Groups for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_security_groups_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/security_groups", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -362,16 +406,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Domains for the Space (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid)
         {
             return await ListAllDomainsForSpaceDeprecated(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Domains for the Space (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/domains", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -383,11 +432,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/delete_a_particular_space.html"</para>
         /// </summary>
         public async Task DeleteSpace(Guid? guid)
         {
             string route = string.Format("/v2/spaces/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -399,16 +449,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_routes_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid)
         {
             return await ListAllRoutesForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Routes for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_routes_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/routes", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -420,16 +475,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_spaces.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesResponse>> ListAllSpaces()
         {
             return await ListAllSpaces(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Spaces
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_spaces.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesResponse>> ListAllSpaces(RequestOptions options)
         {
             string route = "/v2/spaces";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -441,11 +501,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Manager with the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/associate_manager_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateManagerWithSpaceResponse> AssociateManagerWithSpace(Guid? guid, Guid? manager_guid)
         {
             string route = string.Format("/v2/spaces/{0}/managers/{1}", guid, manager_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -458,11 +519,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Update a Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/update_a_space.html"</para>
         /// </summary>
         public async Task<UpdateSpaceResponse> UpdateSpace(Guid? guid, UpdateSpaceRequest value)
         {
             string route = string.Format("/v2/spaces/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -476,16 +538,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Auditors for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_auditors_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid)
         {
             return await ListAllAuditorsForSpace(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Auditors for the Space
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/spaces/list_all_auditors_for_the_space.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/spaces/{0}/auditors", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

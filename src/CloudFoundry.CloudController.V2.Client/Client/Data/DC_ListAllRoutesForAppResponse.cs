@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.ListAllRoutesForApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/list_all_routes_for_the_app.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllRoutesForAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllRoutesForAppResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllRoutesForAppResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Host</para>
+        /// </summary>
         [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
         public string Host
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Domain Guid</para>
+        /// </summary>
         [JsonProperty("domain_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? DomainGuid
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Guid</para>
+        /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceGuid
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Domain Url</para>
+        /// </summary>
         [JsonProperty("domain_url", NullValueHandling = NullValueHandling.Ignore)]
         public string DomainUrl
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Url</para>
+        /// </summary>
         [JsonProperty("space_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceUrl
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Apps Url</para>
+        /// </summary>
         [JsonProperty("apps_url", NullValueHandling = NullValueHandling.Ignore)]
         public string AppsUrl
         {

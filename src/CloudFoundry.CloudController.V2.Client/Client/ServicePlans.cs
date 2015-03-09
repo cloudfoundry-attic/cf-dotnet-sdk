@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// ServicePlans Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ServicePlansEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServicePlansEndpoint
     {
-        public ServicePlansEndpoint(CloudFoundryClient client) : base()
+        internal ServicePlansEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,11 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Service Plan (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/updating_a_service_plan_(deprecated).html"</para>
         /// </summary>
         public async Task<UpdateServicePlanDeprecatedResponse> UpdateServicePlanDeprecated(UpdateServicePlanDeprecatedRequest value)
         {
             string route = "/v2/service_plans";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Put;
@@ -63,11 +64,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Plans
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/delete_a_particular_service_plans.html"</para>
         /// </summary>
         public async Task DeleteServicePlans(Guid? guid)
         {
             string route = string.Format("/v2/service_plans/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Delete;
@@ -79,11 +81,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Service Plan (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/creating_a_service_plan_(deprecated).html"</para>
         /// </summary>
         public async Task<CreateServicePlanDeprecatedResponse> CreateServicePlanDeprecated(CreateServicePlanDeprecatedRequest value)
         {
             string route = "/v2/service_plans";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -97,16 +100,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances for the Service Plan
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid)
         {
             return await ListAllServiceInstancesForServicePlan(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Instances for the Service Plan
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
         {
             string route = string.Format("/v2/service_plans/{0}/service_instances", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -118,11 +126,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Plan
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/retrieve_a_particular_service_plan.html"</para>
         /// </summary>
         public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
         {
             string route = string.Format("/v2/service_plans/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -134,16 +143,21 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plans
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/list_all_service_plans.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans()
         {
             return await ListAllServicePlans(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Plans
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plans/list_all_service_plans.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans(RequestOptions options)
         {
             string route = "/v2/service_plans";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

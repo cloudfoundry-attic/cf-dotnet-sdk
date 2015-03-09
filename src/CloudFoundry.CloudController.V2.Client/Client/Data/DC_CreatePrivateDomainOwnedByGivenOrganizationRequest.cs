@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.PrivateDomainsEndpoint.CreatePrivateDomainOwnedByGivenOrganization()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/private_domains/create_a_private_domain_owned_by_the_given_organization.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreatePrivateDomainOwnedByGivenOrganizationRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreatePrivateDomainOwnedByGivenOrganizationRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractCreatePrivateDomainOwnedByGivenOrganizationRequest
     {
 
+        /// <summary> 
+        /// <para>The name of the domain.</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -38,6 +45,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The organization that owns the domain. If not specified, the domain is shared.</para>
+        /// </summary>
         [JsonProperty("owning_organization_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? OwningOrganizationGuid
         {
@@ -45,6 +55,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The guid of the domain.</para>
+        /// </summary>
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? Guid
         {

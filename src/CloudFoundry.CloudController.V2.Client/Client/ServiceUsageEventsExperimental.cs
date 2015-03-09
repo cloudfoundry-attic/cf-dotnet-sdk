@@ -23,15 +23,15 @@ using System.Threading.Tasks;
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// ServiceUsageEventsExperimental Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ServiceUsageEventsExperimentalEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceUsageEventsExperimentalEndpoint
     {
-        public ServiceUsageEventsExperimentalEndpoint(CloudFoundryClient client) : base()
+        internal ServiceUsageEventsExperimentalEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,20 +45,29 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Usage Events
+        /// <para>Events are sorted by internal database IDs. This order may differ from created_at.</para>
+        /// <para></para>
+        /// <para>Events close to the current time should not be processed because other events may still have open</para>
+        /// <para>transactions that will change their order in the results.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/list_service_usage_events.html"</para>
         /// </summary>
-        /// Events are sorted by internal database IDs. This order may differ from created_at.
-        /// 
-        /// Events close to the current time should not be processed because other events may still have open
-        /// transactions that will change their order in the results.
         public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents()
         {
             return await ListServiceUsageEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Usage Events
+        /// <para>Events are sorted by internal database IDs. This order may differ from created_at.</para>
+        /// <para></para>
+        /// <para>Events close to the current time should not be processed because other events may still have open</para>
+        /// <para>transactions that will change their order in the results.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/list_service_usage_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents(RequestOptions options)
         {
             string route = "/v2/service_usage_events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;
@@ -70,17 +79,18 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Purge and reseed Service Usage Events
+        /// <para>Destroys all existing events. Populates new usage events, one for each existing service instance.</para>
+        /// <para>All populated events will have a created_at value of current time.</para>
+        /// <para></para>
+        /// <para>There is the potential race condition if service instances are currently being created or deleted.</para>
+        /// <para></para>
+        /// <para>The seeded usage events will have the same guid as the service instance.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/purge_and_reseed_service_usage_events.html"</para>
         /// </summary>
-        /// Destroys all existing events. Populates new usage events, one for each existing service instance.
-        /// All populated events will have a created_at value of current time.
-        /// 
-        /// There is the potential race condition if service instances are currently being created or deleted.
-        /// 
-        /// The seeded usage events will have the same guid as the service instance.
         public async Task PurgeAndReseedServiceUsageEvents()
         {
             string route = "/v2/service_usage_events/destructively_purge_all_and_reseed_existing_instances";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Post;
@@ -92,11 +102,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Usage Event
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/retrieve_a_particular_service_usage_event.html"</para>
         /// </summary>
         public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
         {
             string route = string.Format("/v2/service_usage_events/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+            string endpoint = this.Client.CloudTarget.ToString().TrimEnd('/') + route;
             var client = this.GetHttpClient();
             client.Uri = new Uri(endpoint);
             client.Method = HttpMethod.Get;

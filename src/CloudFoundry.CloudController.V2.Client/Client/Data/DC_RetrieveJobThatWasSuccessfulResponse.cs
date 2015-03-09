@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.JobsEndpoint.RetrieveJobThatWasSuccessful()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_that_was_successful.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveJobThatWasSuccessfulResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveJobThatWasSuccessfulResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveJobThatWasSuccessfulResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Guid</para>
+        /// </summary>
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
         public string Guid
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Status</para>
+        /// </summary>
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status
         {
