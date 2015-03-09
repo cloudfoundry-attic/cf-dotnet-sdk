@@ -45,7 +45,7 @@ Feel free to open an pull request or create an issue.
 System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
 
 CloudFoundryClient client = new CloudFoundryClient(new Uri("https://api.domain"), new System.Threading.CancellationToken());
-string refreshToken = null;
+AuthenticationContext refreshToken = null;
 CloudCredentials credentials = new CloudCredentials();
 credentials.User = "user";
 credentials.Password = "password";
