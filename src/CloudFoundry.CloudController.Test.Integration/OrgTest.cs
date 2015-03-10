@@ -32,29 +32,26 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
             }
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
-            var newOrg = orgsEndpoint.CreateOrganization(org).Result;
+            var newOrg = client.Organizations.CreateOrganization(org).Result;
             orgGuid = new Guid(newOrg.EntityMetadata.Guid);
         }
 
         [ClassCleanup]
         public static void ClassCleanup()
         {
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
-            orgsEndpoint.DeleteOrganization(orgGuid).Wait();
+            client.Organizations.DeleteOrganization(orgGuid).Wait();
 
         }
 
         [TestMethod]
         public void ListOrgs_test()
         {
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
             PagedResponseCollection<ListAllOrganizationsResponse> response = null;
             try
             {
-                response = orgsEndpoint.ListAllOrganizations().Result;
+                response = client.Organizations.ListAllOrganizations().Result;
             }
             catch (Exception ex)
             {

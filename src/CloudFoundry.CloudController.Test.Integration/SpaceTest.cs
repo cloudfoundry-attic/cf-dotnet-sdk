@@ -32,10 +32,9 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
             }
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
-            var newOrg = orgsEndpoint.CreateOrganization(org).Result;
+            var newOrg = client.Organizations.CreateOrganization(org).Result;
             orgGuid = new Guid(newOrg.EntityMetadata.Guid);
 
         }
@@ -43,8 +42,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         [ClassCleanup]
         public static void ClassCleanup()
         {
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
-            orgsEndpoint.DeleteOrganization(orgGuid).Wait();
+            client.Organizations.DeleteOrganization(orgGuid).Wait();
         }
 
         [TestMethod]
@@ -53,17 +51,15 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateSpaceResponse newSpace = null;
             UpdateSpaceResponse updatedSpace = null;
             GetSpaceSummaryResponse spaceSummary = null;
-
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
 
             try
             {
-                newSpace = spaceEndpoint.CreateSpace(spc).Result;
+                newSpace = client.Spaces.CreateSpace(spc).Result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Assert.Fail("Exception while creating space: {0}", ex.ToString());
             }
@@ -71,7 +67,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                spaceSummary = spaceEndpoint.GetSpaceSummary(new Guid(newSpace.EntityMetadata.Guid)).Result;
+                spaceSummary = client.Spaces.GetSpaceSummary(new Guid(newSpace.EntityMetadata.Guid)).Result;
             }
             catch (Exception ex)
             {
@@ -84,7 +80,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                updatedSpace = spaceEndpoint.UpdateSpace(new Guid(newSpace.EntityMetadata.Guid), sr).Result;
+                updatedSpace = client.Spaces.UpdateSpace(new Guid(newSpace.EntityMetadata.Guid), sr).Result;
             }
             catch (Exception ex)
             {
@@ -95,7 +91,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                spaceEndpoint.DeleteSpace(new Guid(newSpace.EntityMetadata.Guid)).Wait();
+                client.Spaces.DeleteSpace(new Guid(newSpace.EntityMetadata.Guid)).Wait();
             }
             catch (Exception ex)
             {

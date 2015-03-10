@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListSpaceCreateEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/events/list_space_create_events.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListSpaceCreateEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListSpaceCreateEventsResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListSpaceCreateEventsResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Type</para>
+        /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Actor</para>
+        /// </summary>
         [JsonProperty("actor", NullValueHandling = NullValueHandling.Ignore)]
         public string Actor
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Actor Type</para>
+        /// </summary>
         [JsonProperty("actor_type", NullValueHandling = NullValueHandling.Ignore)]
         public string ActorType
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Actor Name</para>
+        /// </summary>
         [JsonProperty("actor_name", NullValueHandling = NullValueHandling.Ignore)]
         public string ActorName
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Actee</para>
+        /// </summary>
         [JsonProperty("actee", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? Actee
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Actee Type</para>
+        /// </summary>
         [JsonProperty("actee_type", NullValueHandling = NullValueHandling.Ignore)]
         public string ActeeType
         {
@@ -78,6 +103,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Actee Name</para>
+        /// </summary>
         [JsonProperty("actee_name", NullValueHandling = NullValueHandling.Ignore)]
         public string ActeeName
         {
@@ -85,6 +113,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Timestamp</para>
+        /// </summary>
         [JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore)]
         public string Timestamp
         {
@@ -92,6 +123,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Metadata</para>
+        /// </summary>
         [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> Metadata
         {
@@ -99,6 +133,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Guid</para>
+        /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceGuid
         {
@@ -106,6 +143,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Organization Guid</para>
+        /// </summary>
         [JsonProperty("organization_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? OrganizationGuid
         {

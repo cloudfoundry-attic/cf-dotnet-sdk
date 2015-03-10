@@ -17,23 +17,23 @@ using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// Stacks Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class StacksEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractStacksEndpoint
     {
-        public StacksEndpoint(CloudFoundryClient client)
-            : base()
+        internal StacksEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
-        }
+            this.Client = client;
+        }    
     }
 }
 
@@ -46,13 +46,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Stack
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/stacks/retrieve_a_particular_stack.html"</para>
         /// </summary>
         public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
         {
-            string route = string.Format("/v2/stacks/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/stacks/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -62,18 +63,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Stacks
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/stacks/list_all_stacks.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks()
         {
             return await ListAllStacks(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Stacks
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/stacks/list_all_stacks.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks(RequestOptions options)
         {
-            string route = "/v2/stacks";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/stacks";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -83,13 +90,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Stack
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/stacks/delete_a_particular_stack.html"</para>
         /// </summary>
         public async Task DeleteStack(Guid? guid)
         {
-            string route = string.Format("/v2/stacks/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/stacks/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";

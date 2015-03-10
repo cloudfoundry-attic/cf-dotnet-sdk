@@ -17,21 +17,22 @@ using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// DomainsDeprecated Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class DomainsDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractDomainsDeprecatedEndpoint
     {
-        public DomainsDeprecatedEndpoint(CloudFoundryClient client) : base()
+        internal DomainsDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,18 +46,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Domain (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/list_all_spaces_for_the_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid)
         {
             return await ListAllSpacesForDomainDeprecated(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Spaces for the Domain (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/list_all_spaces_for_the_domain_(deprecated).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid, RequestOptions options)
         {
-            string route = string.Format("/v2/domains/{0}/spaces", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/domains/{0}/spaces", guid);
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -66,18 +73,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Domains (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/list_all_domains_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated()
         {
             return await ListAllDomainsDeprecated(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Domains (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/list_all_domains_(deprecated).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated(RequestOptions options)
         {
-            string route = "/v2/domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/domains";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -87,13 +100,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Domain (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/delete_a_particular_domain_(deprecated).html"</para>
         /// </summary>
         public async Task DeleteDomainDeprecated(Guid? guid)
         {
-            string route = string.Format("/v2/domains/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/domains/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -103,13 +117,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// creates a domain owned by the given organization (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
         /// </summary>
         public async Task<CreatesDomainOwnedByGivenOrganizationDeprecatedResponse> CreatesDomainOwnedByGivenOrganizationDeprecated(CreatesDomainOwnedByGivenOrganizationDeprecatedRequest value)
         {
-            string route = "/v2/domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/domains";
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Post;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -121,13 +136,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Domain (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/retrieve_a_particular_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid? guid)
         {
-            string route = string.Format("/v2/domains/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/domains/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -137,13 +153,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// creates a shared domain (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_shared_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<CreatesSharedDomainDeprecatedResponse> CreatesSharedDomainDeprecated(CreatesSharedDomainDeprecatedRequest value)
         {
-            string route = "/v2/domains";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/domains";
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Post;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";

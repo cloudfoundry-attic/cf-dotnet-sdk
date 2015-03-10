@@ -33,4 +33,3 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 [assembly: InternalsVisibleTo("CloudFoundry.CloudController.V2.Client.Test")]
-[assembly: InternalsVisibleTo("CloudFoundry.CloudController.Test.Integration")]

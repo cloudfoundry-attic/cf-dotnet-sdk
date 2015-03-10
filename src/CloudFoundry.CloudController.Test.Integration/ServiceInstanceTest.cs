@@ -33,40 +33,33 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
             }
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
-            var newOrg = orgsEndpoint.CreateOrganization(org).Result;
+            var newOrg = client.Organizations.CreateOrganization(org).Result;
             orgGuid = new Guid(newOrg.EntityMetadata.Guid);
 
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
-            var newSpace = spaceEndpoint.CreateSpace(spc).Result;
+            var newSpace = client.Spaces.CreateSpace(spc).Result;
             spaceGuid = new Guid(newSpace.EntityMetadata.Guid);
         }
 
         [ClassCleanup]
         public static void ClassCleanup()
         {
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
-            spaceEndpoint.DeleteSpace(spaceGuid).Wait();
+            client.Spaces.DeleteSpace(spaceGuid).Wait();
 
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
-            orgsEndpoint.DeleteOrganization(orgGuid).Wait();
+            client.Organizations.DeleteOrganization(orgGuid).Wait();
         }
 
         [TestMethod]
         public void ServiceInstance_test()
         {
-            ServicesEndpoint servicesEndpoint = new ServicesEndpoint(client);
-            ServiceInstancesEndpoint serviceInstanceEndpoint = new ServiceInstancesEndpoint(client);
-            
-            var services = servicesEndpoint.ListAllServices().Result;
+            var services = client.Services.ListAllServices().Result;
             Guid serviceGuid = new Guid(services.FirstOrDefault(s => s.Label == "mysql").EntityMetadata.Guid);
 
-            var plans = servicesEndpoint.ListAllServicePlansForService(serviceGuid).Result;
+            var plans = client.Services.ListAllServicePlansForService(serviceGuid).Result;
             Guid servicePlanGuid = new Guid(plans.FirstOrDefault().EntityMetadata.Guid);
             CreateServiceInstanceResponse newService = null;
             RetrieveServiceInstanceResponse readService = null;
@@ -78,9 +71,9 @@ namespace CloudFoundry.CloudController.Test.Integration
             createService.ServicePlanGuid = servicePlanGuid;
             try
             {
-                newService = serviceInstanceEndpoint.CreateServiceInstance(createService).Result;
+                newService = client.ServiceInstances.CreateServiceInstance(createService).Result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Assert.Fail("Exception while creating service instance: {0}", ex.ToString());
             }
@@ -90,30 +83,30 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                readService = serviceInstanceEndpoint.RetrieveServiceInstance(new Guid(newService.EntityMetadata.Guid)).Result;
+                readService = client.ServiceInstances.RetrieveServiceInstance(new Guid(newService.EntityMetadata.Guid)).Result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Assert.Fail("Exception while reading service instance: {0}", ex.ToString());            
+                Assert.Fail("Exception while reading service instance: {0}", ex.ToString());
             }
 
             UpdateServiceInstanceRequest updateService = new UpdateServiceInstanceRequest();
             updateService.Name = "svc" + Guid.NewGuid().ToString().Substring(0, 3);
             try
             {
-                updatedService = serviceInstanceEndpoint.UpdateServiceInstance(new Guid(newService.EntityMetadata.Guid), updateService).Result;
+                updatedService = client.ServiceInstances.UpdateServiceInstance(new Guid(newService.EntityMetadata.Guid), updateService).Result;
             }
-            catch(Exception ex)            
+            catch (Exception ex)
             {
-                Assert.Fail("Exception while updating service instance: {0}", ex.ToString());            
+                Assert.Fail("Exception while updating service instance: {0}", ex.ToString());
             }
-        
+
             Assert.IsNotNull(updatedService);
             Assert.AreEqual(updateService.Name, updatedService.Name);
 
             try
             {
-                serviceInstanceEndpoint.DeleteServiceInstance(new Guid(newService.EntityMetadata.Guid)).Wait();
+                client.ServiceInstances.DeleteServiceInstance(new Guid(newService.EntityMetadata.Guid)).Wait();
             }
             catch (Exception ex)
             {

@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.PrivateDomainsEndpoint.RetrievePrivateDomain()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/private_domains/retrieve_a_particular_private_domain.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrievePrivateDomainResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrievePrivateDomainResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrievePrivateDomainResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Name</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Owning Organization Guid</para>
+        /// </summary>
         [JsonProperty("owning_organization_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? OwningOrganizationGuid
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Owning Organization Url</para>
+        /// </summary>
         [JsonProperty("owning_organization_url", NullValueHandling = NullValueHandling.Ignore)]
         public string OwningOrganizationUrl
         {

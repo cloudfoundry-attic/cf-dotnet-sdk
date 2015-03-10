@@ -17,21 +17,22 @@ using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// Events Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class EventsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractEventsEndpoint
     {
-        public EventsEndpoint(CloudFoundryClient client) : base()
+        internal EventsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,18 +46,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Binding Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_binding_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental()
         {
             return await ListServiceBindingDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Binding Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_binding_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -66,18 +73,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Broker Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_broker_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental()
         {
             return await ListServiceBrokerDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Broker Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_broker_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -87,18 +100,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Space Delete Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_space_delete_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents()
         {
             return await ListSpaceDeleteEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Space Delete Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_space_delete_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -108,18 +127,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Plan Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental()
         {
             return await ListServicePlanCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Plan Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -129,18 +154,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List User Provided Service Instance Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_user_provided_service_instance_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental()
         {
             return await ListUserProvidedServiceInstanceCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List User Provided Service Instance Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_user_provided_service_instance_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -150,18 +181,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental()
         {
             return await ListServiceCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -171,18 +208,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Broker Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_broker_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental()
         {
             return await ListServiceBrokerCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Broker Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_broker_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -192,13 +235,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Event
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/retrieve_a_particular_event.html"</para>
         /// </summary>
         public async Task<RetrieveEventResponse> RetrieveEvent(Guid? guid)
         {
-            string route = string.Format("/v2/events/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/events/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -208,18 +252,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Instance Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_instance_update_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental()
         {
             return await ListServiceInstanceUpdateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Instance Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_instance_update_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -229,18 +279,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List App Exited Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_exited_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAppExitedEventsResponse>> ListAppExitedEvents()
         {
             return await ListAppExitedEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List App Exited Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_exited_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAppExitedEventsResponse>> ListAppExitedEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -250,18 +306,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List events associated with an App since January 1, 2014
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_events_associated_with_an_app_since_january_1,_2014.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014()
         {
             return await ListEventsAssociatedWithAppSinceJanuary12014(new RequestOptions());
         }
 
+        /// <summary>
+        /// List events associated with an App since January 1, 2014
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_events_associated_with_an_app_since_january_1,_2014.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -271,18 +333,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Plan Visibility Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental()
         {
             return await ListServicePlanVisibilityCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Plan Visibility Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -292,18 +360,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Plan Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental()
         {
             return await ListServicePlanDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Plan Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -313,18 +387,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_all_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsResponse>> ListAllEvents()
         {
             return await ListAllEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_all_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsResponse>> ListAllEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -334,18 +414,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Plan Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_update_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental()
         {
             return await ListServicePlanUpdateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Plan Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_update_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -355,18 +441,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Instance Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_instance_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental()
         {
             return await ListServiceInstanceDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Instance Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_instance_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -376,18 +468,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List App Delete Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_delete_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAppDeleteEventsResponse>> ListAppDeleteEvents()
         {
             return await ListAppDeleteEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List App Delete Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_delete_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAppDeleteEventsResponse>> ListAppDeleteEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -397,18 +495,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_update_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental()
         {
             return await ListServiceUpdateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_update_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -418,18 +522,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Space Update Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_space_update_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents()
         {
             return await ListSpaceUpdateEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Space Update Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_space_update_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -439,18 +549,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Instance Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_instance_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental()
         {
             return await ListServiceInstanceCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Instance Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_instance_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -460,18 +576,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List App Create Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_create_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAppCreateEventsResponse>> ListAppCreateEvents()
         {
             return await ListAppCreateEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List App Create Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_create_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAppCreateEventsResponse>> ListAppCreateEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -481,18 +603,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Dashboard Client Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_dashboard_client_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental()
         {
             return await ListServiceDashboardClientDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Dashboard Client Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_dashboard_client_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -502,18 +630,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Broker Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_broker_update_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental()
         {
             return await ListServiceBrokerUpdateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Broker Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_broker_update_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -523,18 +657,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Dashboard Client Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_dashboard_client_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental()
         {
             return await ListServiceDashboardClientCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Dashboard Client Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_dashboard_client_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -544,18 +684,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List App Update Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_update_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAppUpdateEventsResponse>> ListAppUpdateEvents()
         {
             return await ListAppUpdateEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List App Update Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_app_update_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAppUpdateEventsResponse>> ListAppUpdateEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -565,18 +711,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Binding Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_binding_create_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental()
         {
             return await ListServiceBindingCreateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Binding Create Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_binding_create_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -586,18 +738,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List User Provided Service Instance Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_user_provided_service_instance_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental()
         {
             return await ListUserProvidedServiceInstanceDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List User Provided Service Instance Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_user_provided_service_instance_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -607,18 +765,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Plan Visibility Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental()
         {
             return await ListServicePlanVisibilityDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Plan Visibility Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -628,18 +792,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List User Provided Service Instance Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_user_provided_service_instance_update_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental()
         {
             return await ListUserProvidedServiceInstanceUpdateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List User Provided Service Instance Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_user_provided_service_instance_update_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -649,18 +819,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Space Create Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_space_create_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents()
         {
             return await ListSpaceCreateEvents(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Space Create Events
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_space_create_events.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -670,18 +846,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Plan Visibility Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_update_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental()
         {
             return await ListServicePlanVisibilityUpdateEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Plan Visibility Update Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_update_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -691,18 +873,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List Service Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_delete_events_(experimental).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental()
         {
             return await ListServiceDeleteEventsExperimental(new RequestOptions());
         }
 
+        /// <summary>
+        /// List Service Delete Events (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/events/list_service_delete_events_(experimental).html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental(RequestOptions options)
         {
-            string route = "/v2/events";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;

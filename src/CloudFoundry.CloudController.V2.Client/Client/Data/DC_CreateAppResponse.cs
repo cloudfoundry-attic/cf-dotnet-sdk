@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/creating_an_app.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateAppResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateAppResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Name</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Production</para>
+        /// </summary>
         [JsonProperty("production", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Production
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Guid</para>
+        /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceGuid
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Stack Guid</para>
+        /// </summary>
         [JsonProperty("stack_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? StackGuid
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Buildpack</para>
+        /// </summary>
         [JsonProperty("buildpack", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Buildpack
         {
@@ -71,6 +93,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Detected Buildpack</para>
+        /// </summary>
         [JsonProperty("detected_buildpack", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DetectedBuildpack
         {
@@ -78,6 +103,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Environment Json</para>
+        /// </summary>
         [JsonProperty("environment_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<dynamic, dynamic> EnvironmentJson
         {
@@ -85,6 +113,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Memory</para>
+        /// </summary>
         [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
         public int? Memory
         {
@@ -92,6 +123,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Instances</para>
+        /// </summary>
         [JsonProperty("instances", NullValueHandling = NullValueHandling.Ignore)]
         public int? Instances
         {
@@ -99,6 +133,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Disk Quota</para>
+        /// </summary>
         [JsonProperty("disk_quota", NullValueHandling = NullValueHandling.Ignore)]
         public int? DiskQuota
         {
@@ -106,6 +143,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The State</para>
+        /// </summary>
         [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
         public string State
         {
@@ -113,6 +153,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Version</para>
+        /// </summary>
         [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? Version
         {
@@ -120,6 +163,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Command</para>
+        /// </summary>
         [JsonProperty("command", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Command
         {
@@ -127,6 +173,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Console</para>
+        /// </summary>
         [JsonProperty("console", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Console
         {
@@ -134,6 +183,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Debug</para>
+        /// </summary>
         [JsonProperty("debug", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Debug
         {
@@ -141,6 +193,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Staging Task Id</para>
+        /// </summary>
         [JsonProperty("staging_task_id", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic StagingTaskId
         {
@@ -148,6 +203,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Package State</para>
+        /// </summary>
         [JsonProperty("package_state", NullValueHandling = NullValueHandling.Ignore)]
         public string PackageState
         {
@@ -155,6 +213,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Health Check Type</para>
+        /// </summary>
         [JsonProperty("health_check_type", NullValueHandling = NullValueHandling.Ignore)]
         public string HealthCheckType
         {
@@ -162,6 +223,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Health Check Timeout</para>
+        /// </summary>
         [JsonProperty("health_check_timeout", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic HealthCheckTimeout
         {
@@ -169,6 +233,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Staging Failed Reason</para>
+        /// </summary>
         [JsonProperty("staging_failed_reason", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic StagingFailedReason
         {
@@ -176,6 +243,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Docker Image</para>
+        /// </summary>
         [JsonProperty("docker_image", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DockerImage
         {
@@ -183,6 +253,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Package Updated At</para>
+        /// </summary>
         [JsonProperty("package_updated_at", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic PackageUpdatedAt
         {
@@ -190,6 +263,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Detected Start Command</para>
+        /// </summary>
         [JsonProperty("detected_start_command", NullValueHandling = NullValueHandling.Ignore)]
         public string DetectedStartCommand
         {
@@ -197,6 +273,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Space Url</para>
+        /// </summary>
         [JsonProperty("space_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceUrl
         {
@@ -204,6 +283,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Stack Url</para>
+        /// </summary>
         [JsonProperty("stack_url", NullValueHandling = NullValueHandling.Ignore)]
         public string StackUrl
         {
@@ -211,6 +293,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Events Url</para>
+        /// </summary>
         [JsonProperty("events_url", NullValueHandling = NullValueHandling.Ignore)]
         public string EventsUrl
         {
@@ -218,6 +303,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Service Bindings Url</para>
+        /// </summary>
         [JsonProperty("service_bindings_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ServiceBindingsUrl
         {
@@ -225,6 +313,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Routes Url</para>
+        /// </summary>
         [JsonProperty("routes_url", NullValueHandling = NullValueHandling.Ignore)]
         public string RoutesUrl
         {

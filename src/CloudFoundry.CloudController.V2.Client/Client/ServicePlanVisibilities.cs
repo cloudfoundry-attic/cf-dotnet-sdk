@@ -17,21 +17,22 @@ using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// ServicePlanVisibilities Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ServicePlanVisibilitiesEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServicePlanVisibilitiesEndpoint
     {
-        public ServicePlanVisibilitiesEndpoint(CloudFoundryClient client) : base()
+        internal ServicePlanVisibilitiesEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,18 +46,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plan Visibilities
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plan_visibilities/list_all_service_plan_visibilities.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlanVisibilitiesResponse>> ListAllServicePlanVisibilities()
         {
             return await ListAllServicePlanVisibilities(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Plan Visibilities
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plan_visibilities/list_all_service_plan_visibilities.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlanVisibilitiesResponse>> ListAllServicePlanVisibilities(RequestOptions options)
         {
-            string route = "/v2/service_plan_visibilities";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_plan_visibilities";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -66,13 +73,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Service Plan Visibility
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plan_visibilities/creating_a_service_plan_visibility.html"</para>
         /// </summary>
         public async Task<CreateServicePlanVisibilityResponse> CreateServicePlanVisibility(CreateServicePlanVisibilityRequest value)
         {
-            string route = "/v2/service_plan_visibilities";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_plan_visibilities";
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Post;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -84,13 +92,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Plan Visibilities
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plan_visibilities/delete_a_particular_service_plan_visibilities.html"</para>
         /// </summary>
         public async Task DeleteServicePlanVisibilities(Guid? guid)
         {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plan_visibilities/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -100,13 +109,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Service Plan Visibility
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plan_visibilities/updating_a_service_plan_visibility.html"</para>
         /// </summary>
         public async Task<UpdateServicePlanVisibilityResponse> UpdateServicePlanVisibility(Guid? guid, UpdateServicePlanVisibilityRequest value)
         {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plan_visibilities/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -118,13 +128,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Plan Visibility
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_plan_visibilities/retrieve_a_particular_service_plan_visibility.html"</para>
         /// </summary>
         public async Task<RetrieveServicePlanVisibilityResponse> RetrieveServicePlanVisibility(Guid? guid)
         {
-            string route = string.Format("/v2/service_plan_visibilities/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plan_visibilities/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;

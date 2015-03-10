@@ -17,21 +17,22 @@ using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// ServiceInstances Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ServiceInstancesEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceInstancesEndpoint
     {
-        public ServiceInstancesEndpoint(CloudFoundryClient client) : base()
+        internal ServiceInstancesEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,13 +46,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a service instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/updating_a_service_instance.html"</para>
         /// </summary>
         public async Task<UpdateServiceInstanceResponse> UpdateServiceInstance(Guid? guid, UpdateServiceInstanceRequest value)
         {
-            string route = string.Format("/v2/service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -63,18 +65,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/list_all_service_instances.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances()
         {
             return await ListAllServiceInstances(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/list_all_service_instances.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances(RequestOptions options)
         {
-            string route = "/v2/service_instances";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_instances";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -84,13 +92,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/creating_a_service_instance.html"</para>
         /// </summary>
         public async Task<CreateServiceInstanceResponse> CreateServiceInstance(CreateServiceInstanceRequest value)
         {
-            string route = "/v2/service_instances";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_instances";
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Post;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -102,13 +111,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/delete_a_particular_service_instance.html"</para>
         /// </summary>
         public async Task DeleteServiceInstance(Guid? guid)
         {
-            string route = string.Format("/v2/service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -118,18 +128,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid)
         {
             return await ListAllServiceBindingsForServiceInstance(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Service Bindings for the Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid, RequestOptions options)
         {
-            string route = string.Format("/v2/service_instances/{0}/service_bindings", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}/service_bindings", guid);
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -139,14 +155,15 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Migrate Service Instances from one Service Plan to another Service Plan (experimental)
+        /// <para>Move all Service Instances for the service plan from the URL to the service plan in the request body</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/migrate_service_instances_from_one_service_plan_to_another_service_plan_(experimental).html"</para>
         /// </summary>
-        /// Move all Service Instances for the service plan from the URL to the service plan in the request body
         public async Task<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse> MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental(Guid? service_plan_guid, MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest value)
         {
-            string route = string.Format("/v2/service_plans/{0}/service_instances", service_plan_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}/service_instances", service_plan_guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -158,13 +175,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/retrieve_a_particular_service_instance.html"</para>
         /// </summary>
         public async Task<RetrieveServiceInstanceResponse> RetrieveServiceInstance(Guid? guid)
         {
-            string route = string.Format("/v2/service_instances/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -174,13 +192,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieving permissions on a Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_instances/retrieving_permissions_on_a_service_instance.html"</para>
         /// </summary>
         public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
         {
-            string route = string.Format("/v2/service_instances/{0}/permissions", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}/permissions", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;

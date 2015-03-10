@@ -30,24 +30,23 @@ namespace CloudFoundry.CloudController.Test.Integration
             catch (Exception ex)
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
-            }            
+            }
         }
 
         [TestMethod]
         public void ListStacks_test()
         {
-            StacksEndpoint stacksEndpoint = new StacksEndpoint(client);
             PagedResponseCollection<ListAllStacksResponse> response = null;
             try
             {
-                response = stacksEndpoint.ListAllStacks().Result;
+                response = client.Stacks.ListAllStacks().Result;
             }
             catch (Exception ex)
             {
                 Assert.Fail("Error while reading stacks in" + ex.ToString());
             }
 
-            Assert.IsNotNull(response);            
+            Assert.IsNotNull(response);
 
             while (response != null && response.Properties.TotalResults != 0)
             {

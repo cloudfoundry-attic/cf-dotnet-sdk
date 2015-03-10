@@ -44,6 +44,34 @@ namespace CloudFoundry.CloudController.Test.Integration
 
         }
 
+        [TestMethod]
+        public void Login_refresh_token_test()
+        {
+            if (TestUtil.IgnoreCertificate)
+            {
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+            }
+            CloudCredentials credentials = new CloudCredentials();
+            credentials.User = TestUtil.User;
+            credentials.Password = TestUtil.Password;
+
+            var client = TestUtil.GetClient();
+            var authEndpoint = client.Info.GetInfo().Result.AuthorizationEndpoint;
+            var authUri = new Uri(authEndpoint.TrimEnd('/') + "/oauth/token");
+
+
+            UAAClient uaaClient = new UAAClient(authUri);
+
+            var context = uaaClient.Login(credentials).Result;
+
+            client.Login(context.Token.RefreshToken).Wait();
+
+            client.Buildpacks.ListAllBuildpacks().Wait();
+
+
+
+        }
+
 
         [TestMethod]
         public void Login_test()

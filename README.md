@@ -60,9 +60,8 @@ catch (Exception ex)
 ```
 
 ### List Apps
-```csharp
-AppsEndpoint appsClient = new AppsEndpoint(client);            
-PagedResponseCollection<ListAllAppsResponse> apps = appsClient.ListAllApps().Result;
+```csharp     
+PagedResponseCollection<ListAllAppsResponse> apps = client.Apps.ListAllApps().Result;
 while (apps != null && apps.Properties.TotalResults != 0)
 {
     foreach (var app in apps)
@@ -78,6 +77,6 @@ while (apps != null && apps.Properties.TotalResults != 0)
 Guid appGuid = new Guid("52b6b758-848b-4b8d-b3f2-83736b5fae68");            
 UpdateAppRequest updateApp = new UpdateAppRequest();
 updateApp.State = "STOPPED";
-UpdateAppResponse response = appsClient.UpdateApp(appGuid, updateApp).Result;
+UpdateAppResponse response = client.Apps.UpdateApp(appGuid, updateApp).Result;
 Console.WriteLine("App {0} state is {1}", response.Name, response.State);
 ```

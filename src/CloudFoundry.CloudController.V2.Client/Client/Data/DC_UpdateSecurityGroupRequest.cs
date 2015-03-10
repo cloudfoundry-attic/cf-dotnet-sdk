@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.SecurityGroupsEndpoint.UpdateSecurityGroup()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/security_groups/updating_a_security_group.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateSecurityGroupRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateSecurityGroupRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractUpdateSecurityGroupRequest
     {
 
+        /// <summary> 
+        /// <para>The name of the security group.</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -38,6 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The egress rules for apps that belong to this security group.</para>
+        /// <para>A rule consists of a protocol (tcp,icmp,udp,all), destination CIDR or destination range,</para>
+        /// <para>port or port range (tcp,udp,all), type (control signal for icmp), code (control signal for icmp),</para>
+        /// <para>log (enables logging for the egress rule)</para>
+        /// </summary>
         [JsonProperty("rules", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic[] Rules
         {
@@ -45,6 +58,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The list of associated spaces.</para>
+        /// </summary>
         [JsonProperty("space_guids", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic SpaceGuids
         {

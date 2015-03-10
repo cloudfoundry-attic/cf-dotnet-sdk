@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.UpdateServiceInstance()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_instances/updating_a_service_instance.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateServiceInstanceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateServiceInstanceRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractUpdateServiceInstanceRequest
     {
 
+        /// <summary> 
+        /// <para>The new plan guid for the service instance</para>
+        /// </summary>
         [JsonProperty("service_plan_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServicePlanGuid
         {
@@ -38,6 +45,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The new name for the service instance</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {

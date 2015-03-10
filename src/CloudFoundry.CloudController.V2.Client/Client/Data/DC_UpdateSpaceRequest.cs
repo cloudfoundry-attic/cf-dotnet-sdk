@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.UpdateSpace()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/spaces/update_a_space.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateSpaceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateSpaceRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractUpdateSpaceRequest
     {
 
+        /// <summary> 
+        /// <para>The name of the space</para>
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -38,6 +45,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The guid of the associated organization</para>
+        /// </summary>
         [JsonProperty("organization_guid", NullValueHandling = NullValueHandling.Ignore)]
         public string OrganizationGuid
         {
@@ -45,6 +55,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The list of the associated developers</para>
+        /// </summary>
         [JsonProperty("developer_guids", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DeveloperGuids
         {
@@ -52,6 +65,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The list of the associated managers</para>
+        /// </summary>
         [JsonProperty("manager_guids", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic ManagerGuids
         {
@@ -59,6 +75,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The list of the associated auditors</para>
+        /// </summary>
         [JsonProperty("auditor_guids", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic AuditorGuids
         {
@@ -66,6 +85,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The list of the associated domains</para>
+        /// </summary>
         [JsonProperty("domain_guids", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DomainGuids
         {
@@ -73,6 +95,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The list of the associated security groups</para>
+        /// </summary>
         [JsonProperty("security_group_guids", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic SecurityGroupGuids
         {

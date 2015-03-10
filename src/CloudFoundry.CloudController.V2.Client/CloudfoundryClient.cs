@@ -28,14 +28,19 @@ namespace CloudFoundry.CloudController.V2
 
         public AppUsageEventsEndpoint AppUsageEvents { get; private set; }
 
+        /// <summary>
+        /// Gets the authorization token. It returns empty string if the client is not authorized. Also this method does not verify if the current token is expired.
+        /// </summary>
+        /// <value>
+        /// The authorization token.
+        /// </value>
         public string AuthorizationToken
         {
             get
             {
-                if (this.UAAClient.Context.Token.IsExpired)
+                if (this.UAAClient == null)
                 {
-                    ////If the token is expired we're blocking the current thread
-                    this.UAAClient.GenerateContext().Wait();
+                    return string.Empty;
                 }
 
                 return this.UAAClient.Context.Token.AccessToken;
@@ -133,6 +138,27 @@ namespace CloudFoundry.CloudController.V2
             var context = await this.UAAClient.Login(credentials);
 
             return context;
+        }
+
+        /// <summary>
+        /// Gets the authorization token. If the client is not authorized, an empty string is returned. If the token is expired, it generates a new one.
+        /// </summary>
+        /// <value>
+        /// The authorization token.
+        /// </value>
+        public async Task<string> GenerateAuthorizationToken()
+        {
+            if (this.UAAClient == null)
+            {
+                return string.Empty;
+            }
+
+            if (this.UAAClient.Context.Token.IsExpired)
+            {
+                var context = await this.UAAClient.GenerateContext();
+            }
+
+            return this.UAAClient.Context.Token.AccessToken;
         }
 
         /// <summary>

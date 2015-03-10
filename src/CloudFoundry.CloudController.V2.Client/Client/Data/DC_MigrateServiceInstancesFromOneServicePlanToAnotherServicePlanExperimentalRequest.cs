@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_instances/migrate_service_instances_from_one_service_plan_to_another_service_plan_(experimental).html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractMigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest
     {
@@ -31,6 +35,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     public abstract class AbstractMigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest
     {
 
+        /// <summary> 
+        /// <para>The guid of the plan to move the existing instances to</para>
+        /// </summary>
         [JsonProperty("service_plan_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServicePlanGuid
         {

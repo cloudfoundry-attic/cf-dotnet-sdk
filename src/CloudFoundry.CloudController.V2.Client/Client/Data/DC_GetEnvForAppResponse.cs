@@ -19,6 +19,10 @@ using System.Collections.Generic;
 
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
+    /// <summary>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetEnvForApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/get_the_env_for_an_app.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetEnvForAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetEnvForAppResponse
     {
@@ -30,12 +34,18 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetEnvForAppResponse : IResponse
     {
+        /// <summary>
+        /// Contains the Metadata for this Entity
+        /// </summary>
         public Metadata EntityMetadata
         {
             get;
             set;
         }
 
+        /// <summary> 
+        /// <para>The Staging Env Json</para>
+        /// </summary>
         [JsonProperty("staging_env_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> StagingEnvJson
         {
@@ -43,6 +53,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Running Env Json</para>
+        /// </summary>
         [JsonProperty("running_env_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> RunningEnvJson
         {
@@ -50,6 +63,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Environment Json</para>
+        /// </summary>
         [JsonProperty("environment_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> EnvironmentJson
         {
@@ -57,6 +73,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The System Env Json</para>
+        /// </summary>
         [JsonProperty("system_env_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> SystemEnvJson
         {
@@ -64,6 +83,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             set;
         }
 
+        /// <summary> 
+        /// <para>The Application Env Json</para>
+        /// </summary>
         [JsonProperty("application_env_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> ApplicationEnvJson
         {

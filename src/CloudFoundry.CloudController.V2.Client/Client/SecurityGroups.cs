@@ -17,21 +17,22 @@ using Newtonsoft.Json;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 
 namespace CloudFoundry.CloudController.V2.Client
 {
+    /// <summary>
+    /// SecurityGroups Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class SecurityGroupsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractSecurityGroupsEndpoint
     {
-        public SecurityGroupsEndpoint(CloudFoundryClient client) : base()
+        internal SecurityGroupsEndpoint(CloudFoundryClient client) : base()
         {
-            this.CloudTarget = client.CloudTarget;
-            this.CancellationToken = client.CancellationToken;
-            this.DependencyLocator = client.DependencyLocator;
-            this.UAAClient = client.UAAClient;
+            this.Client = client;
         }    
     }
 }
@@ -45,13 +46,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/retrieve_a_particular_security_group.html"</para>
         /// </summary>
         public async Task<RetrieveSecurityGroupResponse> RetrieveSecurityGroup(Guid? guid)
         {
-            string route = string.Format("/v2/security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/security_groups/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -61,13 +63,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Space with the Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/associate_space_with_the_security_group.html"</para>
         /// </summary>
         public async Task<AssociateSpaceWithSecurityGroupResponse> AssociateSpaceWithSecurityGroup(Guid? guid, Guid? space_guid)
         {
-            string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -78,13 +81,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/delete_a_particular_security_group.html"</para>
         /// </summary>
         public async Task DeleteSecurityGroup(Guid? guid)
         {
-            string route = string.Format("/v2/security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/security_groups/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -94,18 +98,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/list_all_spaces_for_the_security_group.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid)
         {
             return await ListAllSpacesForSecurityGroup(guid, new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Spaces for the Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/list_all_spaces_for_the_security_group.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSecurityGroupResponse>> ListAllSpacesForSecurityGroup(Guid? guid, RequestOptions options)
         {
-            string route = string.Format("/v2/security_groups/{0}/spaces", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/security_groups/{0}/spaces", guid);
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -115,13 +125,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/updating_a_security_group.html"</para>
         /// </summary>
         public async Task<UpdateSecurityGroupResponse> UpdateSecurityGroup(Guid? guid, UpdateSecurityGroupRequest value)
         {
-            string route = string.Format("/v2/security_groups/{0}", guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/security_groups/{0}", guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -133,18 +144,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Security Groups
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/list_all_security_groups.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSecurityGroupsResponse>> ListAllSecurityGroups()
         {
             return await ListAllSecurityGroups(new RequestOptions());
         }
 
+        /// <summary>
+        /// List all Security Groups
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/list_all_security_groups.html"</para>
+        /// </summary>
         public async Task<PagedResponseCollection<ListAllSecurityGroupsResponse>> ListAllSecurityGroups(RequestOptions options)
         {
-            string route = "/v2/security_groups";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route + options.ToString();
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/security_groups";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
@@ -154,13 +171,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Space from the Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/remove_space_from_the_security_group.html"</para>
         /// </summary>
         public async Task<RemoveSpaceFromSecurityGroupResponse> RemoveSpaceFromSecurityGroup(Guid? guid, Guid? space_guid)
         {
-            string route = string.Format("/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/security_groups/{0}/spaces/{1}", guid, space_guid);
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";
@@ -171,13 +189,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Security Group
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_groups/creating_a_security_group.html"</para>
         /// </summary>
         public async Task<CreateSecurityGroupResponse> CreateSecurityGroup(CreateSecurityGroupRequest value)
         {
-            string route = "/v2/security_groups";
-            string endpoint = this.CloudTarget.ToString().TrimEnd('/') + route;
+		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/security_groups";
             var client = this.GetHttpClient();
-            client.Uri = new Uri(endpoint);
+            client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Post;
             client.Headers.Add(await BuildAuthenticationHeader());
             client.ContentType = "application/x-www-form-urlencoded";

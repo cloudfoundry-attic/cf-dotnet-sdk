@@ -30,38 +30,33 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 Assert.Fail("Error while loging in" + ex.ToString());
             }
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
+
             CreateOrganizationRequest org = new CreateOrganizationRequest();
-            org.Name = "test_"+Guid.NewGuid().ToString();
-            var newOrg = orgsEndpoint.CreateOrganization(org).Result;
+            org.Name = "test_" + Guid.NewGuid().ToString();
+            var newOrg = client.Organizations.CreateOrganization(org).Result;
             orgGuid = new Guid(newOrg.EntityMetadata.Guid);
 
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
-            var newSpace = spaceEndpoint.CreateSpace(spc).Result;
+            var newSpace = client.Spaces.CreateSpace(spc).Result;
             spaceGuid = new Guid(newSpace.EntityMetadata.Guid);
 
-            StacksEndpoint stacksEndpoint = new StacksEndpoint(client);
-            stackGuid = new Guid(stacksEndpoint.ListAllStacks().Result[0].EntityMetadata.Guid);
+            stackGuid = new Guid(client.Stacks.ListAllStacks().Result[0].EntityMetadata.Guid);
         }
 
         [ClassCleanup]
         public static void ClassCleanup()
         {
-            SpacesEndpoint spaceEndpoint = new SpacesEndpoint(client);
-            spaceEndpoint.DeleteSpace(spaceGuid).Wait();
+            client.Spaces.DeleteSpace(spaceGuid).Wait();
 
-            OrganizationsEndpoint orgsEndpoint = new OrganizationsEndpoint(client);
-            orgsEndpoint.DeleteOrganization(orgGuid).Wait();
+            client.Organizations.DeleteOrganization(orgGuid).Wait();
 
         }
 
         [TestMethod]
         public void Application_test()
         {
-            AppsEndpoint appsEndpoint = new AppsEndpoint(client);
             CreateAppResponse newApp = null;
             GetAppSummaryResponse readApp = null;
             UpdateAppResponse updateApp = null;
@@ -75,17 +70,17 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                newApp = appsEndpoint.CreateApp(app).Result;
+                newApp = client.Apps.CreateApp(app).Result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Assert.Fail("Error creating app: {0}", ex.ToString());               
+                Assert.Fail("Error creating app: {0}", ex.ToString());
             }
             Assert.IsNotNull(newApp);
 
             try
             {
-                readApp = appsEndpoint.GetAppSummary(new Guid(newApp.EntityMetadata.Guid)).Result;
+                readApp = client.Apps.GetAppSummary(new Guid(newApp.EntityMetadata.Guid)).Result;
             }
             catch (Exception ex)
             {
@@ -98,7 +93,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             updateAppRequest.Memory = 512;
             try
             {
-                updateApp = appsEndpoint.UpdateApp(new Guid(newApp.EntityMetadata.Guid), updateAppRequest).Result;
+                updateApp = client.Apps.UpdateApp(new Guid(newApp.EntityMetadata.Guid), updateAppRequest).Result;
             }
             catch (Exception ex)
             {
@@ -109,7 +104,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                appsEndpoint.DeleteApp(new Guid(newApp.EntityMetadata.Guid)).Wait();
+                client.Apps.DeleteApp(new Guid(newApp.EntityMetadata.Guid)).Wait();
             }
             catch (Exception ex)
             {

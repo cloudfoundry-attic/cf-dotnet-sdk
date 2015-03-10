@@ -12,29 +12,17 @@
 
     public class BaseEndpoint
     {
-        internal UAAClient UAAClient { get; set; }
-
-        internal CancellationToken CancellationToken { get; set; }
-
-        internal Uri CloudTarget { get; set; }
-
-        internal IDependencyLocator DependencyLocator { get; set; }
+        internal CloudFoundryClient Client { get; set; }
 
         internal async Task<KeyValuePair<string, string>> BuildAuthenticationHeader()
         {
-            ////Not all methods require authentication
-            if (this.UAAClient == null)
-            {
-                return new KeyValuePair<string, string>("Authorization", "bearer ");
-            }
-
-            var context = await this.UAAClient.GenerateContext();
-            return new KeyValuePair<string, string>("Authorization", "bearer " + context.Token.AccessToken);
+            string autorizationToken = await this.Client.GenerateAuthorizationToken();
+            return new KeyValuePair<string, string>("Authorization", "bearer " + autorizationToken);
         }
 
         internal IHttpAbstractionClient GetHttpClient()
         {
-            return this.DependencyLocator.Locate<IHttpAbstractionClientFactory>().Create(this.CancellationToken);
+            return this.Client.DependencyLocator.Locate<IHttpAbstractionClientFactory>().Create(this.Client.CancellationToken);
         }
 
         internal async Task<IHttpResponseAbstraction> SendAsync(IHttpAbstractionClient client, int expectedReturnStatus)
