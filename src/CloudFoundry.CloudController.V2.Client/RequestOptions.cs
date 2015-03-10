@@ -58,7 +58,7 @@
 
             if (args.Count > 0)
             {
-                return string.Format(CultureInfo.InvariantCulture, "?{0}", string.Join("&", args));
+                return string.Format(CultureInfo.InvariantCulture, "{0}", string.Join("&", args));
             }
 
             return string.Empty;

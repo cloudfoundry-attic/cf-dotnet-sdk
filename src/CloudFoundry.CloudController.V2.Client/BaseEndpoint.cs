@@ -16,8 +16,8 @@
 
         internal async Task<KeyValuePair<string, string>> BuildAuthenticationHeader()
         {
-            string authorizationtoke = await this.Client.GenerateAuthorizationToken();
-            return new KeyValuePair<string, string>("Authorization", "bearer " + authorizationtoke);
+            string autorizationToken = await this.Client.GenerateAuthorizationToken();
+            return new KeyValuePair<string, string>("Authorization", "bearer " + autorizationToken);
         }
 
         internal IHttpAbstractionClient GetHttpClient()
