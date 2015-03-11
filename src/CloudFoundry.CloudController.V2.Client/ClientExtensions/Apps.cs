@@ -31,7 +31,7 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="app">Basic information needed to create an app</param>
         /// <param name="appPath">Path of origin from which the application will be deployed</param>
         /// <param name="startApplication">True if the app should be started after upload is complete, false otherwise</param>
-        public async Task<Guid?> Push<T>(CreateAppRequest app, string appPath, bool startApplication) where T : class, IAppPushTools, new()
+        public async Task<Guid?> Push(CreateAppRequest app, string appPath, bool startApplication)
         {
             if (app == null)
             {
