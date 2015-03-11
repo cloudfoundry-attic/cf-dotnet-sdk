@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using CloudFoundry.CloudController.V2.Client.Test.Authentication;
+using CloudFoundry.UAA;
+using CloudFoundry.UAA.Authentication;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -32,6 +35,16 @@ namespace CloudFoundry.CloudController.V2
             return value.Replace(result, ":");
         }
 
+        public static UAAClient GetUAAClient(Token authenticationToken)
+        {
+            UAAClient uaaClient = new UAAClient(new Uri("http://uaa.foo.bar"));
+            TestAuthentication authentication = new TestAuthentication();
+            authentication.TestToken = authenticationToken;
+            uaaClient.Authentication = authentication;
+            return uaaClient;
+        }
+
+
         public static Dictionary<string, object> GetJsonDictonary(string json)
         {
             Dictionary<string, object> result = new Dictionary<string, object>();
@@ -41,9 +54,9 @@ namespace CloudFoundry.CloudController.V2
                 {
                     reader.DateParseHandling = DateParseHandling.None;
                     var obj = JObject.Load(reader);
-                    foreach(var x in obj)
+                    foreach (var x in obj)
                     {
-                        if(x.Value is IDictionary)
+                        if (x.Value is IDictionary)
                         {
                             result[x.Key] = GetJsonDictonary(x.Value.ToString());
                         }
