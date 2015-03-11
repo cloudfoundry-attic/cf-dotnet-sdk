@@ -67,7 +67,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/app_usage_events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -85,7 +85,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/app_usage_events/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -108,7 +108,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task PurgeAndReseedAppUsageEvents()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/app_usage_events/destructively_purge_all_and_reseed_started_apps";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

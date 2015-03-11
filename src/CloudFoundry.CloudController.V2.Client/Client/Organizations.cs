@@ -59,7 +59,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -77,7 +77,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeleteOrganization(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -103,7 +103,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/domains", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -130,7 +130,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -157,7 +157,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -184,7 +184,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/spaces", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -202,7 +202,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<AssociateManagerWithOrganizationResponse> AssociateManagerWithOrganization(Guid? guid, Guid? manager_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers/{1}", guid, manager_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -220,7 +220,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RemoveAuditorFromOrganizationResponse> RemoveAuditorFromOrganization(Guid? guid, Guid? auditor_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -247,7 +247,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/space_quota_definitions", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -265,7 +265,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RemoveUserFromOrganizationResponse> RemoveUserFromOrganization(Guid? guid, Guid? user_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users/{1}", guid, user_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -283,7 +283,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<AssociateAuditorWithOrganizationResponse> AssociateAuditorWithOrganization(Guid? guid, Guid? auditor_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -301,7 +301,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveOrganizationResponse> RetrieveOrganization(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -318,7 +318,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid? guid, Guid? user_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users/{1}", guid, user_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -336,7 +336,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid? guid, UpdateOrganizationRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -364,7 +364,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllOrganizationsResponse>> ListAllOrganizations(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/organizations";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -391,7 +391,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -418,7 +418,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/services", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -436,7 +436,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RemoveBillingManagerFromOrganizationResponse> RemoveBillingManagerFromOrganization(Guid? guid, Guid? billing_manager_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -454,7 +454,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrievingOrganizationMemoryUsageResponse> RetrievingOrganizationMemoryUsage(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/memory_usage", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -471,7 +471,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<CreateOrganizationResponse> CreateOrganization(CreateOrganizationRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/organizations";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -499,7 +499,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/private_domains", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -517,7 +517,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/summary", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -534,7 +534,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RemoveManagerFromOrganizationResponse> RemoveManagerFromOrganization(Guid? guid, Guid? manager_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers/{1}", guid, manager_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -552,7 +552,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<AssociateBillingManagerWithOrganizationResponse> AssociateBillingManagerWithOrganization(Guid? guid, Guid? billing_manager_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

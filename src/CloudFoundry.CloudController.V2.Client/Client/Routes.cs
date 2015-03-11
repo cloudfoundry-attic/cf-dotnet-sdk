@@ -50,7 +50,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/routes";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -78,7 +78,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/routes";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -96,7 +96,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}/apps/{1}", guid, app_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -123,7 +123,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}/apps", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -141,7 +141,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -157,7 +157,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeleteRoute(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -174,7 +174,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}/apps/{1}", guid, app_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -192,7 +192,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveRouteResponse> RetrieveRoute(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -209,7 +209,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

@@ -51,7 +51,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GettingContentsOfRunningEnvironmentVariableGroupResponse> GettingContentsOfRunningEnvironmentVariableGroup()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/environment_variable_groups/running";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -69,7 +69,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GettingContentsOfStagingEnvironmentVariableGroupResponse> GettingContentsOfStagingEnvironmentVariableGroup()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/environment_variable_groups/staging";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -87,7 +87,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateContentsOfStagingEnvironmentVariableGroupResponse> UpdateContentsOfStagingEnvironmentVariableGroup(UpdateContentsOfStagingEnvironmentVariableGroupRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/environment_variable_groups/staging";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -107,7 +107,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateContentsOfRunningEnvironmentVariableGroupResponse> UpdateContentsOfRunningEnvironmentVariableGroup(UpdateContentsOfRunningEnvironmentVariableGroupRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/environment_variable_groups/running";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

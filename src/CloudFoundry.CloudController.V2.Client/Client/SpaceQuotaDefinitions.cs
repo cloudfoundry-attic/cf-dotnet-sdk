@@ -50,7 +50,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid? guid, UpdateSpaceQuotaDefinitionRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/space_quota_definitions/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -69,7 +69,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<CreateSpaceQuotaDefinitionResponse> CreateSpaceQuotaDefinition(CreateSpaceQuotaDefinitionRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/space_quota_definitions";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -97,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/space_quota_definitions/{0}/spaces", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -115,7 +115,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<AssociateSpaceWithSpaceQuotaDefinitionResponse> AssociateSpaceWithSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/space_quota_definitions/{0}/spaces/{1}", guid, space_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -133,7 +133,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveSpaceQuotaDefinitionResponse> RetrieveSpaceQuotaDefinition(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/space_quota_definitions/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -150,7 +150,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeleteSpaceQuotaDefinition(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/space_quota_definitions/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -167,7 +167,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RemoveSpaceFromSpaceQuotaDefinitionResponse> RemoveSpaceFromSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/space_quota_definitions/{0}/spaces/{1}", guid, space_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -194,7 +194,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/space_quota_definitions";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();

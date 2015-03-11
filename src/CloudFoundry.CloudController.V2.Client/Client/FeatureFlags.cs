@@ -51,7 +51,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetServiceInstanceCreationFeatureFlagResponse> GetServiceInstanceCreationFeatureFlag()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags/service_instance_creation";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -68,7 +68,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<SetFeatureFlagResponse> SetFeatureFlag(dynamic name, SetFeatureFlagRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/config/feature_flags/{0}", name);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -88,7 +88,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetRouteCreationFeatureFlagResponse> GetRouteCreationFeatureFlag()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags/route_creation";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -106,7 +106,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetPrivateDomainCreationFeatureFlagResponse> GetPrivateDomainCreationFeatureFlag()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags/private_domain_creation";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -124,7 +124,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetAppScalingFeatureFlagResponse> GetAppScalingFeatureFlag()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags/app_scaling";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -142,7 +142,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetAppBitsUploadFeatureFlagResponse> GetAppBitsUploadFeatureFlag()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags/app_bits_upload";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -159,7 +159,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetAllFeatureFlagsResponse[]> GetAllFeatureFlags()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -177,7 +177,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<GetUserOrgCreationFeatureFlagResponse> GetUserOrgCreationFeatureFlag()
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/config/feature_flags/user_org_creation";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
