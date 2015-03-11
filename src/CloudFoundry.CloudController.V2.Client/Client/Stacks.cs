@@ -50,7 +50,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/stacks/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/stacks";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -94,7 +94,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeleteStack(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/stacks/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

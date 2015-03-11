@@ -59,7 +59,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBindingDeleteEventsExperimentalResponse>> ListServiceBindingDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -86,7 +86,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerDeleteEventsExperimentalResponse>> ListServiceBrokerDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -113,7 +113,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListSpaceDeleteEventsResponse>> ListSpaceDeleteEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -140,7 +140,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanCreateEventsExperimentalResponse>> ListServicePlanCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -167,7 +167,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>> ListUserProvidedServiceInstanceCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -194,7 +194,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceCreateEventsExperimentalResponse>> ListServiceCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -221,7 +221,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerCreateEventsExperimentalResponse>> ListServiceBrokerCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -239,7 +239,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveEventResponse> RetrieveEvent(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/events/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -265,7 +265,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceUpdateEventsExperimentalResponse>> ListServiceInstanceUpdateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -292,7 +292,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAppExitedEventsResponse>> ListAppExitedEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -319,7 +319,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListEventsAssociatedWithAppSinceJanuary12014Response>> ListEventsAssociatedWithAppSinceJanuary12014(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -346,7 +346,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityCreateEventsExperimentalResponse>> ListServicePlanVisibilityCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -373,7 +373,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanDeleteEventsExperimentalResponse>> ListServicePlanDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -400,7 +400,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsResponse>> ListAllEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -427,7 +427,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanUpdateEventsExperimentalResponse>> ListServicePlanUpdateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -454,7 +454,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceDeleteEventsExperimentalResponse>> ListServiceInstanceDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -481,7 +481,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAppDeleteEventsResponse>> ListAppDeleteEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -508,7 +508,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceUpdateEventsExperimentalResponse>> ListServiceUpdateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -535,7 +535,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListSpaceUpdateEventsResponse>> ListSpaceUpdateEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -562,7 +562,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceInstanceCreateEventsExperimentalResponse>> ListServiceInstanceCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -589,7 +589,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAppCreateEventsResponse>> ListAppCreateEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -616,7 +616,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceDashboardClientDeleteEventsExperimentalResponse>> ListServiceDashboardClientDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -643,7 +643,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBrokerUpdateEventsExperimentalResponse>> ListServiceBrokerUpdateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -670,7 +670,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceDashboardClientCreateEventsExperimentalResponse>> ListServiceDashboardClientCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -697,7 +697,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAppUpdateEventsResponse>> ListAppUpdateEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -724,7 +724,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceBindingCreateEventsExperimentalResponse>> ListServiceBindingCreateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -751,7 +751,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>> ListUserProvidedServiceInstanceDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -778,7 +778,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityDeleteEventsExperimentalResponse>> ListServicePlanVisibilityDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -805,7 +805,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>> ListUserProvidedServiceInstanceUpdateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -832,7 +832,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListSpaceCreateEventsResponse>> ListSpaceCreateEvents(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -859,7 +859,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServicePlanVisibilityUpdateEventsExperimentalResponse>> ListServicePlanVisibilityUpdateEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -886,7 +886,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceDeleteEventsExperimentalResponse>> ListServiceDeleteEventsExperimental(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/events";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();

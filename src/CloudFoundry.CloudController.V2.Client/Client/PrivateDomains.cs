@@ -59,7 +59,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/private_domains";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -77,7 +77,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -94,7 +94,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/private_domains";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -113,7 +113,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeletePrivateDomain(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -139,7 +139,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/private_domains";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();

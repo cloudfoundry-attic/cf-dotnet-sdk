@@ -50,7 +50,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task RetrieveFile(Guid? app_guid, int? instance_index, dynamic file_path)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/instances/{1}/files/{2}", app_guid, instance_index, file_path);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

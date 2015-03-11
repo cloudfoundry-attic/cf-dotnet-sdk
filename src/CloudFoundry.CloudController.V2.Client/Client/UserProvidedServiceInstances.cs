@@ -50,7 +50,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeleteUserProvidedServiceInstance(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -67,7 +67,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<CreateUserProvidedServiceInstanceResponse> CreateUserProvidedServiceInstance(CreateUserProvidedServiceInstanceRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/user_provided_service_instances";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -86,7 +86,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveUserProvidedServiceInstanceResponse> RetrieveUserProvidedServiceInstance(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -112,7 +112,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}/service_bindings", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -139,7 +139,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/user_provided_service_instances";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -157,7 +157,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateUserProvidedServiceInstanceResponse> UpdateUserProvidedServiceInstance(Guid? guid, UpdateUserProvidedServiceInstanceRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;

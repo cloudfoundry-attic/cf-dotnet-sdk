@@ -50,7 +50,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<UpdateServicePlanDeprecatedResponse> UpdateServicePlanDeprecated(UpdateServicePlanDeprecatedRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/service_plans";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -69,7 +69,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task DeleteServicePlans(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -86,7 +86,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<CreateServicePlanDeprecatedResponse> CreateServicePlanDeprecated(CreateServicePlanDeprecatedRequest value)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/service_plans";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -114,7 +114,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}/service_instances", guid);
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
@@ -132,7 +132,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
@@ -158,7 +158,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans(RequestOptions options)
         {
-		    UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/service_plans";
             uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
