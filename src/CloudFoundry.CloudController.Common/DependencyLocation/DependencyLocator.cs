@@ -15,6 +15,9 @@ namespace CloudFoundry.CloudController.Common.DependencyLocation
         private readonly IDependencyLocationAssemblyScanner scanner = new DependencyLocationAssemblyScanner();
         private readonly Dictionary<Type, object> dependencies = new Dictionary<Type, object>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DependencyLocator"/> class.
+        /// </summary>
         public DependencyLocator()
         {
             this.runtimeManager = new DependencyLocationRuntimeManager(this);
@@ -25,6 +28,10 @@ namespace CloudFoundry.CloudController.Common.DependencyLocation
             this.RegisterDependencies();
         }
 
+        /// <summary>
+        /// Ensures that the given assembly has been registered with the DependencyLocator for dependency location.
+        /// </summary>
+        /// <param name="target">The target assembly.</param>
         public void EnsureAssemblyRegistration(Assembly target)
         {
             this.scanner.AddAssembly(target);
@@ -69,6 +76,10 @@ namespace CloudFoundry.CloudController.Common.DependencyLocation
             throw new InvalidOperationException(message);
         }
 
+        /// <summary>
+        /// Registers the dependencies.
+        /// </summary>
+        /// <param name="registrars">The registrars.</param>
         internal void RegisterDependencies(IEnumerable<IDependencyLocationRegistrar> registrars)
         {
             foreach (var dependencyLocationRegistrar in registrars)

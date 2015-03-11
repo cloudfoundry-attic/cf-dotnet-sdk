@@ -3,8 +3,10 @@
     using System;
     using Newtonsoft.Json;
 
+    /// <inheritdoc />
     public partial class UpdateAppRequest
     {
+        /// <inheritdoc />
         [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
         public new int? Memory
         {
@@ -12,6 +14,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("instances", NullValueHandling = NullValueHandling.Ignore)]
         public new int? Instances
         {
@@ -19,6 +22,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public new Guid? SpaceGuid
         {

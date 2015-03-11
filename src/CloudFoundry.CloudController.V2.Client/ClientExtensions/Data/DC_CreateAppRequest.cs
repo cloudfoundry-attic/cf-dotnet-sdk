@@ -2,9 +2,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     using System;
     using Newtonsoft.Json;
-    
+
+    /// <inheritdoc/>
     public partial class CreateAppRequest
     {
+        /// <inheritdoc />
         [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
         public new int? Memory
         {
@@ -12,6 +14,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("instances", NullValueHandling = NullValueHandling.Ignore)]
         public new int? Instances
         {

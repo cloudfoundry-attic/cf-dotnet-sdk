@@ -6,22 +6,47 @@
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Class that handles the Cloud Foundry responses that are paged.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PagedResponseCollection<T> : BaseEndpoint, IEnumerable<T>
     {
+        /// <summary>
+        /// Gets or sets the page properties.
+        /// </summary>
+        /// <value>
+        /// The page properties.
+        /// </value>
         public PageProperties Properties { get; set; }
 
         internal List<T> Resources { get; set; }
 
+        /// <summary>
+        /// Gets the resource at the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         public T this[int index]
         {
             get { return this.Resources[index]; }
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+        /// </returns>
         public IEnumerator<T> GetEnumerator()
         {
             return this.Resources.GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets the next page.
+        /// </summary>
+        /// <returns>A paged collection</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate",
             Justification = "This method makes an http request to get the previous page of results.")]
         public async Task<PagedResponseCollection<T>> GetNextPage()
@@ -36,6 +61,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets the previous page.
+        /// </summary>
+        /// <returns>A paged collection</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate",
             Justification = "This method makes an http request to get the previous page of results.")]
         public async Task<PagedResponseCollection<T>> GetPreviousPage()
@@ -50,6 +79,10 @@
             }
         }
 
+        /// <summary>
+        /// Determines whether [is last page].
+        /// </summary>
+        /// <returns>A paged collection</returns>
         public bool IsLastPage()
         {
             return this.Properties.NextUrl != null;

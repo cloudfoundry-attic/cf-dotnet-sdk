@@ -10,6 +10,9 @@
     using CloudFoundry.CloudController.V2.Interfaces;
     using CloudFoundry.UAA;
 
+    /// <summary>
+    /// Base class for all the Cloud Foundry endpoints.
+    /// </summary>
     public class BaseEndpoint
     {
         internal CloudFoundryClient Client { get; set; }

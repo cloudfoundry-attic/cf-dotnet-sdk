@@ -10,11 +10,11 @@
     using PCLStorage;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Util", Justification = "Util shortened from utility")]
-    public static class ZipUtil
+    internal static class ZipUtil
     {
         private static string basePath = string.Empty;
 
-        public static async Task ZipFolder(string currentFolder, string zipName)
+        internal static async Task ZipFolder(string currentFolder, string zipName)
         {
             basePath = currentFolder;
             IFile zipFile = await PCLStorage.FileSystem.Current.RoamingStorage.CreateFileAsync(zipName, CreationCollisionOption.ReplaceExisting);
@@ -27,7 +27,7 @@
             }
         }
 
-        public static async Task UnzipToFolder(string extractionFolder, string zipName)
+        internal static async Task UnzipToFolder(string extractionFolder, string zipName)
         {
             ExistenceCheckResult zipFileExists = await PCLStorage.FileSystem.Current.RoamingStorage.CheckExistsAsync(zipName);
 
@@ -82,7 +82,7 @@
 
             foreach (IFolder folder in subFolders)
             {
-               await AddToZip(folder.Path, archive);
+                await AddToZip(folder.Path, archive);
             }
 
             IList<IFile> files = await currentFolder.GetFilesAsync();

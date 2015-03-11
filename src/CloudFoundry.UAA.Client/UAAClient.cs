@@ -38,6 +38,11 @@
             get { return this.context; }
         }
 
+        internal IAuthentication Authentication
+        {
+            set { this.authentication = value; }
+        }
+
         /// <summary>
         /// Logins the specified credentials.
         /// </summary>
