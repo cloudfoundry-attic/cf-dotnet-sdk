@@ -34,7 +34,7 @@
 
             if (((int)result.StatusCode) != expectedReturnStatus)
             {
-                // Check if we can desterilize the response
+                // Check if we can deserialize the response
                 CloudFoundryException cloudFoundryException;
                 try
                 {

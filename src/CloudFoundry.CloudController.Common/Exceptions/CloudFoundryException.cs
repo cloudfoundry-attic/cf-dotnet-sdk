@@ -3,6 +3,9 @@
     using System;
     using CloudFoundry.CloudController.Common.Http;
 
+    /// <summary>
+    /// Exception class raised when something goes wrong in calling the Cloud Foundry endpoints.
+    /// </summary>
     public class CloudFoundryException : Exception
     {
         /// <summary>

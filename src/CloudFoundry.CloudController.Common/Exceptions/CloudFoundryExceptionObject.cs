@@ -2,6 +2,9 @@
 {
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Json object that comes from the server
+    /// </summary>
     public class CloudFoundryExceptionObject
     {
         /// <summary>

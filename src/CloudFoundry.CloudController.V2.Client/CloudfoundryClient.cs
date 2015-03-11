@@ -8,8 +8,17 @@ namespace CloudFoundry.CloudController.V2
     using CloudFoundry.CloudController.V2.Interfaces;
     using CloudFoundry.UAA;
 
+    /// <summary>
+    /// This is the Cloud Foundry client. To use it, you need a Cloud Foundry endpoint.
+    /// </summary>
     public class CloudFoundryClient
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient"/> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="dependencyLocator">The dependency locator.</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IDependencyLocator dependencyLocator)
         {
             this.CloudTarget = cloudTarget;
@@ -19,13 +28,30 @@ namespace CloudFoundry.CloudController.V2
             this.InitEndpoints();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient"/> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
             : this(cloudTarget, cancellationToken, new DependencyLocator())
         {
         }
 
+        /// <summary>
+        /// Gets the apps endpoint.
+        /// </summary>
+        /// <value>
+        /// The apps endpoint.
+        /// </value>
         public AppsEndpoint Apps { get; private set; }
 
+        /// <summary>
+        /// Gets the application usage events endpoint.
+        /// </summary>
+        /// <value>
+        /// The application usage events endpoint.
+        /// </value>
         public AppUsageEventsEndpoint AppUsageEvents { get; private set; }
 
         /// <summary>
@@ -47,70 +73,250 @@ namespace CloudFoundry.CloudController.V2
             }
         }
 
+        /// <summary>
+        /// Gets the buildpacks endpoint.
+        /// </summary>
+        /// <value>
+        /// The buildpacks endpoint.
+        /// </value>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Buildpacks",
              Justification = "Keeping Cloud Foundry nomenclature.")]
         public BuildpacksEndpoint Buildpacks { get; private set; }
 
+        /// <summary>
+        /// Gets the domains deprecated endpoint.
+        /// </summary>
+        /// <value>
+        /// The domains deprecated endpoint.
+        /// </value>
         public DomainsDeprecatedEndpoint DomainsDeprecated { get; private set; }
 
+        /// <summary>
+        /// Gets the environment variable groups endpoint.
+        /// </summary>
+        /// <value>
+        /// The environment variable groups endpoint.
+        /// </value>
         public EnvironmentVariableGroupsEndpoint EnvironmentVariableGroups { get; private set; }
 
+        /// <summary>
+        /// Gets the events endpoint.
+        /// </summary>
+        /// <value>
+        /// The events.
+        /// </value>
         public EventsEndpoint Events { get; private set; }
 
+        /// <summary>
+        /// Gets the feature flags endpoint.
+        /// </summary>
+        /// <value>
+        /// The feature flags endpoint.
+        /// </value>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Flags",
             Justification = "Keeping Cloud Foundry nomenclature.")]
         public FeatureFlagsEndpoint FeatureFlags { get; private set; }
 
+        /// <summary>
+        /// Gets the files endpoint.
+        /// </summary>
+        /// <value>
+        /// The files.
+        /// </value>
         public FilesEndpoint Files { get; private set; }
 
+        /// <summary>
+        /// Gets the information endpoint.
+        /// </summary>
+        /// <value>
+        /// The information endpoint.
+        /// </value>
         public InfoEndpoint Info { get; private set; }
 
+        /// <summary>
+        /// Gets the jobs endpoint.
+        /// </summary>
+        /// <value>
+        /// The jobs endpoint.
+        /// </value>
         public JobsEndpoint Jobs { get; private set; }
 
+        /// <summary>
+        /// Gets the organization quota definitions endpoint.
+        /// </summary>
+        /// <value>
+        /// The organization quota definitions endpoint.
+        /// </value>
         public OrganizationQuotaDefinitionsEndpoint OrganizationQuotaDefinitions { get; private set; }
 
+        /// <summary>
+        /// Gets the organizations endpoint.
+        /// </summary>
+        /// <value>
+        /// The organizations endpoint.
+        /// </value>
         public OrganizationsEndpoint Organizations { get; private set; }
 
+        /// <summary>
+        /// Gets the private domains endpoint.
+        /// </summary>
+        /// <value>
+        /// The private domains endpoint.
+        /// </value>
         public PrivateDomainsEndpoint PrivateDomains { get; private set; }
 
+        /// <summary>
+        /// Gets the resource match endpoint.
+        /// </summary>
+        /// <value>
+        /// The resource match endpoint.
+        /// </value>
         public ResourceMatchEndpoint ResourceMatch { get; private set; }
 
+        /// <summary>
+        /// Gets the routes endpoint.
+        /// </summary>
+        /// <value>
+        /// The routes endpoint.
+        /// </value>
         public RoutesEndpoint Routes { get; private set; }
 
+        /// <summary>
+        /// Gets the security group running defaults endpoint.
+        /// </summary>
+        /// <value>
+        /// The security group running defaults endpoint.
+        /// </value>
         public SecurityGroupRunningDefaultsEndpoint SecurityGroupRunningDefaults { get; private set; }
 
+        /// <summary>
+        /// Gets the security groups endpoint.
+        /// </summary>
+        /// <value>
+        /// The security groups endpoint.
+        /// </value>
         public SecurityGroupsEndpoint SecurityGroups { get; private set; }
 
+        /// <summary>
+        /// Gets the security group staging defaults endpoint.
+        /// </summary>
+        /// <value>
+        /// The security group staging defaults endpoint.
+        /// </value>
         public SecurityGroupStagingDefaultsEndpoint SecurityGroupStagingDefaults { get; private set; }
 
+        /// <summary>
+        /// Gets the service authentication tokens deprecated endpoint.
+        /// </summary>
+        /// <value>
+        /// The service authentication tokens deprecated endpoint.
+        /// </value>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Auth",
             Justification = "Keeping Cloud Foundry nomenclature.")]
         public ServiceauthtokensDeprecatedEndpoint ServiceAuthTokensDeprecated { get; private set; }
 
+        /// <summary>
+        /// Gets the service bindings endpoint.
+        /// </summary>
+        /// <value>
+        /// The service bindings endpoint.
+        /// </value>
         public ServiceBindingsEndpoint ServiceBindings { get; private set; }
 
+        /// <summary>
+        /// Gets the service brokers endpoint.
+        /// </summary>
+        /// <value>
+        /// The service brokers endpoint.
+        /// </value>
         public ServiceBrokersEndpoint ServiceBrokers { get; private set; }
 
+        /// <summary>
+        /// Gets the service instances endpoint.
+        /// </summary>
+        /// <value>
+        /// The service instances endpoint.
+        /// </value>
         public ServiceInstancesEndpoint ServiceInstances { get; private set; }
 
+        /// <summary>
+        /// Gets the service plans endpoint.
+        /// </summary>
+        /// <value>
+        /// The service plans endpoint.
+        /// </value>
         public ServicePlansEndpoint ServicePlans { get; private set; }
 
+        /// <summary>
+        /// Gets the service plan visibilities endpoint. 
+        /// </summary>
+        /// <value>
+        /// The service plan visibilities endpoint.
+        /// </value>
         public ServicePlanVisibilitiesEndpoint ServicePlanVisibilities { get; private set; }
 
+        /// <summary>
+        /// Gets the services endpoint.
+        /// </summary>
+        /// <value>
+        /// The services endpoint.
+        /// </value>
         public ServicesEndpoint Services { get; private set; }
 
+        /// <summary>
+        /// Gets the service usage events experimental endpoint.
+        /// </summary>
+        /// <value>
+        /// The service usage events experimental endpoint.
+        /// </value>
         public ServiceUsageEventsExperimentalEndpoint ServiceUsageEventsExperimental { get; private set; }
 
+        /// <summary>
+        /// Gets the shared domains endpoint.
+        /// </summary>
+        /// <value>
+        /// The shared domains endpoint.
+        /// </value>
         public SharedDomainsEndpoint SharedDomains { get; private set; }
 
+        /// <summary>
+        /// Gets the space quota definitions endpoint.
+        /// </summary>
+        /// <value>
+        /// The space quota definitions endpoint.
+        /// </value>
         public SpaceQuotaDefinitionsEndpoint SpaceQuotaDefinitions { get; private set; }
 
+        /// <summary>
+        /// Gets the spaces endpoint.
+        /// </summary>
+        /// <value>
+        /// The spaces endpoint.
+        /// </value>
         public SpacesEndpoint Spaces { get; private set; }
 
+        /// <summary>
+        /// Gets the stacks endpoint.
+        /// </summary>
+        /// <value>
+        /// The stacks endpoint.
+        /// </value>
         public StacksEndpoint Stacks { get; private set; }
 
+        /// <summary>
+        /// Gets the user provided service instances endpoint.
+        /// </summary>
+        /// <value>
+        /// The user provided service instances endpoint.
+        /// </value>
         public UserProvidedServiceInstancesEndpoint UserProvidedServiceInstances { get; private set; }
 
+        /// <summary>
+        /// Gets the users endpoint.
+        /// </summary>
+        /// <value>
+        /// The users endpoint.
+        /// </value>
         public UsersEndpoint Users { get; private set; }
 
         internal CancellationToken CancellationToken { get; set; }

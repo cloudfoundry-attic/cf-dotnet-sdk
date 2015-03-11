@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using System.Globalization;
 
+    /// <summary>
+    /// The request options for a paged response.
+    /// </summary>
     public class RequestOptions
     {
         private readonly string orderFormat = "order-direction={0}";
@@ -33,6 +36,12 @@
         /// </summary>
         public int? ResultsPerPage { get; set; }
 
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
         public override string ToString()
         {
             List<string> args = new List<string>();
