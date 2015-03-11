@@ -10,6 +10,9 @@
     using CloudFoundry.CloudController.V2.Interfaces;
     using CloudFoundry.UAA;
 
+    /// <summary>
+    /// Base class for all the Cloud Foundry endpoints.
+    /// </summary>
     public class BaseEndpoint
     {
         internal CloudFoundryClient Client { get; set; }
@@ -31,7 +34,7 @@
 
             if (((int)result.StatusCode) != expectedReturnStatus)
             {
-                // Check if we can deserialize the response
+                // Check if we can desterilize the response
                 CloudFoundryException cloudFoundryException;
                 try
                 {

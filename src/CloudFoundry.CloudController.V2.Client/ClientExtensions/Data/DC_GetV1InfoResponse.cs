@@ -2,8 +2,10 @@
 {
     using Newtonsoft.Json;
 
+    /// <inheritdoc />
     public partial class GetV1InfoResponse
     {
+        /// <inheritdoc />
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
         {
@@ -11,6 +13,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("build", NullValueHandling = NullValueHandling.Ignore)]
         public string Build
         {
@@ -18,6 +21,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("support", NullValueHandling = NullValueHandling.Ignore)]
         public string Support
         {
@@ -25,6 +29,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
         public int? Version
         {
@@ -32,6 +37,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description
         {
@@ -39,6 +45,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("authorization_endpoint", NullValueHandling = NullValueHandling.Ignore)]
         public string AuthorizationEndpoint
         {
@@ -46,6 +53,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("token_endpoint", NullValueHandling = NullValueHandling.Ignore)]
         public string TokenEndpoint
         {
@@ -53,6 +61,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("applog_endpoint", NullValueHandling = NullValueHandling.Ignore)]
         public string AppLogEndpoint
         {
@@ -60,6 +69,7 @@
             set;
         }
 
+        /// <inheritdoc />
         [JsonProperty("allow_debug", NullValueHandling = NullValueHandling.Ignore)]
         public bool AllowDebug
         {

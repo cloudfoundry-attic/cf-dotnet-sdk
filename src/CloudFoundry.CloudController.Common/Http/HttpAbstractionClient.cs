@@ -10,6 +10,7 @@
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Http;
 
+    /// <inheritdoc/>
     public class HttpAbstractionClient : IDisposable, IHttpAbstractionClient
     {
         private static readonly TimeSpan DefaultTimeout = new TimeSpan(0, 0, 30);
@@ -52,44 +53,76 @@
             this.Dispose(false);
         }
 
+        /// <inheritdoc/>
         public Stream Content { get; set; }
 
+        /// <inheritdoc/>
         public string ContentType { get; set; }
 
+        /// <inheritdoc/>
         public IDictionary<string, string> Headers { get; private set; }
 
+        /// <inheritdoc/>
         public HttpMethod Method { get; set; }
 
+        /// <inheritdoc/>
         public TimeSpan Timeout { get; set; }
 
+        /// <inheritdoc/>
         public Uri Uri { get; set; }
 
+        /// <summary>
+        /// Creates a new instance of HttpAbstractionClient with a default timeout and without a CancellationToken.
+        /// </summary>
+        /// <returns>A instance of HttpAbstractionClient</returns>
         public static IHttpAbstractionClient Create()
         {
             return new HttpAbstractionClient(DefaultTimeout, CancellationToken.None);
         }
 
+        /// <summary>
+        /// Creates an instance of HttpAbstractionClient with specified http timeout and without a CancellationToken.
+        /// </summary>
+        /// <param name="timeout">The timeout.</param>
+        /// <returns>
+        /// A instance of HttpAbstractionClient
+        /// </returns>
         public static IHttpAbstractionClient Create(TimeSpan timeout)
         {
             return new HttpAbstractionClient(timeout, CancellationToken.None);
         }
 
+        /// <summary>
+        /// Creates an instance of HttpAbstractionClient with specified http timeout and without a CancellationToken.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A instance of HttpAbstractionClient</returns>
         public static IHttpAbstractionClient Create(CancellationToken cancellationToken)
         {
             return new HttpAbstractionClient(DefaultTimeout, cancellationToken);
         }
 
+        /// <summary>
+        /// Creates an instance of HttpAbstractionClient with specified http timeout and CancellationToken.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="timeout">The timeout.</param>
+        /// <returns></returns>
         public static IHttpAbstractionClient Create(CancellationToken cancellationToken, TimeSpan timeout)
         {
             return new HttpAbstractionClient(timeout, cancellationToken);
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <inheritdoc/>
         public async Task<IHttpResponseAbstraction> SendAsync()
         {
             HttpContent httpContent = null;
@@ -101,6 +134,7 @@
             return await this.SendAsync(httpContent);
         }
 
+        /// <inheritdoc/>
         public async Task<IHttpResponseAbstraction> SendAsync(IEnumerable<IHttpMultipartFormDataAbstraction> multipartData)
         {
             var httpContent = new MultipartFormDataContent();
