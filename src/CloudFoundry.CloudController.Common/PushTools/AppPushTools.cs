@@ -7,7 +7,7 @@
 
     public class AppPushTools : IAppPushTools
     {
-        public Task<Dictionary<string, FileFingerprint>> GetFileFingerprints(string appPath, CancellationToken cancellationToken)
+        public Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(string appPath, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
