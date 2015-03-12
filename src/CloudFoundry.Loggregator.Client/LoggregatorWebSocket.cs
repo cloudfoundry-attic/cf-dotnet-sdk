@@ -1,14 +1,14 @@
-﻿namespace CloudFoundry.Logyard.Client
+﻿namespace CloudFoundry.Loggregator.Client
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
 
-    internal class LogyardWebSocket : ILogyardWebSocket, IDisposable
+    internal class LoggregatorWebSocket : ILoggregatorWebSocket, IDisposable
     {
         public event EventHandler<ErrorEventArgs> ErrorReceived;
 
-        public event EventHandler<StringEventArgs> DataReceived;
+        public event EventHandler<DataEventArgs> DataReceived;
 
         public event EventHandler<EventArgs> StreamClosed;
 
@@ -29,7 +29,7 @@
 
             if (this.DataReceived != null)
             {
-                this.DataReceived(this, new StringEventArgs() { Data = string.Empty });
+                this.DataReceived(this, new DataEventArgs() { Data = null });
             }
 
             if (this.StreamClosed != null)
