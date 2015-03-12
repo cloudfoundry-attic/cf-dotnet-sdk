@@ -96,6 +96,7 @@
       <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.CloudController.Common\Properties\AssemblyInfo.cs"/>
       <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.Logyard.Client\Properties\AssemblyInfo.cs"/>
       <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.UAA.Client\Properties\AssemblyInfo.cs"/>
+      <AssemblyInfoFiles Include="$(LibraryRoot)\src\CloudFoundry.Loggregator.Client\Properties\AssemblyInfo.cs"/>
     </ItemGroup>
 
     <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"

@@ -37,6 +37,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.UAA.Client", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.UAA.Client.Net45", "src\CloudFoundry.UAA.Client.Net45\CloudFoundry.UAA.Client.Net45.csproj", "{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Loggregator.Client", "src\CloudFoundry.Loggregator.Client\CloudFoundry.Loggregator.Client.csproj", "{7CCA6C93-284B-47A0-A499-EB4DAB6D3B65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Loggregator.Client.Net45", "src\CloudFoundry.Loggregator.Client.Net45\CloudFoundry.Loggregator.Client.Net45.csproj", "{693AC6F7-3A96-41C9-B844-1E3F1ED6346C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Loggregator.Client.Store", "src\CloudFoundry.Loggregator.Client.Store\CloudFoundry.Loggregator.Client.Store.csproj", "{09B6E674-6A30-4928-AEE6-412E8DF48DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Loggregator.Client.WPA81", "src\CloudFoundry.Loggregator.Client.WPA81\CloudFoundry.Loggregator.Client.WPA81.csproj", "{8F3FC033-0AB0-4689-B638-C592DCBE2F5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Loggregator.Client.Test", "CloudFoundry.Loggregator.Client.Test\CloudFoundry.Loggregator.Client.Test\CloudFoundry.Loggregator.Client.Test.csproj", "{9F9AAB6F-91E7-4614-A31A-4CB93F3F9BD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +93,26 @@ Global
 		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A9B3853-329A-4B88-81F9-86EB0E7E88C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CCA6C93-284B-47A0-A499-EB4DAB6D3B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CCA6C93-284B-47A0-A499-EB4DAB6D3B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CCA6C93-284B-47A0-A499-EB4DAB6D3B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CCA6C93-284B-47A0-A499-EB4DAB6D3B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693AC6F7-3A96-41C9-B844-1E3F1ED6346C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693AC6F7-3A96-41C9-B844-1E3F1ED6346C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693AC6F7-3A96-41C9-B844-1E3F1ED6346C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693AC6F7-3A96-41C9-B844-1E3F1ED6346C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B6E674-6A30-4928-AEE6-412E8DF48DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B6E674-6A30-4928-AEE6-412E8DF48DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B6E674-6A30-4928-AEE6-412E8DF48DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B6E674-6A30-4928-AEE6-412E8DF48DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3FC033-0AB0-4689-B638-C592DCBE2F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3FC033-0AB0-4689-B638-C592DCBE2F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3FC033-0AB0-4689-B638-C592DCBE2F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3FC033-0AB0-4689-B638-C592DCBE2F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F9AAB6F-91E7-4614-A31A-4CB93F3F9BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9AAB6F-91E7-4614-A31A-4CB93F3F9BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9AAB6F-91E7-4614-A31A-4CB93F3F9BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9AAB6F-91E7-4614-A31A-4CB93F3F9BD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
