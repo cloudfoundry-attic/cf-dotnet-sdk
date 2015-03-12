@@ -38,10 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudFoundry.Loggregator.Client.Fakes">
+      <HintPath>FakesAssemblies\CloudFoundry.Loggregator.Client.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -54,11 +58,13 @@
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
@@ -110,6 +116,7 @@
     <Compile Include="Deserialization\Test_users.cs" />
     <Compile Include="Deserialization\Test_user_provided_service_instances.cs" />
     <Compile Include="Exceptions\Test_CloudFoundryException.cs" />
+    <Compile Include="Loggregator\TailFakeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
     <Compile Include="Serialization\Test_app_usage_events.cs" />
@@ -155,12 +162,17 @@
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>
       <Name>CloudFoundry.CloudController.V2.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.Loggregator.Client\CloudFoundry.Loggregator.Client.csproj">
+      <Project>{7cca6c93-284b-47a0-a499-eb4dab6d3b65}</Project>
+      <Name>CloudFoundry.Loggregator.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj">
       <Project>{7452b0b7-b48b-4017-9c3b-1092378a1a20}</Project>
       <Name>CloudFoundry.UAA.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Fakes Include="Fakes\CloudFoundry.Loggregator.Client.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

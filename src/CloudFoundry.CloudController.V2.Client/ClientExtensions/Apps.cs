@@ -18,6 +18,9 @@ namespace CloudFoundry.CloudController.V2.Client
     {
         private const int StepCount = 7;
 
+        /// <summary>
+        /// Event that is raised on specific parts of the push process.
+        /// </summary>
         public event EventHandler<PushProgressEventArgs> PushProgress;
 
         /// <summary>
@@ -44,7 +47,7 @@ namespace CloudFoundry.CloudController.V2.Client
             // Step 1 - Check if application exists
             this.TriggerPushProgressEvent(usedSteps, "Checking if application exists");
             RetrieveAppResponse app = await this.Client.Apps.RetrieveApp(appGuid);
-           
+
             usedSteps += 1;
 
             // Step 2 - Compute fingerprints for local files
