@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SecurityGroupsEndpoint.CreateSecurityGroup()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/security_groups/creating_a_security_group.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateSecurityGroupResponse : IResponse
     {

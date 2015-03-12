@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllAuditorsForSpace()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/spaces/list_all_auditors_for_the_space.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllAuditorsForSpaceResponse : IResponse
     {

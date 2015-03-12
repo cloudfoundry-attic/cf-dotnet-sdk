@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.ListAllRoutes()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/routes/list_all_routes.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllRoutesResponse : IResponse
     {
