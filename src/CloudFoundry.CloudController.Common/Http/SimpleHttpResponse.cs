@@ -5,15 +5,15 @@
     using System.Threading.Tasks;
 
     /// <inheritdoc/>
-    public class HttpResponseAbstraction : IHttpResponseAbstraction
+    public class SimpleHttpResponse
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpResponseAbstraction"/> class.
+        /// Initializes a new instance of the <see cref="SimpleHttpResponse"/> class.
         /// </summary>
         /// <param name="content">The http content.</param>
         /// <param name="headers">The http headers.</param>
         /// <param name="status">The http status.</param>
-        public HttpResponseAbstraction(HttpContent content, IHttpHeadersCollection headers, HttpStatusCode status)
+        public SimpleHttpResponse(HttpContent content, HttpHeadersCollection headers, HttpStatusCode status)
         {
             this.Headers = headers ?? new HttpHeadersCollection();
             this.StatusCode = status;
@@ -24,16 +24,7 @@
         public HttpContent Content { get; internal set; }
 
         /// <inheritdoc/>
-        public IHttpHeadersCollection Headers { get; internal set; }
-
-        /// <inheritdoc/>
-        public bool IsSuccessStatusCode
-        {
-            get
-            {
-                return this.StatusCode == HttpStatusCode.OK;
-            }
-        }
+        public HttpHeadersCollection Headers { get; internal set; }
 
         /// <inheritdoc/>
         public HttpRequestMessage RequestMessage { get; set; }

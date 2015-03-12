@@ -2,12 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
-    using CloudFoundry.CloudController.Common.DependencyLocation;
     using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.V2.Interfaces;
+    using CloudFoundry.Common.Http;
     using CloudFoundry.UAA;
 
     /// <summary>
@@ -23,12 +24,12 @@
             return new KeyValuePair<string, string>("Authorization", "bearer " + autorizationToken);
         }
 
-        internal IHttpAbstractionClient GetHttpClient()
+        internal SimpleHttpClient GetHttpClient()
         {
-            return this.Client.DependencyLocator.Locate<IHttpAbstractionClientFactory>().Create(this.Client.CancellationToken);
+            return new SimpleHttpClient(this.Client.CancellationToken);
         }
 
-        internal async Task<IHttpResponseAbstraction> SendAsync(IHttpAbstractionClient client, int expectedReturnStatus)
+        internal async Task<SimpleHttpResponse> SendAsync(SimpleHttpClient client, int expectedReturnStatus)
         {
             var result = await client.SendAsync();
 
@@ -42,13 +43,12 @@
                     var exceptionObject = Utilities.DeserializeJson<CloudFoundryExceptionObject>(response);
                     cloudFoundryException = new CloudFoundryException(exceptionObject);
                     cloudFoundryException.Response = result;
+                    throw cloudFoundryException;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    cloudFoundryException = new CloudFoundryException(string.Format("An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode));
+                    throw new CloudFoundryException(string.Format(CultureInfo.InvariantCulture, "An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode), ex);
                 }
-
-                throw cloudFoundryException;
             }
 
             return result;

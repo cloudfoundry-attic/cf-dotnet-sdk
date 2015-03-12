@@ -67,77 +67,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocationAssemblyScanner.cs">
-      <Link>DependencyLocation\DependencyLocationAssemblyScanner.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocationManager.cs">
-      <Link>DependencyLocation\DependencyLocationManager.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocationRegistrarFactory.cs">
-      <Link>DependencyLocation\DependencyLocationRegistrarFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocator.cs">
-      <Link>DependencyLocation\DependencyLocator.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationAssemblyScanner.cs">
-      <Link>DependencyLocation\IDependencyLocationAssemblyScanner.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationManager.cs">
-      <Link>DependencyLocation\IDependencyLocationManager.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationOverrideManager.cs">
-      <Link>DependencyLocation\IDependencyLocationOverrideManager.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationRegistrar.cs">
-      <Link>DependencyLocation\IDependencyLocationRegistrar.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationRegistrarFactory.cs">
-      <Link>DependencyLocation\IDependencyLocationRegistrarFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationRuntimeManager.cs">
-      <Link>DependencyLocation\IDependencyLocationRuntimeManager.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocator.cs">
-      <Link>DependencyLocation\IDependencyLocator.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\RuntimeRegistrationManager.cs">
-      <Link>DependencyLocation\RuntimeRegistrationManager.cs</Link>
-    </Compile>
     <Compile Include="..\CloudFoundry.CloudController.Common\Exceptions\CloudFoundryException.cs">
       <Link>Exceptions\CloudFoundryException.cs</Link>
     </Compile>
     <Compile Include="..\CloudFoundry.CloudController.Common\Exceptions\CloudFoundryExceptionObject.cs">
       <Link>Exceptions\CloudFoundryExceptionObject.cs</Link>
     </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpAbstractionClient.cs">
-      <Link>Http\HttpAbstractionClient.cs</Link>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpHeadersCollection.cs">
+      <Link>Http\HttpHeadersCollection.cs</Link>
     </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpAbstractionClientFactory.cs">
-      <Link>Http\HttpAbstractionClientFactory.cs</Link>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpMultipartFormData.cs">
+      <Link>Http\HttpMultipartFormData.cs</Link>
     </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpHeadersAbstraction.cs">
-      <Link>Http\HttpHeadersAbstraction.cs</Link>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleHttpClient.cs">
+      <Link>Http\SimpleHttpClient.cs</Link>
     </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpMultiPartFormDataAbstraction.cs">
-      <Link>Http\HttpMultiPartFormDataAbstraction.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpResponseAbstraction.cs">
-      <Link>Http\HttpResponseAbstraction.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpAbstractionClient.cs">
-      <Link>Http\IHttpAbstractionClient.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpAbstractionClientFactory.cs">
-      <Link>Http\IHttpAbstractionClientFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpHeadersAbstraction.cs">
-      <Link>Http\IHttpHeadersAbstraction.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpMultiPartFormDataAbstraction.cs">
-      <Link>Http\IHttpMultiPartFormDataAbstraction.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpResponseAbstraction.cs">
-      <Link>Http\IHttpResponseAbstraction.cs</Link>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleHttpResponse.cs">
+      <Link>Http\SimpleHttpResponse.cs</Link>
     </Compile>
     <Compile Include="..\CloudFoundry.CloudController.Common\ObjectExtentions.cs">
       <Link>ObjectExtentions.cs</Link>
@@ -150,12 +96,6 @@
     </Compile>
     <Compile Include="..\CloudFoundry.CloudController.Common\PushTools\IAppPushTools.cs">
       <Link>PushTools\IAppPushTools.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\ReflectionExtentions.cs">
-      <Link>ReflectionExtentions.cs</Link>
-    </Compile>
-    <Compile Include="..\CloudFoundry.CloudController.Common\StreamExtentions.cs">
-      <Link>StreamExtentions.cs</Link>
     </Compile>
     <Compile Include="PushTools\AppPushTools.cs" />
   </ItemGroup>
