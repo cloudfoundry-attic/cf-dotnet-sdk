@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.CreateSpaceQuotaDefinition()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/space_quota_definitions/creating_a_space_quota_definition.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateSpaceQuotaDefinitionRequest
     {

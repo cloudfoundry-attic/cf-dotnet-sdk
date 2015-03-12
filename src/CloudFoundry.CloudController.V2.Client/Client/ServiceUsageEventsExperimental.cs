@@ -39,7 +39,9 @@ namespace CloudFoundry.CloudController.V2.Client
 
 namespace CloudFoundry.CloudController.V2.Client.Base
 {
-
+    /// <summary>
+    /// Base abstract class for ServiceUsageEventsExperimental Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractServiceUsageEventsExperimentalEndpoint : BaseEndpoint
     {

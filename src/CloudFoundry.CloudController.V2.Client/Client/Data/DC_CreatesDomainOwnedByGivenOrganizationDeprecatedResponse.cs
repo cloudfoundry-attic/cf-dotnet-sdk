@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.CreatesDomainOwnedByGivenOrganizationDeprecated()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreatesDomainOwnedByGivenOrganizationDeprecatedResponse : IResponse
     {

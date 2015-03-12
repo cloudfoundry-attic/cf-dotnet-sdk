@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.UpdateUserProvidedServiceInstance()" Request
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateUserProvidedServiceInstanceRequest
     {

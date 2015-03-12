@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.StacksEndpoint.RetrieveStack()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/stacks/retrieve_a_particular_stack.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveStackResponse : IResponse
     {

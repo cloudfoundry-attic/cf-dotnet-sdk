@@ -31,6 +31,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
+    /// <summary>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicePlansEndpoint.ListAllServiceInstancesForServicePlan()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServiceInstancesForServicePlanResponse : IResponse
     {

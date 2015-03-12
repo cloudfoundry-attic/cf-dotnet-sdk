@@ -39,7 +39,9 @@ namespace CloudFoundry.CloudController.V2.Client
 
 namespace CloudFoundry.CloudController.V2.Client.Base
 {
-
+    /// <summary>
+    /// Base abstract class for Organizations Endpoint
+    /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractOrganizationsEndpoint : BaseEndpoint
     {
