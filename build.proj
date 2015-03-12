@@ -74,7 +74,7 @@
     <ItemGroup>
       <TestDlls Include=".\src\CloudFoundry.CloudController.V2.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V2.Client.Test.dll"/>
     </ItemGroup>
-    <Exec Command="$(MSTestCommand) /testcontainer:%(TestDlls.Identity)" />
+    <Exec Command="vstest.console.exe &quot;%(TestDlls.Identity)&quot; /logger:trx" />
   </Target>
 
   <!-- Target for restoring nuget packages -->
