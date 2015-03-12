@@ -14,6 +14,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         internal static string User = ConfigurationManager.AppSettings["User"];
         internal static string Password = ConfigurationManager.AppSettings["Password"];
         internal static bool IgnoreCertificate = bool.Parse(ConfigurationManager.AppSettings["IgnoreCertificate"]);
+        internal static string TestAppPath = ConfigurationManager.AppSettings["TestAppPath"];
 
         internal static CloudFoundryClient GetClient()
         {

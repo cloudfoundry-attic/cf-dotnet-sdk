@@ -11,7 +11,7 @@ namespace CloudFoundry.CloudController.Test.Integration
     [TestClass]
     public class PushTest
     {
-        private static string appPath = @"C:\test";
+        private static string appPath = TestUtil.TestAppPath;
         private static CloudFoundryClient client;
         private static CreateAppRequest apprequest;
 
@@ -109,11 +109,11 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             client.Apps.Push(new Guid(app.EntityMetadata.Guid), appPath, false).Wait();
 
-            UpdateAppRequest updateApp=new UpdateAppRequest();
+            UpdateAppRequest updateApp = new UpdateAppRequest();
             updateApp.Name = app.Name;
             updateApp.Memory = 512;
             updateApp.Instances = 1;
-            
+
             UpdateAppResponse updatedApp = client.Apps.UpdateApp(new Guid(app.EntityMetadata.Guid), updateApp).Result;
 
             client.Apps.Push(new Guid(app.EntityMetadata.Guid), appPath, false).Wait();

@@ -3,8 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CloudFoundry.Loggregator.Client.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 using System.Threading;
+using CloudFoundry.Loggregator.Client;
 
-namespace CloudFoundry.Loggregator.Client.Test.FakeTest
+namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
 {
     [TestClass]
     public class TailFakeTests
@@ -42,8 +43,8 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
         [TestMethod, TestCategory("Fakes")]
         public void TailWebSocketMessage()
         {
-            using(ShimsContext.Create())
-            {                
+            using (ShimsContext.Create())
+            {
                 var openEvent = default(EventHandler<EventArgs>);
                 var messageEvent = default(EventHandler<DataEventArgs>);
                 var messageEventFired = new ManualResetEvent(false);
@@ -51,7 +52,7 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
                 ApplicationLog msg = new ApplicationLog();
                 msg.AppId = Guid.NewGuid().ToString();
                 msg.Message = "This is a log entry";
-                msg.LogMessageType = ApplicationLogMessageType.Output;                
+                msg.LogMessageType = ApplicationLogMessageType.Output;
 
                 ShimLoggregatorWebSocket.AllInstances.StreamOpenedAddEventHandlerOfEventArgs = (@this, h) => openEvent = h;
                 ShimLoggregatorWebSocket.AllInstances.DataReceivedAddEventHandlerOfDataEventArgs = (@this, h) => messageEvent = h;
@@ -66,7 +67,7 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
 
                 loggregator.Tail(msg.AppId);
 
-                messageEvent(this, new DataEventArgs() { Data = msg });                
+                messageEvent(this, new DataEventArgs() { Data = msg });
                 Assert.IsTrue(messageEventFired.WaitOne(100));
             }
         }
@@ -78,7 +79,7 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
             {
                 var errorEvent = default(EventHandler<ErrorEventArgs>);
                 var errorEventFired = new ManualResetEvent(false);
-                               
+
                 ShimLoggregatorWebSocket.AllInstances.ErrorReceivedAddEventHandlerOfErrorEventArgs = (@this, h) => errorEvent = h;
                 ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
 
@@ -92,7 +93,7 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
                 loggregator.Tail(Guid.NewGuid().ToString());
 
                 errorEvent(this, new ErrorEventArgs() { Error = new LoggregatorException("Test error") });
-                
+
                 Assert.IsTrue(errorEventFired.WaitOne(100));
             }
         }
@@ -102,12 +103,12 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
         {
             using (ShimsContext.Create())
             {
-                var closedEvent = default(EventHandler<EventArgs>);                
+                var closedEvent = default(EventHandler<EventArgs>);
                 var closedEventFired = new ManualResetEvent(false);
 
                 ShimLoggregatorWebSocket.AllInstances.StreamClosedAddEventHandlerOfEventArgs = (@this, h) => closedEvent = h;
                 ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
-                
+
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
                 loggregator.StreamClosed += delegate(object sender, EventArgs e)
                 {
@@ -127,12 +128,13 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
             using (ShimsContext.Create())
             {
                 var closedEvent = default(EventHandler<EventArgs>);
-                var closedEventFired = new ManualResetEvent(false);                
-                
+                var closedEventFired = new ManualResetEvent(false);
+
                 ShimLoggregatorWebSocket.AllInstances.StreamClosedAddEventHandlerOfEventArgs = (@this, h) => closedEvent = h;
                 ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
-                ShimLoggregatorWebSocket.AllInstances.Close = (@this) => {                    
-                    closedEvent(this, EventArgs.Empty); 
+                ShimLoggregatorWebSocket.AllInstances.Close = (@this) =>
+                {
+                    closedEvent(this, EventArgs.Empty);
                 };
                 ShimLoggregatorWebSocket.AllInstances.Dispose = (@this) => { };
 
@@ -163,10 +165,10 @@ namespace CloudFoundry.Loggregator.Client.Test.FakeTest
                 {
                     loggregator.Tail(null);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Assert.IsInstanceOfType(ex, typeof(ArgumentNullException));
-                }                
+                }
             }
         }
 
