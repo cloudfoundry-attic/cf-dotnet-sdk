@@ -73,11 +73,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationTest.cs" />
     <Compile Include="BuildpackTest.cs" />
+    <Compile Include="PushTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
-      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
-      <Name>CloudFoundry.CloudController.Common</Name>
+    <ProjectReference Include="..\CloudFoundry.CloudController.Common.Net45\CloudFoundry.CloudController.Common.Net45.csproj">
+      <Project>{126aeda2-fa3b-42eb-b728-770a975def2b}</Project>
+      <Name>CloudFoundry.CloudController.Common.Net45</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj">
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{126AEDA2-FA3B-42EB-B728-770A975DEF2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudFoundry.CloudController.Common</RootNamespace>
+    <AssemblyName>CloudFoundry.CloudController.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SourceAnalysisOverrideSettingsFile>$(SolutionDir)\Settings.StyleCop</SourceAnalysisOverrideSettingsFile>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <NuGetPackageImportStamp>6ee1c58a</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\lib\common-net45\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>..\..\lib\common-net45\CloudFoundry.CloudController.Common.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\lib\common-net45\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>..\..\lib\common-net45\CloudFoundry.CloudController.Common.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocationAssemblyScanner.cs">
+      <Link>DependencyLocation\DependencyLocationAssemblyScanner.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocationManager.cs">
+      <Link>DependencyLocation\DependencyLocationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocationRegistrarFactory.cs">
+      <Link>DependencyLocation\DependencyLocationRegistrarFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\DependencyLocator.cs">
+      <Link>DependencyLocation\DependencyLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationAssemblyScanner.cs">
+      <Link>DependencyLocation\IDependencyLocationAssemblyScanner.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationManager.cs">
+      <Link>DependencyLocation\IDependencyLocationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationOverrideManager.cs">
+      <Link>DependencyLocation\IDependencyLocationOverrideManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationRegistrar.cs">
+      <Link>DependencyLocation\IDependencyLocationRegistrar.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationRegistrarFactory.cs">
+      <Link>DependencyLocation\IDependencyLocationRegistrarFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocationRuntimeManager.cs">
+      <Link>DependencyLocation\IDependencyLocationRuntimeManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\IDependencyLocator.cs">
+      <Link>DependencyLocation\IDependencyLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\DependencyLocation\RuntimeRegistrationManager.cs">
+      <Link>DependencyLocation\RuntimeRegistrationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Exceptions\CloudFoundryException.cs">
+      <Link>Exceptions\CloudFoundryException.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Exceptions\CloudFoundryExceptionObject.cs">
+      <Link>Exceptions\CloudFoundryExceptionObject.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpAbstractionClient.cs">
+      <Link>Http\HttpAbstractionClient.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpAbstractionClientFactory.cs">
+      <Link>Http\HttpAbstractionClientFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpHeadersAbstraction.cs">
+      <Link>Http\HttpHeadersAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpMultiPartFormDataAbstraction.cs">
+      <Link>Http\HttpMultiPartFormDataAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\HttpResponseAbstraction.cs">
+      <Link>Http\HttpResponseAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpAbstractionClient.cs">
+      <Link>Http\IHttpAbstractionClient.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpAbstractionClientFactory.cs">
+      <Link>Http\IHttpAbstractionClientFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpHeadersAbstraction.cs">
+      <Link>Http\IHttpHeadersAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpMultiPartFormDataAbstraction.cs">
+      <Link>Http\IHttpMultiPartFormDataAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IHttpResponseAbstraction.cs">
+      <Link>Http\IHttpResponseAbstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\ObjectExtentions.cs">
+      <Link>ObjectExtentions.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\PushTools\FileFingerprint.cs">
+      <Link>PushTools\FileFingerprint.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\PushTools\IAppPushTools.cs">
+      <Link>PushTools\IAppPushTools.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\ReflectionExtentions.cs">
+      <Link>ReflectionExtentions.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\StreamExtentions.cs">
+      <Link>StreamExtentions.cs</Link>
+    </Compile>
+    <Compile Include="PushTools\AppPushTools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\cf-dotnet-sdk-dictionary.xml">
+      <Link>cf-dotnet-sdk-dictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets'))" />
+  </Target>
+  <Import Project="..\..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets" Condition="Exists('..\..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -51,6 +51,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseEndpoint.cs" />
+    <Compile Include="ClientExtensions\Data\DC_ListAllMatchingResourcesRequest.cs" />
+    <Compile Include="ClientExtensions\ProgressEventArgs.cs" />
+    <Compile Include="ClientExtensions\Apps.cs" />
     <Compile Include="ClientExtensions\Data\DC_CreateAppRequest.cs" />
     <Compile Include="ClientExtensions\Data\DC_CreateServiceInstanceResponse.cs" />
     <Compile Include="ClientExtensions\Data\DC_GetV1InfoResponse.cs" />

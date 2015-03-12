@@ -6,6 +6,8 @@
     /// <summary>
     /// Exception class raised when something goes wrong in calling the Cloud Foundry endpoints.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032:ImplementStandardExceptionConstructors", Justification = "Compatibility with PCL"), 
+    System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable", Justification = "Compatibility with PCL")]
     public class CloudFoundryException : Exception
     {
         /// <summary>

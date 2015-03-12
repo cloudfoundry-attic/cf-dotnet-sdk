@@ -6,6 +6,7 @@ namespace CloudFoundry.CloudController.Common.DependencyLocation
     using System.Linq;
     using System.Reflection;
     using CloudFoundry.CloudController.Common.Http;
+    using CloudFoundry.CloudController.Common.PushTools;
 
     /// <inheritdoc/>
     public class DependencyLocator : IDependencyLocator
@@ -24,6 +25,7 @@ namespace CloudFoundry.CloudController.Common.DependencyLocation
             this.dependencies.Add(typeof(IDependencyLocationRuntimeManager), this.runtimeManager);
             this.dependencies.Add(typeof(IDependencyLocationOverrideManager), new DependencyLocationOverrideManager(this));
             this.dependencies.Add(typeof(IHttpAbstractionClientFactory), new HttpAbstractionClientFactory());
+            this.dependencies.Add(typeof(IAppPushTools), new AppPushTools());
             this.scanner.AddAssembly(this.GetType().GetAssembly());
             this.RegisterDependencies();
         }
