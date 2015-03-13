@@ -3,16 +3,16 @@
     using System.IO;
 
     /// <inheritdoc/>
-    public class HttpMultipartFormDataAbstraction : IHttpMultipartFormDataAbstraction
+    public class HttpMultipartFormData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpMultipartFormDataAbstraction" /> class.
+        /// Initializes a new instance of the <see cref="HttpMultipartFormData" /> class.
         /// </summary>
         /// <param name="name">The name of the form field.</param>
         /// <param name="fileName">The file name of the form field.</param>
         /// <param name="contentType">The content type of the form field.</param>
         /// <param name="content">The content for the field.</param>
-        public HttpMultipartFormDataAbstraction(string name, string fileName, string contentType, Stream content)
+        public HttpMultipartFormData(string name, string fileName, string contentType, Stream content)
         {
             this.Name = name;
             this.FileName = fileName;

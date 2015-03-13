@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Metadata Json object of the cloud foundry response
+    /// Metadata Json object of the CloudFoundry response
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces",
         Justification = "Keeping Cloud Foundry nomenclature.")]

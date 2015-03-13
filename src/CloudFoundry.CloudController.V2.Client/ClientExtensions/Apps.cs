@@ -8,10 +8,10 @@ namespace CloudFoundry.CloudController.V2.Client
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-    using CloudFoundry.CloudController.Common.DependencyLocation;
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.Common.PushTools;
     using CloudFoundry.CloudController.V2.Client.Data;
+    using CloudFoundry.Common.Http;
     using Newtonsoft.Json;
 
     public partial class AppsEndpoint
@@ -41,7 +41,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 throw new ArgumentNullException("appPath");
             }
 
-            IAppPushTools pushTools = this.Client.DependencyLocator.Locate<IAppPushTools>();
+            IAppPushTools pushTools = new AppPushTools();
             int usedSteps = 1;
 
             // Step 1 - Check if application exists
@@ -89,7 +89,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 List<FileFingerprint> fingerPrintList = new List<FileFingerprint>(fingerprints.Values.SelectMany(list => list.ToArray()));
 
                 string serializedFingerprints = JsonConvert.SerializeObject(fingerPrintList);
-                IHttpResponseAbstraction uploadResult = await this.UploadZip(new Uri(endpoint), zippedPayload, serializedFingerprints);
+                SimpleHttpResponse uploadResult = await this.UploadZip(new Uri(endpoint), zippedPayload, serializedFingerprints);
                 if (this.CheckCancellation())
                 {
                     return;
@@ -171,13 +171,11 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="zipStream">The compressed stream to upload</param>
         /// <param name="resources">The json payload describing the files of the app</param>
         /// <returns></returns>
-        private async Task<IHttpResponseAbstraction> UploadZip(Uri uploadUri, Stream zipStream, string resources)
+        private async Task<SimpleHttpResponse> UploadZip(Uri uploadUri, Stream zipStream, string resources)
         {
             string boundary = DateTime.Now.Ticks.ToString("x");
 
-            HttpAbstractionClientFactory fact = new HttpAbstractionClientFactory();
-
-            using (var httpClient = fact.Create())
+            using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken))
             {
                 httpClient.Headers.Add("Authorization", string.Format("bearer {0}", this.Client.AuthorizationToken));
 
@@ -186,15 +184,15 @@ namespace CloudFoundry.CloudController.V2.Client
                 httpClient.Headers.Add("Accept-Encoding", "gzip, deflate");
                 httpClient.Method = HttpMethod.Post;
 
-                List<HttpMultipartFormDataAbstraction> mpd = new List<HttpMultipartFormDataAbstraction>();
+                List<HttpMultipartFormData> mpd = new List<HttpMultipartFormData>();
 
-                mpd.Add(new HttpMultipartFormDataAbstraction("application", "app.zip", "application/zip", zipStream));
+                mpd.Add(new HttpMultipartFormData("application", "app.zip", "application/zip", zipStream));
 
                 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(resources)))
                 {
                     ms.Position = 0;
-                    mpd.Add(new HttpMultipartFormDataAbstraction("resources", string.Empty, string.Empty, ms));
-                    IHttpResponseAbstraction response = await httpClient.SendAsync(mpd);
+                    mpd.Add(new HttpMultipartFormData("resources", string.Empty, string.Empty, ms));
+                    SimpleHttpResponse response = await httpClient.SendAsync(mpd);
                     return response;
                 }
             }

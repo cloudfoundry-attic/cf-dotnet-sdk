@@ -33,7 +33,8 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>..\..\lib\CloudFoundry.CloudController.Common.XML</DocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,59 +53,15 @@
   <ItemGroup>
     <Compile Include="Exceptions\CloudFoundryException.cs" />
     <Compile Include="Exceptions\CloudFoundryExceptionObject.cs" />
-    <Compile Include="Http\HttpAbstractionClient.cs" />
-    <Compile Include="Http\HttpAbstractionClientFactory.cs" />
-    <Compile Include="Http\HttpHeadersAbstraction.cs" />
-    <Compile Include="Http\HttpMultiPartFormDataAbstraction.cs" />
-    <Compile Include="Http\HttpResponseAbstraction.cs" />
-    <Compile Include="Http\IHttpAbstractionClient.cs" />
-    <Compile Include="Http\IHttpAbstractionClientFactory.cs" />
-    <Compile Include="Http\IHttpHeadersAbstraction.cs" />
-    <Compile Include="Http\IHttpMultiPartFormDataAbstraction.cs" />
-    <Compile Include="Http\IHttpResponseAbstraction.cs" />
+    <Compile Include="Http\SimpleHttpClient.cs" />
+    <Compile Include="Http\HttpHeadersCollection.cs" />
+    <Compile Include="Http\HttpMultipartFormData.cs" />
+    <Compile Include="Http\SimpleHttpResponse.cs" />
     <Compile Include="ObjectExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushTools\FileFingerprint.cs" />
     <Compile Include="PushTools\AppPushTools.cs" />
     <Compile Include="PushTools\IAppPushTools.cs" />
-    <Compile Include="ReflectionExtentions.cs" />
-    <Compile Include="DependencyLocation\IDependencyLocationAssemblyScanner.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\IDependencyLocationManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\IDependencyLocationOverrideManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\IDependencyLocationRegistrar.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\IDependencyLocationRegistrarFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\IDependencyLocationRuntimeManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\IDependencyLocator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\RuntimeRegistrationManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\DependencyLocationAssemblyScanner.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\DependencyLocationManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\DependencyLocationRegistrarFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DependencyLocation\DependencyLocator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StreamExtentions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

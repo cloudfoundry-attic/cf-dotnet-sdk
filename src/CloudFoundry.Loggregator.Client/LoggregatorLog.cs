@@ -7,8 +7,9 @@
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using CloudFoundry.CloudController.Common.DependencyLocation;
     using CloudFoundry.CloudController.Common.Http;
+    using CloudFoundry.CloudController.Common.PushTools;
+    using CloudFoundry.Common.Http;
 
     /// <summary>
     /// This is the Loggregator client. To use it, you need a Loggregator endpoint and an authorization token from UAA.
@@ -170,15 +171,16 @@
             appLogUri.Path = "recent";
             appLogUri.Query = string.Format(CultureInfo.InvariantCulture, "app={0}", appGuid);
 
-            IHttpAbstractionClient client = new DependencyLocator().Locate<IHttpAbstractionClientFactory>().Create(cancellationToken);
+            SimpleHttpClient client = new SimpleHttpClient(cancellationToken);
             client.Uri = appLogUri.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add("AUTHORIZATION", this.AuthenticationToken);
 
-            IHttpResponseAbstraction response = await client.SendAsync();
-            if (!response.IsSuccessStatusCode)
+            SimpleHttpResponse response = await client.SendAsync();
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new LoggregatorException(string.Format(CultureInfo.InvariantCulture, "Server returned error: {0}", response.StatusCode));
+                string errorMessage = await response.ReadContentAsStringAsync();
+                throw new LoggregatorException(string.Format(CultureInfo.InvariantCulture, "Server returned error code {0} with message: '{1}'", response.StatusCode, errorMessage));
             }
 
             MultipartMemoryStreamProvider multipart = null;

@@ -3,7 +3,7 @@ namespace CloudFoundry.CloudController.V2
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using CloudFoundry.CloudController.Common.DependencyLocation;
+    using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.V2.Client;
     using CloudFoundry.CloudController.V2.Interfaces;
     using CloudFoundry.UAA;
@@ -18,24 +18,12 @@ namespace CloudFoundry.CloudController.V2
         /// </summary>
         /// <param name="cloudTarget">The cloud target.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        /// <param name="dependencyLocator">The dependency locator.</param>
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, IDependencyLocator dependencyLocator)
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
         {
             this.CloudTarget = cloudTarget;
             this.CancellationToken = cancellationToken;
-            this.DependencyLocator = dependencyLocator;
 
             this.InitEndpoints();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CloudFoundryClient"/> class.
-        /// </summary>
-        /// <param name="cloudTarget">The cloud target.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
-            : this(cloudTarget, cancellationToken, new DependencyLocator())
-        {
         }
 
         /// <summary>
@@ -322,8 +310,6 @@ namespace CloudFoundry.CloudController.V2
         internal CancellationToken CancellationToken { get; set; }
 
         internal Uri CloudTarget { get; set; }
-
-        internal IDependencyLocator DependencyLocator { get; set; }
 
         internal UAAClient UAAClient { get; set; }
 

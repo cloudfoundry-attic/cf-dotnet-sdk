@@ -6,7 +6,7 @@
     using System.Net.Http.Headers;
 
     /// <inheritdoc/>
-    public class HttpHeadersCollection : IHttpHeadersCollection
+    public class HttpHeadersCollection : IEnumerable<KeyValuePair<string, IEnumerable<string>>>
     {
         private readonly Dictionary<string, IEnumerable<string>> headers = new Dictionary<string, IEnumerable<string>>();
 
