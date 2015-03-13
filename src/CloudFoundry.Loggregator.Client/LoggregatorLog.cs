@@ -180,7 +180,7 @@
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 string errorMessage = await response.ReadContentAsStringAsync();
-                throw new LoggregatorException(string.Format(CultureInfo.InvariantCulture, "Server returned error code {0} with message: ''", response.StatusCode, errorMessage));
+                throw new LoggregatorException(string.Format(CultureInfo.InvariantCulture, "Server returned error code {0} with message: '{1}'", response.StatusCode, errorMessage));
             }
 
             MultipartMemoryStreamProvider multipart = null;
