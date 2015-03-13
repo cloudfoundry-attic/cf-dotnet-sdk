@@ -19,11 +19,20 @@
         private CancellationToken cancellationToken = CancellationToken.None;
         private bool disposed = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleHttpClient"/> class.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
         public SimpleHttpClient(CancellationToken cancellationToken)
             : this(cancellationToken, SimpleHttpClient.DefaultTimeout)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleHttpClient"/> class.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="timeout">The timeout.</param>
         public SimpleHttpClient(CancellationToken cancellationToken, TimeSpan timeout)
         {
             try
