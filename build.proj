@@ -49,6 +49,7 @@
   <PropertyGroup>
     <NuGetCommand>&quot;$(LibraryRoot)\.nuget\nuget.exe&quot;</NuGetCommand>
     <MSTestCommand>&quot;$(VS120COMNTOOLS)\..\IDE\mstest.exe&quot;</MSTestCommand>
+    <VSTestCommand>&quot;$(VS120COMNTOOLS)\..\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe&quot;</VSTestCommand>
     <ExtensionTasksPath>$(LibraryRoot)\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</ExtensionTasksPath>
   </PropertyGroup>
 
@@ -75,6 +76,14 @@
       <TestDlls Include=".\src\CloudFoundry.CloudController.V2.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V2.Client.Test.dll"/>
     </ItemGroup>
     <Exec Command="vstest.console.exe &quot;%(TestDlls.Identity)&quot; /logger:trx" />
+  </Target>
+  
+  <!-- Target for running unit tests with vstest.console.exe-->
+  <Target Name="VSUnitTest">
+    <ItemGroup>
+      <TestDlls Include=".\src\CloudFoundry.CloudController.V2.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V2.Client.Test.dll"/>
+    </ItemGroup>
+    <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings" />
   </Target>
 
   <!-- Target for restoring nuget packages -->
