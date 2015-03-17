@@ -52,7 +52,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             foreach (ListAllStacksResponse stack in stacks)
             {
-                if (stack.Name == "win2012")
+                if (stack.Name == "win2012r2" || stack.Name == "win2012")
                 {
                     winStack = stack.EntityMetadata.Guid;
                     break;

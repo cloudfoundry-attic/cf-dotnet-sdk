@@ -47,7 +47,7 @@
                 }
                 catch (Exception ex)
                 {
-                    throw new CloudFoundryException(string.Format(CultureInfo.InvariantCulture, "An error occurred while sending the request {0},  {1}", result.RequestMessage, result.StatusCode), ex);
+                    throw new CloudFoundryException(string.Format(CultureInfo.InvariantCulture, "Server returned an error"), ex);
                 }
             }
 

@@ -26,6 +26,8 @@
         {
             Dictionary<string, List<FileFingerprint>> fingerprints = new Dictionary<string, List<FileFingerprint>>();
 
+            appPath = Path.GetFullPath(appPath);
+
             foreach (string file in Directory.GetFiles(appPath, "*", SearchOption.AllDirectories))
             {   
                 FileInfo fileInfo = new FileInfo(file);
