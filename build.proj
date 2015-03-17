@@ -50,13 +50,10 @@
     <NuGetCommand>&quot;$(LibraryRoot)\.nuget\nuget.exe&quot;</NuGetCommand>
     <MSTestCommand>&quot;$(VS120COMNTOOLS)\..\IDE\mstest.exe&quot;</MSTestCommand>
     <VSTestCommand>&quot;$(VS120COMNTOOLS)\..\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe&quot;</VSTestCommand>
-    <CoverageCommand>&quot;$(VS120COMNTOOLS)\..\..\Team Tools\Dynamic Code Coverage Tools\CodeCoverage.exe&quot;</CoverageCommand>
     <ExtensionTasksPath>$(LibraryRoot)\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</ExtensionTasksPath>
-    <ReportGeneratorCommand>$(LibraryRoot)\packages\ReportGenerator.2.1.3.0\ReportGenerator.exe</ReportGeneratorCommand>
-
-    <CoverageXml>$(LibraryRoot)\TestResults\cf-dotnet-sdk.coveragexml</CoverageXml>
-    <CoverageHtmlDir>$(LibraryRoot)\TestResults\coveragehtml</CoverageHtmlDir>
     
+    <!-- Name used by mstest Jenkins plugin -->
+    <CoverageXml>$(LibraryRoot)\TestResults\mstest-coverage.xml</CoverageXml>
   </PropertyGroup>
 
   <!-- Import msbuild extensions -->
@@ -82,7 +79,7 @@
       <TestDlls Include=".\src\CloudFoundry.CloudController.V2.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V2.Client.Test.dll"/>
     </ItemGroup>
 
-    <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings /logger:trx"  ConsoleToMSBuild="true">
+    <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings /logger:trx" ConsoleToMSBuild="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfTestRun" />
     </Exec>
@@ -97,14 +94,9 @@
     </PropertyGroup>
 
     <Delete Files="$(CoverageXml)" />
-    
-    <Message Text="Analysing coverage file $(SourceCoverageFile)"/>
-    <Exec Command="$(CoverageCommand) analyze /output:&quot;$(CoverageXml)&quot; &quot;$(SourceCoverageFile)&quot;" />
 
-
-    <Message Text="Generating html coverage report"/>
-    <MakeDir Directories="$(CoverageHtmlDir)"/>
-    <Exec Command="$(ReportGeneratorCommand) -reports:&quot;$(CoverageXml)&quot; -targetdir:&quot;$(CoverageHtmlDir)&quot;" />
+    <Message Text="Converting coverage file $(SourceCoverageFile)"/>
+    <Exec Command="@powershell -NoLogo -NonInteractive -ExecutionPolicy Bypass -File &quot;$(LibraryRoot)\convert-codecoverage.ps1&quot; -inputFile &quot;$(SourceCoverageFile)&quot; -outputFile &quot;$(CoverageXml)&quot;" ></Exec>
   </Target>
 
   <!-- Target for restoring nuget packages -->

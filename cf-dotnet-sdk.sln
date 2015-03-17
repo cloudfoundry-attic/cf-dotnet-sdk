@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B21C9324
 		cf-dotnet-sdk.nuspec = cf-dotnet-sdk.nuspec
 		cf-dotnet-sdk.ruleset = cf-dotnet-sdk.ruleset
 		CodeCoverage.runsettings = CodeCoverage.runsettings
+		convert-codecoverage.ps1 = convert-codecoverage.ps1
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
