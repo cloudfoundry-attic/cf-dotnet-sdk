@@ -47,14 +47,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\net45\PCLStorage.dll</HintPath>
-    </Reference>
-    <Reference Include="PCLStorage.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\net45\PCLStorage.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
@@ -151,7 +143,6 @@
     <Compile Include="Serialization\Test_users.cs" />
     <Compile Include="Serialization\Test_user_provided_service_instances.cs" />
     <Compile Include="TestUtil.cs" />
-    <Compile Include="ZipUtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
@@ -173,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Fakes Include="Fakes\CloudFoundry.Loggregator.Client.fakes" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

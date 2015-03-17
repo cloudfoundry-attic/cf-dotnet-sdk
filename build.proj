@@ -52,6 +52,11 @@
     <VSTestCommand>&quot;$(VS120COMNTOOLS)\..\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe&quot;</VSTestCommand>
     <CoverageCommand>&quot;$(VS120COMNTOOLS)\..\..\Team Tools\Dynamic Code Coverage Tools\CodeCoverage.exe&quot;</CoverageCommand>
     <ExtensionTasksPath>$(LibraryRoot)\packages\MSBuild.Extension.Pack.1.5.0\tools\net40\</ExtensionTasksPath>
+    <ReportGeneratorCommand>$(LibraryRoot)\packages\ReportGenerator.2.1.3.0\ReportGenerator.exe</ReportGeneratorCommand>
+
+    <CoverageXml>$(LibraryRoot)\TestResults\cf-dotnet-sdk.coveragexml</CoverageXml>
+    <CoverageHtmlDir>$(LibraryRoot)\TestResults\coveragehtml</CoverageHtmlDir>
+    
   </PropertyGroup>
 
   <!-- Import msbuild extensions -->
@@ -89,12 +94,17 @@
       <CoverageFileRegexPattern>(?&lt;=(Attachments:;)).*.coverage</CoverageFileRegexPattern>
       <SourceResultsFile>$([System.Text.RegularExpressions.Regex]::Match($(OutputOfTestRun), $(ResultsFileRegexPattern)))</SourceResultsFile>
       <SourceCoverageFile>$([System.Text.RegularExpressions.Regex]::Match($(OutputOfTestRun), $(CoverageFileRegexPattern)))</SourceCoverageFile>
-    </PropertyGroup>    
-    
+    </PropertyGroup>
+
+    <Delete Files="$(CoverageXml)" />
     
     <Message Text="Analysing coverage file $(SourceCoverageFile)"/>
-    
-    <Exec Command="$(CoverageCommand) analyze /output:TestResults/mstest-coverage.xml &quot;$(SourceCoverageFile)&quot;" />
+    <Exec Command="$(CoverageCommand) analyze /output:&quot;$(CoverageXml)&quot; &quot;$(SourceCoverageFile)&quot;" />
+
+
+    <Message Text="Generating html coverage report"/>
+    <MakeDir Directories="$(CoverageHtmlDir)"/>
+    <Exec Command="$(ReportGeneratorCommand) -reports:&quot;$(CoverageXml)&quot; -targetdir:&quot;$(CoverageHtmlDir)&quot;" />
   </Target>
 
   <!-- Target for restoring nuget packages -->
