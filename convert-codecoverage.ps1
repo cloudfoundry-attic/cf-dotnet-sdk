@@ -12,12 +12,16 @@ $vsPath = $env:VS120COMNTOOLS
 $analysisDll = '..\IDE\PrivateAssemblies\Microsoft.VisualStudio.Coverage.Analysis.dll'
 $assemblyPath = [System.IO.Path]::GetFullPath((Join-Path $vsPath $analysisDll))
 
-
 Add-Type -Path $assemblyPath
 
-$dlls = (Get-ChildItem (Join-Path $currentDir 'lib\CloudFoundry*.dll') | ForEach-Object { $_.FullName })
-
 $coverageInfo = [Microsoft.VisualStudio.Coverage.Analysis.CoverageInfo]::CreateFromFile($inputFile)
-$coverageData = $coverageInfo.BuildDataSet()
+$coverageData = [Microsoft.VisualStudio.Coverage.Analysis.CoverageDS]$coverageInfo.BuildDataSet()
 $coverageData.WriteXml($outputFile)
 
+[xml]$coverageXml = Get-Content $outputFile
+[xml]$coverageXmlFinal = new-object System.Xml.XmlDocument
+$coverageDSPrivNode = $coverageXml.CoverageDSPriv
+$coverageDSNode = $coverageXmlFinal.CreateElement('CoverageDS')
+$coverageXmlFinal.AppendChild($coverageDSNode) | Out-Null
+$coverageDSNode.InnerText = $coverageDSPrivNode.InnerText
+$coverageXmlFinal.Save($outputFile)
