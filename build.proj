@@ -94,7 +94,7 @@
     
     <Message Text="Analysing coverage file $(SourceCoverageFile)"/>
     
-    <Exec Command="$(CoverageCommand) analyze /output:cf-dotnet-sdk.coveragexml &quot;$(SourceCoverageFile)&quot;" />
+    <Exec Command="$(CoverageCommand) analyze /output:TestResults/mstest-coverage.xml &quot;$(SourceCoverageFile)&quot;" />
   </Target>
 
   <!-- Target for restoring nuget packages -->
