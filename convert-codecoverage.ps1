@@ -23,5 +23,5 @@ $coverageData.WriteXml($outputFile)
 $coverageDSPrivNode = $coverageXml.CoverageDSPriv
 $coverageDSNode = $coverageXmlFinal.CreateElement('CoverageDS')
 $coverageXmlFinal.AppendChild($coverageDSNode) | Out-Null
-$coverageDSNode.InnerText = $coverageDSPrivNode.InnerText
+$coverageDSNode.InnerXml = $coverageDSPrivNode.InnerXml
 $coverageXmlFinal.Save($outputFile)
