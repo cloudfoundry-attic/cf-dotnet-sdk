@@ -83,13 +83,13 @@ namespace CloudFoundry.CloudController.V2.Client
 
                 // Step 5 - Upload zip to CloudFoundry ...
                 this.TriggerPushProgressEvent(usedSteps, "Uploading zip package ...");
-                string route = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", appGuid.ToString());
-                string endpoint = string.Format(CultureInfo.InvariantCulture, "{0}{1}", this.Client.CloudTarget.AbsoluteUri.ToString().TrimEnd('/'), route);
-
-                List<FileFingerprint> fingerPrintList = new List<FileFingerprint>(fingerprints.Values.SelectMany(list => list.ToArray()));
+                UriBuilder uploadEndpoint = new UriBuilder(this.Client.CloudTarget.AbsoluteUri);
+                uploadEndpoint.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", appGuid.ToString());
+                
+                List<FileFingerprint> fingerPrintList = fingerprints.Values.SelectMany(list => list).ToList();
 
                 string serializedFingerprints = JsonConvert.SerializeObject(fingerPrintList);
-                SimpleHttpResponse uploadResult = await this.UploadZip(new Uri(endpoint), zippedPayload, serializedFingerprints);
+                SimpleHttpResponse uploadResult = await this.UploadZip(uploadEndpoint.Uri, zippedPayload, serializedFingerprints);
                 if (this.CheckCancellation())
                 {
                     return;
@@ -185,13 +185,11 @@ namespace CloudFoundry.CloudController.V2.Client
                 httpClient.Method = HttpMethod.Post;
 
                 List<HttpMultipartFormData> mpd = new List<HttpMultipartFormData>();
-
-                mpd.Add(new HttpMultipartFormData("application", "app.zip", "application/zip", zipStream));
-
                 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(resources)))
                 {
                     ms.Position = 0;
                     mpd.Add(new HttpMultipartFormData("resources", string.Empty, string.Empty, ms));
+                    mpd.Add(new HttpMultipartFormData("application", "app.zip", "application/zip", zipStream));
                     SimpleHttpResponse response = await httpClient.SendAsync(mpd);
                     return response;
                 }
