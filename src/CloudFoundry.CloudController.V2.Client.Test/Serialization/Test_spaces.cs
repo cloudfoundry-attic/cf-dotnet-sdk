@@ -27,6 +27,21 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestCreateSpaceRequest()
+        {
+            string json = @"{
+  ""name"": ""development"",
+  ""organization_guid"": ""81bb558b-2aad-4d52-90a6-893094f300a8""
+}";
+
+            CreateSpaceRequest request = new CreateSpaceRequest();
+
+            request.Name = "development";
+            request.OrganizationGuid = new Guid("81bb558b-2aad-4d52-90a6-893094f300a8");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestUpdateSpaceRequest()
         {
             string json = @"{
@@ -37,22 +52,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             request.Name = "New Space Name";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
-        }
-        [TestMethod]
-        public void TestCreateSpaceRequest()
-        {
-            string json = @"{
-  ""name"": ""development"",
-  ""organization_guid"": ""7f08d0d5-27aa-4245-aa1d-881507e79194""
-}";
-
-            CreateSpaceRequest request = new CreateSpaceRequest();
-
-            request.Name = "development";
-            request.OrganizationGuid = new Guid("7f08d0d5-27aa-4245-aa1d-881507e79194");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

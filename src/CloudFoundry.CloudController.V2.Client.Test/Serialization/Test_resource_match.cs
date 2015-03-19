@@ -31,7 +31,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"[
   {
-    ""sha1"": ""56dbc6a7253bd4db39059aa509c94cca98c12c43"",
+    ""sha1"": ""7f4dc06963722c884ff90462de9367bd06701987"",
     ""size"": 36
   },
   {
@@ -44,7 +44,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             request[0] = new ListAllMatchingResourcesRequest();
 
-            request[0].Sha1 = "56dbc6a7253bd4db39059aa509c94cca98c12c43";
+            request[0].Sha1 = "7f4dc06963722c884ff90462de9367bd06701987";
             request[0].Size = 36;
             request[1] = new ListAllMatchingResourcesRequest();
 
@@ -52,7 +52,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request[1].Size = 1;
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

@@ -61,21 +61,39 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
-        public void TestGetAppBitsUploadFeatureFlagResponse()
+        public void TestGetRouteCreationFeatureFlagResponse()
         {
             string json = @"{
-  ""name"": ""app_bits_upload"",
+  ""name"": ""route_creation"",
   ""enabled"": true,
   ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/app_bits_upload""
+  ""url"": ""/v2/config/feature_flags/route_creation""
 }";
 
-            GetAppBitsUploadFeatureFlagResponse obj = Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(json);
+            GetRouteCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetRouteCreationFeatureFlagResponse>(json);
 
-            Assert.AreEqual("app_bits_upload", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("route_creation", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/app_bits_upload", TestUtil.ToTestableString(obj.Url), true);
+            Assert.AreEqual("/v2/config/feature_flags/route_creation", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetPrivateDomainCreationFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""private_domain_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/private_domain_creation""
+}";
+
+            GetPrivateDomainCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(json);
+
+            Assert.AreEqual("private_domain_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/private_domain_creation", TestUtil.ToTestableString(obj.Url), true);
         }
 
         [TestMethod]
@@ -97,21 +115,21 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
-        public void TestGetPrivateDomainCreationFeatureFlagResponse()
+        public void TestGetAppBitsUploadFeatureFlagResponse()
         {
             string json = @"{
-  ""name"": ""private_domain_creation"",
+  ""name"": ""app_bits_upload"",
   ""enabled"": true,
   ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/private_domain_creation""
+  ""url"": ""/v2/config/feature_flags/app_bits_upload""
 }";
 
-            GetPrivateDomainCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(json);
+            GetAppBitsUploadFeatureFlagResponse obj = Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(json);
 
-            Assert.AreEqual("private_domain_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("app_bits_upload", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/private_domain_creation", TestUtil.ToTestableString(obj.Url), true);
+            Assert.AreEqual("/v2/config/feature_flags/app_bits_upload", TestUtil.ToTestableString(obj.Url), true);
         }
 
         [TestMethod]
@@ -200,24 +218,6 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
             Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetRouteCreationFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""route_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/route_creation""
-}";
-
-            GetRouteCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetRouteCreationFeatureFlagResponse>(json);
-
-            Assert.AreEqual("route_creation", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/route_creation", TestUtil.ToTestableString(obj.Url), true);
         }
     }
 }

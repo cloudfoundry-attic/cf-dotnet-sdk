@@ -32,16 +32,16 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             string json = @"{
   ""name"": ""exmaple.com"",
   ""wildcard"": true,
-  ""owning_organization_guid"": ""87dcf00c-0a3c-4f1c-abb0-9a64934f2afe""
+  ""owning_organization_guid"": ""ceee56e0-dadc-4d1d-b188-6116eb0deb79""
 }";
 
             CreatesDomainOwnedByGivenOrganizationDeprecatedRequest request = new CreatesDomainOwnedByGivenOrganizationDeprecatedRequest();
 
             request.Name = "exmaple.com";
             request.Wildcard = true;
-            request.OwningOrganizationGuid = new Guid("87dcf00c-0a3c-4f1c-abb0-9a64934f2afe");
+            request.OwningOrganizationGuid = new Guid("ceee56e0-dadc-4d1d-b188-6116eb0deb79");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestCreatesSharedDomainDeprecatedRequest()
@@ -56,7 +56,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Name = "example.com";
             request.Wildcard = true;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }
