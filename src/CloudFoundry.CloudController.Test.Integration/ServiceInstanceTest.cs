@@ -36,13 +36,13 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
             var newOrg = client.Organizations.CreateOrganization(org).Result;
-            orgGuid = new Guid(newOrg.EntityMetadata.Guid);
+            orgGuid = newOrg.EntityMetadata.Guid;
 
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
             var newSpace = client.Spaces.CreateSpace(spc).Result;
-            spaceGuid = new Guid(newSpace.EntityMetadata.Guid);
+            spaceGuid = newSpace.EntityMetadata.Guid;
         }
 
         [ClassCleanup]
@@ -57,10 +57,10 @@ namespace CloudFoundry.CloudController.Test.Integration
         public void ServiceInstance_test()
         {
             var services = client.Services.ListAllServices().Result;
-            Guid serviceGuid = new Guid(services.FirstOrDefault(s => s.Label == "mysql").EntityMetadata.Guid);
+            Guid serviceGuid = services.FirstOrDefault(s => s.Label == "mysql").EntityMetadata.Guid;
 
             var plans = client.Services.ListAllServicePlansForService(serviceGuid).Result;
-            Guid servicePlanGuid = new Guid(plans.FirstOrDefault().EntityMetadata.Guid);
+            Guid servicePlanGuid = plans.FirstOrDefault().EntityMetadata.Guid;
             CreateServiceInstanceResponse newService = null;
             RetrieveServiceInstanceResponse readService = null;
             UpdateServiceInstanceResponse updatedService = null;
@@ -83,7 +83,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                readService = client.ServiceInstances.RetrieveServiceInstance(new Guid(newService.EntityMetadata.Guid)).Result;
+                readService = client.ServiceInstances.RetrieveServiceInstance(newService.EntityMetadata.Guid).Result;
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             updateService.Name = "svc" + Guid.NewGuid().ToString().Substring(0, 3);
             try
             {
-                updatedService = client.ServiceInstances.UpdateServiceInstance(new Guid(newService.EntityMetadata.Guid), updateService).Result;
+                updatedService = client.ServiceInstances.UpdateServiceInstance(newService.EntityMetadata.Guid, updateService).Result;
             }
             catch (Exception ex)
             {
@@ -106,7 +106,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                client.ServiceInstances.DeleteServiceInstance(new Guid(newService.EntityMetadata.Guid)).Wait();
+                client.ServiceInstances.DeleteServiceInstance(newService.EntityMetadata.Guid).Wait();
             }
             catch (Exception ex)
             {

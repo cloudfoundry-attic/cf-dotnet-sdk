@@ -93,10 +93,10 @@
             return this.GetEnumerator();
         }
 
-        private async Task<PagedResponseCollection<T>> Get(string url)
+        private async Task<PagedResponseCollection<T>> Get(Uri url)
         {
             var client = this.GetHttpClient();
-            client.Uri = new Uri(url);
+            client.Uri = url;
             client.Method = HttpMethod.Get;
             client.Headers.Add(await this.BuildAuthenticationHeader());
             var response = await client.SendAsync();

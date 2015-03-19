@@ -368,6 +368,7 @@
     <Compile Include="Client\UserProvidedServiceInstances.cs" />
     <Compile Include="Client\Users.cs" />
     <Compile Include="CloudfoundryClient.cs" />
+    <Compile Include="EntityGuid.cs" />
     <Compile Include="Interfaces\IResponse.cs" />
     <Compile Include="Metadata.cs" />
     <Compile Include="PageProperties.cs" />

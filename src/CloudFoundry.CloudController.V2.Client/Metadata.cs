@@ -1,5 +1,7 @@
 ﻿namespace CloudFoundry.CloudController.V2
 {
+    using System;
+    using CloudFoundry.CloudController.V2.Client;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -10,39 +12,39 @@
     public class Metadata
     {
         /// <summary>
-        /// Gets or sets the unique identifier.
+        /// Gets the unique identifier of the enitity.
         /// </summary>
         /// <value>
-        /// The unique identifier.
+        /// A guid that is the unique identifier of the entity.
         /// </value>
         [JsonProperty("guid")]
-        public string Guid { get; set; }
+        public EntityGuid Guid { get; internal set; }
 
         /// <summary>
-        /// Gets or sets the URL.
+        /// Gets the API URL of the entity.
         /// </summary>
         /// <value>
-        /// The URL.
+        /// A Uri where you can HTTP GET the current entity.
         /// </value>
         [JsonProperty("url")]
-        public string Url { get; set; }
+        public Uri Url { get; internal set; }
 
         /// <summary>
-        /// Gets or sets the created at.
+        /// Gets the creation time of the entity.
         /// </summary>
         /// <value>
-        /// The created at.
+        /// Date/Timestamp the resource was created, e.g. “2012-01-01 13:42:00 -0700”
         /// </value>
         [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
+        public string CreatedAt { get; internal set; }
 
         /// <summary>
-        /// Gets or sets the updated at.
+        /// Gets the last update time of the entity.
         /// </summary>
         /// <value>
-        /// The updated at.
+        /// Date/Timestamp the resource was updated. null if the resource has not been updated
         /// </value>
         [JsonProperty("updated_at")]
-        public string UpdatedAt { get; set; }
+        public string UpdatedAt { get; internal set; }
     }
 }

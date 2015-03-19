@@ -37,18 +37,18 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
             var newOrg = client.Organizations.CreateOrganization(org).Result;
-            orgGuid = new Guid(newOrg.EntityMetadata.Guid);
+            orgGuid = newOrg.EntityMetadata.Guid;
 
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
             var newSpace = client.Spaces.CreateSpace(spc).Result;
-            spaceGuid = new Guid(newSpace.EntityMetadata.Guid);
+            spaceGuid = newSpace.EntityMetadata.Guid;
 
             CreatesSharedDomainDeprecatedRequest r = new CreatesSharedDomainDeprecatedRequest();
             r.Name = Guid.NewGuid().ToString() + ".com";
             r.Wildcard = true;
-            domainGuid = new Guid(client.DomainsDeprecated.CreatesSharedDomainDeprecated(r).Result.EntityMetadata.Guid);
+            domainGuid = client.DomainsDeprecated.CreatesSharedDomainDeprecated(r).Result.EntityMetadata.Guid;
         }
 
         [ClassCleanup]
@@ -84,7 +84,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                retrieveRoute = client.Routes.RetrieveRoute(new Guid(newRoute.EntityMetadata.Guid)).Result;
+                retrieveRoute = client.Routes.RetrieveRoute(newRoute.EntityMetadata.Guid).Result;
             }
             catch (Exception ex)
             {
@@ -97,7 +97,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                updatedRoute = client.Routes.UpdateRoute(new Guid(newRoute.EntityMetadata.Guid), updateR).Result;
+                updatedRoute = client.Routes.UpdateRoute(newRoute.EntityMetadata.Guid, updateR).Result;
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                client.Routes.DeleteRoute(new Guid(newRoute.EntityMetadata.Guid)).Wait();
+                client.Routes.DeleteRoute(newRoute.EntityMetadata.Guid).Wait();
             }
             catch (Exception ex)
             {

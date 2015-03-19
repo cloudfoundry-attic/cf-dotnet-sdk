@@ -35,7 +35,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
             var newOrg = client.Organizations.CreateOrganization(org).Result;
-            orgGuid = new Guid(newOrg.EntityMetadata.Guid);
+            orgGuid = newOrg.EntityMetadata.Guid;
 
         }
 
@@ -67,7 +67,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                spaceSummary = client.Spaces.GetSpaceSummary(new Guid(newSpace.EntityMetadata.Guid)).Result;
+                spaceSummary = client.Spaces.GetSpaceSummary(newSpace.EntityMetadata.Guid).Result;
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                updatedSpace = client.Spaces.UpdateSpace(new Guid(newSpace.EntityMetadata.Guid), sr).Result;
+                updatedSpace = client.Spaces.UpdateSpace(newSpace.EntityMetadata.Guid, sr).Result;
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                client.Spaces.DeleteSpace(new Guid(newSpace.EntityMetadata.Guid)).Wait();
+                client.Spaces.DeleteSpace(newSpace.EntityMetadata.Guid).Wait();
             }
             catch (Exception ex)
             {

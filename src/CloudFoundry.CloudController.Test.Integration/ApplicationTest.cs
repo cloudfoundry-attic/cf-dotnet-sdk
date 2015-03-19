@@ -34,15 +34,15 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
             var newOrg = client.Organizations.CreateOrganization(org).Result;
-            orgGuid = new Guid(newOrg.EntityMetadata.Guid);
+            orgGuid = newOrg.EntityMetadata.Guid;
 
             CreateSpaceRequest spc = new CreateSpaceRequest();
             spc.Name = "test_" + Guid.NewGuid().ToString();
             spc.OrganizationGuid = orgGuid;
             var newSpace = client.Spaces.CreateSpace(spc).Result;
-            spaceGuid = new Guid(newSpace.EntityMetadata.Guid);
+            spaceGuid = newSpace.EntityMetadata.Guid;
 
-            stackGuid = new Guid(client.Stacks.ListAllStacks().Result[0].EntityMetadata.Guid);
+            stackGuid = client.Stacks.ListAllStacks().Result[0].EntityMetadata.Guid;
         }
 
         [ClassCleanup]
@@ -80,7 +80,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                readApp = client.Apps.GetAppSummary(new Guid(newApp.EntityMetadata.Guid)).Result;
+                readApp = client.Apps.GetAppSummary(newApp.EntityMetadata.Guid).Result;
             }
             catch (Exception ex)
             {
@@ -93,7 +93,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             updateAppRequest.Memory = 512;
             try
             {
-                updateApp = client.Apps.UpdateApp(new Guid(newApp.EntityMetadata.Guid), updateAppRequest).Result;
+                updateApp = client.Apps.UpdateApp(newApp.EntityMetadata.Guid, updateAppRequest).Result;
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                client.Apps.DeleteApp(new Guid(newApp.EntityMetadata.Guid)).Wait();
+                client.Apps.DeleteApp(newApp.EntityMetadata.Guid).Wait();
             }
             catch (Exception ex)
             {

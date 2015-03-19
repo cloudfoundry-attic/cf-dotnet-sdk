@@ -35,7 +35,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateOrganizationRequest org = new CreateOrganizationRequest();
             org.Name = "test_" + Guid.NewGuid().ToString();
             var newOrg = client.Organizations.CreateOrganization(org).Result;
-            orgGuid = new Guid(newOrg.EntityMetadata.Guid);
+            orgGuid = newOrg.EntityMetadata.Guid;
         }
 
         [ClassCleanup]

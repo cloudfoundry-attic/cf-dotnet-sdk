@@ -20,7 +20,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode",
             Justification = "Populated through deserialization."),
         JsonProperty("next_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string NextUrl { get; internal set; }
+        public Uri NextUrl { get; internal set; }
 
         /// <summary>
         /// Gets the previous URL.
@@ -31,7 +31,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode",
             Justification = "Populated through deserialization."),
         JsonProperty("prev_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string PreviousUrl { get; internal set; }
+        public Uri PreviousUrl { get; internal set; }
 
         /// <summary>
         /// Gets the total pages.

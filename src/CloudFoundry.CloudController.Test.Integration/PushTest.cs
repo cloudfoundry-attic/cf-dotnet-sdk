@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             PagedResponseCollection<ListAllSpacesResponse> spaces = client.Spaces.ListAllSpaces().Result;
 
-            var spaceGuid = string.Empty;
+            Guid spaceGuid = Guid.Empty;
 
             foreach (ListAllSpacesResponse space in spaces)
             {
@@ -41,14 +41,14 @@ namespace CloudFoundry.CloudController.Test.Integration
                 break;
             }
 
-            if (spaceGuid == string.Empty)
+            if (spaceGuid == Guid.Empty)
             {
                 throw new Exception("No spaces found");
             }
 
             PagedResponseCollection<ListAllStacksResponse> stacks = client.Stacks.ListAllStacks().Result;
 
-            var winStack = string.Empty;
+            var winStack = Guid.Empty;
 
             foreach (ListAllStacksResponse stack in stacks)
             {
@@ -59,7 +59,7 @@ namespace CloudFoundry.CloudController.Test.Integration
                 }
             }
 
-            if (winStack == string.Empty)
+            if (winStack == Guid.Empty)
             {
                 throw new Exception("Could not test on a deployment without a windows 2012 stack");
             }
@@ -70,7 +70,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             {
                 if (app.Name == "simplePushTest")
                 {
-                    client.Apps.DeleteApp(new Guid(app.EntityMetadata.Guid)).Wait();
+                    client.Apps.DeleteApp(app.EntityMetadata.Guid).Wait();
                     break;
                 }
             }
@@ -79,8 +79,8 @@ namespace CloudFoundry.CloudController.Test.Integration
             apprequest.Name = "simplePushTest";
             apprequest.Memory = 512;
             apprequest.Instances = 1;
-            apprequest.SpaceGuid = new Guid(spaceGuid);
-            apprequest.StackGuid = new Guid(winStack);
+            apprequest.SpaceGuid = spaceGuid;
+            apprequest.StackGuid = winStack;
 
             client.Apps.PushProgress += Apps_PushProgress;
         }
@@ -95,7 +95,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
 
-            Guid appGuid = new Guid(app.EntityMetadata.Guid);
+            Guid appGuid = app.EntityMetadata.Guid;
 
             client.Apps.Push(appGuid, appPath, true).Wait();
 
@@ -107,18 +107,18 @@ namespace CloudFoundry.CloudController.Test.Integration
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
 
-            client.Apps.Push(new Guid(app.EntityMetadata.Guid), appPath, false).Wait();
+            client.Apps.Push(app.EntityMetadata.Guid, appPath, false).Wait();
 
             UpdateAppRequest updateApp = new UpdateAppRequest();
             updateApp.Name = app.Name;
             updateApp.Memory = 512;
             updateApp.Instances = 1;
 
-            UpdateAppResponse updatedApp = client.Apps.UpdateApp(new Guid(app.EntityMetadata.Guid), updateApp).Result;
+            UpdateAppResponse updatedApp = client.Apps.UpdateApp(app.EntityMetadata.Guid, updateApp).Result;
 
-            client.Apps.Push(new Guid(app.EntityMetadata.Guid), appPath, false).Wait();
+            client.Apps.Push(app.EntityMetadata.Guid, appPath, false).Wait();
 
-            client.Apps.DeleteApp(new Guid(app.EntityMetadata.Guid)).Wait();
+            client.Apps.DeleteApp(app.EntityMetadata.Guid).Wait();
         }
 
     }
