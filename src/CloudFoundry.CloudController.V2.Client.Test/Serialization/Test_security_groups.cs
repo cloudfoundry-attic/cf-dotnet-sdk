@@ -42,7 +42,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Rules = Array.ConvertAll(TestUtil.GetJsonArray(@"[]"), (p => (Dictionary<string, dynamic>)p));
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestCreateSecurityGroupRequest()
@@ -80,7 +80,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Rules = Array.ConvertAll(TestUtil.GetJsonArray(@"[{""protocol"":""icmp"",""destination"":""0.0.0.0/0"",""type"":0,""code"":1},{""protocol"":""tcp"",""destination"":""0.0.0.0/0"",""ports"":""2048-3000"",""log"":true},{""protocol"":""udp"",""destination"":""0.0.0.0/0"",""ports"":""53, 5353""},{""protocol"":""all"",""destination"":""0.0.0.0/0""}]"), (p => (Dictionary<string, dynamic>)p));
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

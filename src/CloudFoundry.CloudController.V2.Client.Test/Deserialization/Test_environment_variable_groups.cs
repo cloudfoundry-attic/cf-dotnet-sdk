@@ -39,14 +39,14 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
-        public void TestUpdateContentsOfRunningEnvironmentVariableGroupResponse()
+        public void TestGettingContentsOfStagingEnvironmentVariableGroupResponse()
         {
             string json = @"{
   ""abc"": 123,
   ""do-re-me"": ""far-so-la-tee""
 }";
 
-            UpdateContentsOfRunningEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupResponse>(json);
+            GettingContentsOfStagingEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(json);
 
             Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
             Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
@@ -67,14 +67,14 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
-        public void TestGettingContentsOfStagingEnvironmentVariableGroupResponse()
+        public void TestUpdateContentsOfRunningEnvironmentVariableGroupResponse()
         {
             string json = @"{
   ""abc"": 123,
   ""do-re-me"": ""far-so-la-tee""
 }";
 
-            GettingContentsOfStagingEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(json);
+            UpdateContentsOfRunningEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<UpdateContentsOfRunningEnvironmentVariableGroupResponse>(json);
 
             Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
             Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);

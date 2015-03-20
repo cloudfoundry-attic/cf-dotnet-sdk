@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
   ""name"": ""100mb"",
   ""free"": true,
   ""description"": ""Let's you put data in your database!"",
-  ""service_guid"": ""a8263069-a4f5-4c9d-b6c8-e70871c38d6d""
+  ""service_guid"": ""bccdc3a8-65ee-41c5-9dbc-1cb159c11d8b""
 }";
 
             UpdateServicePlanDeprecatedRequest request = new UpdateServicePlanDeprecatedRequest();
@@ -41,9 +41,9 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Name = "100mb";
             request.Free = true;
             request.Description = "Let's you put data in your database!";
-            request.ServiceGuid = new Guid("a8263069-a4f5-4c9d-b6c8-e70871c38d6d");
+            request.ServiceGuid = new Guid("bccdc3a8-65ee-41c5-9dbc-1cb159c11d8b");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestCreateServicePlanDeprecatedRequest()
@@ -52,7 +52,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
   ""name"": ""100mb"",
   ""free"": true,
   ""description"": ""Let's you put data in your database!"",
-  ""service_guid"": ""9d8f2095-e6de-4158-a684-b1d97db494e7""
+  ""service_guid"": ""3327f1f3-c208-4ccc-a07a-14651076234d""
 }";
 
             CreateServicePlanDeprecatedRequest request = new CreateServicePlanDeprecatedRequest();
@@ -60,9 +60,9 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Name = "100mb";
             request.Free = true;
             request.Description = "Let's you put data in your database!";
-            request.ServiceGuid = new Guid("9d8f2095-e6de-4158-a684-b1d97db494e7");
+            request.ServiceGuid = new Guid("3327f1f3-c208-4ccc-a07a-14651076234d");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

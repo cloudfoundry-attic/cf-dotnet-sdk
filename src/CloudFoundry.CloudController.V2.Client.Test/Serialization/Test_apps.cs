@@ -27,53 +27,30 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestCopyAppBitsForAppRequest()
+        {
+            string json = @"{""source_app_guid"":""21279714-235f-4aa3-bcd3-afc394682ff4""}";
+
+            CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
+
+            request.SourceAppGuid = new Guid("21279714-235f-4aa3-bcd3-afc394682ff4");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateAppRequest()
         {
             string json = @"{
   ""name"": ""my_super_app"",
-  ""space_guid"": ""99251fb0-d763-496d-94e4-a05360cad7a7""
+  ""space_guid"": ""f92ba206-57fa-48ca-a25c-94b328fecc50""
 }";
 
             CreateAppRequest request = new CreateAppRequest();
 
             request.Name = "my_super_app";
-            request.SpaceGuid = new Guid("99251fb0-d763-496d-94e4-a05360cad7a7");
+            request.SpaceGuid = new Guid("f92ba206-57fa-48ca-a25c-94b328fecc50");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
-        }
-        [TestMethod]
-        public void TestCopyAppBitsForAppRequest()
-        {
-            string json = @"{""source_app_guid"":""345e3a6d-2d6d-48a4-aa06-be671b8b2ff1""}";
-
-            CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
-
-            request.SourceAppGuid = new Guid("345e3a6d-2d6d-48a4-aa06-be671b8b2ff1");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
-        }
-        [TestMethod]
-        public void TestCreateDockerAppExperimentalRequest()
-        {
-            string json = @"{
-  ""name"": ""docker_app"",
-  ""space_guid"": ""cb2c393b-d164-45b6-ae90-bcf5522e960b"",
-  ""docker_image"": ""cloudfoundry/hello"",
-  ""environment_json"": {
-    ""DIEGO_STAGE_BETA"": ""true"",
-    ""DIEGO_RUN_BETA"": ""true""
-  }
-}";
-
-            CreateDockerAppExperimentalRequest request = new CreateDockerAppExperimentalRequest();
-
-            request.Name = "docker_app";
-            request.SpaceGuid = new Guid("cb2c393b-d164-45b6-ae90-bcf5522e960b");
-            request.DockerImage = "cloudfoundry/hello";
-            request.EnvironmentJson = TestUtil.GetJsonDictonary(@"{""DIEGO_STAGE_BETA"":""true"",""DIEGO_RUN_BETA"":""true""}");
-
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestUpdateAppRequest()
@@ -86,7 +63,30 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             request.Name = "new_name";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateDockerAppExperimentalRequest()
+        {
+            string json = @"{
+  ""name"": ""docker_app"",
+  ""space_guid"": ""d18be20e-16ae-4dad-b4d9-48b43f2e27dd"",
+  ""docker_image"": ""cloudfoundry/hello"",
+  ""environment_json"": {
+    ""DIEGO_STAGE_BETA"": ""true"",
+    ""DIEGO_RUN_BETA"": ""true""
+  }
+}";
+
+            CreateDockerAppExperimentalRequest request = new CreateDockerAppExperimentalRequest();
+
+            request.Name = "docker_app";
+            request.SpaceGuid = new Guid("d18be20e-16ae-4dad-b4d9-48b43f2e27dd");
+            request.DockerImage = "cloudfoundry/hello";
+            request.EnvironmentJson = TestUtil.GetJsonDictonary(@"{""DIEGO_STAGE_BETA"":""true"",""DIEGO_RUN_BETA"":""true""}");
+
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

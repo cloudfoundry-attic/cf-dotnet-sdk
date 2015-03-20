@@ -27,43 +27,43 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestUpdateServiceInstanceRequest()
+        {
+            string json = @"{""service_plan_guid"":""3243eb40-b584-4081-9c54-b6ec173e844d""}";
+
+            UpdateServiceInstanceRequest request = new UpdateServiceInstanceRequest();
+
+            request.ServicePlanGuid = new Guid("3243eb40-b584-4081-9c54-b6ec173e844d");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateServiceInstanceRequest()
         {
             string json = @"{
-  ""space_guid"": ""e70cfd54-f733-4afc-baa0-eec0ae4a759c"",
+  ""space_guid"": ""fca85622-3cee-478d-a265-4c2d95bb12c9"",
   ""name"": ""my-service-instance"",
-  ""service_plan_guid"": ""50c8a051-c2aa-4ec0-ba94-d0d7ca36b10d""
+  ""service_plan_guid"": ""9cbe0b12-8b77-4d49-8698-434d58ce0ee3""
 }";
 
             CreateServiceInstanceRequest request = new CreateServiceInstanceRequest();
 
-            request.SpaceGuid = new Guid("e70cfd54-f733-4afc-baa0-eec0ae4a759c");
+            request.SpaceGuid = new Guid("fca85622-3cee-478d-a265-4c2d95bb12c9");
             request.Name = "my-service-instance";
-            request.ServicePlanGuid = new Guid("50c8a051-c2aa-4ec0-ba94-d0d7ca36b10d");
+            request.ServicePlanGuid = new Guid("9cbe0b12-8b77-4d49-8698-434d58ce0ee3");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestMigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest()
         {
-            string json = @"{""service_plan_guid"":""579cdd2b-4c25-4ebc-a190-baee5559527c""}";
+            string json = @"{""service_plan_guid"":""1b48f92e-f7aa-49a3-967b-dd18d3c36405""}";
 
             MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest request = new MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest();
 
-            request.ServicePlanGuid = new Guid("579cdd2b-4c25-4ebc-a190-baee5559527c");
+            request.ServicePlanGuid = new Guid("1b48f92e-f7aa-49a3-967b-dd18d3c36405");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
-        }
-        [TestMethod]
-        public void TestUpdateServiceInstanceRequest()
-        {
-            string json = @"{""service_plan_guid"":""f0766a60-a465-46c9-828e-3fad5a19bb77""}";
-
-            UpdateServiceInstanceRequest request = new UpdateServiceInstanceRequest();
-
-            request.ServicePlanGuid = new Guid("f0766a60-a465-46c9-828e-3fad5a19bb77");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

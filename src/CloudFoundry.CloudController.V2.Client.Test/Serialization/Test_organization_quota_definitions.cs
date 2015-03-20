@@ -47,7 +47,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.MemoryLimit = 5120;
             request.InstanceMemoryLimit = 10240;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

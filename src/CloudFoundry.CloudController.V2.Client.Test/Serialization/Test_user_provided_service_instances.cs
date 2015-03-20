@@ -30,7 +30,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateUserProvidedServiceInstanceRequest()
         {
             string json = @"{
-  ""space_guid"": ""1a082ce1-8e3b-477a-9738-937c897ebc93"",
+  ""space_guid"": ""c79f9382-b875-4bb1-ac5b-ed9eb7a091de"",
   ""name"": ""my-user-provided-instance"",
   ""credentials"": {
     ""somekey"": ""somevalue""
@@ -40,13 +40,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             CreateUserProvidedServiceInstanceRequest request = new CreateUserProvidedServiceInstanceRequest();
 
-            request.SpaceGuid = new Guid("1a082ce1-8e3b-477a-9738-937c897ebc93");
+            request.SpaceGuid = new Guid("c79f9382-b875-4bb1-ac5b-ed9eb7a091de");
             request.Name = "my-user-provided-instance";
             request.Credentials = TestUtil.GetJsonDictonary(@"{""somekey"":""somevalue""}");
 
             request.SyslogDrainUrl = "syslog://example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestUpdateUserProvidedServiceInstanceRequest()
@@ -62,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Credentials = TestUtil.GetJsonDictonary(@"{""somekey"":""somenewvalue""}");
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

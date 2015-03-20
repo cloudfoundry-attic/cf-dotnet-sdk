@@ -30,27 +30,27 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestUpdateUserRequest()
         {
             string json = @"{
-  ""default_space_guid"": ""bbddd541-be00-4a79-bcda-7fdedb62945e""
+  ""default_space_guid"": ""24d28b7e-58f2-431a-8da2-91f25ca79691""
 }";
 
             UpdateUserRequest request = new UpdateUserRequest();
 
-            request.DefaultSpaceGuid = new Guid("bbddd541-be00-4a79-bcda-7fdedb62945e");
+            request.DefaultSpaceGuid = new Guid("24d28b7e-58f2-431a-8da2-91f25ca79691");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestCreateUserRequest()
         {
             string json = @"{
-  ""guid"": ""guid-10ae4a5f-c615-4d52-9d6c-3480a3a4c47e""
+  ""guid"": ""guid-60a24a1c-d336-4d76-ae8c-40f8c62a912a""
 }";
 
             CreateUserRequest request = new CreateUserRequest();
 
-            request.Guid = "guid-10ae4a5f-c615-4d52-9d6c-3480a3a4c47e";
+            request.Guid = "guid-60a24a1c-d336-4d76-ae8c-40f8c62a912a";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }

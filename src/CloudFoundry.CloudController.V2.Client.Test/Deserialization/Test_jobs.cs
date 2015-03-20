@@ -25,61 +25,6 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
-        public void TestRetrieveJobWithKnownFailureResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""117d029d-0874-470e-948d-8228ce7b199e"",
-    ""created_at"": ""2015-02-19T03:53:02+00:00"",
-    ""url"": ""/v2/jobs/117d029d-0874-470e-948d-8228ce7b199e""
-  },
-  ""entity"": {
-    ""guid"": ""117d029d-0874-470e-948d-8228ce7b199e"",
-    ""status"": ""failed"",
-    ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
-    ""error_details"": {
-      ""code"": 1001,
-      ""description"": ""Request invalid due to parse error: arbitrary string"",
-      ""error_code"": ""CF-MessageParseError""
-    }
-  }
-}";
-
-            RetrieveJobWithKnownFailureResponse obj = Utilities.DeserializeJson<RetrieveJobWithKnownFailureResponse>(json);
-
-            Assert.AreEqual("117d029d-0874-470e-948d-8228ce7b199e", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2015-02-19T03:53:02+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/117d029d-0874-470e-948d-8228ce7b199e", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("117d029d-0874-470e-948d-8228ce7b199e", TestUtil.ToTestableString(obj.Guid), true);
-            Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
-        }
-
-        [TestMethod]
-        public void TestRetrieveJobThatIsQueuedResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""44bd0164-e566-499a-b76a-f839d0a79659"",
-    ""created_at"": ""2015-02-19T03:53:02+00:00"",
-    ""url"": ""/v2/jobs/44bd0164-e566-499a-b76a-f839d0a79659""
-  },
-  ""entity"": {
-    ""guid"": ""44bd0164-e566-499a-b76a-f839d0a79659"",
-    ""status"": ""queued""
-  }
-}";
-
-            RetrieveJobThatIsQueuedResponse obj = Utilities.DeserializeJson<RetrieveJobThatIsQueuedResponse>(json);
-
-            Assert.AreEqual("44bd0164-e566-499a-b76a-f839d0a79659", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2015-02-19T03:53:02+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/44bd0164-e566-499a-b76a-f839d0a79659", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("44bd0164-e566-499a-b76a-f839d0a79659", TestUtil.ToTestableString(obj.Guid), true);
-            Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
-        }
-
-        [TestMethod]
         public void TestRetrieveJobThatWasSuccessfulResponse()
         {
             string json = @"{
@@ -104,16 +49,71 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
+        public void TestRetrieveJobWithKnownFailureResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""f3a2f6dc-6099-49b5-815d-95eac1af5366"",
+    ""created_at"": ""2015-03-19T13:19:58+00:00"",
+    ""url"": ""/v2/jobs/f3a2f6dc-6099-49b5-815d-95eac1af5366""
+  },
+  ""entity"": {
+    ""guid"": ""f3a2f6dc-6099-49b5-815d-95eac1af5366"",
+    ""status"": ""failed"",
+    ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
+    ""error_details"": {
+      ""code"": 1001,
+      ""description"": ""Request invalid due to parse error: arbitrary string"",
+      ""error_code"": ""CF-MessageParseError""
+    }
+  }
+}";
+
+            RetrieveJobWithKnownFailureResponse obj = Utilities.DeserializeJson<RetrieveJobWithKnownFailureResponse>(json);
+
+            Assert.AreEqual("f3a2f6dc-6099-49b5-815d-95eac1af5366", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2015-03-19T13:19:58+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/f3a2f6dc-6099-49b5-815d-95eac1af5366", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("f3a2f6dc-6099-49b5-815d-95eac1af5366", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
+            Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
+        }
+
+        [TestMethod]
+        public void TestRetrieveJobThatIsQueuedResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""69e7239e-5402-4c24-91ef-3a79b6816f1b"",
+    ""created_at"": ""2015-03-19T13:19:58+00:00"",
+    ""url"": ""/v2/jobs/69e7239e-5402-4c24-91ef-3a79b6816f1b""
+  },
+  ""entity"": {
+    ""guid"": ""69e7239e-5402-4c24-91ef-3a79b6816f1b"",
+    ""status"": ""queued""
+  }
+}";
+
+            RetrieveJobThatIsQueuedResponse obj = Utilities.DeserializeJson<RetrieveJobThatIsQueuedResponse>(json);
+
+            Assert.AreEqual("69e7239e-5402-4c24-91ef-3a79b6816f1b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2015-03-19T13:19:58+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/69e7239e-5402-4c24-91ef-3a79b6816f1b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("69e7239e-5402-4c24-91ef-3a79b6816f1b", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
+        }
+
+        [TestMethod]
         public void TestRetrieveJobWithUnknownFailureResponse()
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""c39dd48a-9f41-45f3-937e-2831aec52b04"",
-    ""created_at"": ""2015-02-19T03:53:02+00:00"",
-    ""url"": ""/v2/jobs/c39dd48a-9f41-45f3-937e-2831aec52b04""
+    ""guid"": ""2476bef6-8259-4f15-a93e-2e727e4e4929"",
+    ""created_at"": ""2015-03-19T13:19:58+00:00"",
+    ""url"": ""/v2/jobs/2476bef6-8259-4f15-a93e-2e727e4e4929""
   },
   ""entity"": {
-    ""guid"": ""c39dd48a-9f41-45f3-937e-2831aec52b04"",
+    ""guid"": ""2476bef6-8259-4f15-a93e-2e727e4e4929"",
     ""status"": ""failed"",
     ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
     ""error_details"": {
@@ -126,10 +126,10 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
             RetrieveJobWithUnknownFailureResponse obj = Utilities.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(json);
 
-            Assert.AreEqual("c39dd48a-9f41-45f3-937e-2831aec52b04", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2015-02-19T03:53:02+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/c39dd48a-9f41-45f3-937e-2831aec52b04", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("c39dd48a-9f41-45f3-937e-2831aec52b04", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("2476bef6-8259-4f15-a93e-2e727e4e4929", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2015-03-19T13:19:58+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/2476bef6-8259-4f15-a93e-2e727e4e4929", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2476bef6-8259-4f15-a93e-2e727e4e4929", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
             Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
         }

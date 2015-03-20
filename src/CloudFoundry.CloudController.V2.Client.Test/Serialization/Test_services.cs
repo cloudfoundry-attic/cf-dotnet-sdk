@@ -45,7 +45,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Version = "2.0";
             request.Url = "http://myql.provider.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestUpdateServiceDeprecatedRequest()
@@ -66,7 +66,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Version = "2.0";
             request.Url = "http://myql.provider.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(result, TestUtil.ToUnformatedJsonString(json));
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
     }
 }
