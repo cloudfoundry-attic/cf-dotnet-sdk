@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.CloudController.V2.Interfaces
+﻿namespace CloudFoundry.CloudController.V2.Client.Interfaces
 {
     /// <summary>
     ///  Represent a part of the response message.

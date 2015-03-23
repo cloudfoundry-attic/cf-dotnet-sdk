@@ -1,6 +1,6 @@
-﻿using CloudFoundry.CloudController.V2;
 using CloudFoundry.Logyard.Client;
 using CloudFoundry.UAA;
+using CloudFoundry.CloudController.V2.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

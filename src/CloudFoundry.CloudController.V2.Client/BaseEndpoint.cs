@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2.Client
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.Common.Http;
-    using CloudFoundry.CloudController.V2.Interfaces;
+    using CloudFoundry.CloudController.V2.Client.Interfaces;
     using CloudFoundry.Common.Http;
     using CloudFoundry.UAA;
 

@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2.Client
 {
     using System.Collections.Generic;
     using System.Globalization;

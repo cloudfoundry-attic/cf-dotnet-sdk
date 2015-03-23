@@ -1,11 +1,10 @@
-namespace CloudFoundry.CloudController.V2
+namespace CloudFoundry.CloudController.V2.Client
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Http;
-    using CloudFoundry.CloudController.V2.Client;
-    using CloudFoundry.CloudController.V2.Interfaces;
+    using CloudFoundry.CloudController.V2.Client.Interfaces;
     using CloudFoundry.UAA;
 
     /// <summary>
