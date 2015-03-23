@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthTest.cs" />
+    <Compile Include="CancelTest.cs" />
     <Compile Include="InfoTest.cs" />
     <Compile Include="OrgTest.cs" />
     <Compile Include="RouteTest.cs" />
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj">
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>
       <Name>CloudFoundry.CloudController.V2.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.Logyard.Client.Net45\CloudFoundry.Logyard.Client.Net45.csproj">
+      <Project>{d4ad10d5-f1ca-41ff-95dc-57789cc3a062}</Project>
+      <Name>CloudFoundry.Logyard.Client.Net45</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj">
       <Project>{7452b0b7-b48b-4017-9c3b-1092378a1a20}</Project>

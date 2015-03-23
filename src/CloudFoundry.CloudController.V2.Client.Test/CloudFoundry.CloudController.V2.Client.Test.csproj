@@ -50,6 +50,9 @@
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\System.Net.Http.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
@@ -59,6 +62,12 @@
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="Thinktecture.IdentityModel.Client.Net45">
+      <HintPath>..\..\packages\Thinktecture.IdentityModel.Client.4.0.0\lib\net45\Thinktecture.IdentityModel.Client.Net45.dll</HintPath>
+    </Reference>
+    <Reference Include="Thinktecture.IdentityModel.Client.Net45.1.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\Thinktecture.IdentityModel.Client.Net45.1.0.0.0.Fakes.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -109,6 +118,7 @@
     <Compile Include="Deserialization\Test_user_provided_service_instances.cs" />
     <Compile Include="Exceptions\Test_CloudFoundryException.cs" />
     <Compile Include="Loggregator\TailFakeTests.cs" />
+    <Compile Include="MockClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
     <Compile Include="Serialization\Test_app_usage_events.cs" />
@@ -166,6 +176,8 @@
   <ItemGroup>
     <Fakes Include="Fakes\CloudFoundry.Loggregator.Client.fakes" />
     <None Include="app.config" />
+    <Fakes Include="Fakes\System.Net.Http.fakes" />
+    <Fakes Include="Fakes\Thinktecture.IdentityModel.Client.Net45.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
