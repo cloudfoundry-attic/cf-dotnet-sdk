@@ -1,11 +1,11 @@
-﻿namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2.Client
 {
     using System;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using CloudFoundry.CloudController.Common.Exceptions;
-    using CloudFoundry.CloudController.V2.Interfaces;
+    using CloudFoundry.CloudController.V2.Client.Interfaces;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 

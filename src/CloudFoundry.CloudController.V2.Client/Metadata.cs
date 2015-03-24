@@ -1,7 +1,6 @@
-﻿namespace CloudFoundry.CloudController.V2
+﻿namespace CloudFoundry.CloudController.V2.Client
 {
     using System;
-    using CloudFoundry.CloudController.V2.Client;
     using Newtonsoft.Json;
 
     /// <summary>
