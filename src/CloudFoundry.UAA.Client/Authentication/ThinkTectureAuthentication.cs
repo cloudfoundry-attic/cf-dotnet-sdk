@@ -101,7 +101,7 @@
                 throw new AuthenticationException(
                     string.Format(
                     CultureInfo.InvariantCulture,
-                    "Unable to connect to target with the provided credentials. Error message: {0}",
+                    "Unable to connect to target. Error message: {0}",
                     tokenResponse.Error));
             }
         }
