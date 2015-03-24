@@ -180,8 +180,6 @@ namespace CloudFoundry.CloudController.V2.Client
                 httpClient.Headers.Add("Authorization", string.Format("bearer {0}", this.Client.AuthorizationToken));
 
                 httpClient.Uri = uploadUri;
-                httpClient.Headers.Add("Accept", "*/*; q=0.5, application/xml");
-                httpClient.Headers.Add("Accept-Encoding", "gzip, deflate");
                 httpClient.Method = HttpMethod.Post;
 
                 List<HttpMultipartFormData> mpd = new List<HttpMultipartFormData>();
