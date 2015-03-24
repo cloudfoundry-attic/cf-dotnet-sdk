@@ -43,25 +43,7 @@
 
             var tokenResponse = await client.RequestResourceOwnerPasswordAsync(credentials.User, credentials.Password);
 
-            if (tokenResponse.IsHttpError)
-            {
-                throw new AuthenticationException(
-                    string.Format(
-                    CultureInfo.InvariantCulture,
-                    "Unable to connect to target. HTTPError: {0}. HTTPErrorCode",
-                    tokenResponse.HttpErrorReason,
-                    tokenResponse.HttpErrorStatusCode));
-            }
-
-            if (tokenResponse.IsError)
-            {
-                throw new AuthenticationException(
-                    string.Format(
-                    CultureInfo.InvariantCulture,
-                    "Unable to connect to target with the provided credentials. Error message: {0}",
-                    tokenResponse.Error,
-                    tokenResponse.HttpErrorReason));
-            }
+            CheckTokenResponseError(tokenResponse);
 
             this.token.AccessToken = tokenResponse.AccessToken;
             this.token.RefreshToken = tokenResponse.RefreshToken;
@@ -102,11 +84,34 @@
             return this.token;
         }
 
+        private static void CheckTokenResponseError(TokenResponse tokenResponse)
+        {
+            if (tokenResponse.IsHttpError)
+            {
+                throw new AuthenticationException(
+                    string.Format(
+                    CultureInfo.InvariantCulture,
+                    "Unable to connect to target. HTTP Error: {0}. HTTP Error Code {1}",
+                    tokenResponse.HttpErrorReason,
+                    tokenResponse.HttpErrorStatusCode));
+            }
+
+            if (tokenResponse.IsError)
+            {
+                throw new AuthenticationException(
+                    string.Format(
+                    CultureInfo.InvariantCulture,
+                    "Unable to connect to target with the provided credentials. Error message: {0}",
+                    tokenResponse.Error));
+            }
+        }
+
         private async Task<TokenResponse> RefreshToken(string refreshToken)
         {
             var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
-            var response = await client.RequestRefreshTokenAsync(refreshToken);
-            return response;
+            var tokenResponse = await client.RequestRefreshTokenAsync(refreshToken);
+            CheckTokenResponseError(tokenResponse);
+            return tokenResponse;
         }
     }
 }
