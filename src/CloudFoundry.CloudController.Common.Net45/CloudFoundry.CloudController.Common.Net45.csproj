@@ -84,6 +84,9 @@
     <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleHttpClient.cs">
       <Link>Http\SimpleHttpClient.cs</Link>
     </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleHttpRedirectHandler.cs">
+      <Link>Http\SimpleHttpRedirectHandler.cs</Link>
+    </Compile>
     <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleHttpResponse.cs">
       <Link>Http\SimpleHttpResponse.cs</Link>
     </Compile>

@@ -105,7 +105,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             catch (AggregateException aggEx)
             {
                 Assert.IsInstanceOfType(aggEx.InnerException, typeof(AuthenticationException));
-                Assert.IsTrue(aggEx.InnerException.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
+                Assert.IsTrue(aggEx.InnerException.Message.Contains("invalid_grant"));
             }
             catch (Exception ex)
             {
@@ -127,7 +127,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             catch (AggregateException aggEx)
             {
                 Assert.IsInstanceOfType(aggEx.InnerException, typeof(AuthenticationException));
-                Assert.IsTrue(aggEx.InnerException.Message.Contains("Unable to connect to target with the provided credentials. Error message: invalid_grant"));
+                Assert.IsTrue(aggEx.InnerException.Message.Contains("invalid_grant"));
             }
             catch (Exception ex)
             {
