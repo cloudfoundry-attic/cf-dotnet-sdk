@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading;
@@ -15,7 +16,7 @@
     {
         private static readonly TimeSpan DefaultTimeout = new TimeSpan(0, 0, 30);
         private readonly HttpClient client = null;
-        private readonly HttpClientHandler handler = null;
+        private readonly SimpleHttpRedirectHandler handler = null;
         private CancellationToken cancellationToken = CancellationToken.None;
         private bool disposed = false;
 
@@ -37,7 +38,8 @@
         {
             try
             {
-                this.handler = new HttpClientHandler();
+                this.handler = new SimpleHttpRedirectHandler();
+
                 this.client = new HttpClient(this.handler);
                 this.client.Timeout = timeout;
 
@@ -168,9 +170,7 @@
                     content = result.Content;
                 }
 
-                var retval = new SimpleHttpResponse(content, headers, result.StatusCode);
-
-                return retval;
+                return new SimpleHttpResponse(content, headers, result.StatusCode);
             }
             catch (Exception ex)
             {
