@@ -45,6 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractInfoEndpoint : BaseEndpoint
     {
+        /// <summary>
+        /// Initializes the class
+        /// </summary>
+        protected AbstractInfoEndpoint()
+        {
+        }
 
         /// <summary>
         /// Get Info
