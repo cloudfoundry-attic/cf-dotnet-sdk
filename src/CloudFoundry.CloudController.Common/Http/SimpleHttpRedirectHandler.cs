@@ -55,14 +55,7 @@
                       case System.Net.HttpStatusCode.RedirectMethod:
                       case System.Net.HttpStatusCode.TemporaryRedirect:
                           {
-                              if (this.MaxRedirects == 0)
-                              {
-                                  throw new InvalidOperationException("Maximum redirect count reached.");
-                              }
-
                               request.RequestUri = new System.Uri(response.Headers.GetValues("Location").First());
-
-                              this.MaxRedirects--;
                           }
 
                           break;
