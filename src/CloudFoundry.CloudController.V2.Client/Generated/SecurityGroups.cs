@@ -45,6 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractSecurityGroupsEndpoint : BaseEndpoint
     {
+        /// <summary>
+        /// Initializes the class
+        /// </summary>
+        protected AbstractSecurityGroupsEndpoint()
+        {
+        }
 
         /// <summary>
         /// Retrieve a Particular Security Group

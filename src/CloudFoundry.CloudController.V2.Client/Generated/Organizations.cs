@@ -45,6 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractOrganizationsEndpoint : BaseEndpoint
     {
+        /// <summary>
+        /// Initializes the class
+        /// </summary>
+        protected AbstractOrganizationsEndpoint()
+        {
+        }
 
         /// <summary>
         /// List all Billing Managers for the Organization

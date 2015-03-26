@@ -45,6 +45,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractEnvironmentVariableGroupsEndpoint : BaseEndpoint
     {
+        /// <summary>
+        /// Initializes the class
+        /// </summary>
+        protected AbstractEnvironmentVariableGroupsEndpoint()
+        {
+        }
 
         /// <summary>
         /// Getting the contents of the running environment variable group
