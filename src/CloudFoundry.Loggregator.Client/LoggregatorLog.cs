@@ -9,7 +9,6 @@
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.Common.PushTools;
-    using CloudFoundry.Common.Http;
 
     /// <summary>
     /// This is the Loggregator client. To use it, you need a Loggregator endpoint and an authorization token from UAA.
@@ -67,7 +66,7 @@
         /// </summary>
         public Uri LoggregatorEndpoint
         {
-            get; 
+            get;
             set;
         }
 
@@ -110,7 +109,7 @@
                 this.webSocket = null;
             }
         }
-            
+
         /// <summary>
         /// Starts tailing logs from Loggregator for the specified app.
         /// </summary>
@@ -129,12 +128,12 @@
             }
 
             UriBuilder appLogUri = new UriBuilder(this.LoggregatorEndpoint);
-            
+
             appLogUri.Path = "tail/";
             appLogUri.Query = string.Format(CultureInfo.InvariantCulture, "app={0}", appGuid);
 
             this.webSocket = new LoggregatorWebSocket();
-            
+
             this.webSocket.DataReceived += this.WebSocketMessageReceived;
             this.webSocket.ErrorReceived += this.WebSocketError;
             this.webSocket.StreamOpened += this.WebSocketOpened;

@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
     using System;
     using System.Collections.Generic;
@@ -46,23 +46,23 @@
 
             for (int i = 0; i < this.maxRedirects; i++)
             {
-                  response = await base.SendAsync(request, cancellationToken);
+                response = await base.SendAsync(request, cancellationToken);
 
-                  switch (response.StatusCode)
-                  {
-                      case System.Net.HttpStatusCode.Moved:
-                      case System.Net.HttpStatusCode.Redirect:
-                      case System.Net.HttpStatusCode.RedirectMethod:
-                      case System.Net.HttpStatusCode.TemporaryRedirect:
-                          {
-                              request.RequestUri = new System.Uri(response.Headers.GetValues("Location").First());
-                          }
+                switch (response.StatusCode)
+                {
+                    case System.Net.HttpStatusCode.Moved:
+                    case System.Net.HttpStatusCode.Redirect:
+                    case System.Net.HttpStatusCode.RedirectMethod:
+                    case System.Net.HttpStatusCode.TemporaryRedirect:
+                        {
+                            request.RequestUri = new System.Uri(response.Headers.GetValues("Location").First());
+                        }
 
-                          break;
+                        break;
 
-                      default:
-                          return response;
-                  }
+                    default:
+                        return response;
+                }
             }
 
             return response;
