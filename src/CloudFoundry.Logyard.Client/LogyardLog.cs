@@ -223,21 +223,10 @@
             Message ms = JsonUtilities.DeserializeLogyardMessage(e.Data);
             if (!string.IsNullOrEmpty(ms.Error))
             {
-                if (ms.Error.Contains("CF-InvalidAuthToken"))
+                if (this.ErrorReceived != null)
                 {
-                    if (this.ErrorReceived != null)
-                    {
-                        var error = new LogyardException(ms.Error);
-                        this.ErrorReceived(this, new ErrorEventArgs() { Error = error });
-                    }
-                }
-                else
-                {
-                    if (this.ErrorReceived != null)
-                    {
-                        var error = new LogyardException(ms.Error);
-                        this.ErrorReceived(this, new ErrorEventArgs() { Error = error });
-                    }
+                    var error = new LogyardException(ms.Error);
+                    this.ErrorReceived(this, new ErrorEventArgs() { Error = error });
                 }
             }
             else
