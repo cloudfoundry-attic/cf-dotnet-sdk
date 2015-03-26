@@ -8,7 +8,6 @@
     using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.V2.Client.Interfaces;
-    using CloudFoundry.Common.Http;
     using CloudFoundry.UAA;
 
     /// <summary>

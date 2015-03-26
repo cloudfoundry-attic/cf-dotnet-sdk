@@ -11,7 +11,6 @@ namespace CloudFoundry.CloudController.V2.Client
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.Common.PushTools;
     using CloudFoundry.CloudController.V2.Client.Data;
-    using CloudFoundry.Common.Http;
     using Newtonsoft.Json;
 
     public partial class AppsEndpoint
@@ -85,7 +84,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 this.TriggerPushProgressEvent(usedSteps, "Uploading zip package ...");
                 UriBuilder uploadEndpoint = new UriBuilder(this.Client.CloudTarget.AbsoluteUri);
                 uploadEndpoint.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", appGuid.ToString());
-                
+
                 List<FileFingerprint> fingerPrintList = fingerprints.Values.SelectMany(list => list).ToList();
 
                 string serializedFingerprints = JsonConvert.SerializeObject(fingerPrintList);

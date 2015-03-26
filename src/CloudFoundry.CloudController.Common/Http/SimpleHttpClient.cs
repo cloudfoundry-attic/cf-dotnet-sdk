@@ -1,4 +1,4 @@
-﻿namespace CloudFoundry.Common.Http
+﻿namespace CloudFoundry.CloudController.Common.Http
 {
     using System;
     using System.Collections.Generic;
