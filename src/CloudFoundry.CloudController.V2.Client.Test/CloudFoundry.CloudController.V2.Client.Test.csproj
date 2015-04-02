@@ -41,6 +41,9 @@
     <Reference Include="CloudFoundry.Loggregator.Client.Fakes">
       <HintPath>FakesAssemblies\CloudFoundry.Loggregator.Client.Fakes.dll</HintPath>
     </Reference>
+    <Reference Include="CloudFoundry.Logyard.Client.Fakes">
+      <HintPath>FakesAssemblies\CloudFoundry.Logyard.Client.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -150,6 +153,8 @@
     <Compile Include="Fake\Test_users.cs" />
     <Compile Include="Fake\Test_user_provided_service_instances.cs" />
     <Compile Include="Loggregator\TailFakeTests.cs" />
+    <Compile Include="Logyard\RecentFakeTests.cs" />
+    <Compile Include="Logyard\TailFakeTests.cs" />
     <Compile Include="MockClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
@@ -200,6 +205,10 @@
       <Project>{7cca6c93-284b-47a0-a499-eb4dab6d3b65}</Project>
       <Name>CloudFoundry.Loggregator.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.Logyard.Client\CloudFoundry.Logyard.Client.csproj">
+      <Project>{97ab7347-3c3e-4eaa-8063-dfbdb3ac0d25}</Project>
+      <Name>CloudFoundry.Logyard.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj">
       <Project>{7452b0b7-b48b-4017-9c3b-1092378a1a20}</Project>
       <Name>CloudFoundry.UAA.Client</Name>
@@ -210,6 +219,7 @@
     <None Include="app.config" />
     <Fakes Include="Fakes\System.Net.Http.fakes" />
     <Fakes Include="Fakes\Thinktecture.IdentityModel.Client.Net45.fakes" />
+    <Fakes Include="Fakes\CloudFoundry.Logyard.Client.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
