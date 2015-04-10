@@ -73,7 +73,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
                 var cfClient = clients.CreateCloudFoundryClient();
 
-                string name = Guid.NewGuid().ToString();
+                dynamic name = null;
 
                 SetFeatureFlagRequest value = new SetFeatureFlagRequest();
 

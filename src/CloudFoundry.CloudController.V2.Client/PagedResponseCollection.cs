@@ -100,7 +100,7 @@
             client.Method = HttpMethod.Get;
             client.Headers.Add(await this.BuildAuthenticationHeader());
             var response = await client.SendAsync();
-            return Utilities.DeserializePage<T>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<T>(await response.ReadContentAsStringAsync(), this.Client);
         }
     }
 }

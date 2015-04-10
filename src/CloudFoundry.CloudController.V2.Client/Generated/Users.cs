@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal UsersEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -111,7 +111,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllManagedSpacesForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllManagedSpacesForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllManagedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllManagedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllOrganizationsForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllBillingManagedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllBillingManagedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllUsersResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllUsersResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAuditedSpacesForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAuditedSpacesForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -490,7 +490,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllSpacesForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -570,7 +570,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAuditedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAuditedOrganizationsForUserResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>

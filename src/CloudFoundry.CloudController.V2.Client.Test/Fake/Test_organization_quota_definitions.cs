@@ -40,9 +40,9 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""7cd3cbff-6727-4f9d-a27a-f317cad11a40"",
-        ""url"": ""/v2/quota_definitions/7cd3cbff-6727-4f9d-a27a-f317cad11a40"",
-        ""created_at"": ""2015-03-25T13:48:37+00:00"",
+        ""guid"": ""fe2965d4-1dc0-451e-969d-5ba87b45ba4f"",
+        ""url"": ""/v2/quota_definitions/fe2965d4-1dc0-451e-969d-5ba87b45ba4f"",
+        ""created_at"": ""2015-04-10T19:41:57+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -69,9 +69,9 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj.Properties.TotalPages), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.Properties.PreviousUrl), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.Properties.NextUrl), true);
-                Assert.AreEqual("7cd3cbff-6727-4f9d-a27a-f317cad11a40", TestUtil.ToTestableString(obj[0].EntityMetadata.Guid), true);
-                Assert.AreEqual("/v2/quota_definitions/7cd3cbff-6727-4f9d-a27a-f317cad11a40", TestUtil.ToTestableString(obj[0].EntityMetadata.Url), true);
-                Assert.AreEqual("2015-03-25T13:48:37+00:00", TestUtil.ToTestableString(obj[0].EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("fe2965d4-1dc0-451e-969d-5ba87b45ba4f", TestUtil.ToTestableString(obj[0].EntityMetadata.Guid), true);
+                Assert.AreEqual("/v2/quota_definitions/fe2965d4-1dc0-451e-969d-5ba87b45ba4f", TestUtil.ToTestableString(obj[0].EntityMetadata.Url), true);
+                Assert.AreEqual("2015-04-10T19:41:57+00:00", TestUtil.ToTestableString(obj[0].EntityMetadata.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].EntityMetadata.UpdatedAt), true);
                 Assert.AreEqual("default", TestUtil.ToTestableString(obj[0].Name), true);
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj[0].NonBasicServicesAllowed), true);
@@ -111,13 +111,13 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"{
   ""metadata"": {
-    ""guid"": ""e5be09dd-0962-403b-9173-a84a815976fa"",
-    ""url"": ""/v2/quota_definitions/e5be09dd-0962-403b-9173-a84a815976fa"",
-    ""created_at"": ""2015-03-25T13:48:38+00:00"",
-    ""updated_at"": ""2015-03-25T13:48:38+00:00""
+    ""guid"": ""002fc31a-2cb2-4aeb-b61f-2a0df360c579"",
+    ""url"": ""/v2/quota_definitions/002fc31a-2cb2-4aeb-b61f-2a0df360c579"",
+    ""created_at"": ""2015-04-10T19:42:10+00:00"",
+    ""updated_at"": ""2015-04-10T19:42:10+00:00""
   },
   ""entity"": {
-    ""name"": ""name-3"",
+    ""name"": ""name-1933"",
     ""non_basic_services_allowed"": true,
     ""total_services"": 60,
     ""total_routes"": 1000,
@@ -139,11 +139,11 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.OrganizationQuotaDefinitions.UpdateOrganizationQuotaDefinition(guid, value).Result;
 
 
-                Assert.AreEqual("e5be09dd-0962-403b-9173-a84a815976fa", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("/v2/quota_definitions/e5be09dd-0962-403b-9173-a84a815976fa", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("2015-03-25T13:48:38+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-                Assert.AreEqual("2015-03-25T13:48:38+00:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-                Assert.AreEqual("name-3", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("002fc31a-2cb2-4aeb-b61f-2a0df360c579", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("/v2/quota_definitions/002fc31a-2cb2-4aeb-b61f-2a0df360c579", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("2015-04-10T19:42:10+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("2015-04-10T19:42:10+00:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+                Assert.AreEqual("name-1933", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
                 Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
                 Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
@@ -163,9 +163,9 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"{
   ""metadata"": {
-    ""guid"": ""c1f02782-c04c-4054-b18c-db8fc10b1cc5"",
-    ""url"": ""/v2/quota_definitions/c1f02782-c04c-4054-b18c-db8fc10b1cc5"",
-    ""created_at"": ""2015-03-25T13:48:38+00:00"",
+    ""guid"": ""44de6001-5f62-4ed6-ba38-b0fd88c4893e"",
+    ""url"": ""/v2/quota_definitions/44de6001-5f62-4ed6-ba38-b0fd88c4893e"",
+    ""created_at"": ""2015-04-10T19:42:10+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
@@ -189,9 +189,9 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.OrganizationQuotaDefinitions.CreateOrganizationQuotaDefinition(value).Result;
 
 
-                Assert.AreEqual("c1f02782-c04c-4054-b18c-db8fc10b1cc5", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("/v2/quota_definitions/c1f02782-c04c-4054-b18c-db8fc10b1cc5", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("2015-03-25T13:48:38+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("44de6001-5f62-4ed6-ba38-b0fd88c4893e", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("/v2/quota_definitions/44de6001-5f62-4ed6-ba38-b0fd88c4893e", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("2015-04-10T19:42:10+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
                 Assert.AreEqual("gold_quota", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
@@ -213,13 +213,13 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"{
   ""metadata"": {
-    ""guid"": ""558e43a6-f5b3-40ad-8185-ee16fceb52ca"",
-    ""url"": ""/v2/quota_definitions/558e43a6-f5b3-40ad-8185-ee16fceb52ca"",
-    ""created_at"": ""2015-03-25T13:48:38+00:00"",
+    ""guid"": ""c35f80b8-e9b4-4fed-b2d6-1eb12e3c19a3"",
+    ""url"": ""/v2/quota_definitions/c35f80b8-e9b4-4fed-b2d6-1eb12e3c19a3"",
+    ""created_at"": ""2015-04-10T19:42:10+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-2"",
+    ""name"": ""name-1935"",
     ""non_basic_services_allowed"": true,
     ""total_services"": 60,
     ""total_routes"": 1000,
@@ -239,11 +239,11 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.OrganizationQuotaDefinitions.RetrieveOrganizationQuotaDefinition(guid).Result;
 
 
-                Assert.AreEqual("558e43a6-f5b3-40ad-8185-ee16fceb52ca", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("/v2/quota_definitions/558e43a6-f5b3-40ad-8185-ee16fceb52ca", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("2015-03-25T13:48:38+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("c35f80b8-e9b4-4fed-b2d6-1eb12e3c19a3", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("/v2/quota_definitions/c35f80b8-e9b4-4fed-b2d6-1eb12e3c19a3", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("2015-04-10T19:42:10+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-                Assert.AreEqual("name-2", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("name-1935", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
                 Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
                 Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);

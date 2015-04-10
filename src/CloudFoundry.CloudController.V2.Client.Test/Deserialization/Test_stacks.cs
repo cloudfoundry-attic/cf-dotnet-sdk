@@ -30,9 +30,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""5fbf8f30-5c7f-4efa-bb1c-dc523d309081"",
-    ""url"": ""/v2/stacks/5fbf8f30-5c7f-4efa-bb1c-dc523d309081"",
-    ""created_at"": ""2015-03-23T16:53:10+00:00"",
+    ""guid"": ""7b22d965-fbd7-4068-9cae-371cce502503"",
+    ""url"": ""/v2/stacks/7b22d965-fbd7-4068-9cae-371cce502503"",
+    ""created_at"": ""2015-04-10T19:41:57+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
@@ -43,9 +43,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
             RetrieveStackResponse obj = Utilities.DeserializeJson<RetrieveStackResponse>(json);
 
-            Assert.AreEqual("5fbf8f30-5c7f-4efa-bb1c-dc523d309081", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/5fbf8f30-5c7f-4efa-bb1c-dc523d309081", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-03-23T16:53:10+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("7b22d965-fbd7-4068-9cae-371cce502503", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/7b22d965-fbd7-4068-9cae-371cce502503", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-10T19:41:57+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("lucid64", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("Ubuntu 10.04 on x86-64", TestUtil.ToTestableString(obj.Description), true);
@@ -62,9 +62,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""5fbf8f30-5c7f-4efa-bb1c-dc523d309081"",
-        ""url"": ""/v2/stacks/5fbf8f30-5c7f-4efa-bb1c-dc523d309081"",
-        ""created_at"": ""2015-03-23T16:53:10+00:00"",
+        ""guid"": ""7b22d965-fbd7-4068-9cae-371cce502503"",
+        ""url"": ""/v2/stacks/7b22d965-fbd7-4068-9cae-371cce502503"",
+        ""created_at"": ""2015-04-10T19:41:57+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -74,9 +74,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     },
     {
       ""metadata"": {
-        ""guid"": ""eeb0c8be-ee29-430f-b537-ab2af20f5951"",
-        ""url"": ""/v2/stacks/eeb0c8be-ee29-430f-b537-ab2af20f5951"",
-        ""created_at"": ""2015-03-23T16:53:12+00:00"",
+        ""guid"": ""fa76cbd6-100c-4b19-ba46-9795143d5d75"",
+        ""url"": ""/v2/stacks/fa76cbd6-100c-4b19-ba46-9795143d5d75"",
+        ""created_at"": ""2015-04-10T19:41:57+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -86,9 +86,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     },
     {
       ""metadata"": {
-        ""guid"": ""47589688-ef31-4d21-8713-d8879a5db8ce"",
-        ""url"": ""/v2/stacks/47589688-ef31-4d21-8713-d8879a5db8ce"",
-        ""created_at"": ""2015-03-23T16:53:12+00:00"",
+        ""guid"": ""a68fd1df-a238-412a-8be4-aa39d4aa924d"",
+        ""url"": ""/v2/stacks/a68fd1df-a238-412a-8be4-aa39d4aa924d"",
+        ""created_at"": ""2015-04-10T19:41:57+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -105,21 +105,21 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("5fbf8f30-5c7f-4efa-bb1c-dc523d309081", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/5fbf8f30-5c7f-4efa-bb1c-dc523d309081", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-03-23T16:53:10+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("7b22d965-fbd7-4068-9cae-371cce502503", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/7b22d965-fbd7-4068-9cae-371cce502503", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-10T19:41:57+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("lucid64", TestUtil.ToTestableString(page[0].Name), true);
             Assert.AreEqual("Ubuntu 10.04 on x86-64", TestUtil.ToTestableString(page[0].Description), true);
-            Assert.AreEqual("eeb0c8be-ee29-430f-b537-ab2af20f5951", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/eeb0c8be-ee29-430f-b537-ab2af20f5951", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-03-23T16:53:12+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("fa76cbd6-100c-4b19-ba46-9795143d5d75", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/fa76cbd6-100c-4b19-ba46-9795143d5d75", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-10T19:41:57+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("default-stack-name", TestUtil.ToTestableString(page[1].Name), true);
             Assert.AreEqual("default-stack-description", TestUtil.ToTestableString(page[1].Description), true);
-            Assert.AreEqual("47589688-ef31-4d21-8713-d8879a5db8ce", TestUtil.ToTestableString(page[2].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/47589688-ef31-4d21-8713-d8879a5db8ce", TestUtil.ToTestableString(page[2].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-03-23T16:53:12+00:00", TestUtil.ToTestableString(page[2].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("a68fd1df-a238-412a-8be4-aa39d4aa924d", TestUtil.ToTestableString(page[2].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/a68fd1df-a238-412a-8be4-aa39d4aa924d", TestUtil.ToTestableString(page[2].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-10T19:41:57+00:00", TestUtil.ToTestableString(page[2].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[2].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("cider", TestUtil.ToTestableString(page[2].Name), true);
             Assert.AreEqual("cider-description", TestUtil.ToTestableString(page[2].Description), true);

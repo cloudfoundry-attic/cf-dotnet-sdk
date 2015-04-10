@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal InfoEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 

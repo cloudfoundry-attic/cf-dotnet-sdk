@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal DomainsDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesForDomainDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllSpacesForDomainDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllDomainsDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllDomainsDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
