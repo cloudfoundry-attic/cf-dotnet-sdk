@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -53,7 +54,13 @@
         {
             if (this.Properties.NextUrl != null)
             {
-                return await this.Get(this.Properties.NextUrl);
+                return await this.Get(
+                    new Uri(
+                        string.Format(
+                        CultureInfo.InvariantCulture, 
+                        "{0}{1}", 
+                        this.Client.CloudTarget,
+                        this.Properties.NextUrl)));
             }
             else
             {
@@ -71,7 +78,13 @@
         {
             if (this.Properties.PreviousUrl != null)
             {
-                return await this.Get(this.Properties.PreviousUrl);
+                return await this.Get(
+                    new Uri(
+                        string.Format(
+                        CultureInfo.InvariantCulture,
+                        "{0}{1}",
+                        this.Client.CloudTarget,
+                        this.Properties.PreviousUrl)));
             }
             else
             {
