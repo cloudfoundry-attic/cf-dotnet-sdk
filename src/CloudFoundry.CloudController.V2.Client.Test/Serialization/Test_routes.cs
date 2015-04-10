@@ -31,14 +31,14 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateRouteRequest()
         {
             string json = @"{
-  ""domain_guid"": ""f7439ea3-3238-4f4a-8c5a-23dc829fd864"",
-  ""space_guid"": ""05666a63-3ef2-4d2a-af58-ffb99533f9f2""
+  ""domain_guid"": ""25bdf764-1b3c-4c8e-91c0-71650edd5e01"",
+  ""space_guid"": ""ff6560d1-4cbb-408e-8461-c551628f58f0""
 }";
 
             CreateRouteRequest request = new CreateRouteRequest();
 
-            request.DomainGuid = new Guid("f7439ea3-3238-4f4a-8c5a-23dc829fd864");
-            request.SpaceGuid = new Guid("05666a63-3ef2-4d2a-af58-ffb99533f9f2");
+            request.DomainGuid = new Guid("25bdf764-1b3c-4c8e-91c0-71650edd5e01");
+            request.SpaceGuid = new Guid("ff6560d1-4cbb-408e-8461-c551628f58f0");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

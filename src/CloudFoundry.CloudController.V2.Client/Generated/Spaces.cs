@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal SpacesEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -111,7 +111,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllDevelopersForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllDevelopersForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllManagersForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllManagersForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceInstancesForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServiceInstancesForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAppsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAppsForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllEventsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllEventsForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -372,7 +372,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServicesForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServicesForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSecurityGroupsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllSecurityGroupsForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllDomainsForSpaceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllDomainsForSpaceDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -488,7 +488,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllRoutesForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllRoutesForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -515,7 +515,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllSpacesResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAuditorsForSpaceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAuditorsForSpaceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
     }
 }

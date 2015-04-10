@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal ServiceauthtokensDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceAuthTokensDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServiceAuthTokensDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<FilterResultSetByLabelDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<FilterResultSetByLabelDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<FilterResultSetByProviderDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<FilterResultSetByProviderDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
     }
 }

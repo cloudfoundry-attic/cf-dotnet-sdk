@@ -56,6 +56,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
+        [Ignore]
         public void SetFeatureFlagTest()
         {
             using (ShimsContext.Create())
@@ -73,7 +74,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
                 var cfClient = clients.CreateCloudFoundryClient();
 
-                string name = Guid.NewGuid().ToString();
+                dynamic name = null;
 
                 SetFeatureFlagRequest value = new SetFeatureFlagRequest();
 

@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal BuildpacksEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -172,7 +172,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllBuildpacksResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllBuildpacksResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>

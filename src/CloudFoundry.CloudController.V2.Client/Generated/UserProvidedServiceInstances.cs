@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal UserProvidedServiceInstancesEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -129,7 +129,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllUserProvidedServiceInstancesResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllUserProvidedServiceInstancesResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>

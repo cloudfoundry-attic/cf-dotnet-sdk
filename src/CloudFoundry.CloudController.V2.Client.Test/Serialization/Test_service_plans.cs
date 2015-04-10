@@ -34,7 +34,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
   ""name"": ""100mb"",
   ""free"": true,
   ""description"": ""Let's you put data in your database!"",
-  ""service_guid"": ""1a2c2f76-11d7-48e4-b561-2cc5484ccfcd""
+  ""service_guid"": ""d7078855-9ba0-4549-bed5-4f29196ffc4f""
 }";
 
             UpdateServicePlanDeprecatedRequest request = new UpdateServicePlanDeprecatedRequest();
@@ -42,7 +42,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Name = "100mb";
             request.Free = true;
             request.Description = "Let's you put data in your database!";
-            request.ServiceGuid = new Guid("1a2c2f76-11d7-48e4-b561-2cc5484ccfcd");
+            request.ServiceGuid = new Guid("d7078855-9ba0-4549-bed5-4f29196ffc4f");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
   ""name"": ""100mb"",
   ""free"": true,
   ""description"": ""Let's you put data in your database!"",
-  ""service_guid"": ""1503705f-4201-4f81-9236-032561c686f2""
+  ""service_guid"": ""69357582-3173-4fce-aee0-db3cbd4292c2""
 }";
 
             CreateServicePlanDeprecatedRequest request = new CreateServicePlanDeprecatedRequest();
@@ -61,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.Name = "100mb";
             request.Free = true;
             request.Description = "Let's you put data in your database!";
-            request.ServiceGuid = new Guid("1503705f-4201-4f81-9236-032561c686f2");
+            request.ServiceGuid = new Guid("69357582-3173-4fce-aee0-db3cbd4292c2");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

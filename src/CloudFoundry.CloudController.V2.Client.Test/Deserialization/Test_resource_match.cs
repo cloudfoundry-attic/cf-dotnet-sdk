@@ -28,11 +28,11 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         [TestMethod]
         public void TestListAllMatchingResourcesResponse()
         {
-            string json = @"[{""sha1"":""fd6608c48a08d31a722afcc24540fe4a40b83ace"",""size"":36}]";
+            string json = @"[{""sha1"":""deb7ed8199d17493b97739039601414ea484b74b"",""size"":36}]";
 
             ListAllMatchingResourcesResponse[] obj = Utilities.DeserializeJsonArray<ListAllMatchingResourcesResponse>(json);
 
-            Assert.AreEqual("fd6608c48a08d31a722afcc24540fe4a40b83ace", TestUtil.ToTestableString(obj[0].Sha1), true);
+            Assert.AreEqual("deb7ed8199d17493b97739039601414ea484b74b", TestUtil.ToTestableString(obj[0].Sha1), true);
             Assert.AreEqual("36", TestUtil.ToTestableString(obj[0].Size), true);
         }
     }

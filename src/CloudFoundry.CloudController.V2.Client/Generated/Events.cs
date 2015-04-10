@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client
         internal EventsEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
-        }    
+        }
     }
 }
 
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceBindingDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBindingDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceBrokerDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBrokerDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListSpaceDeleteEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListSpaceDeleteEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServicePlanCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListUserProvidedServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceBrokerCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBrokerCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAppExitedEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppExitedEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListEventsAssociatedWithAppSinceJanuary12014Response>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListEventsAssociatedWithAppSinceJanuary12014Response>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServicePlanVisibilityCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanVisibilityCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServicePlanDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServicePlanUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -471,7 +471,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -498,7 +498,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAppDeleteEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppDeleteEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -525,7 +525,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -552,7 +552,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListSpaceUpdateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListSpaceUpdateEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceInstanceCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -606,7 +606,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAppCreateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppCreateEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -633,7 +633,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceDashboardClientDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceDashboardClientDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -660,7 +660,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceBrokerUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBrokerUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -687,7 +687,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceDashboardClientCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceDashboardClientCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -714,7 +714,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAppUpdateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAppUpdateEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -741,7 +741,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceBindingCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceBindingCreateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -768,7 +768,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -795,7 +795,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServicePlanVisibilityDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanVisibilityDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -822,7 +822,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -849,7 +849,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListSpaceCreateEventsResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListSpaceCreateEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -876,7 +876,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServicePlanVisibilityUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServicePlanVisibilityUpdateEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
@@ -903,7 +903,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.Headers.Add(await BuildAuthenticationHeader());
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListServiceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListServiceDeleteEventsExperimentalResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
     }
 }

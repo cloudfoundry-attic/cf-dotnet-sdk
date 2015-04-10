@@ -30,11 +30,11 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         [TestMethod]
         public void TestCopyAppBitsForAppRequest()
         {
-            string json = @"{""source_app_guid"":""87921368-772f-4a51-82e8-7c371c0a6f60""}";
+            string json = @"{""source_app_guid"":""9600cfcd-9795-4ffa-8771-30fc6b27d45a""}";
 
             CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
 
-            request.SourceAppGuid = new Guid("87921368-772f-4a51-82e8-7c371c0a6f60");
+            request.SourceAppGuid = new Guid("9600cfcd-9795-4ffa-8771-30fc6b27d45a");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -43,13 +43,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""my_super_app"",
-  ""space_guid"": ""f3e46394-d748-4cb7-be23-432facf83ce2""
+  ""space_guid"": ""fb597bff-5298-4f2d-9c48-f36fb6ac9d1b""
 }";
 
             CreateAppRequest request = new CreateAppRequest();
 
             request.Name = "my_super_app";
-            request.SpaceGuid = new Guid("f3e46394-d748-4cb7-be23-432facf83ce2");
+            request.SpaceGuid = new Guid("fb597bff-5298-4f2d-9c48-f36fb6ac9d1b");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -71,7 +71,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""docker_app"",
-  ""space_guid"": ""b6aded2c-2836-4116-a494-bf2a611e160f"",
+  ""space_guid"": ""6f802428-714e-4d2d-a415-f252a8e4c721"",
   ""docker_image"": ""cloudfoundry/hello"",
   ""environment_json"": {
     ""DIEGO_STAGE_BETA"": ""true"",
@@ -82,7 +82,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             CreateDockerAppExperimentalRequest request = new CreateDockerAppExperimentalRequest();
 
             request.Name = "docker_app";
-            request.SpaceGuid = new Guid("b6aded2c-2836-4116-a494-bf2a611e160f");
+            request.SpaceGuid = new Guid("6f802428-714e-4d2d-a415-f252a8e4c721");
             request.DockerImage = "cloudfoundry/hello";
             request.EnvironmentJson = TestUtil.GetJsonDictonary(@"{""DIEGO_STAGE_BETA"":""true"",""DIEGO_RUN_BETA"":""true""}");
 

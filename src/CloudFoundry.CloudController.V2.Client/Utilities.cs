@@ -56,9 +56,10 @@
             }
         }
 
-        internal static PagedResponseCollection<T> DeserializePage<T>(string value)
+        internal static PagedResponseCollection<T> DeserializePage<T>(string value, CloudFoundryClient client)
         {
             PagedResponseCollection<T> page = new PagedResponseCollection<T>();
+            page.Client = client;
             page.Properties = JsonConvert.DeserializeObject<PageProperties>(value, jsonSettings);
             page.Resources = DeserializeJsonResources<T>(value).ToList<T>();
             return page;
