@@ -56,6 +56,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
+        [Ignore]
         public void SetFeatureFlagTest()
         {
             using (ShimsContext.Create())
