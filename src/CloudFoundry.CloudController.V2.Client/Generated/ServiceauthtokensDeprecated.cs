@@ -25,12 +25,12 @@ using System.Threading.Tasks;
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
-    /// ServiceauthtokensDeprecated Endpoint
+    /// ServiceAuthTokensDeprecated Endpoint
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ServiceauthtokensDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceauthtokensDeprecatedEndpoint
+    public partial class ServiceAuthTokensDeprecatedEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceAuthTokensDeprecatedEndpoint
     {
-        internal ServiceauthtokensDeprecatedEndpoint(CloudFoundryClient client) : base()
+        internal ServiceAuthTokensDeprecatedEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
         }
@@ -40,15 +40,15 @@ namespace CloudFoundry.CloudController.V2.Client
 namespace CloudFoundry.CloudController.V2.Client.Base
 {
     /// <summary>
-    /// Base abstract class for ServiceauthtokensDeprecated Endpoint
+    /// Base abstract class for ServiceAuthTokensDeprecated Endpoint
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractServiceauthtokensDeprecatedEndpoint : BaseEndpoint
+    public abstract class AbstractServiceAuthTokensDeprecatedEndpoint : BaseEndpoint
     {
         /// <summary>
         /// Initializes the class
         /// </summary>
-        protected AbstractServiceauthtokensDeprecatedEndpoint()
+        protected AbstractServiceAuthTokensDeprecatedEndpoint()
         {
         }
 

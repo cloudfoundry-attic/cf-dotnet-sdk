@@ -32,7 +32,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
             {
                 MockClients clients = new MockClients();
 
-                string json = @"[{""sha1"":""deb7ed8199d17493b97739039601414ea484b74b"",""size"":36}]";
+                string json = @"[{""sha1"":""286e4d660a1c2d7b730d69e363db93fb515ef7f8"",""size"":36}]";
                 clients.JsonResponse = json;
 
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
@@ -44,7 +44,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.ResourceMatch.ListAllMatchingResources(value).Result;
 
 
-                Assert.AreEqual("deb7ed8199d17493b97739039601414ea484b74b", TestUtil.ToTestableString(obj[0].Sha1), true);
+                Assert.AreEqual("286e4d660a1c2d7b730d69e363db93fb515ef7f8", TestUtil.ToTestableString(obj[0].Sha1), true);
                 Assert.AreEqual("36", TestUtil.ToTestableString(obj[0].Size), true);
 
             }

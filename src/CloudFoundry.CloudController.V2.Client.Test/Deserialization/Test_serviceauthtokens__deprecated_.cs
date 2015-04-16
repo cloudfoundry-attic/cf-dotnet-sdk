@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 {
     [TestClass]
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ServiceauthtokensDeprecatedTest
+    public class ServiceAuthTokensDeprecatedTest
     {
 
 
@@ -36,38 +36,38 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""9767f57d-9a2c-40ce-9179-653907d486a6"",
-        ""url"": ""/v2/service_auth_tokens/9767f57d-9a2c-40ce-9179-653907d486a6"",
-        ""created_at"": ""2015-04-10T20:21:06+00:00"",
+        ""guid"": ""443e0580-8b1e-47d2-b618-6a934ebc622d"",
+        ""url"": ""/v2/service_auth_tokens/443e0580-8b1e-47d2-b618-6a934ebc622d"",
+        ""created_at"": ""2015-04-16T12:04:17+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""label"": ""label-1"",
-        ""provider"": ""provider-1""
+        ""label"": ""label-11"",
+        ""provider"": ""provider-11""
       }
     },
     {
       ""metadata"": {
-        ""guid"": ""21e044e1-5150-4cd9-9554-e301a11cf8a8"",
-        ""url"": ""/v2/service_auth_tokens/21e044e1-5150-4cd9-9554-e301a11cf8a8"",
-        ""created_at"": ""2015-04-10T20:21:06+00:00"",
+        ""guid"": ""476626c0-a007-4590-abae-38ebe4898f64"",
+        ""url"": ""/v2/service_auth_tokens/476626c0-a007-4590-abae-38ebe4898f64"",
+        ""created_at"": ""2015-04-16T12:04:17+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""label"": ""label-2"",
-        ""provider"": ""provider-2""
+        ""label"": ""label-12"",
+        ""provider"": ""provider-12""
       }
     },
     {
       ""metadata"": {
-        ""guid"": ""c84e0203-1a1a-411d-bd6e-cb3b1c2905d8"",
-        ""url"": ""/v2/service_auth_tokens/c84e0203-1a1a-411d-bd6e-cb3b1c2905d8"",
-        ""created_at"": ""2015-04-10T20:21:06+00:00"",
+        ""guid"": ""f4569a3d-76e2-4cbe-a849-acf1bae623e4"",
+        ""url"": ""/v2/service_auth_tokens/f4569a3d-76e2-4cbe-a849-acf1bae623e4"",
+        ""created_at"": ""2015-04-16T12:04:17+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""label"": ""label-3"",
-        ""provider"": ""provider-3""
+        ""label"": ""label-13"",
+        ""provider"": ""provider-13""
       }
     }
   ]
@@ -79,24 +79,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("9767f57d-9a2c-40ce-9179-653907d486a6", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/service_auth_tokens/9767f57d-9a2c-40ce-9179-653907d486a6", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-10T20:21:06+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("443e0580-8b1e-47d2-b618-6a934ebc622d", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/service_auth_tokens/443e0580-8b1e-47d2-b618-6a934ebc622d", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-16T12:04:17+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-1", TestUtil.ToTestableString(page[0].Label), true);
-            Assert.AreEqual("provider-1", TestUtil.ToTestableString(page[0].Provider), true);
-            Assert.AreEqual("21e044e1-5150-4cd9-9554-e301a11cf8a8", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/service_auth_tokens/21e044e1-5150-4cd9-9554-e301a11cf8a8", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-10T20:21:06+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("label-11", TestUtil.ToTestableString(page[0].Label), true);
+            Assert.AreEqual("provider-11", TestUtil.ToTestableString(page[0].Provider), true);
+            Assert.AreEqual("476626c0-a007-4590-abae-38ebe4898f64", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/service_auth_tokens/476626c0-a007-4590-abae-38ebe4898f64", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-16T12:04:17+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-2", TestUtil.ToTestableString(page[1].Label), true);
-            Assert.AreEqual("provider-2", TestUtil.ToTestableString(page[1].Provider), true);
-            Assert.AreEqual("c84e0203-1a1a-411d-bd6e-cb3b1c2905d8", TestUtil.ToTestableString(page[2].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/service_auth_tokens/c84e0203-1a1a-411d-bd6e-cb3b1c2905d8", TestUtil.ToTestableString(page[2].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-10T20:21:06+00:00", TestUtil.ToTestableString(page[2].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("label-12", TestUtil.ToTestableString(page[1].Label), true);
+            Assert.AreEqual("provider-12", TestUtil.ToTestableString(page[1].Provider), true);
+            Assert.AreEqual("f4569a3d-76e2-4cbe-a849-acf1bae623e4", TestUtil.ToTestableString(page[2].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/service_auth_tokens/f4569a3d-76e2-4cbe-a849-acf1bae623e4", TestUtil.ToTestableString(page[2].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-16T12:04:17+00:00", TestUtil.ToTestableString(page[2].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[2].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-3", TestUtil.ToTestableString(page[2].Label), true);
-            Assert.AreEqual("provider-3", TestUtil.ToTestableString(page[2].Provider), true);
+            Assert.AreEqual("label-13", TestUtil.ToTestableString(page[2].Label), true);
+            Assert.AreEqual("provider-13", TestUtil.ToTestableString(page[2].Provider), true);
         }
 
         [TestMethod]
@@ -110,14 +110,14 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""ed2b7b8a-f5fc-4748-a1f7-5a89e1a57d07"",
-        ""url"": ""/v2/service_auth_tokens/ed2b7b8a-f5fc-4748-a1f7-5a89e1a57d07"",
-        ""created_at"": ""2015-04-10T20:21:06+00:00"",
+        ""guid"": ""1854dd17-586d-456d-af55-0d863bac4dc7"",
+        ""url"": ""/v2/service_auth_tokens/1854dd17-586d-456d-af55-0d863bac4dc7"",
+        ""created_at"": ""2015-04-16T12:04:17+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""label"": ""Nic-Token"",
-        ""provider"": ""provider-13""
+        ""provider"": ""provider-23""
       }
     }
   ]
@@ -129,12 +129,12 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("ed2b7b8a-f5fc-4748-a1f7-5a89e1a57d07", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/service_auth_tokens/ed2b7b8a-f5fc-4748-a1f7-5a89e1a57d07", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-10T20:21:06+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("1854dd17-586d-456d-af55-0d863bac4dc7", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/service_auth_tokens/1854dd17-586d-456d-af55-0d863bac4dc7", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-16T12:04:17+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("Nic-Token", TestUtil.ToTestableString(page[0].Label), true);
-            Assert.AreEqual("provider-13", TestUtil.ToTestableString(page[0].Provider), true);
+            Assert.AreEqual("provider-23", TestUtil.ToTestableString(page[0].Provider), true);
         }
 
         [TestMethod]
@@ -142,25 +142,25 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""e156f522-1656-4454-8a3b-3e2ed62d9676"",
-    ""url"": ""/v2/service_auth_tokens/e156f522-1656-4454-8a3b-3e2ed62d9676"",
-    ""created_at"": ""2015-04-10T20:21:06+00:00"",
+    ""guid"": ""caefa4a5-7b98-423c-850b-8dd1d4247ab8"",
+    ""url"": ""/v2/service_auth_tokens/caefa4a5-7b98-423c-850b-8dd1d4247ab8"",
+    ""created_at"": ""2015-04-16T12:04:17+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""label"": ""label-4"",
-    ""provider"": ""provider-4""
+    ""label"": ""label-17"",
+    ""provider"": ""provider-17""
   }
 }";
 
             RetrieveServiceAuthTokenDeprecatedResponse obj = Utilities.DeserializeJson<RetrieveServiceAuthTokenDeprecatedResponse>(json);
 
-            Assert.AreEqual("e156f522-1656-4454-8a3b-3e2ed62d9676", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/service_auth_tokens/e156f522-1656-4454-8a3b-3e2ed62d9676", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-10T20:21:06+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("caefa4a5-7b98-423c-850b-8dd1d4247ab8", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/service_auth_tokens/caefa4a5-7b98-423c-850b-8dd1d4247ab8", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-16T12:04:17+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-4", TestUtil.ToTestableString(obj.Label), true);
-            Assert.AreEqual("provider-4", TestUtil.ToTestableString(obj.Provider), true);
+            Assert.AreEqual("label-17", TestUtil.ToTestableString(obj.Label), true);
+            Assert.AreEqual("provider-17", TestUtil.ToTestableString(obj.Provider), true);
         }
 
         [TestMethod]
@@ -174,13 +174,13 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""946cee6b-9577-4fc0-b956-86b530b5d79c"",
-        ""url"": ""/v2/service_auth_tokens/946cee6b-9577-4fc0-b956-86b530b5d79c"",
-        ""created_at"": ""2015-04-10T20:21:06+00:00"",
+        ""guid"": ""8e8d9e86-dbcb-4049-8a70-5e022988f607"",
+        ""url"": ""/v2/service_auth_tokens/8e8d9e86-dbcb-4049-8a70-5e022988f607"",
+        ""created_at"": ""2015-04-16T12:04:17+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""label"": ""label-10"",
+        ""label"": ""label-26"",
         ""provider"": ""Face-Offer""
       }
     }
@@ -193,11 +193,11 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("946cee6b-9577-4fc0-b956-86b530b5d79c", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/service_auth_tokens/946cee6b-9577-4fc0-b956-86b530b5d79c", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-10T20:21:06+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("8e8d9e86-dbcb-4049-8a70-5e022988f607", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/service_auth_tokens/8e8d9e86-dbcb-4049-8a70-5e022988f607", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-04-16T12:04:17+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-10", TestUtil.ToTestableString(page[0].Label), true);
+            Assert.AreEqual("label-26", TestUtil.ToTestableString(page[0].Label), true);
             Assert.AreEqual("Face-Offer", TestUtil.ToTestableString(page[0].Provider), true);
         }
     }
