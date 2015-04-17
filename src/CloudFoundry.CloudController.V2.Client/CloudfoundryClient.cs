@@ -200,7 +200,7 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </value>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Auth",
             Justification = "Keeping Cloud Foundry nomenclature.")]
-        public ServiceauthtokensDeprecatedEndpoint ServiceAuthTokensDeprecated { get; private set; }
+        public ServiceAuthTokensDeprecatedEndpoint ServiceAuthTokensDeprecated { get; private set; }
 
         /// <summary>
         /// Gets the service bindings endpoint.
@@ -392,7 +392,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.SecurityGroupRunningDefaults = new SecurityGroupRunningDefaultsEndpoint(this);
             this.SecurityGroups = new SecurityGroupsEndpoint(this);
             this.SecurityGroupStagingDefaults = new SecurityGroupStagingDefaultsEndpoint(this);
-            this.ServiceAuthTokensDeprecated = new ServiceauthtokensDeprecatedEndpoint(this);
+            this.ServiceAuthTokensDeprecated = new ServiceAuthTokensDeprecatedEndpoint(this);
             this.ServiceBindings = new ServiceBindingsEndpoint(this);
             this.ServiceBrokers = new ServiceBrokersEndpoint(this);
             this.ServiceInstances = new ServiceInstancesEndpoint(this);
