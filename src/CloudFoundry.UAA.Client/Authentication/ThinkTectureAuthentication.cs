@@ -3,8 +3,8 @@
     using System;
     using System.Globalization;
     using System.Threading.Tasks;
+    using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.UAA;
-    using CloudFoundry.UAA.Authentication;
     using CloudFoundry.UAA.Exceptions;
     using Thinktecture.IdentityModel.Client;
 
@@ -15,11 +15,25 @@
 
         private string oauthSecret = string.Empty;
         private Uri oauthTarget;
+        private Uri httpProxy;
+        private bool skipCertificateValidation;
         private Token token = new Token();
 
         internal ThinkTectureAuth(Uri authenticationUri)
+            : this(authenticationUri, null)
+        {
+        }
+
+        internal ThinkTectureAuth(Uri authenticationUri, Uri httpProxy)
+            : this(authenticationUri, httpProxy, false)
+        {
+        }
+
+        internal ThinkTectureAuth(Uri authenticationUri, Uri httpProxy, bool skipCertificateValidation)
         {
             this.oauthTarget = authenticationUri;
+            this.httpProxy = httpProxy;
+            this.skipCertificateValidation = skipCertificateValidation;
         }
 
         public Uri OAuthUri
@@ -37,17 +51,27 @@
                 throw new ArgumentNullException("credentials");
             }
 
-            var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
+            using (var httpClientHandler = new PlatformBaseHttpClientHandler())
+            {
+                if (this.httpProxy != null)
+                {
+                    httpClientHandler.Proxy = new SimpleProxy(this.httpProxy);
+                }
 
-            this.token.Expires = DateTime.Now;
+                httpClientHandler.SkipCertificateValidation = this.skipCertificateValidation;
 
-            var tokenResponse = await client.RequestResourceOwnerPasswordAsync(credentials.User, credentials.Password);
+                var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret, httpClientHandler);
 
-            CheckTokenResponseError(tokenResponse);
+                this.token.Expires = DateTime.Now;
 
-            this.token.AccessToken = tokenResponse.AccessToken;
-            this.token.RefreshToken = tokenResponse.RefreshToken;
-            this.token.Expires = this.token.Expires.AddSeconds(tokenResponse.ExpiresIn);
+                var tokenResponse = await client.RequestResourceOwnerPasswordAsync(credentials.User, credentials.Password);
+
+                CheckTokenResponseError(tokenResponse);
+
+                this.token.AccessToken = tokenResponse.AccessToken;
+                this.token.RefreshToken = tokenResponse.RefreshToken;
+                this.token.Expires = this.token.Expires.AddSeconds(tokenResponse.ExpiresIn);
+            }
 
             return this.token;
         }
@@ -108,10 +132,20 @@
 
         private async Task<TokenResponse> RefreshToken(string refreshToken)
         {
-            var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
-            var tokenResponse = await client.RequestRefreshTokenAsync(refreshToken);
-            CheckTokenResponseError(tokenResponse);
-            return tokenResponse;
+            using (var httpClientHandler = new PlatformBaseHttpClientHandler())
+            {
+                if (this.httpProxy != null)
+                {
+                    httpClientHandler.Proxy = new SimpleProxy(this.httpProxy);
+                }
+
+                httpClientHandler.SkipCertificateValidation = this.skipCertificateValidation;
+
+                var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
+                var tokenResponse = await client.RequestRefreshTokenAsync(refreshToken);
+                CheckTokenResponseError(tokenResponse);
+                return tokenResponse;
+            }
         }
     }
 }

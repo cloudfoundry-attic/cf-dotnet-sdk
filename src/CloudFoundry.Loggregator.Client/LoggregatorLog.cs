@@ -8,7 +8,6 @@
     using System.Threading;
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Http;
-    using CloudFoundry.CloudController.Common.PushTools;
 
     /// <summary>
     /// This is the Loggregator client. To use it, you need a Loggregator endpoint and an authorization token from UAA.
@@ -25,9 +24,34 @@
         /// <param name="loggregatorEndpoint">The Loggregator endpoint.</param>
         /// <param name="authenticationToken">The authentication token.</param>
         public LoggregatorLog(Uri loggregatorEndpoint, string authenticationToken)
+            : this(loggregatorEndpoint, authenticationToken, null, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggregatorLog"/> class.
+        /// </summary>
+        /// <param name="loggregatorEndpoint">The Loggregator endpoint.</param>
+        /// <param name="authenticationToken">The authentication token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        public LoggregatorLog(Uri loggregatorEndpoint, string authenticationToken, Uri httpProxy)
+            : this(loggregatorEndpoint, authenticationToken, httpProxy, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggregatorLog"/> class.
+        /// </summary>
+        /// <param name="loggregatorEndpoint">The Loggregator endpoint.</param>
+        /// <param name="authenticationToken">The authentication token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        public LoggregatorLog(Uri loggregatorEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
         {
             this.LoggregatorEndpoint = loggregatorEndpoint;
             this.AuthenticationToken = authenticationToken;
+            this.HttpProxy = httpProxy;
+            this.SkipCertificateValidation = skipCertificateValidation;
 
             this.protobufSerializer = new ProtobufSerializer();
         }
@@ -74,6 +98,25 @@
         /// Gets or sets the UAA authentication token.
         /// </summary>
         public string AuthenticationToken
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The HTTP proxy endpoint. Only HTTP proxy targets are supported.
+        /// </summary>
+        public Uri HttpProxy
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the flag to disable the validation of SSL/TLS certificates. 
+        /// WARNING: Set true only in debug environment or on trusted networks.
+        /// </summary>
+        public bool SkipCertificateValidation
         {
             get;
             set;
@@ -139,7 +182,7 @@
             this.webSocket.StreamOpened += this.WebSocketOpened;
             this.webSocket.StreamClosed += this.WebSocketClosed;
 
-            this.webSocket.Open(appLogUri.Uri, this.AuthenticationToken);
+            this.webSocket.Open(appLogUri.Uri, this.AuthenticationToken, this.HttpProxy, this.SkipCertificateValidation);
         }
 
         /// <summary>
@@ -174,6 +217,8 @@
             client.Uri = appLogUri.Uri;
             client.Method = HttpMethod.Get;
             client.Headers.Add("AUTHORIZATION", this.AuthenticationToken);
+            client.HttpProxy = this.HttpProxy;
+            client.SkipCertificateValidation = this.SkipCertificateValidation;
 
             SimpleHttpResponse response = await client.SendAsync();
             if (response.StatusCode != System.Net.HttpStatusCode.OK)

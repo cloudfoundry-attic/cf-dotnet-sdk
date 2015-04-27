@@ -90,6 +90,12 @@
     <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleHttpResponse.cs">
       <Link>Http\SimpleHttpResponse.cs</Link>
     </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\SimpleProxy.cs">
+      <Link>Http\SimpleProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\CloudFoundry.CloudController.Common\Http\IPlatformBaseHttpClientHandler.cs">
+      <Link>Http\IPlatformBaseHttpClientHandler.cs</Link>
+    </Compile>
     <Compile Include="..\CloudFoundry.CloudController.Common\ObjectExtentions.cs">
       <Link>ObjectExtentions.cs</Link>
     </Compile>
@@ -102,6 +108,7 @@
     <Compile Include="..\CloudFoundry.CloudController.Common\PushTools\IAppPushTools.cs">
       <Link>PushTools\IAppPushTools.cs</Link>
     </Compile>
+    <Compile Include="Http\PlatformBaseHttpClientHandler.cs" />
     <Compile Include="PushTools\AppPushTools.cs" />
   </ItemGroup>
   <ItemGroup>

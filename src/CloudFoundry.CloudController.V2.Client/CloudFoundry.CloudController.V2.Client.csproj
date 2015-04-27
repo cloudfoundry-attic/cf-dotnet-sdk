@@ -367,7 +367,7 @@
     <Compile Include="Generated\Stacks.cs" />
     <Compile Include="Generated\UserProvidedServiceInstances.cs" />
     <Compile Include="Generated\Users.cs" />
-    <Compile Include="CloudfoundryClient.cs" />
+    <Compile Include="CloudFoundryClient.cs" />
     <Compile Include="EntityGuid.cs" />
     <Compile Include="Interfaces\IResponse.cs" />
     <Compile Include="Metadata.cs" />

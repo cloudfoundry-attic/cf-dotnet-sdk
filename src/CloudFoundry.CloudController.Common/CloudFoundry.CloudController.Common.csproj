@@ -53,11 +53,14 @@
   <ItemGroup>
     <Compile Include="Exceptions\CloudFoundryException.cs" />
     <Compile Include="Exceptions\CloudFoundryExceptionObject.cs" />
+    <Compile Include="Http\IPlatformBaseHttpClientHandler.cs" />
+    <Compile Include="Http\PlatformBaseHttpClientHandler.cs" />
     <Compile Include="Http\SimpleHttpClient.cs" />
     <Compile Include="Http\HttpHeadersCollection.cs" />
     <Compile Include="Http\HttpMultipartFormData.cs" />
     <Compile Include="Http\SimpleHttpRedirectHandler.cs" />
     <Compile Include="Http\SimpleHttpResponse.cs" />
+    <Compile Include="Http\SimpleProxy.cs" />
     <Compile Include="ObjectExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushTools\FileFingerprint.cs" />

@@ -47,6 +47,7 @@
                 this.Method = HttpMethod.Get;
                 this.Headers = new Dictionary<string, string>();
                 this.ContentType = string.Empty;
+                this.SkipCertificateValidation = false;
             }
             catch
             {
@@ -89,6 +90,12 @@
 
         /// <inheritdoc/>
         public Uri Uri { get; set; }
+
+        /// <inheritdoc/>
+        public Uri HttpProxy { get; set; }
+
+        /// <inheritdoc/>
+        public bool SkipCertificateValidation { get; set; }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -153,6 +160,13 @@
             {
                 requestMessage.Headers.Add(header.Key, header.Value);
             }
+
+            if (this.HttpProxy != null)
+            {
+                this.handler.Proxy = new SimpleProxy(this.HttpProxy);
+            }
+            
+            this.handler.SkipCertificateValidation = this.SkipCertificateValidation;
 
             var startTime = DateTime.Now;
 

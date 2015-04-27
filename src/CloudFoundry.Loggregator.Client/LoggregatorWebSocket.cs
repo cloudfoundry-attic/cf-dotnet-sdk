@@ -19,7 +19,7 @@
             get { throw new NotImplementedException(); }
         }
 
-        public void Open(Uri appLogEndpoint, string authenticationToken)
+        public void Open(Uri appLogEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
         {
             // Dummy code to prevent warnings
             if (this.ErrorReceived != null)

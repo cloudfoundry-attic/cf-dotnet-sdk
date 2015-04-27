@@ -22,8 +22,29 @@
         /// </summary>
         /// <param name="authenticationUri">The authentication URI.</param>
         public UAAClient(Uri authenticationUri)
+            : this(authenticationUri, null)
         {
-            this.authentication = new ThinkTectureAuth(authenticationUri);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UAAClient" /> class.
+        /// </summary>
+        /// <param name="authenticationUri">The authentication URI.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        public UAAClient(Uri authenticationUri, Uri httpProxy)
+            : this(authenticationUri, httpProxy, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UAAClient" /> class.
+        /// </summary>
+        /// <param name="authenticationUri">The authentication URI.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        public UAAClient(Uri authenticationUri, Uri httpProxy, bool skipCertificateValidation)
+        {
+            this.authentication = new ThinkTectureAuth(authenticationUri, httpProxy, skipCertificateValidation);
             this.targetUri = authenticationUri;
         }
 

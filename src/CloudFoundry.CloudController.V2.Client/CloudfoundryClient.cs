@@ -18,9 +18,34 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="cloudTarget">The cloud target.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
+            : this(cloudTarget, cancellationToken, null, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient" /> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy)
+            : this(cloudTarget, cancellationToken, httpProxy, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient" /> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation)
         {
             this.CloudTarget = cloudTarget;
             this.CancellationToken = cancellationToken;
+            this.HttpProxy = httpProxy;
+            this.SkipCertificateValidation = skipCertificateValidation;
 
             this.InitEndpoints();
         }
@@ -310,6 +335,10 @@ namespace CloudFoundry.CloudController.V2.Client
 
         internal Uri CloudTarget { get; set; }
 
+        internal Uri HttpProxy { get; set; }
+
+        internal bool SkipCertificateValidation { get; set; }
+
         internal UAAClient UAAClient { get; set; }
 
         /// <summary>
@@ -324,7 +353,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var info = await this.Info.GetInfo();
 
             var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
-            this.UAAClient = new UAAClient(new Uri(authUrl));
+            this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(credentials);
 
@@ -364,7 +393,7 @@ namespace CloudFoundry.CloudController.V2.Client
             var info = await this.Info.GetInfo();
 
             var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
-            this.UAAClient = new UAAClient(new Uri(authUrl));
+            this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(refreshToken);
             return context;

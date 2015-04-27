@@ -23,7 +23,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
 
                 ShimLoggregatorWebSocket.AllInstances.StreamOpenedAddEventHandlerOfEventArgs = (@this, h) => openEvent = h;
                 ShimLoggregatorWebSocket.AllInstances.StateGet = (@this) => { return state; };
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { state = ConnectionState.Open; };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { state = ConnectionState.Open; };
 
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
                 loggregator.StreamOpened += delegate(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
 
                 ShimLoggregatorWebSocket.AllInstances.StreamOpenedAddEventHandlerOfEventArgs = (@this, h) => openEvent = h;
                 ShimLoggregatorWebSocket.AllInstances.DataReceivedAddEventHandlerOfDataEventArgs = (@this, h) => messageEvent = h;
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
                 loggregator.MessageReceived += delegate(object sender, MessageEventArgs e)
@@ -81,7 +81,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
                 var errorEventFired = new ManualResetEvent(false);
 
                 ShimLoggregatorWebSocket.AllInstances.ErrorReceivedAddEventHandlerOfErrorEventArgs = (@this, h) => errorEvent = h;
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
                 loggregator.ErrorReceived += delegate(object sender, ErrorEventArgs e)
@@ -107,7 +107,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
                 var closedEventFired = new ManualResetEvent(false);
 
                 ShimLoggregatorWebSocket.AllInstances.StreamClosedAddEventHandlerOfEventArgs = (@this, h) => closedEvent = h;
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
                 loggregator.StreamClosed += delegate(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
                 var closedEventFired = new ManualResetEvent(false);
 
                 ShimLoggregatorWebSocket.AllInstances.StreamClosedAddEventHandlerOfEventArgs = (@this, h) => closedEvent = h;
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
                 ShimLoggregatorWebSocket.AllInstances.Close = (@this) =>
                 {
                     closedEvent(this, EventArgs.Empty);
@@ -157,7 +157,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
         {
             using (ShimsContext.Create())
             {
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
 
@@ -177,7 +177,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Loggregator.FakeTest
         {
             using (ShimsContext.Create())
             {
-                ShimLoggregatorWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLoggregatorWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LoggregatorLog loggregator = new LoggregatorLog(loggregatorEndpoint, string.Empty);
 

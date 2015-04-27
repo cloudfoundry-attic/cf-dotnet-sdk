@@ -1,8 +1,8 @@
 ﻿namespace CloudFoundry.Logyard.Client
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
+    using System.Net;
 
     /// <summary>
     /// This is the Logyard client. To use it, you need a Logyard endpoint and an authorization token from UAA.
@@ -18,9 +18,34 @@
         /// <param name="logyardEndpoint">The logyard endpoint.</param>
         /// <param name="authenticationToken">The authentication token.</param>
         public LogyardLog(Uri logyardEndpoint, string authenticationToken)
+            : this(logyardEndpoint, authenticationToken, null, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LogyardLog"/> class.
+        /// </summary>
+        /// <param name="logyardEndpoint">The logyard endpoint.</param>
+        /// <param name="authenticationToken">The authentication token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        public LogyardLog(Uri logyardEndpoint, string authenticationToken, Uri httpProxy)
+            : this(logyardEndpoint, authenticationToken, httpProxy, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LogyardLog"/> class.
+        /// </summary>
+        /// <param name="logyardEndpoint">The logyard endpoint.</param>
+        /// <param name="authenticationToken">The authentication token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        public LogyardLog(Uri logyardEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
         {
             this.LogyardEndpoint = logyardEndpoint;
             this.AuthenticationToken = authenticationToken;
+            this.HttpProxy = httpProxy;
+            this.SkipCertificateValidation = skipCertificateValidation;
         }
 
         /// <summary>
@@ -57,7 +82,7 @@
         /// </summary>
         public Uri LogyardEndpoint
         {
-            get; 
+            get;
             set;
         }
 
@@ -65,6 +90,25 @@
         /// Gets or sets the UAA authentication token.
         /// </summary>
         public string AuthenticationToken
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The HTTP proxy endpoint. Only HTTP proxy targets are supported.
+        /// </summary>
+        public Uri HttpProxy
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the flag to disable the validation of SSL/TLS certificates. 
+        /// WARNING: Set true only in debug environment or on trusted networks.
+        /// </summary>
+        public bool SkipCertificateValidation
         {
             get;
             set;
@@ -100,7 +144,7 @@
                 this.webSocket = null;
             }
         }
-            
+
         /// <summary>
         /// Starts streaming logs from Logyard for the specified app.
         /// It streams for all instances of the app, without tailing.
@@ -141,7 +185,7 @@
             }
 
             UriBuilder appLogUri = new UriBuilder(this.LogyardEndpoint);
-            
+
             if (tail)
             {
                 appLogUri.Path = string.Format(CultureInfo.InvariantCulture, "v2/apps/{0}/tail", appGuid);
@@ -157,13 +201,13 @@
             }
 
             this.webSocket = new LogyardWebSocket();
-            
+
             this.webSocket.DataReceived += this.WebSocketMessageReceived;
             this.webSocket.ErrorReceived += this.WebSocketError;
             this.webSocket.StreamOpened += this.WebSocketOpened;
             this.webSocket.StreamClosed += this.WebSocketClosed;
 
-            this.webSocket.Open(appLogUri.Uri, this.AuthenticationToken);
+            this.webSocket.Open(appLogUri.Uri, this.AuthenticationToken, this.HttpProxy, this.SkipCertificateValidation);
         }
 
         /// <summary>

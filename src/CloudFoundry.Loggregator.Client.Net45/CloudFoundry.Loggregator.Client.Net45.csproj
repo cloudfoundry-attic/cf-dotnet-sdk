@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -122,9 +123,13 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
-      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
-      <Name>CloudFoundry.CloudController.Common</Name>
+    <ProjectReference Include="..\CloudFoundry.CloudController.Common.Net45\CloudFoundry.CloudController.Common.Net45.csproj">
+      <Project>{126aeda2-fa3b-42eb-b728-770a975def2b}</Project>
+      <Name>CloudFoundry.CloudController.Common.Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSocket4Net.ProxyUtils\WebSocket4Net.ProxyUtils.csproj">
+      <Project>{446818cb-1aa8-449a-b58a-01da64a36871}</Project>
+      <Name>WebSocket4Net.ProxyUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

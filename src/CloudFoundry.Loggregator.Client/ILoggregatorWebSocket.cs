@@ -17,7 +17,7 @@
             get;
         }
 
-        void Open(Uri appLogEndpoint, string authenticationToken);
+        void Open(Uri appLogEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation);
 
         void Close();
     }
