@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Net;
     using WebSocket4Net;
-    using WebSocket4Net.ProxyUtils;
+    using WebSocket4Net.ProxyUtilities;
 
     internal class LoggregatorWebSocket : ILoggregatorWebSocket, IDisposable
     {

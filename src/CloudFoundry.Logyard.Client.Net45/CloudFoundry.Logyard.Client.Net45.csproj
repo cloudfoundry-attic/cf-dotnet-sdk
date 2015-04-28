@@ -108,9 +108,9 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebSocket4Net.ProxyUtils\WebSocket4Net.ProxyUtils.csproj">
+    <ProjectReference Include="..\WebSocket4Net.ProxyUtilities\WebSocket4Net.ProxyUtilities.csproj">
       <Project>{446818cb-1aa8-449a-b58a-01da64a36871}</Project>
-      <Name>WebSocket4Net.ProxyUtils</Name>
+      <Name>WebSocket4Net.ProxyUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
