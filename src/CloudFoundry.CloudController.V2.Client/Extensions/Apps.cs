@@ -176,6 +176,9 @@ namespace CloudFoundry.CloudController.V2.Client
 
             using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken))
             {
+                httpClient.HttpProxy = Client.HttpProxy;
+                httpClient.SkipCertificateValidation = Client.SkipCertificateValidation;
+
                 httpClient.Headers.Add("Authorization", string.Format("bearer {0}", this.Client.AuthorizationToken));
 
                 httpClient.Uri = uploadUri;

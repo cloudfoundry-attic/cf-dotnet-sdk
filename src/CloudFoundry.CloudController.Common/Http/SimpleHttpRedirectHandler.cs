@@ -11,7 +11,7 @@
     /// <summary>
     /// Http handler that manages HTTP redirects
     /// </summary>
-    public class SimpleHttpRedirectHandler : HttpClientHandler
+    public class SimpleHttpRedirectHandler : PlatformBaseHttpClientHandler
     {
         private int maxRedirects = 5;
 

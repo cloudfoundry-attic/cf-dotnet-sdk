@@ -23,7 +23,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
 
                 ShimLogyardWebSocket.AllInstances.StreamOpenedAddEventHandlerOfEventArgs = (@this, h) => openEvent = h;
                 ShimLogyardWebSocket.AllInstances.StateGet = (@this) => { return state; };
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { state = ConnectionState.Open; };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { state = ConnectionState.Open; };
 
                 LogyardLog log = new LogyardLog(logyardEndpoint, string.Empty);
                 log.StreamOpened += delegate(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
 
                 ShimLogyardWebSocket.AllInstances.StreamOpenedAddEventHandlerOfEventArgs = (@this, h) => openEvent = h;
                 ShimLogyardWebSocket.AllInstances.DataReceivedAddEventHandlerOfStringEventArgs = (@this, h) => messageEvent = h;
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LogyardLog log = new LogyardLog(logyardEndpoint, string.Empty);
                 log.MessageReceived += delegate(object sender, MessageEventArgs e)
@@ -91,7 +91,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
                 var errorEventFired = new ManualResetEvent(false);
 
                 ShimLogyardWebSocket.AllInstances.ErrorReceivedAddEventHandlerOfErrorEventArgs = (@this, h) => errorEvent = h;
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LogyardLog logyard = new LogyardLog(logyardEndpoint, string.Empty);
                 logyard.ErrorReceived += delegate(object sender, ErrorEventArgs e)
@@ -117,7 +117,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
                 var closedEventFired = new ManualResetEvent(false);
 
                 ShimLogyardWebSocket.AllInstances.StreamClosedAddEventHandlerOfEventArgs = (@this, h) => closedEvent = h;
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LogyardLog logyard = new LogyardLog(logyardEndpoint, string.Empty);
                 logyard.StreamClosed += delegate(object sender, EventArgs e)
@@ -141,7 +141,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
                 var closedEventFired = new ManualResetEvent(false);
 
                 ShimLogyardWebSocket.AllInstances.StreamClosedAddEventHandlerOfEventArgs = (@this, h) => closedEvent = h;
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
                 ShimLogyardWebSocket.AllInstances.Close = (@this) =>
                 {
                     closedEvent(this, EventArgs.Empty);
@@ -167,7 +167,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
         {
             using (ShimsContext.Create())
             {
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LogyardLog logyard = new LogyardLog(logyardEndpoint, string.Empty);
 
@@ -187,7 +187,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
         {
             using (ShimsContext.Create())
             {
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LogyardLog logyard = new LogyardLog(logyardEndpoint, string.Empty);
 
@@ -224,7 +224,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
 
                 ShimLogyardWebSocket.AllInstances.StreamOpenedAddEventHandlerOfEventArgs = (@this, h) => openEvent = h;
                 ShimLogyardWebSocket.AllInstances.DataReceivedAddEventHandlerOfStringEventArgs = (@this, h) => messageEvent = h;
-                ShimLogyardWebSocket.AllInstances.OpenUriString = (@this, appLogEndpoint, authenticationToken) => { };
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
 
                 LogyardLog log = new LogyardLog(logyardEndpoint, string.Empty);
                 log.ErrorReceived += delegate(object sender, ErrorEventArgs e)

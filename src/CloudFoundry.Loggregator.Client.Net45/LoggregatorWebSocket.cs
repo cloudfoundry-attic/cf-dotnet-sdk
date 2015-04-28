@@ -2,11 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
+    using System.Net;
     using WebSocket4Net;
+    using WebSocket4Net.ProxyUtilities;
 
     internal class LoggregatorWebSocket : ILoggregatorWebSocket, IDisposable
     {
+        private const int MagicWebSocketReceiveBufferSize = 64;
+
         private WebSocket webSocket = null;
         private bool disposed;
 
@@ -64,11 +67,24 @@
             }
         }
 
-        public void Open(Uri appLogEndpoint, string authenticationToken)
+        public void Open(Uri appLogEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
         {
             if (appLogEndpoint == null)
             {
                 throw new ArgumentNullException("appLogEndpoint");
+            }
+
+            if (httpProxy != null)
+            {
+                if (httpProxy.Scheme != "http")
+                {
+                    throw new ArgumentException("httpProxy supports only 'http' for the scheme", "httpProxy");
+                }
+
+                if (httpProxy.AbsolutePath != "/")
+                {
+                    throw new ArgumentException("httpProxy supports only '/' for the absolute path", "httpProxy");
+                }
             }
 
             List<KeyValuePair<string, string>> headers = new List<KeyValuePair<string, string>>();
@@ -112,7 +128,17 @@
                 }
             };
 
-            this.webSocket.ReceiveBufferSize = 64;
+            if (httpProxy != null)
+            {
+                this.webSocket.Proxy = new HttpConnectProxy(new DnsEndPoint(httpProxy.Host, httpProxy.Port));
+            }
+
+            this.webSocket.AllowUnstrustedCertificate = skipCertificateValidation;
+
+            // HACK: this is a workaround when WebSocket4net skips messages.
+            // 64 was just an arbitrary value set that seems to get all messages.
+            this.webSocket.ReceiveBufferSize = LoggregatorWebSocket.MagicWebSocketReceiveBufferSize;
+
             this.webSocket.Open();
         }
 

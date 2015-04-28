@@ -25,7 +25,20 @@
 
         internal SimpleHttpClient GetHttpClient()
         {
-            return new SimpleHttpClient(this.Client.CancellationToken);
+            var httpClient = new SimpleHttpClient(this.Client.CancellationToken);
+
+            try
+            {                
+                httpClient.HttpProxy = this.Client.HttpProxy;
+                httpClient.SkipCertificateValidation = this.Client.SkipCertificateValidation;
+            }
+            catch
+            {
+                httpClient.Dispose();
+                throw;
+            }
+
+            return httpClient;
         }
 
         internal async Task<SimpleHttpResponse> SendAsync(SimpleHttpClient client, int expectedReturnStatus)
