@@ -67,6 +67,7 @@
     <Compile Include="CancelTest.cs" />
     <Compile Include="CertificateValidationTest.cs" />
     <Compile Include="InfoTest.cs" />
+    <Compile Include="LogyardTest.cs" />
     <Compile Include="OrgTest.cs" />
     <Compile Include="RouteTest.cs" />
     <Compile Include="ServiceInstanceTest.cs" />
