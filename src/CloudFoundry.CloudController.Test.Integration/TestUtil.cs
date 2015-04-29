@@ -19,6 +19,11 @@ namespace CloudFoundry.CloudController.Test.Integration
         internal static bool IgnoreCertificate = bool.Parse(ConfigurationManager.AppSettings["IgnoreCertificate"]);
         internal static string TestAppPath = ConfigurationManager.AppSettings["TestAppPath"];
 
+        internal static void IngoreGlobalCertificateValidation()
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+        }
+
         internal static CloudFoundryClient GetClient()
         {
             return GetClient(new CancellationToken());
@@ -28,7 +33,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         {
             if (IgnoreCertificate)
             {
-                System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslPolicyErrors) => true);
+                IngoreGlobalCertificateValidation();
             }
 
             CloudFoundryClient client = new CloudFoundryClient(new Uri(ServerUrl), cancellationToken);
