@@ -72,9 +72,12 @@
                 return;
             }
 
+            SocketAsyncEventArgs localSocket = null;
+
             if (e == null)
             {
-                e = new SocketAsyncEventArgs();
+                localSocket = new SocketAsyncEventArgs();
+                e = localSocket;
             }
 
             string request;
@@ -102,7 +105,10 @@
             }
             finally
             {
-                e.Dispose();
+                if (localSocket != null)
+                {
+                    localSocket.Dispose();
+                }
             }
         }
 
