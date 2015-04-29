@@ -141,7 +141,7 @@
 
                 httpClientHandler.SkipCertificateValidation = this.skipCertificateValidation;
 
-                var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret);
+                var client = new OAuth2Client(this.oauthTarget, this.oauthClient, this.oauthSecret, httpClientHandler);
                 var tokenResponse = await client.RequestRefreshTokenAsync(refreshToken);
                 CheckTokenResponseError(tokenResponse);
                 return tokenResponse;
