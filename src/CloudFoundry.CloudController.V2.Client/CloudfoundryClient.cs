@@ -357,6 +357,13 @@ namespace CloudFoundry.CloudController.V2.Client
 
             var context = await this.UAAClient.Login(credentials);
 
+            if (context.IsLoggedIn)
+            {
+                //// Workaround for HCF. Some CC requests (e.g. dev role + bind route, update app, etc..) will fail the first time after login with 401.
+                //// Calling the CC's /v2/info endpoint will prevent this misbehavior.
+                await this.Info.GetInfo();
+            }
+
             return context;
         }
 
@@ -396,6 +403,14 @@ namespace CloudFoundry.CloudController.V2.Client
             this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(refreshToken);
+
+            if (context.IsLoggedIn)
+            {
+                //// Workaround for HCF. Some CC requests (e.g. dev role + bind route, update app, etc..) will fail the first time after login with 401.
+                //// Calling the CC's /v2/info endpoint will prevent this misbehavior.
+                await this.Info.GetInfo();
+            }
+
             return context;
         }
 
