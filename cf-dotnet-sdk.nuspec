@@ -11,9 +11,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Built from git commit $commit$</releaseNotes>
     <description>Cloud Foundry .NET SDK</description>
+    <summary>Cloud Foundry .NET SDK</summary>
     <iconUrl>https://region-b.geo-1.objects.hpcloudsvc.com/v1/54026737306152/ALS/v1.2/nuget-cloudfoundry-logo.png</iconUrl>
     <copyright>© Copyright 2015 Hewlett-Packard Development Company, L.P.</copyright>
-    <tags>cloud foundy cloudfoundry paas sdk net .net dotnet</tags>
+    <tags>cloud foundy cloudfoundry sdk net .net dotnet helion</tags>
     <dependencies>
       <group targetFramework="net45">
         <dependency id="WebSocket4Net" version="0.12" />
