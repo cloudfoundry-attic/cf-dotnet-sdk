@@ -6,7 +6,7 @@
     <title>Cloud Foundry .NET SDK</title>
     <authors>Hewlett-Packard Development Company, L.P.</authors>
     <owners>Hewlett-Packard Development Company, L.P.</owners>
-    <licenseUrl>https://github.com/hpcloud/cf-dotnet-sdk/blob/master/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/hpcloud/cf-dotnet-sdk/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/hpcloud/cf-dotnet-sdk</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Built from git commit $commit$</releaseNotes>
