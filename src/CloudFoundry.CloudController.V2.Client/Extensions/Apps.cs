@@ -16,6 +16,7 @@ namespace CloudFoundry.CloudController.V2.Client
     public partial class AppsEndpoint
     {
         private const int StepCount = 7;
+        private static readonly TimeSpan DefaultUploadTimeout = new TimeSpan(0, 30, 0);
 
         /// <summary>
         /// Event that is raised on specific parts of the push process.
@@ -174,7 +175,7 @@ namespace CloudFoundry.CloudController.V2.Client
         {
             string boundary = DateTime.Now.Ticks.ToString("x");
 
-            using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken))
+            using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken, AppsEndpoint.DefaultUploadTimeout))
             {
                 httpClient.HttpProxy = Client.HttpProxy;
                 httpClient.SkipCertificateValidation = Client.SkipCertificateValidation;
