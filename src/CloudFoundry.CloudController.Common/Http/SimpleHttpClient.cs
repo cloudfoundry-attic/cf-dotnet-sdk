@@ -39,10 +39,9 @@
             try
             {
                 this.handler = new SimpleHttpRedirectHandler();
-
                 this.client = new HttpClient(this.handler);
-                this.client.Timeout = timeout;
 
+                this.Timeout = timeout;
                 this.cancellationToken = cancellationToken;
                 this.Method = HttpMethod.Get;
                 this.Headers = new Dictionary<string, string>();
@@ -168,6 +167,7 @@
             
             this.handler.SkipCertificateValidation = this.SkipCertificateValidation;
 
+            this.client.Timeout = this.Timeout;
             var startTime = DateTime.Now;
 
             try
@@ -201,7 +201,7 @@
 
                 if (DateTime.Now - startTime > this.Timeout)
                 {
-                    throw new TimeoutException(string.Format(CultureInfo.InvariantCulture, "The task failed to complete in the given timeout period ({0}).", this.Timeout));
+                    throw new TimeoutException(string.Format(CultureInfo.InvariantCulture, "The task failed to complete in the given timeout period ({0}).", this.Timeout), tcex);
                 }
 
                 throw;
