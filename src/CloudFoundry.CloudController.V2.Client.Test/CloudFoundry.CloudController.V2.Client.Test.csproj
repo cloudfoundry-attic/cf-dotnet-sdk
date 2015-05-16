@@ -189,6 +189,7 @@
     <Compile Include="Serialization\Test_stacks.cs" />
     <Compile Include="Serialization\Test_users.cs" />
     <Compile Include="Serialization\Test_user_provided_service_instances.cs" />
+    <Compile Include="TestTokenDecoding.cs" />
     <Compile Include="TestEntityGuid.cs" />
     <Compile Include="TestUtil.cs" />
   </ItemGroup>

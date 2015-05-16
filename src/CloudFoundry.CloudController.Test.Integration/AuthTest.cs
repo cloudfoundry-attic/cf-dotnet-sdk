@@ -39,6 +39,8 @@ namespace CloudFoundry.CloudController.Test.Integration
             Assert.AreEqual(context.Uri, authUri);
             Assert.IsNotNull(context.Token.AccessToken);
             Assert.IsNotNull(context.Token.RefreshToken);
+            Assert.AreEqual(TestUtil.User, context.Token.UserName);
+            Assert.IsNotNull(context.Token.UserGuid);
             Assert.IsFalse(context.Token.IsExpired);
             Assert.IsTrue(context.Token.Expires > DateTime.Now);
 
@@ -67,9 +69,6 @@ namespace CloudFoundry.CloudController.Test.Integration
             client.Login(context.Token.RefreshToken).Wait();
 
             client.Buildpacks.ListAllBuildpacks().Wait();
-
-
-
         }
 
 
