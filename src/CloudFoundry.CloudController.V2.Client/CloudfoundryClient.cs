@@ -352,7 +352,7 @@ namespace CloudFoundry.CloudController.V2.Client
         {
             var info = await this.Info.GetInfo();
 
-            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
+            var authUrl = info.TokenEndpoint.TrimEnd('/') + "/oauth/token";
             this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(credentials);
@@ -399,7 +399,7 @@ namespace CloudFoundry.CloudController.V2.Client
         {
             var info = await this.Info.GetInfo();
 
-            var authUrl = info.AuthorizationEndpoint.TrimEnd('/') + "/oauth/token";
+            var authUrl = info.TokenEndpoint.TrimEnd('/') + "/oauth/token";
             this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(refreshToken);
