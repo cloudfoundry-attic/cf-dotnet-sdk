@@ -27,7 +27,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             credentials.Password = TestUtil.Password;
 
             var client = TestUtil.GetClient();
-            var authEndpoint = client.Info.GetInfo().Result.AuthorizationEndpoint;
+            var authEndpoint = client.Info.GetInfo().Result.TokenEndpoint;
             var authUri = new Uri(authEndpoint.TrimEnd('/') + "/oauth/token");
 
 
@@ -58,7 +58,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             credentials.Password = TestUtil.Password;
 
             var client = TestUtil.GetClient();
-            var authEndpoint = client.Info.GetInfo().Result.AuthorizationEndpoint;
+            var authEndpoint = client.Info.GetInfo().Result.TokenEndpoint;
             var authUri = new Uri(authEndpoint.TrimEnd('/') + "/oauth/token");
 
 
