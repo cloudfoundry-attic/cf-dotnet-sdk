@@ -32,13 +32,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""New Organization Name"",
-  ""quota_definition_guid"": ""fc8e1595-c555-4449-a6c2-8bc4b51b6e11""
+  ""quota_definition_guid"": ""1bd41263-5150-462d-ada4-073df672295f""
 }";
 
             UpdateOrganizationRequest request = new UpdateOrganizationRequest();
 
             request.Name = "New Organization Name";
-            request.QuotaDefinitionGuid = new Guid("fc8e1595-c555-4449-a6c2-8bc4b51b6e11");
+            request.QuotaDefinitionGuid = new Guid("1bd41263-5150-462d-ada4-073df672295f");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -47,13 +47,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""my-org-name"",
-  ""quota_definition_guid"": ""4abc3bfe-4f49-488d-bea7-3e0763b110fd""
+  ""quota_definition_guid"": ""1e863ed8-2c0b-44a2-bc27-9c670b6bbc39""
 }";
 
             CreateOrganizationRequest request = new CreateOrganizationRequest();
 
             request.Name = "my-org-name";
-            request.QuotaDefinitionGuid = new Guid("4abc3bfe-4f49-488d-bea7-3e0763b110fd");
+            request.QuotaDefinitionGuid = new Guid("1e863ed8-2c0b-44a2-bc27-9c670b6bbc39");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
