@@ -44,7 +44,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         {
             var cfclient = GetClient();
             var serverInfo = cfclient.Info.GetInfo().Result;
-            var authEndpoint = serverInfo.TokenEndpoint;
+            var authEndpoint = serverInfo.AuthorizationEndpoint;
 
             var authUri = new Uri(authEndpoint.TrimEnd('/') + "/oauth/token");
 

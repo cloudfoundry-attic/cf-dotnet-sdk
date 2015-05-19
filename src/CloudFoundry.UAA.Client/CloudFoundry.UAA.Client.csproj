@@ -54,6 +54,7 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\AcceptHeaderOverrideHttpClientHandler.cs" />
     <Compile Include="Authentication\IAuthentication.cs" />
     <Compile Include="Authentication\ThinkTectureAuthentication.cs" />
     <Compile Include="Authentication\Token.cs" />
