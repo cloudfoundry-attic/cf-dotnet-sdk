@@ -73,6 +73,9 @@
     <Compile Include="..\CloudFoundry.UAA.Client\Authentication\IAuthentication.cs">
       <Link>Authentication\IAuthentication.cs</Link>
     </Compile>
+    <Compile Include="..\CloudFoundry.UAA.Client\Authentication\AcceptHeaderOverrideHttpClientHandler.cs">
+      <Link>Authentication\AcceptHeaderOverrideHttpClientHandler.cs</Link>
+    </Compile>
     <Compile Include="..\CloudFoundry.UAA.Client\Authentication\ThinkTectureAuthentication.cs">
       <Link>Authentication\ThinkTectureAuthentication.cs</Link>
     </Compile>
