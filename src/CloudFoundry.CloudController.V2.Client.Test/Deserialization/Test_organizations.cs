@@ -36,22 +36,22 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""uaa-id-82"",
-        ""url"": ""/v2/users/uaa-id-82"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""uaa-id-273"",
+        ""url"": ""/v2/users/uaa-id-273"",
+        ""created_at"": ""2015-05-19T15:27:20+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""admin"": false,
         ""active"": false,
         ""default_space_guid"": null,
-        ""spaces_url"": ""/v2/users/uaa-id-82/spaces"",
-        ""organizations_url"": ""/v2/users/uaa-id-82/organizations"",
-        ""managed_organizations_url"": ""/v2/users/uaa-id-82/managed_organizations"",
-        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-82/billing_managed_organizations"",
-        ""audited_organizations_url"": ""/v2/users/uaa-id-82/audited_organizations"",
-        ""managed_spaces_url"": ""/v2/users/uaa-id-82/managed_spaces"",
-        ""audited_spaces_url"": ""/v2/users/uaa-id-82/audited_spaces""
+        ""spaces_url"": ""/v2/users/uaa-id-273/spaces"",
+        ""organizations_url"": ""/v2/users/uaa-id-273/organizations"",
+        ""managed_organizations_url"": ""/v2/users/uaa-id-273/managed_organizations"",
+        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-273/billing_managed_organizations"",
+        ""audited_organizations_url"": ""/v2/users/uaa-id-273/audited_organizations"",
+        ""managed_spaces_url"": ""/v2/users/uaa-id-273/managed_spaces"",
+        ""audited_spaces_url"": ""/v2/users/uaa-id-273/audited_spaces""
       }
     }
   ]
@@ -63,20 +63,20 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("uaa-id-82", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/users/uaa-id-82", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("uaa-id-273", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/users/uaa-id-273", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Admin), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Active), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].DefaultSpaceGuid), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-82/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-273/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
         }
 
         [TestMethod]
@@ -90,9 +90,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""0210f9ef-64f7-48c4-b37e-5cd5e4080da5"",
-        ""url"": ""/v2/domains/0210f9ef-64f7-48c4-b37e-5cd5e4080da5"",
-        ""created_at"": ""2015-04-16T12:04:14+00:00"",
+        ""guid"": ""f649fd17-eec5-4402-902a-1715c9f7ec31"",
+        ""url"": ""/v2/domains/f649fd17-eec5-4402-902a-1715c9f7ec31"",
+        ""created_at"": ""2015-05-19T15:27:04+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -101,9 +101,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     },
     {
       ""metadata"": {
-        ""guid"": ""0359e25a-338d-42e0-ac6c-f7fc3dd3032d"",
-        ""url"": ""/v2/domains/0359e25a-338d-42e0-ac6c-f7fc3dd3032d"",
-        ""created_at"": ""2015-04-16T12:04:14+00:00"",
+        ""guid"": ""f7380c81-e199-4a7d-86ec-6e1791326df3"",
+        ""url"": ""/v2/domains/f7380c81-e199-4a7d-86ec-6e1791326df3"",
+        ""created_at"": ""2015-05-19T15:27:04+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -119,14 +119,14 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("0210f9ef-64f7-48c4-b37e-5cd5e4080da5", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/domains/0210f9ef-64f7-48c4-b37e-5cd5e4080da5", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:14+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("f649fd17-eec5-4402-902a-1715c9f7ec31", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/domains/f649fd17-eec5-4402-902a-1715c9f7ec31", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:04+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("customer-app-domain1.com", TestUtil.ToTestableString(page[0].Name), true);
-            Assert.AreEqual("0359e25a-338d-42e0-ac6c-f7fc3dd3032d", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/domains/0359e25a-338d-42e0-ac6c-f7fc3dd3032d", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:14+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("f7380c81-e199-4a7d-86ec-6e1791326df3", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/domains/f7380c81-e199-4a7d-86ec-6e1791326df3", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:04+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("customer-app-domain2.com", TestUtil.ToTestableString(page[1].Name), true);
         }
@@ -142,22 +142,22 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""uaa-id-89"",
-        ""url"": ""/v2/users/uaa-id-89"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""uaa-id-265"",
+        ""url"": ""/v2/users/uaa-id-265"",
+        ""created_at"": ""2015-05-19T15:27:20+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""admin"": false,
         ""active"": false,
         ""default_space_guid"": null,
-        ""spaces_url"": ""/v2/users/uaa-id-89/spaces"",
-        ""organizations_url"": ""/v2/users/uaa-id-89/organizations"",
-        ""managed_organizations_url"": ""/v2/users/uaa-id-89/managed_organizations"",
-        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-89/billing_managed_organizations"",
-        ""audited_organizations_url"": ""/v2/users/uaa-id-89/audited_organizations"",
-        ""managed_spaces_url"": ""/v2/users/uaa-id-89/managed_spaces"",
-        ""audited_spaces_url"": ""/v2/users/uaa-id-89/audited_spaces""
+        ""spaces_url"": ""/v2/users/uaa-id-265/spaces"",
+        ""organizations_url"": ""/v2/users/uaa-id-265/organizations"",
+        ""managed_organizations_url"": ""/v2/users/uaa-id-265/managed_organizations"",
+        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-265/billing_managed_organizations"",
+        ""audited_organizations_url"": ""/v2/users/uaa-id-265/audited_organizations"",
+        ""managed_spaces_url"": ""/v2/users/uaa-id-265/managed_spaces"",
+        ""audited_spaces_url"": ""/v2/users/uaa-id-265/audited_spaces""
       }
     }
   ]
@@ -169,20 +169,20 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("uaa-id-89", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/users/uaa-id-89", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("uaa-id-265", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/users/uaa-id-265", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Admin), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Active), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].DefaultSpaceGuid), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-89/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-265/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
         }
 
         [TestMethod]
@@ -196,22 +196,22 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""uaa-id-63"",
-        ""url"": ""/v2/users/uaa-id-63"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""uaa-id-281"",
+        ""url"": ""/v2/users/uaa-id-281"",
+        ""created_at"": ""2015-05-19T15:27:20+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""admin"": false,
         ""active"": false,
         ""default_space_guid"": null,
-        ""spaces_url"": ""/v2/users/uaa-id-63/spaces"",
-        ""organizations_url"": ""/v2/users/uaa-id-63/organizations"",
-        ""managed_organizations_url"": ""/v2/users/uaa-id-63/managed_organizations"",
-        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-63/billing_managed_organizations"",
-        ""audited_organizations_url"": ""/v2/users/uaa-id-63/audited_organizations"",
-        ""managed_spaces_url"": ""/v2/users/uaa-id-63/managed_spaces"",
-        ""audited_spaces_url"": ""/v2/users/uaa-id-63/audited_spaces""
+        ""spaces_url"": ""/v2/users/uaa-id-281/spaces"",
+        ""organizations_url"": ""/v2/users/uaa-id-281/organizations"",
+        ""managed_organizations_url"": ""/v2/users/uaa-id-281/managed_organizations"",
+        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-281/billing_managed_organizations"",
+        ""audited_organizations_url"": ""/v2/users/uaa-id-281/audited_organizations"",
+        ""managed_spaces_url"": ""/v2/users/uaa-id-281/managed_spaces"",
+        ""audited_spaces_url"": ""/v2/users/uaa-id-281/audited_spaces""
       }
     }
   ]
@@ -223,20 +223,20 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("uaa-id-63", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/users/uaa-id-63", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("uaa-id-281", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/users/uaa-id-281", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Admin), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Active), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].DefaultSpaceGuid), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-63/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-281/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
         }
 
         [TestMethod]
@@ -250,26 +250,26 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""65430f21-110c-421f-82b0-0ed11d795417"",
-        ""url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417"",
-        ""created_at"": ""2015-04-16T12:04:19+00:00"",
+        ""guid"": ""ec7bb568-8c77-432b-abee-e26393476452"",
+        ""url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452"",
+        ""created_at"": ""2015-05-19T15:27:19+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""name"": ""name-239"",
-        ""organization_guid"": ""6dd67d9f-9586-40b4-8541-37a4f1e857c8"",
+        ""name"": ""name-1625"",
+        ""organization_guid"": ""efc1c343-ea49-4382-90fe-052ed11790b9"",
         ""space_quota_definition_guid"": null,
-        ""organization_url"": ""/v2/organizations/6dd67d9f-9586-40b4-8541-37a4f1e857c8"",
-        ""developers_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/developers"",
-        ""managers_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/managers"",
-        ""auditors_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/auditors"",
-        ""apps_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/apps"",
-        ""routes_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/routes"",
-        ""domains_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/domains"",
-        ""service_instances_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/service_instances"",
-        ""app_events_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/app_events"",
-        ""events_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/events"",
-        ""security_groups_url"": ""/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/security_groups""
+        ""organization_url"": ""/v2/organizations/efc1c343-ea49-4382-90fe-052ed11790b9"",
+        ""developers_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/developers"",
+        ""managers_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/managers"",
+        ""auditors_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/auditors"",
+        ""apps_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/apps"",
+        ""routes_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/routes"",
+        ""domains_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/domains"",
+        ""service_instances_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/service_instances"",
+        ""app_events_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/app_events"",
+        ""events_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/events"",
+        ""security_groups_url"": ""/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/security_groups""
       }
     }
   ]
@@ -281,24 +281,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("65430f21-110c-421f-82b0-0ed11d795417", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:19+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("ec7bb568-8c77-432b-abee-e26393476452", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:19+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-239", TestUtil.ToTestableString(page[0].Name), true);
-            Assert.AreEqual("6dd67d9f-9586-40b4-8541-37a4f1e857c8", TestUtil.ToTestableString(page[0].OrganizationGuid), true);
+            Assert.AreEqual("name-1625", TestUtil.ToTestableString(page[0].Name), true);
+            Assert.AreEqual("efc1c343-ea49-4382-90fe-052ed11790b9", TestUtil.ToTestableString(page[0].OrganizationGuid), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].SpaceQuotaDefinitionGuid), true);
-            Assert.AreEqual("/v2/organizations/6dd67d9f-9586-40b4-8541-37a4f1e857c8", TestUtil.ToTestableString(page[0].OrganizationUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/developers", TestUtil.ToTestableString(page[0].DevelopersUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/managers", TestUtil.ToTestableString(page[0].ManagersUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/auditors", TestUtil.ToTestableString(page[0].AuditorsUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/apps", TestUtil.ToTestableString(page[0].AppsUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/routes", TestUtil.ToTestableString(page[0].RoutesUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/domains", TestUtil.ToTestableString(page[0].DomainsUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/service_instances", TestUtil.ToTestableString(page[0].ServiceInstancesUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/app_events", TestUtil.ToTestableString(page[0].AppEventsUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/events", TestUtil.ToTestableString(page[0].EventsUrl), true);
-            Assert.AreEqual("/v2/spaces/65430f21-110c-421f-82b0-0ed11d795417/security_groups", TestUtil.ToTestableString(page[0].SecurityGroupsUrl), true);
+            Assert.AreEqual("/v2/organizations/efc1c343-ea49-4382-90fe-052ed11790b9", TestUtil.ToTestableString(page[0].OrganizationUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/developers", TestUtil.ToTestableString(page[0].DevelopersUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/managers", TestUtil.ToTestableString(page[0].ManagersUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/auditors", TestUtil.ToTestableString(page[0].AuditorsUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/apps", TestUtil.ToTestableString(page[0].AppsUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/routes", TestUtil.ToTestableString(page[0].RoutesUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/domains", TestUtil.ToTestableString(page[0].DomainsUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/service_instances", TestUtil.ToTestableString(page[0].ServiceInstancesUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/app_events", TestUtil.ToTestableString(page[0].AppEventsUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/events", TestUtil.ToTestableString(page[0].EventsUrl), true);
+            Assert.AreEqual("/v2/spaces/ec7bb568-8c77-432b-abee-e26393476452/security_groups", TestUtil.ToTestableString(page[0].SecurityGroupsUrl), true);
         }
 
         [TestMethod]
@@ -306,49 +306,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""b26d3050-06dd-4641-a1ec-6d306c7f98a0"",
-    ""url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""3eb21ef5-97f8-426a-aa53-255fbd31de43"",
+    ""url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43"",
+    ""created_at"": ""2015-05-19T15:27:19+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-215"",
+    ""name"": ""name-1617"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""dd84100c-6055-46ee-803f-a0e830a862e3"",
+    ""quota_definition_guid"": ""8ad70084-e930-4198-9590-655b7136e4d5"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/dd84100c-6055-46ee-803f-a0e830a862e3"",
-    ""spaces_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/spaces"",
-    ""domains_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/domains"",
-    ""private_domains_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/private_domains"",
-    ""users_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/users"",
-    ""managers_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/managers"",
-    ""billing_managers_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/auditors"",
-    ""app_events_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/8ad70084-e930-4198-9590-655b7136e4d5"",
+    ""spaces_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/spaces"",
+    ""domains_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/domains"",
+    ""private_domains_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/private_domains"",
+    ""users_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/users"",
+    ""managers_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/managers"",
+    ""billing_managers_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/auditors"",
+    ""app_events_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/space_quota_definitions""
   }
 }";
 
             AssociateManagerWithOrganizationResponse obj = Utilities.DeserializeJson<AssociateManagerWithOrganizationResponse>(json);
 
-            Assert.AreEqual("b26d3050-06dd-4641-a1ec-6d306c7f98a0", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("3eb21ef5-97f8-426a-aa53-255fbd31de43", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:19+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-215", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1617", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("dd84100c-6055-46ee-803f-a0e830a862e3", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("8ad70084-e930-4198-9590-655b7136e4d5", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/dd84100c-6055-46ee-803f-a0e830a862e3", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/b26d3050-06dd-4641-a1ec-6d306c7f98a0/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/8ad70084-e930-4198-9590-655b7136e4d5", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/3eb21ef5-97f8-426a-aa53-255fbd31de43/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -356,49 +356,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""6cf75696-19d1-4849-a40e-3f37417de9be"",
-    ""url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd"",
+    ""url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-231"",
+    ""name"": ""name-1634"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""51947834-40d1-47a4-9aeb-f6f2ee488504"",
+    ""quota_definition_guid"": ""58cd4a13-e565-428c-bb25-e52bfe84fb15"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/51947834-40d1-47a4-9aeb-f6f2ee488504"",
-    ""spaces_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/spaces"",
-    ""domains_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/domains"",
-    ""private_domains_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/private_domains"",
-    ""users_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/users"",
-    ""managers_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/managers"",
-    ""billing_managers_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/auditors"",
-    ""app_events_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/58cd4a13-e565-428c-bb25-e52bfe84fb15"",
+    ""spaces_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/spaces"",
+    ""domains_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/domains"",
+    ""private_domains_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/private_domains"",
+    ""users_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/users"",
+    ""managers_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/managers"",
+    ""billing_managers_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/auditors"",
+    ""app_events_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/space_quota_definitions""
   }
 }";
 
             RemoveAuditorFromOrganizationResponse obj = Utilities.DeserializeJson<RemoveAuditorFromOrganizationResponse>(json);
 
-            Assert.AreEqual("6cf75696-19d1-4849-a40e-3f37417de9be", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-231", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1634", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("51947834-40d1-47a4-9aeb-f6f2ee488504", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("58cd4a13-e565-428c-bb25-e52bfe84fb15", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/51947834-40d1-47a4-9aeb-f6f2ee488504", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/6cf75696-19d1-4849-a40e-3f37417de9be/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/58cd4a13-e565-428c-bb25-e52bfe84fb15", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/ae2ab2f0-e5e6-41b1-88c2-73adc35fc8fd/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -412,21 +412,21 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""5cd1752d-6c31-4fa5-9a34-50f65a3f3222"",
-        ""url"": ""/v2/space_quota_definitions/5cd1752d-6c31-4fa5-9a34-50f65a3f3222"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""a105b58e-551d-4890-9079-190a832483b8"",
+        ""url"": ""/v2/space_quota_definitions/a105b58e-551d-4890-9079-190a832483b8"",
+        ""created_at"": ""2015-05-19T15:27:20+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""name"": ""name-204"",
-        ""organization_guid"": ""719105d8-aab5-4939-a32c-79bbc22801e2"",
+        ""name"": ""name-1640"",
+        ""organization_guid"": ""5139ac93-3324-4245-ac4e-96ef4cecbf38"",
         ""non_basic_services_allowed"": true,
         ""total_services"": 60,
         ""total_routes"": 1000,
         ""memory_limit"": 20480,
         ""instance_memory_limit"": -1,
-        ""organization_url"": ""/v2/organizations/719105d8-aab5-4939-a32c-79bbc22801e2"",
-        ""spaces_url"": ""/v2/space_quota_definitions/5cd1752d-6c31-4fa5-9a34-50f65a3f3222/spaces""
+        ""organization_url"": ""/v2/organizations/5139ac93-3324-4245-ac4e-96ef4cecbf38"",
+        ""spaces_url"": ""/v2/space_quota_definitions/a105b58e-551d-4890-9079-190a832483b8/spaces""
       }
     }
   ]
@@ -438,19 +438,19 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("5cd1752d-6c31-4fa5-9a34-50f65a3f3222", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/space_quota_definitions/5cd1752d-6c31-4fa5-9a34-50f65a3f3222", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("a105b58e-551d-4890-9079-190a832483b8", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/space_quota_definitions/a105b58e-551d-4890-9079-190a832483b8", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-204", TestUtil.ToTestableString(page[0].Name), true);
-            Assert.AreEqual("719105d8-aab5-4939-a32c-79bbc22801e2", TestUtil.ToTestableString(page[0].OrganizationGuid), true);
+            Assert.AreEqual("name-1640", TestUtil.ToTestableString(page[0].Name), true);
+            Assert.AreEqual("5139ac93-3324-4245-ac4e-96ef4cecbf38", TestUtil.ToTestableString(page[0].OrganizationGuid), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(page[0].NonBasicServicesAllowed), true);
             Assert.AreEqual("60", TestUtil.ToTestableString(page[0].TotalServices), true);
             Assert.AreEqual("1000", TestUtil.ToTestableString(page[0].TotalRoutes), true);
             Assert.AreEqual("20480", TestUtil.ToTestableString(page[0].MemoryLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].InstanceMemoryLimit), true);
-            Assert.AreEqual("/v2/organizations/719105d8-aab5-4939-a32c-79bbc22801e2", TestUtil.ToTestableString(page[0].OrganizationUrl), true);
-            Assert.AreEqual("/v2/space_quota_definitions/5cd1752d-6c31-4fa5-9a34-50f65a3f3222/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/5139ac93-3324-4245-ac4e-96ef4cecbf38", TestUtil.ToTestableString(page[0].OrganizationUrl), true);
+            Assert.AreEqual("/v2/space_quota_definitions/a105b58e-551d-4890-9079-190a832483b8/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
         }
 
         [TestMethod]
@@ -458,49 +458,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""18a4a035-8e64-4824-af2a-fcf9572fd34e"",
-    ""url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d"",
+    ""url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-207"",
+    ""name"": ""name-1651"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""55d2b50b-0ce2-4116-a603-e961772cd4bf"",
+    ""quota_definition_guid"": ""26e9b769-c83e-4c70-aabe-8576314391c5"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/55d2b50b-0ce2-4116-a603-e961772cd4bf"",
-    ""spaces_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/spaces"",
-    ""domains_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/domains"",
-    ""private_domains_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/private_domains"",
-    ""users_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/users"",
-    ""managers_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/managers"",
-    ""billing_managers_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/auditors"",
-    ""app_events_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/26e9b769-c83e-4c70-aabe-8576314391c5"",
+    ""spaces_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/spaces"",
+    ""domains_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/domains"",
+    ""private_domains_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/private_domains"",
+    ""users_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/users"",
+    ""managers_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/managers"",
+    ""billing_managers_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/auditors"",
+    ""app_events_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/space_quota_definitions""
   }
 }";
 
             RemoveUserFromOrganizationResponse obj = Utilities.DeserializeJson<RemoveUserFromOrganizationResponse>(json);
 
-            Assert.AreEqual("18a4a035-8e64-4824-af2a-fcf9572fd34e", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-207", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1651", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("55d2b50b-0ce2-4116-a603-e961772cd4bf", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("26e9b769-c83e-4c70-aabe-8576314391c5", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/55d2b50b-0ce2-4116-a603-e961772cd4bf", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/18a4a035-8e64-4824-af2a-fcf9572fd34e/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/26e9b769-c83e-4c70-aabe-8576314391c5", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/9ad9cc07-1e72-4fb4-8c50-db081a6bbe9d/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -508,49 +508,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""5ebe93af-0068-4475-8d7d-3f6b0cec1039"",
-    ""url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""3462e286-d75c-4970-9604-1f160aab4aaf"",
+    ""url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-233"",
+    ""name"": ""name-1632"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""8664ef71-0723-448a-befd-f0b6e67394a1"",
+    ""quota_definition_guid"": ""8842713b-b8ee-4f61-81d7-d7ce2699ea5b"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/8664ef71-0723-448a-befd-f0b6e67394a1"",
-    ""spaces_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/spaces"",
-    ""domains_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/domains"",
-    ""private_domains_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/private_domains"",
-    ""users_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/users"",
-    ""managers_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/managers"",
-    ""billing_managers_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/auditors"",
-    ""app_events_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/8842713b-b8ee-4f61-81d7-d7ce2699ea5b"",
+    ""spaces_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/spaces"",
+    ""domains_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/domains"",
+    ""private_domains_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/private_domains"",
+    ""users_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/users"",
+    ""managers_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/managers"",
+    ""billing_managers_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/auditors"",
+    ""app_events_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/space_quota_definitions""
   }
 }";
 
             AssociateAuditorWithOrganizationResponse obj = Utilities.DeserializeJson<AssociateAuditorWithOrganizationResponse>(json);
 
-            Assert.AreEqual("5ebe93af-0068-4475-8d7d-3f6b0cec1039", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("3462e286-d75c-4970-9604-1f160aab4aaf", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-233", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1632", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("8664ef71-0723-448a-befd-f0b6e67394a1", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("8842713b-b8ee-4f61-81d7-d7ce2699ea5b", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/8664ef71-0723-448a-befd-f0b6e67394a1", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/5ebe93af-0068-4475-8d7d-3f6b0cec1039/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/8842713b-b8ee-4f61-81d7-d7ce2699ea5b", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/3462e286-d75c-4970-9604-1f160aab4aaf/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -558,49 +558,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""8cfb052d-c7f8-450a-a948-79585aec6843"",
-    ""url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""fdf10fb5-a3d9-4385-9329-463092147ea7"",
+    ""url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-199"",
+    ""name"": ""name-1655"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""2cf9d902-46e8-413d-8d6e-597b5caba76a"",
+    ""quota_definition_guid"": ""c7bf4e68-4dad-47f1-9108-fdde478843f9"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/2cf9d902-46e8-413d-8d6e-597b5caba76a"",
-    ""spaces_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/spaces"",
-    ""domains_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/domains"",
-    ""private_domains_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/private_domains"",
-    ""users_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/users"",
-    ""managers_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/managers"",
-    ""billing_managers_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/auditors"",
-    ""app_events_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/c7bf4e68-4dad-47f1-9108-fdde478843f9"",
+    ""spaces_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/spaces"",
+    ""domains_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/domains"",
+    ""private_domains_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/private_domains"",
+    ""users_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/users"",
+    ""managers_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/managers"",
+    ""billing_managers_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/auditors"",
+    ""app_events_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/space_quota_definitions""
   }
 }";
 
             RetrieveOrganizationResponse obj = Utilities.DeserializeJson<RetrieveOrganizationResponse>(json);
 
-            Assert.AreEqual("8cfb052d-c7f8-450a-a948-79585aec6843", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("fdf10fb5-a3d9-4385-9329-463092147ea7", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-199", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1655", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("2cf9d902-46e8-413d-8d6e-597b5caba76a", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("c7bf4e68-4dad-47f1-9108-fdde478843f9", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/2cf9d902-46e8-413d-8d6e-597b5caba76a", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/8cfb052d-c7f8-450a-a948-79585aec6843/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/c7bf4e68-4dad-47f1-9108-fdde478843f9", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/fdf10fb5-a3d9-4385-9329-463092147ea7/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -608,49 +608,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""35d4854c-fda3-4db4-b834-03cb71320342"",
-    ""url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""c4c81d96-2edf-4e9c-a8be-e49c362d1743"",
+    ""url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-209"",
+    ""name"": ""name-1649"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""850d064f-7390-49b8-b176-b000267611bc"",
+    ""quota_definition_guid"": ""54db099d-7eec-4d86-ac86-e8778e3037a6"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/850d064f-7390-49b8-b176-b000267611bc"",
-    ""spaces_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/spaces"",
-    ""domains_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/domains"",
-    ""private_domains_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/private_domains"",
-    ""users_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/users"",
-    ""managers_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/managers"",
-    ""billing_managers_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/auditors"",
-    ""app_events_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/54db099d-7eec-4d86-ac86-e8778e3037a6"",
+    ""spaces_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/spaces"",
+    ""domains_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/domains"",
+    ""private_domains_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/private_domains"",
+    ""users_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/users"",
+    ""managers_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/managers"",
+    ""billing_managers_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/auditors"",
+    ""app_events_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/space_quota_definitions""
   }
 }";
 
             AssociateUserWithOrganizationResponse obj = Utilities.DeserializeJson<AssociateUserWithOrganizationResponse>(json);
 
-            Assert.AreEqual("35d4854c-fda3-4db4-b834-03cb71320342", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("c4c81d96-2edf-4e9c-a8be-e49c362d1743", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-209", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1649", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("850d064f-7390-49b8-b176-b000267611bc", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("54db099d-7eec-4d86-ac86-e8778e3037a6", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/850d064f-7390-49b8-b176-b000267611bc", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/35d4854c-fda3-4db4-b834-03cb71320342/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/54db099d-7eec-4d86-ac86-e8778e3037a6", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/c4c81d96-2edf-4e9c-a8be-e49c362d1743/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -658,49 +658,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""835f54cd-72c2-4064-ab1e-80ff9c1b5e56"",
-    ""url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
-    ""updated_at"": ""2015-04-16T12:04:18+00:00""
+    ""guid"": ""1806ec7c-8a5f-449a-927c-beaf4c0b66c1"",
+    ""url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
+    ""updated_at"": ""2015-05-19T15:27:20+00:00""
   },
   ""entity"": {
     ""name"": ""New Organization Name"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""fc8e1595-c555-4449-a6c2-8bc4b51b6e11"",
+    ""quota_definition_guid"": ""1bd41263-5150-462d-ada4-073df672295f"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/fc8e1595-c555-4449-a6c2-8bc4b51b6e11"",
-    ""spaces_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/spaces"",
-    ""domains_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/domains"",
-    ""private_domains_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/private_domains"",
-    ""users_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/users"",
-    ""managers_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/managers"",
-    ""billing_managers_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/auditors"",
-    ""app_events_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/1bd41263-5150-462d-ada4-073df672295f"",
+    ""spaces_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/spaces"",
+    ""domains_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/domains"",
+    ""private_domains_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/private_domains"",
+    ""users_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/users"",
+    ""managers_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/managers"",
+    ""billing_managers_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/auditors"",
+    ""app_events_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/space_quota_definitions""
   }
 }";
 
             UpdateOrganizationResponse obj = Utilities.DeserializeJson<UpdateOrganizationResponse>(json);
 
-            Assert.AreEqual("835f54cd-72c2-4064-ab1e-80ff9c1b5e56", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("1806ec7c-8a5f-449a-927c-beaf4c0b66c1", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("New Organization Name", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("fc8e1595-c555-4449-a6c2-8bc4b51b6e11", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("1bd41263-5150-462d-ada4-073df672295f", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/fc8e1595-c555-4449-a6c2-8bc4b51b6e11", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/835f54cd-72c2-4064-ab1e-80ff9c1b5e56/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/1bd41263-5150-462d-ada4-073df672295f", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/1806ec7c-8a5f-449a-927c-beaf4c0b66c1/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -714,26 +714,26 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""68378f1b-b6b1-4b89-8614-ff80330b6ae0"",
-        ""url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0"",
-        ""created_at"": ""2015-04-16T12:04:14+00:00"",
+        ""guid"": ""0a949a57-ed53-4d72-9205-c4432df8f118"",
+        ""url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118"",
+        ""created_at"": ""2015-05-19T15:27:04+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""name"": ""the-system_domain-org-name"",
         ""billing_enabled"": false,
-        ""quota_definition_guid"": ""9011b60e-be73-4f50-9bbf-0f10aad76c8a"",
+        ""quota_definition_guid"": ""f7bdf4f9-8fce-446b-950a-6ad01340331b"",
         ""status"": ""active"",
-        ""quota_definition_url"": ""/v2/quota_definitions/9011b60e-be73-4f50-9bbf-0f10aad76c8a"",
-        ""spaces_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/spaces"",
-        ""domains_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/domains"",
-        ""private_domains_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/private_domains"",
-        ""users_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/users"",
-        ""managers_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/managers"",
-        ""billing_managers_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/billing_managers"",
-        ""auditors_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/auditors"",
-        ""app_events_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/app_events"",
-        ""space_quota_definitions_url"": ""/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/space_quota_definitions""
+        ""quota_definition_url"": ""/v2/quota_definitions/f7bdf4f9-8fce-446b-950a-6ad01340331b"",
+        ""spaces_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/spaces"",
+        ""domains_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/domains"",
+        ""private_domains_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/private_domains"",
+        ""users_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/users"",
+        ""managers_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/managers"",
+        ""billing_managers_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/billing_managers"",
+        ""auditors_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/auditors"",
+        ""app_events_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/app_events"",
+        ""space_quota_definitions_url"": ""/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/space_quota_definitions""
       }
     }
   ]
@@ -745,24 +745,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("68378f1b-b6b1-4b89-8614-ff80330b6ae0", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:14+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("0a949a57-ed53-4d72-9205-c4432df8f118", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:04+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("the-system_domain-org-name", TestUtil.ToTestableString(page[0].Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].BillingEnabled), true);
-            Assert.AreEqual("9011b60e-be73-4f50-9bbf-0f10aad76c8a", TestUtil.ToTestableString(page[0].QuotaDefinitionGuid), true);
+            Assert.AreEqual("f7bdf4f9-8fce-446b-950a-6ad01340331b", TestUtil.ToTestableString(page[0].QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(page[0].Status), true);
-            Assert.AreEqual("/v2/quota_definitions/9011b60e-be73-4f50-9bbf-0f10aad76c8a", TestUtil.ToTestableString(page[0].QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/domains", TestUtil.ToTestableString(page[0].DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/private_domains", TestUtil.ToTestableString(page[0].PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/users", TestUtil.ToTestableString(page[0].UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/managers", TestUtil.ToTestableString(page[0].ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/billing_managers", TestUtil.ToTestableString(page[0].BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/auditors", TestUtil.ToTestableString(page[0].AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/app_events", TestUtil.ToTestableString(page[0].AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/68378f1b-b6b1-4b89-8614-ff80330b6ae0/space_quota_definitions", TestUtil.ToTestableString(page[0].SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/f7bdf4f9-8fce-446b-950a-6ad01340331b", TestUtil.ToTestableString(page[0].QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/domains", TestUtil.ToTestableString(page[0].DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/private_domains", TestUtil.ToTestableString(page[0].PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/users", TestUtil.ToTestableString(page[0].UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/managers", TestUtil.ToTestableString(page[0].ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/billing_managers", TestUtil.ToTestableString(page[0].BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/auditors", TestUtil.ToTestableString(page[0].AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/app_events", TestUtil.ToTestableString(page[0].AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/0a949a57-ed53-4d72-9205-c4432df8f118/space_quota_definitions", TestUtil.ToTestableString(page[0].SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -776,42 +776,42 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""uaa-id-70"",
-        ""url"": ""/v2/users/uaa-id-70"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""uaa-id-254"",
+        ""url"": ""/v2/users/uaa-id-254"",
+        ""created_at"": ""2015-05-19T15:27:19+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""admin"": false,
         ""active"": false,
         ""default_space_guid"": null,
-        ""spaces_url"": ""/v2/users/uaa-id-70/spaces"",
-        ""organizations_url"": ""/v2/users/uaa-id-70/organizations"",
-        ""managed_organizations_url"": ""/v2/users/uaa-id-70/managed_organizations"",
-        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-70/billing_managed_organizations"",
-        ""audited_organizations_url"": ""/v2/users/uaa-id-70/audited_organizations"",
-        ""managed_spaces_url"": ""/v2/users/uaa-id-70/managed_spaces"",
-        ""audited_spaces_url"": ""/v2/users/uaa-id-70/audited_spaces""
+        ""spaces_url"": ""/v2/users/uaa-id-254/spaces"",
+        ""organizations_url"": ""/v2/users/uaa-id-254/organizations"",
+        ""managed_organizations_url"": ""/v2/users/uaa-id-254/managed_organizations"",
+        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-254/billing_managed_organizations"",
+        ""audited_organizations_url"": ""/v2/users/uaa-id-254/audited_organizations"",
+        ""managed_spaces_url"": ""/v2/users/uaa-id-254/managed_spaces"",
+        ""audited_spaces_url"": ""/v2/users/uaa-id-254/audited_spaces""
       }
     },
     {
       ""metadata"": {
-        ""guid"": ""uaa-id-71"",
-        ""url"": ""/v2/users/uaa-id-71"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""uaa-id-255"",
+        ""url"": ""/v2/users/uaa-id-255"",
+        ""created_at"": ""2015-05-19T15:27:19+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
         ""admin"": false,
         ""active"": false,
         ""default_space_guid"": null,
-        ""spaces_url"": ""/v2/users/uaa-id-71/spaces"",
-        ""organizations_url"": ""/v2/users/uaa-id-71/organizations"",
-        ""managed_organizations_url"": ""/v2/users/uaa-id-71/managed_organizations"",
-        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-71/billing_managed_organizations"",
-        ""audited_organizations_url"": ""/v2/users/uaa-id-71/audited_organizations"",
-        ""managed_spaces_url"": ""/v2/users/uaa-id-71/managed_spaces"",
-        ""audited_spaces_url"": ""/v2/users/uaa-id-71/audited_spaces""
+        ""spaces_url"": ""/v2/users/uaa-id-255/spaces"",
+        ""organizations_url"": ""/v2/users/uaa-id-255/organizations"",
+        ""managed_organizations_url"": ""/v2/users/uaa-id-255/managed_organizations"",
+        ""billing_managed_organizations_url"": ""/v2/users/uaa-id-255/billing_managed_organizations"",
+        ""audited_organizations_url"": ""/v2/users/uaa-id-255/audited_organizations"",
+        ""managed_spaces_url"": ""/v2/users/uaa-id-255/managed_spaces"",
+        ""audited_spaces_url"": ""/v2/users/uaa-id-255/audited_spaces""
       }
     }
   ]
@@ -823,34 +823,34 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("uaa-id-70", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/users/uaa-id-70", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("uaa-id-254", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/users/uaa-id-254", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:19+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Admin), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].Active), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].DefaultSpaceGuid), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-70/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
-            Assert.AreEqual("uaa-id-71", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/users/uaa-id-71", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/spaces", TestUtil.ToTestableString(page[0].SpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/organizations", TestUtil.ToTestableString(page[0].OrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/managed_organizations", TestUtil.ToTestableString(page[0].ManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/billing_managed_organizations", TestUtil.ToTestableString(page[0].BillingManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/audited_organizations", TestUtil.ToTestableString(page[0].AuditedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/managed_spaces", TestUtil.ToTestableString(page[0].ManagedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-254/audited_spaces", TestUtil.ToTestableString(page[0].AuditedSpacesUrl), true);
+            Assert.AreEqual("uaa-id-255", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/users/uaa-id-255", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:19+00:00", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[1].Admin), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[1].Active), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].DefaultSpaceGuid), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/spaces", TestUtil.ToTestableString(page[1].SpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/organizations", TestUtil.ToTestableString(page[1].OrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/managed_organizations", TestUtil.ToTestableString(page[1].ManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/billing_managed_organizations", TestUtil.ToTestableString(page[1].BillingManagedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/audited_organizations", TestUtil.ToTestableString(page[1].AuditedOrganizationsUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/managed_spaces", TestUtil.ToTestableString(page[1].ManagedSpacesUrl), true);
-            Assert.AreEqual("/v2/users/uaa-id-71/audited_spaces", TestUtil.ToTestableString(page[1].AuditedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/spaces", TestUtil.ToTestableString(page[1].SpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/organizations", TestUtil.ToTestableString(page[1].OrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/managed_organizations", TestUtil.ToTestableString(page[1].ManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/billing_managed_organizations", TestUtil.ToTestableString(page[1].BillingManagedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/audited_organizations", TestUtil.ToTestableString(page[1].AuditedOrganizationsUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/managed_spaces", TestUtil.ToTestableString(page[1].ManagedSpacesUrl), true);
+            Assert.AreEqual("/v2/users/uaa-id-255/audited_spaces", TestUtil.ToTestableString(page[1].AuditedSpacesUrl), true);
         }
 
         [TestMethod]
@@ -864,22 +864,22 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""89e6614c-b47b-4f1f-a794-edb6262f9e94"",
-        ""url"": ""/v2/services/89e6614c-b47b-4f1f-a794-edb6262f9e94"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""bd5d0454-5068-432d-9bfd-86cce84780fb"",
+        ""url"": ""/v2/services/bd5d0454-5068-432d-9bfd-86cce84780fb"",
+        ""created_at"": ""2015-05-19T15:27:20+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""label"": ""label-27"",
-        ""provider"": ""provider-27"",
-        ""url"": ""https://foo.com/url-17"",
-        ""description"": ""desc-34"",
+        ""label"": ""label-80"",
+        ""provider"": ""provider-71"",
+        ""url"": ""https://foo.com/url-101"",
+        ""description"": ""desc-179"",
         ""long_description"": null,
-        ""version"": ""version-11"",
+        ""version"": ""version-55"",
         ""info_url"": null,
         ""active"": true,
         ""bindable"": true,
-        ""unique_id"": ""7ea06ed2-de6a-4542-a1b5-09603dc552e2"",
+        ""unique_id"": ""545544cf-8c9a-40a9-baa9-ccc7c2633fdb"",
         ""extra"": null,
         ""tags"": [
 
@@ -890,7 +890,7 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         ""documentation_url"": null,
         ""service_broker_guid"": null,
         ""plan_updateable"": false,
-        ""service_plans_url"": ""/v2/services/89e6614c-b47b-4f1f-a794-edb6262f9e94/service_plans""
+        ""service_plans_url"": ""/v2/services/bd5d0454-5068-432d-9bfd-86cce84780fb/service_plans""
       }
     }
   ]
@@ -902,25 +902,25 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("89e6614c-b47b-4f1f-a794-edb6262f9e94", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/services/89e6614c-b47b-4f1f-a794-edb6262f9e94", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("bd5d0454-5068-432d-9bfd-86cce84780fb", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/services/bd5d0454-5068-432d-9bfd-86cce84780fb", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("label-27", TestUtil.ToTestableString(page[0].Label), true);
-            Assert.AreEqual("provider-27", TestUtil.ToTestableString(page[0].Provider), true);
-            Assert.AreEqual("https://foo.com/url-17", TestUtil.ToTestableString(page[0].Url), true);
-            Assert.AreEqual("desc-34", TestUtil.ToTestableString(page[0].Description), true);
+            Assert.AreEqual("label-80", TestUtil.ToTestableString(page[0].Label), true);
+            Assert.AreEqual("provider-71", TestUtil.ToTestableString(page[0].Provider), true);
+            Assert.AreEqual("https://foo.com/url-101", TestUtil.ToTestableString(page[0].Url), true);
+            Assert.AreEqual("desc-179", TestUtil.ToTestableString(page[0].Description), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].LongDescription), true);
-            Assert.AreEqual("version-11", TestUtil.ToTestableString(page[0].Version), true);
+            Assert.AreEqual("version-55", TestUtil.ToTestableString(page[0].Version), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].InfoUrl), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(page[0].Active), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(page[0].Bindable), true);
-            Assert.AreEqual("7ea06ed2-de6a-4542-a1b5-09603dc552e2", TestUtil.ToTestableString(page[0].UniqueId), true);
+            Assert.AreEqual("545544cf-8c9a-40a9-baa9-ccc7c2633fdb", TestUtil.ToTestableString(page[0].UniqueId), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].Extra), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].DocumentationUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].ServiceBrokerGuid), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].PlanUpdateable), true);
-            Assert.AreEqual("/v2/services/89e6614c-b47b-4f1f-a794-edb6262f9e94/service_plans", TestUtil.ToTestableString(page[0].ServicePlansUrl), true);
+            Assert.AreEqual("/v2/services/bd5d0454-5068-432d-9bfd-86cce84780fb/service_plans", TestUtil.ToTestableString(page[0].ServicePlansUrl), true);
         }
 
         [TestMethod]
@@ -928,49 +928,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""6606eb5a-7ec2-41aa-af73-f2c181b3e8fc"",
-    ""url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""ecbc1f9c-6791-4313-97ee-ecd723badbc8"",
+    ""url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-225"",
+    ""name"": ""name-1643"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""573e9989-a90a-4533-ab3a-06317b88ef14"",
+    ""quota_definition_guid"": ""c23accf4-79df-43b9-b5e5-b4134cc3dafc"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/573e9989-a90a-4533-ab3a-06317b88ef14"",
-    ""spaces_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/spaces"",
-    ""domains_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/domains"",
-    ""private_domains_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/private_domains"",
-    ""users_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/users"",
-    ""managers_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/managers"",
-    ""billing_managers_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/auditors"",
-    ""app_events_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/c23accf4-79df-43b9-b5e5-b4134cc3dafc"",
+    ""spaces_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/spaces"",
+    ""domains_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/domains"",
+    ""private_domains_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/private_domains"",
+    ""users_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/users"",
+    ""managers_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/managers"",
+    ""billing_managers_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/auditors"",
+    ""app_events_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/space_quota_definitions""
   }
 }";
 
             RemoveBillingManagerFromOrganizationResponse obj = Utilities.DeserializeJson<RemoveBillingManagerFromOrganizationResponse>(json);
 
-            Assert.AreEqual("6606eb5a-7ec2-41aa-af73-f2c181b3e8fc", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("ecbc1f9c-6791-4313-97ee-ecd723badbc8", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-225", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1643", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("573e9989-a90a-4533-ab3a-06317b88ef14", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("c23accf4-79df-43b9-b5e5-b4134cc3dafc", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/573e9989-a90a-4533-ab3a-06317b88ef14", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/6606eb5a-7ec2-41aa-af73-f2c181b3e8fc/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/c23accf4-79df-43b9-b5e5-b4134cc3dafc", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/ecbc1f9c-6791-4313-97ee-ecd723badbc8/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -988,49 +988,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""d926db7a-22c2-41a8-87e7-6bb283c69373"",
-    ""url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""d424c3c2-8a40-4f87-8540-b1fecebd602a"",
+    ""url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
     ""name"": ""my-org-name"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""4abc3bfe-4f49-488d-bea7-3e0763b110fd"",
+    ""quota_definition_guid"": ""1e863ed8-2c0b-44a2-bc27-9c670b6bbc39"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/4abc3bfe-4f49-488d-bea7-3e0763b110fd"",
-    ""spaces_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/spaces"",
-    ""domains_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/domains"",
-    ""private_domains_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/private_domains"",
-    ""users_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/users"",
-    ""managers_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/managers"",
-    ""billing_managers_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/auditors"",
-    ""app_events_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/1e863ed8-2c0b-44a2-bc27-9c670b6bbc39"",
+    ""spaces_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/spaces"",
+    ""domains_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/domains"",
+    ""private_domains_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/private_domains"",
+    ""users_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/users"",
+    ""managers_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/managers"",
+    ""billing_managers_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/auditors"",
+    ""app_events_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/space_quota_definitions""
   }
 }";
 
             CreateOrganizationResponse obj = Utilities.DeserializeJson<CreateOrganizationResponse>(json);
 
-            Assert.AreEqual("d926db7a-22c2-41a8-87e7-6bb283c69373", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("d424c3c2-8a40-4f87-8540-b1fecebd602a", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("my-org-name", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("4abc3bfe-4f49-488d-bea7-3e0763b110fd", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("1e863ed8-2c0b-44a2-bc27-9c670b6bbc39", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/4abc3bfe-4f49-488d-bea7-3e0763b110fd", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/d926db7a-22c2-41a8-87e7-6bb283c69373/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/1e863ed8-2c0b-44a2-bc27-9c670b6bbc39", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/d424c3c2-8a40-4f87-8540-b1fecebd602a/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -1044,15 +1044,15 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""7dfe5b5f-984f-45df-b6c3-45abd65b5c35"",
-        ""url"": ""/v2/private_domains/7dfe5b5f-984f-45df-b6c3-45abd65b5c35"",
-        ""created_at"": ""2015-04-16T12:04:18+00:00"",
+        ""guid"": ""4aa5dbdf-b458-4047-a7b1-ab45957f0399"",
+        ""url"": ""/v2/private_domains/4aa5dbdf-b458-4047-a7b1-ab45957f0399"",
+        ""created_at"": ""2015-05-19T15:27:19+00:00"",
         ""updated_at"": null
       },
       ""entity"": {
-        ""name"": ""domain-10.example.com"",
-        ""owning_organization_guid"": ""dfe4e5d2-8d2b-4be5-ae2f-a0114fb1c540"",
-        ""owning_organization_url"": ""/v2/organizations/dfe4e5d2-8d2b-4be5-ae2f-a0114fb1c540""
+        ""name"": ""domain-45.example.com"",
+        ""owning_organization_guid"": ""5c44407c-a52e-440e-b253-afa976c517f4"",
+        ""owning_organization_url"": ""/v2/organizations/5c44407c-a52e-440e-b253-afa976c517f4""
       }
     }
   ]
@@ -1064,24 +1064,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("7dfe5b5f-984f-45df-b6c3-45abd65b5c35", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/private_domains/7dfe5b5f-984f-45df-b6c3-45abd65b5c35", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("4aa5dbdf-b458-4047-a7b1-ab45957f0399", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/private_domains/4aa5dbdf-b458-4047-a7b1-ab45957f0399", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:19+00:00", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("domain-10.example.com", TestUtil.ToTestableString(page[0].Name), true);
-            Assert.AreEqual("dfe4e5d2-8d2b-4be5-ae2f-a0114fb1c540", TestUtil.ToTestableString(page[0].OwningOrganizationGuid), true);
-            Assert.AreEqual("/v2/organizations/dfe4e5d2-8d2b-4be5-ae2f-a0114fb1c540", TestUtil.ToTestableString(page[0].OwningOrganizationUrl), true);
+            Assert.AreEqual("domain-45.example.com", TestUtil.ToTestableString(page[0].Name), true);
+            Assert.AreEqual("5c44407c-a52e-440e-b253-afa976c517f4", TestUtil.ToTestableString(page[0].OwningOrganizationGuid), true);
+            Assert.AreEqual("/v2/organizations/5c44407c-a52e-440e-b253-afa976c517f4", TestUtil.ToTestableString(page[0].OwningOrganizationUrl), true);
         }
 
         [TestMethod]
         public void TestGetOrganizationSummaryResponse()
         {
-            string json = @"{""guid"":""1de22f5f-2b4e-478a-b339-7bfeef80d867"",""name"":""name-123"",""status"":""active"",""spaces"":[{""guid"":""225b6ffe-45f4-4086-b5d6-a3e1627bc985"",""name"":""name-125"",""service_count"":0,""app_count"":0,""mem_dev_total"":0,""mem_prod_total"":0}]}";
+            string json = @"{""guid"":""1746b80b-5f72-4ede-9c8c-f0539e11ce36"",""name"":""name-439"",""status"":""active"",""spaces"":[{""guid"":""6825dc97-fdb6-40c0-ba68-459690696afa"",""name"":""name-441"",""service_count"":0,""app_count"":0,""mem_dev_total"":0,""mem_prod_total"":0}]}";
 
             GetOrganizationSummaryResponse obj = Utilities.DeserializeJson<GetOrganizationSummaryResponse>(json);
 
-            Assert.AreEqual("1de22f5f-2b4e-478a-b339-7bfeef80d867", TestUtil.ToTestableString(obj.Guid), true);
-            Assert.AreEqual("name-123", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("1746b80b-5f72-4ede-9c8c-f0539e11ce36", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("name-439", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
         }
 
@@ -1090,49 +1090,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3"",
-    ""url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""0fdd50dc-6f14-4ac9-ab61-85201e2200eb"",
+    ""url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb"",
+    ""created_at"": ""2015-05-19T15:27:19+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-213"",
+    ""name"": ""name-1619"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""6b197673-1879-40f3-af34-f2092c258758"",
+    ""quota_definition_guid"": ""1c3fa5c8-281b-44f9-9bbf-c58bfb60d159"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/6b197673-1879-40f3-af34-f2092c258758"",
-    ""spaces_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/spaces"",
-    ""domains_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/domains"",
-    ""private_domains_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/private_domains"",
-    ""users_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/users"",
-    ""managers_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/managers"",
-    ""billing_managers_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/auditors"",
-    ""app_events_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/1c3fa5c8-281b-44f9-9bbf-c58bfb60d159"",
+    ""spaces_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/spaces"",
+    ""domains_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/domains"",
+    ""private_domains_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/private_domains"",
+    ""users_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/users"",
+    ""managers_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/managers"",
+    ""billing_managers_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/auditors"",
+    ""app_events_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/space_quota_definitions""
   }
 }";
 
             RemoveManagerFromOrganizationResponse obj = Utilities.DeserializeJson<RemoveManagerFromOrganizationResponse>(json);
 
-            Assert.AreEqual("87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("0fdd50dc-6f14-4ac9-ab61-85201e2200eb", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:19+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-213", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1619", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("6b197673-1879-40f3-af34-f2092c258758", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("1c3fa5c8-281b-44f9-9bbf-c58bfb60d159", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/6b197673-1879-40f3-af34-f2092c258758", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/87839a1b-5ce3-4b8e-afaf-3fc66f8ecbf3/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/1c3fa5c8-281b-44f9-9bbf-c58bfb60d159", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/0fdd50dc-6f14-4ac9-ab61-85201e2200eb/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
 
         [TestMethod]
@@ -1140,49 +1140,49 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""15d1e9ea-8ce1-40d7-b2ec-01309b39873e"",
-    ""url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e"",
-    ""created_at"": ""2015-04-16T12:04:18+00:00"",
+    ""guid"": ""5d87c2a3-db52-4828-9ed5-eafa0ec717b7"",
+    ""url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7"",
+    ""created_at"": ""2015-05-19T15:27:20+00:00"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-227"",
+    ""name"": ""name-1641"",
     ""billing_enabled"": false,
-    ""quota_definition_guid"": ""32c59898-ecdb-4946-a0e9-d0e67d28cb30"",
+    ""quota_definition_guid"": ""b38d0509-e3df-4203-87d5-76c5d4dc184e"",
     ""status"": ""active"",
-    ""quota_definition_url"": ""/v2/quota_definitions/32c59898-ecdb-4946-a0e9-d0e67d28cb30"",
-    ""spaces_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/spaces"",
-    ""domains_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/domains"",
-    ""private_domains_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/private_domains"",
-    ""users_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/users"",
-    ""managers_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/managers"",
-    ""billing_managers_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/billing_managers"",
-    ""auditors_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/auditors"",
-    ""app_events_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/app_events"",
-    ""space_quota_definitions_url"": ""/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/space_quota_definitions""
+    ""quota_definition_url"": ""/v2/quota_definitions/b38d0509-e3df-4203-87d5-76c5d4dc184e"",
+    ""spaces_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/spaces"",
+    ""domains_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/domains"",
+    ""private_domains_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/private_domains"",
+    ""users_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/users"",
+    ""managers_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/managers"",
+    ""billing_managers_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/billing_managers"",
+    ""auditors_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/auditors"",
+    ""app_events_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/app_events"",
+    ""space_quota_definitions_url"": ""/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/space_quota_definitions""
   }
 }";
 
             AssociateBillingManagerWithOrganizationResponse obj = Utilities.DeserializeJson<AssociateBillingManagerWithOrganizationResponse>(json);
 
-            Assert.AreEqual("15d1e9ea-8ce1-40d7-b2ec-01309b39873e", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2015-04-16T12:04:18+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("5d87c2a3-db52-4828-9ed5-eafa0ec717b7", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2015-05-19T15:27:20+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-227", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-1641", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.BillingEnabled), true);
-            Assert.AreEqual("32c59898-ecdb-4946-a0e9-d0e67d28cb30", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
+            Assert.AreEqual("b38d0509-e3df-4203-87d5-76c5d4dc184e", TestUtil.ToTestableString(obj.QuotaDefinitionGuid), true);
             Assert.AreEqual("active", TestUtil.ToTestableString(obj.Status), true);
-            Assert.AreEqual("/v2/quota_definitions/32c59898-ecdb-4946-a0e9-d0e67d28cb30", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/users", TestUtil.ToTestableString(obj.UsersUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
-            Assert.AreEqual("/v2/organizations/15d1e9ea-8ce1-40d7-b2ec-01309b39873e/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
+            Assert.AreEqual("/v2/quota_definitions/b38d0509-e3df-4203-87d5-76c5d4dc184e", TestUtil.ToTestableString(obj.QuotaDefinitionUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/spaces", TestUtil.ToTestableString(obj.SpacesUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/domains", TestUtil.ToTestableString(obj.DomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/private_domains", TestUtil.ToTestableString(obj.PrivateDomainsUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/users", TestUtil.ToTestableString(obj.UsersUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/managers", TestUtil.ToTestableString(obj.ManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/billing_managers", TestUtil.ToTestableString(obj.BillingManagersUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/auditors", TestUtil.ToTestableString(obj.AuditorsUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/app_events", TestUtil.ToTestableString(obj.AppEventsUrl), true);
+            Assert.AreEqual("/v2/organizations/5d87c2a3-db52-4828-9ed5-eafa0ec717b7/space_quota_definitions", TestUtil.ToTestableString(obj.SpaceQuotaDefinitionsUrl), true);
         }
     }
 }

@@ -20,7 +20,14 @@
         internal async Task<KeyValuePair<string, string>> BuildAuthenticationHeader()
         {
             string autorizationToken = await this.Client.GenerateAuthorizationToken();
-            return new KeyValuePair<string, string>("Authorization", "bearer " + autorizationToken);
+            if (string.IsNullOrWhiteSpace(autorizationToken))
+            {
+                return new KeyValuePair<string, string>();
+            }
+            else
+            {
+                return new KeyValuePair<string, string>("Authorization", string.Format(CultureInfo.InvariantCulture, "bearer {0}", autorizationToken));
+            }
         }
 
         internal SimpleHttpClient GetHttpClient()
@@ -28,7 +35,7 @@
             var httpClient = new SimpleHttpClient(this.Client.CancellationToken);
 
             try
-            {                
+            {
                 httpClient.HttpProxy = this.Client.HttpProxy;
                 httpClient.SkipCertificateValidation = this.Client.SkipCertificateValidation;
             }

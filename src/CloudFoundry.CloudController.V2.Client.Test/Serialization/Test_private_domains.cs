@@ -32,13 +32,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""exmaple.com"",
-  ""owning_organization_guid"": ""6fc8d52b-8ba9-4c93-9973-44b18e04d6ec""
+  ""owning_organization_guid"": ""7c11cc05-a9a5-4cb1-ac25-5bef029850ab""
 }";
 
             CreatePrivateDomainOwnedByGivenOrganizationRequest request = new CreatePrivateDomainOwnedByGivenOrganizationRequest();
 
             request.Name = "exmaple.com";
-            request.OwningOrganizationGuid = new Guid("6fc8d52b-8ba9-4c93-9973-44b18e04d6ec");
+            request.OwningOrganizationGuid = new Guid("7c11cc05-a9a5-4cb1-ac25-5bef029850ab");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

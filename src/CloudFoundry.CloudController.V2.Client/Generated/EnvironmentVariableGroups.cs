@@ -64,7 +64,11 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
-            client.Headers.Add(await BuildAuthenticationHeader());
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
@@ -82,7 +86,11 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
-            client.Headers.Add(await BuildAuthenticationHeader());
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
@@ -100,7 +108,11 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
-            client.Headers.Add(await BuildAuthenticationHeader());
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
             client.ContentType = "application/x-www-form-urlencoded";
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 200;
@@ -120,7 +132,11 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
-            client.Headers.Add(await BuildAuthenticationHeader());
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
             client.ContentType = "application/x-www-form-urlencoded";
             client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
             var expectedReturnStatus = 200;

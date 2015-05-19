@@ -54,12 +54,12 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""46f09aaa-0c76-47d4-a98b-732ea2b2e6f3"",
-    ""created_at"": ""2015-04-16T12:04:14+00:00"",
-    ""url"": ""/v2/jobs/46f09aaa-0c76-47d4-a98b-732ea2b2e6f3""
+    ""guid"": ""c02ddf68-f87c-47a6-8a9b-fad36ce56103"",
+    ""created_at"": ""2015-05-19T15:27:01+00:00"",
+    ""url"": ""/v2/jobs/c02ddf68-f87c-47a6-8a9b-fad36ce56103""
   },
   ""entity"": {
-    ""guid"": ""46f09aaa-0c76-47d4-a98b-732ea2b2e6f3"",
+    ""guid"": ""c02ddf68-f87c-47a6-8a9b-fad36ce56103"",
     ""status"": ""failed"",
     ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
     ""error_details"": {
@@ -72,10 +72,10 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
             RetrieveJobWithKnownFailureResponse obj = Utilities.DeserializeJson<RetrieveJobWithKnownFailureResponse>(json);
 
-            Assert.AreEqual("46f09aaa-0c76-47d4-a98b-732ea2b2e6f3", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2015-04-16T12:04:14+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/46f09aaa-0c76-47d4-a98b-732ea2b2e6f3", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("46f09aaa-0c76-47d4-a98b-732ea2b2e6f3", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("c02ddf68-f87c-47a6-8a9b-fad36ce56103", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2015-05-19T15:27:01+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/c02ddf68-f87c-47a6-8a9b-fad36ce56103", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("c02ddf68-f87c-47a6-8a9b-fad36ce56103", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
             Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
         }
@@ -85,22 +85,22 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""1bb1e9cf-f093-48f0-98b5-013eafa8cf0f"",
-    ""created_at"": ""2015-04-16T12:04:14+00:00"",
-    ""url"": ""/v2/jobs/1bb1e9cf-f093-48f0-98b5-013eafa8cf0f""
+    ""guid"": ""f0a57fb3-3442-4fcc-b550-cf51efa04afa"",
+    ""created_at"": ""2015-05-19T15:27:01+00:00"",
+    ""url"": ""/v2/jobs/f0a57fb3-3442-4fcc-b550-cf51efa04afa""
   },
   ""entity"": {
-    ""guid"": ""1bb1e9cf-f093-48f0-98b5-013eafa8cf0f"",
+    ""guid"": ""f0a57fb3-3442-4fcc-b550-cf51efa04afa"",
     ""status"": ""queued""
   }
 }";
 
             RetrieveJobThatIsQueuedResponse obj = Utilities.DeserializeJson<RetrieveJobThatIsQueuedResponse>(json);
 
-            Assert.AreEqual("1bb1e9cf-f093-48f0-98b5-013eafa8cf0f", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2015-04-16T12:04:14+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/1bb1e9cf-f093-48f0-98b5-013eafa8cf0f", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("1bb1e9cf-f093-48f0-98b5-013eafa8cf0f", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("f0a57fb3-3442-4fcc-b550-cf51efa04afa", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2015-05-19T15:27:01+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/f0a57fb3-3442-4fcc-b550-cf51efa04afa", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("f0a57fb3-3442-4fcc-b550-cf51efa04afa", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
         }
 
@@ -109,12 +109,12 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""ee38d37d-ac91-4278-9e54-688ed4f61d07"",
-    ""created_at"": ""2015-04-16T12:04:14+00:00"",
-    ""url"": ""/v2/jobs/ee38d37d-ac91-4278-9e54-688ed4f61d07""
+    ""guid"": ""38b72ca8-29d2-4c34-94d7-619a1a3c4512"",
+    ""created_at"": ""2015-05-19T15:27:01+00:00"",
+    ""url"": ""/v2/jobs/38b72ca8-29d2-4c34-94d7-619a1a3c4512""
   },
   ""entity"": {
-    ""guid"": ""ee38d37d-ac91-4278-9e54-688ed4f61d07"",
+    ""guid"": ""38b72ca8-29d2-4c34-94d7-619a1a3c4512"",
     ""status"": ""failed"",
     ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
     ""error_details"": {
@@ -127,10 +127,10 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
             RetrieveJobWithUnknownFailureResponse obj = Utilities.DeserializeJson<RetrieveJobWithUnknownFailureResponse>(json);
 
-            Assert.AreEqual("ee38d37d-ac91-4278-9e54-688ed4f61d07", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2015-04-16T12:04:14+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/ee38d37d-ac91-4278-9e54-688ed4f61d07", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("ee38d37d-ac91-4278-9e54-688ed4f61d07", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("38b72ca8-29d2-4c34-94d7-619a1a3c4512", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2015-05-19T15:27:01+00:00", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/38b72ca8-29d2-4c34-94d7-619a1a3c4512", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("38b72ca8-29d2-4c34-94d7-619a1a3c4512", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
             Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
         }
