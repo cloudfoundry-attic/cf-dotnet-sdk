@@ -60,7 +60,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             foreach (ListAllAppsResponse app in apps)
             {
-                if (app.Name == "logTest")
+                if (app.Name.StartsWith("logTest"))
                 {
                     client.Apps.DeleteApp(app.EntityMetadata.Guid).Wait();
                     break;
@@ -68,7 +68,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             }
 
             apprequest = new CreateAppRequest();
-            apprequest.Name = "logTest";
+            apprequest.Name = "logTest" + Guid.NewGuid().ToString();
             apprequest.Memory = 512;
             apprequest.Instances = 1;
             apprequest.SpaceGuid = spaceGuid;

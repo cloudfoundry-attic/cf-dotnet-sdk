@@ -9,6 +9,7 @@ using CloudFoundry.UAA;
 namespace CloudFoundry.CloudController.Test.Integration
 {
     [TestClass]
+    [DeploymentItem("Assets")]
     public class PushTest
     {
         private static string appPath = TestUtil.TestAppPath;
@@ -68,7 +69,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             foreach (ListAllAppsResponse app in apps)
             {
-                if (app.Name == "simplePushTest")
+                if (app.Name.StartsWith("simplePushTest"))
                 {
                     client.Apps.DeleteApp(app.EntityMetadata.Guid).Wait();
                     break;
@@ -76,7 +77,6 @@ namespace CloudFoundry.CloudController.Test.Integration
             }
 
             apprequest = new CreateAppRequest();
-            apprequest.Name = "simplePushTest";
             apprequest.Memory = 512;
             apprequest.Instances = 1;
             apprequest.SpaceGuid = spaceGuid;
@@ -93,6 +93,8 @@ namespace CloudFoundry.CloudController.Test.Integration
         [TestMethod]
         public void PushJobTest()
         {
+            apprequest.Name = "simplePushTest" + Guid.NewGuid().ToString("N");
+
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
 
             Guid appGuid = app.EntityMetadata.Guid;
@@ -105,6 +107,8 @@ namespace CloudFoundry.CloudController.Test.Integration
         [TestMethod]
         public void DoublePush()
         {
+            apprequest.Name = "simplePushTest" + Guid.NewGuid().ToString("N");
+
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
 
             client.Apps.Push(app.EntityMetadata.Guid, appPath, false).Wait();
