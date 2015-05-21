@@ -194,25 +194,25 @@
     <Compile Include="TestUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CloudFoundry.CloudController.Common\CloudFoundry.CloudController.Common.csproj">
-      <Project>{d78dc433-8953-4339-be83-529484ea7d8b}</Project>
-      <Name>CloudFoundry.CloudController.Common</Name>
+    <ProjectReference Include="..\CloudFoundry.CloudController.Common.Net45\CloudFoundry.CloudController.Common.Net45.csproj">
+      <Project>{126aeda2-fa3b-42eb-b728-770a975def2b}</Project>
+      <Name>CloudFoundry.CloudController.Common.Net45</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj">
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>
       <Name>CloudFoundry.CloudController.V2.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CloudFoundry.Loggregator.Client\CloudFoundry.Loggregator.Client.csproj">
-      <Project>{7cca6c93-284b-47a0-a499-eb4dab6d3b65}</Project>
-      <Name>CloudFoundry.Loggregator.Client</Name>
+    <ProjectReference Include="..\CloudFoundry.Loggregator.Client.Net45\CloudFoundry.Loggregator.Client.Net45.csproj">
+      <Project>{693ac6f7-3a96-41c9-b844-1e3f1ed6346c}</Project>
+      <Name>CloudFoundry.Loggregator.Client.Net45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CloudFoundry.Logyard.Client\CloudFoundry.Logyard.Client.csproj">
-      <Project>{97ab7347-3c3e-4eaa-8063-dfbdb3ac0d25}</Project>
-      <Name>CloudFoundry.Logyard.Client</Name>
+    <ProjectReference Include="..\CloudFoundry.Logyard.Client.Net45\CloudFoundry.Logyard.Client.Net45.csproj">
+      <Project>{d4ad10d5-f1ca-41ff-95dc-57789cc3a062}</Project>
+      <Name>CloudFoundry.Logyard.Client.Net45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CloudFoundry.UAA.Client\CloudFoundry.UAA.Client.csproj">
-      <Project>{7452b0b7-b48b-4017-9c3b-1092378a1a20}</Project>
-      <Name>CloudFoundry.UAA.Client</Name>
+    <ProjectReference Include="..\CloudFoundry.UAA.Client.Net45\CloudFoundry.UAA.Client.Net45.csproj">
+      <Project>{6a9b3853-329a-4b88-81f9-86eb0e7e88c7}</Project>
+      <Name>CloudFoundry.UAA.Client.Net45</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

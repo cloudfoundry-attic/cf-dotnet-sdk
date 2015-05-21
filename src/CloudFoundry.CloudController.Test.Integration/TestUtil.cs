@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
@@ -17,7 +19,15 @@ namespace CloudFoundry.CloudController.Test.Integration
         internal static string User = ConfigurationManager.AppSettings["User"];
         internal static string Password = ConfigurationManager.AppSettings["Password"];
         internal static bool IgnoreCertificate = bool.Parse(ConfigurationManager.AppSettings["IgnoreCertificate"]);
-        internal static string TestAppPath = ConfigurationManager.AppSettings["TestAppPath"];
+     
+        internal static string TestAppPath
+        {
+            get
+            {
+                string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                return Path.Combine(assemblyDir, "TestApp");
+            }
+        }
 
         internal static void IngoreGlobalCertificateValidation()
         {
