@@ -135,10 +135,10 @@ namespace CloudFoundry.CloudController.Test.Integration
             stopevent.WaitOne();
 
             var conatainsPushedContent = logs.Any((line) => line.Contains("dummy content"));
-            Assert.IsTrue(conatainsPushedContent, "Pushed content was not dumped in the output stream");
+            Assert.IsTrue(conatainsPushedContent, "Pushed content was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
             var conatainsEnvContent = logs.Any((line) => line.Contains("env-test-1234"));
-            Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream");
+            Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
             client.Apps.DeleteApp(appGuid).Wait();
         }
