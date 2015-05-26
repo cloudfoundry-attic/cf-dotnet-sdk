@@ -10,6 +10,7 @@
               </Include>
               <Exclude>
                 <ModulePath>.*\.Test\..*</ModulePath>
+                <ModulePath>.*\.Test.Integration\..*</ModulePath>
               </Exclude>
             </ModulePaths>
             <!-- We recommend you do not change the following values: -->

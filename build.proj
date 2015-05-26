@@ -16,6 +16,9 @@
   /t:UnitTest
     Runs unit tests
     
+  /t:IntegrationTests
+    Runs integration tests
+    
   /t:RestoreNugetPackages
     Restores nuget packages
     
@@ -105,6 +108,30 @@
     <Message Text="Generating html coverage report"/>
     <MakeDir Directories="$(CoverageHtmlDir)"/>
     <Exec Command="$(ReportGeneratorCommand) -reports:&quot;$(CoverageXml)&quot; -targetdir:&quot;$(CoverageHtmlDir)&quot;" />
+  </Target>
+
+  <!-- Target for running integration tests-->
+  <Target Name="IntegrationTest">
+    <ItemGroup>
+      <TestDlls Include=".\src\CloudFoundry.CloudController.Test.Integration\bin\$(Configuration)\CloudFoundry.CloudController.Test.Integration.dll"/>
+      <ConfigFile Include=".\src\CloudFoundry.CloudController.Test.Integration\bin\$(Configuration)\CloudFoundry.CloudController.Test.Integration.dll.config"/>
+    </ItemGroup>
+
+    <Warning Text="The CFDotNetSDKTestsServerUrl property not set, value from app.config will be used." Condition="'$(CFDotNetSDKTestsServerUrl)' == ''" />
+    <Warning Text="The CFDotNetSDKTestsUser property not set, value from app.config will be used." Condition="'$(CFDotNetSDKTestsUser)' == ''" />
+    <Warning Text="The CFDotNetSDKTestsPassword property not set, value from app.config will be used." Condition="'$(CFDotNetSDKTestsPassword)' == ''" />
+    <Warning Text="The CFDotNetSDKTestsIgnoreCertificate property not set, value from app.config will be used." Condition="'$(CFDotNetSDKTestsIgnoreCertificate)' == ''" />
+
+    <Message Text="Updating config file at %(ConfigFile.Identity)" />
+    <XmlPoke Condition="'$(CFDotNetSDKTestsServerUrl)' != ''" XmlInputPath="%(ConfigFile.Identity)" Query="/configuration/appSettings/add[@key='TestServerUrl']/@value" Value="$(CFDotNetSDKTestsServerUrl)"/>
+    <XmlPoke Condition="'$(CFDotNetSDKTestsUser)' != ''" XmlInputPath="%(ConfigFile.Identity)" Query="/configuration/appSettings/add[@key='User']/@value" Value="$(CFDotNetSDKTestsUser)"/>
+    <XmlPoke Condition="'$(CFDotNetSDKTestsPassword)' != ''" XmlInputPath="%(ConfigFile.Identity)" Query="/configuration/appSettings/add[@key='Password']/@value" Value="$(CFDotNetSDKTestsPassword)"/>
+    <XmlPoke Condition="'$(CFDotNetSDKTestsIgnoreCertificate)' != ''" XmlInputPath="%(ConfigFile.Identity)" Query="/configuration/appSettings/add[@key='IgnoreCertificate']/@value" Value="$(CFDotNetSDKTestsIgnoreCertificate)"/>
+    
+    <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings /logger:trx"  ConsoleToMSBuild="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfTestRun" />
+    </Exec>
   </Target>
 
   <!-- Target for restoring nuget packages -->
