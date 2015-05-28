@@ -87,6 +87,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         }
 
         [TestMethod]
+        [Ignore]
         public void LogsTest()
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
