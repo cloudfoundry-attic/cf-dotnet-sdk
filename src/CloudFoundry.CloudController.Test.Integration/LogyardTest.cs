@@ -131,7 +131,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             logyardClient.StreamClosed += delegate { stopevent.Set(); };
 
-            logyardClient.StartLogStream(appGuid.ToString(), 100, false);
+            logyardClient.StartLogStream(appGuid.ToString(), -1, false);
             stopevent.WaitOne();
 
             var conatainsPushedContent = logs.Any((line) => line.Contains("dummy content"));
