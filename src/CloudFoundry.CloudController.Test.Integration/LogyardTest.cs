@@ -87,6 +87,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         }
 
         [TestMethod]
+        [Ignore]
         public void LogsTest()
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
@@ -131,14 +132,14 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             logyardClient.StreamClosed += delegate { stopevent.Set(); };
 
-            logyardClient.StartLogStream(appGuid.ToString(), 100, false);
+            logyardClient.StartLogStream(appGuid.ToString(), -1, false);
             stopevent.WaitOne();
 
             var conatainsPushedContent = logs.Any((line) => line.Contains("dummy content"));
-            Assert.IsTrue(conatainsPushedContent, "Pushed content was not dumped in the output stream");
+            Assert.IsTrue(conatainsPushedContent, "Pushed content was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
             var conatainsEnvContent = logs.Any((line) => line.Contains("env-test-1234"));
-            Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream");
+            Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
             client.Apps.DeleteApp(appGuid).Wait();
         }
