@@ -10,7 +10,6 @@ using CloudFoundry.Logyard.Client;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -19,14 +18,14 @@ namespace CloudFoundry.CloudController.Test.Integration
     [TestClass]
     public class LogyardTest
     {
-        private static string appPath = System.IO.Path.GetTempPath() + Path.GetRandomFileName();
+        private static string tempAppPath = Path.Combine(System.IO.Path.GetTempPath(), Path.GetRandomFileName());
         private static CloudFoundryClient client;
         private static CreateAppRequest apprequest;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            Directory.CreateDirectory(appPath);
+            Directory.CreateDirectory(tempAppPath);
 
             client = TestUtil.GetClient();
             CloudCredentials credentials = new CloudCredentials();
@@ -38,7 +37,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             }
             catch (Exception ex)
             {
-                Assert.Fail("Error while loging in" + ex.ToString());
+                Assert.Fail("Error while logging in" + ex.ToString());
             }
 
             PagedResponseCollection<ListAllSpacesResponse> spaces = client.Spaces.ListAllSpaces().Result;
@@ -78,7 +77,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             client.Apps.PushProgress += Apps_PushProgress;
 
-            File.WriteAllText(Path.Combine(appPath, "content.txt"), "dummy content");
+            File.WriteAllText(Path.Combine(tempAppPath, "content.txt"), "dummy content");
         }
 
         static void Apps_PushProgress(object sender, PushProgressEventArgs e)
@@ -87,14 +86,13 @@ namespace CloudFoundry.CloudController.Test.Integration
         }
 
         [TestMethod]
-        [Ignore]
         public void LogsTest()
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
             
             Guid appGuid = app.EntityMetadata.Guid;
 
-            client.Apps.Push(appGuid, appPath, true).Wait();
+            client.Apps.Push(appGuid, tempAppPath, true).Wait();
 
             while (true)
             {
@@ -154,7 +152,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
             client.Apps.DeleteApp(appGuid).Wait();
+            Directory.Delete(tempAppPath, true);
         }
-
     }
 }

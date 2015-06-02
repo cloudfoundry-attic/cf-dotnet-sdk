@@ -120,24 +120,38 @@
         /// <inheritdoc/>
         public async Task<SimpleHttpResponse> SendAsync(IEnumerable<HttpMultipartFormData> multipartData)
         {
-            var httpContent = new MultipartFormDataContent();
+            var boundary = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
+
+            var httpContent = new MultipartFormDataContent(boundary);
+
             foreach (var field in multipartData)
             {
                 var content = new StreamContent(field.Content);
+
                 if (!string.IsNullOrEmpty(field.ContentType))
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue(field.ContentType);
                 }
 
+                // Workaround for CloudController's NGINX. Make sure the filename and name are surrounded with quotes to make NGINX upload module happy
+                // https://github.com/vkholodkov/nginx-upload-module/blob/2.2/ngx_http_upload_module.c#L39
                 if (string.IsNullOrEmpty(field.FileName))
                 {
-                    httpContent.Add(content, field.Name);
+                    var name = string.Concat("\"", field.Name,  "\"");
+                    httpContent.Add(content, name);
                 }
                 else
                 {
-                    httpContent.Add(content, field.Name, field.FileName);
+                    var name = string.Concat("\"", field.Name, "\"");
+                    var fileName = string.Concat("\"", field.FileName, "\"");
+                    httpContent.Add(content, name, fileName);
                 }
             }
+
+            // Workaround for CloudController's NGINX. The NGINX upload module doesn't like the boundary to be wrapped in quotes.
+            // http://www.codedisqus.com/0HNVXVqWUj/wrong-contenttype-header-generated-using-multipartformdatacontent.html
+            httpContent.Headers.Remove("Content-Type");
+            httpContent.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data; boundary=" + boundary);
 
             return await this.SendAsync(httpContent);
         }
@@ -164,7 +178,7 @@
             {
                 this.handler.Proxy = new SimpleProxy(this.HttpProxy);
             }
-            
+
             this.handler.SkipCertificateValidation = this.SkipCertificateValidation;
 
             this.client.Timeout = this.Timeout;

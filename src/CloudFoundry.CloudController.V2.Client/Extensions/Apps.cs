@@ -8,6 +8,7 @@ namespace CloudFoundry.CloudController.V2.Client
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
+    using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.Common.PushTools;
     using CloudFoundry.CloudController.V2.Client.Data;
@@ -79,18 +80,16 @@ namespace CloudFoundry.CloudController.V2.Client
                 {
                     return;
                 }
-
+                
                 usedSteps += 1;
 
                 // Step 5 - Upload zip to CloudFoundry ...
                 this.TriggerPushProgressEvent(usedSteps, "Uploading zip package ...");
-                UriBuilder uploadEndpoint = new UriBuilder(this.Client.CloudTarget.AbsoluteUri);
-                uploadEndpoint.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", appGuid.ToString());
 
                 List<FileFingerprint> fingerPrintList = fingerprints.Values.SelectMany(list => list).Where(fingerprint => !neededFiles.Contains(fingerprint.FileName)).ToList();
 
-                string serializedFingerprints = JsonConvert.SerializeObject(fingerPrintList);
-                SimpleHttpResponse uploadResult = await this.UploadZip(uploadEndpoint.Uri, zippedPayload, serializedFingerprints);
+                await this.UploadBits(appGuid, zippedPayload, fingerPrintList);
+                
                 if (this.CheckCancellation())
                 {
                     return;
@@ -117,6 +116,35 @@ namespace CloudFoundry.CloudController.V2.Client
 
             // Step 7 - Done
             this.TriggerPushProgressEvent(usedSteps, "Application {0} pushed successfully", app.Name);
+        }
+
+        /// <summary>
+        /// Defines and uploads the application bits.
+        /// <remarks>
+        /// This method is only available on the .NET 4.5 framework.
+        /// Calling this method from a Windows Phone App or a Windows App will throw a <see cref="NotImplementedException" />.
+        /// </remarks>
+        /// </summary>
+        /// <param name="appGuid">Application guid</param>
+        /// <param name="zipStream">The zip stream.</param>
+        /// <param name="fingerPrintList">The finger print list.</param>
+        /// <exception cref="CloudFoundryException"></exception>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task UploadBits(Guid appGuid, Stream zipStream, List<FileFingerprint> fingerPrintList)
+        {
+            string serializedFingerprints = JsonConvert.SerializeObject(fingerPrintList);
+
+            UriBuilder uploadEndpoint = new UriBuilder(this.Client.CloudTarget.AbsoluteUri);
+            uploadEndpoint.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", appGuid.ToString());
+
+            SimpleHttpResponse uploadResult = await this.UploadZip(uploadEndpoint.Uri, zipStream, serializedFingerprints);
+
+            if (uploadResult.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                var statusCode = uploadResult.StatusCode.ToString("D");
+
+                throw new CloudFoundryException(string.Format(CultureInfo.InvariantCulture, "An error occurred while uploading bits to the server. Status code: {0}", statusCode));
+            }
         }
 
         /// <summary>
@@ -178,20 +206,21 @@ namespace CloudFoundry.CloudController.V2.Client
 
             using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken, AppsEndpoint.DefaultUploadTimeout))
             {
+                // http://apidocs.cloudfoundry.org/210/apps/uploads_the_bits_for_an_app.html
                 httpClient.HttpProxy = Client.HttpProxy;
                 httpClient.SkipCertificateValidation = Client.SkipCertificateValidation;
 
                 httpClient.Headers.Add("Authorization", string.Format("bearer {0}", this.Client.AuthorizationToken));
-
+                
                 httpClient.Uri = uploadUri;
-                httpClient.Method = HttpMethod.Post;
+                httpClient.Method = HttpMethod.Put;
 
                 List<HttpMultipartFormData> mpd = new List<HttpMultipartFormData>();
                 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(resources)))
                 {
                     ms.Position = 0;
                     mpd.Add(new HttpMultipartFormData("resources", string.Empty, string.Empty, ms));
-                    mpd.Add(new HttpMultipartFormData("application", "app.zip", "application/zip", zipStream));
+                    mpd.Add(new HttpMultipartFormData("application", "application.zip", "application/zip", zipStream));
                     SimpleHttpResponse response = await httpClient.SendAsync(mpd);
                     return response;
                 }
@@ -212,16 +241,15 @@ namespace CloudFoundry.CloudController.V2.Client
             // Loop through each fingerprint and construct our request
             foreach (KeyValuePair<string, List<FileFingerprint>> fingerprintList in fingerprints)
             {
-                foreach (FileFingerprint fingerprint in fingerprintList.Value)
-                {
-                    ListAllMatchingResourcesRequest match = new ListAllMatchingResourcesRequest()
-                    {
-                        Sha1 = fingerprint.SHA1,
-                        Size = fingerprint.Size
-                    };
+                var fingerprint = fingerprintList.Value.First();
 
-                    matchRequest.Add(match);
-                }
+                ListAllMatchingResourcesRequest match = new ListAllMatchingResourcesRequest()
+                {
+                    Sha1 = fingerprint.SHA1,
+                    Size = fingerprint.Size
+                };
+
+                matchRequest.Add(match);
 
                 // We're building the response with all fingerprints,
                 // matches will be removed after the server replies
