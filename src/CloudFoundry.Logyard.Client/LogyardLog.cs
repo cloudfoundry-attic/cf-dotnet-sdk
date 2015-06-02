@@ -159,24 +159,29 @@
         /// Starts streaming logs from Logyard for the specified app, without tailing.
         /// </summary>
         /// <param name="appGuid">The Cloud Foundry app unique identifier.</param>
-        /// <param name="instanceNumber">The number of the app instance that will be the source of the log stream.</param>
-        public void StartLogStream(string appGuid, int instanceNumber)
+        /// <param name="recentEntriesCount">The last number of log entries that will be returned to the stream. The -1 value will use the default value configured on the server.</param>
+        public void StartLogStream(string appGuid, int recentEntriesCount)
         {
-            this.StartLogStream(appGuid, instanceNumber, false);
+            this.StartLogStream(appGuid, recentEntriesCount, false);
         }
 
         /// <summary>
         /// Starts streaming logs from Logyard for the specified app, without tailing.
         /// </summary>
         /// <param name="appGuid">The Cloud Foundry app unique identifier.</param>
-        /// <param name="instanceNumber">The number of the app instance that will be the source of the log stream.</param>
+        /// <param name="recentEntriesCount">The last number of log entries that will be returned to the stream. The -1 value will use the default value configured on the server.</param>
         /// <param name="tail">If set to <c>true</c> the application log files will be tailed.</param>
         /// <exception cref="System.ArgumentNullException">appGuid</exception>
-        public void StartLogStream(string appGuid, int instanceNumber, bool tail)
+        public void StartLogStream(string appGuid, int recentEntriesCount, bool tail)
         {
             if (appGuid == null)
             {
                 throw new ArgumentNullException("appGuid");
+            }
+
+            if (recentEntriesCount < -1)
+            {
+                throw new ArgumentOutOfRangeException("recentEntriesCount", "Number of entries value must bust be >= -1.");
             }
 
             if (this.webSocket != null)
@@ -195,9 +200,9 @@
                 appLogUri.Path = string.Format(CultureInfo.InvariantCulture, "v2/apps/{0}/recent", appGuid);
             }
 
-            if (instanceNumber != -1)
+            if (recentEntriesCount != -1)
             {
-                appLogUri.Query = string.Format(CultureInfo.InvariantCulture, "num={0}", instanceNumber);
+                appLogUri.Query = string.Format(CultureInfo.InvariantCulture, "num={0}", recentEntriesCount);
             }
 
             this.webSocket = new LogyardWebSocket();

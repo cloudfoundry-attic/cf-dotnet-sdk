@@ -96,16 +96,25 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             client.Apps.Push(appGuid, appPath, true).Wait();
 
-            while (true) {
-                var instances = client.Apps.GetInstanceInformationForStartedApp(appGuid).Result;
-                if (instances.Count > 0)
+            while (true)
+            {
+                var appSummary = client.Apps.GetAppSummary(appGuid).Result;
+                var packageState = appSummary.PackageState.ToLowerInvariant();
+
+                if (packageState != "pending")
                 {
-                    if (instances[0].State.ToLower() == "running")
+                    Assert.AreEqual(packageState, "staged");
+
+                    var instances = client.Apps.GetInstanceInformationForStartedApp(appGuid).Result;
+
+                    if (instances.Count > 0)
                     {
-                        break;
+                        if (instances[0].State.ToLower() == "running")
+                        {
+                            break;
+                        }
                     }
                 }
-
             }
 
             var logyardClient = new LogyardLog(
@@ -128,11 +137,14 @@ namespace CloudFoundry.CloudController.Test.Integration
                 Assert.Fail("Logyard error: {0}", e.Error.ToString());
             };
 
-            EventWaitHandle stopevent = new EventWaitHandle(false, EventResetMode.ManualReset);
-
+            var stopevent = new EventWaitHandle(false, EventResetMode.ManualReset);
             logyardClient.StreamClosed += delegate { stopevent.Set(); };
 
-            logyardClient.StartLogStream(appGuid.ToString(), -1, false);
+            // Just wait a bit to get the latest logs
+            Thread.Sleep(1000);
+
+            logyardClient.StartLogStream(appGuid.ToString(), 100, false);
+
             stopevent.WaitOne();
 
             var conatainsPushedContent = logs.Any((line) => line.Contains("dummy content"));

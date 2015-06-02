@@ -239,5 +239,28 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Logyard.FakeTest
                 Assert.IsTrue(messageEventFired.WaitOne(100));
             }
         }
+
+        [TestMethod, TestCategory("Fakes")]
+        public void TailRecentLogsInvalidValueTest()
+        {
+            using (ShimsContext.Create())
+            {
+                ShimLogyardWebSocket.AllInstances.OpenUriStringUriBoolean = (@this, appLogEndpoint, authenticationToken, proxy, skipCertValidation) => { };
+
+                LogyardLog logyard = new LogyardLog(logyardEndpoint, string.Empty);
+
+                string appGuid = Guid.NewGuid().ToString();
+                
+                try
+                {
+                    logyard.StartLogStream(appGuid, -100, true);
+                }
+                catch (Exception ex)
+                {
+                    Assert.IsInstanceOfType(ex, typeof(ArgumentOutOfRangeException));
+                    Assert.IsTrue(ex.Message.Contains(">= -1"));
+                }
+            }
+        }
     }
 }
