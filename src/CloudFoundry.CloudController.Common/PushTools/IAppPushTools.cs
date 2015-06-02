@@ -25,6 +25,6 @@
         /// <param name="files">The files that will be added to the archive.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
-        Task<Stream> GetZippedPayload(string appPath, string[] files, CancellationToken cancellationToken);
+        Task<Stream> GetZippedPayload(string appPath, IEnumerable<string> files, CancellationToken cancellationToken);
     }
 }

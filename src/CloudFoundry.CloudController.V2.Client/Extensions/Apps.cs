@@ -62,7 +62,8 @@ namespace CloudFoundry.CloudController.V2.Client
 
             // Step 3 - Compare fingerprints of local files with what the server has
             this.TriggerPushProgressEvent(usedSteps, "Comparing file fingerprints ...");
-            string[] neededFiles = await this.FilterExistingFiles(fingerprints);
+            HashSet<string> neededFiles = await this.FilterExistingFiles(fingerprints);
+           
             if (this.CheckCancellation())
             {
                 return;
@@ -86,7 +87,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 UriBuilder uploadEndpoint = new UriBuilder(this.Client.CloudTarget.AbsoluteUri);
                 uploadEndpoint.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", appGuid.ToString());
 
-                List<FileFingerprint> fingerPrintList = fingerprints.Values.SelectMany(list => list).ToList();
+                List<FileFingerprint> fingerPrintList = fingerprints.Values.SelectMany(list => list).Where(fingerprint => !neededFiles.Contains(fingerprint.FileName)).ToList();
 
                 string serializedFingerprints = JsonConvert.SerializeObject(fingerPrintList);
                 SimpleHttpResponse uploadResult = await this.UploadZip(uploadEndpoint.Uri, zippedPayload, serializedFingerprints);
@@ -202,7 +203,7 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </summary>
         /// <param name="fingerprints">The key of the dictionary is an SHA1 fingerprint</param>
         /// <returns>A list of files that do not exist on the server.</returns>
-        private async Task<string[]> FilterExistingFiles(Dictionary<string, List<FileFingerprint>> fingerprints)
+        private async Task<HashSet<string>> FilterExistingFiles(Dictionary<string, List<FileFingerprint>> fingerprints)
         {
             Dictionary<string, List<FileFingerprint>> filteredResources = new Dictionary<string, List<FileFingerprint>>();
 
@@ -232,7 +233,7 @@ namespace CloudFoundry.CloudController.V2.Client
             // If the request was cancelled, return immediately
             if (this.CheckCancellation())
             {
-                return filteredResources.Values.SelectMany(list => list.Select(f => f.FileName)).ToArray();
+                return new HashSet<string>(filteredResources.Values.SelectMany(list => list.Select(f => f.FileName)));
             }
 
             // Remove all server matches from our result
@@ -241,7 +242,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 filteredResources.Remove(resource.Sha1);
             }
 
-            return filteredResources.Values.SelectMany(list => list.Select(f => f.FileName)).ToArray();
+            return new HashSet<string>(filteredResources.Values.SelectMany(list => list.Select(f => f.FileName)));
         }
     }
 }

@@ -56,7 +56,7 @@
         /// <param name="files">The files that will be added to the archive.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
-        public async Task<System.IO.Stream> GetZippedPayload(string appPath, string[] files, System.Threading.CancellationToken cancellationToken)
+        public async Task<System.IO.Stream> GetZippedPayload(string appPath, IEnumerable<string> files, System.Threading.CancellationToken cancellationToken)
         {
             string zipFile = Path.Combine(Path.GetTempPath(), "payload.zip");
 
