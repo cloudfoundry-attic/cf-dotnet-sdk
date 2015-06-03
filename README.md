@@ -84,7 +84,7 @@ Console.WriteLine("App {0} state is {1}", response.Name, response.State);
 ```csharp
 using CloudFoundry.Manifests;
 
-Manifest manifest = ManifestDiskRepository.ReadManifest("path\to\manifest");
+Manifest manifest = ManifestDiskRepository.ReadManifest(@"path\to\manifest");
 var apps = manifest.Applications();
 foreach(var app in apps)
 {
