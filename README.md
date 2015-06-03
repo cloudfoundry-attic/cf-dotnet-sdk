@@ -88,6 +88,6 @@ Manifest manifest = ManifestDiskRepository.ReadManifest(@"path\to\manifest");
 var apps = manifest.Applications();
 foreach(var app in apps)
 {
-    Console.WriteLine("Application {0}, Memory {1}, Instances {2}", app.Name, app.Memory.ToString(), app.InstanceCount.ToString());
+    Console.WriteLine("Application {0}, Memory {1}, Instances {2}", app.Name, app.Memory, app.InstanceCount);
 }
 ```
