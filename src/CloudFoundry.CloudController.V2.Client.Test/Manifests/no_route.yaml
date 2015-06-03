@@ -1,0 +1,13 @@
+---
+applications:
+- name: app-name
+  memory: 128M
+  instances: 1
+  buildpack: test-bp
+  timeout: 500
+  command: cmd
+  no-route: true
+  path: c:\path\to\app
+  env: 
+    env1: first
+    env2: second

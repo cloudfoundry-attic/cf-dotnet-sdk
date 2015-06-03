@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudControlle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket4Net.ProxyUtilities", "src\WebSocket4Net.ProxyUtilities\WebSocket4Net.ProxyUtilities.csproj", "{446818CB-1AA8-449A-B58A-01DA64A36871}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Manifests", "src\CloudFoundry.Manifests\CloudFoundry.Manifests.csproj", "{D3E6CCDF-8B8E-47B9-A3DB-38CC5FA7D5FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +122,10 @@ Global
 		{446818CB-1AA8-449A-B58A-01DA64A36871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{446818CB-1AA8-449A-B58A-01DA64A36871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{446818CB-1AA8-449A-B58A-01DA64A36871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E6CCDF-8B8E-47B9-A3DB-38CC5FA7D5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E6CCDF-8B8E-47B9-A3DB-38CC5FA7D5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E6CCDF-8B8E-47B9-A3DB-38CC5FA7D5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E6CCDF-8B8E-47B9-A3DB-38CC5FA7D5FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

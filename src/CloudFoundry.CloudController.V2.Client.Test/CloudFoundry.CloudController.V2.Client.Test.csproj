@@ -155,6 +155,11 @@
     <Compile Include="Loggregator\TailFakeTests.cs" />
     <Compile Include="Logyard\RecentFakeTests.cs" />
     <Compile Include="Logyard\TailFakeTests.cs" />
+    <Compile Include="Manifests\FormattersTest.cs" />
+    <Compile Include="Manifests\ManifestDiskRepositoryTest.cs" />
+    <Compile Include="Manifests\ManifestTest.cs" />
+    <Compile Include="Manifests\UtilTest.cs" />
+    <Compile Include="Manifests\WordsTest.cs" />
     <Compile Include="MockClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
@@ -210,6 +215,10 @@
       <Project>{d4ad10d5-f1ca-41ff-95dc-57789cc3a062}</Project>
       <Name>CloudFoundry.Logyard.Client.Net45</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.Manifests\CloudFoundry.Manifests.csproj">
+      <Project>{d3e6ccdf-8b8e-47b9-a3db-38cc5fa7d5fb}</Project>
+      <Name>CloudFoundry.Manifests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.UAA.Client.Net45\CloudFoundry.UAA.Client.Net45.csproj">
       <Project>{6a9b3853-329a-4b88-81f9-86eb0e7e88c7}</Project>
       <Name>CloudFoundry.UAA.Client.Net45</Name>
@@ -221,6 +230,21 @@
     <Fakes Include="Fakes\System.Net.Http.fakes" />
     <Fakes Include="Fakes\Thinktecture.IdentityModel.Client.Net45.fakes" />
     <Fakes Include="Fakes\CloudFoundry.Logyard.Client.fakes" />
+    <None Include="Manifests\inherit.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manifests\inherited.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manifests\manifest.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manifests\no_route.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manifests\random.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

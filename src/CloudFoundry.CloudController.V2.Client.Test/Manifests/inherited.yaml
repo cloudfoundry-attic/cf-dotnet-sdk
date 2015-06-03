@@ -1,0 +1,5 @@
+---
+stack: win2012r2
+env: 
+  env1: first
+  env2: second
