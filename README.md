@@ -80,3 +80,14 @@ updateApp.State = "STOPPED";
 UpdateAppResponse response = client.Apps.UpdateApp(appGuid, updateApp).Result;
 Console.WriteLine("App {0} state is {1}", response.Name, response.State);
 ```
+### Load a cf manifest
+```csharp
+using CloudFoundry.Manifests;
+
+Manifest manifest = ManifestDiskRepository.ReadManifest(@"path\to\manifest");
+var apps = manifest.Applications();
+foreach(var app in apps)
+{
+    Console.WriteLine("Application {0}, Memory {1}, Instances {2}", app.Name, app.Memory, app.InstanceCount);
+}
+```

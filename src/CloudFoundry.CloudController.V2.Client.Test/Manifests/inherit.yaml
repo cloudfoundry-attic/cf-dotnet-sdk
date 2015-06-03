@@ -1,0 +1,9 @@
+---
+applications:
+- name: app-name
+  memory: 128M
+  instances: 1
+  host: home
+  domain: app.example.com
+  path: c:\path\to\app
+inherit: inherited.yaml
