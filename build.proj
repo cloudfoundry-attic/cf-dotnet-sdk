@@ -16,7 +16,7 @@
   /t:UnitTest
     Runs unit tests
     
-  /t:IntegrationTests
+  /t:IntegrationTest
     Runs integration tests
     
   /t:RestoreNugetPackages
@@ -59,7 +59,8 @@
 
     <CoverageXml>$(LibraryRoot)\TestResults\cf-dotnet-sdk.coveragexml</CoverageXml>
     <CoverageHtmlDir>$(LibraryRoot)\TestResults\coveragehtml</CoverageHtmlDir>
-    
+
+    <TestCaseFilter Condition="'$(TestCaseFilter)' == ''">TestCategory!=none</TestCaseFilter>
   </PropertyGroup>
 
   <!-- Import msbuild extensions -->
@@ -128,7 +129,7 @@
     <XmlPoke Condition="'$(CFDotNetSDKTestsPassword)' != ''" XmlInputPath="%(ConfigFile.Identity)" Query="/configuration/appSettings/add[@key='Password']/@value" Value="$(CFDotNetSDKTestsPassword)"/>
     <XmlPoke Condition="'$(CFDotNetSDKTestsIgnoreCertificate)' != ''" XmlInputPath="%(ConfigFile.Identity)" Query="/configuration/appSettings/add[@key='IgnoreCertificate']/@value" Value="$(CFDotNetSDKTestsIgnoreCertificate)"/>
     
-    <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings /logger:trx"  ConsoleToMSBuild="true">
+    <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings /logger:trx /TestCaseFilter:&quot;$(TestCaseFilter)&quot;"  ConsoleToMSBuild="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfTestRun" />
     </Exec>
