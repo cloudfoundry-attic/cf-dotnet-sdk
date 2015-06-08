@@ -21,5 +21,13 @@ namespace CloudFoundry.CloudController.V2.Client.Data
             get;
             set;
         }
+
+        /// <inheritdoc />
+        [JsonProperty("disk_quota", NullValueHandling = NullValueHandling.Ignore)]
+        public new int? DiskQuota
+        {
+            get;
+            set;
+        }
     }
 }
