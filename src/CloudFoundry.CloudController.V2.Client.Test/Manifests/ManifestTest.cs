@@ -32,6 +32,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
             Assert.AreEqual(500, apps[0].HealthCheckTimeout);
             Assert.AreEqual("cmd", apps[0].Command);
             Assert.AreEqual(2, apps[0].Services.Count);
+            Assert.AreEqual(1024, apps[0].DiskQuota);
             Assert.AreNotEqual(-1, apps[0].Services.IndexOf("mysql"));
         }
 
@@ -87,6 +88,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
             Assert.AreEqual("first", apps[0].EnvironmentVariables["env1"]);
             Assert.AreEqual("test-bp", apps[0].BuildpackUrl);
             Assert.AreEqual(2, apps[0].Services.Count);
+            Assert.AreEqual(@"c:\path\to\app", apps[0].Path);
+            Assert.AreEqual("win2012r2", apps[0].StackName);
+            Assert.AreEqual(1024, apps[0].DiskQuota);
+            Assert.IsFalse(apps[0].NoHostName);
+            Assert.IsFalse(apps[0].NoRoute);
+            Assert.IsFalse(apps[0].UseRandomHostName);
             Assert.AreNotEqual(-1, apps[0].Services.IndexOf("mysql"));
 
             File.Delete(tempFile);

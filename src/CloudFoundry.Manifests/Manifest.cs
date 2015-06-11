@@ -29,6 +29,7 @@
         /// </summary>
         /// <param name="contents">Array containing applications to be saved in the manifest</param>
         /// <param name="path">Path to the manifest file</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "Need all the checks to avoid adding empty values to the manifest yaml")]
         public static void Save(Application[] contents, string path)
         {
             if (contents == null)
@@ -41,9 +42,21 @@
             foreach (Application app in contents)
             {
                 Dictionary<string, object> appDict = new Dictionary<string, object>();
-                appDict.Add("name", app.Name);
-                appDict.Add("memory", string.Format(CultureInfo.InvariantCulture, "{0}M", app.Memory.ToString()));
-                appDict.Add("instances", app.InstanceCount);
+                if (!string.IsNullOrWhiteSpace(app.Name))
+                {
+                    appDict.Add("name", app.Name);
+                }
+
+                if (app.Memory != null)
+                {
+                    appDict.Add("memory", string.Format(CultureInfo.InvariantCulture, "{0}M", app.Memory.ToString()));
+                }
+
+                if (app.InstanceCount != null)
+                {
+                    appDict.Add("instances", app.InstanceCount);
+                }
+
                 if (!string.IsNullOrWhiteSpace(app.BuildpackUrl))
                 {
                     appDict.Add("buildpack", app.BuildpackUrl);
@@ -59,17 +72,25 @@
                     appDict.Add("command", app.Command);
                 }
 
-                if (app.Hosts != null && app.Hosts.Count > 0)
+                if (app.Hosts != null && app.Domains != null)
                 {
-                    appDict.Add("host", app.Hosts[0]);
-                    if (app.Domains != null && app.Domains.Count > 0)
+                    if (app.Hosts.Count == 1)
+                    {
+                        appDict.Add("host", app.Hosts[0]);
+                    }
+                    else if (app.Hosts.Count > 1)
+                    {
+                        appDict.Add("hosts", app.Hosts);
+                    }
+
+                    if (app.Domains.Count == 1)
                     {
                         appDict.Add("domain", app.Domains[0]);
                     }
-                }
-                else
-                {
-                    appDict.Add("no-route", true);
+                    else if (app.Domains.Count > 1)
+                    {
+                        appDict.Add("domains", app.Domains);
+                    }
                 }
 
                 if (app.Services != null && app.Services.Count > 0)
@@ -80,6 +101,38 @@
                 if (app.EnvironmentVariables != null && app.EnvironmentVariables.Count > 0)
                 {
                     appDict.Add("env", app.EnvironmentVariables);
+                }
+
+                if (app.UseRandomHostName)
+                {
+                    appDict.Add("random-route", app.UseRandomHostName);
+                }
+
+                if (app.NoRoute || 
+                    (app.Hosts == null && app.Domains == null) ||
+                    (app.Hosts != null && app.Domains != null && app.Domains.Count == 0 && app.Hosts.Count == 0))
+                {
+                    appDict["no-route"] = app.NoRoute;
+                }
+
+                if (app.NoHostName)
+                {
+                    appDict.Add("no-hostname", app.NoHostName);
+                }
+
+                if (!string.IsNullOrWhiteSpace(app.StackName))
+                {
+                    appDict.Add("stack", app.StackName);
+                }
+
+                if (!string.IsNullOrWhiteSpace(app.Path))
+                {
+                    appDict.Add("path", app.Path);
+                }
+
+                if (app.DiskQuota != null)
+                {
+                    appDict.Add("disk_quota", string.Format(CultureInfo.InvariantCulture, "{0}M", app.DiskQuota.ToString()));
                 }
 
                 apps.Add(appDict);

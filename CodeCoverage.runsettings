@@ -10,6 +10,7 @@
               </Include>
               <Exclude>
                 <ModulePath>.*\.Test\..*</ModulePath>
+                <ModulePath>.*YamlDotNet.*</ModulePath>
                 <ModulePath>.*\.Test.Integration\..*</ModulePath>
               </Exclude>
             </ModulePaths>

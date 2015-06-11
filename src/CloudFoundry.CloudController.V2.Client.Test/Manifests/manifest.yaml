@@ -2,10 +2,12 @@
 applications:
 - name: app-name
   memory: 128M
+  disk_quota: 1GB
   instances: 1
   buildpack: test-bp
   timeout: 500
   command: cmd
+  stack: win2012r2
   services:
   - mysql
   - mssql
