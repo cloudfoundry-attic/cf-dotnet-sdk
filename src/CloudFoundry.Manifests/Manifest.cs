@@ -59,12 +59,12 @@
                     appDict.Add("command", app.Command);
                 }
 
-                if (app.GetHosts() != null && app.GetHosts().Length > 0)
+                if (app.Hosts != null && app.Hosts.Count > 0)
                 {
-                    appDict.Add("host", app.GetHosts()[0]);
-                    if (app.GetDomains() != null && app.GetDomains().Length > 0)
+                    appDict.Add("host", app.Hosts[0]);
+                    if (app.Domains != null && app.Domains.Count > 0)
                     {
-                        appDict.Add("domain", app.GetDomains()[0]);
+                        appDict.Add("domain", app.Domains[0]);
                     }
                 }
                 else
@@ -72,9 +72,9 @@
                     appDict.Add("no-route", true);
                 }
 
-                if (app.GetServices() != null && app.GetServices().Length > 0)
+                if (app.Services != null && app.Services.Count > 0)
                 {
-                    appDict.Add("services", app.GetServices().ToList<string>());
+                    appDict.Add("services", app.Services.Cast<string>().ToList<string>());
                 }
 
                 if (app.EnvironmentVariables != null && app.EnvironmentVariables.Count > 0)
@@ -174,7 +174,7 @@
                 domains.Add(domain);
             }
 
-            app.SetDomains(domains.Distinct().ToArray());
+            app.Domains.AddRange(domains.Distinct().ToArray());
 
             var hosts = ListOrEmptyVal(yaml, "hosts");
             string host = StringVal(yaml, "host");
@@ -183,7 +183,7 @@
                 hosts.Add(host);
             }
 
-            app.SetHosts(hosts.Distinct().ToArray());
+            app.Hosts.AddRange(hosts.Distinct().ToArray());
             app.Name = StringVal(yaml, "name");
             app.Path = StringVal(yaml, "path");
             app.StackName = StringVal(yaml, "stack");
@@ -194,7 +194,7 @@
             app.NoRoute = BoolVal(yaml, "no-route");
             app.NoHostName = BoolVal(yaml, "no-hostname");
             app.UseRandomHostName = BoolVal(yaml, "random-route");
-            app.SetServices(ListOrEmptyVal(yaml, "services").ToArray());
+            app.Services.AddRange(ListOrEmptyVal(yaml, "services").ToArray());
             app.EnvironmentVariables = EnvVarOrEmptyVal(yaml);
 
             if (app.Path != null)

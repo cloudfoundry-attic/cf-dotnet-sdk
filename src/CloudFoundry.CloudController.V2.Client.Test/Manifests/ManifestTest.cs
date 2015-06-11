@@ -21,18 +21,18 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
             Assert.AreEqual("app-name", apps[0].Name);
             Assert.AreEqual(128, apps[0].Memory);
             Assert.AreEqual(1, apps[0].InstanceCount);
-            Assert.AreEqual(1, apps[0].GetHosts().Length);
-            Assert.AreEqual(1, apps[0].GetDomains().Length);
-            Assert.AreEqual("home", apps[0].GetHosts()[0]);
-            Assert.AreEqual("app.example.com", apps[0].GetDomains()[0]);
+            Assert.AreEqual(1, apps[0].Hosts.Count);
+            Assert.AreEqual(1, apps[0].Domains.Count);
+            Assert.AreEqual("home", apps[0].Hosts[0]);
+            Assert.AreEqual("app.example.com", apps[0].Domains[0]);
             Assert.AreEqual(@"c:\path\to\app", apps[0].Path);
             Assert.AreEqual(2, apps[0].EnvironmentVariables.Count);
             Assert.AreEqual("first", apps[0].EnvironmentVariables["env1"]);
             Assert.AreEqual("test-bp", apps[0].BuildpackUrl);
             Assert.AreEqual(500, apps[0].HealthCheckTimeout);
             Assert.AreEqual("cmd", apps[0].Command);
-            Assert.AreEqual(2, apps[0].GetServices().Length);
-            Assert.AreNotEqual(-1, Array.IndexOf(apps[0].GetServices(), "mysql"));
+            Assert.AreEqual(2, apps[0].Services.Count);
+            Assert.AreNotEqual(-1, apps[0].Services.IndexOf("mysql"));
         }
 
         [TestMethod]
@@ -45,10 +45,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
             Assert.AreEqual("app-name", apps[0].Name);
             Assert.AreEqual(128, apps[0].Memory);
             Assert.AreEqual(1, apps[0].InstanceCount);
-            Assert.AreEqual(1, apps[0].GetHosts().Length);
-            Assert.AreEqual(1, apps[0].GetDomains().Length);
-            Assert.AreEqual("home", apps[0].GetHosts()[0]);
-            Assert.AreEqual("app.example.com", apps[0].GetDomains()[0]);
+            Assert.AreEqual(1, apps[0].Hosts.Count);
+            Assert.AreEqual(1, apps[0].Domains.Count);
+            Assert.AreEqual("home", apps[0].Hosts[0]);
+            Assert.AreEqual("app.example.com", apps[0].Domains[0]);
             Assert.AreEqual(@"c:\path\to\app", apps[0].Path);
             Assert.AreEqual(2, apps[0].EnvironmentVariables.Count);
             Assert.AreEqual("first", apps[0].EnvironmentVariables["env1"]);
@@ -79,15 +79,15 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
             Assert.AreEqual("app-name", apps[0].Name);
             Assert.AreEqual(128, apps[0].Memory);
             Assert.AreEqual(1, apps[0].InstanceCount);
-            Assert.AreEqual(1, apps[0].GetHosts().Length);
-            Assert.AreEqual(1, apps[0].GetDomains().Length);
-            Assert.AreEqual("home", apps[0].GetHosts()[0]);
-            Assert.AreEqual("app.example.com", apps[0].GetDomains()[0]);
+            Assert.AreEqual(1, apps[0].Hosts.Count);
+            Assert.AreEqual(1, apps[0].Domains.Count);
+            Assert.AreEqual("home", apps[0].Hosts[0]);
+            Assert.AreEqual("app.example.com", apps[0].Domains[0]);
             Assert.AreEqual(2, apps[0].EnvironmentVariables.Count);
             Assert.AreEqual("first", apps[0].EnvironmentVariables["env1"]);
             Assert.AreEqual("test-bp", apps[0].BuildpackUrl);
-            Assert.AreEqual(2, apps[0].GetServices().Length);
-            Assert.AreNotEqual(-1, Array.IndexOf(apps[0].GetServices(), "mysql"));
+            Assert.AreEqual(2, apps[0].Services.Count);
+            Assert.AreNotEqual(-1, apps[0].Services.IndexOf("mysql"));
 
             File.Delete(tempFile);
         }
