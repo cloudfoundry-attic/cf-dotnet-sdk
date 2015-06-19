@@ -24,6 +24,7 @@
             model[applicationLogType].Add(6, "SourceId");
             model[applicationLogType].Add(7, "DrainUrls");
             model[applicationLogType].Add(8, "SourceName");
+            model[applicationLogType][3].DataFormat = DataFormat.ZigZag;
 
             ApplicationLog log = null;
 
