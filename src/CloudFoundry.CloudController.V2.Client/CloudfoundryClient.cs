@@ -4,6 +4,7 @@ namespace CloudFoundry.CloudController.V2.Client
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using CloudFoundry.CloudController.Common;
     using CloudFoundry.CloudController.Common.Http;
     using CloudFoundry.CloudController.V2.Client.Interfaces;
     using CloudFoundry.UAA;
@@ -11,7 +12,7 @@ namespace CloudFoundry.CloudController.V2.Client
     /// <summary>
     /// This is the Cloud Foundry client. To use it, you need a Cloud Foundry endpoint.
     /// </summary>
-    public class CloudFoundryClient
+    public sealed class CloudFoundryClient : CloudFoundry.CloudController.Common.CloudFoundryClient, IUAA
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CloudFoundryClient"/> class.
@@ -42,13 +43,8 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="httpProxy">The HTTP proxy.</param>
         /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation)
+            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation)
         {
-            this.CloudTarget = cloudTarget;
-            this.CancellationToken = cancellationToken;
-            this.HttpProxy = httpProxy;
-            this.SkipCertificateValidation = skipCertificateValidation;
-
-            this.InitEndpoints();
         }
 
         /// <summary>
@@ -332,15 +328,8 @@ namespace CloudFoundry.CloudController.V2.Client
         /// </value>
         public UsersEndpoint Users { get; private set; }
 
-        internal CancellationToken CancellationToken { get; set; }
-
-        internal Uri CloudTarget { get; set; }
-
-        internal Uri HttpProxy { get; set; }
-
-        internal bool SkipCertificateValidation { get; set; }
-
-        internal UAAClient UAAClient { get; set; }
+        /// <inheritdoc />
+        public UAAClient UAAClient { get; private set; }
 
         /// <summary>
         /// Login using the specified credentials.
@@ -415,9 +404,12 @@ namespace CloudFoundry.CloudController.V2.Client
             return context;
         }
 
+        /// <summary>
+        /// Initializes all API Endpoints
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling",
             Justification = "Developers using the SDK should find it useful to have a 1-to-1 list of all documented Cloud Foundry endpoints.")]
-        private void InitEndpoints()
+        public override void InitEndpoints()
         {
             this.Apps = new AppsEndpoint(this);
             this.AppUsageEvents = new AppUsageEventsEndpoint(this);

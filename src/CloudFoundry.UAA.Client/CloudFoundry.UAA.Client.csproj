@@ -61,6 +61,7 @@
     <Compile Include="CloudCredentials.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
+    <Compile Include="IUAA.cs" />
     <Compile Include="UAAClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

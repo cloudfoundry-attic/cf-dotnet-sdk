@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Exceptions;
     using CloudFoundry.CloudController.Common.Http;
-    using CloudFoundry.CloudController.V2.Client.Interfaces;
+    
     using CloudFoundry.UAA;
 
     /// <summary>

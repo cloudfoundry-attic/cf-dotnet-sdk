@@ -84,6 +84,7 @@
   <Target Name="UnitTest">
     <ItemGroup>
       <TestDlls Include=".\src\CloudFoundry.CloudController.V2.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V2.Client.Test.dll"/>
+      <TestDlls Include=".\src\CloudFoundry.CloudController.V3.Client.Test\bin\$(Configuration)\CloudFoundry.CloudController.V3.Client.Test.dll"/>
     </ItemGroup>
 
     <Exec Command="$(VSTestCommand) %(TestDlls.Identity) /inIsolation /settings:CodeCoverage.runsettings /logger:trx"  ConsoleToMSBuild="true">

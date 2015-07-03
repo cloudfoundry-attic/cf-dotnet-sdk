@@ -91,6 +91,9 @@
     <Compile Include="..\CloudFoundry.UAA.Client\Exceptions\AuthenticationException.cs">
       <Link>Exceptions\AuthenticationException.cs</Link>
     </Compile>
+    <Compile Include="..\CloudFoundry.UAA.Client\IUAA.cs">
+      <Link>IUAA.cs</Link>
+    </Compile>
     <Compile Include="..\CloudFoundry.UAA.Client\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>

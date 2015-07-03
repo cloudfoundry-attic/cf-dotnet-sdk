@@ -51,6 +51,7 @@
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CloudFoundryClient.cs" />
     <Compile Include="Exceptions\CloudFoundryException.cs" />
     <Compile Include="Exceptions\CloudFoundryExceptionObject.cs" />
     <Compile Include="Http\IPlatformBaseHttpClientHandler.cs" />
