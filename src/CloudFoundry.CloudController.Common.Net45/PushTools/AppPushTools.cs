@@ -103,6 +103,18 @@
             return fileStream;
         }
 
+        /// <summary>
+        /// Creates a zip archive containing the all files from the application folder <see cref="AppPushTools"/>
+        /// </summary>
+        /// <param name="appPath">The path to the application folder</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>An open stream of the zip file</returns>
+        public Task<Stream> GetZippedPayload(string appPath, System.Threading.CancellationToken cancellationToken)
+        {
+            var files = Directory.GetFiles(appPath, "*", SearchOption.AllDirectories).Select(f => new FileInfo(f).FullName.Replace(appPath, string.Empty).TrimStart('\\'));
+            return this.GetZippedPayload(appPath, files, cancellationToken);
+        }
+
         private async Task<string> CalculateSHA1(string filePath, System.Threading.CancellationToken cancellationToken)
         {
             string formattedSHA1 = string.Empty;

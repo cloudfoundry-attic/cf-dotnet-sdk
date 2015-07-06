@@ -26,5 +26,13 @@
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
         Task<Stream> GetZippedPayload(string appPath, IEnumerable<string> files, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Creates a zip archive containing the all files from the application folder <see cref="AppPushTools"/>
+        /// </summary>
+        /// <param name="appPath">The path to the application folder</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>An open stream of the zip file</returns>
+        Task<Stream> GetZippedPayload(string appPath, CancellationToken cancellationToken);
     }
 }

@@ -72,313 +72,923 @@
     <Compile Include="Extensions\Data\DC_GetV1InfoResponse.cs" />
     <Compile Include="Extensions\Data\DC_UpdateAppRequest.cs.cs" />
     <Compile Include="Extensions\Info.cs" />
-    <Compile Include="Generated\Apps.cs" />
-    <Compile Include="Generated\AppUsageEvents.cs" />
-    <Compile Include="Generated\Buildpacks.cs" />
-    <Compile Include="Generated\Data\DC_AssociateAppWithRouteResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateAuditedOrganizationWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateAuditedSpaceWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateAuditorWithOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateAuditorWithSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateBillingManagedOrganizationWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateBillingManagerWithOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateDeveloperWithSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateManagedOrganizationWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateManagedSpaceWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateManagerWithOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateManagerWithSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateOrganizationWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateRouteWithAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateSecurityGroupWithSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateSpaceWithSecurityGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateSpaceWithSpaceQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateSpaceWithUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_AssociateUserWithOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ChangePositionOfBuildpackRequest.cs" />
-    <Compile Include="Generated\Data\DC_ChangePositionOfBuildpackResponse.cs" />
-    <Compile Include="Generated\Data\DC_CopyAppBitsForAppRequest.cs" />
-    <Compile Include="Generated\Data\DC_CopyAppBitsForAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateAppRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateOrganizationQuotaDefinitionRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateOrganizationQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateOrganizationRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreatePrivateDomainOwnedByGivenOrganizationRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreatePrivateDomainOwnedByGivenOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateRouteRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateRouteResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreatesAdminBuildpackRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreatesAdminBuildpackResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateSecurityGroupRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateSecurityGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceBindingRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceBindingResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceBrokerRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceBrokerResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceDeprecatedRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceInstanceRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateServicePlanDeprecatedRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateServicePlanDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateServicePlanVisibilityRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateServicePlanVisibilityResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateSharedDomainRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateSharedDomainResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateSpaceQuotaDefinitionRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateSpaceQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateSpaceRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreatesSharedDomainDeprecatedRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreatesSharedDomainDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateUserProvidedServiceInstanceRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateUserProvidedServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_CreateUserRequest.cs" />
-    <Compile Include="Generated\Data\DC_CreateUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackRequest.cs" />
-    <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackResponse.cs" />
-    <Compile Include="Generated\Data\DC_FilterPrivateDomainsByNameResponse.cs" />
-    <Compile Include="Generated\Data\DC_FilterResultSetByLabelDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_FilterResultSetByProviderDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_FilterSharedDomainsByNameResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetAllFeatureFlagsResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetAppBitsUploadFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetAppScalingFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetAppSummaryResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetDetailedStatsForStartedAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetEnvForAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetInfoResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetInstanceInformationForStartedAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetOrganizationSummaryResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetPrivateDomainCreationFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetRouteCreationFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetServiceInstanceCreationFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetSpaceSummaryResponse.cs" />
-    <Compile Include="Generated\Data\DC_GettingContentsOfRunningEnvironmentVariableGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_GettingContentsOfStagingEnvironmentVariableGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetUserOrgCreationFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_GetUserSummaryResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAppsForRouteResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAppsForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAppsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAppUsageEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAuditedOrganizationsForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAuditedSpacesForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAuditorsForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllAuditorsForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllBillingManagedOrganizationsForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllBillingManagersForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllBuildpacksResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllDevelopersForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllDomainsDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllDomainsForOrganizationDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllDomainsForSpaceDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllEventsForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllManagedOrganizationsForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllManagedSpacesForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllManagersForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllManagersForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllMatchingResourcesRequest.cs" />
-    <Compile Include="Generated\Data\DC_ListAllMatchingResourcesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllOrganizationQuotaDefinitionsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllOrganizationsForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllOrganizationsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllPrivateDomainsForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllPrivateDomainsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllRoutesForAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllRoutesForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllRoutesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSecurityGroupsForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSecurityGroupsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceAuthTokensDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceBindingsForAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceBindingsForServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceBindingsForUserProvidedServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceBindingsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceBrokersResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceInstancesForServicePlanResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceInstancesForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServiceInstancesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServicePlansForServiceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServicePlansResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServicePlanVisibilitiesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServicesForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServicesForSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllServicesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSharedDomainsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpaceQuotaDefinitionsForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpaceQuotaDefinitionsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpacesForDomainDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpacesForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpacesForSecurityGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpacesForSpaceQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpacesForUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllSpacesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllStacksResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllUserProvidedServiceInstancesResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllUsersForOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAllUsersResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAppCreateEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAppDeleteEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAppExitedEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListAppUpdateEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListEventsAssociatedWithAppSinceJanuary12014Response.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceBindingCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceBindingDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceBrokerCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceBrokerDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceBrokerUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceDashboardClientCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceDashboardClientDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceInstanceCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceInstanceDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceInstanceUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServicePlanCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServicePlanDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServicePlanUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListServiceUsageEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListSpaceCreateEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListSpaceDeleteEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListSpaceUpdateEventsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceCreateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_LockOrUnlockBuildpackRequest.cs" />
-    <Compile Include="Generated\Data\DC_LockOrUnlockBuildpackResponse.cs" />
-    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs" />
-    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveAppFromRouteResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveAuditedOrganizationFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveAuditedSpaceFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveAuditorFromOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveAuditorFromSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveBillingManagedOrganizationFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveBillingManagerFromOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveDeveloperFromSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveManagedOrganizationFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveManagedSpaceFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveManagerFromOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveManagerFromSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveOrganizationFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveRouteFromAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveSecurityGroupFromSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveServiceBindingFromAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveSpaceFromSecurityGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveSpaceFromSpaceQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveSpaceFromUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveUserFromOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_RestageAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveAppUsageEventResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveBuildpackResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveDomainDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveEventResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveJobThatIsQueuedResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveJobThatWasSuccessfulResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveJobWithKnownFailureResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveJobWithUnknownFailureResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveOrganizationQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrievePrivateDomainResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveRouteResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveSecurityGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServiceAuthTokenDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServiceBindingResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServiceBrokerResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServicePlanResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServicePlanVisibilityResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServiceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveServiceUsageEventResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveSharedDomainResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveSpaceQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveStackResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveUserProvidedServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrieveUserResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrievingOrganizationMemoryUsageResponse.cs" />
-    <Compile Include="Generated\Data\DC_RetrievingPermissionsOnServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_ReturnSecurityGroupsUsedForRunningAppsResponse.cs" />
-    <Compile Include="Generated\Data\DC_ReturnSecurityGroupsUsedForStagingResponse.cs" />
-    <Compile Include="Generated\Data\DC_SetFeatureFlagRequest.cs" />
-    <Compile Include="Generated\Data\DC_SetFeatureFlagResponse.cs" />
-    <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForRunningAppsResponse.cs" />
-    <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForStagingResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateAppRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateContentsOfRunningEnvironmentVariableGroupRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateContentsOfRunningEnvironmentVariableGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateContentsOfStagingEnvironmentVariableGroupRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateContentsOfStagingEnvironmentVariableGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateOrganizationQuotaDefinitionRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateOrganizationQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateOrganizationRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateRouteRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateRouteResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateSecurityGroupRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateSecurityGroupResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServiceBrokerRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServiceBrokerResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServiceDeprecatedRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServiceDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServiceInstanceRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServicePlanDeprecatedRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServicePlanDeprecatedResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServicePlanVisibilityRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateServicePlanVisibilityResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateSpaceQuotaDefinitionRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateSpaceQuotaDefinitionResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateSpaceRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateSpaceResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateUserProvidedServiceInstanceRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateUserProvidedServiceInstanceResponse.cs" />
-    <Compile Include="Generated\Data\DC_UpdateUserRequest.cs" />
-    <Compile Include="Generated\Data\DC_UpdateUserResponse.cs" />
-    <Compile Include="Generated\DomainsDeprecated.cs" />
-    <Compile Include="Generated\EnvironmentVariableGroups.cs" />
-    <Compile Include="Generated\Events.cs" />
-    <Compile Include="Generated\FeatureFlags.cs" />
-    <Compile Include="Generated\Files.cs" />
-    <Compile Include="Generated\Info.cs" />
-    <Compile Include="Generated\Jobs.cs" />
-    <Compile Include="Generated\OrganizationQuotaDefinitions.cs" />
-    <Compile Include="Generated\Organizations.cs" />
-    <Compile Include="Generated\PrivateDomains.cs" />
-    <Compile Include="Generated\ResourceMatch.cs" />
-    <Compile Include="Generated\Routes.cs" />
-    <Compile Include="Generated\SecurityGroupRunningDefaults.cs" />
-    <Compile Include="Generated\SecurityGroups.cs" />
-    <Compile Include="Generated\SecurityGroupStagingDefaults.cs" />
-    <Compile Include="Generated\ServiceauthtokensDeprecated.cs" />
-    <Compile Include="Generated\ServiceBindings.cs" />
-    <Compile Include="Generated\ServiceBrokers.cs" />
-    <Compile Include="Generated\ServiceInstances.cs" />
-    <Compile Include="Generated\ServicePlans.cs" />
-    <Compile Include="Generated\ServicePlanVisibilities.cs" />
-    <Compile Include="Generated\Services.cs" />
-    <Compile Include="Generated\ServiceUsageEventsExperimental.cs" />
-    <Compile Include="Generated\SharedDomains.cs" />
-    <Compile Include="Generated\SpaceQuotaDefinitions.cs" />
-    <Compile Include="Generated\Spaces.cs" />
-    <Compile Include="Generated\Stacks.cs" />
-    <Compile Include="Generated\UserProvidedServiceInstances.cs" />
-    <Compile Include="Generated\Users.cs" />
+    <Compile Include="Generated\Apps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\AppUsageEvents.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Buildpacks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAppWithRouteResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAuditedOrganizationWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAuditedSpaceWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAuditorWithOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAuditorWithSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateBillingManagedOrganizationWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateBillingManagerWithOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateDeveloperWithSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateManagedOrganizationWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateManagedSpaceWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateManagerWithOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateManagerWithSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateOrganizationWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateRouteWithAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateSecurityGroupWithSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateSpaceWithSecurityGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateSpaceWithSpaceQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateSpaceWithUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_AssociateUserWithOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ChangePositionOfBuildpackRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ChangePositionOfBuildpackResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CopyAppBitsForAppRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CopyAppBitsForAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateAppRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateOrganizationQuotaDefinitionRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateOrganizationQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateOrganizationRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatePrivateDomainOwnedByGivenOrganizationRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatePrivateDomainOwnedByGivenOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateRouteRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateRouteResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatesAdminBuildpackRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatesAdminBuildpackResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSecurityGroupRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSecurityGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceBindingRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceBindingResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceBrokerRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceBrokerResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceDeprecatedRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceInstanceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServicePlanDeprecatedRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServicePlanDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServicePlanVisibilityRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateServicePlanVisibilityResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSharedDomainRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSharedDomainResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSpaceQuotaDefinitionRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSpaceQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSpaceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatesSharedDomainDeprecatedRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreatesSharedDomainDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateUserProvidedServiceInstanceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateUserProvidedServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateUserRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_CreateUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_FilterPrivateDomainsByNameResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_FilterResultSetByLabelDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_FilterResultSetByProviderDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_FilterSharedDomainsByNameResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetAllFeatureFlagsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetAppBitsUploadFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetAppScalingFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetAppSummaryResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetDetailedStatsForStartedAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetEnvForAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetInfoResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetInstanceInformationForStartedAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetOrganizationSummaryResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetPrivateDomainCreationFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetRouteCreationFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetServiceInstanceCreationFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetSpaceSummaryResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GettingContentsOfRunningEnvironmentVariableGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GettingContentsOfStagingEnvironmentVariableGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetUserOrgCreationFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_GetUserSummaryResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAppsForRouteResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAppsForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAppsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAppUsageEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAuditedOrganizationsForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAuditedSpacesForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAuditorsForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllAuditorsForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllBillingManagedOrganizationsForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllBillingManagersForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllBuildpacksResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllDevelopersForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllDomainsDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllDomainsForOrganizationDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllDomainsForSpaceDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllEventsForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllManagedOrganizationsForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllManagedSpacesForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllManagersForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllManagersForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllMatchingResourcesRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllMatchingResourcesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllOrganizationQuotaDefinitionsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllOrganizationsForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllOrganizationsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllPrivateDomainsForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllPrivateDomainsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllRoutesForAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllRoutesForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllRoutesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSecurityGroupsForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSecurityGroupsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceAuthTokensDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceBindingsForAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceBindingsForServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceBindingsForUserProvidedServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceBindingsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceBrokersResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceInstancesForServicePlanResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceInstancesForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceInstancesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServicePlansForServiceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServicePlansResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServicePlanVisibilitiesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServicesForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServicesForSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServicesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSharedDomainsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpaceQuotaDefinitionsForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpaceQuotaDefinitionsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpacesForDomainDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpacesForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpacesForSecurityGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpacesForSpaceQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpacesForUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSpacesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllStacksResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllUserProvidedServiceInstancesResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllUsersForOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAllUsersResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAppCreateEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAppDeleteEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAppExitedEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListAppUpdateEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListEventsAssociatedWithAppSinceJanuary12014Response.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceBindingCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceBindingDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceBrokerCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceBrokerDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceBrokerUpdateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceDashboardClientCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceDashboardClientDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceInstanceCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceInstanceDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceInstanceUpdateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServicePlanCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServicePlanDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServicePlanUpdateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityUpdateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceUpdateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceUsageEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListSpaceCreateEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListSpaceDeleteEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListSpaceUpdateEventsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceCreateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_LockOrUnlockBuildpackRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_LockOrUnlockBuildpackResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveAppFromRouteResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveAuditedOrganizationFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveAuditedSpaceFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveAuditorFromOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveAuditorFromSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveBillingManagedOrganizationFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveBillingManagerFromOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveDeveloperFromSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveManagedOrganizationFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveManagedSpaceFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveManagerFromOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveManagerFromSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveOrganizationFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveRouteFromAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveSecurityGroupFromSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveServiceBindingFromAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveSpaceFromSecurityGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveSpaceFromSpaceQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveSpaceFromUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RemoveUserFromOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RestageAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveAppUsageEventResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveBuildpackResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveDomainDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveEventResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveJobThatIsQueuedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveJobThatWasSuccessfulResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveJobWithKnownFailureResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveJobWithUnknownFailureResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveOrganizationQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrievePrivateDomainResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveRouteResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveSecurityGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceAuthTokenDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceBindingResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceBrokerResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServicePlanResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServicePlanVisibilityResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceUsageEventResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveSharedDomainResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveSpaceQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveStackResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveUserProvidedServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrievingOrganizationMemoryUsageResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_RetrievingPermissionsOnServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ReturnSecurityGroupsUsedForRunningAppsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_ReturnSecurityGroupsUsedForStagingResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_SetFeatureFlagRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_SetFeatureFlagResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForRunningAppsResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForStagingResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateAppRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateAppResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateContentsOfRunningEnvironmentVariableGroupRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateContentsOfRunningEnvironmentVariableGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateContentsOfStagingEnvironmentVariableGroupRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateContentsOfStagingEnvironmentVariableGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateOrganizationQuotaDefinitionRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateOrganizationQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateOrganizationRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateOrganizationResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateRouteRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateRouteResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateSecurityGroupRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateSecurityGroupResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServiceBrokerRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServiceBrokerResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServiceDeprecatedRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServiceDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServiceInstanceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServicePlanDeprecatedRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServicePlanDeprecatedResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServicePlanVisibilityRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateServicePlanVisibilityResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateSpaceQuotaDefinitionRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateSpaceQuotaDefinitionResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateSpaceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateSpaceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateUserProvidedServiceInstanceRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateUserProvidedServiceInstanceResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateUserRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Data\DC_UpdateUserResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CloudFoundryClient.cs" />
     <Compile Include="EntityGuid.cs" />
+    <Compile Include="Generated\DomainsDeprecated.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\EnvironmentVariableGroups.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Events.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FeatureFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Files.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Info.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Jobs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\OrganizationQuotaDefinitions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Organizations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PrivateDomains.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ResourceMatch.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Routes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SecurityGroupRunningDefaults.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SecurityGroups.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SecurityGroupStagingDefaults.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceauthtokensDeprecated.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceBindings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceBrokers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceInstances.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServicePlans.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServicePlanVisibilities.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Services.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceUsageEventsExperimental.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SharedDomains.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SpaceQuotaDefinitions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Spaces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Stacks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\UserProvidedServiceInstances.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Interfaces\IResponse.cs" />
     <Compile Include="Metadata.cs" />
     <Compile Include="PageProperties.cs" />
@@ -416,6 +1026,7 @@
       <Link>cf-dotnet-sdk-dictionary.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
