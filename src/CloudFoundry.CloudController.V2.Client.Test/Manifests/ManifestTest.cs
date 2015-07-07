@@ -108,5 +108,32 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
             Assert.AreEqual(1, apps.Length);
             Assert.IsTrue(apps[0].NoRoute);
         }
+
+        [TestMethod]
+        public void TestNullValues()
+        {
+
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "manifest_null_value.yaml"));
+
+            Application[] apps = man.Applications();
+            Assert.AreEqual(1, apps.Length);
+            Assert.AreEqual("app-name", apps[0].Name);
+            Assert.AreEqual(128, apps[0].Memory);
+            Assert.AreEqual(1, apps[0].InstanceCount);
+            Assert.AreEqual(1, apps[0].Hosts.Count);
+            Assert.AreEqual(1, apps[0].Domains.Count);
+            Assert.AreEqual("home", apps[0].Hosts[0]);
+            Assert.AreEqual("app.example.com", apps[0].Domains[0]);
+            Assert.AreEqual(@"c:\path\to\app", apps[0].Path);
+            Assert.AreEqual(2, apps[0].EnvironmentVariables.Count);
+            Assert.AreEqual("first", apps[0].EnvironmentVariables["env1"]);
+            Assert.IsNull(apps[0].BuildpackUrl);
+            Assert.IsNull(apps[0].StackName);
+            Assert.AreEqual(500, apps[0].HealthCheckTimeout);
+            Assert.AreEqual("cmd", apps[0].Command);
+            Assert.AreEqual(2, apps[0].Services.Count);
+            Assert.AreEqual(1024, apps[0].DiskQuota);
+            Assert.AreNotEqual(-1, apps[0].Services.IndexOf("mysql"));
+        }
     }
 }

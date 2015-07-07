@@ -431,6 +431,11 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", Justification = "Manifest uses lower case keys")]
         private object ExpandProperties(object input)
         {
+            if (input == null)
+            {
+                return null;
+            }
+
             object output = null;
             Type type = input.GetType();
             if (type == typeof(string))
