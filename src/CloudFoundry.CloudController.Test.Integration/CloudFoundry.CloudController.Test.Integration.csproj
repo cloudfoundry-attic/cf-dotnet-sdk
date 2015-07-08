@@ -64,22 +64,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationTest.cs" />
     <Compile Include="AuthTest.cs" />
+    <Compile Include="BuildpackTest.cs" />
     <Compile Include="CancelTest.cs" />
     <Compile Include="CertificateValidationTest.cs" />
     <Compile Include="InfoTest.cs" />
     <Compile Include="LogyardTest.cs" />
     <Compile Include="OrgTest.cs" />
+    <Compile Include="PushTest.cs" />
     <Compile Include="RouteTest.cs" />
     <Compile Include="ServiceInstanceTest.cs" />
     <Compile Include="SpaceTest.cs" />
     <Compile Include="StackTest.cs" />
     <Compile Include="TestUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ApplicationTest.cs" />
-    <Compile Include="BuildpackTest.cs" />
-    <Compile Include="PushTest.cs" />
     <Compile Include="UploadAppTest.cs" />
+    <Compile Include="v3\PushTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudFoundry.CloudController.Common.Net45\CloudFoundry.CloudController.Common.Net45.csproj">
@@ -89,6 +90,10 @@
     <ProjectReference Include="..\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj">
       <Project>{f54d7282-fe0c-474d-a8f6-326146554cdb}</Project>
       <Name>CloudFoundry.CloudController.V2.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.CloudController.V3.Client\CloudFoundry.CloudController.V3.Client.csproj">
+      <Project>{d1931738-1f49-48e0-8cac-5caad8cc2244}</Project>
+      <Name>CloudFoundry.CloudController.V3.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.Logyard.Client.Net45\CloudFoundry.Logyard.Client.Net45.csproj">
       <Project>{d4ad10d5-f1ca-41ff-95dc-57789cc3a062}</Project>
@@ -103,6 +108,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Assets\node\index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\node\package.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Assets\TestApp\Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
