@@ -1,0 +1,21 @@
+---
+applications:
+- name: app-name
+  memory: 128M
+  disk_quota: 1GB
+  instances: 1
+  buildpack: 
+  timeout: 500
+  command: cmd
+  stack: 
+  services:
+  - mysql
+  - mssql
+  hosts:
+  - home
+  domains:
+  - app.example.com
+  path: c:\path\to\app
+  env: 
+    env1: first
+    env2: second
