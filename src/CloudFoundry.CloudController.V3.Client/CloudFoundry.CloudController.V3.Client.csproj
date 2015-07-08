@@ -54,6 +54,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseEndpoint.cs" />
+    <Compile Include="Extensions\Apps.cs" />
+    <Compile Include="Extensions\Packages.cs" />
     <Compile Include="Extensions\ProgressEventArgs.cs" />
     <Compile Include="CloudFoundryClient.cs" />
     <Compile Include="Generated\AppRoutes.cs" />

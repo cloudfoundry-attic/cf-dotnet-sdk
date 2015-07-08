@@ -176,8 +176,8 @@ namespace CloudFoundry.CloudController.V3.Client
                 throw new ArgumentNullException("AuthorizationEndpoint");
             }
 
-            var authUrl = string.Format(CultureInfo.InvariantCulture, "{0}{1}", AuthorizationEndpoint.ToString(), "/oauth/token"); 
-            this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
+            var authUrl = new Uri(AuthorizationEndpoint.ToString().TrimEnd('/') + "/oauth/token");
+            this.UAAClient = new UAAClient(authUrl, this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(refreshToken);
 
