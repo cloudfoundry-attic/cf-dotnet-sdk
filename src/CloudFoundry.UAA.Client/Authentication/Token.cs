@@ -55,11 +55,11 @@
             {
                 this.accessToken = value;
 
-                dynamic tokenInfo = Token.GetTokenInfo(this.accessToken);
+                var tokenInfo = Token.GetTokenInfo(this.accessToken);
 
-                this.UserName = tokenInfo == null ? null : tokenInfo["user_name"];
-                this.Email = tokenInfo == null ? null : tokenInfo["email"];
-                this.UserGuid = tokenInfo == null ? null : tokenInfo["user_id"];
+                this.UserName = tokenInfo == null ? null : tokenInfo["user_name"] as string;
+                this.Email = tokenInfo == null ? null : tokenInfo["email"] as string;
+                this.UserGuid = tokenInfo == null ? null : tokenInfo["user_id"] as string;
             }
         }
 
@@ -105,7 +105,7 @@
         /// Implementation based on https://github.com/cloudfoundry/cli/blob/master/cf/configuration/core_config/access_token.go
         /// </summary>
         /// <returns>A JSON object that contains the decoded information.</returns>
-        private static dynamic GetTokenInfo(string accessToken)
+        private static Dictionary<string, object> GetTokenInfo(string accessToken)
         {
             if (string.IsNullOrWhiteSpace(accessToken))
             {
@@ -123,7 +123,7 @@
             byte[] decodedBytes = Convert.FromBase64String(RestorePadding(encodedTokenJson));
             string decodedJson = Encoding.UTF8.GetString(decodedBytes, 0, decodedBytes.Length);
 
-            return JsonConvert.DeserializeObject(decodedJson);
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(decodedJson);
         }
 
         /// <summary>
