@@ -33,7 +33,13 @@
                 FileInfo fileInfo = new FileInfo(file);
                 FileFingerprint print = new FileFingerprint();
                 print.Size = fileInfo.Length;
-                print.FileName = fileInfo.FullName.Replace(appPath, string.Empty).TrimStart('\\');
+                print.FileName = fileInfo.FullName.Substring(appPath.Length).TrimStart('\\');
+                
+                if (Path.DirectorySeparatorChar == '\\')
+                {
+                    print.FileName = print.FileName.Replace(Path.DirectorySeparatorChar, '/');   
+                }
+
                 print.SHA1 = await this.CalculateSHA1(fileInfo.FullName, cancellationToken);
 
                 if (fingerprints.ContainsKey(print.SHA1))
