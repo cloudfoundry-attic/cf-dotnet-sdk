@@ -116,6 +116,7 @@
     <Compile Include="Serialization\Test_droplets__experimental_.cs" />
     <Compile Include="Serialization\Test_packages__experimental_.cs" />
     <Compile Include="Serialization\Test_processes__experimental_.cs" />
+    <Compile Include="TestRequestOptions.cs" />
     <Compile Include="TestTokenDecoding.cs" />
     <Compile Include="TestUtil.cs" />
   </ItemGroup>
