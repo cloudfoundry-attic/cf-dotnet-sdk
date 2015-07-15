@@ -55,6 +55,7 @@ namespace CloudFoundry.CloudController.V3.Client
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl)
             : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl)
         {
+            this.V2 = new V2.Client.CloudFoundryClient(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation);
         }
 
         /// <summary>
@@ -120,6 +121,11 @@ namespace CloudFoundry.CloudController.V3.Client
         public UAAClient UAAClient { get; private set; }
 
         /// <summary>
+        /// Instance of CloudFoundry V2 Client 
+        /// </summary>
+        public CloudController.V2.Client.CloudFoundryClient V2 { get; private set; }
+
+        /// <summary>
         /// Login using the specified credentials.
         /// </summary>
         /// <param name="credentials">The credentials.</param>
@@ -130,13 +136,23 @@ namespace CloudFoundry.CloudController.V3.Client
         {
             if (this.AuthorizationEndpoint == null)
             {
-                throw new ArgumentNullException("AuthorizationEndpoint");
+                var info = await this.V2.Info.GetInfo();
+                this.AuthorizationEndpoint = new Uri(info.AuthorizationEndpoint);
             }
 
             var authUrl = new Uri(AuthorizationEndpoint.ToString().TrimEnd('/') + "/oauth/token");
             this.UAAClient = new UAAClient(authUrl, this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(credentials);
+
+            await this.V2.Login(context.Token.RefreshToken);
+
+            if (context.IsLoggedIn)
+            {
+                //// Workaround for HCF. Some CC requests (e.g. dev role + bind route, update app, etc..) will fail the first time after login with 401.
+                //// Calling the CC's /v2/info endpoint will prevent this misbehavior.
+                await this.V2.Info.GetInfo();
+            }
 
             return context;
         }
@@ -173,13 +189,23 @@ namespace CloudFoundry.CloudController.V3.Client
         {
             if (this.AuthorizationEndpoint == null)
             {
-                throw new ArgumentNullException("AuthorizationEndpoint");
+                var info = await this.V2.Info.GetInfo();
+                this.AuthorizationEndpoint = new Uri(info.AuthorizationEndpoint);
             }
 
             var authUrl = new Uri(AuthorizationEndpoint.ToString().TrimEnd('/') + "/oauth/token");
             this.UAAClient = new UAAClient(authUrl, this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(refreshToken);
+
+            await this.V2.Login(refreshToken);
+
+            if (context.IsLoggedIn)
+            {
+                //// Workaround for HCF. Some CC requests (e.g. dev role + bind route, update app, etc..) will fail the first time after login with 401.
+                //// Calling the CC's /v2/info endpoint will prevent this misbehavior.
+                await this.V2.Info.GetInfo();
+            }
 
             return context;
         }
