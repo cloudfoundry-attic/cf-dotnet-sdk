@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.UpdateSpaceQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/space_quota_definitions/updating_a_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/space_quota_definitions/updating_a_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateSpaceQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateSpaceQuotaDefinitionResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.UpdateSpaceQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/space_quota_definitions/updating_a_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/space_quota_definitions/updating_a_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateSpaceQuotaDefinitionResponse : IResponse

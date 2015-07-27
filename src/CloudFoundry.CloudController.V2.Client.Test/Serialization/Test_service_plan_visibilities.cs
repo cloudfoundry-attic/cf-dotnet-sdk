@@ -31,14 +31,14 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateServicePlanVisibilityRequest()
         {
             string json = @"{
-  ""service_plan_guid"": ""58a891e4-d654-4615-949c-ced64d4eeaea"",
-  ""organization_guid"": ""eb1ef59e-164e-4fec-90f9-7663e805969c""
+  ""service_plan_guid"": ""a6511259-83fb-415c-b95e-24b55d75a6b6"",
+  ""organization_guid"": ""72b10b6e-042d-4376-bb57-1594c1687092""
 }";
 
             CreateServicePlanVisibilityRequest request = new CreateServicePlanVisibilityRequest();
 
-            request.ServicePlanGuid = new Guid("58a891e4-d654-4615-949c-ced64d4eeaea");
-            request.OrganizationGuid = new Guid("eb1ef59e-164e-4fec-90f9-7663e805969c");
+            request.ServicePlanGuid = new Guid("a6511259-83fb-415c-b95e-24b55d75a6b6");
+            request.OrganizationGuid = new Guid("72b10b6e-042d-4376-bb57-1594c1687092");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -46,14 +46,14 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestUpdateServicePlanVisibilityRequest()
         {
             string json = @"{
-  ""service_plan_guid"": ""8f27baee-b294-429b-95a9-aff944ccb8cb"",
-  ""organization_guid"": ""caa27166-5727-41d8-8396-430af42f7aa6""
+  ""service_plan_guid"": ""4b704609-982c-42b8-b183-852d56941347"",
+  ""organization_guid"": ""925c0e49-71cd-4c04-a2f3-4dc2b72ba72f""
 }";
 
             UpdateServicePlanVisibilityRequest request = new UpdateServicePlanVisibilityRequest();
 
-            request.ServicePlanGuid = new Guid("8f27baee-b294-429b-95a9-aff944ccb8cb");
-            request.OrganizationGuid = new Guid("caa27166-5727-41d8-8396-430af42f7aa6");
+            request.ServicePlanGuid = new Guid("4b704609-982c-42b8-b183-852d56941347");
+            request.OrganizationGuid = new Guid("925c0e49-71cd-4c04-a2f3-4dc2b72ba72f");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

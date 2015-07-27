@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.BuildpacksEndpoint.EnableOrDisableBuildpack()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/buildpacks/enable_or_disable_a_buildpack.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/buildpacks/enable_or_disable_a_buildpack.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class EnableOrDisableBuildpackRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractEnableOrDisableBuildpackRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.BuildpacksEndpoint.EnableOrDisableBuildpack()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/buildpacks/enable_or_disable_a_buildpack.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/buildpacks/enable_or_disable_a_buildpack.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractEnableOrDisableBuildpackRequest
@@ -43,7 +43,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>Whether or not the buildpack will be used for staging</para>
         /// </summary>
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Enabled
+        public bool? Enabled
         {
             get;
             set;

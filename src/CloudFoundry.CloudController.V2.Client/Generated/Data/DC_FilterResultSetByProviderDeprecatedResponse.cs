@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceAuthTokensDeprecatedEndpoint.FilterResultSetByProviderDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/filtering_the_result_set_by_provider_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/serviceauthtokens__deprecated_/filtering_the_result_set_by_provider_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class FilterResultSetByProviderDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractFilterResultSetByProviderDeprecatedResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceAuthTokensDeprecatedEndpoint.FilterResultSetByProviderDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/serviceauthtokens__deprecated_/filtering_the_result_set_by_provider_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/serviceauthtokens__deprecated_/filtering_the_result_set_by_provider_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractFilterResultSetByProviderDeprecatedResponse : IResponse

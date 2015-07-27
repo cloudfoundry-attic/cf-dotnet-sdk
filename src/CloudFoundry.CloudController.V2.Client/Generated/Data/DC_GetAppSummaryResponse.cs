@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetAppSummary()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/get_app_summary.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/apps/get_app_summary.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetAppSummaryResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetAppSummaryResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetAppSummary()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/get_app_summary.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/apps/get_app_summary.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetAppSummaryResponse : IResponse
@@ -111,7 +111,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Production</para>
         /// </summary>
         [JsonProperty("production", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Production
+        public bool? Production
         {
             get;
             set;
@@ -231,7 +231,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Console</para>
         /// </summary>
         [JsonProperty("console", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Console
+        public bool? Console
         {
             get;
             set;
@@ -292,6 +292,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("staging_failed_reason", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic StagingFailedReason
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Diego</para>
+        /// </summary>
+        [JsonProperty("diego", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Diego
         {
             get;
             set;

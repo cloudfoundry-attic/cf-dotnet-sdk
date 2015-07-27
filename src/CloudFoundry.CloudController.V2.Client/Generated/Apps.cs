@@ -21,7 +21,6 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
@@ -54,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Route from the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/remove_route_from_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/remove_route_from_the_app.html"</para>
         /// </summary>
         public async Task<RemoveRouteFromAppResponse> RemoveRouteFromApp(Guid? guid, Guid? route_guid)
         {
@@ -76,7 +75,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Route with the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/associate_route_with_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/associate_route_with_the_app.html"</para>
         /// </summary>
         public async Task<AssociateRouteWithAppResponse> AssociateRouteWithApp(Guid? guid, Guid? route_guid)
         {
@@ -98,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Service Binding from the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/remove_service_binding_from_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/remove_service_binding_from_the_app.html"</para>
         /// </summary>
         public async Task<RemoveServiceBindingFromAppResponse> RemoveServiceBindingFromApp(Guid? guid, Guid? service_binding_guid)
         {
@@ -121,7 +120,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <summary>
         /// Get detailed stats for a STARTED App
         /// <para>Get status for each instance of an App using the app guid.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_detailed_stats_for_a_started_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/get_detailed_stats_for_a_started_app.html"</para>
         /// </summary>
         public async Task<Dictionary<int?, GetDetailedStatsForStartedAppResponse>> GetDetailedStatsForStartedApp(Guid? guid)
         {
@@ -145,7 +144,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>This endpoint will copy the package bits in the blobstore from the source app to the destination app.</para>
         /// <para>It will always return a job which you can query for success or failure.</para>
         /// <para>This operation will require the app to restart in order for the changes to take effect.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/copy_the_app_bits_for_an_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/copy_the_app_bits_for_an_app.html"</para>
         /// </summary>
         public async Task<CopyAppBitsForAppResponse> CopyAppBitsForApp(Guid? guid, CopyAppBitsForAppRequest value)
         {
@@ -168,7 +167,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_apps.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/list_all_apps.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps()
         {
@@ -177,7 +176,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_apps.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/list_all_apps.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsResponse>> ListAllApps(RequestOptions options)
         {
@@ -199,7 +198,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/retrieve_a_particular_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/retrieve_a_particular_app.html"</para>
         /// </summary>
         public async Task<RetrieveAppResponse> RetrieveApp(Guid? guid)
         {
@@ -220,7 +219,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Terminate the running App Instance at the given index
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/terminate_the_running_app_instance_at_the_given_index.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/terminate_the_running_app_instance_at_the_given_index.html"</para>
         /// </summary>
         public async Task TerminateRunningAppInstanceAtGivenIndex(Guid? guid, int? index)
         {
@@ -241,7 +240,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating an App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/creating_an_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/creating_an_app.html"</para>
         /// </summary>
         public async Task<CreateAppResponse> CreateApp(CreateAppRequest value)
         {
@@ -264,7 +263,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating an App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/updating_an_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/updating_an_app.html"</para>
         /// </summary>
         public async Task<UpdateAppResponse> UpdateApp(Guid? guid, UpdateAppRequest value)
         {
@@ -288,7 +287,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <summary>
         /// Get the instance information for a STARTED App
         /// <para>Get status for each instance of an App using the app guid.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_the_instance_information_for_a_started_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/get_the_instance_information_for_a_started_app.html"</para>
         /// </summary>
         public async Task<Dictionary<int?, GetInstanceInformationForStartedAppResponse>> GetInstanceInformationForStartedApp(Guid? guid)
         {
@@ -310,7 +309,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <summary>
         /// Get the env for an App
         /// <para>Get the environment variables for an App using the app guid. Restricted to SpaceDeveloper role.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_the_env_for_an_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/get_the_env_for_an_app.html"</para>
         /// </summary>
         public async Task<GetEnvForAppResponse> GetEnvForApp(Guid? guid)
         {
@@ -331,7 +330,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Docker App (experimental)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/creating_a_docker_app_(experimental).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/creating_a_docker_app_(experimental).html"</para>
         /// </summary>
         public async Task<CreateDockerAppExperimentalResponse> CreateDockerAppExperimental(CreateDockerAppExperimentalRequest value)
         {
@@ -353,8 +352,55 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Uploads the bits for an App
+        /// <para>Defines and uploads the bits (artifacts and dependencies) that this application needs to run, using a multipart PUT request.</para>
+        /// <para>Bits that have already been uploaded can be referenced by their resource fingerprint(s).</para>
+        /// <para>Bits that have not already been uploaded to Cloud Foundry must be included as a zipped binary file named "application".</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/uploads_the_bits_for_an_app.html"</para>
+        /// </summary>
+        public async Task<UploadsBitsForAppResponse> UploadsBitsForApp(Guid? guid, dynamic value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/bits", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "multipart/form-data; boundary=AaB03x";
+            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UploadsBitsForAppResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Downloads the bits for an App
+        /// <para>When using a remote blobstore, such as AWS, the response is a redirect to the actual location of the bits.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/downloads_the_bits_for_an_app.html"</para>
+        /// </summary>
+        public async Task DownloadsBitsForApp(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/apps/{0}/download", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 302;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
         /// List all Routes for the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_routes_for_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/list_all_routes_for_the_app.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid? guid)
         {
@@ -363,7 +409,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_routes_for_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/list_all_routes_for_the_app.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForAppResponse>> ListAllRoutesForApp(Guid? guid, RequestOptions options)
         {
@@ -385,7 +431,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_service_bindings_for_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/list_all_service_bindings_for_the_app.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid)
         {
@@ -394,7 +440,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/list_all_service_bindings_for_the_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/list_all_service_bindings_for_the_app.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForAppResponse>> ListAllServiceBindingsForApp(Guid? guid, RequestOptions options)
         {
@@ -416,7 +462,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get App summary
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/get_app_summary.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/get_app_summary.html"</para>
         /// </summary>
         public async Task<GetAppSummaryResponse> GetAppSummary(Guid? guid)
         {
@@ -437,7 +483,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Restage an App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/restage_an_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/restage_an_app.html"</para>
         /// </summary>
         public async Task<RestageAppResponse> RestageApp(Guid? guid)
         {
@@ -459,7 +505,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/apps/delete_a_particular_app.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/apps/delete_a_particular_app.html"</para>
         /// </summary>
         public async Task DeleteApp(Guid? guid)
         {

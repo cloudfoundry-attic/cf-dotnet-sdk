@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.CreatesSharedDomainDeprecated()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_shared_domain_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/domains__deprecated_/creates_a_shared_domain_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreatesSharedDomainDeprecatedRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreatesSharedDomainDeprecatedRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.CreatesSharedDomainDeprecated()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_shared_domain_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/domains__deprecated_/creates_a_shared_domain_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreatesSharedDomainDeprecatedRequest

@@ -21,7 +21,6 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
@@ -54,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Removing a Security Group as a default for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_staging_defaults/removing_a_security_group_as_a_default_for_staging.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/security_group_staging_defaults/removing_a_security_group_as_a_default_for_staging.html"</para>
         /// </summary>
         public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
         {
@@ -75,7 +74,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Set a Security Group as a default for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_staging_defaults/set_a_security_group_as_a_default_for_staging.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/security_group_staging_defaults/set_a_security_group_as_a_default_for_staging.html"</para>
         /// </summary>
         public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
         {
@@ -97,7 +96,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Return the Security Groups used for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging()
         {
@@ -106,7 +105,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Return the Security Groups used for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
         {

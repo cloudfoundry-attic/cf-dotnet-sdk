@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerAppExperimental()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/creating_a_docker_app_(experimental).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/apps/creating_a_docker_app_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateDockerAppExperimentalRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateDockerAppExperimentalRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerAppExperimental()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/apps/creating_a_docker_app_(experimental).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/apps/creating_a_docker_app_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateDockerAppExperimentalRequest
@@ -70,10 +70,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>Key/value pairs of all the environment variables to run in your app. Does not include any system or service variables.</para>
+        /// <para>Use diego to stage and to run when available</para>
         /// </summary>
-        [JsonProperty("environment_json", NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, dynamic> EnvironmentJson
+        [JsonProperty("diego", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Diego
         {
             get;
             set;
@@ -140,7 +140,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The command to start an app after it is staged (e.g. 'rails s -p $PORT' or 'java com.org.Server $PORT').</para>
+        /// <para>The command to start an app after it is staged, maximum length: 4096 (e.g. 'rails s -p $PORT' or 'java com.org.Server $PORT').</para>
         /// </summary>
         [JsonProperty("command", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Command
@@ -174,6 +174,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("health_check_timeout", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic HealthCheckTimeout
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Key/value pairs of all the environment variables to run in your app. Does not include any system or service variables.</para>
+        /// </summary>
+        [JsonProperty("environment_json", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic EnvironmentJson
         {
             get;
             set;

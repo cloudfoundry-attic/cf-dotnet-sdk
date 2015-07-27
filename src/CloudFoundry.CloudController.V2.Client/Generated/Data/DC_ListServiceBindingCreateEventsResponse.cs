@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServicePlanVisibilityDeleteEventsExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_delete_events_(experimental).html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceBindingCreateEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/events/list_service_binding_create_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ListServicePlanVisibilityDeleteEventsExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServicePlanVisibilityDeleteEventsExperimentalResponse
+    public partial class ListServiceBindingCreateEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServiceBindingCreateEventsResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServicePlanVisibilityDeleteEventsExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/events/list_service_plan_visibility_delete_events_(experimental).html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceBindingCreateEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/events/list_service_binding_create_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractListServicePlanVisibilityDeleteEventsExperimentalResponse : IResponse
+    public abstract class AbstractListServiceBindingCreateEventsResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -141,7 +141,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Space Guid</para>
         /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string SpaceGuid
+        public Guid? SpaceGuid
         {
             get;
             set;

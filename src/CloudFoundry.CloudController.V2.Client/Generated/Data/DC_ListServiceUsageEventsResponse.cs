@@ -20,8 +20,8 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsExperimentalEndpoint.ListServiceUsageEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/list_service_usage_events.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsEndpoint.ListServiceUsageEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/service_usage_events/list_service_usage_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListServiceUsageEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServiceUsageEventsResponse
@@ -32,8 +32,8 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsExperimentalEndpoint.ListServiceUsageEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/list_service_usage_events.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsEndpoint.ListServiceUsageEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/service_usage_events/list_service_usage_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListServiceUsageEventsResponse : IResponse

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.CreatesDomainOwnedByGivenOrganizationDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/domains__deprecated_/creates_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreatesDomainOwnedByGivenOrganizationDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreatesDomainOwnedByGivenOrganizationDeprecatedResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.CreatesDomainOwnedByGivenOrganizationDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/domains__deprecated_/creates_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/domains__deprecated_/creates_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreatesDomainOwnedByGivenOrganizationDeprecatedResponse : IResponse
@@ -62,6 +62,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("owning_organization_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? OwningOrganizationGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Shared Organizations</para>
+        /// </summary>
+        [JsonProperty("shared_organizations", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic[] SharedOrganizations
         {
             get;
             set;

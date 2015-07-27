@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.UpdateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateOrganizationQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateOrganizationQuotaDefinitionRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.UpdateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateOrganizationQuotaDefinitionRequest

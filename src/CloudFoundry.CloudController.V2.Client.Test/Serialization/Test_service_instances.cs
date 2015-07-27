@@ -30,11 +30,11 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         [TestMethod]
         public void TestUpdateServiceInstanceRequest()
         {
-            string json = @"{""service_plan_guid"":""4a8af901-aed9-4a3f-bdcd-5e3c8c94e2b2""}";
+            string json = @"{""service_plan_guid"":""dfb14d1f-8a4d-4543-be21-2e6613740d56""}";
 
             UpdateServiceInstanceRequest request = new UpdateServiceInstanceRequest();
 
-            request.ServicePlanGuid = new Guid("4a8af901-aed9-4a3f-bdcd-5e3c8c94e2b2");
+            request.ServicePlanGuid = new Guid("dfb14d1f-8a4d-4543-be21-2e6613740d56");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -42,27 +42,32 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateServiceInstanceRequest()
         {
             string json = @"{
-  ""space_guid"": ""4148ed17-5b5d-40e7-8c14-45cdd39ca752"",
+  ""space_guid"": ""54ba1b9d-a69a-4249-884b-dd521c218e66"",
   ""name"": ""my-service-instance"",
-  ""service_plan_guid"": ""04c18b7a-e04d-4d15-89b3-82e8c0a8f3df""
+  ""service_plan_guid"": ""b27e6070-6fe6-4eec-9105-8e4bb70e48fc"",
+  ""parameters"": {
+    ""the_service_broker"": ""wants this object""
+  }
 }";
 
             CreateServiceInstanceRequest request = new CreateServiceInstanceRequest();
 
-            request.SpaceGuid = new Guid("4148ed17-5b5d-40e7-8c14-45cdd39ca752");
+            request.SpaceGuid = new Guid("54ba1b9d-a69a-4249-884b-dd521c218e66");
             request.Name = "my-service-instance";
-            request.ServicePlanGuid = new Guid("04c18b7a-e04d-4d15-89b3-82e8c0a8f3df");
+            request.ServicePlanGuid = new Guid("b27e6070-6fe6-4eec-9105-8e4bb70e48fc");
+            request.Parameters = TestUtil.GetJsonDictonary(@"{""the_service_broker"":""wants this object""}");
+
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestMigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest()
         {
-            string json = @"{""service_plan_guid"":""9b2728cd-9e95-42e6-a189-daebffdd0bc1""}";
+            string json = @"{""service_plan_guid"":""75679b1e-074f-441a-a7e4-9fbb3d2bba68""}";
 
             MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest request = new MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest();
 
-            request.ServicePlanGuid = new Guid("9b2728cd-9e95-42e6-a189-daebffdd0bc1");
+            request.ServicePlanGuid = new Guid("75679b1e-074f-441a-a7e4-9fbb3d2bba68");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

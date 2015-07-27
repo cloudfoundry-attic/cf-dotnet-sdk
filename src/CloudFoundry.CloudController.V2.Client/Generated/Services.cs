@@ -21,7 +21,6 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
@@ -54,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/delete_a_particular_service.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/delete_a_particular_service.html"</para>
         /// </summary>
         public async Task DeleteService(Guid? guid)
         {
@@ -75,7 +74,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Services
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/list_all_services.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/list_all_services.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesResponse>> ListAllServices()
         {
@@ -84,7 +83,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Services
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/list_all_services.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/list_all_services.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesResponse>> ListAllServices(RequestOptions options)
         {
@@ -106,7 +105,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plans for the Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/list_all_service_plans_for_the_service.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/list_all_service_plans_for_the_service.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid)
         {
@@ -115,7 +114,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plans for the Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/list_all_service_plans_for_the_service.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/list_all_service_plans_for_the_service.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid, RequestOptions options)
         {
@@ -137,7 +136,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Service (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/creating_a_service_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/creating_a_service_(deprecated).html"</para>
         /// </summary>
         public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
         {
@@ -160,7 +159,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Service (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/updating_a_service_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/updating_a_service_(deprecated).html"</para>
         /// </summary>
         public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
         {
@@ -183,7 +182,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/services/retrieve_a_particular_service.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/services/retrieve_a_particular_service.html"</para>
         /// </summary>
         public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
         {

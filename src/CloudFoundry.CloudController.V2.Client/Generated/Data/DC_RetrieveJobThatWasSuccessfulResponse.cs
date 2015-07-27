@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.JobsEndpoint.RetrieveJobThatWasSuccessful()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_that_was_successful.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/jobs/retrieve_job_that_was_successful.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveJobThatWasSuccessfulResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveJobThatWasSuccessfulResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.JobsEndpoint.RetrieveJobThatWasSuccessful()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/jobs/retrieve_job_that_was_successful.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/jobs/retrieve_job_that_was_successful.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveJobThatWasSuccessfulResponse : IResponse
