@@ -21,7 +21,6 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
@@ -54,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Filtering Private Domains by name
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/filtering_private_domains_by_name.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/filtering_private_domains_by_name.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
         {
@@ -63,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Filtering Private Domains by name
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/filtering_private_domains_by_name.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/filtering_private_domains_by_name.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
         {
@@ -84,8 +83,39 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// List all Shared Organizations for the Private Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSharedOrganizationsForPrivateDomainResponse>> ListAllSharedOrganizationsForPrivateDomain(Guid? guid)
+        {
+            return await ListAllSharedOrganizationsForPrivateDomain(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Shared Organizations for the Private Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSharedOrganizationsForPrivateDomainResponse>> ListAllSharedOrganizationsForPrivateDomain(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}/shared_organizations", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSharedOrganizationsForPrivateDomainResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
         /// Retrieve a Particular Private Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/retrieve_a_particular_private_domain.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/retrieve_a_particular_private_domain.html"</para>
         /// </summary>
         public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
         {
@@ -106,7 +136,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Create a Private Domain owned by the given Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/create_a_private_domain_owned_by_the_given_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/create_a_private_domain_owned_by_the_given_organization.html"</para>
         /// </summary>
         public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
         {
@@ -129,7 +159,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Private Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/delete_a_particular_private_domain.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/delete_a_particular_private_domain.html"</para>
         /// </summary>
         public async Task DeletePrivateDomain(Guid? guid)
         {
@@ -150,7 +180,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Private Domains
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/list_all_private_domains.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/list_all_private_domains.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
         {
@@ -159,7 +189,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Private Domains
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/private_domains/list_all_private_domains.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/private_domains/list_all_private_domains.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
         {

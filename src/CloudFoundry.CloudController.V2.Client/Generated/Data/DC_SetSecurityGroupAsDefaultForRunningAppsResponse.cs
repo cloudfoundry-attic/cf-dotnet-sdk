@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SecurityGroupRunningDefaultsEndpoint.SetSecurityGroupAsDefaultForRunningApps()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/security_group_running_defaults/set_a_security_group_as_a_default_for_running_apps.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/security_group_running_defaults/set_a_security_group_as_a_default_for_running_apps.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class SetSecurityGroupAsDefaultForRunningAppsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractSetSecurityGroupAsDefaultForRunningAppsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SecurityGroupRunningDefaultsEndpoint.SetSecurityGroupAsDefaultForRunningApps()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/security_group_running_defaults/set_a_security_group_as_a_default_for_running_apps.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/security_group_running_defaults/set_a_security_group_as_a_default_for_running_apps.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractSetSecurityGroupAsDefaultForRunningAppsResponse : IResponse
@@ -81,7 +81,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Staging Default</para>
         /// </summary>
         [JsonProperty("staging_default", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic StagingDefault
+        public bool? StagingDefault
         {
             get;
             set;

@@ -21,16 +21,15 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
-    /// ServiceUsageEventsExperimental Endpoint
+    /// ServiceUsageEvents Endpoint
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ServiceUsageEventsExperimentalEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceUsageEventsExperimentalEndpoint
+    public partial class ServiceUsageEventsEndpoint : CloudFoundry.CloudController.V2.Client.Base.AbstractServiceUsageEventsEndpoint
     {
-        internal ServiceUsageEventsExperimentalEndpoint(CloudFoundryClient client) : base()
+        internal ServiceUsageEventsEndpoint(CloudFoundryClient client) : base()
         {
             this.Client = client;
         }
@@ -40,15 +39,15 @@ namespace CloudFoundry.CloudController.V2.Client
 namespace CloudFoundry.CloudController.V2.Client.Base
 {
     /// <summary>
-    /// Base abstract class for ServiceUsageEventsExperimental Endpoint
+    /// Base abstract class for ServiceUsageEvents Endpoint
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractServiceUsageEventsExperimentalEndpoint : BaseEndpoint
+    public abstract class AbstractServiceUsageEventsEndpoint : BaseEndpoint
     {
         /// <summary>
         /// Initializes the class
         /// </summary>
-        protected AbstractServiceUsageEventsExperimentalEndpoint()
+        protected AbstractServiceUsageEventsEndpoint()
         {
         }
 
@@ -58,7 +57,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/list_service_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/list_service_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents()
         {
@@ -71,7 +70,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/list_service_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/list_service_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents(RequestOptions options)
         {
@@ -99,7 +98,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>There is the potential race condition if service instances are currently being created or deleted.</para>
         /// <para></para>
         /// <para>The seeded usage events will have the same guid as the service instance.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/purge_and_reseed_service_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/purge_and_reseed_service_usage_events.html"</para>
         /// </summary>
         public async Task PurgeAndReseedServiceUsageEvents()
         {
@@ -120,7 +119,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Usage Event
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/service_usage_events__experimental_/retrieve_a_particular_service_usage_event.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
         /// </summary>
         public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
         {

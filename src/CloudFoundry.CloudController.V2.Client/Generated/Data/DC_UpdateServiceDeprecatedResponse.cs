@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.UpdateServiceDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/services/updating_a_service_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/services/updating_a_service_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateServiceDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateServiceDeprecatedResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.UpdateServiceDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/services/updating_a_service_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/services/updating_a_service_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateServiceDeprecatedResponse : IResponse
@@ -201,7 +201,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Plan Updateable</para>
         /// </summary>
         [JsonProperty("plan_updateable", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic PlanUpdateable
+        public bool? PlanUpdateable
         {
             get;
             set;

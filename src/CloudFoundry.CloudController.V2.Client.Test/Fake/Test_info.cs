@@ -32,7 +32,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
             {
                 MockClients clients = new MockClients();
 
-                string json = @"{""name"":""vcap"",""build"":""2222"",""support"":""http://support.cloudfoundry.com"",""version"":2,""description"":""Cloud Foundry sponsored by Pivotal"",""authorization_endpoint"":""http://localhost:8080/uaa"",""token_endpoint"":""http://localhost:8080/uaa"",""api_version"":""2.19.0"",""logging_endpoint"":""ws://loggregator.vcap.me:80""}";
+                string json = @"{""name"":""vcap"",""build"":""2222"",""support"":""http://support.cloudfoundry.com"",""version"":2,""description"":""Cloud Foundry sponsored by Pivotal"",""authorization_endpoint"":""http://localhost:8080/uaa"",""token_endpoint"":""http://localhost:8080/uaa"",""api_version"":""2.22.0"",""logging_endpoint"":""ws://loggregator.vcap.me:80""}";
                 clients.JsonResponse = json;
 
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
@@ -49,7 +49,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("Cloud Foundry sponsored by Pivotal", TestUtil.ToTestableString(obj.Description), true);
                 Assert.AreEqual("http://localhost:8080/uaa", TestUtil.ToTestableString(obj.AuthorizationEndpoint), true);
                 Assert.AreEqual("http://localhost:8080/uaa", TestUtil.ToTestableString(obj.TokenEndpoint), true);
-                Assert.AreEqual("2.19.0", TestUtil.ToTestableString(obj.ApiVersion), true);
+                Assert.AreEqual("2.22.0", TestUtil.ToTestableString(obj.ApiVersion), true);
                 Assert.AreEqual("ws://loggregator.vcap.me:80", TestUtil.ToTestableString(obj.LoggingEndpoint), true);
 
             }

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.CreateServiceInstance()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_instances/creating_a_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/service_instances/creating_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateServiceInstanceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceInstanceRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.CreateServiceInstance()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/service_instances/creating_a_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/service_instances/creating_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateServiceInstanceRequest
@@ -64,6 +64,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("service_plan_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServicePlanGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Arbitrary parameters to pass along to the service broker. Must be a JSON object</para>
+        /// </summary>
+        [JsonProperty("parameters", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, dynamic> Parameters
         {
             get;
             set;

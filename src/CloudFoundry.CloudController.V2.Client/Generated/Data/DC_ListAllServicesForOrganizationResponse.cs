@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.ListAllServicesForOrganization()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/organizations/list_all_services_for_the_organization.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/organizations/list_all_services_for_the_organization.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServicesForOrganizationResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServicesForOrganizationResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.ListAllServicesForOrganization()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/organizations/list_all_services_for_the_organization.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/organizations/list_all_services_for_the_organization.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServicesForOrganizationResponse : IResponse
@@ -201,7 +201,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Plan Updateable</para>
         /// </summary>
         [JsonProperty("plan_updateable", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic PlanUpdateable
+        public bool? PlanUpdateable
         {
             get;
             set;

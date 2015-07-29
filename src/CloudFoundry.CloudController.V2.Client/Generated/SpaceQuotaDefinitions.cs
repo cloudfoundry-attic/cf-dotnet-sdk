@@ -21,7 +21,6 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
@@ -54,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/updating_a_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/updating_a_space_quota_definition.html"</para>
         /// </summary>
         public async Task<UpdateSpaceQuotaDefinitionResponse> UpdateSpaceQuotaDefinition(Guid? guid, UpdateSpaceQuotaDefinitionRequest value)
         {
@@ -77,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/creating_a_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/creating_a_space_quota_definition.html"</para>
         /// </summary>
         public async Task<CreateSpaceQuotaDefinitionResponse> CreateSpaceQuotaDefinition(CreateSpaceQuotaDefinitionRequest value)
         {
@@ -100,7 +99,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid)
         {
@@ -109,7 +108,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForSpaceQuotaDefinitionResponse>> ListAllSpacesForSpaceQuotaDefinition(Guid? guid, RequestOptions options)
         {
@@ -131,7 +130,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Space with the Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/associate_space_with_the_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/associate_space_with_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<AssociateSpaceWithSpaceQuotaDefinitionResponse> AssociateSpaceWithSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
         {
@@ -153,7 +152,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
         /// </summary>
         public async Task<RetrieveSpaceQuotaDefinitionResponse> RetrieveSpaceQuotaDefinition(Guid? guid)
         {
@@ -174,7 +173,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/delete_a_particular_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/delete_a_particular_space_quota_definition.html"</para>
         /// </summary>
         public async Task DeleteSpaceQuotaDefinition(Guid? guid)
         {
@@ -195,7 +194,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Space from the Space Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/remove_space_from_the_space_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/remove_space_from_the_space_quota_definition.html"</para>
         /// </summary>
         public async Task<RemoveSpaceFromSpaceQuotaDefinitionResponse> RemoveSpaceFromSpaceQuotaDefinition(Guid? guid, Guid? space_guid)
         {
@@ -217,7 +216,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Space Quota Definitions
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_space_quota_definitions.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/list_all_space_quota_definitions.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions()
         {
@@ -226,7 +225,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Space Quota Definitions
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/space_quota_definitions/list_all_space_quota_definitions.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/space_quota_definitions/list_all_space_quota_definitions.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsResponse>> ListAllSpaceQuotaDefinitions(RequestOptions options)
         {

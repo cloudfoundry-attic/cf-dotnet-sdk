@@ -24,7 +24,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 {
     [TestClass]
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ServiceUsageEventsExperimentalTest
+    public class ServiceUsageEventsTest
     {
 
     }

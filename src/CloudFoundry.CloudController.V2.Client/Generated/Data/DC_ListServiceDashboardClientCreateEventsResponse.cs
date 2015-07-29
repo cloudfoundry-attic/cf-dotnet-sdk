@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceBrokerUpdateEventsExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/events/list_service_broker_update_events_(experimental).html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceDashboardClientCreateEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/events/list_service_dashboard_client_create_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ListServiceBrokerUpdateEventsExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServiceBrokerUpdateEventsExperimentalResponse
+    public partial class ListServiceDashboardClientCreateEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServiceDashboardClientCreateEventsResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceBrokerUpdateEventsExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/events/list_service_broker_update_events_(experimental).html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceDashboardClientCreateEvents()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/events/list_service_dashboard_client_create_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractListServiceBrokerUpdateEventsExperimentalResponse : IResponse
+    public abstract class AbstractListServiceDashboardClientCreateEventsResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -61,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Actor</para>
         /// </summary>
         [JsonProperty("actor", NullValueHandling = NullValueHandling.Ignore)]
-        public string Actor
+        public Guid? Actor
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Actee</para>
         /// </summary>
         [JsonProperty("actee", NullValueHandling = NullValueHandling.Ignore)]
-        public Guid? Actee
+        public string Actee
         {
             get;
             set;

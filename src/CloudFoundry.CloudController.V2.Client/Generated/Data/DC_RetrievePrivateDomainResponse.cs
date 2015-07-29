@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.PrivateDomainsEndpoint.RetrievePrivateDomain()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/private_domains/retrieve_a_particular_private_domain.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/private_domains/retrieve_a_particular_private_domain.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrievePrivateDomainResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrievePrivateDomainResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.PrivateDomainsEndpoint.RetrievePrivateDomain()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/private_domains/retrieve_a_particular_private_domain.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/private_domains/retrieve_a_particular_private_domain.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrievePrivateDomainResponse : IResponse
@@ -72,6 +72,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("owning_organization_url", NullValueHandling = NullValueHandling.Ignore)]
         public string OwningOrganizationUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Shared Organizations Url</para>
+        /// </summary>
+        [JsonProperty("shared_organizations_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string SharedOrganizationsUrl
         {
             get;
             set;

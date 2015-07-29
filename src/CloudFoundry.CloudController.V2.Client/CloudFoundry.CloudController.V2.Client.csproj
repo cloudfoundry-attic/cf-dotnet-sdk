@@ -120,6 +120,7 @@
     <Compile Include="Generated\Data\DC_AssociateOrganizationWithUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociatePrivateDomainWithOrganizationResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateRouteWithAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -156,12 +157,8 @@
     <Compile Include="Generated\Data\DC_CreateAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalRequest.cs" />
+    <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_CreateOrganizationQuotaDefinitionRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -492,6 +489,7 @@
     <Compile Include="Generated\Data\DC_ListAllSharedDomainsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAllSharedOrganizationsForPrivateDomainResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllSpaceQuotaDefinitionsForOrganizationResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -543,63 +541,25 @@
     <Compile Include="Generated\Data\DC_ListEventsAssociatedWithAppSinceJanuary12014Response.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceBindingCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceBindingDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceBrokerCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceBrokerDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceBrokerUpdateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceDashboardClientCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceDashboardClientDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceInstanceCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceInstanceDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceInstanceUpdateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServicePlanCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServicePlanDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServicePlanUpdateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityUpdateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListServiceUpdateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Generated\Data\DC_ListServiceBindingCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceBindingDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceBrokerCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceBrokerDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceBrokerUpdateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceDashboardClientCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceDashboardClientDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceInstanceCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceInstanceDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceInstanceUpdateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServicePlanCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServicePlanDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServicePlanUpdateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServicePlanVisibilityUpdateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceUpdateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceUsageEventsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -612,27 +572,17 @@
     <Compile Include="Generated\Data\DC_ListSpaceUpdateEventsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceCreateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceDeleteEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceUpdateEventsExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListUserProvidedServiceInstanceUpdateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_LockOrUnlockBuildpackRequest.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\Data\DC_LockOrUnlockBuildpackResponse.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs" />
+    <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_RemoveAppFromRouteResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -672,6 +622,7 @@
     <Compile Include="Generated\Data\DC_RemoveOrganizationFromUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_RemovePrivateDomainFromOrganizationResponse.cs" />
     <Compile Include="Generated\Data\DC_RemoveRouteFromAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -902,6 +853,7 @@
     </Compile>
     <Compile Include="CloudFoundryClient.cs" />
     <Compile Include="EntityGuid.cs" />
+    <Compile Include="Generated\Data\DC_UploadsBitsForAppResponse.cs" />
     <Compile Include="Generated\DomainsDeprecated.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -968,9 +920,7 @@
     <Compile Include="Generated\Services.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Generated\ServiceUsageEventsExperimental.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Generated\ServiceUsageEvents.cs" />
     <Compile Include="Generated\SharedDomains.cs">
       <SubType>Code</SubType>
     </Compile>

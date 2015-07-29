@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.UpdateServiceDeprecated()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/services/updating_a_service_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/services/updating_a_service_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateServiceDeprecatedRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateServiceDeprecatedRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.UpdateServiceDeprecated()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/195/services/updating_a_service_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/services/updating_a_service_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateServiceDeprecatedRequest
@@ -204,6 +204,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("service_broker_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? ServiceBrokerGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>A boolean describing that an instance of this service can be updated to a different plan</para>
+        /// </summary>
+        [JsonProperty("plan_updateable", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic PlanUpdateable
         {
             get;
             set;

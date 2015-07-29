@@ -21,7 +21,6 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace CloudFoundry.CloudController.V2.Client
 {
     /// <summary>
@@ -57,7 +56,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>Buildpacks are maintained in an ordered list.  If the target position is already occupied,</para>
         /// <para>the entries will be shifted down the list to make room.  If the target position is beyond</para>
         /// <para>the end of the current list, the buildpack will be positioned at the end of the list.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/change_the_position_of_a_buildpack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/change_the_position_of_a_buildpack.html"</para>
         /// </summary>
         public async Task<ChangePositionOfBuildpackResponse> ChangePositionOfBuildpack(Guid? guid, ChangePositionOfBuildpackRequest value)
         {
@@ -80,7 +79,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Lock or unlock a Buildpack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/lock_or_unlock_a_buildpack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/lock_or_unlock_a_buildpack.html"</para>
         /// </summary>
         public async Task<LockOrUnlockBuildpackResponse> LockOrUnlockBuildpack(Guid? guid, LockOrUnlockBuildpackRequest value)
         {
@@ -103,7 +102,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Enable or disable a Buildpack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/enable_or_disable_a_buildpack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/enable_or_disable_a_buildpack.html"</para>
         /// </summary>
         public async Task<EnableOrDisableBuildpackResponse> EnableOrDisableBuildpack(Guid? guid, EnableOrDisableBuildpackRequest value)
         {
@@ -126,7 +125,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Buildpack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/retrieve_a_particular_buildpack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/retrieve_a_particular_buildpack.html"</para>
         /// </summary>
         public async Task<RetrieveBuildpackResponse> RetrieveBuildpack(Guid? guid)
         {
@@ -147,7 +146,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creates an admin Buildpack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/creates_an_admin_buildpack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/creates_an_admin_buildpack.html"</para>
         /// </summary>
         public async Task<CreatesAdminBuildpackResponse> CreatesAdminBuildpack(CreatesAdminBuildpackRequest value)
         {
@@ -170,7 +169,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Buildpacks
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/list_all_buildpacks.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/list_all_buildpacks.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllBuildpacksResponse>> ListAllBuildpacks()
         {
@@ -179,7 +178,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Buildpacks
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/list_all_buildpacks.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/list_all_buildpacks.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllBuildpacksResponse>> ListAllBuildpacks(RequestOptions options)
         {
@@ -201,7 +200,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Buildpack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/195/buildpacks/delete_a_particular_buildpack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/buildpacks/delete_a_particular_buildpack.html"</para>
         /// </summary>
         public async Task DeleteBuildpack(Guid? guid)
         {

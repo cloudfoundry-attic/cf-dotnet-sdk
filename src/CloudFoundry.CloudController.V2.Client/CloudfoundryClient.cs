@@ -278,7 +278,7 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <value>
         /// The service usage events experimental endpoint.
         /// </value>
-        public ServiceUsageEventsExperimentalEndpoint ServiceUsageEventsExperimental { get; private set; }
+        public ServiceUsageEventsEndpoint ServiceUsageEvents { get; private set; }
 
         /// <summary>
         /// Gets the shared domains endpoint.
@@ -436,7 +436,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.ServicePlans = new ServicePlansEndpoint(this);
             this.ServicePlanVisibilities = new ServicePlanVisibilitiesEndpoint(this);
             this.Services = new ServicesEndpoint(this);
-            this.ServiceUsageEventsExperimental = new ServiceUsageEventsExperimentalEndpoint(this);
+            this.ServiceUsageEvents = new ServiceUsageEventsEndpoint(this);
             this.SharedDomains = new SharedDomainsEndpoint(this);
             this.SpaceQuotaDefinitions = new SpaceQuotaDefinitionsEndpoint(this);
             this.Spaces = new SpacesEndpoint(this);
