@@ -61,10 +61,12 @@
     <Compile Include="Extensions\Data\DC_ListAllServicesForOrganizationResponse.cs" />
     <Compile Include="Extensions\Data\DC_ListAllServicesForSpaceResponse.cs" />
     <Compile Include="Extensions\Data\DC_ListAllServicesResponse.cs" />
+    <Compile Include="Extensions\Data\DC_RetrieveFileResponse.cs" />
     <Compile Include="Extensions\Data\DC_RetrieveServicePlanResponse.cs" />
     <Compile Include="Extensions\Data\DC_RetrieveServiceResponse.cs" />
     <Compile Include="Extensions\Data\DC_UpdateServiceDeprecatedResponse.cs" />
     <Compile Include="Extensions\Data\DC_UpdateServicePlanDeprecatedResponse.cs" />
+    <Compile Include="Extensions\Files.cs" />
     <Compile Include="Extensions\ProgressEventArgs.cs" />
     <Compile Include="Extensions\Apps.cs" />
     <Compile Include="Extensions\Data\DC_CreateAppRequest.cs" />
