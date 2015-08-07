@@ -88,7 +88,7 @@
                         {
                             await Task.Factory.StartNew(new Action(() =>
                             {
-                                using (FileStream fs = new FileStream(Path.Combine(appPath, file), FileMode.Open))
+                                using (FileStream fs = new FileStream(Path.Combine(appPath, file), FileMode.Open, FileAccess.Read))
                                 {
                                     using (BufferedStream bs = new BufferedStream(fs))
                                     {
@@ -124,7 +124,7 @@
         private async Task<string> CalculateSHA1(string filePath, System.Threading.CancellationToken cancellationToken)
         {
             string formattedSHA1 = string.Empty;
-            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 using (BufferedStream bs = new BufferedStream(fs))
                 {

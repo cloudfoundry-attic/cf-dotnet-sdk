@@ -5,6 +5,7 @@ using CloudFoundry.CloudController.V2.Client;
 using CloudFoundry.CloudController.V2.Client.Data;
 using System.Threading;
 using CloudFoundry.UAA;
+using System.IO;
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
@@ -101,6 +102,29 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             client.Apps.Push(appGuid, appPath, true).Wait();
 
+            client.Apps.DeleteApp(appGuid).Wait();
+        }
+
+        [TestMethod]
+        public void PushWithReadonlyFilesTest()
+        {
+            var tmpPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tmpPath);
+            var tmpReadonlyFile = Path.Combine(tmpPath, "readonly.txt");
+            File.WriteAllText(tmpReadonlyFile, "contenttt");
+
+            apprequest.Name = "readonylPushTest" + Guid.NewGuid().ToString("N");
+
+            CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
+
+            Guid appGuid = app.EntityMetadata.Guid;
+
+            File.SetAttributes(tmpReadonlyFile, FileAttributes.ReadOnly);
+
+            client.Apps.Push(appGuid, tmpPath, false).Wait();
+
+            File.SetAttributes(tmpReadonlyFile, ~FileAttributes.ReadOnly);
+            Directory.Delete(tmpPath, true);
             client.Apps.DeleteApp(appGuid).Wait();
         }
 
