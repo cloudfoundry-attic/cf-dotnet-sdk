@@ -63,7 +63,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             if (winStack == Guid.Empty)
             {
-                throw new Exception("Could not test on a deployment without a windows 2012 stack");
+                Assert.Inconclusive("Could not test on a deployment without a windows 2012 stack");
             }
 
             PagedResponseCollection<ListAllAppsResponse> apps = client.Apps.ListAllApps().Result;

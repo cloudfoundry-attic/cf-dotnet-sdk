@@ -115,6 +115,11 @@ namespace CloudFoundry.CloudController.Test.Integration
                 }
             }
 
+            if (client.Info.GetV1Info().Result.AppLogEndpoint == null)
+            {
+                Assert.Inconclusive("CloudFoundry target does not have a logyard endpoint");
+            }
+
             var logyardClient = new LogyardLog(
                 new Uri(client.Info.GetV1Info().Result.AppLogEndpoint),
                 string.Format("bearer {0}", client.AuthorizationToken),
