@@ -57,6 +57,10 @@ namespace CloudFoundry.CloudController.Test.Integration
         public void ServiceInstance_test()
         {
             var services = client.Services.ListAllServices().Result;
+            if (services.FirstOrDefault(s => s.Label == "mysql") == null)
+            {
+                Assert.Inconclusive("Cloud Foundry target does not support mysql services");
+            }
             Guid serviceGuid = services.FirstOrDefault(s => s.Label == "mysql").EntityMetadata.Guid;
 
             var plans = client.Services.ListAllServicePlansForService(serviceGuid).Result;

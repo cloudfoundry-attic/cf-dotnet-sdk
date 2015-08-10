@@ -10,6 +10,7 @@
     {
         private const int MagicWebSocketReceiveBufferSize = 64;
 
+        private ProtobufSerializer protobufSerializer = new ProtobufSerializer();
         private WebSocket webSocket = null;
         private bool disposed;
 
@@ -96,11 +97,11 @@
             this.webSocket = new WebSocket(appLogEndpoint.ToString(), string.Empty, null, headers);
             this.webSocket.AllowUnstrustedCertificate = true;
 
-            this.webSocket.DataReceived += (sender, e) => 
+            this.webSocket.DataReceived += (sender, e) =>
                 {
                     if (DataReceived != null)
-                    {                        
-                        DataReceived(sender, new DataEventArgs() { Data = new ProtobufSerializer().DeserializeApplicationLog(e.Data) });                        
+                    {
+                        DataReceived(sender, new DataEventArgs() { Data = this.protobufSerializer.DeserializeApplicationLog(e.Data) });
                     }
                 };
 

@@ -6,24 +6,24 @@ using CloudFoundry.CloudController.V2.Client.Data;
 using System.Threading;
 using CloudFoundry.UAA;
 using System.IO;
-using CloudFoundry.Logyard.Client;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CloudFoundry.Loggregator.Client;
 
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
     [TestClass]
-    public class LogyardTest
+    public class LoggregatorTest
     {
-        private static string tempAppPath = Path.Combine(System.IO.Path.GetTempPath(), Path.GetRandomFileName());
-        private static CloudFoundryClient client;
-        private static CreateAppRequest apprequest;
+        private string tempAppPath = Path.Combine(System.IO.Path.GetTempPath(), Path.GetRandomFileName());
+        private CloudFoundryClient client;
+        private CreateAppRequest apprequest;
 
-        [ClassInitialize]
-        public static void ClassInit(TestContext context)
+        [TestInitialize]
+        public void TestInit()
         {
             Directory.CreateDirectory(tempAppPath);
 
@@ -72,8 +72,8 @@ namespace CloudFoundry.CloudController.Test.Integration
             apprequest.Instances = 1;
             apprequest.SpaceGuid = spaceGuid;
             apprequest.Buildpack = "https://github.com/ryandotsmith/null-buildpack.git";
-            apprequest.EnvironmentJson = new Dictionary<string, string>() { { "env-test-1234", "env-test-value-1234" } };
-            apprequest.Command = "export; cat content.txt; sleep 5000;";
+            apprequest.EnvironmentJson = new Dictionary<string, string>() { { "envtest1234", "envtestvalue1234" } };
+            apprequest.Command = "printenv; cat content.txt; ping 127.0.0.1;";
 
             client.Apps.PushProgress += Apps_PushProgress;
 
@@ -86,10 +86,11 @@ namespace CloudFoundry.CloudController.Test.Integration
         }
 
         [TestMethod]
-        public void LogyardRecentTest()
+        [TestCategory("RequiresLoggregator")]
+        public void LoggregatorRecentTest()
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
-            
+
             Guid appGuid = app.EntityMetadata.Guid;
 
             client.Apps.Push(appGuid, tempAppPath, true).Wait();
@@ -115,45 +116,101 @@ namespace CloudFoundry.CloudController.Test.Integration
                 }
             }
 
-            if (client.Info.GetV1Info().Result.AppLogEndpoint == null)
+            if (client.Info.GetInfo().Result.LoggingEndpoint == null)
             {
-                Assert.Inconclusive("CloudFoundry target does not have a logyard endpoint");
+                Assert.Inconclusive("CloudFoundry target does not have a loggregator endpoint");
             }
 
-            var logyardClient = new LogyardLog(
-                new Uri(client.Info.GetV1Info().Result.AppLogEndpoint),
+            var logClient = new LoggregatorLog(
+                new Uri(client.Info.GetInfo().Result.LoggingEndpoint),
+                string.Format("bearer {0}", client.AuthorizationToken),
+                null,
+                true);
+
+            // Just wait a bit to get the latest logs
+            Thread.Sleep(1000);
+
+            var appLogs = logClient.Recent(appGuid.ToString(), CancellationToken.None).Result;
+
+            var conatainsPushedContent = appLogs.Any((line) => line.Message.Contains("dummy content"));
+            Assert.IsTrue(conatainsPushedContent, "Pushed content was not dumped in the output stream: {0}", string.Join(Environment.NewLine, appLogs.Select(x => x.Message)));
+
+            var conatainsEnvContent = appLogs.Any((line) => line.Message.Contains("envtest1234"));
+            Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream: {0}", string.Join(Environment.NewLine, appLogs.Select(x => x.Message)));
+
+            client.Apps.DeleteApp(appGuid).Wait();
+            Directory.Delete(tempAppPath, true);
+        }
+
+        [TestMethod]
+        [TestCategory("RequiresLoggregator")]
+        public void LoggregatorTailTest()
+        {
+            CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
+
+            Guid appGuid = app.EntityMetadata.Guid;
+
+            if (client.Info.GetInfo().Result.LoggingEndpoint == null)
+            {
+                Assert.Inconclusive("CloudFoundry target does not have a loggregator endpoint");
+            }
+
+            var logClient = new LoggregatorLog(
+                new Uri(client.Info.GetInfo().Result.LoggingEndpoint),
                 string.Format("bearer {0}", client.AuthorizationToken),
                 null,
                 true);
 
             var logs = new List<string>();
 
-            logyardClient.MessageReceived += delegate(object sender, MessageEventArgs e)
+            logClient.MessageReceived += delegate(object sender, MessageEventArgs e)
             {
-                Assert.IsTrue(string.IsNullOrEmpty(e.Message.Error));
-                logs.Add(e.Message.Value.Text);
+                long timeInMilliSeconds = e.LogMessage.Timestamp / 1000 / 1000;
+                var logTimeStamp = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(timeInMilliSeconds);
+
+                logs.Add(String.Format("[{0}] - {1}: {2}", e.LogMessage.SourceName, logTimeStamp.ToString(), e.LogMessage.Message));
             };
 
 
-            logyardClient.ErrorReceived += delegate(object sender, Logyard.Client.ErrorEventArgs e)
+            logClient.ErrorReceived += delegate(object sender, CloudFoundry.Loggregator.Client.ErrorEventArgs e)
             {
-                Assert.Fail("Logyard error: {0}", e.Error.ToString());
+                Assert.Fail("Loggregator error: {0}", e.Error.ToString());
             };
 
-            var stopevent = new EventWaitHandle(false, EventResetMode.ManualReset);
-            logyardClient.StreamClosed += delegate { stopevent.Set(); };
+            logClient.Tail(appGuid.ToString());
+
+            client.Apps.Push(appGuid, tempAppPath, true).Wait();
+
+            while (true)
+            {
+                var appSummary = client.Apps.GetAppSummary(appGuid).Result;
+                var packageState = appSummary.PackageState.ToLowerInvariant();
+
+                if (packageState != "pending")
+                {
+                    Assert.AreEqual(packageState, "staged");
+
+                    var instances = client.Apps.GetInstanceInformationForStartedApp(appGuid).Result;
+
+                    if (instances.Count > 0)
+                    {
+                        if (instances[0].State.ToLower() == "running")
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
 
             // Just wait a bit to get the latest logs
             Thread.Sleep(1000);
 
-            logyardClient.StartLogStream(appGuid.ToString(), 100, false);
-
-            stopevent.WaitOne();
+            logClient.StopLogStream();
 
             var conatainsPushedContent = logs.Any((line) => line.Contains("dummy content"));
             Assert.IsTrue(conatainsPushedContent, "Pushed content was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
-            var conatainsEnvContent = logs.Any((line) => line.Contains("env-test-1234"));
+            var conatainsEnvContent = logs.Any((line) => line.Contains("envtest1234"));
             Assert.IsTrue(conatainsEnvContent, "Pushed env variable was not dumped in the output stream: {0}", string.Join(Environment.NewLine, logs));
 
             client.Apps.DeleteApp(appGuid).Wait();
