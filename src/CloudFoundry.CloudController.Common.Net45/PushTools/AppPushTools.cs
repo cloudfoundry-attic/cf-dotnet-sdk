@@ -19,12 +19,25 @@
         /// As the sha1 is calculated based on the content of the file, 
         /// there is a possibility that one key can have multiple fingerprints (duplicate files)
         /// </summary>
-        /// <param name="appPath">The path to the application folder</param>
+        /// <param name="appPath">The path to the application folder or the path to a zip file.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Return a dictionary of file fingerprints, with sha1 as key and a list of file fingerprints as value.</returns>
         public async Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(string appPath, System.Threading.CancellationToken cancellationToken)
         {
             Dictionary<string, List<FileFingerprint>> fingerprints = new Dictionary<string, List<FileFingerprint>>();
+
+            if (File.Exists(appPath))
+            {
+                var extractedPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+
+                if (!Directory.Exists(extractedPath))
+                {
+                    Directory.CreateDirectory(extractedPath);
+                }
+
+                System.IO.Compression.ZipFile.ExtractToDirectory(appPath, extractedPath);
+                appPath = extractedPath;
+            }
 
             appPath = Path.GetFullPath(appPath);
 
@@ -34,10 +47,10 @@
                 FileFingerprint print = new FileFingerprint();
                 print.Size = fileInfo.Length;
                 print.FileName = fileInfo.FullName.Substring(appPath.Length).TrimStart('\\');
-                
+
                 if (Path.DirectorySeparatorChar == '\\')
                 {
-                    print.FileName = print.FileName.Replace(Path.DirectorySeparatorChar, '/');   
+                    print.FileName = print.FileName.Replace(Path.DirectorySeparatorChar, '/');
                 }
 
                 print.SHA1 = await this.CalculateSHA1(fileInfo.FullName, cancellationToken);
