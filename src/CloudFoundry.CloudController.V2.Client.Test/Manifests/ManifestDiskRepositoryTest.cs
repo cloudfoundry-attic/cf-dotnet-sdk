@@ -8,12 +8,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
     [TestClass]
     public class ManifestDiskRepositoryTest
     {
-        string testPath = Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ManifestDiskRepositoryTest)).Location);
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\manifest.yaml", "manifests")]
         public void TestReadManifest()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "manifest.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "manifest.yaml"));
 
             Assert.IsNotNull(man);
             Assert.IsNotNull(man.Data);
@@ -22,9 +22,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\manifest.yaml", "manifests")]
         public void TestReadManifestDirPath()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests"));
+            Manifest man = ManifestDiskRepository.ReadManifest("manifests");
 
             Assert.IsNotNull(man);
             Assert.IsNotNull(man.Data);
@@ -33,14 +34,15 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\manifest.yaml", "manifests")]
         public void TestReadManifestFileDoesNotExist()
         {
             Exception exception = null;
             try
             {
-                Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", Guid.NewGuid().ToString()));
+                Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", Guid.NewGuid().ToString()));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 exception = ex;
             }
@@ -50,9 +52,11 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\inherit.yaml", "manifests")]
+        [DeploymentItem(@"Assets\manifests\inherited.yaml", "manifests")]
         public void TestReadManifestInherit()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "inherit.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "inherit.yaml"));
 
             Assert.IsNotNull(man);
             Assert.IsNotNull(man.Data);
