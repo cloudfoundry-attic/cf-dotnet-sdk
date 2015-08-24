@@ -13,7 +13,7 @@
         /// <summary>
         /// Gets the file fingerprints from the application folder <see cref="AppPushTools"/>
         /// </summary>
-        /// <param name="appPath">The path to the application folder.</param>
+        /// <param name="appPath">The path to the application folder or the path to a zip file.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Return a dictionary of file fingerprints, with sha1 as key and a list of file fingerprints as value.</returns>
         Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(string appPath, CancellationToken cancellationToken);

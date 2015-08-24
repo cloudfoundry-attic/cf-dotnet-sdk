@@ -9,12 +9,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
     [TestClass]
     public class ManifestTest
     {
-        string testPath = Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ManifestTest)).Location);
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\manifest.yaml", "manifests")]
         public void TestLoadManifest()
         {
-            
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "manifest.yaml"));
+
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "manifest.yaml"));
 
             Application[] apps = man.Applications();
             Assert.AreEqual(1, apps.Length);
@@ -37,9 +37,11 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\inherit.yaml", "manifests")]
+        [DeploymentItem(@"Assets\manifests\inherited.yaml", "manifests")]
         public void TestInheritManifest()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "inherit.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "inherit.yaml"));
 
             Application[] apps = man.Applications();
             Assert.AreEqual(1, apps.Length);
@@ -56,9 +58,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\random.yaml", "manifests")]
         public void TestRandomWord()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "random.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "random.yaml"));
 
             Application[] apps = man.Applications();
             Assert.AreEqual(1, apps.Length);
@@ -66,9 +69,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\random.yaml", "manifests")]
         public void TestSave()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "manifest.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "manifest.yaml"));
 
             string tempFile = Path.GetTempFileName();
             Manifest.Save(man.Applications(), tempFile);
@@ -100,9 +104,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\no_route.yaml", "manifests")]
         public void TestNoRoute()
         {
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "no_route.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "no_route.yaml"));
 
             Application[] apps = man.Applications();
             Assert.AreEqual(1, apps.Length);
@@ -110,10 +115,11 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Manifests
         }
 
         [TestMethod]
+        [DeploymentItem(@"Assets\manifests\manifest_null_value.yaml", "manifests")]
         public void TestNullValues()
         {
 
-            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine(testPath, "Manifests", "manifest_null_value.yaml"));
+            Manifest man = ManifestDiskRepository.ReadManifest(Path.Combine("manifests", "manifest_null_value.yaml"));
 
             Application[] apps = man.Applications();
             Assert.AreEqual(1, apps.Length);
