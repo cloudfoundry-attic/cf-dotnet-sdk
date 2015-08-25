@@ -20,7 +20,7 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="cloudTarget">The cloud target.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken)
-            : this(cloudTarget, cancellationToken, null, false)
+            : this(cloudTarget, cancellationToken, null)
         {
         }
 
@@ -42,8 +42,35 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <param name="httpProxy">The HTTP proxy.</param>
         /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
-        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation)
-            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation)
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation) 
+            : this(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient" /> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        /// <param name="authorizationUrl">Authorization Endpoint</param>
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl)
+            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient" /> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        /// <param name="authorizationUrl">Authorization Endpoint</param>
+        /// <param name="useStrictStatusCodeChecking">throw exception if the successful http status code returned from the server does not match the expected code</param>
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl, bool useStrictStatusCodeChecking)
+            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, useStrictStatusCodeChecking)
         {
         }
 
@@ -340,10 +367,14 @@ namespace CloudFoundry.CloudController.V2.Client
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
         public async Task<AuthenticationContext> Login(CloudCredentials credentials)
         {
-            var info = await this.Info.GetInfo();
+            if (this.AuthorizationEndpoint == null)
+            {
+                var info = await this.Info.GetInfo();
 
-            var authUrl = string.Format(CultureInfo.InvariantCulture, "{0}{1}", info.AuthorizationEndpoint.TrimEnd('/'), "/oauth/token");
-            this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
+                this.AuthorizationEndpoint = new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}", info.AuthorizationEndpoint.TrimEnd('/'), "/oauth/token"));
+            }
+
+            this.UAAClient = new UAAClient(this.AuthorizationEndpoint, this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(credentials);
 
@@ -387,10 +418,14 @@ namespace CloudFoundry.CloudController.V2.Client
             Justification = "Using the same nomenclature as Cloud Foundry (e.g. cf login)")]
         public async Task<AuthenticationContext> Login(string refreshToken)
         {
-            var info = await this.Info.GetInfo();
+            if (this.AuthorizationEndpoint == null)
+            {
+                var info = await this.Info.GetInfo();
 
-            var authUrl = string.Format(CultureInfo.InvariantCulture, "{0}{1}", info.AuthorizationEndpoint.TrimEnd('/'), "/oauth/token");
-            this.UAAClient = new UAAClient(new Uri(authUrl), this.HttpProxy, this.SkipCertificateValidation);
+                this.AuthorizationEndpoint = new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}", info.AuthorizationEndpoint.TrimEnd('/'), "/oauth/token"));
+            }
+
+            this.UAAClient = new UAAClient(this.AuthorizationEndpoint, this.HttpProxy, this.SkipCertificateValidation);
 
             var context = await this.UAAClient.Login(refreshToken);
 

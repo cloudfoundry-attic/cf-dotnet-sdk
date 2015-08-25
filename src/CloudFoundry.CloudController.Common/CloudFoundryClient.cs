@@ -52,14 +52,29 @@ namespace CloudFoundry.CloudController.Common
         /// <param name="httpProxy">The HTTP proxy.</param>
         /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
         /// <param name="authorizationUrl">Authorization Endpoint</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "This method is implemented by sealed cf clients")]
         protected CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl)
+            : this(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient" /> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        /// <param name="authorizationUrl">Authorization Endpoint</param>
+        /// <param name="useStrictStatusCodeChecking">Throw exception if the successful http status code returned from the server does not match the expected code</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "This method is implemented by sealed cf clients")]
+        protected CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl, bool useStrictStatusCodeChecking)
         {
             this.CloudTarget = cloudTarget;
             this.CancellationToken = cancellationToken;
             this.HttpProxy = httpProxy;
             this.SkipCertificateValidation = skipCertificateValidation;
             this.AuthorizationEndpoint = authorizationUrl;
+            this.UseStrictStatusCodeChecking = useStrictStatusCodeChecking;
 
             this.InitEndpoints();
         }
@@ -88,6 +103,11 @@ namespace CloudFoundry.CloudController.Common
         /// Skip Validation
         /// </summary>
         public bool SkipCertificateValidation { get; protected set; }
+
+        /// <summary>
+        /// Skip Validation
+        /// </summary>
+        public bool UseStrictStatusCodeChecking { get; protected set; }
 
         /// <summary>
         /// Initializes all API Endpoints

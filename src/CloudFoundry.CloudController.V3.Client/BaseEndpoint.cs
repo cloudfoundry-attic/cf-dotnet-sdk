@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
     using CloudFoundry.CloudController.Common.Exceptions;
@@ -51,7 +52,13 @@
         {
             var result = await client.SendAsync();
 
-            if (((int)result.StatusCode) != expectedReturnStatus)
+            bool success = ((int)result.StatusCode) == expectedReturnStatus;
+            if (!success && !this.Client.UseStrictStatusCodeChecking)
+            {
+                success = IsSuccessStatusCode(result.StatusCode);
+            }
+
+            if (!success)
             {
                 // Check if we can deserialize the response
                 CloudFoundryException cloudFoundryException;
@@ -74,6 +81,11 @@
             }
 
             return result;
+        }
+
+        private static bool IsSuccessStatusCode(HttpStatusCode statusCode)
+        {
+            return statusCode >= HttpStatusCode.OK && statusCode < HttpStatusCode.MultipleChoices;
         }
     }
 }
