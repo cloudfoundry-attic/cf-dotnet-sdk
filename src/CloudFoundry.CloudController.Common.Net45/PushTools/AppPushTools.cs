@@ -14,18 +14,14 @@
     /// </summary>
     public class AppPushTools : IAppPushTools
     {
+        private string appPath;
+
         /// <summary>
-        /// Gets the file fingerprints from the application folder
-        /// As the sha1 is calculated based on the content of the file, 
-        /// there is a possibility that one key can have multiple fingerprints (duplicate files)
+        /// Initializes a new instance of the <see cref="AppPushTools"/> class.
         /// </summary>
         /// <param name="appPath">The path to the application folder or the path to a zip file.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Return a dictionary of file fingerprints, with sha1 as key and a list of file fingerprints as value.</returns>
-        public async Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(string appPath, System.Threading.CancellationToken cancellationToken)
+        public AppPushTools(string appPath)
         {
-            Dictionary<string, List<FileFingerprint>> fingerprints = new Dictionary<string, List<FileFingerprint>>();
-
             if (File.Exists(appPath))
             {
                 var extractedPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -39,14 +35,26 @@
                 appPath = extractedPath;
             }
 
-            appPath = Path.GetFullPath(appPath);
+            this.appPath = Path.GetFullPath(appPath);
+        }
 
-            foreach (string file in Directory.GetFiles(appPath, "*", SearchOption.AllDirectories))
+        /// <summary>
+        /// Gets the file fingerprints from the application folder
+        /// As the sha1 is calculated based on the content of the file, 
+        /// there is a possibility that one key can have multiple fingerprints (duplicate files)
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Return a dictionary of file fingerprints, with sha1 as key and a list of file fingerprints as value.</returns>
+        public async Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(System.Threading.CancellationToken cancellationToken)
+        {
+            Dictionary<string, List<FileFingerprint>> fingerprints = new Dictionary<string, List<FileFingerprint>>();
+
+            foreach (string file in Directory.GetFiles(this.appPath, "*", SearchOption.AllDirectories))
             {
                 FileInfo fileInfo = new FileInfo(file);
                 FileFingerprint print = new FileFingerprint();
                 print.Size = fileInfo.Length;
-                print.FileName = fileInfo.FullName.Substring(appPath.Length).TrimStart('\\');
+                print.FileName = fileInfo.FullName.Substring(this.appPath.Length).TrimStart('\\');
 
                 if (Path.DirectorySeparatorChar == '\\')
                 {
@@ -71,11 +79,10 @@
         /// <summary>
         /// Creates a zip archive containing specific files from the application folder
         /// </summary>
-        /// <param name="appPath">The path to the application folder</param>
         /// <param name="files">The files that will be added to the archive.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
-        public async Task<System.IO.Stream> GetZippedPayload(string appPath, IEnumerable<string> files, System.Threading.CancellationToken cancellationToken)
+        public async Task<System.IO.Stream> GetZippedPayload(IEnumerable<string> files, System.Threading.CancellationToken cancellationToken)
         {
             string zipFile = Path.Combine(Path.GetTempPath(), "payload.zip");
 
@@ -86,7 +93,7 @@
                 if (enumerator.MoveNext() == false)
                 {
                     string emptyFile = "_empty_";
-                    File.WriteAllText(Path.Combine(appPath, emptyFile), Guid.NewGuid().ToString());
+                    File.WriteAllText(Path.Combine(this.appPath, emptyFile), Guid.NewGuid().ToString());
                     files = new string[] { emptyFile };
                 }
             }
@@ -125,13 +132,12 @@
         /// <summary>
         /// Creates a zip archive containing the all files from the application folder <see cref="AppPushTools"/>
         /// </summary>
-        /// <param name="appPath">The path to the application folder</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
-        public Task<Stream> GetZippedPayload(string appPath, System.Threading.CancellationToken cancellationToken)
+        public Task<Stream> GetZippedPayload(System.Threading.CancellationToken cancellationToken)
         {
-            var files = Directory.GetFiles(appPath, "*", SearchOption.AllDirectories).Select(f => new FileInfo(f).FullName.Replace(appPath, string.Empty).TrimStart('\\'));
-            return this.GetZippedPayload(appPath, files, cancellationToken);
+            var files = Directory.GetFiles(this.appPath, "*", SearchOption.AllDirectories).Select(f => new FileInfo(f).FullName.Replace(this.appPath, string.Empty).TrimStart('\\'));
+            return this.GetZippedPayload(files, cancellationToken);
         }
 
         private async Task<string> CalculateSHA1(string filePath, System.Threading.CancellationToken cancellationToken)

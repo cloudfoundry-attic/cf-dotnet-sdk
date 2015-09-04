@@ -19,10 +19,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.AppPushTools
             //Arrange
             var appPath = "hello-world-java-1.0.war";
             Assert.IsTrue(File.Exists(appPath));
-            CloudFoundry.CloudController.Common.PushTools.AppPushTools pushTools = new Common.PushTools.AppPushTools();
+            CloudFoundry.CloudController.Common.PushTools.AppPushTools pushTools = new Common.PushTools.AppPushTools(appPath);
 
             //Act
-            var result = pushTools.GetFileFingerprints(appPath, new System.Threading.CancellationToken()).Result;
+            var result = pushTools.GetFileFingerprints(new System.Threading.CancellationToken()).Result;
 
             //Assert
             Assert.IsNotNull(result);
@@ -36,10 +36,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.AppPushTools
             //Arrange
             var appPath = @"pushfolder";
             Assert.IsTrue(Directory.Exists(appPath));
-            CloudFoundry.CloudController.Common.PushTools.AppPushTools pushTools = new Common.PushTools.AppPushTools();
+            CloudFoundry.CloudController.Common.PushTools.AppPushTools pushTools = new Common.PushTools.AppPushTools(appPath);
 
             //Act
-            var result = pushTools.GetFileFingerprints(appPath, new System.Threading.CancellationToken()).Result;
+            var result = pushTools.GetFileFingerprints(new System.Threading.CancellationToken()).Result;
 
             //Assert
             Assert.IsNotNull(result);
