@@ -43,7 +43,7 @@ namespace CloudFoundry.CloudController.V3.Client
                 throw new ArgumentNullException("appPath");
             }
 
-            IAppPushTools pushTools = new AppPushTools();
+            IAppPushTools pushTools = new AppPushTools(appPath);
             int usedSteps = 1;
 
             // Step 1 - Check if application exists
@@ -68,7 +68,7 @@ namespace CloudFoundry.CloudController.V3.Client
 
             // Step 3 - Zip all needed files and get a stream back from the PushTools
             this.TriggerPushProgressEvent(usedSteps, "Creating zip package ...");
-            using (Stream zippedPayload = await pushTools.GetZippedPayload(appPath, this.Client.CancellationToken))
+            using (Stream zippedPayload = await pushTools.GetZippedPayload(this.Client.CancellationToken))
             {
                 if (this.CheckCancellation())
                 {
@@ -112,12 +112,12 @@ namespace CloudFoundry.CloudController.V3.Client
 
                 usedSteps += 1;
             }
-            
+
             // Step 5 - Stage application
             StagePackageRequest stagePackage = new StagePackageRequest();
             stagePackage.Stack = stack;
             stagePackage.BuildpackGitUrl = buildpackGitUrl;
-                
+
             StagePackageResponse stageResponse = await this.Client.Packages.StagePackage(packageId, stagePackage);
             if (this.CheckCancellation())
             {

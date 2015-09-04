@@ -13,26 +13,23 @@
         /// <summary>
         /// Gets the file fingerprints from the application folder <see cref="AppPushTools"/>
         /// </summary>
-        /// <param name="appPath">The path to the application folder or the path to a zip file.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Return a dictionary of file fingerprints, with sha1 as key and a list of file fingerprints as value.</returns>
-        Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(string appPath, CancellationToken cancellationToken);
+        Task<Dictionary<string, List<FileFingerprint>>> GetFileFingerprints(CancellationToken cancellationToken);
 
         /// <summary>
         /// Creates a zip archive containing specific files from the application folder <see cref="AppPushTools"/>
         /// </summary>
-        /// <param name="appPath">The path to the application folder</param>
         /// <param name="files">The files that will be added to the archive.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
-        Task<Stream> GetZippedPayload(string appPath, IEnumerable<string> files, CancellationToken cancellationToken);
+        Task<Stream> GetZippedPayload(IEnumerable<string> files, CancellationToken cancellationToken);
 
         /// <summary>
         /// Creates a zip archive containing the all files from the application folder <see cref="AppPushTools"/>
         /// </summary>
-        /// <param name="appPath">The path to the application folder</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>An open stream of the zip file</returns>
-        Task<Stream> GetZippedPayload(string appPath, CancellationToken cancellationToken);
+        Task<Stream> GetZippedPayload(CancellationToken cancellationToken);
     }
 }

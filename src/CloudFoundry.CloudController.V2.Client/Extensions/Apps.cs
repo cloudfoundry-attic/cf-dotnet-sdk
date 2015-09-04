@@ -42,7 +42,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 throw new ArgumentNullException("appPath");
             }
 
-            IAppPushTools pushTools = new AppPushTools();
+            IAppPushTools pushTools = new AppPushTools(appPath);
             int usedSteps = 1;
 
             // Step 1 - Check if application exists
@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client
 
             // Step 2 - Compute fingerprints for local files
             this.TriggerPushProgressEvent(usedSteps, "Calculating file fingerprints ...");
-            Dictionary<string, List<FileFingerprint>> fingerprints = await pushTools.GetFileFingerprints(appPath, this.Client.CancellationToken);
+            Dictionary<string, List<FileFingerprint>> fingerprints = await pushTools.GetFileFingerprints(this.Client.CancellationToken);
             if (this.CheckCancellation())
             {
                 return;
@@ -64,7 +64,7 @@ namespace CloudFoundry.CloudController.V2.Client
             // Step 3 - Compare fingerprints of local files with what the server has
             this.TriggerPushProgressEvent(usedSteps, "Comparing file fingerprints ...");
             HashSet<string> neededFiles = await this.FilterExistingFiles(fingerprints);
-           
+
             if (this.CheckCancellation())
             {
                 return;
@@ -74,13 +74,13 @@ namespace CloudFoundry.CloudController.V2.Client
 
             // Step 4 - Zip all needed files and get a stream back from the PushTools
             this.TriggerPushProgressEvent(usedSteps, "Creating zip package ...");
-            using (Stream zippedPayload = await pushTools.GetZippedPayload(appPath, neededFiles, this.Client.CancellationToken))
+            using (Stream zippedPayload = await pushTools.GetZippedPayload(neededFiles, this.Client.CancellationToken))
             {
                 if (this.CheckCancellation())
                 {
                     return;
                 }
-                
+
                 usedSteps += 1;
 
                 // Step 5 - Upload zip to CloudFoundry ...
@@ -89,7 +89,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 List<FileFingerprint> fingerPrintList = fingerprints.Values.SelectMany(list => list).Where(fingerprint => !neededFiles.Contains(fingerprint.FileName)).ToList();
 
                 await this.UploadBits(appGuid, zippedPayload, fingerPrintList);
-                
+
                 if (this.CheckCancellation())
                 {
                     return;
@@ -211,7 +211,7 @@ namespace CloudFoundry.CloudController.V2.Client
                 httpClient.SkipCertificateValidation = Client.SkipCertificateValidation;
 
                 httpClient.Headers.Add("Authorization", string.Format("bearer {0}", this.Client.AuthorizationToken));
-                
+
                 httpClient.Uri = uploadUri;
                 httpClient.Method = HttpMethod.Put;
 
