@@ -32,7 +32,7 @@
 
         internal SimpleHttpClient GetHttpClient()
         {
-            var httpClient = new SimpleHttpClient(this.Client.CancellationToken);
+            var httpClient = new SimpleHttpClient(this.Client.CancellationToken, this.Client.RequestTimeout);
 
             try
             {

@@ -56,7 +56,7 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
         /// <param name="authorizationUrl">Authorization Endpoint</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl)
-            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, false)
+            : this(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, false)
         {
         }
 
@@ -70,7 +70,22 @@ namespace CloudFoundry.CloudController.V2.Client
         /// <param name="authorizationUrl">Authorization Endpoint</param>
         /// <param name="useStrictStatusCodeChecking">throw exception if the successful http status code returned from the server does not match the expected code</param>
         public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl, bool useStrictStatusCodeChecking)
-            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, useStrictStatusCodeChecking)
+            : this(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, useStrictStatusCodeChecking, SimpleHttpClient.DefaultTimeout)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloudFoundryClient" /> class.
+        /// </summary>
+        /// <param name="cloudTarget">The cloud target.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="httpProxy">The HTTP proxy.</param>
+        /// <param name="skipCertificateValidation">if set to <c>true</c> it will skip TLS certificate validation for HTTP requests.</param>
+        /// <param name="authorizationUrl">Authorization Endpoint</param>
+        /// <param name="useStrictStatusCodeChecking">throw exception if the successful http status code returned from the server does not match the expected code</param>
+        /// <param name="requestTimeout">Http requests timeout</param>
+        public CloudFoundryClient(Uri cloudTarget, CancellationToken cancellationToken, Uri httpProxy, bool skipCertificateValidation, Uri authorizationUrl, bool useStrictStatusCodeChecking, TimeSpan requestTimeout)
+            : base(cloudTarget, cancellationToken, httpProxy, skipCertificateValidation, authorizationUrl, useStrictStatusCodeChecking, requestTimeout)
         {
         }
 

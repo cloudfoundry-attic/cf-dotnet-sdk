@@ -14,7 +14,11 @@
     /// <inheritdoc/>
     public class SimpleHttpClient : IDisposable
     {
-        private static readonly TimeSpan DefaultTimeout = new TimeSpan(0, 0, 30);
+        /// <summary>
+        /// Default HTTP Request timeout
+        /// </summary>
+        public static readonly TimeSpan DefaultTimeout = new TimeSpan(0, 0, 30);
+
         private readonly HttpClient client = null;
         private readonly SimpleHttpRedirectHandler handler = null;
         private CancellationToken cancellationToken = CancellationToken.None;
