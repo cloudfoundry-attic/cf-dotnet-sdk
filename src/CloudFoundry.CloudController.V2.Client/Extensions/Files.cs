@@ -51,7 +51,7 @@
                 }
                 else
                 {
-                    string[] instanceContent = responseString.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                    string[] instanceContent = responseString.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
                     foreach (string info in instanceContent)
                     {
                         if (string.IsNullOrWhiteSpace(info) == false)
