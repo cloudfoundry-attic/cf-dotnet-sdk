@@ -28,32 +28,32 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestCreateServicePlanVisibilityRequest()
-        {
-            string json = @"{
-  ""service_plan_guid"": ""a6511259-83fb-415c-b95e-24b55d75a6b6"",
-  ""organization_guid"": ""72b10b6e-042d-4376-bb57-1594c1687092""
-}";
-
-            CreateServicePlanVisibilityRequest request = new CreateServicePlanVisibilityRequest();
-
-            request.ServicePlanGuid = new Guid("a6511259-83fb-415c-b95e-24b55d75a6b6");
-            request.OrganizationGuid = new Guid("72b10b6e-042d-4376-bb57-1594c1687092");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestUpdateServicePlanVisibilityRequest()
         {
             string json = @"{
-  ""service_plan_guid"": ""4b704609-982c-42b8-b183-852d56941347"",
-  ""organization_guid"": ""925c0e49-71cd-4c04-a2f3-4dc2b72ba72f""
+  ""service_plan_guid"": ""3b630269-e454-4f81-b135-4b9eea06e86a"",
+  ""organization_guid"": ""1b26d786-cad1-4503-b215-587a0fbae134""
 }";
 
             UpdateServicePlanVisibilityRequest request = new UpdateServicePlanVisibilityRequest();
 
-            request.ServicePlanGuid = new Guid("4b704609-982c-42b8-b183-852d56941347");
-            request.OrganizationGuid = new Guid("925c0e49-71cd-4c04-a2f3-4dc2b72ba72f");
+            request.ServicePlanGuid = new Guid("3b630269-e454-4f81-b135-4b9eea06e86a");
+            request.OrganizationGuid = new Guid("1b26d786-cad1-4503-b215-587a0fbae134");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateServicePlanVisibilityRequest()
+        {
+            string json = @"{
+  ""service_plan_guid"": ""3f0c3f84-ed58-485e-ad2c-6702241de1ed"",
+  ""organization_guid"": ""b9a0eecd-f62f-4efd-8a1e-0357a60d290b""
+}";
+
+            CreateServicePlanVisibilityRequest request = new CreateServicePlanVisibilityRequest();
+
+            request.ServicePlanGuid = new Guid("3f0c3f84-ed58-485e-ad2c-6702241de1ed");
+            request.OrganizationGuid = new Guid("b9a0eecd-f62f-4efd-8a1e-0357a60d290b");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

@@ -51,9 +51,24 @@
 
         internal async Task<SimpleHttpResponse> SendAsync(SimpleHttpClient client, int expectedReturnStatus)
         {
+            int[] codes = new int[] { expectedReturnStatus };
+            return await this.SendAsync(client, codes);
+        }
+
+        internal async Task<SimpleHttpResponse> SendAsync(SimpleHttpClient client, int[] expectedReturnStatus)
+        {
             var result = await client.SendAsync();
 
-            bool success = ((int)result.StatusCode) == expectedReturnStatus;
+            bool success = false;
+            foreach (int code in expectedReturnStatus)
+            {
+                if (((int)result.StatusCode) == code)
+                {
+                    success = true;
+                    break;
+                }
+            }
+            
             if (!success && !this.Client.UseStrictStatusCodeChecking)
             {
                 success = IsSuccessStatusCode(result.StatusCode);

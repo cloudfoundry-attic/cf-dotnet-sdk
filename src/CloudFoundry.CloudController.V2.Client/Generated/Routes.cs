@@ -52,46 +52,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Creating a Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/creating_a_route.html"</para>
+        /// Retrieve a Particular Route
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/retrieve_a_particular_route.html"</para>
         /// </summary>
-        public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
+        public async Task<RetrieveRouteResponse> RetrieveRoute(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/routes";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Routes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/list_all_routes.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes()
-        {
-            return await ListAllRoutes(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Routes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/list_all_routes.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes(RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/routes";
-            uriBuilder.Query = options.ToString();
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -102,34 +69,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllRoutesResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Associate App with the Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/associate_app_with_the_route.html"</para>
-        /// </summary>
-        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}/apps/{1}", guid, app_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateAppWithRouteResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveRouteResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// List all Apps for the Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/list_all_apps_for_the_route.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/list_all_apps_for_the_route.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid)
         {
@@ -138,7 +83,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps for the Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/list_all_apps_for_the_route.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/list_all_apps_for_the_route.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForRouteResponse>> ListAllAppsForRoute(Guid? guid, RequestOptions options)
         {
@@ -159,49 +104,53 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Check a Route exists
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/check_a_route_exists.html"</para>
+        /// Update a Route
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/update_a_route.html"</para>
         /// </summary>
-        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Delete a Particular Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/delete_a_particular_route.html"</para>
-        /// </summary>
-        public async Task DeleteRoute(Guid? guid)
+        public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Put;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateRouteResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate App with the Route
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/associate_app_with_the_route.html"</para>
+        /// </summary>
+        public async Task<AssociateAppWithRouteResponse> AssociateAppWithRoute(Guid? guid, Guid? app_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}/apps/{1}", guid, app_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateAppWithRouteResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// Remove App from the Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/remove_app_from_the_route.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/remove_app_from_the_route.html"</para>
         /// </summary>
         public async Task<RemoveAppFromRouteResponse> RemoveAppFromRoute(Guid? guid, Guid? app_guid)
         {
@@ -222,13 +171,23 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/retrieve_a_particular_route.html"</para>
+        /// List all Routes
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/list_all_routes.html"</para>
         /// </summary>
-        public async Task<RetrieveRouteResponse> RetrieveRoute(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes()
+        {
+            return await ListAllRoutes(new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Routes
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/list_all_routes.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllRoutesResponse>> ListAllRoutes(RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
+            uriBuilder.Path = "/v2/routes";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -239,30 +198,71 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveRouteResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllRoutesResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
-        /// Update a Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/routes/update_a_route.html"</para>
+        /// Delete a Particular Route
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/delete_a_particular_route.html"</para>
         /// </summary>
-        public async Task<UpdateRouteResponse> UpdateRoute(Guid? guid, UpdateRouteRequest value)
+        public async Task DeleteRoute(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Check a Route exists
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/check_a_route_exists.html"</para>
+        /// </summary>
+        public async Task CheckRouteExists(Guid? domain_guid, dynamic host)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/reserved/domain/{0}/host/{1}", domain_guid, host);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Creating a Route
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/routes/creating_a_route.html"</para>
+        /// </summary>
+        public async Task<CreateRouteResponse> CreateRoute(CreateRouteRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/routes";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Post;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateRouteResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateRouteResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

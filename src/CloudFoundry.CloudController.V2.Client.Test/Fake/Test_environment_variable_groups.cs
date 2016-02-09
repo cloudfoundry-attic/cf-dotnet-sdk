@@ -26,7 +26,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     public class EnvironmentVariableGroupsEndpoint
 {
         [TestMethod]
-        public void GettingContentsOfRunningEnvironmentVariableGroupTest()
+        public void UpdateContentsOfRunningEnvironmentVariableGroupTest()
         {
             using (ShimsContext.Create())
             {
@@ -41,8 +41,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
                 var cfClient = clients.CreateCloudFoundryClient();
 
+                UpdateContentsOfRunningEnvironmentVariableGroupRequest value = new UpdateContentsOfRunningEnvironmentVariableGroupRequest();
 
-                var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfRunningEnvironmentVariableGroup().Result;
+
+                var obj = cfClient.EnvironmentVariableGroups.UpdateContentsOfRunningEnvironmentVariableGroup(value).Result;
 
 
                 Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
@@ -106,7 +108,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
-        public void UpdateContentsOfRunningEnvironmentVariableGroupTest()
+        public void GettingContentsOfRunningEnvironmentVariableGroupTest()
         {
             using (ShimsContext.Create())
             {
@@ -121,10 +123,8 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
                 var cfClient = clients.CreateCloudFoundryClient();
 
-                UpdateContentsOfRunningEnvironmentVariableGroupRequest value = new UpdateContentsOfRunningEnvironmentVariableGroupRequest();
 
-
-                var obj = cfClient.EnvironmentVariableGroups.UpdateContentsOfRunningEnvironmentVariableGroup(value).Result;
+                var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfRunningEnvironmentVariableGroup().Result;
 
 
                 Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);

@@ -57,7 +57,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/list_service_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_usage_events/list_service_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents()
         {
@@ -70,7 +70,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/list_service_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_usage_events/list_service_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListServiceUsageEventsResponse>> ListServiceUsageEvents(RequestOptions options)
         {
@@ -91,35 +91,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Purge and reseed Service Usage Events
-        /// <para>Destroys all existing events. Populates new usage events, one for each existing service instance.</para>
-        /// <para>All populated events will have a created_at value of current time.</para>
-        /// <para></para>
-        /// <para>There is the potential race condition if service instances are currently being created or deleted.</para>
-        /// <para></para>
-        /// <para>The seeded usage events will have the same guid as the service instance.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/purge_and_reseed_service_usage_events.html"</para>
-        /// </summary>
-        public async Task PurgeAndReseedServiceUsageEvents()
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/service_usage_events/destructively_purge_all_and_reseed_existing_instances";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
         /// Retrieve a Particular Service Usage Event
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
         /// </summary>
         public async Task<RetrieveServiceUsageEventResponse> RetrieveServiceUsageEvent(Guid? guid)
         {
@@ -136,6 +109,33 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveServiceUsageEventResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Purge and reseed Service Usage Events
+        /// <para>Destroys all existing events. Populates new usage events, one for each existing service instance.</para>
+        /// <para>All populated events will have a created_at value of current time.</para>
+        /// <para></para>
+        /// <para>There is the potential race condition if service instances are currently being created or deleted.</para>
+        /// <para></para>
+        /// <para>The seeded usage events will have the same guid as the service instance.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_usage_events/purge_and_reseed_service_usage_events.html"</para>
+        /// </summary>
+        public async Task PurgeAndReseedServiceUsageEvents()
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_usage_events/destructively_purge_all_and_reseed_existing_instances";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Post;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllRoutesForSpace()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/spaces/list_all_routes_for_the_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/spaces/list_all_routes_for_the_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllRoutesForSpaceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllRoutesForSpaceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllRoutesForSpace()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/spaces/list_all_routes_for_the_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/spaces/list_all_routes_for_the_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllRoutesForSpaceResponse : IResponse
