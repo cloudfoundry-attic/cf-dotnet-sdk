@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllServicesForSpace()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/spaces/list_all_services_for_the_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/spaces/list_all_services_for_the_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServicesForSpaceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServicesForSpaceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllServicesForSpace()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/spaces/list_all_services_for_the_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/spaces/list_all_services_for_the_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServicesForSpaceResponse : IResponse
@@ -61,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Provider</para>
         /// </summary>
         [JsonProperty("provider", NullValueHandling = NullValueHandling.Ignore)]
-        public string Provider
+        public dynamic Provider
         {
             get;
             set;
@@ -71,7 +71,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Url</para>
         /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public string Url
+        public dynamic Url
         {
             get;
             set;
@@ -101,7 +101,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Version</para>
         /// </summary>
         [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
-        public string Version
+        public dynamic Version
         {
             get;
             set;

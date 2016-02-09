@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.CreateUserProvidedServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/creating_a_user_provided_service_instance.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.DeleteServiceInstance()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_instances/delete_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateUserProvidedServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateUserProvidedServiceInstanceResponse
+    public partial class DeleteServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractDeleteServiceInstanceResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.CreateUserProvidedServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/creating_a_user_provided_service_instance.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.DeleteServiceInstance()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_instances/delete_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractCreateUserProvidedServiceInstanceResponse : IResponse
+    public abstract class AbstractDeleteServiceInstanceResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -68,10 +68,40 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Service Plan Guid</para>
+        /// </summary>
+        [JsonProperty("service_plan_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? ServicePlanGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Space Guid</para>
         /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Gateway Data</para>
+        /// </summary>
+        [JsonProperty("gateway_data", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic GatewayData
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Dashboard Url</para>
+        /// </summary>
+        [JsonProperty("dashboard_url", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic DashboardUrl
         {
             get;
             set;
@@ -88,10 +118,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Syslog Drain Url</para>
+        /// <para>The Last Operation</para>
         /// </summary>
-        [JsonProperty("syslog_drain_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string SyslogDrainUrl
+        [JsonProperty("last_operation", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, dynamic> LastOperation
         {
             get;
             set;
@@ -102,6 +132,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("space_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Service Plan Url</para>
+        /// </summary>
+        [JsonProperty("service_plan_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string ServicePlanUrl
         {
             get;
             set;

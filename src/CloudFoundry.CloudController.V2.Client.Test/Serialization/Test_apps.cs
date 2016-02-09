@@ -28,28 +28,17 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestCopyAppBitsForAppRequest()
-        {
-            string json = @"{""source_app_guid"":""824f5d61-b430-4875-8de0-30b3b87a98aa""}";
-
-            CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
-
-            request.SourceAppGuid = new Guid("824f5d61-b430-4875-8de0-30b3b87a98aa");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestCreateAppRequest()
         {
             string json = @"{
   ""name"": ""my_super_app"",
-  ""space_guid"": ""058d606c-120d-4767-bb99-99f022432e4a""
+  ""space_guid"": ""f2376cf9-c65c-46af-9639-2badf511dad7""
 }";
 
             CreateAppRequest request = new CreateAppRequest();
 
             request.Name = "my_super_app";
-            request.SpaceGuid = new Guid("058d606c-120d-4767-bb99-99f022432e4a");
+            request.SpaceGuid = new Guid("f2376cf9-c65c-46af-9639-2badf511dad7");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -67,11 +56,22 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
+        public void TestCopyAppBitsForAppRequest()
+        {
+            string json = @"{""source_app_guid"":""84bd6e05-db62-464b-a9f0-5af0074f83db""}";
+
+            CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
+
+            request.SourceAppGuid = new Guid("84bd6e05-db62-464b-a9f0-5af0074f83db");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateDockerAppExperimentalRequest()
         {
             string json = @"{
   ""name"": ""docker_app"",
-  ""space_guid"": ""b4f8d6bf-6793-4522-9844-25b488b4da20"",
+  ""space_guid"": ""9db1fb73-ae3f-450f-9a4b-c20a0d96e980"",
   ""docker_image"": ""cloudfoundry/hello"",
   ""diego"": true
 }";
@@ -79,7 +79,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             CreateDockerAppExperimentalRequest request = new CreateDockerAppExperimentalRequest();
 
             request.Name = "docker_app";
-            request.SpaceGuid = new Guid("b4f8d6bf-6793-4522-9844-25b488b4da20");
+            request.SpaceGuid = new Guid("9db1fb73-ae3f-450f-9a4b-c20a0d96e980");
             request.DockerImage = "cloudfoundry/hello";
             request.Diego = true;
             string result = JsonConvert.SerializeObject(request, Formatting.None);

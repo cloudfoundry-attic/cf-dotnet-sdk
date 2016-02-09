@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.InfoEndpoint.GetInfo()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/info/get_info.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/info/get_info.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetInfoResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetInfoResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.InfoEndpoint.GetInfo()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/info/get_info.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/info/get_info.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetInfoResponse : IResponse
@@ -112,6 +112,26 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("token_endpoint", NullValueHandling = NullValueHandling.Ignore)]
         public string TokenEndpoint
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Min Cli Version</para>
+        /// </summary>
+        [JsonProperty("min_cli_version", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic MinCliVersion
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Min Recommended Cli Version</para>
+        /// </summary>
+        [JsonProperty("min_recommended_cli_version", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic MinRecommendedCliVersion
         {
             get;
             set;

@@ -28,23 +28,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestCreatesDomainOwnedByGivenOrganizationDeprecatedRequest()
-        {
-            string json = @"{
-  ""name"": ""exmaple.com"",
-  ""wildcard"": true,
-  ""owning_organization_guid"": ""c77587cb-1eb9-47a5-9ac6-531136502f60""
-}";
-
-            CreatesDomainOwnedByGivenOrganizationDeprecatedRequest request = new CreatesDomainOwnedByGivenOrganizationDeprecatedRequest();
-
-            request.Name = "exmaple.com";
-            request.Wildcard = true;
-            request.OwningOrganizationGuid = new Guid("c77587cb-1eb9-47a5-9ac6-531136502f60");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestCreatesSharedDomainDeprecatedRequest()
         {
             string json = @"{
@@ -56,6 +39,23 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             request.Name = "example.com";
             request.Wildcard = true;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreatesDomainOwnedByGivenOrganizationDeprecatedRequest()
+        {
+            string json = @"{
+  ""name"": ""exmaple.com"",
+  ""wildcard"": true,
+  ""owning_organization_guid"": ""ef15b821-73b3-444c-a506-329f9560eb64""
+}";
+
+            CreatesDomainOwnedByGivenOrganizationDeprecatedRequest request = new CreatesDomainOwnedByGivenOrganizationDeprecatedRequest();
+
+            request.Name = "exmaple.com";
+            request.Wildcard = true;
+            request.OwningOrganizationGuid = new Guid("ef15b821-73b3-444c-a506-329f9560eb64");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

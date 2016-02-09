@@ -74,6 +74,9 @@
     <Compile Include="Extensions\Data\DC_GetV1InfoResponse.cs" />
     <Compile Include="Extensions\Data\DC_UpdateAppRequest.cs.cs" />
     <Compile Include="Extensions\Info.cs" />
+    <Compile Include="CloudFoundryClient.cs" />
+    <Compile Include="EntityGuid.cs" />
+    <Compile Include="Extensions\ServiceInstances.cs" />
     <Compile Include="Generated\Apps.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -275,6 +278,7 @@
     <Compile Include="Generated\Data\DC_CreateUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_DeleteServiceInstanceResponse.cs" />
     <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -853,8 +857,6 @@
     <Compile Include="Generated\Data\DC_UpdateUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CloudFoundryClient.cs" />
-    <Compile Include="EntityGuid.cs" />
     <Compile Include="Generated\Data\DC_UploadsBitsForAppResponse.cs" />
     <Compile Include="Generated\DomainsDeprecated.cs">
       <SubType>Code</SubType>

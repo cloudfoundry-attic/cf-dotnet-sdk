@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.CreateServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/service_instances/creating_a_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_instances/creating_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceInstanceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.CreateServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/202/service_instances/creating_a_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_instances/creating_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateServiceInstanceResponse : IResponse
@@ -61,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Credentials</para>
         /// </summary>
         [JsonProperty("credentials", NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, dynamic> Credentials
+        public Dictionary<dynamic, dynamic> Credentials
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Gateway Data</para>
         /// </summary>
         [JsonProperty("gateway_data", NullValueHandling = NullValueHandling.Ignore)]
-        public string GatewayData
+        public dynamic GatewayData
         {
             get;
             set;
@@ -101,7 +101,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Dashboard Url</para>
         /// </summary>
         [JsonProperty("dashboard_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string DashboardUrl
+        public dynamic DashboardUrl
         {
             get;
             set;

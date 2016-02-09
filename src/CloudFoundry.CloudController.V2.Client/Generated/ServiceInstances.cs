@@ -52,106 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Updating a service instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/updating_a_service_instance.html"</para>
-        /// </summary>
-        public async Task<UpdateServiceInstanceResponse> UpdateServiceInstance(Guid? guid, UpdateServiceInstanceRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateServiceInstanceResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Service Instances
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/list_all_service_instances.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances()
-        {
-            return await ListAllServiceInstances(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Service Instances
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/list_all_service_instances.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances(RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/service_instances";
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceInstancesResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Creating a Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/creating_a_service_instance.html"</para>
-        /// </summary>
-        public async Task<CreateServiceInstanceResponse> CreateServiceInstance(CreateServiceInstanceRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/service_instances";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateServiceInstanceResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Deleting a service instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/deleting_a_service_instance.html"</para>
-        /// </summary>
-        public async Task DeleteServiceInstance(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
         /// List all Service Bindings for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid)
         {
@@ -160,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid, RequestOptions options)
         {
@@ -183,7 +85,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <summary>
         /// Migrate Service Instances from one Service Plan to another Service Plan (experimental)
         /// <para>Move all Service Instances for the service plan from the URL to the service plan in the request body</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/migrate_service_instances_from_one_service_plan_to_another_service_plan_(experimental).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/migrate_service_instances_from_one_service_plan_to_another_service_plan_(experimental).html"</para>
         /// </summary>
         public async Task<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse> MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimental(Guid? service_plan_guid, MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest value)
         {
@@ -198,15 +100,112 @@ namespace CloudFoundry.CloudController.V2.Client.Base
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = JsonConvert.SerializeObject(value).ConvertToStream();
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
+        /// Retrieving permissions on a Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/retrieving_permissions_on_a_service_instance.html"</para>
+        /// </summary>
+        public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}/permissions", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrievingPermissionsOnServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Update a Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/update_a_service_instance.html"</para>
+        /// </summary>
+        public async Task<UpdateServiceInstanceResponse> UpdateServiceInstance(Guid? guid, UpdateServiceInstanceRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 202;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/list_all_service_instances.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances()
+        {
+            return await ListAllServiceInstances(new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/list_all_service_instances.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances(RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_instances";
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllServiceInstancesResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// Delete a Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/delete_a_service_instance.html"</para>
+        /// </summary>
+        public async Task<DeleteServiceInstanceResponse> DeleteServiceInstance(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 202;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<DeleteServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Retrieve a Particular Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/retrieve_a_particular_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/retrieve_a_particular_service_instance.html"</para>
         /// </summary>
         public async Task<RetrieveServiceInstanceResponse> RetrieveServiceInstance(Guid? guid)
         {
@@ -226,24 +225,26 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieving permissions on a Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/202/service_instances/retrieving_permissions_on_a_service_instance.html"</para>
+        /// Creating a Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_instances/creating_a_service_instance.html"</para>
         /// </summary>
-        public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
+        public async Task<CreateServiceInstanceResponse> CreateServiceInstance(CreateServiceInstanceRequest value)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_instances/{0}/permissions", guid);
+            uriBuilder.Path = "/v2/service_instances";
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Post;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 202;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrievingPermissionsOnServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<CreateServiceInstanceResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }
