@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.RetrieveEvent()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/events/retrieve_a_particular_event.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/events/retrieve_a_particular_event.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveEventResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveEventResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.RetrieveEvent()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/events/retrieve_a_particular_event.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/events/retrieve_a_particular_event.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveEventResponse : IResponse
@@ -61,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Actor</para>
         /// </summary>
         [JsonProperty("actor", NullValueHandling = NullValueHandling.Ignore)]
-        public string Actor
+        public Guid? Actor
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Actee</para>
         /// </summary>
         [JsonProperty("actee", NullValueHandling = NullValueHandling.Ignore)]
-        public string Actee
+        public Guid? Actee
         {
             get;
             set;

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsEndpoint.ListServiceUsageEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_usage_events/list_service_usage_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_usage_events/list_service_usage_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListServiceUsageEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServiceUsageEventsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsEndpoint.ListServiceUsageEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_usage_events/list_service_usage_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_usage_events/list_service_usage_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListServiceUsageEventsResponse : IResponse
@@ -61,7 +61,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Org Guid</para>
         /// </summary>
         [JsonProperty("org_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string OrgGuid
+        public Guid? OrgGuid
         {
             get;
             set;
@@ -71,7 +71,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Space Guid</para>
         /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string SpaceGuid
+        public Guid? SpaceGuid
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Service Instance Guid</para>
         /// </summary>
         [JsonProperty("service_instance_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string ServiceInstanceGuid
+        public Guid? ServiceInstanceGuid
         {
             get;
             set;
@@ -121,7 +121,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Service Plan Guid</para>
         /// </summary>
         [JsonProperty("service_plan_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string ServicePlanGuid
+        public Guid? ServicePlanGuid
         {
             get;
             set;
@@ -141,7 +141,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Service Guid</para>
         /// </summary>
         [JsonProperty("service_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string ServiceGuid
+        public Guid? ServiceGuid
         {
             get;
             set;

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.ListAllRoutes()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/list_all_routes.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/list_all_routes.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllRoutesResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllRoutesResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.ListAllRoutes()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/list_all_routes.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/list_all_routes.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllRoutesResponse : IResponse
@@ -52,6 +52,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
         public string Host
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Path</para>
+        /// </summary>
+        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
+        public string Path
         {
             get;
             set;
@@ -78,6 +88,26 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Service Instance Guid</para>
+        /// </summary>
+        [JsonProperty("service_instance_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? ServiceInstanceGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Port</para>
+        /// </summary>
+        [JsonProperty("port", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Port
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Domain Url</para>
         /// </summary>
         [JsonProperty("domain_url", NullValueHandling = NullValueHandling.Ignore)]
@@ -92,6 +122,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("space_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SpaceUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Service Instance Url</para>
+        /// </summary>
+        [JsonProperty("service_instance_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string ServiceInstanceUrl
         {
             get;
             set;

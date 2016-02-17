@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.UpdateApp()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/apps/updating_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/updating_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateAppRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateAppRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.UpdateApp()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/apps/updating_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/updating_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateAppRequest
@@ -83,7 +83,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The guid of the associated space.</para>
         /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string SpaceGuid
+        public Guid? SpaceGuid
         {
             get;
             set;
@@ -180,6 +180,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>Docker credentials for pulling docker image.</para>
+        /// </summary>
+        [JsonProperty("docker_credentials_json", NullValueHandling = NullValueHandling.Ignore)]
+        public string DockerCredentialsJson
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>Key/value pairs of all the environment variables to run in your app. Does not include any system or service variables.</para>
         /// </summary>
         [JsonProperty("environment_json", NullValueHandling = NullValueHandling.Ignore)]
@@ -214,6 +224,36 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("debug", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Debug
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Reason for application staging failures</para>
+        /// </summary>
+        [JsonProperty("staging_failed_reason", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic StagingFailedReason
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Detailed description for the staging_failed_reason</para>
+        /// </summary>
+        [JsonProperty("staging_failed_description", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic StagingFailedDescription
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Ports on which application may listen. Supported for applications pushed to Diego only.</para>
+        /// </summary>
+        [JsonProperty("ports", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic Ports
         {
             get;
             set;

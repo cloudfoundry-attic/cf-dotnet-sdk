@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.CreateSpace()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/spaces/creating_a_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/spaces/creating_a_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateSpaceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateSpaceRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.CreateSpace()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/spaces/creating_a_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/spaces/creating_a_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateSpaceRequest
@@ -114,6 +114,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("space_quota_definition_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceQuotaDefinitionGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Whether or not Space Developers can enable ssh on apps in the space</para>
+        /// </summary>
+        [JsonProperty("allow_ssh", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic AllowSsh
         {
             get;
             set;

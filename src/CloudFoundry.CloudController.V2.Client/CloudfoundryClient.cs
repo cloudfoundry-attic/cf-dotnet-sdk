@@ -125,6 +125,16 @@ namespace CloudFoundry.CloudController.V2.Client
         }
 
         /// <summary>
+        /// Gets the blobstores endpoint.
+        /// </summary>
+        /// <value>
+        /// The blobstores endpoint.
+        /// </value>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Blobstores",
+             Justification = "Keeping Cloud Foundry nomenclature.")]
+        public BlobstoresEndpoint Blobstores { get; private set; }
+
+        /// <summary>
         /// Gets the buildpacks endpoint.
         /// </summary>
         /// <value>
@@ -289,6 +299,14 @@ namespace CloudFoundry.CloudController.V2.Client
         /// The service instances endpoint.
         /// </value>
         public ServiceInstancesEndpoint ServiceInstances { get; private set; }
+
+        /// <summary>
+        /// Gets the service keys endpoint.
+        /// </summary>
+        /// <value>
+        /// The service keys endpoint.
+        /// </value>
+        public ServiceKeysEndpoint ServiceKeys { get; private set; }
 
         /// <summary>
         /// Gets the service plans endpoint.
@@ -463,6 +481,7 @@ namespace CloudFoundry.CloudController.V2.Client
         {
             this.Apps = new AppsEndpoint(this);
             this.AppUsageEvents = new AppUsageEventsEndpoint(this);
+            this.Blobstores = new BlobstoresEndpoint(this);
             this.Buildpacks = new BuildpacksEndpoint(this);
             this.DomainsDeprecated = new DomainsDeprecatedEndpoint(this);
             this.EnvironmentVariableGroups = new EnvironmentVariableGroupsEndpoint(this);
@@ -483,6 +502,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.ServiceBindings = new ServiceBindingsEndpoint(this);
             this.ServiceBrokers = new ServiceBrokersEndpoint(this);
             this.ServiceInstances = new ServiceInstancesEndpoint(this);
+            this.ServiceKeys = new ServiceKeysEndpoint(this);
             this.ServicePlans = new ServicePlansEndpoint(this);
             this.ServicePlanVisibilities = new ServicePlanVisibilitiesEndpoint(this);
             this.Services = new ServicesEndpoint(this);

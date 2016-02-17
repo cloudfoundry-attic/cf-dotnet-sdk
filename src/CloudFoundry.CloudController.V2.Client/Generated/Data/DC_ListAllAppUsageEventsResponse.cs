@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppUsageEventsEndpoint.ListAllAppUsageEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/app_usage_events/list_all_app_usage_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/app_usage_events/list_all_app_usage_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllAppUsageEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllAppUsageEventsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppUsageEventsEndpoint.ListAllAppUsageEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/app_usage_events/list_all_app_usage_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/app_usage_events/list_all_app_usage_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllAppUsageEventsResponse : IResponse
@@ -81,7 +81,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The App Guid</para>
         /// </summary>
         [JsonProperty("app_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string AppGuid
+        public Guid? AppGuid
         {
             get;
             set;
@@ -101,7 +101,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Space Guid</para>
         /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string SpaceGuid
+        public Guid? SpaceGuid
         {
             get;
             set;
@@ -121,7 +121,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Org Guid</para>
         /// </summary>
         [JsonProperty("org_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string OrgGuid
+        public Guid? OrgGuid
         {
             get;
             set;
@@ -131,7 +131,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Buildpack Guid</para>
         /// </summary>
         [JsonProperty("buildpack_guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string BuildpackGuid
+        public Guid? BuildpackGuid
         {
             get;
             set;
@@ -152,6 +152,36 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("package_state", NullValueHandling = NullValueHandling.Ignore)]
         public string PackageState
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Parent App Guid</para>
+        /// </summary>
+        [JsonProperty("parent_app_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? ParentAppGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Parent App Name</para>
+        /// </summary>
+        [JsonProperty("parent_app_name", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic ParentAppName
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Process Type</para>
+        /// </summary>
+        [JsonProperty("process_type", NullValueHandling = NullValueHandling.Ignore)]
+        public string ProcessType
         {
             get;
             set;

@@ -26,6 +26,60 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     public class EnvironmentVariableGroupsEndpoint
 {
         [TestMethod]
+        public void GettingContentsOfRunningEnvironmentVariableGroupTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""abc"": 123,
+  ""do-re-me"": ""far-so-la-tee""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfRunningEnvironmentVariableGroup().Result;
+
+
+                Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
+                Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void UpdateContentsOfStagingEnvironmentVariableGroupTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""abc"": 123,
+  ""do-re-me"": ""far-so-la-tee""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                UpdateContentsOfStagingEnvironmentVariableGroupRequest value = new UpdateContentsOfStagingEnvironmentVariableGroupRequest();
+
+
+                var obj = cfClient.EnvironmentVariableGroups.UpdateContentsOfStagingEnvironmentVariableGroup(value).Result;
+
+
+                Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
+                Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
+
+            }
+        }
+
+        [TestMethod]
         public void UpdateContentsOfRunningEnvironmentVariableGroupTest()
         {
             using (ShimsContext.Create())
@@ -71,60 +125,6 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
 
                 var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfStagingEnvironmentVariableGroup().Result;
-
-
-                Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-                Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void UpdateContentsOfStagingEnvironmentVariableGroupTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                UpdateContentsOfStagingEnvironmentVariableGroupRequest value = new UpdateContentsOfStagingEnvironmentVariableGroupRequest();
-
-
-                var obj = cfClient.EnvironmentVariableGroups.UpdateContentsOfStagingEnvironmentVariableGroup(value).Result;
-
-
-                Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-                Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void GettingContentsOfRunningEnvironmentVariableGroupTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-
-                var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfRunningEnvironmentVariableGroup().Result;
 
 
                 Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);

@@ -52,6 +52,27 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Retrieve a Particular App Usage Event
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
+        /// </summary>
+        public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/app_usage_events/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Purge and reseed App Usage Events
         /// <para>Destroys all existing events. Populates new usage events, one for each started app.</para>
         /// <para>All populated events will have a created_at value of current time.</para>
@@ -59,7 +80,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>There is the potential race condition if apps are currently being started, stopped, or scaled.</para>
         /// <para></para>
         /// <para>The seeded usage events will have the same guid as the app.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/app_usage_events/purge_and_reseed_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/app_usage_events/purge_and_reseed_app_usage_events.html"</para>
         /// </summary>
         public async Task PurgeAndReseedAppUsageEvents()
         {
@@ -84,7 +105,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/app_usage_events/list_all_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/app_usage_events/list_all_app_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents()
         {
@@ -97,7 +118,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/app_usage_events/list_all_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/app_usage_events/list_all_app_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents(RequestOptions options)
         {
@@ -115,27 +136,6 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllAppUsageEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Retrieve a Particular App Usage Event
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
-        /// </summary>
-        public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/app_usage_events/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

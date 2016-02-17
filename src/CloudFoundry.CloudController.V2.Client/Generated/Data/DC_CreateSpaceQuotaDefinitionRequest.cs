@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.CreateSpaceQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/space_quota_definitions/creating_a_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/space_quota_definitions/creating_a_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateSpaceQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateSpaceQuotaDefinitionRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.CreateSpaceQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/space_quota_definitions/creating_a_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/space_quota_definitions/creating_a_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateSpaceQuotaDefinitionRequest
@@ -104,6 +104,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("instance_memory_limit", NullValueHandling = NullValueHandling.Ignore)]
         public string InstanceMemoryLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>How many app instances a space can create. (-1 represents an unlimited amount)</para>
+        /// </summary>
+        [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public string AppInstanceLimit
         {
             get;
             set;

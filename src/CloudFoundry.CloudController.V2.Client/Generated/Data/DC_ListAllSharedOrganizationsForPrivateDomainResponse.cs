@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.PrivateDomainsEndpoint.ListAllSharedOrganizationsForPrivateDomain()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllSharedOrganizationsForPrivateDomainResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllSharedOrganizationsForPrivateDomainResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.PrivateDomainsEndpoint.ListAllSharedOrganizationsForPrivateDomain()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllSharedOrganizationsForPrivateDomainResponse : IResponse

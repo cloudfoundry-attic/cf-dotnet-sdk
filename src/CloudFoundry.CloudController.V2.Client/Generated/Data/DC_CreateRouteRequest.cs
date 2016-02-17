@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.CreateRoute()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/creating_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/creating_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateRouteRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateRouteRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.CreateRoute()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/creating_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/creating_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateRouteRequest
@@ -60,6 +60,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The port of the route. Supported for domains of TCP router groups only.</para>
+        /// </summary>
+        [JsonProperty("port", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Port
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The guid of the route.</para>
         /// </summary>
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
@@ -74,6 +84,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Host
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The path for a route as raw text. 1) Paths must be between 2 and 128 characters 2) Paths must start with a / 3) Paths must not contain a "?"</para>
+        /// </summary>
+        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
+        public string Path
         {
             get;
             set;

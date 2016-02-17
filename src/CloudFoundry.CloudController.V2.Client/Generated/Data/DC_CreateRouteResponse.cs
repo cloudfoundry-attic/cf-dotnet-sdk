@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.CreateRoute()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/creating_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/creating_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateRouteResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateRouteResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.CreateRoute()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/creating_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/creating_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateRouteResponse : IResponse
@@ -58,6 +58,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Path</para>
+        /// </summary>
+        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
+        public string Path
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Domain Guid</para>
         /// </summary>
         [JsonProperty("domain_guid", NullValueHandling = NullValueHandling.Ignore)]
@@ -72,6 +82,26 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Service Instance Guid</para>
+        /// </summary>
+        [JsonProperty("service_instance_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? ServiceInstanceGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Port</para>
+        /// </summary>
+        [JsonProperty("port", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Port
         {
             get;
             set;

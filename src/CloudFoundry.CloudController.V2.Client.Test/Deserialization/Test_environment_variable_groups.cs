@@ -26,6 +26,34 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
+        public void TestGettingContentsOfRunningEnvironmentVariableGroupResponse()
+        {
+            string json = @"{
+  ""abc"": 123,
+  ""do-re-me"": ""far-so-la-tee""
+}";
+
+            GettingContentsOfRunningEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(json);
+
+            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
+            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
+        }
+
+        [TestMethod]
+        public void TestUpdateContentsOfStagingEnvironmentVariableGroupResponse()
+        {
+            string json = @"{
+  ""abc"": 123,
+  ""do-re-me"": ""far-so-la-tee""
+}";
+
+            UpdateContentsOfStagingEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<UpdateContentsOfStagingEnvironmentVariableGroupResponse>(json);
+
+            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
+            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
+        }
+
+        [TestMethod]
         public void TestUpdateContentsOfRunningEnvironmentVariableGroupResponse()
         {
             string json = @"{
@@ -48,34 +76,6 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 }";
 
             GettingContentsOfStagingEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(json);
-
-            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-        }
-
-        [TestMethod]
-        public void TestUpdateContentsOfStagingEnvironmentVariableGroupResponse()
-        {
-            string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-
-            UpdateContentsOfStagingEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<UpdateContentsOfStagingEnvironmentVariableGroupResponse>(json);
-
-            Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
-            Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);
-        }
-
-        [TestMethod]
-        public void TestGettingContentsOfRunningEnvironmentVariableGroupResponse()
-        {
-            string json = @"{
-  ""abc"": 123,
-  ""do-re-me"": ""far-so-la-tee""
-}";
-
-            GettingContentsOfRunningEnvironmentVariableGroupResponse obj = Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(json);
 
             Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
             Assert.AreEqual("far-so-la-tee", TestUtil.ToTestableString(obj.Doreme), true);

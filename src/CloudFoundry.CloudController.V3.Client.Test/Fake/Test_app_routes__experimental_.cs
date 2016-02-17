@@ -23,7 +23,7 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 {
     [TestClass]
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class AppRoutesEndpoint
+    public class AppRoutesExperimentalEndpoint
 {
         [TestMethod]
         public void ListRoutesTest()
@@ -36,42 +36,42 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   ""pagination"": {
     ""total_results"": 2,
     ""first"": {
-      ""href"": ""/v3/apps/guid-52ae6c97-4ba6-49a5-ae9e-24b1bebd99a7/routes?page=1=50""
+      ""href"": ""/v3/apps/09381e34-521c-4d95-a3b6-c5b1a4a5e0f6/routes?page=1=50""
     },
     ""last"": {
-      ""href"": ""/v3/apps/guid-52ae6c97-4ba6-49a5-ae9e-24b1bebd99a7/routes?page=1=50""
+      ""href"": ""/v3/apps/09381e34-521c-4d95-a3b6-c5b1a4a5e0f6/routes?page=1=50""
     },
     ""next"": null,
     ""previous"": null
   },
   ""resources"": [
     {
-      ""guid"": ""ac884a9e-0a29-4f63-8276-0e03d6559dfe"",
-      ""host"": ""host-16"",
+      ""guid"": ""cc3cffe0-c750-4e49-8a9f-dc8d4708662b"",
+      ""host"": ""host-6"",
       ""path"": """",
-      ""created_at"": ""2015-06-30T07:10:48Z"",
+      ""created_at"": ""2016-02-11T13:20:32Z"",
       ""updated_at"": null,
-      ""_links"": {
+      ""links"": {
         ""space"": {
-          ""href"": ""/v2/spaces/585f9880-39b8-4eaa-ab1f-b8264fc344d5""
+          ""href"": ""/v2/spaces/9920bee5-ab70-4a63-8799-ee11a570bb4d""
         },
         ""domain"": {
-          ""href"": ""/v2/domains/d5fdcc0b-0a6e-4351-b013-50996e481920""
+          ""href"": ""/v2/domains/3f07f69d-9f3c-4893-b097-dc8634d5feb7""
         }
       }
     },
     {
-      ""guid"": ""ad825658-2b6e-4f4f-9778-716012c9b973"",
-      ""host"": ""host-17"",
+      ""guid"": ""cc3cffe0-c750-4e49-8a9f-dc8d4708662b"",
+      ""host"": ""host-7"",
       ""path"": ""/foo/bar"",
-      ""created_at"": ""2015-06-30T07:10:48Z"",
+      ""created_at"": ""2016-02-11T13:20:32Z"",
       ""updated_at"": null,
-      ""_links"": {
+      ""links"": {
         ""space"": {
-          ""href"": ""/v2/spaces/585f9880-39b8-4eaa-ab1f-b8264fc344d5""
+          ""href"": ""/v2/spaces/9920bee5-ab70-4a63-8799-ee11a570bb4d""
         },
         ""domain"": {
-          ""href"": ""/v2/domains/3afae5b6-559f-47b2-ad70-e05bf858fe74""
+          ""href"": ""/v2/domains/113857b5-715c-4511-b308-c3811aacbf83""
         }
       }
     }
@@ -85,17 +85,17 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 Guid? guid = Guid.NewGuid();
 
 
-                var obj = cfClient.AppRoutes.ListRoutes(guid).Result;
+                var obj = cfClient.AppRoutesExperimental.ListRoutes(guid).Result;
 
-                Assert.AreEqual("ac884a9e-0a29-4f63-8276-0e03d6559dfe", TestUtil.ToTestableString(obj[0].Guid), true);
-                Assert.AreEqual("host-16", TestUtil.ToTestableString(obj[0].Host), true);
+                Assert.AreEqual("cc3cffe0-c750-4e49-8a9f-dc8d4708662b", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("host-6", TestUtil.ToTestableString(obj[0].Host), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].Path), true);
-                Assert.AreEqual("2015-06-30T07:10:48Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
+                Assert.AreEqual("2016-02-11T13:20:32Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-                Assert.AreEqual("ad825658-2b6e-4f4f-9778-716012c9b973", TestUtil.ToTestableString(obj[1].Guid), true);
-                Assert.AreEqual("host-17", TestUtil.ToTestableString(obj[1].Host), true);
+                Assert.AreEqual("cc3cffe0-c750-4e49-8a9f-dc8d4708662b", TestUtil.ToTestableString(obj[1].Guid), true);
+                Assert.AreEqual("host-7", TestUtil.ToTestableString(obj[1].Host), true);
                 Assert.AreEqual("/foo/bar", TestUtil.ToTestableString(obj[1].Path), true);
-                Assert.AreEqual("2015-06-30T07:10:48Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
+                Assert.AreEqual("2016-02-11T13:20:32Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
 
             }
@@ -116,7 +116,27 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 UnmapRouteRequest value = new UnmapRouteRequest();
 
 
-                cfClient.AppRoutes.UnmapRoute(guid, value).Wait();
+                cfClient.AppRoutesExperimental.UnmapRoute(guid, value).Wait();
+
+            }
+        }
+
+        [TestMethod]
+        public void MapRouteTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                clients.ExpectedStatusCode = (HttpStatusCode)204;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+                MapRouteRequest value = new MapRouteRequest();
+
+
+                cfClient.AppRoutesExperimental.MapRoute(guid, value).Wait();
 
             }
         }

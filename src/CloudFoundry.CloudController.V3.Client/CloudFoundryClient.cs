@@ -94,7 +94,7 @@ namespace CloudFoundry.CloudController.V3.Client
         /// <value>
         /// The apps endpoint.
         /// </value>
-        public AppsEndpoint Apps { get; private set; }
+        public AppsExperimentalEndpoint AppsExperimental { get; private set; }
 
         /// <summary>
         /// Gets the app routes endpoint.
@@ -102,7 +102,7 @@ namespace CloudFoundry.CloudController.V3.Client
         /// <value>
         /// The app routes endpoint.
         /// </value>
-        public AppRoutesEndpoint AppRoutes { get; private set; }
+        public AppRoutesExperimentalEndpoint AppRoutesExperimental { get; private set; }
 
         /// <summary>
         /// Gets the droplets endpoint.
@@ -110,7 +110,7 @@ namespace CloudFoundry.CloudController.V3.Client
         /// <value>
         /// The droplets endpoint.
         /// </value>
-        public DropletsEndpoint Droplets { get; private set; }
+        public DropletsExperimentalEndpoint DropletsExperimental { get; private set; }
 
         /// <summary>
         /// Gets the packages endpoint.
@@ -118,7 +118,7 @@ namespace CloudFoundry.CloudController.V3.Client
         /// <value>
         /// The packages endpoint.
         /// </value>
-        public PackagesEndpoint Packages { get; private set; }
+        public PackagesExperimentalEndpoint PackagesExperimental { get; private set; }
 
         /// <summary>
         /// Gets the processes endpoint.
@@ -126,7 +126,7 @@ namespace CloudFoundry.CloudController.V3.Client
         /// <value>
         /// The processes endpoint.
         /// </value>
-        public ProcessesEndpoint Processes { get; private set; }
+        public ProcessesExperimentalEndpoint ProcessesExperimental { get; private set; }
 
         /// <summary>
         /// Gets the authorization token. It returns empty string if the client is not authorized. Also this method does not verify if the current token is expired.
@@ -247,11 +247,11 @@ namespace CloudFoundry.CloudController.V3.Client
             Justification = "Developers using the SDK should find it useful to have a 1-to-1 list of all documented Cloud Foundry endpoints.")]
         public override void InitEndpoints()
         {
-            this.Apps = new AppsEndpoint(this);
-            this.AppRoutes = new AppRoutesEndpoint(this);
-            this.Droplets = new DropletsEndpoint(this);
-            this.Packages = new PackagesEndpoint(this);
-            this.Processes = new ProcessesEndpoint(this);
+            this.AppsExperimental = new AppsExperimentalEndpoint(this);
+            this.AppRoutesExperimental = new AppRoutesExperimentalEndpoint(this);
+            this.DropletsExperimental = new DropletsExperimentalEndpoint(this);
+            this.PackagesExperimental = new PackagesExperimentalEndpoint(this);
+            this.ProcessesExperimental = new ProcessesExperimentalEndpoint(this);
         }
     }
 }

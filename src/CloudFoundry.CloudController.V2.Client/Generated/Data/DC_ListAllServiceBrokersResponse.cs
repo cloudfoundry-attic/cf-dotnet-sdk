@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceBrokersEndpoint.ListAllServiceBrokers()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_brokers/list_all_service_brokers.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_brokers/list_all_service_brokers.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServiceBrokersResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServiceBrokersResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceBrokersEndpoint.ListAllServiceBrokers()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/service_brokers/list_all_service_brokers.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_brokers/list_all_service_brokers.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServiceBrokersResponse : IResponse
@@ -72,6 +72,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("auth_username", NullValueHandling = NullValueHandling.Ignore)]
         public string AuthUsername
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Space Guid</para>
+        /// </summary>
+        [JsonProperty("space_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? SpaceGuid
         {
             get;
             set;

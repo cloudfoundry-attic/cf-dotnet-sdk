@@ -14,7 +14,7 @@ namespace CloudFoundry.CloudController.V3.Client
     using CloudFoundry.CloudController.V3.Client.Data;
     using Newtonsoft.Json;
 
-    public partial class PackagesEndpoint
+    public partial class PackagesExperimentalEndpoint
     {
         private static readonly TimeSpan DefaultUploadTimeout = new TimeSpan(0, 30, 0);
 
@@ -36,7 +36,7 @@ namespace CloudFoundry.CloudController.V3.Client
 
             SimpleHttpResponse uploadResult = await this.UploadZip(uploadEndpoint.Uri, zipStream);
 
-            if (uploadResult.StatusCode != System.Net.HttpStatusCode.Created)
+            if (uploadResult.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 var statusCode = uploadResult.StatusCode.ToString("D");
 
@@ -54,7 +54,7 @@ namespace CloudFoundry.CloudController.V3.Client
         {
             string boundary = DateTime.Now.Ticks.ToString("x");
 
-            using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken, PackagesEndpoint.DefaultUploadTimeout))
+            using (SimpleHttpClient httpClient = new SimpleHttpClient(this.Client.CancellationToken, PackagesExperimentalEndpoint.DefaultUploadTimeout))
             {
                 // http://apidocs.cloudfoundry.org/212/packages_(experimental)/upload_bits_for_a_package_of_type_bits.html
                 httpClient.HttpProxy = Client.HttpProxy;

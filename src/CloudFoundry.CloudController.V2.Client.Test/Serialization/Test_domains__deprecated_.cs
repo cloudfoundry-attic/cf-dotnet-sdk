@@ -28,34 +28,34 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestCreatesSharedDomainDeprecatedRequest()
+        public void TestCreateDomainOwnedByGivenOrganizationDeprecatedRequest()
+        {
+            string json = @"{
+  ""name"": ""exmaple.com"",
+  ""wildcard"": true,
+  ""owning_organization_guid"": ""c63b5b03-0026-4dff-9f68-ca83885c3e07""
+}";
+
+            CreateDomainOwnedByGivenOrganizationDeprecatedRequest request = new CreateDomainOwnedByGivenOrganizationDeprecatedRequest();
+
+            request.Name = "exmaple.com";
+            request.Wildcard = true;
+            request.OwningOrganizationGuid = new Guid("c63b5b03-0026-4dff-9f68-ca83885c3e07");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateSharedDomainDeprecatedRequest()
         {
             string json = @"{
   ""name"": ""example.com"",
   ""wildcard"": true
 }";
 
-            CreatesSharedDomainDeprecatedRequest request = new CreatesSharedDomainDeprecatedRequest();
+            CreateSharedDomainDeprecatedRequest request = new CreateSharedDomainDeprecatedRequest();
 
             request.Name = "example.com";
             request.Wildcard = true;
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreatesDomainOwnedByGivenOrganizationDeprecatedRequest()
-        {
-            string json = @"{
-  ""name"": ""exmaple.com"",
-  ""wildcard"": true,
-  ""owning_organization_guid"": ""ef15b821-73b3-444c-a506-329f9560eb64""
-}";
-
-            CreatesDomainOwnedByGivenOrganizationDeprecatedRequest request = new CreatesDomainOwnedByGivenOrganizationDeprecatedRequest();
-
-            request.Name = "exmaple.com";
-            request.Wildcard = true;
-            request.OwningOrganizationGuid = new Guid("ef15b821-73b3-444c-a506-329f9560eb64");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

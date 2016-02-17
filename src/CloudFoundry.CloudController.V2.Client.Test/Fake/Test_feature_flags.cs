@@ -26,17 +26,17 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     public class FeatureFlagsEndpoint
 {
         [TestMethod]
-        public void GetAppBitsUploadFeatureFlagTest()
+        public void GetUserOrgCreationFeatureFlagTest()
         {
             using (ShimsContext.Create())
             {
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""name"": ""app_bits_upload"",
-  ""enabled"": true,
+  ""name"": ""user_org_creation"",
+  ""enabled"": false,
   ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/app_bits_upload""
+  ""url"": ""/v2/config/feature_flags/user_org_creation""
 }";
                 clients.JsonResponse = json;
 
@@ -44,13 +44,107 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var cfClient = clients.CreateCloudFoundryClient();
 
 
-                var obj = cfClient.FeatureFlags.GetAppBitsUploadFeatureFlag().Result;
+                var obj = cfClient.FeatureFlags.GetUserOrgCreationFeatureFlag().Result;
 
 
-                Assert.AreEqual("app_bits_upload", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetUnsetUserRolesFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""unset_roles_by_username"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetUnsetUserRolesFeatureFlag().Result;
+
+
+                Assert.AreEqual("unset_roles_by_username", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-                Assert.AreEqual("/v2/config/feature_flags/app_bits_upload", TestUtil.ToTestableString(obj.Url), true);
+                Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod, Ignore]
+        public void SetFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""user_org_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/user_org_creation""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                dynamic name = null;
+
+                SetFeatureFlagRequest value = new SetFeatureFlagRequest();
+
+
+                var obj = cfClient.FeatureFlags.SetFeatureFlag(name, value).Result;
+
+
+                Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetSetUserRolesFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""set_roles_by_username"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/set_roles_by_username""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetSetUserRolesFeatureFlag().Result;
+
+
+                Assert.AreEqual("set_roles_by_username", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/set_roles_by_username", TestUtil.ToTestableString(obj.Url), true);
 
             }
         }
@@ -86,6 +180,96 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
+        public void GetAppBitsUploadFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""app_bits_upload"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/app_bits_upload""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetAppBitsUploadFeatureFlag().Result;
+
+
+                Assert.AreEqual("app_bits_upload", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/app_bits_upload", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetDiegoDockerFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""diego_docker"",
+  ""enabled"": false,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/diego_docker""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetDiegoDockerFeatureFlag().Result;
+
+
+                Assert.AreEqual("diego_docker", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/diego_docker", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetPrivateDomainCreationFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""private_domain_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/private_domain_creation""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetPrivateDomainCreationFeatureFlag().Result;
+
+
+                Assert.AreEqual("private_domain_creation", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/private_domain_creation", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
         public void GetAppScalingFeatureFlagTest()
         {
             using (ShimsContext.Create())
@@ -111,36 +295,6 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
                 Assert.AreEqual("/v2/config/feature_flags/app_scaling", TestUtil.ToTestableString(obj.Url), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void GetUserOrgCreationFeatureFlagTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""name"": ""user_org_creation"",
-  ""enabled"": false,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/user_org_creation""
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-
-                var obj = cfClient.FeatureFlags.GetUserOrgCreationFeatureFlag().Result;
-
-
-                Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
-                Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-                Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
 
             }
         }
@@ -188,6 +342,24 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     ""enabled"": true,
     ""error_message"": null,
     ""url"": ""/v2/config/feature_flags/service_instance_creation""
+  },
+  {
+    ""name"": ""diego_docker"",
+    ""enabled"": false,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/diego_docker""
+  },
+  {
+    ""name"": ""set_roles_by_username"",
+    ""enabled"": true,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/set_roles_by_username""
+  },
+  {
+    ""name"": ""unset_roles_by_username"",
+    ""enabled"": true,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
   }
 ]";
                 clients.JsonResponse = json;
@@ -223,6 +395,18 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj[5].Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[5].ErrorMessage), true);
                 Assert.AreEqual("/v2/config/feature_flags/service_instance_creation", TestUtil.ToTestableString(obj[5].Url), true);
+                Assert.AreEqual("diego_docker", TestUtil.ToTestableString(obj[6].Name), true);
+                Assert.AreEqual("false", TestUtil.ToTestableString(obj[6].Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[6].ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/diego_docker", TestUtil.ToTestableString(obj[6].Url), true);
+                Assert.AreEqual("set_roles_by_username", TestUtil.ToTestableString(obj[7].Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj[7].Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[7].ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/set_roles_by_username", TestUtil.ToTestableString(obj[7].Url), true);
+                Assert.AreEqual("unset_roles_by_username", TestUtil.ToTestableString(obj[8].Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj[8].Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[8].ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj[8].Url), true);
 
             }
         }
@@ -253,70 +437,6 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
                 Assert.AreEqual("/v2/config/feature_flags/service_instance_creation", TestUtil.ToTestableString(obj.Url), true);
-
-            }
-        }
-
-        [TestMethod, Ignore]
-        public void SetFeatureFlagTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""name"": ""user_org_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/user_org_creation""
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                dynamic name = null;
-
-                SetFeatureFlagRequest value = new SetFeatureFlagRequest();
-
-
-                var obj = cfClient.FeatureFlags.SetFeatureFlag(name, value).Result;
-
-
-                Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
-                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-                Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void GetPrivateDomainCreationFeatureFlagTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""name"": ""private_domain_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/private_domain_creation""
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-
-                var obj = cfClient.FeatureFlags.GetPrivateDomainCreationFeatureFlag().Result;
-
-
-                Assert.AreEqual("private_domain_creation", TestUtil.ToTestableString(obj.Name), true);
-                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-                Assert.AreEqual("/v2/config/feature_flags/private_domain_creation", TestUtil.ToTestableString(obj.Url), true);
 
             }
         }

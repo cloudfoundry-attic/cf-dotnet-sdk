@@ -52,8 +52,50 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Delete a Particular Service Plans
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/delete_a_particular_service_plans.html"</para>
+        /// </summary>
+        public async Task DeleteServicePlans(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Retrieve a Particular Service Plan
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/retrieve_a_particular_service_plan.html"</para>
+        /// </summary>
+        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// List all Service Plans
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/list_all_service_plans.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/list_all_service_plans.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans()
         {
@@ -62,7 +104,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plans
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/list_all_service_plans.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/list_all_service_plans.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans(RequestOptions options)
         {
@@ -83,60 +125,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/retrieve_a_particular_service_plan.html"</para>
-        /// </summary>
-        public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServicePlanResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Service Instances for the Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid)
-        {
-            return await ListAllServiceInstancesForServicePlan(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Service Instances for the Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}/service_instances", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceInstancesForServicePlanResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
         /// Updating a Service Plan (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/updating_a_service_plan_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/updating_a_service_plan_(deprecated).html"</para>
         /// </summary>
         public async Task<UpdateServicePlanDeprecatedResponse> UpdateServicePlanDeprecated(UpdateServicePlanDeprecatedRequest value)
         {
@@ -158,29 +148,39 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Delete a Particular Service Plans
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/delete_a_particular_service_plans.html"</para>
+        /// List all Service Instances for the Service Plan
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
         /// </summary>
-        public async Task DeleteServicePlans(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid)
+        {
+            return await ListAllServiceInstancesForServicePlan(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Service Instances for the Service Plan
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}", guid);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_plans/{0}/service_instances", guid);
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Get;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllServiceInstancesForServicePlanResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
         /// Creating a Service Plan (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_plans/creating_a_service_plan_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_plans/creating_a_service_plan_(deprecated).html"</para>
         /// </summary>
         public async Task<CreateServicePlanDeprecatedResponse> CreateServicePlanDeprecated(CreateServicePlanDeprecatedRequest value)
         {

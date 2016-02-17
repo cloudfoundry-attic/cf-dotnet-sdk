@@ -24,7 +24,7 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
 {
     [TestClass]
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class DropletsTest
+    public class DropletsExperimentalTest
     {
 
     }

@@ -28,19 +28,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestCreatesAdminBuildpackRequest()
-        {
-            string json = @"{
-  ""name"": ""Golang_buildpack""
-}";
-
-            CreatesAdminBuildpackRequest request = new CreatesAdminBuildpackRequest();
-
-            request.Name = "Golang_buildpack";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestChangePositionOfBuildpackRequest()
         {
             string json = @"{
@@ -50,6 +37,19 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             ChangePositionOfBuildpackRequest request = new ChangePositionOfBuildpackRequest();
 
             request.Position = 3;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreatesAdminBuildpackRequest()
+        {
+            string json = @"{
+  ""name"": ""Golang_buildpack""
+}";
+
+            CreatesAdminBuildpackRequest request = new CreatesAdminBuildpackRequest();
+
+            request.Name = "Golang_buildpack";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

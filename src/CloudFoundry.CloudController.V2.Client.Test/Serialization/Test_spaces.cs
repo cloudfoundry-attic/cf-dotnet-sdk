@@ -28,17 +28,41 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestCreateSpaceRequest()
+        public void TestAssociateManagerWithSpaceByUsernameRequest()
         {
             string json = @"{
-  ""name"": ""development"",
-  ""organization_guid"": ""9e56d5e5-95bf-40a0-bf7c-8ebc278f2bf4""
+  ""username"": ""user@example.com""
 }";
 
-            CreateSpaceRequest request = new CreateSpaceRequest();
+            AssociateManagerWithSpaceByUsernameRequest request = new AssociateManagerWithSpaceByUsernameRequest();
 
-            request.Name = "development";
-            request.OrganizationGuid = new Guid("9e56d5e5-95bf-40a0-bf7c-8ebc278f2bf4");
+            request.Username = "user@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestAssociateDeveloperWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""user@example.com""
+}";
+
+            AssociateDeveloperWithSpaceByUsernameRequest request = new AssociateDeveloperWithSpaceByUsernameRequest();
+
+            request.Username = "user@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestDisassociateManagerWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""manager@example.com""
+}";
+
+            DisassociateManagerWithSpaceByUsernameRequest request = new DisassociateManagerWithSpaceByUsernameRequest();
+
+            request.Username = "manager@example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -52,6 +76,60 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             UpdateSpaceRequest request = new UpdateSpaceRequest();
 
             request.Name = "New Space Name";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestDisassociateDeveloperWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""developer@example.com""
+}";
+
+            DisassociateDeveloperWithSpaceByUsernameRequest request = new DisassociateDeveloperWithSpaceByUsernameRequest();
+
+            request.Username = "developer@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestDisassociateAuditorWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""auditor@example.com""
+}";
+
+            DisassociateAuditorWithSpaceByUsernameRequest request = new DisassociateAuditorWithSpaceByUsernameRequest();
+
+            request.Username = "auditor@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestAssociateAuditorWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""user@example.com""
+}";
+
+            AssociateAuditorWithSpaceByUsernameRequest request = new AssociateAuditorWithSpaceByUsernameRequest();
+
+            request.Username = "user@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateSpaceRequest()
+        {
+            string json = @"{
+  ""name"": ""development"",
+  ""organization_guid"": ""34ed28a7-51ed-43e9-a9db-5b21a984079d""
+}";
+
+            CreateSpaceRequest request = new CreateSpaceRequest();
+
+            request.Name = "development";
+            request.OrganizationGuid = new Guid("34ed28a7-51ed-43e9-a9db-5b21a984079d");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
