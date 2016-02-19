@@ -55,48 +55,52 @@
   <ItemGroup>
     <Compile Include="BaseEndpoint.cs" />
     <Compile Include="Extensions\Apps.cs" />
+    <Compile Include="Extensions\Data\DC_StagePackageRequest.cs" />
     <Compile Include="Extensions\Packages.cs" />
     <Compile Include="Extensions\ProgressEventArgs.cs" />
     <Compile Include="CloudFoundryClient.cs" />
-    <Compile Include="Generated\AppRoutes.cs" />
-    <Compile Include="Generated\Apps.cs" />
+    <Compile Include="Generated\AppRoutesExperimental.cs" />
+    <Compile Include="Generated\AppsExperimental.cs" />
     <Compile Include="Generated\Data\DC_AssignDropletAsAppsCurrentDropletRequest.cs" />
     <Compile Include="Generated\Data\DC_AssignDropletAsAppsCurrentDropletResponse.cs" />
+    <Compile Include="Generated\Data\DC_CopyPackageResponse.cs" />
     <Compile Include="Generated\Data\DC_CreateAppRequest.cs" />
     <Compile Include="Generated\Data\DC_CreateAppResponse.cs" />
     <Compile Include="Generated\Data\DC_CreatePackageRequest.cs" />
     <Compile Include="Generated\Data\DC_CreatePackageResponse.cs" />
+    <Compile Include="Generated\Data\DC_DownloadBitsForPackageResponse.cs" />
+    <Compile Include="Generated\Data\DC_FiltersDropletsByStatesAppGuidsResponse.cs" />
     <Compile Include="Generated\Data\DC_GetAppResponse.cs" />
     <Compile Include="Generated\Data\DC_GetDropletResponse.cs" />
+    <Compile Include="Generated\Data\DC_GetEnvForAppResponse.cs" />
     <Compile Include="Generated\Data\DC_GetPackageResponse.cs" />
     <Compile Include="Generated\Data\DC_GetProcessFromAppResponse.cs" />
     <Compile Include="Generated\Data\DC_GetProcessResponse.cs" />
-    <Compile Include="Generated\Data\DC_GettingEnvOfAppResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllAppsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllDropletsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllPackagesResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllProcessesResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListAssociatedDropletsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAssociatedPackagesResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAssociatedProcessesResponse.cs" />
     <Compile Include="Generated\Data\DC_ListRoutesResponse.cs" />
+    <Compile Include="Generated\Data\DC_MapRouteRequest.cs" />
     <Compile Include="Generated\Data\DC_ScalingProcessFromItsAppRequest.cs" />
     <Compile Include="Generated\Data\DC_ScalingProcessFromItsAppResponse.cs" />
     <Compile Include="Generated\Data\DC_ScalingProcessRequest.cs" />
     <Compile Include="Generated\Data\DC_ScalingProcessResponse.cs" />
     <Compile Include="Generated\Data\DC_StagePackageRequest.cs" />
     <Compile Include="Generated\Data\DC_StagePackageResponse.cs" />
-    <Compile Include="Generated\Data\DC_StartingAppRequest.cs" />
     <Compile Include="Generated\Data\DC_StartingAppResponse.cs" />
-    <Compile Include="Generated\Data\DC_StoppingAppRequest.cs" />
     <Compile Include="Generated\Data\DC_StoppingAppResponse.cs" />
     <Compile Include="Generated\Data\DC_UnmapRouteRequest.cs" />
     <Compile Include="Generated\Data\DC_UpdateAppRequest.cs" />
     <Compile Include="Generated\Data\DC_UpdateAppResponse.cs" />
     <Compile Include="Generated\Data\DC_UpdateProcessRequest.cs" />
     <Compile Include="Generated\Data\DC_UpdateProcessResponse.cs" />
-    <Compile Include="Generated\Droplets.cs" />
-    <Compile Include="Generated\Packages.cs" />
-    <Compile Include="Generated\Processes.cs" />
+    <Compile Include="Generated\DropletsExperimental.cs" />
+    <Compile Include="Generated\PackagesExperimental.cs" />
+    <Compile Include="Generated\ProcessesExperimental.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Pagination.cs" />
     <Compile Include="PagedResponseCollection.cs" />
@@ -137,9 +141,7 @@
       <Link>cf-dotnet-sdk-dictionary.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

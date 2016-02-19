@@ -14,7 +14,7 @@ namespace CloudFoundry.CloudController.V3.Client
     using CloudFoundry.CloudController.V3.Client.Data;
     using Newtonsoft.Json;
 
-    public partial class AppsEndpoint
+    public partial class AppsExperimentalEndpoint
     {
         private const int StepCount = 8;
 
@@ -36,7 +36,9 @@ namespace CloudFoundry.CloudController.V3.Client
         /// <param name="stack">The name of the stack the app will be running on</param>
         /// <param name="buildpackGitUrl">Git URL of the buildpack</param>
         /// <param name="startApplication">True if the app should be started after upload is complete, false otherwise</param>
-        public async Task Push(Guid appGuid, string appPath, string stack, string buildpackGitUrl, bool startApplication)
+        /// <param name="diskLimit">Memory limit used to stage package</param>
+        /// <param name="memoryLimit">Disk limit used to stage package</param>
+        public async Task Push(Guid appGuid, string appPath, string stack, string buildpackGitUrl, bool startApplication, int memoryLimit, int diskLimit)
         {
             if (appPath == null)
             {
@@ -48,14 +50,14 @@ namespace CloudFoundry.CloudController.V3.Client
 
             // Step 1 - Check if application exists
             this.TriggerPushProgressEvent(usedSteps, "Checking if application exists");
-            GetAppResponse app = await this.Client.Apps.GetApp(appGuid);
+            GetAppResponse app = await this.Client.AppsExperimental.GetApp(appGuid);
 
             usedSteps += 1;
 
             // Step 2 - Create package
             CreatePackageRequest createPackage = new CreatePackageRequest();
             createPackage.Type = "bits";
-            CreatePackageResponse packageResponse = await this.Client.Packages.CreatePackage(appGuid, createPackage);
+            CreatePackageResponse packageResponse = await this.Client.PackagesExperimental.CreatePackage(appGuid, createPackage);
 
             Guid packageId = new Guid(packageResponse.Guid.ToString());
 
@@ -80,17 +82,17 @@ namespace CloudFoundry.CloudController.V3.Client
                 // Step 4 - Upload zip to CloudFoundry ...
                 this.TriggerPushProgressEvent(usedSteps, "Uploading zip package ...");
 
-                await this.Client.Packages.UploadBits(packageId, zippedPayload);
+                await this.Client.PackagesExperimental.UploadBits(packageId, zippedPayload);
 
                 bool uploadProcessed = false;
                 while (!uploadProcessed)
                 {
-                    GetPackageResponse getPackage = await this.Client.Packages.GetPackage(packageId);
+                    GetPackageResponse getPackage = await this.Client.PackagesExperimental.GetPackage(packageId);
                     switch (getPackage.State)
                     {
                         case "FAILED":
                             {
-                                throw new Exception(string.Format(CultureInfo.InvariantCulture, "Upload failed: {0}", getPackage.Error));
+                                throw new Exception(string.Format(CultureInfo.InvariantCulture, "Upload failed: {0}", getPackage.Data["error"]));
                             }
 
                         case "READY":
@@ -115,10 +117,16 @@ namespace CloudFoundry.CloudController.V3.Client
 
             // Step 5 - Stage application
             StagePackageRequest stagePackage = new StagePackageRequest();
-            stagePackage.Stack = stack;
-            stagePackage.BuildpackGitUrl = buildpackGitUrl;
-
-            StagePackageResponse stageResponse = await this.Client.Packages.StagePackage(packageId, stagePackage);
+            stagePackage.Lifecycle = new Dictionary<string, dynamic>();
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["buildpack"] = buildpackGitUrl;
+            data["stack"] = stack;
+            stagePackage.Lifecycle["data"] = data;
+            stagePackage.Lifecycle["type"] = "buildpack";
+            stagePackage.MemoryLimit = memoryLimit;
+            stagePackage.DiskLimit = diskLimit;
+            
+            StagePackageResponse stageResponse = await this.Client.PackagesExperimental.StagePackage(packageId, stagePackage);
             if (this.CheckCancellation())
             {
                 return;
@@ -130,12 +138,12 @@ namespace CloudFoundry.CloudController.V3.Client
                 bool staged = false;
                 while (!staged)
                 {
-                    GetDropletResponse getDroplet = await this.Client.Droplets.GetDroplet(new Guid(stageResponse.Guid.ToString()));
+                    GetDropletResponse getDroplet = await this.Client.DropletsExperimental.GetDroplet(new Guid(stageResponse.Guid.ToString()));
                     switch (getDroplet.State)
                     {
                         case "FAILED":
                             {
-                                throw new Exception(string.Format(CultureInfo.InvariantCulture, "Staging failed: {0}", getDroplet.FailureReason));
+                                throw new Exception(string.Format(CultureInfo.InvariantCulture, "Staging failed: {0}", getDroplet.Error));
                             }
 
                         case "STAGED":
@@ -157,7 +165,7 @@ namespace CloudFoundry.CloudController.V3.Client
 
                 // Step 6 - Assign droplet
                 AssignDropletAsAppsCurrentDropletRequest assignRequest = new AssignDropletAsAppsCurrentDropletRequest();
-                assignRequest.DesiredDropletGuid = stageResponse.Guid.ToString();
+                assignRequest.DropletGuid = stageResponse.Guid;
                 AssignDropletAsAppsCurrentDropletResponse assignDroplet = await this.AssignDropletAsAppsCurrentDroplet(appGuid, assignRequest);
                 if (this.CheckCancellation())
                 {
@@ -166,10 +174,8 @@ namespace CloudFoundry.CloudController.V3.Client
 
                 usedSteps += 1;
 
-                // Step 7 - Start Application
-                StartingAppRequest startApp = new StartingAppRequest();
-
-                StartingAppResponse response = await this.Client.Apps.StartingApp(appGuid, startApp);
+                // Step 7 - Start Application                
+                StartingAppResponse response = await this.Client.AppsExperimental.StartingApp(appGuid);
                 if (this.CheckCancellation())
                 {
                     return;

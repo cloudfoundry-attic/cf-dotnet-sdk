@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.CreateUser()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/users/creating_a_user.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/users/creating_a_user.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateUserRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateUserRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.CreateUser()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/users/creating_a_user.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/users/creating_a_user.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateUserRequest
@@ -43,7 +43,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The UAA guid of the user to create.</para>
         /// </summary>
         [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
-        public string Guid
+        public Guid? Guid
         {
             get;
             set;

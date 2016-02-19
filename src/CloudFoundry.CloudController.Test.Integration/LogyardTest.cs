@@ -68,6 +68,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             apprequest = new CreateAppRequest();
             apprequest.Name = "logTest" + Guid.NewGuid().ToString();
+            apprequest.HealthCheckType = "none";
             apprequest.Memory = 64;
             apprequest.Instances = 1;
             apprequest.SpaceGuid = spaceGuid;

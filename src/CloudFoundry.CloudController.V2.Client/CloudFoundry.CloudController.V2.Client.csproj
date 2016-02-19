@@ -83,6 +83,7 @@
     <Compile Include="Generated\AppUsageEvents.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Blobstores.cs" />
     <Compile Include="Generated\Buildpacks.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,18 +96,26 @@
     <Compile Include="Generated\Data\DC_AssociateAuditedSpaceWithUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAuditorWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateAuditorWithOrganizationByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateAuditorWithOrganizationResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateAuditorWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateAuditorWithSpaceByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateAuditorWithSpaceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\Data\DC_AssociateBillingManagedOrganizationWithUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateBillingManagerWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateBillingManagerWithOrganizationByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateBillingManagerWithOrganizationResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateDeveloperWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateDeveloperWithSpaceByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateDeveloperWithSpaceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -116,9 +125,13 @@
     <Compile Include="Generated\Data\DC_AssociateManagedSpaceWithUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateManagerWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateManagerWithOrganizationByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateManagerWithOrganizationResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateManagerWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateManagerWithSpaceByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateManagerWithSpaceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -129,6 +142,7 @@
     <Compile Include="Generated\Data\DC_AssociateRouteWithAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateRouteWithUserProvidedServiceInstanceExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateSecurityGroupWithSpaceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,9 +155,13 @@
     <Compile Include="Generated\Data\DC_AssociateSpaceWithUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_AssociateUserWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_AssociateUserWithOrganizationByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_AssociateUserWithOrganizationResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_BindingServiceInstanceToRouteExperimentalRequest.cs" />
+    <Compile Include="Generated\Data\DC_BindingServiceInstanceToRouteExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_ChangePositionOfBuildpackRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -164,6 +182,8 @@
     </Compile>
     <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalRequest.cs" />
     <Compile Include="Generated\Data\DC_CreateDockerAppExperimentalResponse.cs" />
+    <Compile Include="Generated\Data\DC_CreateDomainOwnedByGivenOrganizationDeprecatedRequest.cs" />
+    <Compile Include="Generated\Data\DC_CreateDomainOwnedByGivenOrganizationDeprecatedResponse.cs" />
     <Compile Include="Generated\Data\DC_CreateOrganizationQuotaDefinitionRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -192,12 +212,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\Data\DC_CreatesAdminBuildpackResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_CreatesDomainOwnedByGivenOrganizationDeprecatedResponse.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\Data\DC_CreateSecurityGroupRequest.cs">
@@ -230,6 +244,8 @@
     <Compile Include="Generated\Data\DC_CreateServiceInstanceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_CreateServiceKeyRequest.cs" />
+    <Compile Include="Generated\Data\DC_CreateServiceKeyResponse.cs" />
     <Compile Include="Generated\Data\DC_CreateServicePlanDeprecatedRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -242,6 +258,8 @@
     <Compile Include="Generated\Data\DC_CreateServicePlanVisibilityResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_CreateSharedDomainDeprecatedRequest.cs" />
+    <Compile Include="Generated\Data\DC_CreateSharedDomainDeprecatedResponse.cs" />
     <Compile Include="Generated\Data\DC_CreateSharedDomainRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -260,12 +278,8 @@
     <Compile Include="Generated\Data\DC_CreateSpaceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Generated\Data\DC_CreatesSharedDomainDeprecatedRequest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_CreatesSharedDomainDeprecatedResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Generated\Data\DC_CreateStackRequest.cs" />
+    <Compile Include="Generated\Data\DC_CreateStackResponse.cs" />
     <Compile Include="Generated\Data\DC_CreateUserProvidedServiceInstanceRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -278,7 +292,22 @@
     <Compile Include="Generated\Data\DC_CreateUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_DeleteAllBlobsInBuildpackCacheBlobstoreResponse.cs" />
     <Compile Include="Generated\Data\DC_DeleteServiceInstanceResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateAuditorWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateAuditorWithOrganizationByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateAuditorWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateAuditorWithSpaceByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateBillingManagerWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateBillingManagerWithOrganizationByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateDeveloperWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateDeveloperWithSpaceByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateManagerWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateManagerWithOrganizationByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateManagerWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateManagerWithSpaceByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateUserWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_DisassociateUserWithOrganizationByUsernameResponse.cs" />
     <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -312,6 +341,7 @@
     <Compile Include="Generated\Data\DC_GetDetailedStatsForStartedAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_GetDiegoDockerFeatureFlagResponse.cs" />
     <Compile Include="Generated\Data\DC_GetEnvForAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -333,6 +363,7 @@
     <Compile Include="Generated\Data\DC_GetServiceInstanceCreationFeatureFlagResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_GetSetUserRolesFeatureFlagResponse.cs" />
     <Compile Include="Generated\Data\DC_GetSpaceSummaryResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -342,6 +373,7 @@
     <Compile Include="Generated\Data\DC_GettingContentsOfStagingEnvironmentVariableGroupResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_GetUnsetUserRolesFeatureFlagResponse.cs" />
     <Compile Include="Generated\Data\DC_GetUserOrgCreationFeatureFlagResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -435,9 +467,11 @@
     <Compile Include="Generated\Data\DC_ListAllRoutesForAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAllRoutesForServiceInstanceResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllRoutesForSpaceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAllRoutesForUserProvidedServiceInstanceResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllRoutesResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -474,6 +508,7 @@
     <Compile Include="Generated\Data\DC_ListAllServiceInstancesResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceKeysResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllServicePlansForServiceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -541,6 +576,10 @@
     <Compile Include="Generated\Data\DC_ListAppExitedEventsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAppSshAuthorizedEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListAppSshUnauthorizedEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListAppStartEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListAppStopEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAppUpdateEventsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -559,6 +598,8 @@
     <Compile Include="Generated\Data\DC_ListServiceInstanceCreateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceInstanceDeleteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceInstanceUpdateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceKeyCreateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceKeyDeleteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServicePlanCreateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServicePlanDeleteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServicePlanUpdateEventsResponse.cs" />
@@ -589,67 +630,6 @@
     </Compile>
     <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest.cs" />
     <Compile Include="Generated\Data\DC_MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveAppFromRouteResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveAuditedOrganizationFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveAuditedSpaceFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveAuditorFromOrganizationResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveAuditorFromSpaceResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveBillingManagedOrganizationFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveBillingManagerFromOrganizationResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveDeveloperFromSpaceResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveManagedOrganizationFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveManagedSpaceFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveManagerFromOrganizationResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveManagerFromSpaceResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveOrganizationFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemovePrivateDomainFromOrganizationResponse.cs" />
-    <Compile Include="Generated\Data\DC_RemoveRouteFromAppResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveSecurityGroupFromSpaceResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveServiceBindingFromAppResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveSpaceFromSecurityGroupResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveSpaceFromSpaceQuotaDefinitionResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveSpaceFromUserResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Data\DC_RemoveUserFromOrganizationResponse.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Generated\Data\DC_RestageAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -707,6 +687,7 @@
     <Compile Include="Generated\Data\DC_RetrieveServiceInstanceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_RetrieveServiceKeyResponse.cs" />
     <Compile Include="Generated\Data\DC_RetrieveServicePlanResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -737,12 +718,15 @@
     <Compile Include="Generated\Data\DC_RetrieveUserResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_RetrievingOrganizationInstanceUsageResponse.cs" />
     <Compile Include="Generated\Data\DC_RetrievingOrganizationMemoryUsageResponse.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\Data\DC_RetrievingPermissionsOnServiceInstanceResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_RetrievingRolesOfAllUsersInOrganizationResponse.cs" />
+    <Compile Include="Generated\Data\DC_RetrievingRolesOfAllUsersInSpaceResponse.cs" />
     <Compile Include="Generated\Data\DC_ReturnSecurityGroupsUsedForRunningAppsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -761,6 +745,7 @@
     <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForStagingResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_UnbindingServiceInstanceFromRouteExperimentalRequest.cs" />
     <Compile Include="Generated\Data\DC_UpdateAppRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -915,6 +900,7 @@
     <Compile Include="Generated\ServiceInstances.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\ServiceKeys.cs" />
     <Compile Include="Generated\ServicePlans.cs">
       <SubType>Code</SubType>
     </Compile>

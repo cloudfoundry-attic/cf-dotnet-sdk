@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SharedDomainsEndpoint.ListAllSharedDomains()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/shared_domains/list_all_shared_domains.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/shared_domains/list_all_shared_domains.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllSharedDomainsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllSharedDomainsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SharedDomainsEndpoint.ListAllSharedDomains()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/shared_domains/list_all_shared_domains.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/shared_domains/list_all_shared_domains.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllSharedDomainsResponse : IResponse
@@ -52,6 +52,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Router Group Guid</para>
+        /// </summary>
+        [JsonProperty("router_group_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? RouterGroupGuid
         {
             get;
             set;

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.ListAllManagedSpacesForUser()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/users/list_all_managed_spaces_for_the_user.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/users/list_all_managed_spaces_for_the_user.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllManagedSpacesForUserResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllManagedSpacesForUserResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.ListAllManagedSpacesForUser()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/users/list_all_managed_spaces_for_the_user.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/users/list_all_managed_spaces_for_the_user.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllManagedSpacesForUserResponse : IResponse
@@ -72,6 +72,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("space_quota_definition_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? SpaceQuotaDefinitionGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Allow Ssh</para>
+        /// </summary>
+        [JsonProperty("allow_ssh", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? AllowSsh
         {
             get;
             set;

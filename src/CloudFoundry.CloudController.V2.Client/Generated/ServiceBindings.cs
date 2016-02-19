@@ -52,31 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Create a Service Binding
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_bindings/create_a_service_binding.html"</para>
-        /// </summary>
-        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/service_bindings";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// List all Service Bindings
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_bindings/list_all_service_bindings.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_bindings/list_all_service_bindings.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsResponse>> ListAllServiceBindings()
         {
@@ -85,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_bindings/list_all_service_bindings.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_bindings/list_all_service_bindings.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsResponse>> ListAllServiceBindings(RequestOptions options)
         {
@@ -107,7 +84,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Binding
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_bindings/retrieve_a_particular_service_binding.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_bindings/retrieve_a_particular_service_binding.html"</para>
         /// </summary>
         public async Task<RetrieveServiceBindingResponse> RetrieveServiceBinding(Guid? guid)
         {
@@ -128,7 +105,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Binding
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/service_bindings/delete_a_particular_service_binding.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_bindings/delete_a_particular_service_binding.html"</para>
         /// </summary>
         public async Task DeleteServiceBinding(Guid? guid)
         {
@@ -145,6 +122,29 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Create a Service Binding
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_bindings/create_a_service_binding.html"</para>
+        /// </summary>
+        public async Task<CreateServiceBindingResponse> CreateServiceBinding(CreateServiceBindingRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_bindings";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Post;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateServiceBindingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

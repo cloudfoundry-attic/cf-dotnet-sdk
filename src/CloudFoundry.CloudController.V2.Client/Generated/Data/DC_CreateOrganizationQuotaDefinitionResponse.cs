@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateOrganizationQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateOrganizationQuotaDefinitionResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateOrganizationQuotaDefinitionResponse : IResponse
@@ -88,6 +88,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Total Private Domains</para>
+        /// </summary>
+        [JsonProperty("total_private_domains", NullValueHandling = NullValueHandling.Ignore)]
+        public int? TotalPrivateDomains
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Memory Limit</para>
         /// </summary>
         [JsonProperty("memory_limit", NullValueHandling = NullValueHandling.Ignore)]
@@ -112,6 +122,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("instance_memory_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? InstanceMemoryLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The App Instance Limit</para>
+        /// </summary>
+        [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public int? AppInstanceLimit
         {
             get;
             set;

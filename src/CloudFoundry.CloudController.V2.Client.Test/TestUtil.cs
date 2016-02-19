@@ -89,7 +89,7 @@ namespace CloudFoundry.CloudController.V2
                 {
                     results.Add(GetJsonArray(x.ToString()));
                 }
-                else if (x is JValue)
+                else
                 {
                     results.Add(x);
                 }

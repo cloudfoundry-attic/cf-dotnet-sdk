@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.CreateServiceDeprecated()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/services/creating_a_service_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/services/creating_a_service_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateServiceDeprecatedRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceDeprecatedRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.CreateServiceDeprecated()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/services/creating_a_service_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/services/creating_a_service_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateServiceDeprecatedRequest
@@ -190,7 +190,9 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>A list of dependencies for services</para>
+        /// <para>A list of dependencies for services. The presence of "syslog_drain" indicates that on binding an instance of the service to an application,</para>
+        /// <para>logs for the app will be streamed to a url provided by the service. The presence of "route_forwarding" indicates that on binding an instance of the</para>
+        /// <para>service to a route, requests for the route may be processed by the service before being forwarded to an application mapped to the route.</para>
         /// </summary>
         [JsonProperty("requires", NullValueHandling = NullValueHandling.Ignore)]
         public string Requires

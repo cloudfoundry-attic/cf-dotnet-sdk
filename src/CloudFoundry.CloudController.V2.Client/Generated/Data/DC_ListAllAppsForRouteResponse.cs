@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.ListAllAppsForRoute()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/list_all_apps_for_the_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/list_all_apps_for_the_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllAppsForRouteResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllAppsForRouteResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.ListAllAppsForRoute()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/routes/list_all_apps_for_the_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/routes/list_all_apps_for_the_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllAppsForRouteResponse : IResponse
@@ -248,6 +248,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Staging Failed Description</para>
+        /// </summary>
+        [JsonProperty("staging_failed_description", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic StagingFailedDescription
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Diego</para>
         /// </summary>
         [JsonProperty("diego", NullValueHandling = NullValueHandling.Ignore)]
@@ -282,6 +292,36 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("detected_start_command", NullValueHandling = NullValueHandling.Ignore)]
         public string DetectedStartCommand
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Enable Ssh</para>
+        /// </summary>
+        [JsonProperty("enable_ssh", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EnableSsh
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Docker Credentials Json</para>
+        /// </summary>
+        [JsonProperty("docker_credentials_json", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, dynamic> DockerCredentialsJson
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Ports</para>
+        /// </summary>
+        [JsonProperty("ports", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic Ports
         {
             get;
             set;

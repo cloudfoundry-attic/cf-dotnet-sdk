@@ -390,7 +390,7 @@ namespace CloudFoundry.CloudController.Test.Integration
                     {
                         if (e.Name == "content.bin")
                         {
-                            using (var stream = arch.Entries.First().Open())
+                            using (var stream = e.Open())
                             {
                                 SHA1Managed sha = new SHA1Managed();
                                 serverBinContentSha1 = BitConverter.ToString(sha.ComputeHash(stream)).Replace("-", string.Empty).ToLowerInvariant();

@@ -52,9 +52,55 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Getting the contents of the running environment variable group
+        /// <para>returns the set of default environment variables available to running apps</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/environment_variable_groups/getting_the_contents_of_the_running_environment_variable_group.html"</para>
+        /// </summary>
+        public async Task<GettingContentsOfRunningEnvironmentVariableGroupResponse> GettingContentsOfRunningEnvironmentVariableGroup()
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/config/environment_variable_groups/running";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Updating the contents of the staging environment variable group
+        /// <para>Updates the set of environment variables which will be made available during staging</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/environment_variable_groups/updating_the_contents_of_the_staging_environment_variable_group.html"</para>
+        /// </summary>
+        public async Task<UpdateContentsOfStagingEnvironmentVariableGroupResponse> UpdateContentsOfStagingEnvironmentVariableGroup(UpdateContentsOfStagingEnvironmentVariableGroupRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/config/environment_variable_groups/staging";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateContentsOfStagingEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Updating the contents of the running environment variable group
         /// <para>Updates the set of environment variables which will be made available to all running apps</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/environment_variable_groups/updating_the_contents_of_the_running_environment_variable_group.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/environment_variable_groups/updating_the_contents_of_the_running_environment_variable_group.html"</para>
         /// </summary>
         public async Task<UpdateContentsOfRunningEnvironmentVariableGroupResponse> UpdateContentsOfRunningEnvironmentVariableGroup(UpdateContentsOfRunningEnvironmentVariableGroupRequest value)
         {
@@ -78,7 +124,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <summary>
         /// Getting the contents of the staging environment variable group
         /// <para>returns the set of default environment variables available during staging</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/environment_variable_groups/getting_the_contents_of_the_staging_environment_variable_group.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/environment_variable_groups/getting_the_contents_of_the_staging_environment_variable_group.html"</para>
         /// </summary>
         public async Task<GettingContentsOfStagingEnvironmentVariableGroupResponse> GettingContentsOfStagingEnvironmentVariableGroup()
         {
@@ -95,52 +141,6 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<GettingContentsOfStagingEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Updating the contents of the staging environment variable group
-        /// <para>Updates the set of environment variables which will be made available during staging</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/environment_variable_groups/updating_the_contents_of_the_staging_environment_variable_group.html"</para>
-        /// </summary>
-        public async Task<UpdateContentsOfStagingEnvironmentVariableGroupResponse> UpdateContentsOfStagingEnvironmentVariableGroup(UpdateContentsOfStagingEnvironmentVariableGroupRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/config/environment_variable_groups/staging";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateContentsOfStagingEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Getting the contents of the running environment variable group
-        /// <para>returns the set of default environment variables available to running apps</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/environment_variable_groups/getting_the_contents_of_the_running_environment_variable_group.html"</para>
-        /// </summary>
-        public async Task<GettingContentsOfRunningEnvironmentVariableGroupResponse> GettingContentsOfRunningEnvironmentVariableGroup()
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/config/environment_variable_groups/running";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GettingContentsOfRunningEnvironmentVariableGroupResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

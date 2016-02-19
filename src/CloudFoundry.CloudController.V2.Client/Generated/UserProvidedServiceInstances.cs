@@ -52,8 +52,29 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Retrieve a Particular User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/retrieve_a_particular_user_provided_service_instance.html"</para>
+        /// </summary>
+        public async Task<RetrieveUserProvidedServiceInstanceResponse> RetrieveUserProvidedServiceInstance(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Updating a User Provided Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task<UpdateUserProvidedServiceInstanceResponse> UpdateUserProvidedServiceInstance(Guid? guid, UpdateUserProvidedServiceInstanceRequest value)
         {
@@ -76,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular User Provided Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/delete_a_particular_user_provided_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/delete_a_particular_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task DeleteUserProvidedServiceInstance(Guid? guid)
         {
@@ -96,8 +117,122 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Remove Route from the User Provided Service Instance (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/remove_route_from_the_user_provided_service_instance_(experimental).html"</para>
+        /// </summary>
+        public async Task RemoveRouteFromUserProvidedServiceInstanceExperimental(Guid? guid, Guid? route_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instance/{0}/routes/{1}", guid, route_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// List all Routes for the User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/list_all_routes_for_the_user_provided_service_instance.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllRoutesForUserProvidedServiceInstanceResponse>> ListAllRoutesForUserProvidedServiceInstance(Guid? guid)
+        {
+            return await ListAllRoutesForUserProvidedServiceInstance(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Routes for the User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/list_all_routes_for_the_user_provided_service_instance.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllRoutesForUserProvidedServiceInstanceResponse>> ListAllRoutesForUserProvidedServiceInstance(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}/routes", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllRoutesForUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all User Provided Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/list_all_user_provided_service_instances.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances()
+        {
+            return await ListAllUserProvidedServiceInstances(new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all User Provided Service Instances
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/list_all_user_provided_service_instances.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances(RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/user_provided_service_instances";
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllUserProvidedServiceInstancesResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Service Bindings for the User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/list_all_service_bindings_for_the_user_provided_service_instance.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid)
+        {
+            return await ListAllServiceBindingsForUserProvidedServiceInstance(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Service Bindings for the User Provided Service Instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/list_all_service_bindings_for_the_user_provided_service_instance.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}/service_bindings", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
         /// Creating a User Provided Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/creating_a_user_provided_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/creating_a_user_provided_service_instance.html"</para>
         /// </summary>
         public async Task<CreateUserProvidedServiceInstanceResponse> CreateUserProvidedServiceInstance(CreateUserProvidedServiceInstanceRequest value)
         {
@@ -119,86 +254,25 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// List all User Provided Service Instances
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/list_all_user_provided_service_instances.html"</para>
+        /// Associate Route with the User Provided Service Instance (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/associate_route_with_the_user_provided_service_instance_(experimental).html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances()
-        {
-            return await ListAllUserProvidedServiceInstances(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all User Provided Service Instances
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/list_all_user_provided_service_instances.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllUserProvidedServiceInstancesResponse>> ListAllUserProvidedServiceInstances(RequestOptions options)
+        public async Task<AssociateRouteWithUserProvidedServiceInstanceExperimentalResponse> AssociateRouteWithUserProvidedServiceInstanceExperimental(Guid? guid, Guid? route_guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/user_provided_service_instances";
-            uriBuilder.Query = options.ToString();
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}/routes/{1}", guid, route_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllUserProvidedServiceInstancesResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Retrieve a Particular User Provided Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/retrieve_a_particular_user_provided_service_instance.html"</para>
-        /// </summary>
-        public async Task<RetrieveUserProvidedServiceInstanceResponse> RetrieveUserProvidedServiceInstance(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Service Bindings for the User Provided Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/list_all_service_bindings_for_the_user_provided_service_instance.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid)
-        {
-            return await ListAllServiceBindingsForUserProvidedServiceInstance(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Service Bindings for the User Provided Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/user_provided_service_instances/list_all_service_bindings_for_the_user_provided_service_instance.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>> ListAllServiceBindingsForUserProvidedServiceInstance(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/user_provided_service_instances/{0}/service_bindings", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceBindingsForUserProvidedServiceInstanceResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializeJson<AssociateRouteWithUserProvidedServiceInstanceExperimentalResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetUserOrgCreationFeatureFlag()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/feature_flags/get_the_user_org_creation_feature_flag.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/feature_flags/get_the_user_org_creation_feature_flag.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetUserOrgCreationFeatureFlagResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetUserOrgCreationFeatureFlagResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetUserOrgCreationFeatureFlag()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/feature_flags/get_the_user_org_creation_feature_flag.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/feature_flags/get_the_user_org_creation_feature_flag.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetUserOrgCreationFeatureFlagResponse : IResponse

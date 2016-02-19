@@ -27,5 +27,17 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     public class StacksTest
     {
 
+        [TestMethod]
+        public void TestCreateStackRequest()
+        {
+            string json = @"{""name"":""example_stack"",""description"":""Description for the example stack""}";
+
+            CreateStackRequest request = new CreateStackRequest();
+
+            request.Name = "example_stack";
+            request.Description = "Description for the example stack";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
     }
 }

@@ -90,6 +90,7 @@
     <Compile Include="Authentication\Test_UAAClient.cs" />
     <Compile Include="Deserialization\Test_apps.cs" />
     <Compile Include="Deserialization\Test_app_usage_events.cs" />
+    <Compile Include="Deserialization\Test_blobstores.cs" />
     <Compile Include="Deserialization\Test_buildpacks.cs" />
     <Compile Include="Deserialization\Test_domains__deprecated_.cs" />
     <Compile Include="Deserialization\Test_environment_variable_groups.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Deserialization\Test_service_bindings.cs" />
     <Compile Include="Deserialization\Test_service_brokers.cs" />
     <Compile Include="Deserialization\Test_service_instances.cs" />
+    <Compile Include="Deserialization\Test_service_keys.cs" />
     <Compile Include="Deserialization\Test_service_plans.cs" />
     <Compile Include="Deserialization\Test_service_plan_visibilities.cs" />
     <Compile Include="Deserialization\Test_service_usage_events.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Exceptions\Test_CloudFoundryException.cs" />
     <Compile Include="Fake\Test_apps.cs" />
     <Compile Include="Fake\Test_app_usage_events.cs" />
+    <Compile Include="Fake\Test_blobstores.cs" />
     <Compile Include="Fake\Test_buildpacks.cs" />
     <Compile Include="Fake\Test_domains__deprecated_.cs" />
     <Compile Include="Fake\Test_environment_variable_groups.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="Fake\Test_service_bindings.cs" />
     <Compile Include="Fake\Test_service_brokers.cs" />
     <Compile Include="Fake\Test_service_instances.cs" />
+    <Compile Include="Fake\Test_service_keys.cs" />
     <Compile Include="Fake\Test_service_plans.cs" />
     <Compile Include="Fake\Test_service_plan_visibilities.cs" />
     <Compile Include="Fake\Test_service_usage_events.cs" />
@@ -165,6 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Test_apps.cs" />
     <Compile Include="Serialization\Test_app_usage_events.cs" />
+    <Compile Include="Serialization\Test_blobstores.cs" />
     <Compile Include="Serialization\Test_buildpacks.cs" />
     <Compile Include="Serialization\Test_domains__deprecated_.cs" />
     <Compile Include="Serialization\Test_environment_variable_groups.cs" />
@@ -186,6 +191,7 @@
     <Compile Include="Serialization\Test_service_bindings.cs" />
     <Compile Include="Serialization\Test_service_brokers.cs" />
     <Compile Include="Serialization\Test_service_instances.cs" />
+    <Compile Include="Serialization\Test_service_keys.cs" />
     <Compile Include="Serialization\Test_service_plans.cs" />
     <Compile Include="Serialization\Test_service_plan_visibilities.cs" />
     <Compile Include="Serialization\Test_service_usage_events.cs" />

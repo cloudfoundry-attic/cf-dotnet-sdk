@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.InfoEndpoint.GetInfo()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/info/get_info.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/info/get_info.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetInfoResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetInfoResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.InfoEndpoint.GetInfo()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/info/get_info.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/info/get_info.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetInfoResponse : IResponse
@@ -142,6 +142,46 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("api_version", NullValueHandling = NullValueHandling.Ignore)]
         public string ApiVersion
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The App Ssh Endpoint</para>
+        /// </summary>
+        [JsonProperty("app_ssh_endpoint", NullValueHandling = NullValueHandling.Ignore)]
+        public string AppSshEndpoint
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The App Ssh Host Key Fingerprint</para>
+        /// </summary>
+        [JsonProperty("app_ssh_host_key_fingerprint", NullValueHandling = NullValueHandling.Ignore)]
+        public string AppSshHostKeyFingerprint
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The App Ssh Oauth Client</para>
+        /// </summary>
+        [JsonProperty("app_ssh_oauth_client", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic AppSshOauthClient
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Routing Endpoint</para>
+        /// </summary>
+        [JsonProperty("routing_endpoint", NullValueHandling = NullValueHandling.Ignore)]
+        public string RoutingEndpoint
         {
             get;
             set;

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateOrganizationQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateOrganizationQuotaDefinitionRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateOrganizationQuotaDefinitionRequest
@@ -94,6 +94,26 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("instance_memory_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? InstanceMemoryLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>How many app instances an organization can create. (-1 represents an unlimited amount)</para>
+        /// </summary>
+        [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public int? AppInstanceLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>How many private domains an organization can have. (-1 represents an unlimited amount)</para>
+        /// </summary>
+        [JsonProperty("total_private_domains", NullValueHandling = NullValueHandling.Ignore)]
+        public string TotalPrivateDomains
         {
             get;
             set;

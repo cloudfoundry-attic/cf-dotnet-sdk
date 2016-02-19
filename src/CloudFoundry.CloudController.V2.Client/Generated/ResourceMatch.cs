@@ -53,7 +53,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all matching resources
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/205/resource_match/list_all_matching_resources.html"</para>
+        /// <para>This endpoint matches given resource SHA / file size pairs against the Cloud Controller cache,</para>
+        /// <para>and reports the subset which describes already existing files.</para>
+        /// <para>This is usually used to avoid uploading duplicate files when</para>
+        /// <para>pushing an app which has only been partially changed.</para>
+        /// <para>Cloud Foundry operators may set minimum / maximum file sizes to match against.</para>
+        /// <para>If the file size provided is outside this range, it will not be matched against.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/resource_match/list_all_matching_resources.html"</para>
         /// </summary>
         public async Task<ListAllMatchingResourcesResponse[]> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value)
         {

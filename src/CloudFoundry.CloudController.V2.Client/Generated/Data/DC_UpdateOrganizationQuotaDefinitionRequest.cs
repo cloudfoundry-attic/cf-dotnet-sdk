@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.UpdateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateOrganizationQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateOrganizationQuotaDefinitionRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.UpdateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/205/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateOrganizationQuotaDefinitionRequest
@@ -80,6 +80,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>How many private domains an organization can have. (-1 represents an unlimited amount)</para>
+        /// </summary>
+        [JsonProperty("total_private_domains", NullValueHandling = NullValueHandling.Ignore)]
+        public string TotalPrivateDomains
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>How much memory in megabyte an organization can have.</para>
         /// </summary>
         [JsonProperty("memory_limit", NullValueHandling = NullValueHandling.Ignore)]
@@ -104,6 +114,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("trial_db_allowed", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic TrialDbAllowed
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>How many app instances an organization can create. (-1 represents an unlimited amount)</para>
+        /// </summary>
+        [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public string AppInstanceLimit
         {
             get;
             set;
