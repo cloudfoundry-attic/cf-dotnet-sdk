@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.UploadsBitsForApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/uploads_the_bits_for_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/uploads_the_bits_for_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UploadsBitsForAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUploadsBitsForAppResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.UploadsBitsForApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/uploads_the_bits_for_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/uploads_the_bits_for_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUploadsBitsForAppResponse : IResponse

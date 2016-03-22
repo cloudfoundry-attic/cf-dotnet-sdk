@@ -97,14 +97,6 @@ namespace CloudFoundry.CloudController.V3.Client
         public AppsExperimentalEndpoint AppsExperimental { get; private set; }
 
         /// <summary>
-        /// Gets the app routes endpoint.
-        /// </summary>
-        /// <value>
-        /// The app routes endpoint.
-        /// </value>
-        public AppRoutesExperimentalEndpoint AppRoutesExperimental { get; private set; }
-
-        /// <summary>
         /// Gets the droplets endpoint.
         /// </summary>
         /// <value>
@@ -248,7 +240,6 @@ namespace CloudFoundry.CloudController.V3.Client
         public override void InitEndpoints()
         {
             this.AppsExperimental = new AppsExperimentalEndpoint(this);
-            this.AppRoutesExperimental = new AppRoutesExperimentalEndpoint(this);
             this.DropletsExperimental = new DropletsExperimentalEndpoint(this);
             this.PackagesExperimental = new PackagesExperimentalEndpoint(this);
             this.ProcessesExperimental = new ProcessesExperimentalEndpoint(this);

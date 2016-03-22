@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppRoutesExperimentalEndpoint.ListRoutes()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/app_routes__experimental_/list_routes.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.CreateDockerApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/create_a_docker_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class ListRoutesResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractListRoutesResponse
+    public partial class CreateDockerAppResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractCreateDockerAppResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppRoutesExperimentalEndpoint.ListRoutes()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/app_routes__experimental_/list_routes.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.CreateDockerApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/create_a_docker_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractListRoutesResponse
+    public abstract class AbstractCreateDockerAppResponse
     {
 
         /// <summary> 
@@ -50,20 +50,30 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Host</para>
+        /// <para>The Name</para>
         /// </summary>
-        [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
-        public string Host
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        public string Name
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Path</para>
+        /// <para>The Desired State</para>
         /// </summary>
-        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
-        public string Path
+        [JsonProperty("desired_state", NullValueHandling = NullValueHandling.Ignore)]
+        public string DesiredState
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Total Desired Instances</para>
+        /// </summary>
+        [JsonProperty("total_desired_instances", NullValueHandling = NullValueHandling.Ignore)]
+        public int? TotalDesiredInstances
         {
             get;
             set;
@@ -84,6 +94,26 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         /// </summary>
         [JsonProperty("updated_at", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic UpdatedAt
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Lifecycle</para>
+        /// </summary>
+        [JsonProperty("lifecycle", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, dynamic> Lifecycle
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Environment Variables</para>
+        /// </summary>
+        [JsonProperty("environment_variables", NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, dynamic> EnvironmentVariables
         {
             get;
             set;

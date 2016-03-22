@@ -42,7 +42,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
   ""token_endpoint"": ""http://localhost:8080/uaa"",
   ""min_cli_version"": null,
   ""min_recommended_cli_version"": null,
-  ""api_version"": ""2.42.0"",
+  ""api_version"": ""2.51.0"",
   ""app_ssh_endpoint"": ""ssh.system.domain.example.com:2222"",
   ""app_ssh_host_key_fingerprint"": ""47:0d:d1:c8:c3:3d:0a:36:d1:49:2f:f2:90:27:31:d0"",
   ""app_ssh_oauth_client"": null,
@@ -67,7 +67,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("http://localhost:8080/uaa", TestUtil.ToTestableString(obj.TokenEndpoint), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.MinCliVersion), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.MinRecommendedCliVersion), true);
-                Assert.AreEqual("2.42.0", TestUtil.ToTestableString(obj.ApiVersion), true);
+                Assert.AreEqual("2.51.0", TestUtil.ToTestableString(obj.ApiVersion), true);
                 Assert.AreEqual("ssh.system.domain.example.com:2222", TestUtil.ToTestableString(obj.AppSshEndpoint), true);
                 Assert.AreEqual("47:0d:d1:c8:c3:3d:0a:36:d1:49:2f:f2:90:27:31:d0", TestUtil.ToTestableString(obj.AppSshHostKeyFingerprint), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.AppSshOauthClient), true);

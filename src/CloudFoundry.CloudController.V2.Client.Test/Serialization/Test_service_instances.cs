@@ -28,12 +28,28 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestBindingServiceInstanceToRouteRequest()
+        {
+            string json = @"{
+  ""parameters"": {
+    ""the_service_broker"": ""wants this object""
+  }
+}";
+
+            BindingServiceInstanceToRouteRequest request = new BindingServiceInstanceToRouteRequest();
+
+            request.Parameters = TestUtil.GetJsonDictonary(@"{""the_service_broker"":""wants this object""}");
+
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateServiceInstanceRequest()
         {
             string json = @"{
-  ""space_guid"": ""d85d743e-3d31-4e3d-90e7-40730de997ac"",
+  ""space_guid"": ""bf327d94-2d1e-4f36-abc4-b830426f5bda"",
   ""name"": ""my-service-instance"",
-  ""service_plan_guid"": ""d85d743e-3d31-4e3d-90e7-40730de997ac"",
+  ""service_plan_guid"": ""bf327d94-2d1e-4f36-abc4-b830426f5bda"",
   ""parameters"": {
     ""the_service_broker"": ""wants this object""
   },
@@ -45,9 +61,9 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             CreateServiceInstanceRequest request = new CreateServiceInstanceRequest();
 
-            request.SpaceGuid = new Guid("d85d743e-3d31-4e3d-90e7-40730de997ac");
+            request.SpaceGuid = new Guid("bf327d94-2d1e-4f36-abc4-b830426f5bda");
             request.Name = "my-service-instance";
-            request.ServicePlanGuid = new Guid("d85d743e-3d31-4e3d-90e7-40730de997ac");
+            request.ServicePlanGuid = new Guid("bf327d94-2d1e-4f36-abc4-b830426f5bda");
             request.Parameters = TestUtil.GetJsonDictonary(@"{""the_service_broker"":""wants this object""}");
 
             request.Tags = Array.ConvertAll(TestUtil.GetJsonArray(@"[""accounting"",""mongodb""]"), (p => p.ToString()));
@@ -56,24 +72,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestMigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest()
-        {
-            string json = @"{""service_plan_guid"":""7b79957d-3f22-4415-956b-6a23b675a25b""}";
-
-            MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest request = new MigrateServiceInstancesFromOneServicePlanToAnotherServicePlanExperimentalRequest();
-
-            request.ServicePlanGuid = new Guid("7b79957d-3f22-4415-956b-6a23b675a25b");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestUpdateServiceInstanceRequest()
         {
-            string json = @"{""service_plan_guid"":""25ca79d7-2548-4915-bd21-4950ed0f619c"",""parameters"":{""the_service_broker"":""wants this object""}}";
+            string json = @"{""service_plan_guid"":""188d12ec-02af-4421-8009-a2745251b035"",""parameters"":{""the_service_broker"":""wants this object""}}";
 
             UpdateServiceInstanceRequest request = new UpdateServiceInstanceRequest();
 
-            request.ServicePlanGuid = new Guid("25ca79d7-2548-4915-bd21-4950ed0f619c");
+            request.ServicePlanGuid = new Guid("188d12ec-02af-4421-8009-a2745251b035");
             request.Parameters = TestUtil.GetJsonDictonary(@"{""the_service_broker"":""wants this object""}");
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);

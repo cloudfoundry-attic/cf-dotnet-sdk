@@ -26,6 +26,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
+        public void TestGetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse()
+        {
+            string json = @"{
+  ""name"": ""space_scoped_private_broker_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
+}";
+
+            GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse obj = Utilities.DeserializeJson<GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse>(json);
+
+            Assert.AreEqual("space_scoped_private_broker_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
         public void TestGetUserOrgCreationFeatureFlagResponse()
         {
             string json = @"{
@@ -244,6 +262,18 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     ""enabled"": true,
     ""error_message"": null,
     ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
+  },
+  {
+    ""name"": ""task_creation"",
+    ""enabled"": false,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/task_creation""
+  },
+  {
+    ""name"": ""space_scoped_private_broker_creation"",
+    ""enabled"": true,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
   }
 ]";
 
@@ -285,6 +315,14 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("true", TestUtil.ToTestableString(obj[8].Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj[8].ErrorMessage), true);
             Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj[8].Url), true);
+            Assert.AreEqual("task_creation", TestUtil.ToTestableString(obj[9].Name), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj[9].Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj[9].ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/task_creation", TestUtil.ToTestableString(obj[9].Url), true);
+            Assert.AreEqual("space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj[10].Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj[10].ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Url), true);
         }
 
         [TestMethod]
@@ -303,6 +341,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
             Assert.AreEqual("/v2/config/feature_flags/service_instance_creation", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetTaskCreationFeatureFlagExperimentalResponse()
+        {
+            string json = @"{
+  ""name"": ""task_creation"",
+  ""enabled"": false,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/task_creation""
+}";
+
+            GetTaskCreationFeatureFlagExperimentalResponse obj = Utilities.DeserializeJson<GetTaskCreationFeatureFlagExperimentalResponse>(json);
+
+            Assert.AreEqual("task_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/task_creation", TestUtil.ToTestableString(obj.Url), true);
         }
     }
 }

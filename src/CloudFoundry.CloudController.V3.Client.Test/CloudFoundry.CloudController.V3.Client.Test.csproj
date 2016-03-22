@@ -82,9 +82,6 @@
     <Compile Include="Deserialization\Test_apps__experimental_.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Deserialization\Test_app_routes__experimental_.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Deserialization\Test_droplets__experimental_.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,9 +92,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Fake\Test_apps__experimental_.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Fake\Test_app_routes__experimental_.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Fake\Test_droplets__experimental_.cs">
@@ -112,7 +106,6 @@
     <Compile Include="MockClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Test_apps__experimental_.cs" />
-    <Compile Include="Serialization\Test_app_routes__experimental_.cs" />
     <Compile Include="Serialization\Test_droplets__experimental_.cs" />
     <Compile Include="Serialization\Test_packages__experimental_.cs" />
     <Compile Include="Serialization\Test_processes__experimental_.cs" />

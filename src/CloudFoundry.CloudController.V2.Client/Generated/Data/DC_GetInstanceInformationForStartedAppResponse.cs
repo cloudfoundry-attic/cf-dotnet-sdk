@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetInstanceInformationForStartedApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/get_the_instance_information_for_a_started_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/get_the_instance_information_for_a_started_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetInstanceInformationForStartedAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetInstanceInformationForStartedAppResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetInstanceInformationForStartedApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/get_the_instance_information_for_a_started_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/get_the_instance_information_for_a_started_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetInstanceInformationForStartedAppResponse : IResponse
@@ -68,40 +68,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Debug Ip</para>
+        /// <para>The Uptime</para>
         /// </summary>
-        [JsonProperty("debug_ip", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic DebugIp
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Debug Port</para>
-        /// </summary>
-        [JsonProperty("debug_port", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic DebugPort
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Console Ip</para>
-        /// </summary>
-        [JsonProperty("console_ip", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic ConsoleIp
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Console Port</para>
-        /// </summary>
-        [JsonProperty("console_port", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic ConsolePort
+        [JsonProperty("uptime", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Uptime
         {
             get;
             set;

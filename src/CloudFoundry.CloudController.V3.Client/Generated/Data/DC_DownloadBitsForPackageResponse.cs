@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.DownloadBitsForPackage()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/packages__experimental_/download_the_bits_for_a_package.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/packages__experimental_/download_the_bits_for_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class DownloadBitsForPackageResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractDownloadBitsForPackageResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.DownloadBitsForPackage()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/packages__experimental_/download_the_bits_for_a_package.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/packages__experimental_/download_the_bits_for_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractDownloadBitsForPackageResponse

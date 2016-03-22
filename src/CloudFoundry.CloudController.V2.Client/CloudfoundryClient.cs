@@ -243,6 +243,14 @@ namespace CloudFoundry.CloudController.V2.Client
         public RoutesEndpoint Routes { get; private set; }
 
         /// <summary>
+        /// Gets the routes mapping endpoint.
+        /// </summary>
+        /// <value>
+        /// The routes mapping endpoint.
+        /// </value>
+        public RoutesMappingEndpoint RoutesMapping { get; private set; }
+
+        /// <summary>
         /// Gets the security group running defaults endpoint.
         /// </summary>
         /// <value>
@@ -265,16 +273,6 @@ namespace CloudFoundry.CloudController.V2.Client
         /// The security group staging defaults endpoint.
         /// </value>
         public SecurityGroupStagingDefaultsEndpoint SecurityGroupStagingDefaults { get; private set; }
-
-        /// <summary>
-        /// Gets the service authentication tokens deprecated endpoint.
-        /// </summary>
-        /// <value>
-        /// The service authentication tokens deprecated endpoint.
-        /// </value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Auth",
-            Justification = "Keeping Cloud Foundry nomenclature.")]
-        public ServiceAuthTokensDeprecatedEndpoint ServiceAuthTokensDeprecated { get; private set; }
 
         /// <summary>
         /// Gets the service bindings endpoint.
@@ -495,10 +493,10 @@ namespace CloudFoundry.CloudController.V2.Client
             this.PrivateDomains = new PrivateDomainsEndpoint(this);
             this.ResourceMatch = new ResourceMatchEndpoint(this);
             this.Routes = new RoutesEndpoint(this);
+            this.RoutesMapping = new RoutesMappingEndpoint(this);
             this.SecurityGroupRunningDefaults = new SecurityGroupRunningDefaultsEndpoint(this);
             this.SecurityGroups = new SecurityGroupsEndpoint(this);
             this.SecurityGroupStagingDefaults = new SecurityGroupStagingDefaultsEndpoint(this);
-            this.ServiceAuthTokensDeprecated = new ServiceAuthTokensDeprecatedEndpoint(this);
             this.ServiceBindings = new ServiceBindingsEndpoint(this);
             this.ServiceBrokers = new ServiceBrokersEndpoint(this);
             this.ServiceInstances = new ServiceInstancesEndpoint(this);

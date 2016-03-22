@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.StagePackage()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/packages__experimental_/stage_a_package.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/packages__experimental_/stage_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class StagePackageRequest : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractStagePackageRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.StagePackage()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/packages__experimental_/stage_a_package.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/packages__experimental_/stage_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractStagePackageRequest
@@ -51,7 +51,8 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>Lifecycle information for a droplet.  If not provided, it will default to a buildpack</para>
+        /// <para>Lifecycle information for a droplet.  If not provided, it will default to what is specified on the app.</para>
+        /// <para>If the app does not have lifecycle information, it will default to a buildpack</para>
         /// </summary>
         [JsonProperty("lifecycle", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> Lifecycle

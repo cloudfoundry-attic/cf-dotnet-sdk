@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
 
     /// <inheritdoc/>
-    public partial class UpdateServiceDeprecatedResponse
+    public partial class UpdateServicePlanResponse
     {
         /// <inheritdoc/>
         [JsonProperty("unique_id", NullValueHandling = NullValueHandling.Ignore)]

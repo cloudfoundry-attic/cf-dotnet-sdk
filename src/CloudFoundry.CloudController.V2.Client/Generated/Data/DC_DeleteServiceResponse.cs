@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceAuthTokensDeprecatedEndpoint.RetrieveServiceAuthTokenDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/serviceauthtokens__deprecated_/retrieve_a_particular_service_auth_token_(deprecated).html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.DeleteService()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/services/delete_a_particular_service.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class RetrieveServiceAuthTokenDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveServiceAuthTokenDeprecatedResponse
+    public partial class DeleteServiceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractDeleteServiceResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceAuthTokensDeprecatedEndpoint.RetrieveServiceAuthTokenDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/serviceauthtokens__deprecated_/retrieve_a_particular_service_auth_token_(deprecated).html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.DeleteService()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/services/delete_a_particular_service.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractRetrieveServiceAuthTokenDeprecatedResponse : IResponse
+    public abstract class AbstractDeleteServiceResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -48,20 +48,20 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Label</para>
+        /// <para>The Guid</para>
         /// </summary>
-        [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
-        public string Label
+        [JsonProperty("guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? Guid
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Provider</para>
+        /// <para>The Status</para>
         /// </summary>
-        [JsonProperty("provider", NullValueHandling = NullValueHandling.Ignore)]
-        public string Provider
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public string Status
         {
             get;
             set;

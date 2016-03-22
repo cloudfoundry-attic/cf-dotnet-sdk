@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Droplets
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/droplets__experimental_/list_all_droplets.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/droplets__experimental_/list_all_droplets.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDropletsResponse>> ListAllDroplets()
         {
@@ -62,7 +62,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Droplets
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/droplets__experimental_/list_all_droplets.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/droplets__experimental_/list_all_droplets.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDropletsResponse>> ListAllDroplets(RequestOptions options)
         {
@@ -84,7 +84,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Filters Droplets by states, app_guids
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/droplets__experimental_/filters_droplets_by_states,_app_guids.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/droplets__experimental_/filters_droplets_by_states,_app_guids.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<FiltersDropletsByStatesAppGuidsResponse>> FiltersDropletsByStatesAppGuids()
         {
@@ -93,7 +93,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Filters Droplets by states, app_guids
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/droplets__experimental_/filters_droplets_by_states,_app_guids.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/droplets__experimental_/filters_droplets_by_states,_app_guids.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<FiltersDropletsByStatesAppGuidsResponse>> FiltersDropletsByStatesAppGuids(RequestOptions options)
         {
@@ -115,7 +115,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Get a Droplet
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/droplets__experimental_/get_a_droplet.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/droplets__experimental_/get_a_droplet.html"</para>
         /// </summary>
         public async Task<GetDropletResponse> GetDroplet(Guid? guid)
         {
@@ -136,7 +136,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Delete a Droplet
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/droplets__experimental_/delete_a_droplet.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/droplets__experimental_/delete_a_droplet.html"</para>
         /// </summary>
         public async Task DeleteDroplet(Guid? guid)
         {

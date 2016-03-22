@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.UpdateApp()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/updating_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/updating_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateAppRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateAppRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.UpdateApp()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/updating_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/updating_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateAppRequest
@@ -140,7 +140,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>Type of health check to perform.</para>
+        /// <para>Type of health check to perform. 'none' is deprecated and an alias to 'process'.</para>
         /// </summary>
         [JsonProperty("health_check_type", NullValueHandling = NullValueHandling.Ignore)]
         public string HealthCheckType
@@ -250,10 +250,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>Ports on which application may listen. Supported for applications pushed to Diego only.</para>
+        /// <para>Ports on which application may listen. Overwrites previously configured ports. Ports must be in range 1024-65535. Supported for Diego only.</para>
         /// </summary>
         [JsonProperty("ports", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Ports
+        public string Ports
         {
             get;
             set;

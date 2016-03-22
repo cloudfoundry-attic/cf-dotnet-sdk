@@ -42,6 +42,25 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   ""running_env_json"": {
     ""RUNNING_ENV"": ""running_value""
   },
+  ""system_env_json"": {
+    ""VCAP_SERVICES"": {
+      ""label-44"": [
+        {
+          ""credentials"": {
+            ""creds-key-43"": ""creds-val-43""
+          },
+          ""syslog_drain_url"": ""https://syslog.example.com/drain"",
+          ""label"": ""label-44"",
+          ""provider"": null,
+          ""plan"": ""name-1277"",
+          ""name"": ""name-1276"",
+          ""tags"": [
+            ""50% off""
+          ]
+        }
+      ]
+    }
+  },
   ""application_env_json"": {
     ""VCAP_APPLICATION"": {
       ""limits"": {
@@ -53,7 +72,7 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
       ],
       ""name"": ""app_name"",
       ""space_name"": ""some_space"",
-      ""space_id"": ""ffa46d8f-eec5-41e6-9ed7-9ea0d3dcd8fe"",
+      ""space_id"": ""90dcc0f1-3309-4f62-ba60-841e4e210ae3"",
       ""uris"": [
 
       ],
@@ -117,7 +136,7 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""resources"": [
     {
-      ""guid"": ""01fbc31d-5ca4-47db-abb8-9bfb23beb29a"",
+      ""guid"": ""9a97d7e8-b93b-4d66-88bd-b986b1b44fe0"",
       ""name"": ""my_app3"",
       ""desired_state"": ""STOPPED"",
       ""total_desired_instances"": 0,
@@ -126,8 +145,8 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-2357"",
-          ""stack"": ""name-2358""
+          ""buildpack"": ""name-1312"",
+          ""stack"": ""name-1313""
         }
       },
       ""environment_variables"": {
@@ -135,39 +154,42 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
       },
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3""
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/0b5ccfd3-57ac-41a3-9621-39380611fdc9""
+          ""href"": ""/v2/spaces/ebd69696-09b3-428b-b936-03b8c1161017""
         },
         ""processes"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/processes""
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/processes""
         },
-        ""routes"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/routes""
+        ""route_mappings"": {
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/route_mappings""
         },
         ""packages"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/packages""
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/packages""
         },
         ""droplets"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/droplets""
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/droplets""
+        },
+        ""tasks"": {
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/tasks""
         },
         ""start"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/start"",
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/start"",
           ""method"": ""PUT""
         },
         ""stop"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/stop"",
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/stop"",
           ""method"": ""PUT""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/df97f518-f7f4-45bd-8901-8fb7f9631ff3/current_droplet"",
+          ""href"": ""/v3/apps/07880487-974d-4e8c-bd1c-97ba713dcfcb/current_droplet"",
           ""method"": ""PUT""
         }
       }
     },
     {
-      ""guid"": ""01fbc31d-5ca4-47db-abb8-9bfb23beb29a"",
+      ""guid"": ""9a97d7e8-b93b-4d66-88bd-b986b1b44fe0"",
       ""name"": ""my_app2"",
       ""desired_state"": ""STOPPED"",
       ""total_desired_instances"": 0,
@@ -176,8 +198,8 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-2355"",
-          ""stack"": ""name-2356""
+          ""buildpack"": ""name-1310"",
+          ""stack"": ""name-1311""
         }
       },
       ""environment_variables"": {
@@ -185,33 +207,36 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
       },
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd""
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/0b5ccfd3-57ac-41a3-9621-39380611fdc9""
+          ""href"": ""/v2/spaces/ebd69696-09b3-428b-b936-03b8c1161017""
         },
         ""processes"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/processes""
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/processes""
         },
-        ""routes"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/routes""
+        ""route_mappings"": {
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/route_mappings""
         },
         ""packages"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/packages""
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/packages""
         },
         ""droplets"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/droplets""
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/droplets""
+        },
+        ""tasks"": {
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/tasks""
         },
         ""start"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/start"",
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/start"",
           ""method"": ""PUT""
         },
         ""stop"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/stop"",
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/stop"",
           ""method"": ""PUT""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/6e5f4efb-230b-475d-9f88-f791e53481cd/current_droplet"",
+          ""href"": ""/v3/apps/bf02195b-b127-4ef3-8537-0781177d4432/current_droplet"",
           ""method"": ""PUT""
         }
       }
@@ -226,13 +251,13 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.AppsExperimental.ListAllApps().Result;
 
-                Assert.AreEqual("01fbc31d-5ca4-47db-abb8-9bfb23beb29a", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("9a97d7e8-b93b-4d66-88bd-b986b1b44fe0", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("my_app3", TestUtil.ToTestableString(obj[0].Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj[0].DesiredState), true);
                 Assert.AreEqual("0", TestUtil.ToTestableString(obj[0].TotalDesiredInstances), true);
                 Assert.AreEqual("1970-01-01T00:00:03Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-                Assert.AreEqual("01fbc31d-5ca4-47db-abb8-9bfb23beb29a", TestUtil.ToTestableString(obj[1].Guid), true);
+                Assert.AreEqual("9a97d7e8-b93b-4d66-88bd-b986b1b44fe0", TestUtil.ToTestableString(obj[1].Guid), true);
                 Assert.AreEqual("my_app2", TestUtil.ToTestableString(obj[1].Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj[1].DesiredState), true);
                 Assert.AreEqual("0", TestUtil.ToTestableString(obj[1].TotalDesiredInstances), true);
@@ -250,17 +275,17 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""2517a9b0-da38-4c35-9143-9a40f1d00d26"",
+  ""guid"": ""27a4cadd-7876-4027-bdc8-49c9f30309dd"",
   ""name"": ""original_name"",
   ""desired_state"": ""STOPPED"",
   ""total_desired_instances"": 0,
-  ""created_at"": ""2016-02-11T13:20:57Z"",
-  ""updated_at"": ""2016-02-11T13:20:57Z"",
+  ""created_at"": ""2016-03-21T10:59:44Z"",
+  ""updated_at"": ""2016-03-21T10:59:44Z"",
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
-      ""buildpack"": ""name-2344"",
-      ""stack"": ""name-2345""
+      ""buildpack"": ""name-1299"",
+      ""stack"": ""name-1300""
     }
   },
   ""environment_variables"": {
@@ -268,36 +293,39 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a""
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/e554dcf1-a70d-4e7f-82b5-359efdd0817c""
+      ""href"": ""/v2/spaces/f7ee07d4-612b-40a0-be5c-377d990386ee""
     },
     ""processes"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/processes""
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/processes""
     },
-    ""routes"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/routes""
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/route_mappings""
     },
     ""packages"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/packages""
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/packages""
     },
     ""droplet"": {
-      ""href"": ""/v3/droplets/09cca525-8919-4334-b8f2-a3f42b09377f""
+      ""href"": ""/v3/droplets/f9c30643-ba38-4801-80d3-fb3ab5412cf9""
     },
     ""droplets"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/droplets""
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/tasks""
     },
     ""start"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/start"",
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/start"",
       ""method"": ""PUT""
     },
     ""stop"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/stop"",
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/stop"",
       ""method"": ""PUT""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/a9209251-0abd-427d-b777-686e51510d8a/current_droplet"",
+      ""href"": ""/v3/apps/4dc6bfaa-e780-44b7-9520-677567049d6a/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -313,12 +341,12 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.StoppingApp(guid).Result;
 
 
-                Assert.AreEqual("2517a9b0-da38-4c35-9143-9a40f1d00d26", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("27a4cadd-7876-4027-bdc8-49c9f30309dd", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("original_name", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj.DesiredState), true);
                 Assert.AreEqual("0", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
-                Assert.AreEqual("2016-02-11T13:20:57Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:57Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:44Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:44Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -331,17 +359,17 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""eb45bb7a-a198-40f3-a9cb-7fc3cabeeb51"",
+  ""guid"": ""8d7ac8b3-c34a-4f5d-836a-9ee4b3938d87"",
   ""name"": ""name1"",
   ""desired_state"": ""STOPPED"",
   ""total_desired_instances"": 1,
-  ""created_at"": ""2016-02-11T13:20:58Z"",
-  ""updated_at"": ""2016-02-11T13:20:58Z"",
+  ""created_at"": ""2016-03-21T10:59:45Z"",
+  ""updated_at"": ""2016-03-21T10:59:45Z"",
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
-      ""buildpack"": ""name-2412"",
-      ""stack"": ""name-2413""
+      ""buildpack"": ""name-1362"",
+      ""stack"": ""name-1363""
     }
   },
   ""environment_variables"": {
@@ -349,36 +377,39 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156""
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/1e1251e5-a5c0-47bb-94d1-f63d36c8581d""
+      ""href"": ""/v2/spaces/97c0ff21-74a6-4e0a-b00a-d313494d02c9""
     },
     ""processes"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/processes""
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/processes""
     },
-    ""routes"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/routes""
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/route_mappings""
     },
     ""packages"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/packages""
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/packages""
     },
     ""droplet"": {
-      ""href"": ""/v3/droplets/143aa6d0-0c38-4882-a849-796e11d5cce1""
+      ""href"": ""/v3/droplets/d55243d3-7fe8-44b4-aa51-90678bb07916""
     },
     ""droplets"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/droplets""
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/tasks""
     },
     ""start"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/start"",
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/start"",
       ""method"": ""PUT""
     },
     ""stop"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/stop"",
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/stop"",
       ""method"": ""PUT""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/318c0114-c17d-468b-a0ab-9a8467c9c156/current_droplet"",
+      ""href"": ""/v3/apps/5cad440f-9b63-49e3-b25a-e36f500ac4e8/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -396,12 +427,72 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.AssignDropletAsAppsCurrentDroplet(guid, value).Result;
 
 
-                Assert.AreEqual("eb45bb7a-a198-40f3-a9cb-7fc3cabeeb51", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("8d7ac8b3-c34a-4f5d-836a-9ee4b3938d87", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("name1", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj.DesiredState), true);
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
-                Assert.AreEqual("2016-02-11T13:20:58Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:58Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:45Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:45Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetDetailedStatsForAppTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""processes"": [
+    {
+      ""type"": ""web"",
+      ""index"": 0,
+      ""state"": ""RUNNING"",
+      ""usage"": {
+        ""time"": ""2016-03-21 10:59:44 UTC"",
+        ""cpu"": 80,
+        ""mem"": 128,
+        ""disk"": 1024
+      },
+      ""host"": ""toast"",
+      ""port"": 8080,
+      ""uptime"": 1,
+      ""mem_quota"": 1073741824,
+      ""disk_quota"": 1073741824,
+      ""fds_quota"": 16384
+    },
+    {
+      ""type"": ""web"",
+      ""index"": 1,
+      ""state"": ""RUNNING"",
+      ""usage"": {
+        ""time"": ""2016-03-21 10:59:44 UTC"",
+        ""cpu"": 80,
+        ""mem"": 128,
+        ""disk"": 1024
+      },
+      ""host"": ""toast"",
+      ""port"": 8080,
+      ""uptime"": 1,
+      ""mem_quota"": 1073741824,
+      ""disk_quota"": 1073741824,
+      ""fds_quota"": 16384
+    }
+  ]
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+
+                var obj = cfClient.AppsExperimental.GetDetailedStatsForApp(guid).Result;
+
+
 
             }
         }
@@ -414,12 +505,12 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""fa4d8d2c-ba1a-4951-aada-e43482ed529e"",
+  ""guid"": ""c4cf9882-6288-4efd-8361-b736c8958762"",
   ""name"": ""new_name"",
   ""desired_state"": ""STOPPED"",
   ""total_desired_instances"": 0,
-  ""created_at"": ""2016-02-11T13:20:58Z"",
-  ""updated_at"": ""2016-02-11T13:20:58Z"",
+  ""created_at"": ""2016-03-21T10:59:45Z"",
+  ""updated_at"": ""2016-03-21T10:59:45Z"",
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
@@ -433,33 +524,36 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2""
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/ab99799a-9e6c-4110-8c8a-5bbbbaf133de""
+      ""href"": ""/v2/spaces/0466f87a-81ef-47e6-9bc5-8b7ebf5b2e14""
     },
     ""processes"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/processes""
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/processes""
     },
-    ""routes"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/routes""
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/route_mappings""
     },
     ""packages"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/packages""
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/packages""
     },
     ""droplets"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/droplets""
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/tasks""
     },
     ""start"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/start"",
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/start"",
       ""method"": ""PUT""
     },
     ""stop"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/stop"",
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/stop"",
       ""method"": ""PUT""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/29e1391f-8a53-4f72-8b8a-14840cd4f8b2/current_droplet"",
+      ""href"": ""/v3/apps/1eeca95f-0e97-48ee-bbbe-74981716838d/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -477,12 +571,156 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.UpdateApp(guid, value).Result;
 
 
-                Assert.AreEqual("fa4d8d2c-ba1a-4951-aada-e43482ed529e", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("c4cf9882-6288-4efd-8361-b736c8958762", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("new_name", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj.DesiredState), true);
                 Assert.AreEqual("0", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
-                Assert.AreEqual("2016-02-11T13:20:58Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:58Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:45Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:45Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetDetailedStatsForAppsProcessTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""resources"": [
+    {
+      ""type"": ""web"",
+      ""index"": 0,
+      ""state"": ""RUNNING"",
+      ""usage"": {
+        ""time"": ""2016-03-21 10:59:33 UTC"",
+        ""cpu"": 80,
+        ""mem"": 128,
+        ""disk"": 1024
+      },
+      ""host"": ""toast"",
+      ""port"": 8080,
+      ""uptime"": 1,
+      ""mem_quota"": 1073741824,
+      ""disk_quota"": 1073741824,
+      ""fds_quota"": 16384
+    }
+  ],
+  ""pagination"": {
+    ""total_results"": 1,
+    ""first"": {
+      ""href"": ""/v3/apps/366a9bfa-f653-4ef3-bda8-088b756bb00c/processes/web/stats""
+    },
+    ""last"": {
+      ""href"": ""/v3/apps/366a9bfa-f653-4ef3-bda8-088b756bb00c/processes/web/stats""
+    },
+    ""next"": null,
+    ""previous"": null
+  }
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+                dynamic type = null;
+
+
+                var obj = cfClient.AppsExperimental.GetDetailedStatsForAppsProcess(guid, type).Result;
+
+                Assert.AreEqual("web", TestUtil.ToTestableString(obj[0].Type), true);
+                Assert.AreEqual("0", TestUtil.ToTestableString(obj[0].Index), true);
+                Assert.AreEqual("RUNNING", TestUtil.ToTestableString(obj[0].State), true);
+                Assert.AreEqual("toast", TestUtil.ToTestableString(obj[0].Host), true);
+                Assert.AreEqual("8080", TestUtil.ToTestableString(obj[0].Port), true);
+                Assert.AreEqual("1", TestUtil.ToTestableString(obj[0].Uptime), true);
+                Assert.AreEqual("1073741824", TestUtil.ToTestableString(obj[0].MemQuota), true);
+                Assert.AreEqual("1073741824", TestUtil.ToTestableString(obj[0].DiskQuota), true);
+                Assert.AreEqual("16384", TestUtil.ToTestableString(obj[0].FdsQuota), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void CreateDockerAppTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""guid"": ""96459267-1088-47c0-ac21-3a2000542f1f"",
+  ""name"": ""my_app"",
+  ""desired_state"": ""STOPPED"",
+  ""total_desired_instances"": 0,
+  ""created_at"": ""2016-03-21T10:59:44Z"",
+  ""updated_at"": null,
+  ""lifecycle"": {
+    ""type"": ""docker"",
+    ""data"": {
+
+    }
+  },
+  ""environment_variables"": {
+    ""open"": ""source""
+  },
+  ""links"": {
+    ""self"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3""
+    },
+    ""space"": {
+      ""href"": ""/v2/spaces/135aa4cc-2df1-4806-9860-9a1c3dc9e6f9""
+    },
+    ""processes"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/processes""
+    },
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/route_mappings""
+    },
+    ""packages"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/packages""
+    },
+    ""droplets"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/tasks""
+    },
+    ""start"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/start"",
+      ""method"": ""PUT""
+    },
+    ""stop"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/stop"",
+      ""method"": ""PUT""
+    },
+    ""assign_current_droplet"": {
+      ""href"": ""/v3/apps/b69b7f2e-d154-4634-ae12-52bea02f3ad3/current_droplet"",
+      ""method"": ""PUT""
+    }
+  }
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)201;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                CreateDockerAppRequest value = new CreateDockerAppRequest();
+
+
+                var obj = cfClient.AppsExperimental.CreateDockerApp(value).Result;
+
+
+                Assert.AreEqual("96459267-1088-47c0-ac21-3a2000542f1f", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("my_app", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj.DesiredState), true);
+                Assert.AreEqual("0", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
+                Assert.AreEqual("2016-03-21T10:59:44Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -495,27 +733,27 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""f6c5ea0a-3bcc-4968-9c71-b6a898a45e1f"",
+  ""guid"": ""7de06269-b3c7-479f-8dc2-b8cb7fd80e14"",
   ""type"": ""web"",
   ""command"": null,
   ""instances"": 3,
   ""memory_in_mb"": 100,
   ""disk_in_mb"": 100,
-  ""created_at"": ""2016-02-11T13:20:56Z"",
-  ""updated_at"": ""2016-02-11T13:20:56Z"",
+  ""created_at"": ""2016-03-21T10:59:33Z"",
+  ""updated_at"": ""2016-03-21T10:59:33Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/0b308caa-9cb4-4890-89ed-4fa1a4b66e20""
+      ""href"": ""/v3/processes/b2de4631-9bc2-43f8-8018-4df76a00a320""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/0b308caa-9cb4-4890-89ed-4fa1a4b66e20/scale"",
+      ""href"": ""/v3/processes/b2de4631-9bc2-43f8-8018-4df76a00a320/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
-      ""href"": ""/v3/apps/e86281ff-8e8e-4f07-8591-3295aafae4db""
+      ""href"": ""/v3/apps/ec5793b7-90f9-493c-abcf-0b3c4f277a8e""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/d93c738e-ba25-4df4-8b09-fe869fe90f8a""
+      ""href"": ""/v2/spaces/8e8262ee-2d27-4d27-a7d6-a56909c07faa""
     }
   }
 }";
@@ -534,14 +772,14 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.ScalingProcessFromItsApp(guid, type, value).Result;
 
 
-                Assert.AreEqual("f6c5ea0a-3bcc-4968-9c71-b6a898a45e1f", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("7de06269-b3c7-479f-8dc2-b8cb7fd80e14", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
                 Assert.AreEqual("3", TestUtil.ToTestableString(obj.Instances), true);
                 Assert.AreEqual("100", TestUtil.ToTestableString(obj.MemoryInMb), true);
                 Assert.AreEqual("100", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-02-11T13:20:56Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:56Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -557,46 +795,46 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   ""pagination"": {
     ""total_results"": 1,
     ""first"": {
-      ""href"": ""/v3/apps/892d9024-9aeb-4a10-ba66-6aa0e3c1ee96/packages?page=1=50""
+      ""href"": ""/v3/apps/87e762e5-2349-41a7-b1d7-80476458cfc6/packages?page=1=50""
     },
     ""last"": {
-      ""href"": ""/v3/apps/892d9024-9aeb-4a10-ba66-6aa0e3c1ee96/packages?page=1=50""
+      ""href"": ""/v3/apps/87e762e5-2349-41a7-b1d7-80476458cfc6/packages?page=1=50""
     },
     ""next"": null,
     ""previous"": null
   },
   ""resources"": [
     {
-      ""guid"": ""c567d9d9-5c92-4ae2-892a-9a718da8a01d"",
+      ""guid"": ""2d25463b-f111-4d00-b592-f1c3099b1544"",
       ""type"": ""bits"",
       ""data"": {
+        ""error"": null,
         ""hash"": {
           ""type"": ""sha1"",
           ""value"": null
-        },
-        ""error"": null
+        }
       },
       ""state"": ""AWAITING_UPLOAD"",
-      ""created_at"": ""2016-02-11T13:20:35Z"",
+      ""created_at"": ""2016-03-21T10:59:18Z"",
       ""updated_at"": null,
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/packages/43e8fb4f-7623-4da6-8153-cc3af2882abb""
+          ""href"": ""/v3/packages/0a462e6d-38bb-4ba7-8962-2dd8711dc72b""
         },
         ""upload"": {
-          ""href"": ""/v3/packages/43e8fb4f-7623-4da6-8153-cc3af2882abb/upload"",
+          ""href"": ""/v3/packages/0a462e6d-38bb-4ba7-8962-2dd8711dc72b/upload"",
           ""method"": ""POST""
         },
         ""download"": {
-          ""href"": ""/v3/packages/43e8fb4f-7623-4da6-8153-cc3af2882abb/download"",
+          ""href"": ""/v3/packages/0a462e6d-38bb-4ba7-8962-2dd8711dc72b/download"",
           ""method"": ""GET""
         },
         ""stage"": {
-          ""href"": ""/v3/packages/43e8fb4f-7623-4da6-8153-cc3af2882abb/droplets"",
+          ""href"": ""/v3/packages/0a462e6d-38bb-4ba7-8962-2dd8711dc72b/droplets"",
           ""method"": ""POST""
         },
         ""app"": {
-          ""href"": ""/v3/apps/892d9024-9aeb-4a10-ba66-6aa0e3c1ee96""
+          ""href"": ""/v3/apps/87e762e5-2349-41a7-b1d7-80476458cfc6""
         }
       }
     }
@@ -612,10 +850,10 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.AppsExperimental.ListAssociatedPackages(guid).Result;
 
-                Assert.AreEqual("c567d9d9-5c92-4ae2-892a-9a718da8a01d", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("2d25463b-f111-4d00-b592-f1c3099b1544", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("bits", TestUtil.ToTestableString(obj[0].Type), true);
                 Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(obj[0].State), true);
-                Assert.AreEqual("2016-02-11T13:20:35Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:18Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
 
             }
@@ -651,17 +889,17 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""092863e1-0ceb-4b27-bbea-7da0bc96235f"",
+  ""guid"": ""27da0274-b925-4398-9ece-039a357dea50"",
   ""name"": ""original_name"",
   ""desired_state"": ""STARTED"",
   ""total_desired_instances"": 0,
-  ""created_at"": ""2016-02-11T13:20:58Z"",
-  ""updated_at"": ""2016-02-11T13:20:58Z"",
+  ""created_at"": ""2016-03-21T10:59:45Z"",
+  ""updated_at"": ""2016-03-21T10:59:45Z"",
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
-      ""buildpack"": ""name-2404"",
-      ""stack"": ""name-2405""
+      ""buildpack"": ""name-1369"",
+      ""stack"": ""name-1370""
     }
   },
   ""environment_variables"": {
@@ -669,36 +907,39 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67""
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/1272fcc4-07ba-474b-8229-a88dac6e89f2""
+      ""href"": ""/v2/spaces/115d421a-444a-4957-ad74-6bebfce974cc""
     },
     ""processes"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/processes""
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/processes""
     },
-    ""routes"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/routes""
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/route_mappings""
     },
     ""packages"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/packages""
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/packages""
     },
     ""droplet"": {
-      ""href"": ""/v3/droplets/f2effaa1-f2ee-4fd3-b17d-9882168020eb""
+      ""href"": ""/v3/droplets/786f0124-c4a2-4b13-a840-0cc6c8409929""
     },
     ""droplets"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/droplets""
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/tasks""
     },
     ""start"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/start"",
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/start"",
       ""method"": ""PUT""
     },
     ""stop"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/stop"",
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/stop"",
       ""method"": ""PUT""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/8a26258e-78be-404c-9797-068592950c67/current_droplet"",
+      ""href"": ""/v3/apps/09409603-e9b4-4dc9-a6b1-c8efcc73cb66/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -714,12 +955,12 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.StartingApp(guid).Result;
 
 
-                Assert.AreEqual("092863e1-0ceb-4b27-bbea-7da0bc96235f", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("27da0274-b925-4398-9ece-039a357dea50", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("original_name", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("STARTED", TestUtil.ToTestableString(obj.DesiredState), true);
                 Assert.AreEqual("0", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
-                Assert.AreEqual("2016-02-11T13:20:58Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:58Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:45Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:45Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -735,103 +976,94 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   ""pagination"": {
     ""total_results"": 2,
     ""first"": {
-      ""href"": ""/v3/apps/258c8714-021d-481a-91ff-97beca874458/droplets?order_by=-created_at=1=2""
+      ""href"": ""/v3/apps/838984b0-48ef-4d0e-9ad3-38ba798e8d13/droplets?order_by=-created_at=1=2""
     },
     ""last"": {
-      ""href"": ""/v3/apps/258c8714-021d-481a-91ff-97beca874458/droplets?order_by=-created_at=1=2""
+      ""href"": ""/v3/apps/838984b0-48ef-4d0e-9ad3-38ba798e8d13/droplets?order_by=-created_at=1=2""
     },
     ""next"": null,
     ""previous"": null
   },
   ""resources"": [
     {
-      ""guid"": ""8400e483-0b16-401e-9b32-daf4d578a90b"",
+      ""guid"": ""6a3904f5-a51c-4fdf-a362-728ef476ed65"",
       ""state"": ""STAGED"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-2167"",
-          ""stack"": ""name-2168""
+          ""buildpack"": ""name-2584"",
+          ""stack"": ""name-2585""
         }
       },
       ""memory_limit"": null,
       ""disk_limit"": null,
       ""result"": {
-        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
-        ""stack"": null,
+        ""execution_metadata"": null,
         ""process_types"": ""{\""web\"":\""started\""}"",
         ""hash"": {
           ""type"": ""sha1"",
           ""value"": ""my-hash""
         },
-        ""execution_metadata"": null
+        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
+        ""stack"": null
       },
       ""environment_variables"": {
 
       },
       ""created_at"": ""1970-01-01T00:00:02Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:53Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/0119c943-0816-4b0d-85a2-b4a1ed160124""
+          ""href"": ""/v3/droplets/249d0c32-0281-4cb4-815c-21b13990d1f0""
         },
         ""package"": {
-          ""href"": ""/v3/packages/cf673159-f9e9-4277-b6b5-26568661db4a""
+          ""href"": ""/v3/packages/66ce83ea-6537-4c24-a027-af81085df8d9""
         },
         ""app"": {
-          ""href"": ""/v3/apps/258c8714-021d-481a-91ff-97beca874458""
+          ""href"": ""/v3/apps/838984b0-48ef-4d0e-9ad3-38ba798e8d13""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/258c8714-021d-481a-91ff-97beca874458/current_droplet"",
+          ""href"": ""/v3/apps/838984b0-48ef-4d0e-9ad3-38ba798e8d13/current_droplet"",
           ""method"": ""PUT""
         }
       }
     },
     {
-      ""guid"": ""8400e483-0b16-401e-9b32-daf4d578a90b"",
+      ""guid"": ""6a3904f5-a51c-4fdf-a362-728ef476ed65"",
       ""state"": ""STAGING"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-2165"",
-          ""stack"": ""name-2166""
+          ""buildpack"": ""name-2582"",
+          ""stack"": ""name-2583""
         }
       },
       ""memory_limit"": null,
       ""disk_limit"": null,
-      ""result"": {
-        ""buildpack"": ""name-2155"",
-        ""stack"": null,
-        ""process_types"": null,
-        ""hash"": {
-          ""type"": ""sha1"",
-          ""value"": null
-        },
-        ""execution_metadata"": null
-      },
+      ""result"": null,
       ""environment_variables"": {
         ""yuu"": ""huuu""
       },
       ""created_at"": ""1970-01-01T00:00:01Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:53Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/5f9418bc-991a-417d-a974-7caedce2064c""
+          ""href"": ""/v3/droplets/5ff4df70-08dc-4ac2-ba04-e9798a10d717""
         },
         ""package"": {
-          ""href"": ""/v3/packages/cf673159-f9e9-4277-b6b5-26568661db4a""
+          ""href"": ""/v3/packages/66ce83ea-6537-4c24-a027-af81085df8d9""
         },
         ""app"": {
-          ""href"": ""/v3/apps/258c8714-021d-481a-91ff-97beca874458""
+          ""href"": ""/v3/apps/838984b0-48ef-4d0e-9ad3-38ba798e8d13""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/258c8714-021d-481a-91ff-97beca874458/current_droplet"",
+          ""href"": ""/v3/apps/838984b0-48ef-4d0e-9ad3-38ba798e8d13/current_droplet"",
           ""method"": ""PUT""
         },
         ""buildpack"": {
-          ""href"": ""/v2/buildpacks/5306fe86-0026-4592-a4cc-9d35a85001ae""
+          ""href"": ""/v2/buildpacks/06fadc1c-c7f7-439f-9184-583d6cb0f316""
         }
       }
     }
@@ -847,20 +1079,21 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.AppsExperimental.ListAssociatedDroplets(guid).Result;
 
-                Assert.AreEqual("8400e483-0b16-401e-9b32-daf4d578a90b", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("6a3904f5-a51c-4fdf-a362-728ef476ed65", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("STAGED", TestUtil.ToTestableString(obj[0].State), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].Error), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].MemoryLimit), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].DiskLimit), true);
                 Assert.AreEqual("1970-01-01T00:00:02Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-                Assert.AreEqual("8400e483-0b16-401e-9b32-daf4d578a90b", TestUtil.ToTestableString(obj[1].Guid), true);
+                Assert.AreEqual("2016-03-21T10:59:53Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
+                Assert.AreEqual("6a3904f5-a51c-4fdf-a362-728ef476ed65", TestUtil.ToTestableString(obj[1].Guid), true);
                 Assert.AreEqual("STAGING", TestUtil.ToTestableString(obj[1].State), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].Error), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].MemoryLimit), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].DiskLimit), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[1].Result), true);
                 Assert.AreEqual("1970-01-01T00:00:01Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:53Z", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
 
             }
         }
@@ -876,99 +1109,99 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   ""pagination"": {
     ""total_results"": 2,
     ""first"": {
-      ""href"": ""/v3/apps/c3708924-412d-4d7c-99a5-b43a9146bfeb/droplets?order_by=-created_at=1=2=STAGED%2CFAILED""
+      ""href"": ""/v3/apps/0266c406-ac09-4e6b-889d-551fd95efca6/droplets?order_by=-created_at=1=2=STAGED%2CFAILED""
     },
     ""last"": {
-      ""href"": ""/v3/apps/c3708924-412d-4d7c-99a5-b43a9146bfeb/droplets?order_by=-created_at=1=2=STAGED%2CFAILED""
+      ""href"": ""/v3/apps/0266c406-ac09-4e6b-889d-551fd95efca6/droplets?order_by=-created_at=1=2=STAGED%2CFAILED""
     },
     ""next"": null,
     ""previous"": null
   },
   ""resources"": [
     {
-      ""guid"": ""dbc220bc-40a8-48e9-8e2b-c819971429ca"",
+      ""guid"": ""268a1866-e693-4c1c-9de8-7a433467479d"",
       ""state"": ""STAGED"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-2185"",
-          ""stack"": ""name-2186""
+          ""buildpack"": ""name-2608"",
+          ""stack"": ""name-2609""
         }
       },
       ""memory_limit"": null,
       ""disk_limit"": null,
       ""result"": {
-        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
-        ""stack"": null,
+        ""execution_metadata"": null,
         ""process_types"": ""{\""web\"":\""started\""}"",
         ""hash"": {
           ""type"": ""sha1"",
           ""value"": ""my-hash""
         },
-        ""execution_metadata"": null
+        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
+        ""stack"": null
       },
       ""environment_variables"": {
 
       },
       ""created_at"": ""1970-01-01T00:00:02Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:53Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/395b4608-2a2c-454b-bbe8-d94be17956b1""
+          ""href"": ""/v3/droplets/634d800c-f551-46c0-ab35-f439f5662226""
         },
         ""package"": {
-          ""href"": ""/v3/packages/769ff353-fb16-428b-8751-c99eeb1b53f0""
+          ""href"": ""/v3/packages/5ea29895-bcb2-4193-b001-9eb4c51e78a3""
         },
         ""app"": {
-          ""href"": ""/v3/apps/c3708924-412d-4d7c-99a5-b43a9146bfeb""
+          ""href"": ""/v3/apps/0266c406-ac09-4e6b-889d-551fd95efca6""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/c3708924-412d-4d7c-99a5-b43a9146bfeb/current_droplet"",
+          ""href"": ""/v3/apps/0266c406-ac09-4e6b-889d-551fd95efca6/current_droplet"",
           ""method"": ""PUT""
         }
       }
     },
     {
-      ""guid"": ""dbc220bc-40a8-48e9-8e2b-c819971429ca"",
+      ""guid"": ""268a1866-e693-4c1c-9de8-7a433467479d"",
       ""state"": ""FAILED"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-2187"",
-          ""stack"": ""name-2188""
+          ""buildpack"": ""name-2624"",
+          ""stack"": ""name-2625""
         }
       },
       ""memory_limit"": null,
       ""disk_limit"": null,
       ""result"": {
-        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
-        ""stack"": null,
+        ""execution_metadata"": null,
         ""process_types"": null,
         ""hash"": {
           ""type"": ""sha1"",
           ""value"": ""my-hash""
         },
-        ""execution_metadata"": null
+        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
+        ""stack"": null
       },
       ""environment_variables"": {
 
       },
       ""created_at"": ""1970-01-01T00:00:02Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:53Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/44a66846-5f0d-4068-ac94-e1a50561ece9""
+          ""href"": ""/v3/droplets/9002a959-05a6-483b-a198-2d55bb8773c6""
         },
         ""package"": {
-          ""href"": ""/v3/packages/769ff353-fb16-428b-8751-c99eeb1b53f0""
+          ""href"": ""/v3/packages/5ea29895-bcb2-4193-b001-9eb4c51e78a3""
         },
         ""app"": {
-          ""href"": ""/v3/apps/c3708924-412d-4d7c-99a5-b43a9146bfeb""
+          ""href"": ""/v3/apps/0266c406-ac09-4e6b-889d-551fd95efca6""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/c3708924-412d-4d7c-99a5-b43a9146bfeb/current_droplet"",
+          ""href"": ""/v3/apps/0266c406-ac09-4e6b-889d-551fd95efca6/current_droplet"",
           ""method"": ""PUT""
         }
       }
@@ -985,20 +1218,20 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.AppsExperimental.FiltersDropletsByStatesAppGuids(guid).Result;
 
-                Assert.AreEqual("dbc220bc-40a8-48e9-8e2b-c819971429ca", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("268a1866-e693-4c1c-9de8-7a433467479d", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("STAGED", TestUtil.ToTestableString(obj[0].State), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].Error), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].MemoryLimit), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].DiskLimit), true);
                 Assert.AreEqual("1970-01-01T00:00:02Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-                Assert.AreEqual("dbc220bc-40a8-48e9-8e2b-c819971429ca", TestUtil.ToTestableString(obj[1].Guid), true);
+                Assert.AreEqual("2016-03-21T10:59:53Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
+                Assert.AreEqual("268a1866-e693-4c1c-9de8-7a433467479d", TestUtil.ToTestableString(obj[1].Guid), true);
                 Assert.AreEqual("FAILED", TestUtil.ToTestableString(obj[1].State), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].Error), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].MemoryLimit), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].DiskLimit), true);
                 Assert.AreEqual("1970-01-01T00:00:02Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:53Z", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
 
             }
         }
@@ -1014,37 +1247,37 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   ""pagination"": {
     ""total_results"": 1,
     ""first"": {
-      ""href"": ""/v3/apps/b2dc7ac0-ba70-4f69-908f-35cccd54258c/processes?page=1=50""
+      ""href"": ""/v3/apps/fdbd1cc2-01b8-4cfb-917c-f2f91991c91c/processes?page=1=50""
     },
     ""last"": {
-      ""href"": ""/v3/apps/b2dc7ac0-ba70-4f69-908f-35cccd54258c/processes?page=1=50""
+      ""href"": ""/v3/apps/fdbd1cc2-01b8-4cfb-917c-f2f91991c91c/processes?page=1=50""
     },
     ""next"": null,
     ""previous"": null
   },
   ""resources"": [
     {
-      ""guid"": ""0d0f5b10-8e8a-48cf-bd62-702bcd0bb2f8"",
+      ""guid"": ""1455a153-b22d-499e-8188-66a6cb22aa66"",
       ""type"": ""web"",
       ""command"": null,
       ""instances"": 1,
       ""memory_in_mb"": 1024,
       ""disk_in_mb"": 1024,
-      ""created_at"": ""2016-02-11T13:20:56Z"",
-      ""updated_at"": ""2016-02-11T13:20:56Z"",
+      ""created_at"": ""2016-03-21T10:59:33Z"",
+      ""updated_at"": ""2016-03-21T10:59:33Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/processes/c62622f7-1b85-4f25-b300-b47de29602bf""
+          ""href"": ""/v3/processes/15e4a9b7-7388-4846-bd62-5732d4c62c70""
         },
         ""scale"": {
-          ""href"": ""/v3/processes/c62622f7-1b85-4f25-b300-b47de29602bf/scale"",
+          ""href"": ""/v3/processes/15e4a9b7-7388-4846-bd62-5732d4c62c70/scale"",
           ""method"": ""PUT""
         },
         ""app"": {
-          ""href"": ""/v3/apps/b2dc7ac0-ba70-4f69-908f-35cccd54258c""
+          ""href"": ""/v3/apps/fdbd1cc2-01b8-4cfb-917c-f2f91991c91c""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/53f14fef-5a6b-427a-a6d4-a46089a9dcd2""
+          ""href"": ""/v2/spaces/1ecdba05-ac81-42d7-92ba-723d33f3f9a5""
         }
       }
     }
@@ -1060,14 +1293,14 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.AppsExperimental.ListAssociatedProcesses(guid).Result;
 
-                Assert.AreEqual("0d0f5b10-8e8a-48cf-bd62-702bcd0bb2f8", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("1455a153-b22d-499e-8188-66a6cb22aa66", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj[0].Type), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].Command), true);
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj[0].Instances), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj[0].MemoryInMb), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj[0].DiskInMb), true);
-                Assert.AreEqual("2016-02-11T13:20:56Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:56Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
 
             }
         }
@@ -1080,27 +1313,27 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""9d4c2c3e-6275-4a7d-a064-07c3d109ba3a"",
+  ""guid"": ""07419327-132c-4fb7-99a0-eee1e73b52f1"",
   ""type"": ""web"",
   ""command"": null,
   ""instances"": 1,
   ""memory_in_mb"": 1024,
   ""disk_in_mb"": 1024,
-  ""created_at"": ""2016-02-11T13:20:56Z"",
-  ""updated_at"": ""2016-02-11T13:20:56Z"",
+  ""created_at"": ""2016-03-21T10:59:33Z"",
+  ""updated_at"": ""2016-03-21T10:59:33Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/00cc4e07-12aa-4df4-a833-26c74ea3d07f""
+      ""href"": ""/v3/processes/5690ef6f-c133-4e58-ae39-086a56b7946c""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/00cc4e07-12aa-4df4-a833-26c74ea3d07f/scale"",
+      ""href"": ""/v3/processes/5690ef6f-c133-4e58-ae39-086a56b7946c/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
-      ""href"": ""/v3/apps/67efb528-94fe-403d-8685-89099b1ed3fa""
+      ""href"": ""/v3/apps/2955e42c-7658-4f3f-b937-dc94e59bde20""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/77e9d43c-ca90-462d-8e01-519d33d3c529""
+      ""href"": ""/v2/spaces/b7fcdb3a-852c-433c-969c-8c552a98ca5d""
     }
   }
 }";
@@ -1117,14 +1350,14 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.GetProcessFromApp(guid, type).Result;
 
 
-                Assert.AreEqual("9d4c2c3e-6275-4a7d-a064-07c3d109ba3a", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("07419327-132c-4fb7-99a0-eee1e73b52f1", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-02-11T13:20:56Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-02-11T13:20:56Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -1137,17 +1370,17 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""f7d47b73-a71c-4daf-b52a-5c2a5add1c62"",
+  ""guid"": ""8f109836-0920-4cf4-a967-53af544361a0"",
   ""name"": ""my_app"",
   ""desired_state"": ""STOPPED"",
   ""total_desired_instances"": 3,
-  ""created_at"": ""2016-02-11T13:20:57Z"",
+  ""created_at"": ""2016-03-21T10:59:44Z"",
   ""updated_at"": null,
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
-      ""buildpack"": ""name-2393"",
-      ""stack"": ""name-2394""
+      ""buildpack"": ""name-1348"",
+      ""stack"": ""name-1349""
     }
   },
   ""environment_variables"": {
@@ -1155,36 +1388,39 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c""
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/6c016520-3654-4200-a544-9634bab8a683""
+      ""href"": ""/v2/spaces/0eeabb1d-a2b4-42e0-b472-403565db7d50""
     },
     ""processes"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/processes""
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/processes""
     },
-    ""routes"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/routes""
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/route_mappings""
     },
     ""packages"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/packages""
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/packages""
     },
     ""droplet"": {
       ""href"": ""/v3/droplets/a-droplet-guid""
     },
     ""droplets"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/droplets""
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/tasks""
     },
     ""start"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/start"",
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/start"",
       ""method"": ""PUT""
     },
     ""stop"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/stop"",
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/stop"",
       ""method"": ""PUT""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/f6c08803-5489-401e-ab30-801c238b6d5c/current_droplet"",
+      ""href"": ""/v3/apps/ad2d2ec6-0ed6-48e1-b6a0-6af82c959ef1/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -1200,11 +1436,11 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.GetApp(guid).Result;
 
 
-                Assert.AreEqual("f7d47b73-a71c-4daf-b52a-5c2a5add1c62", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("8f109836-0920-4cf4-a967-53af544361a0", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("my_app", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj.DesiredState), true);
                 Assert.AreEqual("3", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
-                Assert.AreEqual("2016-02-11T13:20:57Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:44Z", TestUtil.ToTestableString(obj.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
@@ -1218,16 +1454,16 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""5ddf8e7c-b3f9-488f-8814-961de7a9cfd4"",
+  ""guid"": ""629deff8-154e-4aa1-a9a9-dc3822f50c67"",
   ""name"": ""my_app"",
   ""desired_state"": ""STOPPED"",
   ""total_desired_instances"": 0,
-  ""created_at"": ""2016-02-11T13:20:57Z"",
+  ""created_at"": ""2016-03-21T10:59:43Z"",
   ""updated_at"": null,
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
-      ""buildpack"": ""name-2337"",
+      ""buildpack"": ""name-1282"",
       ""stack"": ""default-stack-name""
     }
   },
@@ -1236,33 +1472,36 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b""
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/2945532b-14a8-4763-95d6-2b245094105a""
+      ""href"": ""/v2/spaces/fa14f703-3e47-4256-afdc-8717b0c0dfac""
     },
     ""processes"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/processes""
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/processes""
     },
-    ""routes"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/routes""
+    ""route_mappings"": {
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/route_mappings""
     },
     ""packages"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/packages""
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/packages""
     },
     ""droplets"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/droplets""
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/droplets""
+    },
+    ""tasks"": {
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/tasks""
     },
     ""start"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/start"",
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/start"",
       ""method"": ""PUT""
     },
     ""stop"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/stop"",
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/stop"",
       ""method"": ""PUT""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/244781c3-265d-4f95-90ba-7e867142ad1b/current_droplet"",
+      ""href"": ""/v3/apps/05abcfa1-9d20-4055-b383-bcd2021348e9/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -1278,11 +1517,11 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.AppsExperimental.CreateApp(value).Result;
 
 
-                Assert.AreEqual("5ddf8e7c-b3f9-488f-8814-961de7a9cfd4", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("629deff8-154e-4aa1-a9a9-dc3822f50c67", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("my_app", TestUtil.ToTestableString(obj.Name), true);
                 Assert.AreEqual("STOPPED", TestUtil.ToTestableString(obj.DesiredState), true);
                 Assert.AreEqual("0", TestUtil.ToTestableString(obj.TotalDesiredInstances), true);
-                Assert.AreEqual("2016-02-11T13:20:57Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-03-21T10:59:43Z", TestUtil.ToTestableString(obj.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }

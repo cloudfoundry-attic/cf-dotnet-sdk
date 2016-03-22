@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.AssociateRouteWithApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/associate_route_with_the_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/associate_route_with_the_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class AssociateRouteWithAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractAssociateRouteWithAppResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.AssociateRouteWithApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps/associate_route_with_the_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/associate_route_with_the_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractAssociateRouteWithAppResponse : IResponse
@@ -372,6 +372,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("routes_url", NullValueHandling = NullValueHandling.Ignore)]
         public string RoutesUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Route Mappings Url</para>
+        /// </summary>
+        [JsonProperty("route_mappings_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string RouteMappingsUrl
         {
             get;
             set;

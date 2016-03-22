@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.ProcessesExperimentalEndpoint.ListAllProcesses()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/processes__experimental_/list_all_processes.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/processes__experimental_/list_all_processes.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllProcessesResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractListAllProcessesResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.ProcessesExperimentalEndpoint.ListAllProcesses()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/processes__experimental_/list_all_processes.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/processes__experimental_/list_all_processes.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllProcessesResponse

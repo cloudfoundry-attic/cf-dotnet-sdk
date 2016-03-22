@@ -24,8 +24,25 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 {
     [TestClass]
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public class ServiceAuthTokensDeprecatedTest
+    public class RoutesMappingTest
     {
 
+        [TestMethod]
+        public void TestMappingAppAndRouteRequest()
+        {
+            string json = @"{
+  ""app_guid"": ""304c2a52-da65-49dd-a4af-793f61cf96bf"",
+  ""route_guid"": ""304c2a52-da65-49dd-a4af-793f61cf96bf"",
+  ""app_port"": 8888
+}";
+
+            MappingAppAndRouteRequest request = new MappingAppAndRouteRequest();
+
+            request.AppGuid = new Guid("304c2a52-da65-49dd-a4af-793f61cf96bf");
+            request.RouteGuid = new Guid("304c2a52-da65-49dd-a4af-793f61cf96bf");
+            request.AppPort = 8888;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
     }
 }

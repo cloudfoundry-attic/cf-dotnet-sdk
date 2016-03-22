@@ -26,6 +26,36 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     public class FeatureFlagsEndpoint
 {
         [TestMethod]
+        public void GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""space_scoped_private_broker_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimental().Result;
+
+
+                Assert.AreEqual("space_scoped_private_broker_creation", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
         public void GetUserOrgCreationFeatureFlagTest()
         {
             using (ShimsContext.Create())
@@ -360,6 +390,18 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     ""enabled"": true,
     ""error_message"": null,
     ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
+  },
+  {
+    ""name"": ""task_creation"",
+    ""enabled"": false,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/task_creation""
+  },
+  {
+    ""name"": ""space_scoped_private_broker_creation"",
+    ""enabled"": true,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
   }
 ]";
                 clients.JsonResponse = json;
@@ -407,6 +449,14 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj[8].Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[8].ErrorMessage), true);
                 Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj[8].Url), true);
+                Assert.AreEqual("task_creation", TestUtil.ToTestableString(obj[9].Name), true);
+                Assert.AreEqual("false", TestUtil.ToTestableString(obj[9].Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[9].ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/task_creation", TestUtil.ToTestableString(obj[9].Url), true);
+                Assert.AreEqual("space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj[10].Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[10].ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Url), true);
 
             }
         }
@@ -437,6 +487,36 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
                 Assert.AreEqual("/v2/config/feature_flags/service_instance_creation", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void GetTaskCreationFeatureFlagExperimentalTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""task_creation"",
+  ""enabled"": false,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/task_creation""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetTaskCreationFeatureFlagExperimental().Result;
+
+
+                Assert.AreEqual("task_creation", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/task_creation", TestUtil.ToTestableString(obj.Url), true);
 
             }
         }
