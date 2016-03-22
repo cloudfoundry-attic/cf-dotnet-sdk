@@ -32,13 +32,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""example.com"",
-  ""router_group_guid"": ""f8663d26-1799-4dfc-8a03-94c5d300cebb""
+  ""router_group_guid"": ""1aea0e4e-ac85-4777-9832-c1d990c7bfc9""
 }";
 
             CreateSharedDomainRequest request = new CreateSharedDomainRequest();
 
             request.Name = "example.com";
-            request.RouterGroupGuid = new Guid("f8663d26-1799-4dfc-8a03-94c5d300cebb");
+            request.RouterGroupGuid = new Guid("1aea0e4e-ac85-4777-9832-c1d990c7bfc9");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

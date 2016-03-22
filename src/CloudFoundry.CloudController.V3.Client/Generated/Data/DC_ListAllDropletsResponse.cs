@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.DropletsExperimentalEndpoint.ListAllDroplets()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/droplets__experimental_/list_all_droplets.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/droplets__experimental_/list_all_droplets.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllDropletsResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractListAllDropletsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.DropletsExperimentalEndpoint.ListAllDroplets()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/droplets__experimental_/list_all_droplets.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/droplets__experimental_/list_all_droplets.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllDropletsResponse
@@ -133,7 +133,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         /// <para>The Updated At</para>
         /// </summary>
         [JsonProperty("updated_at", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic UpdatedAt
+        public string UpdatedAt
         {
             get;
             set;

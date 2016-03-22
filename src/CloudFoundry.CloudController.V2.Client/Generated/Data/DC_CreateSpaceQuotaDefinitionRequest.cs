@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.CreateSpaceQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/space_quota_definitions/creating_a_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/space_quota_definitions/creating_a_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateSpaceQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateSpaceQuotaDefinitionRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.CreateSpaceQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/space_quota_definitions/creating_a_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/space_quota_definitions/creating_a_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateSpaceQuotaDefinitionRequest
@@ -60,7 +60,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>How many services a space can have.</para>
+        /// <para>How many services a space can have. (-1 represents an unlimited amount)</para>
         /// </summary>
         [JsonProperty("total_services", NullValueHandling = NullValueHandling.Ignore)]
         public int? TotalServices
@@ -70,7 +70,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>How many routes a space can have.</para>
+        /// <para>How many routes a space can have. (-1 represents an unlimited amount)</para>
         /// </summary>
         [JsonProperty("total_routes", NullValueHandling = NullValueHandling.Ignore)]
         public int? TotalRoutes
@@ -114,6 +114,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
         public string AppInstanceLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The number of tasks that can be run per app. (-1 represents an unlimited amount)</para>
+        /// </summary>
+        [JsonProperty("app_task_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public string AppTaskLimit
         {
             get;
             set;

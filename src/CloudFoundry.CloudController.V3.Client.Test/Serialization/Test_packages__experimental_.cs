@@ -33,21 +33,14 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
             string json = @"{
   ""type"": ""docker"",
   ""data"": {
-    ""image"": ""registry/image:latest"",
-    ""credentials"": {
-      ""user"": ""user name"",
-      ""password"": ""very secret password"",
-      ""email"": ""root@admin.example.com"",
-      ""login_server"": ""https://index.docker.io/v1""
-    },
-    ""store_image"": true
+    ""image"": ""registry/image:latest""
   }
 }";
 
             CreatePackageRequest request = new CreatePackageRequest();
 
             request.Type = "docker";
-            request.Data = TestUtil.GetJsonDictonary(@"{""image"":""registry/image:latest"",""credentials"":{""user"":""user name"",""password"":""very secret password"",""email"":""root@admin.example.com"",""login_server"":""https://index.docker.io/v1""},""store_image"":true}");
+            request.Data = TestUtil.GetJsonDictonary(@"{""image"":""registry/image:latest""}");
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);

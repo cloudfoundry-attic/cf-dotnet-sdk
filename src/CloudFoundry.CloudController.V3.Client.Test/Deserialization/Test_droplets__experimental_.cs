@@ -42,21 +42,20 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
   },
   ""resources"": [
     {
-      ""guid"": ""4ff660bd-563c-4561-8614-003f0bb2651e"",
+      ""guid"": ""4fd8545e-fd4a-429f-a231-f41d54be20b2"",
       ""state"": ""STAGED"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-1537"",
-          ""stack"": ""name-1538""
+          ""buildpack"": ""name-999"",
+          ""stack"": ""name-1000""
         }
       },
       ""memory_limit"": 123,
       ""disk_limit"": 456,
       ""result"": {
-        ""buildpack"": ""https://github.com/cloudfoundry/detected-buildpack.git"",
-        ""stack"": null,
+        ""execution_metadata"": ""black-box-secrets"",
         ""process_types"": {
           ""web"": ""started""
         },
@@ -64,73 +63,65 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
           ""type"": ""sha1"",
           ""value"": ""my-hash""
         },
-        ""execution_metadata"": ""black-box-secrets""
+        ""buildpack"": ""https://github.com/cloudfoundry/detected-buildpack.git"",
+        ""stack"": null
       },
       ""environment_variables"": {
 
       },
       ""created_at"": ""1970-01-01T00:00:02Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:39Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/61a1f06b-de90-4ee5-8e21-996752a1da0a""
+          ""href"": ""/v3/droplets/8e2a7111-6a0c-4b0b-a383-7f0009a229b0""
         },
         ""package"": {
-          ""href"": ""/v3/packages/1d1583d7-bfdf-4e6c-8821-57953be56d04""
+          ""href"": ""/v3/packages/84435e96-d87d-46d6-8e2b-c3cbb94e76a9""
         },
         ""app"": {
-          ""href"": ""/v3/apps/f8101c1d-4608-42bd-aa56-7aa5cb27606b""
+          ""href"": ""/v3/apps/4be31655-6d27-4be6-9f84-d2a909a5d378""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/f8101c1d-4608-42bd-aa56-7aa5cb27606b/current_droplet"",
+          ""href"": ""/v3/apps/4be31655-6d27-4be6-9f84-d2a909a5d378/current_droplet"",
           ""method"": ""PUT""
         }
       }
     },
     {
-      ""guid"": ""4ff660bd-563c-4561-8614-003f0bb2651e"",
+      ""guid"": ""4fd8545e-fd4a-429f-a231-f41d54be20b2"",
       ""state"": ""STAGING"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-1539"",
-          ""stack"": ""name-1540""
+          ""buildpack"": ""name-997"",
+          ""stack"": ""name-998""
         }
       },
       ""memory_limit"": null,
       ""disk_limit"": null,
-      ""result"": {
-        ""buildpack"": ""name-1527"",
-        ""stack"": null,
-        ""process_types"": null,
-        ""hash"": {
-          ""type"": ""sha1"",
-          ""value"": null
-        },
-        ""execution_metadata"": null
-      },
+      ""result"": null,
       ""environment_variables"": {
         ""yuu"": ""huuu""
       },
       ""created_at"": ""1970-01-01T00:00:01Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:39Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/a13d0df8-0ee7-4947-be23-0e61c238d64b""
+          ""href"": ""/v3/droplets/3becc673-95c6-473f-856e-9ccbfdccd3aa""
         },
         ""package"": {
-          ""href"": ""/v3/packages/1d1583d7-bfdf-4e6c-8821-57953be56d04""
+          ""href"": ""/v3/packages/84435e96-d87d-46d6-8e2b-c3cbb94e76a9""
         },
         ""app"": {
-          ""href"": ""/v3/apps/f8101c1d-4608-42bd-aa56-7aa5cb27606b""
+          ""href"": ""/v3/apps/4be31655-6d27-4be6-9f84-d2a909a5d378""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/f8101c1d-4608-42bd-aa56-7aa5cb27606b/current_droplet"",
+          ""href"": ""/v3/apps/4be31655-6d27-4be6-9f84-d2a909a5d378/current_droplet"",
           ""method"": ""PUT""
         },
         ""buildpack"": {
-          ""href"": ""/v2/buildpacks/c0490cd3-9728-4ac6-8270-f26ed7de3680""
+          ""href"": ""/v2/buildpacks/aec545b9-5f57-4776-83aa-fe6d8c3e33fe""
         }
       }
     }
@@ -139,20 +130,21 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
 
             PagedResponseCollection<ListAllDropletsResponse> page = Utilities.DeserializePage<ListAllDropletsResponse>(json, null);
 
-            Assert.AreEqual("4ff660bd-563c-4561-8614-003f0bb2651e", TestUtil.ToTestableString(page[0].Guid), true);
+            Assert.AreEqual("4fd8545e-fd4a-429f-a231-f41d54be20b2", TestUtil.ToTestableString(page[0].Guid), true);
             Assert.AreEqual("STAGED", TestUtil.ToTestableString(page[0].State), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].Error), true);
             Assert.AreEqual("123", TestUtil.ToTestableString(page[0].MemoryLimit), true);
             Assert.AreEqual("456", TestUtil.ToTestableString(page[0].DiskLimit), true);
             Assert.AreEqual("1970-01-01T00:00:02Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].UpdatedAt), true);
-            Assert.AreEqual("4ff660bd-563c-4561-8614-003f0bb2651e", TestUtil.ToTestableString(page[1].Guid), true);
+            Assert.AreEqual("2016-03-21T10:59:39Z", TestUtil.ToTestableString(page[0].UpdatedAt), true);
+            Assert.AreEqual("4fd8545e-fd4a-429f-a231-f41d54be20b2", TestUtil.ToTestableString(page[1].Guid), true);
             Assert.AreEqual("STAGING", TestUtil.ToTestableString(page[1].State), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].Error), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].MemoryLimit), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].DiskLimit), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(page[1].Result), true);
             Assert.AreEqual("1970-01-01T00:00:01Z", TestUtil.ToTestableString(page[1].CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[1].UpdatedAt), true);
+            Assert.AreEqual("2016-03-21T10:59:39Z", TestUtil.ToTestableString(page[1].UpdatedAt), true);
         }
 
         [TestMethod]
@@ -162,31 +154,30 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
   ""pagination"": {
     ""total_results"": 2,
     ""first"": {
-      ""href"": ""/v3/droplets?app_guids=0453e320-8bd1-4fa9-b458-6a16a6db200c=-created_at=1=2=STAGED%2CFAILED""
+      ""href"": ""/v3/droplets?app_guids=1cbddf09-f2b3-4bc5-b3c9-b08c4af69c06=-created_at=1=2=STAGED%2CFAILED""
     },
     ""last"": {
-      ""href"": ""/v3/droplets?app_guids=0453e320-8bd1-4fa9-b458-6a16a6db200c=-created_at=1=2=STAGED%2CFAILED""
+      ""href"": ""/v3/droplets?app_guids=1cbddf09-f2b3-4bc5-b3c9-b08c4af69c06=-created_at=1=2=STAGED%2CFAILED""
     },
     ""next"": null,
     ""previous"": null
   },
   ""resources"": [
     {
-      ""guid"": ""15e54474-bb35-43d8-9d65-e4695932107f"",
+      ""guid"": ""acee5efd-f2d1-4fec-86ed-b96c3e4e20ec"",
       ""state"": ""STAGED"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-1555"",
-          ""stack"": ""name-1556""
+          ""buildpack"": ""name-1023"",
+          ""stack"": ""name-1024""
         }
       },
       ""memory_limit"": 123,
       ""disk_limit"": 456,
       ""result"": {
-        ""buildpack"": ""https://github.com/cloudfoundry/detected-buildpack.git"",
-        ""stack"": null,
+        ""execution_metadata"": ""black-box-secrets"",
         ""process_types"": {
           ""web"": ""started""
         },
@@ -194,69 +185,70 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
           ""type"": ""sha1"",
           ""value"": ""my-hash""
         },
-        ""execution_metadata"": ""black-box-secrets""
+        ""buildpack"": ""https://github.com/cloudfoundry/detected-buildpack.git"",
+        ""stack"": null
       },
       ""environment_variables"": {
 
       },
       ""created_at"": ""1970-01-01T00:00:02Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:40Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/79a742d4-bbd3-47b7-a208-159d45a4ba30""
+          ""href"": ""/v3/droplets/11da4776-617c-494c-acaf-29eea54f10c4""
         },
         ""package"": {
-          ""href"": ""/v3/packages/4d35b5cf-aede-463b-ad24-60c63dd9fa23""
+          ""href"": ""/v3/packages/029002df-ab65-44ca-ad22-f1f043e52da5""
         },
         ""app"": {
-          ""href"": ""/v3/apps/0453e320-8bd1-4fa9-b458-6a16a6db200c""
+          ""href"": ""/v3/apps/1cbddf09-f2b3-4bc5-b3c9-b08c4af69c06""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/0453e320-8bd1-4fa9-b458-6a16a6db200c/current_droplet"",
+          ""href"": ""/v3/apps/1cbddf09-f2b3-4bc5-b3c9-b08c4af69c06/current_droplet"",
           ""method"": ""PUT""
         }
       }
     },
     {
-      ""guid"": ""15e54474-bb35-43d8-9d65-e4695932107f"",
+      ""guid"": ""acee5efd-f2d1-4fec-86ed-b96c3e4e20ec"",
       ""state"": ""FAILED"",
       ""error"": null,
       ""lifecycle"": {
         ""type"": ""buildpack"",
         ""data"": {
-          ""buildpack"": ""name-1559"",
-          ""stack"": ""name-1560""
+          ""buildpack"": ""name-1039"",
+          ""stack"": ""name-1040""
         }
       },
       ""memory_limit"": null,
       ""disk_limit"": null,
       ""result"": {
-        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
-        ""stack"": null,
+        ""execution_metadata"": null,
         ""process_types"": null,
         ""hash"": {
           ""type"": ""sha1"",
           ""value"": ""my-hash""
         },
-        ""execution_metadata"": null
+        ""buildpack"": ""https://github.com/cloudfoundry/my-buildpack.git"",
+        ""stack"": null
       },
       ""environment_variables"": {
 
       },
       ""created_at"": ""1970-01-01T00:00:02Z"",
-      ""updated_at"": null,
+      ""updated_at"": ""2016-03-21T10:59:40Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/droplets/6ff1bab9-3faf-4969-81fc-a0211edba7b6""
+          ""href"": ""/v3/droplets/9b4f05c3-af7d-49ad-a9dd-d6e92e3df914""
         },
         ""package"": {
-          ""href"": ""/v3/packages/4d35b5cf-aede-463b-ad24-60c63dd9fa23""
+          ""href"": ""/v3/packages/029002df-ab65-44ca-ad22-f1f043e52da5""
         },
         ""app"": {
-          ""href"": ""/v3/apps/0453e320-8bd1-4fa9-b458-6a16a6db200c""
+          ""href"": ""/v3/apps/1cbddf09-f2b3-4bc5-b3c9-b08c4af69c06""
         },
         ""assign_current_droplet"": {
-          ""href"": ""/v3/apps/0453e320-8bd1-4fa9-b458-6a16a6db200c/current_droplet"",
+          ""href"": ""/v3/apps/1cbddf09-f2b3-4bc5-b3c9-b08c4af69c06/current_droplet"",
           ""method"": ""PUT""
         }
       }
@@ -266,65 +258,65 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
 
             PagedResponseCollection<FiltersDropletsByStatesAppGuidsResponse> page = Utilities.DeserializePage<FiltersDropletsByStatesAppGuidsResponse>(json, null);
 
-            Assert.AreEqual("15e54474-bb35-43d8-9d65-e4695932107f", TestUtil.ToTestableString(page[0].Guid), true);
+            Assert.AreEqual("acee5efd-f2d1-4fec-86ed-b96c3e4e20ec", TestUtil.ToTestableString(page[0].Guid), true);
             Assert.AreEqual("STAGED", TestUtil.ToTestableString(page[0].State), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].Error), true);
             Assert.AreEqual("123", TestUtil.ToTestableString(page[0].MemoryLimit), true);
             Assert.AreEqual("456", TestUtil.ToTestableString(page[0].DiskLimit), true);
             Assert.AreEqual("1970-01-01T00:00:02Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].UpdatedAt), true);
-            Assert.AreEqual("15e54474-bb35-43d8-9d65-e4695932107f", TestUtil.ToTestableString(page[1].Guid), true);
+            Assert.AreEqual("2016-03-21T10:59:40Z", TestUtil.ToTestableString(page[0].UpdatedAt), true);
+            Assert.AreEqual("acee5efd-f2d1-4fec-86ed-b96c3e4e20ec", TestUtil.ToTestableString(page[1].Guid), true);
             Assert.AreEqual("FAILED", TestUtil.ToTestableString(page[1].State), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].Error), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].MemoryLimit), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].DiskLimit), true);
             Assert.AreEqual("1970-01-01T00:00:02Z", TestUtil.ToTestableString(page[1].CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[1].UpdatedAt), true);
+            Assert.AreEqual("2016-03-21T10:59:40Z", TestUtil.ToTestableString(page[1].UpdatedAt), true);
         }
 
         [TestMethod]
         public void TestGetDropletResponse()
         {
             string json = @"{
-  ""guid"": ""3f2383d2-66ea-484b-b573-bb49ce2a7eef"",
+  ""guid"": ""693fbf2f-ddf4-4b92-b802-e8048fdc0c10"",
   ""state"": ""STAGED"",
   ""error"": ""example error"",
   ""lifecycle"": {
     ""type"": ""buildpack"",
     ""data"": {
-      ""buildpack"": ""name-1517"",
-      ""stack"": ""name-1518""
+      ""buildpack"": ""name-983"",
+      ""stack"": ""name-984""
     }
   },
   ""memory_limit"": null,
   ""disk_limit"": null,
   ""result"": {
-    ""buildpack"": ""http://buildpack.git.url.com"",
-    ""stack"": null,
+    ""execution_metadata"": null,
     ""process_types"": null,
     ""hash"": {
       ""type"": ""sha1"",
       ""value"": null
     },
-    ""execution_metadata"": null
+    ""buildpack"": ""http://buildpack.git.url.com"",
+    ""stack"": null
   },
   ""environment_variables"": {
     ""cloud"": ""foundry""
   },
-  ""created_at"": ""2016-02-11T13:20:40Z"",
-  ""updated_at"": null,
+  ""created_at"": ""2016-03-21T10:59:39Z"",
+  ""updated_at"": ""2016-03-21T10:59:39Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/droplets/131b1ad2-b891-4cce-b968-6245a0720e19""
+      ""href"": ""/v3/droplets/dc59aef0-c9fa-4222-916d-10520aa4234b""
     },
     ""package"": {
-      ""href"": ""/v3/packages/2e4577d6-f93e-40e3-9d64-1b83adfda98e""
+      ""href"": ""/v3/packages/65ccf9e7-8ad0-432b-9ece-963b0797d86a""
     },
     ""app"": {
-      ""href"": ""/v3/apps/d735b697-a9ee-4154-b3f6-ccb99e9629d9""
+      ""href"": ""/v3/apps/4eea3d12-2de6-4845-94e5-2110781c5273""
     },
     ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/d735b697-a9ee-4154-b3f6-ccb99e9629d9/current_droplet"",
+      ""href"": ""/v3/apps/4eea3d12-2de6-4845-94e5-2110781c5273/current_droplet"",
       ""method"": ""PUT""
     }
   }
@@ -332,13 +324,13 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
 
             GetDropletResponse obj = Utilities.DeserializeJson<GetDropletResponse>(json);
 
-            Assert.AreEqual("3f2383d2-66ea-484b-b573-bb49ce2a7eef", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("693fbf2f-ddf4-4b92-b802-e8048fdc0c10", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("STAGED", TestUtil.ToTestableString(obj.State), true);
             Assert.AreEqual("example error", TestUtil.ToTestableString(obj.Error), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.MemoryLimit), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.DiskLimit), true);
-            Assert.AreEqual("2016-02-11T13:20:40Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
+            Assert.AreEqual("2016-03-21T10:59:39Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-21T10:59:39Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
     }
 }

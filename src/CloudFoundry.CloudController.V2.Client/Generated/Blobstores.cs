@@ -58,7 +58,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>as a way to cache certain resources, e.g. downloaded Ruby gems. An admin</para>
         /// <para>who wanted to decrease the size of their blobstore could use this endpoint</para>
         /// <para>to delete unnecessary blobs.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/blobstores/delete_all_blobs_in_the_buildpack_cache_blobstore.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/blobstores/delete_all_blobs_in_the_buildpack_cache_blobstore.html"</para>
         /// </summary>
         public async Task<DeleteAllBlobsInBuildpackCacheBlobstoreResponse> DeleteAllBlobsInBuildpackCacheBlobstore()
         {
@@ -73,7 +73,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 202;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<DeleteAllBlobsInBuildpackCacheBlobstoreResponse>(await response.ReadContentAsStringAsync());
         }

@@ -104,10 +104,12 @@
     <Compile Include="Deserialization\Test_private_domains.cs" />
     <Compile Include="Deserialization\Test_resource_match.cs" />
     <Compile Include="Deserialization\Test_routes.cs" />
+    <Compile Include="Deserialization\Test_routes_mapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Deserialization\Test_security_groups.cs" />
     <Compile Include="Deserialization\Test_security_group_running_defaults.cs" />
     <Compile Include="Deserialization\Test_security_group_staging_defaults.cs" />
-    <Compile Include="Deserialization\Test_serviceauthtokens__deprecated_.cs" />
     <Compile Include="Deserialization\Test_services.cs" />
     <Compile Include="Deserialization\Test_service_bindings.cs" />
     <Compile Include="Deserialization\Test_service_brokers.cs" />
@@ -139,10 +141,10 @@
     <Compile Include="Fake\Test_private_domains.cs" />
     <Compile Include="Fake\Test_resource_match.cs" />
     <Compile Include="Fake\Test_routes.cs" />
+    <Compile Include="Fake\Test_routes_mapping.cs" />
     <Compile Include="Fake\Test_security_groups.cs" />
     <Compile Include="Fake\Test_security_group_running_defaults.cs" />
     <Compile Include="Fake\Test_security_group_staging_defaults.cs" />
-    <Compile Include="Fake\Test_serviceauthtokens__deprecated_.cs" />
     <Compile Include="Fake\Test_services.cs" />
     <Compile Include="Fake\Test_service_bindings.cs" />
     <Compile Include="Fake\Test_service_brokers.cs" />
@@ -183,10 +185,10 @@
     <Compile Include="Serialization\Test_private_domains.cs" />
     <Compile Include="Serialization\Test_resource_match.cs" />
     <Compile Include="Serialization\Test_routes.cs" />
+    <Compile Include="Serialization\Test_routes_mapping.cs" />
     <Compile Include="Serialization\Test_security_groups.cs" />
     <Compile Include="Serialization\Test_security_group_running_defaults.cs" />
     <Compile Include="Serialization\Test_security_group_staging_defaults.cs" />
-    <Compile Include="Serialization\Test_serviceauthtokens__deprecated_.cs" />
     <Compile Include="Serialization\Test_services.cs" />
     <Compile Include="Serialization\Test_service_bindings.cs" />
     <Compile Include="Serialization\Test_service_brokers.cs" />

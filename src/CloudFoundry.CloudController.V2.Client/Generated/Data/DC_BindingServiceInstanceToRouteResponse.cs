@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.BindingServiceInstanceToRouteExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_instances/binding_a_service_instance_to_a_route_(experimental).html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.BindingServiceInstanceToRoute()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/service_instances/binding_a_service_instance_to_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class BindingServiceInstanceToRouteExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractBindingServiceInstanceToRouteExperimentalResponse
+    public partial class BindingServiceInstanceToRouteResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractBindingServiceInstanceToRouteResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.BindingServiceInstanceToRouteExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_instances/binding_a_service_instance_to_a_route_(experimental).html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.BindingServiceInstanceToRoute()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/service_instances/binding_a_service_instance_to_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractBindingServiceInstanceToRouteExperimentalResponse : IResponse
+    public abstract class AbstractBindingServiceInstanceToRouteResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity

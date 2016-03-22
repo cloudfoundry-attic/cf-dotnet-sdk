@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_brokers/retrieve_a_particular_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_brokers/retrieve_a_particular_service_broker.html"</para>
         /// </summary>
         public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
         {
@@ -74,7 +74,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Create a Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_brokers/create_a_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_brokers/create_a_service_broker.html"</para>
         /// </summary>
         public async Task<CreateServiceBrokerResponse> CreateServiceBroker(CreateServiceBrokerRequest value)
         {
@@ -97,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_brokers/delete_a_particular_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_brokers/delete_a_particular_service_broker.html"</para>
         /// </summary>
         public async Task DeleteServiceBroker(Guid? guid)
         {
@@ -118,7 +118,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Brokers
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_brokers/list_all_service_brokers.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_brokers/list_all_service_brokers.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBrokersResponse>> ListAllServiceBrokers()
         {
@@ -127,7 +127,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Brokers
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_brokers/list_all_service_brokers.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_brokers/list_all_service_brokers.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBrokersResponse>> ListAllServiceBrokers(RequestOptions options)
         {
@@ -149,7 +149,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Update a Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/service_brokers/update_a_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_brokers/update_a_service_broker.html"</para>
         /// </summary>
         public async Task<UpdateServiceBrokerResponse> UpdateServiceBroker(Guid? guid, UpdateServiceBrokerRequest value)
         {

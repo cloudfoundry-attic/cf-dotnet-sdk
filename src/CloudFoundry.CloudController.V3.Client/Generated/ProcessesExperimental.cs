@@ -52,8 +52,40 @@ namespace CloudFoundry.CloudController.V3.Client.Base
         }
 
         /// <summary>
+        /// Get Detailed Stats for a Process
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/get_detailed_stats_for_a_process.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<GetDetailedStatsForProcessResponse>> GetDetailedStatsForProcess(Guid? guid)
+        {
+            return await GetDetailedStatsForProcess(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// Get Detailed Stats for a Process
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/get_detailed_stats_for_a_process.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<GetDetailedStatsForProcessResponse>> GetDetailedStatsForProcess(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}/stats", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/json";
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<GetDetailedStatsForProcessResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
         /// Terminating a Process instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/processes__experimental_/terminating_a_process_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/terminating_a_process_instance.html"</para>
         /// </summary>
         public async Task TerminatingProcessInstance(Guid? guid, int? index)
         {
@@ -74,7 +106,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Processes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/processes__experimental_/list_all_processes.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/list_all_processes.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllProcessesResponse>> ListAllProcesses()
         {
@@ -83,7 +115,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Processes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/processes__experimental_/list_all_processes.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/list_all_processes.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllProcessesResponse>> ListAllProcesses(RequestOptions options)
         {
@@ -105,7 +137,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Get a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/processes__experimental_/get_a_process.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/get_a_process.html"</para>
         /// </summary>
         public async Task<GetProcessResponse> GetProcess(Guid? guid)
         {
@@ -126,7 +158,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Updating a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/processes__experimental_/updating_a_process.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/updating_a_process.html"</para>
         /// </summary>
         public async Task<UpdateProcessResponse> UpdateProcess(Guid? guid, UpdateProcessRequest value)
         {
@@ -140,7 +172,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
+            client.ContentType = "application/json";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
@@ -149,7 +181,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Scaling a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/processes__experimental_/scaling_a_process.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/processes__experimental_/scaling_a_process.html"</para>
         /// </summary>
         public async Task<ScalingProcessResponse> ScalingProcess(Guid? guid, ScalingProcessRequest value)
         {
@@ -163,7 +195,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
+            client.ContentType = "application/json";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);

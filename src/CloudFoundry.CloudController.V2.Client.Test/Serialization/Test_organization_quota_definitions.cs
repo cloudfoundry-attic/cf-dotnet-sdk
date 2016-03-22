@@ -33,22 +33,24 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             string json = @"{
   ""name"": ""gold_quota"",
   ""non_basic_services_allowed"": true,
-  ""total_services"": 5,
-  ""total_routes"": 10,
+  ""total_services"": -1,
+  ""total_routes"": -1,
   ""memory_limit"": 5120,
   ""instance_memory_limit"": 10240,
-  ""app_instance_limit"": 10
+  ""app_instance_limit"": 10,
+  ""app_task_limit"": 5
 }";
 
             CreateOrganizationQuotaDefinitionRequest request = new CreateOrganizationQuotaDefinitionRequest();
 
             request.Name = "gold_quota";
             request.NonBasicServicesAllowed = true;
-            request.TotalServices = 5;
-            request.TotalRoutes = 10;
+            request.TotalServices = -1;
+            request.TotalRoutes = -1;
             request.MemoryLimit = 5120;
             request.InstanceMemoryLimit = 10240;
             request.AppInstanceLimit = 10;
+            request.AppTaskLimit = 5;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

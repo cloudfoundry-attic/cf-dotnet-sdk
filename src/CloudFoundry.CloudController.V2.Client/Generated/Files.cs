@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve File
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/files/retrieve_file.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/files/retrieve_file.html"</para>
         /// </summary>
         public async Task RetrieveFile(Guid? app_guid, int? instance_index, dynamic file_path)
         {

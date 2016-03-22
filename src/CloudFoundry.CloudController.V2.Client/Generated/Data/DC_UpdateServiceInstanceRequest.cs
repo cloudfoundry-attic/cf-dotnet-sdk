@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.UpdateServiceInstance()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_instances/update_a_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/service_instances/update_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateServiceInstanceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateServiceInstanceRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.UpdateServiceInstance()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/service_instances/update_a_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/service_instances/update_a_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateServiceInstanceRequest
@@ -70,7 +70,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>A list of tags for the service instance. NOTE: Updating the tags will overwrite any old tags.</para>
+        /// <para>A list of tags for the service instance. NOTE: Updating the tags will overwrite any old tags. Max characters: 2048.</para>
         /// </summary>
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
         public string Tags

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListEventsAssociatedWithAppSinceJanuary12014()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/events/list_events_associated_with_an_app_since_january_1,_2014.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/events/list_events_associated_with_an_app_since_january_1,_2014.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListEventsAssociatedWithAppSinceJanuary12014Response : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListEventsAssociatedWithAppSinceJanuary12014Response
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListEventsAssociatedWithAppSinceJanuary12014()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/events/list_events_associated_with_an_app_since_january_1,_2014.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/events/list_events_associated_with_an_app_since_january_1,_2014.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListEventsAssociatedWithAppSinceJanuary12014Response : IResponse

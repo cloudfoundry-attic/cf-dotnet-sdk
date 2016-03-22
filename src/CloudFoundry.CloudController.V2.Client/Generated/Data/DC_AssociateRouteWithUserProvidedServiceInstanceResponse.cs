@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.AssociateRouteWithUserProvidedServiceInstanceExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/associate_route_with_the_user_provided_service_instance_(experimental).html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.AssociateRouteWithUserProvidedServiceInstance()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/user_provided_service_instances/associate_route_with_the_user_provided_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class AssociateRouteWithUserProvidedServiceInstanceExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractAssociateRouteWithUserProvidedServiceInstanceExperimentalResponse
+    public partial class AssociateRouteWithUserProvidedServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractAssociateRouteWithUserProvidedServiceInstanceResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.AssociateRouteWithUserProvidedServiceInstanceExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/user_provided_service_instances/associate_route_with_the_user_provided_service_instance_(experimental).html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.AssociateRouteWithUserProvidedServiceInstance()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/user_provided_service_instances/associate_route_with_the_user_provided_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractAssociateRouteWithUserProvidedServiceInstanceExperimentalResponse : IResponse
+    public abstract class AbstractAssociateRouteWithUserProvidedServiceInstanceResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity

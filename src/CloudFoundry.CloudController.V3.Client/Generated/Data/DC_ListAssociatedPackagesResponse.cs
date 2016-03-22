@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.ListAssociatedPackages()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps__experimental_/list_associated_packages.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/list_associated_packages.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAssociatedPackagesResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractListAssociatedPackagesResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.ListAssociatedPackages()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/224/apps__experimental_/list_associated_packages.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/list_associated_packages.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAssociatedPackagesResponse

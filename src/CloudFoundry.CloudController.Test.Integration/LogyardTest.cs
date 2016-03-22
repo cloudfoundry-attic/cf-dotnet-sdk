@@ -102,7 +102,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
                 if (packageState != "pending")
                 {
-                    Assert.AreEqual(packageState, "staged");
+                    Assert.AreEqual("staged", packageState);
 
                     var instances = client.Apps.GetInstanceInformationForStartedApp(appGuid).Result;
 

@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Create a Package
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/create_a_package.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/create_a_package.html"</para>
         /// </summary>
         public async Task<CreatePackageResponse> CreatePackage(Guid? guid, CreatePackageRequest value)
         {
@@ -67,7 +67,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
+            client.ContentType = "application/json";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Get a Package
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/get_a_package.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/get_a_package.html"</para>
         /// </summary>
         public async Task<GetPackageResponse> GetPackage(Guid? guid)
         {
@@ -97,7 +97,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Copy a Package
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/copy_a_package.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/copy_a_package.html"</para>
         /// </summary>
         public async Task<CopyPackageResponse> CopyPackage(Guid? guid)
         {
@@ -122,7 +122,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
         /// <para>When using a remote blobstore, such as AWS, the response is a redirect to the actual location of the bits.</para>
         /// <para>If the client is automatically following redirects, then the OAuth token that was used to communicate with Cloud Controller will be replayed on the new redirect request.</para>
         /// <para>Some blobstores may reject the request in that case. Clients may need to follow the redirect without including the OAuth token.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/download_the_bits_for_a_package.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/download_the_bits_for_a_package.html"</para>
         /// </summary>
         public async Task<DownloadBitsForPackageResponse> DownloadBitsForPackage(Guid? guid, dynamic value)
         {
@@ -145,7 +145,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Packages
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/list_all_packages.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/list_all_packages.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllPackagesResponse>> ListAllPackages()
         {
@@ -154,7 +154,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Packages
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/list_all_packages.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/list_all_packages.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllPackagesResponse>> ListAllPackages(RequestOptions options)
         {
@@ -176,7 +176,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Delete a Package
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/delete_a_package.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/delete_a_package.html"</para>
         /// </summary>
         public async Task DeletePackage(Guid? guid)
         {
@@ -197,7 +197,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Stage a package
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/224/packages__experimental_/stage_a_package.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/packages__experimental_/stage_a_package.html"</para>
         /// </summary>
         public async Task<StagePackageResponse> StagePackage(Guid? guid, StagePackageRequest value)
         {
@@ -211,7 +211,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
+            client.ContentType = "application/json";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
