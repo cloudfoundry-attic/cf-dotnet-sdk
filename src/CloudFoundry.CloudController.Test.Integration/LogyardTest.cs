@@ -87,6 +87,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         }
 
         [TestMethod]
+        [TestCategory("RequiresLogyard")]
         public void LogyardRecentTest()
         {
             CreateAppResponse app = client.Apps.CreateApp(apprequest).Result;
