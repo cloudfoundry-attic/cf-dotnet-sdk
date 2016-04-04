@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateApp()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/creating_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps/creating_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateAppRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateAppRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateApp()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/creating_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps/creating_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateAppRequest
@@ -180,6 +180,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>Enable SSHing into the app. Supported for Diego only.</para>
+        /// </summary>
+        [JsonProperty("enable_ssh", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EnableSsh
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>Name of the Docker image containing the app</para>
         /// </summary>
         [JsonProperty("docker_image", NullValueHandling = NullValueHandling.Ignore)]
@@ -243,7 +253,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>Reason for application staging failures</para>
         /// </summary>
         [JsonProperty("staging_failed_reason", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic StagingFailedReason
+        public string StagingFailedReason
         {
             get;
             set;
@@ -253,7 +263,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>Detailed description for the staging_failed_reason</para>
         /// </summary>
         [JsonProperty("staging_failed_description", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic StagingFailedDescription
+        public string StagingFailedDescription
         {
             get;
             set;

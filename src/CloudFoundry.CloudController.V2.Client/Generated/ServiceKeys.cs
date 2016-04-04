@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Keys
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_keys/list_all_service_keys.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/service_keys/list_all_service_keys.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceKeysResponse>> ListAllServiceKeys()
         {
@@ -62,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Keys
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_keys/list_all_service_keys.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/service_keys/list_all_service_keys.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceKeysResponse>> ListAllServiceKeys(RequestOptions options)
         {
@@ -84,7 +84,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Key
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_keys/retrieve_a_particular_service_key.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/service_keys/retrieve_a_particular_service_key.html"</para>
         /// </summary>
         public async Task<RetrieveServiceKeyResponse> RetrieveServiceKey(Guid? guid)
         {
@@ -105,7 +105,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Create a Service Key
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_keys/create_a_service_key.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/service_keys/create_a_service_key.html"</para>
         /// </summary>
         public async Task<CreateServiceKeyResponse> CreateServiceKey(CreateServiceKeyRequest value)
         {
@@ -128,7 +128,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Key
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/service_keys/delete_a_particular_service_key.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/service_keys/delete_a_particular_service_key.html"</para>
         /// </summary>
         public async Task DeleteServiceKey(Guid? guid)
         {

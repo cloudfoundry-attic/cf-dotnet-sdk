@@ -341,6 +341,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\Data\DC_GetSetUserRolesFeatureFlagResponse.cs" />
+    <Compile Include="Generated\Data\DC_GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_GetSpaceSummaryResponse.cs">
       <SubType>Code</SubType>
@@ -443,6 +444,7 @@
     <Compile Include="Generated\Data\DC_ListAllPrivateDomainsResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAllRouteMappingsForRouteResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllRouteMappingsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllRoutesForAppResponse.cs">
       <SubType>Code</SubType>

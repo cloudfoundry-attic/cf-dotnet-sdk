@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceDashboardClientDeleteEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/events/list_service_dashboard_client_delete_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/events/list_service_dashboard_client_delete_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListServiceDashboardClientDeleteEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListServiceDashboardClientDeleteEventsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListServiceDashboardClientDeleteEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/events/list_service_dashboard_client_delete_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/events/list_service_dashboard_client_delete_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListServiceDashboardClientDeleteEventsResponse : IResponse

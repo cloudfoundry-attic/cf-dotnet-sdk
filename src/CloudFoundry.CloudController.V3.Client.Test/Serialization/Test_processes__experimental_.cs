@@ -28,6 +28,23 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
     {
 
         [TestMethod]
+        public void TestScalingProcessFromItsAppRequest()
+        {
+            string json = @"{
+  ""instances"": 3,
+  ""memory_in_mb"": 100,
+  ""disk_in_mb"": 100
+}";
+
+            ScalingProcessFromItsAppRequest request = new ScalingProcessFromItsAppRequest();
+
+            request.Instances = 3;
+            request.MemoryInMb = 100;
+            request.DiskInMb = 100;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestUpdateProcessRequest()
         {
             string json = @"{

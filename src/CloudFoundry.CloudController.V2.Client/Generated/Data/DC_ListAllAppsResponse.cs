@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.ListAllApps()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/list_all_apps.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps/list_all_apps.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllAppsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllAppsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.ListAllApps()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/list_all_apps.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps/list_all_apps.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllAppsResponse : IResponse
@@ -348,6 +348,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Routes Url</para>
+        /// </summary>
+        [JsonProperty("routes_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string RoutesUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Events Url</para>
         /// </summary>
         [JsonProperty("events_url", NullValueHandling = NullValueHandling.Ignore)]
@@ -362,16 +372,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("service_bindings_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ServiceBindingsUrl
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Routes Url</para>
-        /// </summary>
-        [JsonProperty("routes_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string RoutesUrl
         {
             get;
             set;

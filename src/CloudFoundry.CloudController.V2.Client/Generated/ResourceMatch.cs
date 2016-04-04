@@ -59,7 +59,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>pushing an app which has only been partially changed.</para>
         /// <para>Cloud Foundry operators may set minimum / maximum file sizes to match against.</para>
         /// <para>If the file size provided is outside this range, it will not be matched against.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/resource_match/list_all_matching_resources.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/resource_match/list_all_matching_resources.html"</para>
         /// </summary>
         public async Task<ListAllMatchingResourcesResponse[]> ListAllMatchingResources(ListAllMatchingResourcesRequest[] value)
         {

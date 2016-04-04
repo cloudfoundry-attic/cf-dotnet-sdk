@@ -270,6 +270,36 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
+        public void GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""space_developer_env_var_visibility"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/space_developer_env_var_visibility""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimental().Result;
+
+
+                Assert.AreEqual("space_developer_env_var_visibility", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/space_developer_env_var_visibility", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
         public void GetPrivateDomainCreationFeatureFlagTest()
         {
             using (ShimsContext.Create())
@@ -402,6 +432,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     ""enabled"": true,
     ""error_message"": null,
     ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
+  },
+  {
+    ""name"": ""space_developer_env_var_visibility"",
+    ""enabled"": true,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/space_developer_env_var_visibility""
   }
 ]";
                 clients.JsonResponse = json;
@@ -457,6 +493,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 Assert.AreEqual("true", TestUtil.ToTestableString(obj[10].Enabled), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[10].ErrorMessage), true);
                 Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Url), true);
+                Assert.AreEqual("space_developer_env_var_visibility", TestUtil.ToTestableString(obj[11].Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj[11].Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj[11].ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/space_developer_env_var_visibility", TestUtil.ToTestableString(obj[11].Url), true);
 
             }
         }

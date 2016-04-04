@@ -20,8 +20,8 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.ListAssociatedDroplets()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/list_associated_droplets.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.DropletsExperimentalEndpoint.ListAssociatedDroplets()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/droplets__experimental_/list_associated_droplets.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAssociatedDropletsResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractListAssociatedDropletsResponse
@@ -32,8 +32,8 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.ListAssociatedDroplets()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/list_associated_droplets.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.DropletsExperimentalEndpoint.ListAssociatedDroplets()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/droplets__experimental_/list_associated_droplets.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAssociatedDropletsResponse
@@ -83,7 +83,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         /// <para>The Memory Limit</para>
         /// </summary>
         [JsonProperty("memory_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic MemoryLimit
+        public int? MemoryLimit
         {
             get;
             set;

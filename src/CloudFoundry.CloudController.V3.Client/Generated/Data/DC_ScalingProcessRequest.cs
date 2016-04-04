@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V3.Client.ProcessesExperimentalEndpoint.ScalingProcess()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/processes__experimental_/scaling_a_process.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/processes__experimental_/scaling_a_process.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ScalingProcessRequest : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractScalingProcessRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V3.Client.ProcessesExperimentalEndpoint.ScalingProcess()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/processes__experimental_/scaling_a_process.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/processes__experimental_/scaling_a_process.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractScalingProcessRequest

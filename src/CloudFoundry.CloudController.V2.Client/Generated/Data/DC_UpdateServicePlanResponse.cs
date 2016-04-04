@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicePlansEndpoint.UpdateServicePlan()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/service_plans/updating_a_service_plan.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/service_plans/updating_a_service_plan.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateServicePlanResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateServicePlanResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicePlansEndpoint.UpdateServicePlan()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/service_plans/updating_a_service_plan.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/service_plans/updating_a_service_plan.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateServicePlanResponse : IResponse

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.ListAllServiceBindingsForApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/list_all_service_bindings_for_the_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps/list_all_service_bindings_for_the_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServiceBindingsForAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServiceBindingsForAppResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.ListAllServiceBindingsForApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps/list_all_service_bindings_for_the_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps/list_all_service_bindings_for_the_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServiceBindingsForAppResponse : IResponse

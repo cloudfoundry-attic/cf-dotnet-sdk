@@ -30,13 +30,13 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""c1b72da5-7538-4718-b6e6-0f97fd7fba78"",
-    ""url"": ""/v2/quota_definitions/365b13cd-f70a-4b3b-b426-a33c22d65132"",
-    ""created_at"": ""2016-03-21T10:59:33Z"",
-    ""updated_at"": ""2016-03-21T10:59:33Z""
+    ""guid"": ""3312e0f4-b70d-4cbf-9428-f7904a6bd4dc"",
+    ""url"": ""/v2/quota_definitions/5df49b5d-caa4-4389-9c1c-1df3f9009b5e"",
+    ""created_at"": ""2016-03-30T10:15:44Z"",
+    ""updated_at"": ""2016-03-30T10:15:44Z""
   },
   ""entity"": {
-    ""name"": ""name-767"",
+    ""name"": ""name-2634"",
     ""non_basic_services_allowed"": true,
     ""total_services"": 60,
     ""total_routes"": 1000,
@@ -45,17 +45,18 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     ""trial_db_allowed"": false,
     ""instance_memory_limit"": -1,
     ""app_instance_limit"": -1,
-    ""app_task_limit"": -1
+    ""app_task_limit"": -1,
+    ""total_service_keys"": -1
   }
 }";
 
             UpdateOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(json);
 
-            Assert.AreEqual("c1b72da5-7538-4718-b6e6-0f97fd7fba78", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/365b13cd-f70a-4b3b-b426-a33c22d65132", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-767", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("3312e0f4-b70d-4cbf-9428-f7904a6bd4dc", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/5df49b5d-caa4-4389-9c1c-1df3f9009b5e", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-03-30T10:15:44Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:44Z", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("name-2634", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
             Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
             Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
@@ -65,6 +66,7 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServiceKeys), true);
         }
 
         [TestMethod]
@@ -72,13 +74,13 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""32ff28df-6a6a-4662-8eb1-fe8d3e3e28d6"",
-    ""url"": ""/v2/quota_definitions/3e095a9e-ab04-4112-a344-1a98c5d2e8f5"",
-    ""created_at"": ""2016-03-21T10:59:33Z"",
+    ""guid"": ""8ef69258-ebf4-471b-bf8c-e22e411c2a4c"",
+    ""url"": ""/v2/quota_definitions/643a6c7a-749b-4442-9a91-df219cf0945a"",
+    ""created_at"": ""2016-03-30T10:15:44Z"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""name-768"",
+    ""name"": ""name-2636"",
     ""non_basic_services_allowed"": true,
     ""total_services"": 60,
     ""total_routes"": 1000,
@@ -87,17 +89,18 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     ""trial_db_allowed"": false,
     ""instance_memory_limit"": -1,
     ""app_instance_limit"": -1,
-    ""app_task_limit"": -1
+    ""app_task_limit"": -1,
+    ""total_service_keys"": -1
   }
 }";
 
             RetrieveOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(json);
 
-            Assert.AreEqual("32ff28df-6a6a-4662-8eb1-fe8d3e3e28d6", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/3e095a9e-ab04-4112-a344-1a98c5d2e8f5", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("8ef69258-ebf4-471b-bf8c-e22e411c2a4c", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/643a6c7a-749b-4442-9a91-df219cf0945a", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-03-30T10:15:44Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-768", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("name-2636", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
             Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
             Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
@@ -107,6 +110,7 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServiceKeys), true);
         }
 
         [TestMethod]
@@ -114,9 +118,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""be53b262-d8f5-473d-9795-c2109880465d"",
-    ""url"": ""/v2/quota_definitions/e09cd096-cbca-48e5-9317-0b2d07dca79b"",
-    ""created_at"": ""2016-03-21T10:59:33Z"",
+    ""guid"": ""cefa8f03-4f29-450d-a05a-4e4caf13c30f"",
+    ""url"": ""/v2/quota_definitions/2e9b487c-8574-4963-9a2e-82dcd2e9edfd"",
+    ""created_at"": ""2016-03-30T10:15:44Z"",
     ""updated_at"": null
   },
   ""entity"": {
@@ -129,15 +133,16 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     ""trial_db_allowed"": false,
     ""instance_memory_limit"": 10240,
     ""app_instance_limit"": 10,
-    ""app_task_limit"": 5
+    ""app_task_limit"": 5,
+    ""total_service_keys"": -1
   }
 }";
 
             CreateOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<CreateOrganizationQuotaDefinitionResponse>(json);
 
-            Assert.AreEqual("be53b262-d8f5-473d-9795-c2109880465d", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/e09cd096-cbca-48e5-9317-0b2d07dca79b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-03-21T10:59:33Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("cefa8f03-4f29-450d-a05a-4e4caf13c30f", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/2e9b487c-8574-4963-9a2e-82dcd2e9edfd", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-03-30T10:15:44Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("gold_quota", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
@@ -149,6 +154,7 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("10240", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
             Assert.AreEqual("10", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
             Assert.AreEqual("5", TestUtil.ToTestableString(obj.AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServiceKeys), true);
         }
 
         [TestMethod]
@@ -162,9 +168,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""1198924d-10df-469b-8049-94f910c1c3cb"",
-        ""url"": ""/v2/quota_definitions/dd44c28e-29c6-4ac9-b020-74f334ee64b8"",
-        ""created_at"": ""2016-03-21T10:59:24Z"",
+        ""guid"": ""fa70c817-675a-4be0-ba14-932c7187ef9b"",
+        ""url"": ""/v2/quota_definitions/ac08b552-7c82-4b72-8ad4-98143eb72a36"",
+        ""created_at"": ""2016-03-30T10:15:26Z"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -177,7 +183,8 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         ""trial_db_allowed"": false,
         ""instance_memory_limit"": -1,
         ""app_instance_limit"": -1,
-        ""app_task_limit"": -1
+        ""app_task_limit"": -1,
+        ""total_service_keys"": -1
       }
     }
   ]
@@ -189,9 +196,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("1198924d-10df-469b-8049-94f910c1c3cb", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/dd44c28e-29c6-4ac9-b020-74f334ee64b8", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2016-03-21T10:59:24Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("fa70c817-675a-4be0-ba14-932c7187ef9b", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/ac08b552-7c82-4b72-8ad4-98143eb72a36", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2016-03-30T10:15:26Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("default", TestUtil.ToTestableString(page[0].Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(page[0].NonBasicServicesAllowed), true);
@@ -203,6 +210,7 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].InstanceMemoryLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].AppInstanceLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].TotalServiceKeys), true);
         }
     }
 }

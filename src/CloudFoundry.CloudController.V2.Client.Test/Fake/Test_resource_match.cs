@@ -34,7 +34,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"[
   {
-    ""sha1"": ""0ca05e1212be694a0c89dad69f204c9b0a169443"",
+    ""sha1"": ""11eb4376edc1b1aa0440d9abcb6dfea44905bd03"",
     ""size"": 36
   }
 ]";
@@ -49,7 +49,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.ResourceMatch.ListAllMatchingResources(value).Result;
 
 
-                Assert.AreEqual("0ca05e1212be694a0c89dad69f204c9b0a169443", TestUtil.ToTestableString(obj[0].Sha1), true);
+                Assert.AreEqual("11eb4376edc1b1aa0440d9abcb6dfea44905bd03", TestUtil.ToTestableString(obj[0].Sha1), true);
                 Assert.AreEqual("36", TestUtil.ToTestableString(obj[0].Size), true);
 
             }

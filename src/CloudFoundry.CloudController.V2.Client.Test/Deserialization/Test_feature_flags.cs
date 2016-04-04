@@ -170,6 +170,24 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
+        public void TestGetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse()
+        {
+            string json = @"{
+  ""name"": ""space_developer_env_var_visibility"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/space_developer_env_var_visibility""
+}";
+
+            GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse obj = Utilities.DeserializeJson<GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse>(json);
+
+            Assert.AreEqual("space_developer_env_var_visibility", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/space_developer_env_var_visibility", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
         public void TestGetPrivateDomainCreationFeatureFlagResponse()
         {
             string json = @"{
@@ -274,6 +292,12 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     ""enabled"": true,
     ""error_message"": null,
     ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
+  },
+  {
+    ""name"": ""space_developer_env_var_visibility"",
+    ""enabled"": true,
+    ""error_message"": null,
+    ""url"": ""/v2/config/feature_flags/space_developer_env_var_visibility""
   }
 ]";
 
@@ -323,6 +347,10 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("true", TestUtil.ToTestableString(obj[10].Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj[10].ErrorMessage), true);
             Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Url), true);
+            Assert.AreEqual("space_developer_env_var_visibility", TestUtil.ToTestableString(obj[11].Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj[11].Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj[11].ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/space_developer_env_var_visibility", TestUtil.ToTestableString(obj[11].Url), true);
         }
 
         [TestMethod]

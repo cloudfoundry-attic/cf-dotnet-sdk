@@ -71,6 +71,7 @@
     <Compile Include="Generated\Data\DC_CreatePackageResponse.cs" />
     <Compile Include="Generated\Data\DC_DownloadBitsForPackageResponse.cs" />
     <Compile Include="Generated\Data\DC_FiltersDropletsByStatesAppGuidsResponse.cs" />
+    <Compile Include="Generated\Data\DC_FiltersDropletsByStatesResponse.cs" />
     <Compile Include="Generated\Data\DC_GetAppResponse.cs" />
     <Compile Include="Generated\Data\DC_GetDetailedStatsForAppResponse.cs" />
     <Compile Include="Generated\Data\DC_GetDetailedStatsForAppsProcessResponse.cs" />

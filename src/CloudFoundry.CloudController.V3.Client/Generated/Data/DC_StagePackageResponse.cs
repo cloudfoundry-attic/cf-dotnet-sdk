@@ -20,8 +20,8 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.StagePackage()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/packages__experimental_/stage_a_package.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.DropletsExperimentalEndpoint.StagePackage()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/droplets__experimental_/stage_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class StagePackageResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractStagePackageResponse
@@ -32,8 +32,8 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.StagePackage()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/packages__experimental_/stage_a_package.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.DropletsExperimentalEndpoint.StagePackage()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/droplets__experimental_/stage_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractStagePackageResponse
