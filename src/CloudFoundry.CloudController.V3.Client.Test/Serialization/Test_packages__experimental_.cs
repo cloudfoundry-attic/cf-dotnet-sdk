@@ -45,30 +45,5 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
-        [TestMethod]
-        public void TestStagePackageRequest()
-        {
-            string json = @"{
-  ""environment_variables"": {
-    ""CUSTOM_ENV_VAR"": ""hello""
-  },
-  ""lifecycle"": {
-    ""type"": ""buildpack"",
-    ""data"": {
-      ""buildpack"": ""http://github.com/myorg/awesome-buildpack"",
-      ""stack"": ""cflinuxfs2""
-    }
-  }
-}";
-
-            StagePackageRequest request = new StagePackageRequest();
-
-            request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""CUSTOM_ENV_VAR"":""hello""}");
-
-            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""buildpack"":""http://github.com/myorg/awesome-buildpack"",""stack"":""cflinuxfs2""}}");
-
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
     }
 }

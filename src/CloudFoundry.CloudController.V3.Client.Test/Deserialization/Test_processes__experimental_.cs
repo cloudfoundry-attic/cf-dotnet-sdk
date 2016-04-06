@@ -26,7 +26,7 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
 
 
         [TestMethod]
-        public void TestGetDetailedStatsForProcessResponse()
+        public void TestGetDetailedStatsForAppsProcessResponse()
         {
             string json = @"{
   ""resources"": [
@@ -35,7 +35,7 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
       ""index"": 0,
       ""state"": ""RUNNING"",
       ""usage"": {
-        ""time"": ""2016-03-21 10:59:31 UTC"",
+        ""time"": ""2016-03-30 10:15:11 UTC"",
         ""cpu"": 80,
         ""mem"": 128,
         ""disk"": 1024
@@ -51,10 +51,59 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
   ""pagination"": {
     ""total_results"": 1,
     ""first"": {
-      ""href"": ""/v3/processes/e9afa302-8aa6-4da4-adf9-4de8f3f86d0e/stats""
+      ""href"": ""/v3/apps/e7b1a2c2-8890-4b9a-8907-c0423165b076/processes/web/stats""
     },
     ""last"": {
-      ""href"": ""/v3/processes/e9afa302-8aa6-4da4-adf9-4de8f3f86d0e/stats""
+      ""href"": ""/v3/apps/e7b1a2c2-8890-4b9a-8907-c0423165b076/processes/web/stats""
+    },
+    ""next"": null,
+    ""previous"": null
+  }
+}";
+
+            PagedResponseCollection<GetDetailedStatsForAppsProcessResponse> page = Utilities.DeserializePage<GetDetailedStatsForAppsProcessResponse>(json, null);
+
+            Assert.AreEqual("web", TestUtil.ToTestableString(page[0].Type), true);
+            Assert.AreEqual("0", TestUtil.ToTestableString(page[0].Index), true);
+            Assert.AreEqual("RUNNING", TestUtil.ToTestableString(page[0].State), true);
+            Assert.AreEqual("toast", TestUtil.ToTestableString(page[0].Host), true);
+            Assert.AreEqual("8080", TestUtil.ToTestableString(page[0].Port), true);
+            Assert.AreEqual("1", TestUtil.ToTestableString(page[0].Uptime), true);
+            Assert.AreEqual("1073741824", TestUtil.ToTestableString(page[0].MemQuota), true);
+            Assert.AreEqual("1073741824", TestUtil.ToTestableString(page[0].DiskQuota), true);
+            Assert.AreEqual("16384", TestUtil.ToTestableString(page[0].FdsQuota), true);
+        }
+
+        [TestMethod]
+        public void TestGetDetailedStatsForProcessResponse()
+        {
+            string json = @"{
+  ""resources"": [
+    {
+      ""type"": ""web"",
+      ""index"": 0,
+      ""state"": ""RUNNING"",
+      ""usage"": {
+        ""time"": ""2016-03-30 10:15:10 UTC"",
+        ""cpu"": 80,
+        ""mem"": 128,
+        ""disk"": 1024
+      },
+      ""host"": ""toast"",
+      ""port"": 8080,
+      ""uptime"": 1,
+      ""mem_quota"": 1073741824,
+      ""disk_quota"": 1073741824,
+      ""fds_quota"": 16384
+    }
+  ],
+  ""pagination"": {
+    ""total_results"": 1,
+    ""first"": {
+      ""href"": ""/v3/processes/b833a85a-89d7-4527-a8a0-c10b15adcab1/stats""
+    },
+    ""last"": {
+      ""href"": ""/v3/processes/b833a85a-89d7-4527-a8a0-c10b15adcab1/stats""
     },
     ""next"": null,
     ""previous"": null
@@ -93,52 +142,52 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
   },
   ""resources"": [
     {
-      ""guid"": ""95baa460-c763-44ed-88ba-bbc4dfa166bf"",
+      ""guid"": ""9ce1dc48-c751-4f08-a150-5a71b7c399f2"",
       ""type"": ""web"",
       ""command"": null,
       ""instances"": 1,
       ""memory_in_mb"": 1024,
       ""disk_in_mb"": 1024,
-      ""created_at"": ""2016-03-21T10:59:32Z"",
-      ""updated_at"": ""2016-03-21T10:59:32Z"",
+      ""created_at"": ""2016-03-30T10:15:11Z"",
+      ""updated_at"": ""2016-03-30T10:15:11Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/processes/3baefc52-0c8b-4abf-b6db-904eabe61835""
+          ""href"": ""/v3/processes/0c9aac4c-839d-4796-b759-70320f440a7f""
         },
         ""scale"": {
-          ""href"": ""/v3/processes/3baefc52-0c8b-4abf-b6db-904eabe61835/scale"",
+          ""href"": ""/v3/processes/0c9aac4c-839d-4796-b759-70320f440a7f/scale"",
           ""method"": ""PUT""
         },
         ""app"": {
-          ""href"": ""/v3/apps/32db0d34-29b4-4454-8436-bfbf555700d9""
+          ""href"": ""/v3/apps/fc868b48-32a1-485c-a056-18220ca6ebde""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/b682e65f-b848-4788-bbfb-c1a35ca3788c""
+          ""href"": ""/v2/spaces/38a6018f-0fe3-40e3-a3b8-8024278890ec""
         }
       }
     },
     {
-      ""guid"": ""95baa460-c763-44ed-88ba-bbc4dfa166bf"",
+      ""guid"": ""9ce1dc48-c751-4f08-a150-5a71b7c399f2"",
       ""type"": ""web"",
       ""command"": null,
       ""instances"": 1,
       ""memory_in_mb"": 1024,
       ""disk_in_mb"": 1024,
-      ""created_at"": ""2016-03-21T10:59:32Z"",
-      ""updated_at"": ""2016-03-21T10:59:32Z"",
+      ""created_at"": ""2016-03-30T10:15:11Z"",
+      ""updated_at"": ""2016-03-30T10:15:11Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/processes/8b5ca923-afc5-48ab-964e-54f4bf42f51b""
+          ""href"": ""/v3/processes/445e549f-09ab-40ec-bbd9-e49e95086884""
         },
         ""scale"": {
-          ""href"": ""/v3/processes/8b5ca923-afc5-48ab-964e-54f4bf42f51b/scale"",
+          ""href"": ""/v3/processes/445e549f-09ab-40ec-bbd9-e49e95086884/scale"",
           ""method"": ""PUT""
         },
         ""app"": {
           ""href"": ""/v3/apps/""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/b682e65f-b848-4788-bbfb-c1a35ca3788c""
+          ""href"": ""/v2/spaces/38a6018f-0fe3-40e3-a3b8-8024278890ec""
         }
       }
     }
@@ -147,145 +196,283 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
 
             PagedResponseCollection<ListAllProcessesResponse> page = Utilities.DeserializePage<ListAllProcessesResponse>(json, null);
 
-            Assert.AreEqual("95baa460-c763-44ed-88ba-bbc4dfa166bf", TestUtil.ToTestableString(page[0].Guid), true);
+            Assert.AreEqual("9ce1dc48-c751-4f08-a150-5a71b7c399f2", TestUtil.ToTestableString(page[0].Guid), true);
             Assert.AreEqual("web", TestUtil.ToTestableString(page[0].Type), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].Command), true);
             Assert.AreEqual("1", TestUtil.ToTestableString(page[0].Instances), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(page[0].MemoryInMb), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(page[0].DiskInMb), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(page[0].UpdatedAt), true);
-            Assert.AreEqual("95baa460-c763-44ed-88ba-bbc4dfa166bf", TestUtil.ToTestableString(page[1].Guid), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(page[0].UpdatedAt), true);
+            Assert.AreEqual("9ce1dc48-c751-4f08-a150-5a71b7c399f2", TestUtil.ToTestableString(page[1].Guid), true);
             Assert.AreEqual("web", TestUtil.ToTestableString(page[1].Type), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].Command), true);
             Assert.AreEqual("1", TestUtil.ToTestableString(page[1].Instances), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(page[1].MemoryInMb), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(page[1].DiskInMb), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(page[1].CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(page[1].UpdatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(page[1].CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(page[1].UpdatedAt), true);
         }
 
         [TestMethod]
         public void TestGetProcessResponse()
         {
             string json = @"{
-  ""guid"": ""d6232509-9ad5-403c-b142-e45b704fc738"",
+  ""guid"": ""9faa1e35-396e-473e-9511-bbda56c4e866"",
   ""type"": ""web"",
   ""command"": null,
   ""instances"": 1,
   ""memory_in_mb"": 1024,
   ""disk_in_mb"": 1024,
-  ""created_at"": ""2016-03-21T10:59:32Z"",
-  ""updated_at"": ""2016-03-21T10:59:32Z"",
+  ""created_at"": ""2016-03-30T10:15:10Z"",
+  ""updated_at"": ""2016-03-30T10:15:10Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/a49ce12e-8956-499f-a764-23ca3b532682""
+      ""href"": ""/v3/processes/840b0b0d-722b-4fa3-afc7-6eda55c4af2c""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/a49ce12e-8956-499f-a764-23ca3b532682/scale"",
+      ""href"": ""/v3/processes/840b0b0d-722b-4fa3-afc7-6eda55c4af2c/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
-      ""href"": ""/v3/apps/a1a24c38-d783-42e6-b6f8-5fb34fa7fd8d""
+      ""href"": ""/v3/apps/acb62e3b-52f7-42af-8c63-063e68ad8bff""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/1740155d-431b-4f6e-9d05-1c9a911d1695""
+      ""href"": ""/v2/spaces/cdb9545d-0327-4f9b-80e2-236998773c5d""
     }
   }
 }";
 
             GetProcessResponse obj = Utilities.DeserializeJson<GetProcessResponse>(json);
 
-            Assert.AreEqual("d6232509-9ad5-403c-b142-e45b704fc738", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("9faa1e35-396e-473e-9511-bbda56c4e866", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
             Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+        }
+
+        [TestMethod]
+        public void TestScalingProcessFromItsAppResponse()
+        {
+            string json = @"{
+  ""guid"": ""d85416b7-3e62-4834-b7e8-34dac488e596"",
+  ""type"": ""web"",
+  ""command"": null,
+  ""instances"": 3,
+  ""memory_in_mb"": 100,
+  ""disk_in_mb"": 100,
+  ""created_at"": ""2016-03-30T10:15:10Z"",
+  ""updated_at"": ""2016-03-30T10:15:10Z"",
+  ""links"": {
+    ""self"": {
+      ""href"": ""/v3/processes/7040f073-6446-418e-a9fd-4254378cdbc5""
+    },
+    ""scale"": {
+      ""href"": ""/v3/processes/7040f073-6446-418e-a9fd-4254378cdbc5/scale"",
+      ""method"": ""PUT""
+    },
+    ""app"": {
+      ""href"": ""/v3/apps/4e541023-d0a4-4b21-a9cd-c613f44f3ceb""
+    },
+    ""space"": {
+      ""href"": ""/v2/spaces/8ffe109c-f843-4666-86f9-617d95064f84""
+    }
+  }
+}";
+
+            ScalingProcessFromItsAppResponse obj = Utilities.DeserializeJson<ScalingProcessFromItsAppResponse>(json);
+
+            Assert.AreEqual("d85416b7-3e62-4834-b7e8-34dac488e596", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
+            Assert.AreEqual("3", TestUtil.ToTestableString(obj.Instances), true);
+            Assert.AreEqual("100", TestUtil.ToTestableString(obj.MemoryInMb), true);
+            Assert.AreEqual("100", TestUtil.ToTestableString(obj.DiskInMb), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
 
         [TestMethod]
         public void TestUpdateProcessResponse()
         {
             string json = @"{
-  ""guid"": ""75982bce-1ec0-428c-a164-fbf7a66058d6"",
+  ""guid"": ""cf3c9a0e-e6f3-4c1a-8503-cceefc8833b7"",
   ""type"": ""web"",
   ""command"": ""X"",
   ""instances"": 1,
   ""memory_in_mb"": 1024,
   ""disk_in_mb"": 1024,
-  ""created_at"": ""2016-03-21T10:59:32Z"",
-  ""updated_at"": ""2016-03-21T10:59:32Z"",
+  ""created_at"": ""2016-03-30T10:15:10Z"",
+  ""updated_at"": ""2016-03-30T10:15:10Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/9353ffe6-48b8-43c6-bed9-a364bac08ea5""
+      ""href"": ""/v3/processes/c00ef63c-d35a-4594-a342-8ea6b6c8d3e3""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/9353ffe6-48b8-43c6-bed9-a364bac08ea5/scale"",
+      ""href"": ""/v3/processes/c00ef63c-d35a-4594-a342-8ea6b6c8d3e3/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
       ""href"": ""/v3/apps/""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/156e4e10-d9b2-4e14-a65c-6faba8c98313""
+      ""href"": ""/v2/spaces/1f35044c-f1f3-4e92-8d92-92d364f4b1df""
     }
   }
 }";
 
             UpdateProcessResponse obj = Utilities.DeserializeJson<UpdateProcessResponse>(json);
 
-            Assert.AreEqual("75982bce-1ec0-428c-a164-fbf7a66058d6", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("cf3c9a0e-e6f3-4c1a-8503-cceefc8833b7", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("X", TestUtil.ToTestableString(obj.Command), true);
             Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
             Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+        }
+
+        [TestMethod]
+        public void TestListAssociatedProcessesResponse()
+        {
+            string json = @"{
+  ""pagination"": {
+    ""total_results"": 1,
+    ""first"": {
+      ""href"": ""/v3/apps/f8d180f0-c190-4acb-9e18-bb11f41d6cb1/processes?page=1=50""
+    },
+    ""last"": {
+      ""href"": ""/v3/apps/f8d180f0-c190-4acb-9e18-bb11f41d6cb1/processes?page=1=50""
+    },
+    ""next"": null,
+    ""previous"": null
+  },
+  ""resources"": [
+    {
+      ""guid"": ""5c21d7c1-19ca-4684-81b6-feadf46b2c7c"",
+      ""type"": ""web"",
+      ""command"": null,
+      ""instances"": 1,
+      ""memory_in_mb"": 1024,
+      ""disk_in_mb"": 1024,
+      ""created_at"": ""2016-03-30T10:15:11Z"",
+      ""updated_at"": ""2016-03-30T10:15:11Z"",
+      ""links"": {
+        ""self"": {
+          ""href"": ""/v3/processes/90eed8d4-f761-472d-98c8-104efa64f360""
+        },
+        ""scale"": {
+          ""href"": ""/v3/processes/90eed8d4-f761-472d-98c8-104efa64f360/scale"",
+          ""method"": ""PUT""
+        },
+        ""app"": {
+          ""href"": ""/v3/apps/f8d180f0-c190-4acb-9e18-bb11f41d6cb1""
+        },
+        ""space"": {
+          ""href"": ""/v2/spaces/2016d53f-df46-4064-84a9-73cf1b326d41""
+        }
+      }
+    }
+  ]
+}";
+
+            PagedResponseCollection<ListAssociatedProcessesResponse> page = Utilities.DeserializePage<ListAssociatedProcessesResponse>(json, null);
+
+            Assert.AreEqual("5c21d7c1-19ca-4684-81b6-feadf46b2c7c", TestUtil.ToTestableString(page[0].Guid), true);
+            Assert.AreEqual("web", TestUtil.ToTestableString(page[0].Type), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(page[0].Command), true);
+            Assert.AreEqual("1", TestUtil.ToTestableString(page[0].Instances), true);
+            Assert.AreEqual("1024", TestUtil.ToTestableString(page[0].MemoryInMb), true);
+            Assert.AreEqual("1024", TestUtil.ToTestableString(page[0].DiskInMb), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(page[0].UpdatedAt), true);
+        }
+
+        [TestMethod]
+        public void TestGetProcessFromAppResponse()
+        {
+            string json = @"{
+  ""guid"": ""63ef7cc2-56e7-46aa-8d40-71d203880c2f"",
+  ""type"": ""web"",
+  ""command"": null,
+  ""instances"": 1,
+  ""memory_in_mb"": 1024,
+  ""disk_in_mb"": 1024,
+  ""created_at"": ""2016-03-30T10:15:10Z"",
+  ""updated_at"": ""2016-03-30T10:15:10Z"",
+  ""links"": {
+    ""self"": {
+      ""href"": ""/v3/processes/1e91d448-ace8-4f09-9c7e-52b4c4f24057""
+    },
+    ""scale"": {
+      ""href"": ""/v3/processes/1e91d448-ace8-4f09-9c7e-52b4c4f24057/scale"",
+      ""method"": ""PUT""
+    },
+    ""app"": {
+      ""href"": ""/v3/apps/9d6d00c6-476b-46fb-b5c1-cc4853f46a52""
+    },
+    ""space"": {
+      ""href"": ""/v2/spaces/bac463ca-ff6a-454d-b009-5585703c1058""
+    }
+  }
+}";
+
+            GetProcessFromAppResponse obj = Utilities.DeserializeJson<GetProcessFromAppResponse>(json);
+
+            Assert.AreEqual("63ef7cc2-56e7-46aa-8d40-71d203880c2f", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
+            Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
+            Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
+            Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
 
         [TestMethod]
         public void TestScalingProcessResponse()
         {
             string json = @"{
-  ""guid"": ""5e573e6b-1e03-43b2-9220-ae84b371c5f9"",
+  ""guid"": ""c86065f7-d11f-4c51-803e-d8baeb9ab41c"",
   ""type"": ""web"",
   ""command"": null,
   ""instances"": 3,
   ""memory_in_mb"": 100,
   ""disk_in_mb"": 100,
-  ""created_at"": ""2016-03-21T10:59:32Z"",
-  ""updated_at"": ""2016-03-21T10:59:32Z"",
+  ""created_at"": ""2016-03-30T10:15:11Z"",
+  ""updated_at"": ""2016-03-30T10:15:11Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/832a6ec8-8ca2-47c9-8b4f-d4c9ae0edb76""
+      ""href"": ""/v3/processes/f44167ff-2d50-4d84-98dd-e78579bf9674""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/832a6ec8-8ca2-47c9-8b4f-d4c9ae0edb76/scale"",
+      ""href"": ""/v3/processes/f44167ff-2d50-4d84-98dd-e78579bf9674/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
-      ""href"": ""/v3/apps/ce16f473-fea7-4b47-84cb-24f44c30e57c""
+      ""href"": ""/v3/apps/79545aa5-14b6-4b8b-8f58-3280405eb7a2""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/7a5a8e2e-6acf-42a0-9739-c3c7daf3d889""
+      ""href"": ""/v2/spaces/ddc5e240-1462-4630-a235-e8b917d5ef0a""
     }
   }
 }";
 
             ScalingProcessResponse obj = Utilities.DeserializeJson<ScalingProcessResponse>(json);
 
-            Assert.AreEqual("5e573e6b-1e03-43b2-9220-ae84b371c5f9", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("c86065f7-d11f-4c51-803e-d8baeb9ab41c", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
             Assert.AreEqual("3", TestUtil.ToTestableString(obj.Instances), true);
             Assert.AreEqual("100", TestUtil.ToTestableString(obj.MemoryInMb), true);
             Assert.AreEqual("100", TestUtil.ToTestableString(obj.DiskInMb), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:32Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
     }
 }

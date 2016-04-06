@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.RetrieveOrganization()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/organizations/retrieve_a_particular_organization.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/organizations/retrieve_a_particular_organization.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveOrganizationResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveOrganizationResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.RetrieveOrganization()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/organizations/retrieve_a_particular_organization.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/organizations/retrieve_a_particular_organization.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveOrganizationResponse : IResponse

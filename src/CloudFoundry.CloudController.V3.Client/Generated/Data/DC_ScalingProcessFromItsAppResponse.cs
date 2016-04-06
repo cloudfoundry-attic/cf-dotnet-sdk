@@ -20,8 +20,8 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.ScalingProcessFromItsApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/scaling_a_process_from_its_app.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.ProcessesExperimentalEndpoint.ScalingProcessFromItsApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/processes__experimental_/scaling_a_process_from_its_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ScalingProcessFromItsAppResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractScalingProcessFromItsAppResponse
@@ -32,8 +32,8 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.ScalingProcessFromItsApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/apps__experimental_/scaling_a_process_from_its_app.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.ProcessesExperimentalEndpoint.ScalingProcessFromItsApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/processes__experimental_/scaling_a_process_from_its_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractScalingProcessFromItsAppResponse

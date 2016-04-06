@@ -29,34 +29,34 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
         public void TestCreatePackageResponse()
         {
             string json = @"{
-  ""guid"": ""33186119-0a97-498b-9be7-ee46998c375b"",
+  ""guid"": ""99ff3cf1-0c68-4c0e-a246-f1b46401c7e3"",
   ""type"": ""docker"",
   ""data"": {
     ""image"": ""registry/image:latest""
   },
   ""state"": ""READY"",
-  ""created_at"": ""2016-03-21T10:59:35Z"",
+  ""created_at"": ""2016-03-30T10:15:14Z"",
   ""updated_at"": null,
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/packages/ae7692c0-eade-4629-9ef2-f7f85ae6036b""
+      ""href"": ""/v3/packages/b6c16bf5-cab9-444f-b4fb-f326734a5438""
     },
     ""stage"": {
-      ""href"": ""/v3/packages/ae7692c0-eade-4629-9ef2-f7f85ae6036b/droplets"",
+      ""href"": ""/v3/packages/b6c16bf5-cab9-444f-b4fb-f326734a5438/droplets"",
       ""method"": ""POST""
     },
     ""app"": {
-      ""href"": ""/v3/apps/b55df5be-3719-477c-b96d-c0ee19bc58d8""
+      ""href"": ""/v3/apps/dece0071-1236-40b0-8672-0031cefe78e0""
     }
   }
 }";
 
             CreatePackageResponse obj = Utilities.DeserializeJson<CreatePackageResponse>(json);
 
-            Assert.AreEqual("33186119-0a97-498b-9be7-ee46998c375b", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("99ff3cf1-0c68-4c0e-a246-f1b46401c7e3", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("docker", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("READY", TestUtil.ToTestableString(obj.State), true);
-            Assert.AreEqual("2016-03-21T10:59:35Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
 
@@ -64,7 +64,7 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
         public void TestGetPackageResponse()
         {
             string json = @"{
-  ""guid"": ""0fe1d102-d61a-4a8c-b040-c2657badcd8e"",
+  ""guid"": ""c9086031-d485-4e0a-a36a-c728ae77ad51"",
   ""type"": ""bits"",
   ""data"": {
     ""error"": null,
@@ -74,36 +74,36 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
     }
   },
   ""state"": ""AWAITING_UPLOAD"",
-  ""created_at"": ""2016-03-21T10:59:36Z"",
+  ""created_at"": ""2016-03-30T10:15:15Z"",
   ""updated_at"": null,
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/packages/5c9b785c-d724-491b-8a93-0a9baa4ac24b""
+      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355""
     },
     ""upload"": {
-      ""href"": ""/v3/packages/5c9b785c-d724-491b-8a93-0a9baa4ac24b/upload"",
+      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355/upload"",
       ""method"": ""POST""
     },
     ""download"": {
-      ""href"": ""/v3/packages/5c9b785c-d724-491b-8a93-0a9baa4ac24b/download"",
+      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355/download"",
       ""method"": ""GET""
     },
     ""stage"": {
-      ""href"": ""/v3/packages/5c9b785c-d724-491b-8a93-0a9baa4ac24b/droplets"",
+      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355/droplets"",
       ""method"": ""POST""
     },
     ""app"": {
-      ""href"": ""/v3/apps/59bdbbe6-1530-46a7-9512-0adbadc3279d""
+      ""href"": ""/v3/apps/9311cb97-2df3-4b3e-b2d9-459ff7f81d70""
     }
   }
 }";
 
             GetPackageResponse obj = Utilities.DeserializeJson<GetPackageResponse>(json);
 
-            Assert.AreEqual("0fe1d102-d61a-4a8c-b040-c2657badcd8e", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("c9086031-d485-4e0a-a36a-c728ae77ad51", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("bits", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(obj.State), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
 
@@ -111,42 +111,104 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
         public void TestCopyPackageResponse()
         {
             string json = @"{
-  ""guid"": ""1cd0a3ad-86c5-4070-96e7-b93d0e7d7ff0"",
+  ""guid"": ""de7c8a78-0c0b-4925-8cfb-1ecdab28af2c"",
   ""type"": ""docker"",
   ""data"": {
     ""image"": ""http://awesome-sauce.com""
   },
   ""state"": ""READY"",
-  ""created_at"": ""2016-03-21T10:59:36Z"",
+  ""created_at"": ""2016-03-30T10:15:14Z"",
   ""updated_at"": null,
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/packages/e156c18c-3742-485a-98c5-83d895558e9a""
+      ""href"": ""/v3/packages/8908a7d5-eb28-4f5d-9b64-82e367e51140""
     },
     ""stage"": {
-      ""href"": ""/v3/packages/e156c18c-3742-485a-98c5-83d895558e9a/droplets"",
+      ""href"": ""/v3/packages/8908a7d5-eb28-4f5d-9b64-82e367e51140/droplets"",
       ""method"": ""POST""
     },
     ""app"": {
-      ""href"": ""/v3/apps/195fc36e-b336-40c4-bf2a-450219b47a7f""
+      ""href"": ""/v3/apps/d0d30db4-c403-4124-a44c-6098ab6784f3""
     }
   }
 }";
 
             CopyPackageResponse obj = Utilities.DeserializeJson<CopyPackageResponse>(json);
 
-            Assert.AreEqual("1cd0a3ad-86c5-4070-96e7-b93d0e7d7ff0", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("de7c8a78-0c0b-4925-8cfb-1ecdab28af2c", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("docker", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("READY", TestUtil.ToTestableString(obj.State), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
+        }
+
+        [TestMethod]
+        public void TestListAssociatedPackagesResponse()
+        {
+            string json = @"{
+  ""pagination"": {
+    ""total_results"": 1,
+    ""first"": {
+      ""href"": ""/v3/apps/79ad15e1-bf92-41fd-b4dc-e52ab03c1628/packages?page=1=50""
+    },
+    ""last"": {
+      ""href"": ""/v3/apps/79ad15e1-bf92-41fd-b4dc-e52ab03c1628/packages?page=1=50""
+    },
+    ""next"": null,
+    ""previous"": null
+  },
+  ""resources"": [
+    {
+      ""guid"": ""98028801-441f-41ef-9495-4898262cc237"",
+      ""type"": ""bits"",
+      ""data"": {
+        ""error"": null,
+        ""hash"": {
+          ""type"": ""sha1"",
+          ""value"": null
+        }
+      },
+      ""state"": ""AWAITING_UPLOAD"",
+      ""created_at"": ""2016-03-30T10:15:14Z"",
+      ""updated_at"": null,
+      ""links"": {
+        ""self"": {
+          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a""
+        },
+        ""upload"": {
+          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a/upload"",
+          ""method"": ""POST""
+        },
+        ""download"": {
+          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a/download"",
+          ""method"": ""GET""
+        },
+        ""stage"": {
+          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a/droplets"",
+          ""method"": ""POST""
+        },
+        ""app"": {
+          ""href"": ""/v3/apps/79ad15e1-bf92-41fd-b4dc-e52ab03c1628""
+        }
+      }
+    }
+  ]
+}";
+
+            PagedResponseCollection<ListAssociatedPackagesResponse> page = Utilities.DeserializePage<ListAssociatedPackagesResponse>(json, null);
+
+            Assert.AreEqual("98028801-441f-41ef-9495-4898262cc237", TestUtil.ToTestableString(page[0].Guid), true);
+            Assert.AreEqual("bits", TestUtil.ToTestableString(page[0].Type), true);
+            Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(page[0].State), true);
+            Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(page[0].UpdatedAt), true);
         }
 
         [TestMethod]
         public void TestDownloadBitsForPackageResponse()
         {
             string json = @"{
-  ""guid"": ""7898989c-2127-4dbe-8ef3-9007484f30a9"",
+  ""guid"": ""d892112a-f835-496d-9073-bdbcb192f6cb"",
   ""type"": ""bits"",
   ""data"": {
     ""error"": null,
@@ -156,37 +218,37 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
     }
   },
   ""state"": ""PROCESSING_UPLOAD"",
-  ""created_at"": ""2016-03-21T10:59:36Z"",
-  ""updated_at"": ""2016-03-21T10:59:36Z"",
+  ""created_at"": ""2016-03-30T10:15:15Z"",
+  ""updated_at"": ""2016-03-30T10:15:15Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/packages/ac2e4e8b-02a8-4a62-bbfa-17b9c1104e64""
+      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53""
     },
     ""upload"": {
-      ""href"": ""/v3/packages/ac2e4e8b-02a8-4a62-bbfa-17b9c1104e64/upload"",
+      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53/upload"",
       ""method"": ""POST""
     },
     ""download"": {
-      ""href"": ""/v3/packages/ac2e4e8b-02a8-4a62-bbfa-17b9c1104e64/download"",
+      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53/download"",
       ""method"": ""GET""
     },
     ""stage"": {
-      ""href"": ""/v3/packages/ac2e4e8b-02a8-4a62-bbfa-17b9c1104e64/droplets"",
+      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53/droplets"",
       ""method"": ""POST""
     },
     ""app"": {
-      ""href"": ""/v3/apps/12511dfe-7dbe-4432-b254-1fd51a6e2d84""
+      ""href"": ""/v3/apps/4852bcb2-4b13-4023-83d2-0a74b61f7c0f""
     }
   }
 }";
 
             DownloadBitsForPackageResponse obj = Utilities.DeserializeJson<DownloadBitsForPackageResponse>(json);
 
-            Assert.AreEqual("7898989c-2127-4dbe-8ef3-9007484f30a9", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("d892112a-f835-496d-9073-bdbcb192f6cb", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("bits", TestUtil.ToTestableString(obj.Type), true);
             Assert.AreEqual("PROCESSING_UPLOAD", TestUtil.ToTestableString(obj.State), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:15Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
 
         [TestMethod]
@@ -208,7 +270,7 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
   },
   ""resources"": [
     {
-      ""guid"": ""6fd9c7e5-9fd6-4684-9be3-d3b204ea5655"",
+      ""guid"": ""517e37a3-28f9-4610-b9d6-e3d9b68b2b2c"",
       ""type"": ""bits"",
       ""data"": {
         ""error"": null,
@@ -218,48 +280,48 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
         }
       },
       ""state"": ""AWAITING_UPLOAD"",
-      ""created_at"": ""2016-03-21T10:59:36Z"",
+      ""created_at"": ""2016-03-30T10:15:14Z"",
       ""updated_at"": null,
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/packages/c0460d80-cc4f-4f77-8aa5-bbbbf38c9523""
+          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b""
         },
         ""upload"": {
-          ""href"": ""/v3/packages/c0460d80-cc4f-4f77-8aa5-bbbbf38c9523/upload"",
+          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b/upload"",
           ""method"": ""POST""
         },
         ""download"": {
-          ""href"": ""/v3/packages/c0460d80-cc4f-4f77-8aa5-bbbbf38c9523/download"",
+          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b/download"",
           ""method"": ""GET""
         },
         ""stage"": {
-          ""href"": ""/v3/packages/c0460d80-cc4f-4f77-8aa5-bbbbf38c9523/droplets"",
+          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b/droplets"",
           ""method"": ""POST""
         },
         ""app"": {
-          ""href"": ""/v3/apps/0ac95de8-792e-48c7-ae0f-d23e637fc9d4""
+          ""href"": ""/v3/apps/e13827a2-d1d5-4d7b-ba4a-57b587ca8fb4""
         }
       }
     },
     {
-      ""guid"": ""6fd9c7e5-9fd6-4684-9be3-d3b204ea5655"",
+      ""guid"": ""517e37a3-28f9-4610-b9d6-e3d9b68b2b2c"",
       ""type"": ""docker"",
       ""data"": {
         ""image"": ""http://location-of-image.com""
       },
       ""state"": ""READY"",
-      ""created_at"": ""2016-03-21T10:59:36Z"",
+      ""created_at"": ""2016-03-30T10:15:14Z"",
       ""updated_at"": null,
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/packages/09a1e630-7977-4d04-95f2-37cde1f607fa""
+          ""href"": ""/v3/packages/cbadafb5-2bb8-4923-b0f1-68cafd2f62fb""
         },
         ""stage"": {
-          ""href"": ""/v3/packages/09a1e630-7977-4d04-95f2-37cde1f607fa/droplets"",
+          ""href"": ""/v3/packages/cbadafb5-2bb8-4923-b0f1-68cafd2f62fb/droplets"",
           ""method"": ""POST""
         },
         ""app"": {
-          ""href"": ""/v3/apps/0ac95de8-792e-48c7-ae0f-d23e637fc9d4""
+          ""href"": ""/v3/apps/e13827a2-d1d5-4d7b-ba4a-57b587ca8fb4""
         }
       }
     }
@@ -268,93 +330,16 @@ namespace CloudFoundry.CloudController.V3.Test.Deserialization
 
             PagedResponseCollection<ListAllPackagesResponse> page = Utilities.DeserializePage<ListAllPackagesResponse>(json, null);
 
-            Assert.AreEqual("6fd9c7e5-9fd6-4684-9be3-d3b204ea5655", TestUtil.ToTestableString(page[0].Guid), true);
+            Assert.AreEqual("517e37a3-28f9-4610-b9d6-e3d9b68b2b2c", TestUtil.ToTestableString(page[0].Guid), true);
             Assert.AreEqual("bits", TestUtil.ToTestableString(page[0].Type), true);
             Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(page[0].State), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(page[0].CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].UpdatedAt), true);
-            Assert.AreEqual("6fd9c7e5-9fd6-4684-9be3-d3b204ea5655", TestUtil.ToTestableString(page[1].Guid), true);
+            Assert.AreEqual("517e37a3-28f9-4610-b9d6-e3d9b68b2b2c", TestUtil.ToTestableString(page[1].Guid), true);
             Assert.AreEqual("docker", TestUtil.ToTestableString(page[1].Type), true);
             Assert.AreEqual("READY", TestUtil.ToTestableString(page[1].State), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(page[1].CreatedAt), true);
+            Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(page[1].CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].UpdatedAt), true);
-        }
-
-        [TestMethod]
-        public void TestStagePackageResponse()
-        {
-            string json = @"{
-  ""guid"": ""1c4d6125-59cf-4703-a6ab-62fe5b1c0d4d"",
-  ""state"": ""PENDING"",
-  ""error"": null,
-  ""lifecycle"": {
-    ""type"": ""buildpack"",
-    ""data"": {
-      ""buildpack"": ""http://github.com/myorg/awesome-buildpack"",
-      ""stack"": ""cflinuxfs2""
-    }
-  },
-  ""memory_limit"": 1024,
-  ""disk_limit"": 4096,
-  ""result"": null,
-  ""environment_variables"": {
-    ""CUSTOM_ENV_VAR"": ""hello"",
-    ""CF_STACK"": ""cflinuxfs2"",
-    ""VCAP_APPLICATION"": {
-      ""limits"": {
-        ""mem"": 1024,
-        ""disk"": 4096,
-        ""fds"": 16384
-      },
-      ""application_id"": ""e531cc84-3b06-4fc8-8bea-e7441946e3ec"",
-      ""application_version"": ""whatuuid"",
-      ""application_name"": ""name-877"",
-      ""application_uris"": [
-
-      ],
-      ""version"": ""whatuuid"",
-      ""name"": ""name-877"",
-      ""space_name"": ""name-874"",
-      ""space_id"": ""0932decd-4522-47be-926d-082ed41a03de"",
-      ""uris"": [
-
-      ],
-      ""users"": null
-    },
-    ""MEMORY_LIMIT"": 1024,
-    ""VCAP_SERVICES"": {
-
-    }
-  },
-  ""created_at"": ""2016-03-21T10:59:36Z"",
-  ""updated_at"": null,
-  ""links"": {
-    ""self"": {
-      ""href"": ""/v3/droplets/whatuuid""
-    },
-    ""package"": {
-      ""href"": ""/v3/packages/6850417c-0578-423f-8caa-ff6edc49609c""
-    },
-    ""app"": {
-      ""href"": ""/v3/apps/e531cc84-3b06-4fc8-8bea-e7441946e3ec""
-    },
-    ""assign_current_droplet"": {
-      ""href"": ""/v3/apps/e531cc84-3b06-4fc8-8bea-e7441946e3ec/current_droplet"",
-      ""method"": ""PUT""
-    }
-  }
-}";
-
-            StagePackageResponse obj = Utilities.DeserializeJson<StagePackageResponse>(json);
-
-            Assert.AreEqual("1c4d6125-59cf-4703-a6ab-62fe5b1c0d4d", TestUtil.ToTestableString(obj.Guid), true);
-            Assert.AreEqual("PENDING", TestUtil.ToTestableString(obj.State), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.Error), true);
-            Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryLimit), true);
-            Assert.AreEqual("4096", TestUtil.ToTestableString(obj.DiskLimit), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.Result), true);
-            Assert.AreEqual("2016-03-21T10:59:36Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Manager with the Space by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_manager_with_the_space_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_manager_with_the_space_by_username.html"</para>
         /// </summary>
         public async Task<AssociateManagerWithSpaceByUsernameResponse> AssociateManagerWithSpaceByUsername(Guid? guid, AssociateManagerWithSpaceByUsernameRequest value)
         {
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_service_instances_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_service_instances_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid)
         {
@@ -85,7 +85,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_service_instances_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_service_instances_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForSpaceResponse>> ListAllServiceInstancesForSpace(Guid? guid, RequestOptions options)
         {
@@ -107,7 +107,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Developer from the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/remove_developer_from_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/remove_developer_from_the_space.html"</para>
         /// </summary>
         public async Task RemoveDeveloperFromSpace(Guid? guid, Guid? developer_guid)
         {
@@ -128,7 +128,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Auditor from the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/remove_auditor_from_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/remove_auditor_from_the_space.html"</para>
         /// </summary>
         public async Task RemoveAuditorFromSpace(Guid? guid, Guid? auditor_guid)
         {
@@ -149,7 +149,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Developer with the Space by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_developer_with_the_space_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_developer_with_the_space_by_username.html"</para>
         /// </summary>
         public async Task<AssociateDeveloperWithSpaceByUsernameResponse> AssociateDeveloperWithSpaceByUsername(Guid? guid, AssociateDeveloperWithSpaceByUsernameRequest value)
         {
@@ -172,7 +172,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Security Group with the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_security_group_with_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_security_group_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateSecurityGroupWithSpaceResponse> AssociateSecurityGroupWithSpace(Guid? guid, Guid? security_group_guid)
         {
@@ -194,7 +194,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Services for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_services_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_services_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid)
         {
@@ -203,7 +203,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Services for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_services_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_services_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesForSpaceResponse>> ListAllServicesForSpace(Guid? guid, RequestOptions options)
         {
@@ -225,7 +225,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Disassociate Manager with the Space by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/disassociate_manager_with_the_space_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/disassociate_manager_with_the_space_by_username.html"</para>
         /// </summary>
         public async Task<DisassociateManagerWithSpaceByUsernameResponse> DisassociateManagerWithSpaceByUsername(Guid? guid, DisassociateManagerWithSpaceByUsernameRequest value)
         {
@@ -248,7 +248,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieving the roles of all Users in the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/retrieving_the_roles_of_all_users_in_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/retrieving_the_roles_of_all_users_in_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<RetrievingRolesOfAllUsersInSpaceResponse>> RetrievingRolesOfAllUsersInSpace(Guid? guid)
         {
@@ -257,7 +257,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieving the roles of all Users in the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/retrieving_the_roles_of_all_users_in_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/retrieving_the_roles_of_all_users_in_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<RetrievingRolesOfAllUsersInSpaceResponse>> RetrievingRolesOfAllUsersInSpace(Guid? guid, RequestOptions options)
         {
@@ -279,7 +279,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Update a Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/update_a_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/update_a_space.html"</para>
         /// </summary>
         public async Task<UpdateSpaceResponse> UpdateSpace(Guid? guid, UpdateSpaceRequest value)
         {
@@ -302,7 +302,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get Space summary
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/get_space_summary.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/get_space_summary.html"</para>
         /// </summary>
         public async Task<GetSpaceSummaryResponse> GetSpaceSummary(Guid? guid)
         {
@@ -323,7 +323,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/delete_a_particular_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/delete_a_particular_space.html"</para>
         /// </summary>
         public async Task DeleteSpace(Guid? guid)
         {
@@ -344,7 +344,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Auditors for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_auditors_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_auditors_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid)
         {
@@ -353,7 +353,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Auditors for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_auditors_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_auditors_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAuditorsForSpaceResponse>> ListAllAuditorsForSpace(Guid? guid, RequestOptions options)
         {
@@ -375,7 +375,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_spaces.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_spaces.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesResponse>> ListAllSpaces()
         {
@@ -384,7 +384,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_spaces.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_spaces.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesResponse>> ListAllSpaces(RequestOptions options)
         {
@@ -406,7 +406,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Managers for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_managers_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_managers_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid)
         {
@@ -415,7 +415,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Managers for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_managers_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_managers_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllManagersForSpaceResponse>> ListAllManagersForSpace(Guid? guid, RequestOptions options)
         {
@@ -437,7 +437,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Disassociate Developer with the Space by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/disassociate_developer_with_the_space_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/disassociate_developer_with_the_space_by_username.html"</para>
         /// </summary>
         public async Task<DisassociateDeveloperWithSpaceByUsernameResponse> DisassociateDeveloperWithSpaceByUsername(Guid? guid, DisassociateDeveloperWithSpaceByUsernameRequest value)
         {
@@ -460,7 +460,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Manager from the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/remove_manager_from_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/remove_manager_from_the_space.html"</para>
         /// </summary>
         public async Task RemoveManagerFromSpace(Guid? guid, Guid? manager_guid)
         {
@@ -481,7 +481,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_routes_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_routes_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid)
         {
@@ -490,7 +490,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_routes_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_routes_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForSpaceResponse>> ListAllRoutesForSpace(Guid? guid, RequestOptions options)
         {
@@ -512,7 +512,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Domains for the Space (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid)
         {
@@ -521,7 +521,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Domains for the Space (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_domains_for_the_space_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsForSpaceDeprecatedResponse>> ListAllDomainsForSpaceDeprecated(Guid? guid, RequestOptions options)
         {
@@ -543,7 +543,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Manager with the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_manager_with_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_manager_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateManagerWithSpaceResponse> AssociateManagerWithSpace(Guid? guid, Guid? manager_guid)
         {
@@ -565,7 +565,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Developers for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_developers_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_developers_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid)
         {
@@ -574,7 +574,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Developers for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_developers_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_developers_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDevelopersForSpaceResponse>> ListAllDevelopersForSpace(Guid? guid, RequestOptions options)
         {
@@ -596,7 +596,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Remove Security Group from the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/remove_security_group_from_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/remove_security_group_from_the_space.html"</para>
         /// </summary>
         public async Task RemoveSecurityGroupFromSpace(Guid? guid, Guid? security_group_guid)
         {
@@ -617,7 +617,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Developer with the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_developer_with_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_developer_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateDeveloperWithSpaceResponse> AssociateDeveloperWithSpace(Guid? guid, Guid? developer_guid)
         {
@@ -639,7 +639,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/retrieve_a_particular_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/retrieve_a_particular_space.html"</para>
         /// </summary>
         public async Task<RetrieveSpaceResponse> RetrieveSpace(Guid? guid)
         {
@@ -660,7 +660,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Disassociate Auditor with the Space by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/disassociate_auditor_with_the_space_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/disassociate_auditor_with_the_space_by_username.html"</para>
         /// </summary>
         public async Task<DisassociateAuditorWithSpaceByUsernameResponse> DisassociateAuditorWithSpaceByUsername(Guid? guid, DisassociateAuditorWithSpaceByUsernameRequest value)
         {
@@ -683,7 +683,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Security Groups for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_security_groups_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_security_groups_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid)
         {
@@ -692,7 +692,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Security Groups for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_security_groups_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_security_groups_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSecurityGroupsForSpaceResponse>> ListAllSecurityGroupsForSpace(Guid? guid, RequestOptions options)
         {
@@ -714,7 +714,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Auditor with the Space by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_auditor_with_the_space_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_auditor_with_the_space_by_username.html"</para>
         /// </summary>
         public async Task<AssociateAuditorWithSpaceByUsernameResponse> AssociateAuditorWithSpaceByUsername(Guid? guid, AssociateAuditorWithSpaceByUsernameRequest value)
         {
@@ -737,7 +737,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/creating_a_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/creating_a_space.html"</para>
         /// </summary>
         public async Task<CreateSpaceResponse> CreateSpace(CreateSpaceRequest value)
         {
@@ -760,7 +760,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Events for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_events_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_events_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid)
         {
@@ -769,7 +769,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Events for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_events_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_events_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllEventsForSpaceResponse>> ListAllEventsForSpace(Guid? guid, RequestOptions options)
         {
@@ -791,7 +791,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_apps_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_apps_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid)
         {
@@ -800,7 +800,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Apps for the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/list_all_apps_for_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/list_all_apps_for_the_space.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppsForSpaceResponse>> ListAllAppsForSpace(Guid? guid, RequestOptions options)
         {
@@ -822,7 +822,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Associate Auditor with the Space
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/231/spaces/associate_auditor_with_the_space.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/spaces/associate_auditor_with_the_space.html"</para>
         /// </summary>
         public async Task<AssociateAuditorWithSpaceResponse> AssociateAuditorWithSpace(Guid? guid, Guid? auditor_guid)
         {

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.GetUserSummary()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/users/get_user_summary.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/users/get_user_summary.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetUserSummaryResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetUserSummaryResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.GetUserSummary()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/users/get_user_summary.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/users/get_user_summary.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetUserSummaryResponse : IResponse

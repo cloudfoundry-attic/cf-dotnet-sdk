@@ -412,7 +412,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             Directory.Delete(tempAppPath, true);
         }
 
-        [TestMethod]
+        [TestMethod, Ignore] // ignore because it only works with nfs
         [TestCategory("RequiresPackageDownloadSupport")]
         public void UploadInvalidFingerprintsTest()
         {

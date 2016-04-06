@@ -31,12 +31,12 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
         public void TestAssignDropletAsAppsCurrentDropletRequest()
         {
             string json = @"{
-  ""droplet_guid"": ""8d7ac8b3-c34a-4f5d-836a-9ee4b3938d87""
+  ""droplet_guid"": ""727745b5-8216-41f4-8ef9-cd118c6d0a20""
 }";
 
             AssignDropletAsAppsCurrentDropletRequest request = new AssignDropletAsAppsCurrentDropletRequest();
 
-            request.DropletGuid = new Guid("8d7ac8b3-c34a-4f5d-836a-9ee4b3938d87");
+            request.DropletGuid = new Guid("727745b5-8216-41f4-8ef9-cd118c6d0a20");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -71,7 +71,7 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
         [TestMethod]
         public void TestCreateDockerAppRequest()
         {
-            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""docker"",""data"":{}},""relationships"":{""space"":{""guid"":""135aa4cc-2df1-4806-9860-9a1c3dc9e6f9""}}}";
+            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""docker"",""data"":{}},""relationships"":{""space"":{""guid"":""35043e48-ef58-4d78-b546-3dcc8b03b9b5""}}}";
 
             CreateDockerAppRequest request = new CreateDockerAppRequest();
 
@@ -80,41 +80,24 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
 
             request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""docker"",""data"":{}}");
 
-            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""135aa4cc-2df1-4806-9860-9a1c3dc9e6f9""}}");
+            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""35043e48-ef58-4d78-b546-3dcc8b03b9b5""}}");
 
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestScalingProcessFromItsAppRequest()
-        {
-            string json = @"{
-  ""instances"": 3,
-  ""memory_in_mb"": 100,
-  ""disk_in_mb"": 100
-}";
-
-            ScalingProcessFromItsAppRequest request = new ScalingProcessFromItsAppRequest();
-
-            request.Instances = 3;
-            request.MemoryInMb = 100;
-            request.DiskInMb = 100;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
         public void TestCreateAppRequest()
         {
-            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-1282""}},""relationships"":{""space"":{""guid"":""fa14f703-3e47-4256-afdc-8717b0c0dfac""}}}";
+            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-365""}},""relationships"":{""space"":{""guid"":""b4a598ef-a8d1-4481-9eda-2540429094c8""}}}";
 
             CreateAppRequest request = new CreateAppRequest();
 
             request.Name = "my_app";
             request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""open"":""source""}");
 
-            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-1282""}}");
+            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-365""}}");
 
-            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""fa14f703-3e47-4256-afdc-8717b0c0dfac""}}");
+            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""b4a598ef-a8d1-4481-9eda-2540429094c8""}}");
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);

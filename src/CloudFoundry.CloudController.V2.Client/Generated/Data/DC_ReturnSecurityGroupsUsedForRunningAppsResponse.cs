@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SecurityGroupRunningDefaultsEndpoint.ReturnSecurityGroupsUsedForRunningApps()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/security_group_running_defaults/return_the_security_groups_used_for_running_apps.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/security_group_running_defaults/return_the_security_groups_used_for_running_apps.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ReturnSecurityGroupsUsedForRunningAppsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractReturnSecurityGroupsUsedForRunningAppsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SecurityGroupRunningDefaultsEndpoint.ReturnSecurityGroupsUsedForRunningApps()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/231/security_group_running_defaults/return_the_security_groups_used_for_running_apps.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/security_group_running_defaults/return_the_security_groups_used_for_running_apps.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractReturnSecurityGroupsUsedForRunningAppsResponse : IResponse
