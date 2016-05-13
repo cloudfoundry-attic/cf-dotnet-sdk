@@ -31,14 +31,14 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateServiceKeyRequest()
         {
             string json = @"{
-  ""service_instance_guid"": ""18a9c080-8715-4239-99fc-ec29a133d944"",
-  ""name"": ""name-1775""
+  ""service_instance_guid"": ""41f8dd8d-69cc-4d00-a1cf-aec4ea19f12e"",
+  ""name"": ""name-1615""
 }";
 
             CreateServiceKeyRequest request = new CreateServiceKeyRequest();
 
-            request.ServiceInstanceGuid = new Guid("18a9c080-8715-4239-99fc-ec29a133d944");
-            request.Name = "name-1775";
+            request.ServiceInstanceGuid = new Guid("41f8dd8d-69cc-4d00-a1cf-aec4ea19f12e");
+            request.Name = "name-1615";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.BuildpacksEndpoint.CreatesAdminBuildpack()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/buildpacks/creates_an_admin_buildpack.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesMappingEndpoint.UpdateRouteMapping()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/routes_mapping/updating_a_route_mapping.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreatesAdminBuildpackResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreatesAdminBuildpackResponse
+    public partial class UpdateRouteMappingResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateRouteMappingResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.BuildpacksEndpoint.CreatesAdminBuildpack()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/buildpacks/creates_an_admin_buildpack.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesMappingEndpoint.UpdateRouteMapping()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/routes_mapping/updating_a_route_mapping.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractCreatesAdminBuildpackResponse : IResponse
+    public abstract class AbstractUpdateRouteMappingResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -48,50 +48,50 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Name</para>
+        /// <para>The App Port</para>
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name
+        [JsonProperty("app_port", NullValueHandling = NullValueHandling.Ignore)]
+        public int? AppPort
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Position</para>
+        /// <para>The App Guid</para>
         /// </summary>
-        [JsonProperty("position", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Position
+        [JsonProperty("app_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? AppGuid
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Enabled</para>
+        /// <para>The Route Guid</para>
         /// </summary>
-        [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Enabled
+        [JsonProperty("route_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? RouteGuid
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Locked</para>
+        /// <para>The App Url</para>
         /// </summary>
-        [JsonProperty("locked", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Locked
+        [JsonProperty("app_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string AppUrl
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Filename</para>
+        /// <para>The Route Url</para>
         /// </summary>
-        [JsonProperty("filename", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Filename
+        [JsonProperty("route_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string RouteUrl
         {
             get;
             set;

@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular App Usage Event
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
         /// </summary>
         public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
         {
@@ -80,7 +80,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>There is the potential race condition if apps are currently being started, stopped, or scaled.</para>
         /// <para></para>
         /// <para>The seeded usage events will have the same guid as the app.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/app_usage_events/purge_and_reseed_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/app_usage_events/purge_and_reseed_app_usage_events.html"</para>
         /// </summary>
         public async Task PurgeAndReseedAppUsageEvents()
         {
@@ -105,7 +105,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/app_usage_events/list_all_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/app_usage_events/list_all_app_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents()
         {
@@ -118,7 +118,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para></para>
         /// <para>Events close to the current time should not be processed because other events may still have open</para>
         /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/app_usage_events/list_all_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/app_usage_events/list_all_app_usage_events.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents(RequestOptions options)
         {

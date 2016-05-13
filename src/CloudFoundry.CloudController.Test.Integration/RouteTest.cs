@@ -108,7 +108,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             try
             {
-                client.Routes.DeleteRoute(newRoute.EntityMetadata.Guid).Wait();
+                client.Routes.DeleteRoute(newRoute.EntityMetadata.Guid, true).Wait();
             }
             catch (Exception ex)
             {

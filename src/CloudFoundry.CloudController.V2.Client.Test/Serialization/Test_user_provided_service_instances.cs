@@ -47,7 +47,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateUserProvidedServiceInstanceRequest()
         {
             string json = @"{
-  ""space_guid"": ""2377ef8c-05ad-4727-a736-d4bd55bcad3d"",
+  ""space_guid"": ""143bd335-b236-496d-8fa1-c5f9a4c92c89"",
   ""name"": ""my-user-provided-instance"",
   ""credentials"": {
     ""somekey"": ""somevalue""
@@ -58,7 +58,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             CreateUserProvidedServiceInstanceRequest request = new CreateUserProvidedServiceInstanceRequest();
 
-            request.SpaceGuid = new Guid("2377ef8c-05ad-4727-a736-d4bd55bcad3d");
+            request.SpaceGuid = new Guid("143bd335-b236-496d-8fa1-c5f9a4c92c89");
             request.Name = "my-user-provided-instance";
             request.Credentials = TestUtil.GetJsonDictonary(@"{""somekey"":""somevalue""}");
 

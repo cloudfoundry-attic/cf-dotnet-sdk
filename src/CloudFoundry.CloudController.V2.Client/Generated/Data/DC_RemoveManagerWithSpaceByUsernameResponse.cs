@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.DisassociateDeveloperWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/spaces/disassociate_developer_with_the_space_by_username.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveManagerWithSpaceByUsername()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/spaces/remove_manager_with_the_space_by_username.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class DisassociateDeveloperWithSpaceByUsernameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractDisassociateDeveloperWithSpaceByUsernameResponse
+    public partial class RemoveManagerWithSpaceByUsernameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveManagerWithSpaceByUsernameResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.DisassociateDeveloperWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/spaces/disassociate_developer_with_the_space_by_username.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveManagerWithSpaceByUsername()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/spaces/remove_manager_with_the_space_by_username.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractDisassociateDeveloperWithSpaceByUsernameResponse : IResponse
+    public abstract class AbstractRemoveManagerWithSpaceByUsernameResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity

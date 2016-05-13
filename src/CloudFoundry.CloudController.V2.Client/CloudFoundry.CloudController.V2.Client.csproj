@@ -281,16 +281,6 @@
     <Compile Include="Generated\Data\DC_DeleteAllBlobsInBuildpackCacheBlobstoreResponse.cs" />
     <Compile Include="Generated\Data\DC_DeleteServiceInstanceResponse.cs" />
     <Compile Include="Generated\Data\DC_DeleteServiceResponse.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateAuditorWithOrganizationByUsernameRequest.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateAuditorWithSpaceByUsernameRequest.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateAuditorWithSpaceByUsernameResponse.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateBillingManagerWithOrganizationByUsernameRequest.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateDeveloperWithSpaceByUsernameRequest.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateDeveloperWithSpaceByUsernameResponse.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateManagerWithOrganizationByUsernameRequest.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateManagerWithSpaceByUsernameRequest.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateManagerWithSpaceByUsernameResponse.cs" />
-    <Compile Include="Generated\Data\DC_DisassociateUserWithOrganizationByUsernameRequest.cs" />
     <Compile Include="Generated\Data\DC_EnableOrDisableBuildpackRequest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -612,6 +602,16 @@
     </Compile>
     <Compile Include="Generated\Data\DC_MappingAppAndRouteRequest.cs" />
     <Compile Include="Generated\Data\DC_MappingAppAndRouteResponse.cs" />
+    <Compile Include="Generated\Data\DC_RemoveAuditorWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_RemoveAuditorWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_RemoveAuditorWithSpaceByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_RemoveBillingManagerWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_RemoveDeveloperWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_RemoveDeveloperWithSpaceByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_RemoveManagerWithOrganizationByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_RemoveManagerWithSpaceByUsernameRequest.cs" />
+    <Compile Include="Generated\Data\DC_RemoveManagerWithSpaceByUsernameResponse.cs" />
+    <Compile Include="Generated\Data\DC_RemoveUserWithOrganizationByUsernameRequest.cs" />
     <Compile Include="Generated\Data\DC_RestageAppResponse.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -755,6 +755,8 @@
     <Compile Include="Generated\Data\DC_UpdateOrganizationResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_UpdateRouteMappingRequest.cs" />
+    <Compile Include="Generated\Data\DC_UpdateRouteMappingResponse.cs" />
     <Compile Include="Generated\Data\DC_UpdateRouteRequest.cs">
       <SubType>Code</SubType>
     </Compile>
