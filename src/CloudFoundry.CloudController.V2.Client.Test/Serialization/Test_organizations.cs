@@ -28,41 +28,28 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestDisassociateUserWithOrganizationByUsernameRequest()
-        {
-            string json = @"{
-  ""username"": ""user@example.com""
-}";
-
-            DisassociateUserWithOrganizationByUsernameRequest request = new DisassociateUserWithOrganizationByUsernameRequest();
-
-            request.Username = "user@example.com";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestUpdateOrganizationRequest()
         {
             string json = @"{
   ""name"": ""New Organization Name"",
-  ""quota_definition_guid"": ""6cd46d2a-f061-4b31-ac7a-ef89d368d521""
+  ""quota_definition_guid"": ""eddf6110-e8bf-40a6-91a1-1145f1da0927""
 }";
 
             UpdateOrganizationRequest request = new UpdateOrganizationRequest();
 
             request.Name = "New Organization Name";
-            request.QuotaDefinitionGuid = new Guid("6cd46d2a-f061-4b31-ac7a-ef89d368d521");
+            request.QuotaDefinitionGuid = new Guid("eddf6110-e8bf-40a6-91a1-1145f1da0927");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestAssociateAuditorWithOrganizationByUsernameRequest()
+        public void TestAssociateBillingManagerWithOrganizationByUsernameRequest()
         {
             string json = @"{
   ""username"": ""user@example.com""
 }";
 
-            AssociateAuditorWithOrganizationByUsernameRequest request = new AssociateAuditorWithOrganizationByUsernameRequest();
+            AssociateBillingManagerWithOrganizationByUsernameRequest request = new AssociateBillingManagerWithOrganizationByUsernameRequest();
 
             request.Username = "user@example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
@@ -82,28 +69,82 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestDisassociateManagerWithOrganizationByUsernameRequest()
+        public void TestRemoveManagerWithOrganizationByUsernameRequest()
         {
             string json = @"{
   ""username"": ""manage@example.com""
 }";
 
-            DisassociateManagerWithOrganizationByUsernameRequest request = new DisassociateManagerWithOrganizationByUsernameRequest();
+            RemoveManagerWithOrganizationByUsernameRequest request = new RemoveManagerWithOrganizationByUsernameRequest();
 
             request.Username = "manage@example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestDisassociateBillingManagerWithOrganizationByUsernameRequest()
+        public void TestRemoveUserWithOrganizationByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""user@example.com""
+}";
+
+            RemoveUserWithOrganizationByUsernameRequest request = new RemoveUserWithOrganizationByUsernameRequest();
+
+            request.Username = "user@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateOrganizationRequest()
+        {
+            string json = @"{
+  ""name"": ""my-org-name"",
+  ""quota_definition_guid"": ""992f82a7-9f1c-4c2b-a9e2-8b376b22b1d3""
+}";
+
+            CreateOrganizationRequest request = new CreateOrganizationRequest();
+
+            request.Name = "my-org-name";
+            request.QuotaDefinitionGuid = new Guid("992f82a7-9f1c-4c2b-a9e2-8b376b22b1d3");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestRemoveAuditorWithOrganizationByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""auditor@example.com""
+}";
+
+            RemoveAuditorWithOrganizationByUsernameRequest request = new RemoveAuditorWithOrganizationByUsernameRequest();
+
+            request.Username = "auditor@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestRemoveBillingManagerWithOrganizationByUsernameRequest()
         {
             string json = @"{
   ""username"": ""billing_manager@example.com""
 }";
 
-            DisassociateBillingManagerWithOrganizationByUsernameRequest request = new DisassociateBillingManagerWithOrganizationByUsernameRequest();
+            RemoveBillingManagerWithOrganizationByUsernameRequest request = new RemoveBillingManagerWithOrganizationByUsernameRequest();
 
             request.Username = "billing_manager@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestAssociateAuditorWithOrganizationByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""user@example.com""
+}";
+
+            AssociateAuditorWithOrganizationByUsernameRequest request = new AssociateAuditorWithOrganizationByUsernameRequest();
+
+            request.Username = "user@example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -117,47 +158,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             AssociateManagerWithOrganizationByUsernameRequest request = new AssociateManagerWithOrganizationByUsernameRequest();
 
             request.Username = "user@example.com";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestAssociateBillingManagerWithOrganizationByUsernameRequest()
-        {
-            string json = @"{
-  ""username"": ""user@example.com""
-}";
-
-            AssociateBillingManagerWithOrganizationByUsernameRequest request = new AssociateBillingManagerWithOrganizationByUsernameRequest();
-
-            request.Username = "user@example.com";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestDisassociateAuditorWithOrganizationByUsernameRequest()
-        {
-            string json = @"{
-  ""username"": ""auditor@example.com""
-}";
-
-            DisassociateAuditorWithOrganizationByUsernameRequest request = new DisassociateAuditorWithOrganizationByUsernameRequest();
-
-            request.Username = "auditor@example.com";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateOrganizationRequest()
-        {
-            string json = @"{
-  ""name"": ""my-org-name"",
-  ""quota_definition_guid"": ""8a2c5218-5288-4d15-9a51-659080bcf0ec""
-}";
-
-            CreateOrganizationRequest request = new CreateOrganizationRequest();
-
-            request.Name = "my-org-name";
-            request.QuotaDefinitionGuid = new Guid("8a2c5218-5288-4d15-9a51-659080bcf0ec");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppUsageEventsEndpoint.RetrieveAppUsageEvent()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveAppUsageEventResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveAppUsageEventResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppUsageEventsEndpoint.RetrieveAppUsageEvent()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveAppUsageEventResponse : IResponse
@@ -58,6 +58,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Previous State</para>
+        /// </summary>
+        [JsonProperty("previous_state", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic PreviousState
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Memory In Mb Per Instance</para>
         /// </summary>
         [JsonProperty("memory_in_mb_per_instance", NullValueHandling = NullValueHandling.Ignore)]
@@ -68,10 +78,30 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Previous Memory In Mb Per Instance</para>
+        /// </summary>
+        [JsonProperty("previous_memory_in_mb_per_instance", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic PreviousMemoryInMbPerInstance
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Instance Count</para>
         /// </summary>
         [JsonProperty("instance_count", NullValueHandling = NullValueHandling.Ignore)]
         public int? InstanceCount
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Previous Instance Count</para>
+        /// </summary>
+        [JsonProperty("previous_instance_count", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic PreviousInstanceCount
         {
             get;
             set;
@@ -152,6 +182,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("package_state", NullValueHandling = NullValueHandling.Ignore)]
         public string PackageState
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Previous Package State</para>
+        /// </summary>
+        [JsonProperty("previous_package_state", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic PreviousPackageState
         {
             get;
             set;

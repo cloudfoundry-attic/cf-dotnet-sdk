@@ -28,6 +28,31 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestCreateSpaceQuotaDefinitionRequest()
+        {
+            string json = @"{
+  ""name"": ""gold_quota"",
+  ""non_basic_services_allowed"": true,
+  ""total_services"": -1,
+  ""total_routes"": 10,
+  ""memory_limit"": 5120,
+  ""organization_guid"": ""1b4ed141-2433-4f35-b417-16f8c0ddaa12"",
+  ""total_reserved_route_ports"": 5
+}";
+
+            CreateSpaceQuotaDefinitionRequest request = new CreateSpaceQuotaDefinitionRequest();
+
+            request.Name = "gold_quota";
+            request.NonBasicServicesAllowed = true;
+            request.TotalServices = -1;
+            request.TotalRoutes = 10;
+            request.MemoryLimit = 5120;
+            request.OrganizationGuid = new Guid("1b4ed141-2433-4f35-b417-16f8c0ddaa12");
+            request.TotalReservedRoutePorts = 5;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestUpdateSpaceQuotaDefinitionRequest()
         {
             string json = @"{
@@ -37,29 +62,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             UpdateSpaceQuotaDefinitionRequest request = new UpdateSpaceQuotaDefinitionRequest();
 
             request.Name = "new_name";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateSpaceQuotaDefinitionRequest()
-        {
-            string json = @"{
-  ""name"": ""gold_quota"",
-  ""non_basic_services_allowed"": true,
-  ""total_services"": -1,
-  ""total_routes"": -1,
-  ""memory_limit"": 5120,
-  ""organization_guid"": ""a8b79c78-b097-4699-a93b-7b1f035a87cc""
-}";
-
-            CreateSpaceQuotaDefinitionRequest request = new CreateSpaceQuotaDefinitionRequest();
-
-            request.Name = "gold_quota";
-            request.NonBasicServicesAllowed = true;
-            request.TotalServices = -1;
-            request.TotalRoutes = -1;
-            request.MemoryLimit = 5120;
-            request.OrganizationGuid = new Guid("a8b79c78-b097-4699-a93b-7b1f035a87cc");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

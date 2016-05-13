@@ -28,15 +28,15 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestChangePositionOfBuildpackRequest()
+        public void TestEnableOrDisableBuildpackRequest()
         {
             string json = @"{
-  ""position"": 3
+  ""enabled"": false
 }";
 
-            ChangePositionOfBuildpackRequest request = new ChangePositionOfBuildpackRequest();
+            EnableOrDisableBuildpackRequest request = new EnableOrDisableBuildpackRequest();
 
-            request.Position = 3;
+            request.Enabled = false;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -54,6 +54,19 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
+        public void TestChangePositionOfBuildpackRequest()
+        {
+            string json = @"{
+  ""position"": 3
+}";
+
+            ChangePositionOfBuildpackRequest request = new ChangePositionOfBuildpackRequest();
+
+            request.Position = 3;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestLockOrUnlockBuildpackRequest()
         {
             string json = @"{
@@ -63,19 +76,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             LockOrUnlockBuildpackRequest request = new LockOrUnlockBuildpackRequest();
 
             request.Locked = true;
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestEnableOrDisableBuildpackRequest()
-        {
-            string json = @"{
-  ""enabled"": false
-}";
-
-            EnableOrDisableBuildpackRequest request = new EnableOrDisableBuildpackRequest();
-
-            request.Enabled = false;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

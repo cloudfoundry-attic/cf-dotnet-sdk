@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.UpdateRoute()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/routes/update_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/routes/update_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateRouteRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateRouteRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.UpdateRoute()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/routes/update_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/routes/update_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateRouteRequest

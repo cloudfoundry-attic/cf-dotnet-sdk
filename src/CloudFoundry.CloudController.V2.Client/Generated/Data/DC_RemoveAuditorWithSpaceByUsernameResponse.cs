@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.DisassociateAuditorWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/spaces/disassociate_auditor_with_the_space_by_username.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveAuditorWithSpaceByUsername()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/spaces/remove_auditor_with_the_space_by_username.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class DisassociateAuditorWithSpaceByUsernameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractDisassociateAuditorWithSpaceByUsernameResponse
+    public partial class RemoveAuditorWithSpaceByUsernameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveAuditorWithSpaceByUsernameResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.DisassociateAuditorWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/spaces/disassociate_auditor_with_the_space_by_username.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveAuditorWithSpaceByUsername()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/spaces/remove_auditor_with_the_space_by_username.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractDisassociateAuditorWithSpaceByUsernameResponse : IResponse
+    public abstract class AbstractRemoveAuditorWithSpaceByUsernameResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity

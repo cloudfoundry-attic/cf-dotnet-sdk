@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SharedDomainsEndpoint.FilterSharedDomainsByName()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/shared_domains/filtering_shared_domains_by_name.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/shared_domains/filtering_shared_domains_by_name.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class FilterSharedDomainsByNameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractFilterSharedDomainsByNameResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SharedDomainsEndpoint.FilterSharedDomainsByName()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/shared_domains/filtering_shared_domains_by_name.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/shared_domains/filtering_shared_domains_by_name.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractFilterSharedDomainsByNameResponse : IResponse
@@ -68,10 +68,10 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Router Group Types</para>
+        /// <para>The Router Group Type</para>
         /// </summary>
-        [JsonProperty("router_group_types", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] RouterGroupTypes
+        [JsonProperty("router_group_type", NullValueHandling = NullValueHandling.Ignore)]
+        public string RouterGroupType
         {
             get;
             set;

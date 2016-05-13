@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.ListAllServicePlansForService()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/services/list_all_service_plans_for_the_service.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/services/list_all_service_plans_for_the_service.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServicePlansForServiceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServicePlansForServiceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicesEndpoint.ListAllServicePlansForService()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/services/list_all_service_plans_for_the_service.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/services/list_all_service_plans_for_the_service.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServicePlansForServiceResponse : IResponse
