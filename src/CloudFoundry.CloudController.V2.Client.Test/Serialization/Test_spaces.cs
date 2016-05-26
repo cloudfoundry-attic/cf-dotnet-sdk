@@ -28,19 +28,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestRemoveAuditorWithSpaceByUsernameRequest()
-        {
-            string json = @"{
-  ""username"": ""auditor@example.com""
-}";
-
-            RemoveAuditorWithSpaceByUsernameRequest request = new RemoveAuditorWithSpaceByUsernameRequest();
-
-            request.Username = "auditor@example.com";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestAssociateManagerWithSpaceByUsernameRequest()
         {
             string json = @"{
@@ -54,15 +41,15 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestRemoveManagerWithSpaceByUsernameRequest()
+        public void TestRemoveDeveloperWithSpaceByUsernameRequest()
         {
             string json = @"{
-  ""username"": ""manager@example.com""
+  ""username"": ""developer@example.com""
 }";
 
-            RemoveManagerWithSpaceByUsernameRequest request = new RemoveManagerWithSpaceByUsernameRequest();
+            RemoveDeveloperWithSpaceByUsernameRequest request = new RemoveDeveloperWithSpaceByUsernameRequest();
 
-            request.Username = "manager@example.com";
+            request.Username = "developer@example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -80,21 +67,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestCreateSpaceRequest()
-        {
-            string json = @"{
-  ""name"": ""development"",
-  ""organization_guid"": ""c22e3a86-6cda-4116-af98-308861cbf651""
-}";
-
-            CreateSpaceRequest request = new CreateSpaceRequest();
-
-            request.Name = "development";
-            request.OrganizationGuid = new Guid("c22e3a86-6cda-4116-af98-308861cbf651");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestUpdateSpaceRequest()
         {
             string json = @"{
@@ -104,6 +76,32 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             UpdateSpaceRequest request = new UpdateSpaceRequest();
 
             request.Name = "New Space Name";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestRemoveAuditorWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""auditor@example.com""
+}";
+
+            RemoveAuditorWithSpaceByUsernameRequest request = new RemoveAuditorWithSpaceByUsernameRequest();
+
+            request.Username = "auditor@example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestRemoveManagerWithSpaceByUsernameRequest()
+        {
+            string json = @"{
+  ""username"": ""manager@example.com""
+}";
+
+            RemoveManagerWithSpaceByUsernameRequest request = new RemoveManagerWithSpaceByUsernameRequest();
+
+            request.Username = "manager@example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -121,15 +119,17 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestRemoveDeveloperWithSpaceByUsernameRequest()
+        public void TestCreateSpaceRequest()
         {
             string json = @"{
-  ""username"": ""developer@example.com""
+  ""name"": ""development"",
+  ""organization_guid"": ""1a68eec4-4736-4380-ae33-913d0508a702""
 }";
 
-            RemoveDeveloperWithSpaceByUsernameRequest request = new RemoveDeveloperWithSpaceByUsernameRequest();
+            CreateSpaceRequest request = new CreateSpaceRequest();
 
-            request.Username = "developer@example.com";
+            request.Name = "development";
+            request.OrganizationGuid = new Guid("1a68eec4-4736-4380-ae33-913d0508a702");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

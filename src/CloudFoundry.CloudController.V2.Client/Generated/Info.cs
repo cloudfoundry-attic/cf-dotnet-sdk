@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Get Info
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/info/get_info.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/info/get_info.html"</para>
         /// </summary>
         public async Task<GetInfoResponse> GetInfo()
         {

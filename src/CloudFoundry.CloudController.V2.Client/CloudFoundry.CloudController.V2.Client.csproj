@@ -477,6 +477,7 @@
     <Compile Include="Generated\Data\DC_ListAllServiceInstancesResponse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\Data\DC_ListAllServiceKeysForServiceInstanceResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllServiceKeysResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAllServicePlansForServiceResponse.cs">
       <SubType>Code</SubType>
@@ -567,8 +568,10 @@
     <Compile Include="Generated\Data\DC_ListServiceDashboardClientCreateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceDashboardClientDeleteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceInstanceBindRouteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceInstanceCreateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceInstanceDeleteEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListServiceInstanceUnbindRouteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceInstanceUpdateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceKeyCreateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListServiceKeyDeleteEventsResponse.cs" />

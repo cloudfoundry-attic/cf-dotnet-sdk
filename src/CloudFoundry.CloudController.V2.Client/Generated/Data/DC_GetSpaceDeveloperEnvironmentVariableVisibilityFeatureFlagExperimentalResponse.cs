@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/feature_flags/get_the_space_developer_environment_variable_visibility_feature_flag_(experimental).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/feature_flags/get_the_space_developer_environment_variable_visibility_feature_flag_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/feature_flags/get_the_space_developer_environment_variable_visibility_feature_flag_(experimental).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/feature_flags/get_the_space_developer_environment_variable_visibility_feature_flag_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse : IResponse

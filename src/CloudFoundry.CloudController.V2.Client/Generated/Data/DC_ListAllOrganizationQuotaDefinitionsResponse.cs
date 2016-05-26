@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.ListAllOrganizationQuotaDefinitions()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllOrganizationQuotaDefinitionsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllOrganizationQuotaDefinitionsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.ListAllOrganizationQuotaDefinitions()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllOrganizationQuotaDefinitionsResponse : IResponse
