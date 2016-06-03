@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerAppExperimental()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/apps/creating_a_docker_app_(experimental).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/apps/creating_a_docker_app_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateDockerAppExperimentalRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateDockerAppExperimentalRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerAppExperimental()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/236/apps/creating_a_docker_app_(experimental).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/apps/creating_a_docker_app_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateDockerAppExperimentalRequest
@@ -60,7 +60,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>Name of the Docker image containing the app</para>
+        /// <para>Name of the Docker image containing the app. The "diego_docker" feature flag must be enabled in order to create Docker image apps.</para>
         /// </summary>
         [JsonProperty("docker_image", NullValueHandling = NullValueHandling.Ignore)]
         public string DockerImage
@@ -124,16 +124,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
         public string State
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The command detected by the buildpack during staging.</para>
-        /// </summary>
-        [JsonProperty("detected_start_command", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic DetectedStartCommand
         {
             get;
             set;

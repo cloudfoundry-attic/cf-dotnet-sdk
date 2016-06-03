@@ -54,6 +54,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         }
 
         [TestMethod]
+        [TestCategory("RequiresMysql")]
         public void ServiceInstance_test()
         {
             var services = client.Services.ListAllServices().Result;

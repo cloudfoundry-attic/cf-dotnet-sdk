@@ -52,8 +52,29 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Retrieve a Particular Route Mapping
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/routes_mapping/retrieve_a_particular_route_mapping.html"</para>
+        /// </summary>
+        public async Task<RetrieveRouteMappingResponse> RetrieveRouteMapping(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/route_mappings/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveRouteMappingResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Delete a Particular Route Mapping
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/routes_mapping/delete_a_particular_route_mapping.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/routes_mapping/delete_a_particular_route_mapping.html"</para>
         /// </summary>
         public async Task DeleteRouteMapping(Guid? guid)
         {
@@ -74,7 +95,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Route Mappings
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/routes_mapping/list_all_route_mappings.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/routes_mapping/list_all_route_mappings.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRouteMappingsResponse>> ListAllRouteMappings()
         {
@@ -83,7 +104,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Route Mappings
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/routes_mapping/list_all_route_mappings.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/routes_mapping/list_all_route_mappings.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRouteMappingsResponse>> ListAllRouteMappings(RequestOptions options)
         {
@@ -105,7 +126,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Mapping an App and a Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/routes_mapping/mapping_an_app_and_a_route.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/routes_mapping/mapping_an_app_and_a_route.html"</para>
         /// </summary>
         public async Task<MappingAppAndRouteResponse> MappingAppAndRoute(MappingAppAndRouteRequest value)
         {
@@ -128,7 +149,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Route Mapping
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/routes_mapping/updating_a_route_mapping.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/routes_mapping/updating_a_route_mapping.html"</para>
         /// </summary>
         public async Task<UpdateRouteMappingResponse> UpdateRouteMapping(Guid? guid, UpdateRouteMappingRequest value)
         {
@@ -147,27 +168,6 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<UpdateRouteMappingResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Route Mapping
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/236/routes_mapping/retrieve_a_particular_route_mapping.html"</para>
-        /// </summary>
-        public async Task<RetrieveRouteMappingResponse> RetrieveRouteMapping(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/route_mappings/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveRouteMappingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

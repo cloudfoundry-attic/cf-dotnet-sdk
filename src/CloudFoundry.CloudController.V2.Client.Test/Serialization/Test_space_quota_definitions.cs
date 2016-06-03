@@ -28,6 +28,19 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestUpdateSpaceQuotaDefinitionRequest()
+        {
+            string json = @"{
+  ""name"": ""new_name""
+}";
+
+            UpdateSpaceQuotaDefinitionRequest request = new UpdateSpaceQuotaDefinitionRequest();
+
+            request.Name = "new_name";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateSpaceQuotaDefinitionRequest()
         {
             string json = @"{
@@ -36,7 +49,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
   ""total_services"": -1,
   ""total_routes"": 10,
   ""memory_limit"": 5120,
-  ""organization_guid"": ""1b4ed141-2433-4f35-b417-16f8c0ddaa12"",
+  ""organization_guid"": ""4509d0ee-e9ed-4c17-b282-524f54c5bbd0"",
   ""total_reserved_route_ports"": 5
 }";
 
@@ -47,21 +60,8 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.TotalServices = -1;
             request.TotalRoutes = 10;
             request.MemoryLimit = 5120;
-            request.OrganizationGuid = new Guid("1b4ed141-2433-4f35-b417-16f8c0ddaa12");
+            request.OrganizationGuid = new Guid("4509d0ee-e9ed-4c17-b282-524f54c5bbd0");
             request.TotalReservedRoutePorts = 5;
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestUpdateSpaceQuotaDefinitionRequest()
-        {
-            string json = @"{
-  ""name"": ""new_name""
-}";
-
-            UpdateSpaceQuotaDefinitionRequest request = new UpdateSpaceQuotaDefinitionRequest();
-
-            request.Name = "new_name";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
