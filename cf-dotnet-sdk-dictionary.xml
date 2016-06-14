@@ -1,7 +1,6 @@
 <Dictionary>
   <Words>
     <Recognized>
-      <Word>logyard</Word>
       <Word>loggregator</Word>
       <Word>api</Word>
       <Word>buildpack</Word>
@@ -9,8 +8,8 @@
   </Words>
   <Acronyms>
     <CasingExceptions>
-      <Acronym>UAA</Acronym>         
-      <Acronym>SHA</Acronym>         
-    </CasingExceptions>      
+      <Acronym>UAA</Acronym>
+      <Acronym>SHA</Acronym>
+    </CasingExceptions>
   </Acronyms>
 </Dictionary>

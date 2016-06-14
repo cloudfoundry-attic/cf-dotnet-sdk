@@ -6,7 +6,6 @@ using CloudFoundry.CloudController.V2.Client.Data;
 using System.Threading;
 using CloudFoundry.UAA;
 using System.IO;
-using CloudFoundry.Logyard.Client;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -41,9 +41,6 @@
     <Reference Include="CloudFoundry.Loggregator.Client.Fakes">
       <HintPath>FakesAssemblies\CloudFoundry.Loggregator.Client.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="CloudFoundry.Logyard.Client.Fakes">
-      <HintPath>FakesAssemblies\CloudFoundry.Logyard.Client.Fakes.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -160,8 +157,6 @@
     <Compile Include="Fake\Test_users.cs" />
     <Compile Include="Fake\Test_user_provided_service_instances.cs" />
     <Compile Include="Loggregator\TailFakeTests.cs" />
-    <Compile Include="Logyard\RecentFakeTests.cs" />
-    <Compile Include="Logyard\TailFakeTests.cs" />
     <Compile Include="Manifests\FormattersTest.cs" />
     <Compile Include="Manifests\ManifestDiskRepositoryTest.cs" />
     <Compile Include="Manifests\ManifestTest.cs" />
@@ -220,10 +215,6 @@
       <Project>{693ac6f7-3a96-41c9-b844-1e3f1ed6346c}</Project>
       <Name>CloudFoundry.Loggregator.Client.Net45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CloudFoundry.Logyard.Client.Net45\CloudFoundry.Logyard.Client.Net45.csproj">
-      <Project>{d4ad10d5-f1ca-41ff-95dc-57789cc3a062}</Project>
-      <Name>CloudFoundry.Logyard.Client.Net45</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.Manifests\CloudFoundry.Manifests.csproj">
       <Project>{d3e6ccdf-8b8e-47b9-a3db-38cc5fa7d5fb}</Project>
       <Name>CloudFoundry.Manifests</Name>
@@ -241,7 +232,6 @@
     <None Include="app.config" />
     <Fakes Include="Fakes\System.Net.Http.fakes" />
     <Fakes Include="Fakes\Thinktecture.IdentityModel.Client.Net45.fakes" />
-    <Fakes Include="Fakes\CloudFoundry.Logyard.Client.fakes" />
     <Content Include="Assets\hello-world-java-1.0.war">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,4 +1,3 @@
-using CloudFoundry.Logyard.Client;
 using CloudFoundry.UAA;
 using CCV3 = CloudFoundry.CloudController.V3.Client;
 using CloudFoundry.CloudController.V2.Client;
@@ -91,24 +90,5 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             return uaaClient;
         }
-
-        internal static LogyardLog GetLogyardClient()
-        {
-            return GetLogyardClient(new CancellationToken());
-        }
-
-        internal static LogyardLog GetLogyardClient(CancellationToken cancellationToken)
-        {
-            var uaaClient = GetUAAClient();
-            CloudCredentials credentials = new CloudCredentials();
-            credentials.User = User;
-            credentials.Password = Password;
-            var context = uaaClient.Login(credentials).Result;
-            var cfClient = GetClient();
-            var logEndpoint = cfClient.Info.GetV1Info().Result.AppLogEndpoint;
-            LogyardLog logyardClient = new LogyardLog(new Uri(logEndpoint), context.Token.AccessToken);
-            return logyardClient;
-        }
-
     }
 }
