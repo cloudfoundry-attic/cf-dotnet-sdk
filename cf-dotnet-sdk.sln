@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.V2.Client", "src\CloudFoundry.CloudController.V2.Client\CloudFoundry.CloudController.V2.Client.csproj", "{F54D7282-FE0C-474D-A8F6-326146554CDB}"
 EndProject
@@ -16,14 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.V2.Client.Test", "src\CloudFoundry.CloudController.V2.Client.Test\CloudFoundry.CloudController.V2.Client.Test.csproj", "{3560C779-F4FD-4AD3-86C5-A7AD8511DBAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.Test.Integration", "src\CloudFoundry.CloudController.Test.Integration\CloudFoundry.CloudController.Test.Integration.csproj", "{89D8C214-597E-4802-8AC8-955A9121A490}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Logyard.Client.Net45", "src\CloudFoundry.Logyard.Client.Net45\CloudFoundry.Logyard.Client.Net45.csproj", "{D4AD10D5-F1CA-41FF-95DC-57789CC3A062}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Logyard.Client.WPA81", "src\CloudFoundry.Logyard.Client.WPA81\CloudFoundry.Logyard.Client.WPA81.csproj", "{B047DC6D-B9B4-4C78-B2B9-18D464739036}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Logyard.Client.Store", "src\CloudFoundry.Logyard.Client.Store\CloudFoundry.Logyard.Client.Store.csproj", "{FF667311-3099-4E4B-8DFD-01CA1D87FA0F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Logyard.Client", "src\CloudFoundry.Logyard.Client\CloudFoundry.Logyard.Client.csproj", "{97AB7347-3C3E-4EAA-8063-DFBDB3AC0D25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B21C9324-1DED-42D2-B8D3-E9F939F430D1}"
 	ProjectSection(SolutionItems) = preProject
@@ -78,22 +70,6 @@ Global
 		{89D8C214-597E-4802-8AC8-955A9121A490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89D8C214-597E-4802-8AC8-955A9121A490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89D8C214-597E-4802-8AC8-955A9121A490}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4AD10D5-F1CA-41FF-95DC-57789CC3A062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4AD10D5-F1CA-41FF-95DC-57789CC3A062}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4AD10D5-F1CA-41FF-95DC-57789CC3A062}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4AD10D5-F1CA-41FF-95DC-57789CC3A062}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B047DC6D-B9B4-4C78-B2B9-18D464739036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B047DC6D-B9B4-4C78-B2B9-18D464739036}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B047DC6D-B9B4-4C78-B2B9-18D464739036}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B047DC6D-B9B4-4C78-B2B9-18D464739036}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF667311-3099-4E4B-8DFD-01CA1D87FA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF667311-3099-4E4B-8DFD-01CA1D87FA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF667311-3099-4E4B-8DFD-01CA1D87FA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF667311-3099-4E4B-8DFD-01CA1D87FA0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97AB7347-3C3E-4EAA-8063-DFBDB3AC0D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97AB7347-3C3E-4EAA-8063-DFBDB3AC0D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97AB7347-3C3E-4EAA-8063-DFBDB3AC0D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97AB7347-3C3E-4EAA-8063-DFBDB3AC0D25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7452B0B7-B48B-4017-9C3B-1092378A1A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7452B0B7-B48B-4017-9C3B-1092378A1A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7452B0B7-B48B-4017-9C3B-1092378A1A20}.Release|Any CPU.ActiveCfg = Release|Any CPU

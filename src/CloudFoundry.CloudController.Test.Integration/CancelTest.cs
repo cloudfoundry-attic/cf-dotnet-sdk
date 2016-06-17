@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 using System.Threading.Tasks;
 using CloudFoundry.CloudController.V2.Client.Data;
-using CloudFoundry.Logyard.Client;
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
