@@ -52,187 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Delete a Particular Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/delete_a_particular_organization.html"</para>
-        /// </summary>
-        public async Task DeleteOrganization(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Remove Auditor from the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_auditor_from_the_organization.html"</para>
-        /// </summary>
-        public async Task RemoveAuditorFromOrganization(Guid? guid, Guid? auditor_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// List all Space Quota Definitions for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_space_quota_definitions_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid)
-        {
-            return await ListAllSpaceQuotaDefinitionsForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Space Quota Definitions for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_space_quota_definitions_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/space_quota_definitions", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpaceQuotaDefinitionsForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// List all Private Domains for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_private_domains_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid)
-        {
-            return await ListAllPrivateDomainsForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Private Domains for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_private_domains_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/private_domains", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllPrivateDomainsForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// List all Services for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_services_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid)
-        {
-            return await ListAllServicesForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Services for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_services_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/services", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServicesForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Remove User from the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_user_from_the_organization.html"</para>
-        /// </summary>
-        public async Task RemoveUserFromOrganization(Guid? guid, Guid? user_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users/{1}", guid, user_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Retrieving organization instance usage
-        /// <para>This endpoint returns a count of started app instances under an organization.</para>
-        /// <para>Note that crashing apps are included in this count.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/retrieving_organization_instance_usage.html"</para>
-        /// </summary>
-        public async Task<RetrievingOrganizationInstanceUsageResponse> RetrievingOrganizationInstanceUsage(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/instance_usage", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrievingOrganizationInstanceUsageResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Associate Auditor with the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_auditor_with_the_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_auditor_with_the_organization.html"</para>
         /// </summary>
         public async Task<AssociateAuditorWithOrganizationResponse> AssociateAuditorWithOrganization(Guid? guid, Guid? auditor_guid)
         {
@@ -253,31 +74,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Update an Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/update_an_organization.html"</para>
-        /// </summary>
-        public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid? guid, UpdateOrganizationRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Associate Auditor with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_auditor_with_the_organization_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_auditor_with_the_organization_by_username.html"</para>
         /// </summary>
         public async Task<AssociateAuditorWithOrganizationByUsernameResponse> AssociateAuditorWithOrganizationByUsername(Guid? guid, AssociateAuditorWithOrganizationByUsernameRequest value)
         {
@@ -299,200 +97,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Remove Billing Manager from the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_billing_manager_from_the_organization.html"</para>
-        /// </summary>
-        public async Task RemoveBillingManagerFromOrganization(Guid? guid, Guid? billing_manager_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Associate User with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_user_with_the_organization_by_username.html"</para>
-        /// </summary>
-        public async Task<AssociateUserWithOrganizationByUsernameResponse> AssociateUserWithOrganizationByUsername(Guid? guid, AssociateUserWithOrganizationByUsernameRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/users", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateUserWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List all Auditors for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_auditors_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid)
-        {
-            return await ListAllAuditorsForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Auditors for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_auditors_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAuditorsForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// List all Billing Managers for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_billing_managers_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid)
-        {
-            return await ListAllBillingManagersForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Billing Managers for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_billing_managers_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllBillingManagersForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Remove Manager with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_manager_with_the_organization_by_username.html"</para>
-        /// </summary>
-        public async Task RemoveManagerWithOrganizationByUsername(Guid? guid, RemoveManagerWithOrganizationByUsernameRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/managers", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Associate Manager with the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_manager_with_the_organization.html"</para>
-        /// </summary>
-        public async Task<AssociateManagerWithOrganizationResponse> AssociateManagerWithOrganization(Guid? guid, Guid? manager_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers/{1}", guid, manager_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateManagerWithOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove Private Domain from the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_private_domain_from_the_organization.html"</para>
-        /// </summary>
-        public async Task RemovePrivateDomainFromOrganization(Guid? guid, Guid? private_domain_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/private_domains/{1}", guid, private_domain_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Retrieving organization memory usage
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/retrieving_organization_memory_usage.html"</para>
-        /// </summary>
-        public async Task<RetrievingOrganizationMemoryUsageResponse> RetrievingOrganizationMemoryUsage(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/memory_usage", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrievingOrganizationMemoryUsageResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Associate Billing Manager with the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_billing_manager_with_the_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_billing_manager_with_the_organization.html"</para>
         /// </summary>
         public async Task<AssociateBillingManagerWithOrganizationResponse> AssociateBillingManagerWithOrganization(Guid? guid, Guid? billing_manager_guid)
         {
@@ -513,273 +119,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Associate User with the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_user_with_the_organization.html"</para>
-        /// </summary>
-        public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid? guid, Guid? user_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users/{1}", guid, user_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateUserWithOrganizationResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove Billing Manager with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_billing_manager_with_the_organization_by_username.html"</para>
-        /// </summary>
-        public async Task RemoveBillingManagerWithOrganizationByUsername(Guid? guid, RemoveBillingManagerWithOrganizationByUsernameRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/billing_managers", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// List all Managers for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_managers_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid)
-        {
-            return await ListAllManagersForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Managers for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_managers_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllManagersForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Remove Auditor with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_auditor_with_the_organization_by_username.html"</para>
-        /// </summary>
-        public async Task RemoveAuditorWithOrganizationByUsername(Guid? guid, RemoveAuditorWithOrganizationByUsernameRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/auditors", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// List all Organizations
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_organizations.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllOrganizationsResponse>> ListAllOrganizations()
-        {
-            return await ListAllOrganizations(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Organizations
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_organizations.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllOrganizationsResponse>> ListAllOrganizations(RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/organizations";
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllOrganizationsResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// List all Users for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_users_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid)
-        {
-            return await ListAllUsersForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Users for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_users_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllUsersForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// List all Spaces for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_spaces_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid)
-        {
-            return await ListAllSpacesForOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Spaces for the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_spaces_for_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/spaces", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSpacesForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Retrieving the roles of all Users in the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/retrieving_the_roles_of_all_users_in_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<RetrievingRolesOfAllUsersInOrganizationResponse>> RetrievingRolesOfAllUsersInOrganization(Guid? guid)
-        {
-            return await RetrievingRolesOfAllUsersInOrganization(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// Retrieving the roles of all Users in the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/retrieving_the_roles_of_all_users_in_the_organization.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<RetrievingRolesOfAllUsersInOrganizationResponse>> RetrievingRolesOfAllUsersInOrganization(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/user_roles", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<RetrievingRolesOfAllUsersInOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Associate Manager with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_manager_with_the_organization_by_username.html"</para>
-        /// </summary>
-        public async Task<AssociateManagerWithOrganizationByUsernameResponse> AssociateManagerWithOrganizationByUsername(Guid? guid, AssociateManagerWithOrganizationByUsernameRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/managers", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<AssociateManagerWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove Manager from the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_manager_from_the_organization.html"</para>
-        /// </summary>
-        public async Task RemoveManagerFromOrganization(Guid? guid, Guid? manager_guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers/{1}", guid, manager_guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
         /// Associate Billing Manager with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_billing_manager_with_the_organization_by_username.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_billing_manager_with_the_organization_by_username.html"</para>
         /// </summary>
         public async Task<AssociateBillingManagerWithOrganizationByUsernameResponse> AssociateBillingManagerWithOrganizationByUsername(Guid? guid, AssociateBillingManagerWithOrganizationByUsernameRequest value)
         {
@@ -801,8 +142,53 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Associate Manager with the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_manager_with_the_organization.html"</para>
+        /// </summary>
+        public async Task<AssociateManagerWithOrganizationResponse> AssociateManagerWithOrganization(Guid? guid, Guid? manager_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers/{1}", guid, manager_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateManagerWithOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Associate Manager with the Organization by Username
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_manager_with_the_organization_by_username.html"</para>
+        /// </summary>
+        public async Task<AssociateManagerWithOrganizationByUsernameResponse> AssociateManagerWithOrganizationByUsername(Guid? guid, AssociateManagerWithOrganizationByUsernameRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/managers", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateManagerWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Associate Private Domain with the Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/associate_private_domain_with_the_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_private_domain_with_the_organization.html"</para>
         /// </summary>
         public async Task<AssociatePrivateDomainWithOrganizationResponse> AssociatePrivateDomainWithOrganization(Guid? guid, Guid? private_domain_guid)
         {
@@ -823,68 +209,38 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// List all Domains for the Organization (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
+        /// Associate User with the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_user_with_the_organization.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid)
-        {
-            return await ListAllDomainsForOrganizationDeprecated(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Domains for the Organization (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid, RequestOptions options)
+        public async Task<AssociateUserWithOrganizationResponse> AssociateUserWithOrganization(Guid? guid, Guid? user_guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/domains", guid);
-            uriBuilder.Query = options.ToString();
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users/{1}", guid, user_guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
+            client.Method = HttpMethod.Put;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
-            var expectedReturnStatus = 200;
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllDomainsForOrganizationDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializeJson<AssociateUserWithOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Get Organization summary
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/get_organization_summary.html"</para>
+        /// Associate User with the Organization by Username
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/associate_user_with_the_organization_by_username.html"</para>
         /// </summary>
-        public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/summary", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetOrganizationSummaryResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Remove User with the Organization by Username
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/remove_user_with_the_organization_by_username.html"</para>
-        /// </summary>
-        public async Task RemoveUserWithOrganizationByUsername(Guid? guid, RemoveUserWithOrganizationByUsernameRequest value)
+        public async Task<AssociateUserWithOrganizationByUsernameResponse> AssociateUserWithOrganizationByUsername(Guid? guid, AssociateUserWithOrganizationByUsernameRequest value)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/users", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Put;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
@@ -892,13 +248,14 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             client.ContentType = "application/x-www-form-urlencoded";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 204;
+            var expectedReturnStatus = 201;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<AssociateUserWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// Creating an Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/creating_an_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/creating_an_organization.html"</para>
         /// </summary>
         public async Task<CreateOrganizationResponse> CreateOrganization(CreateOrganizationRequest value)
         {
@@ -920,8 +277,557 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Delete a Particular Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/delete_a_particular_organization.html"</para>
+        /// </summary>
+        public async Task DeleteOrganization(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Disassociate Auditor with the Organization by Username
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/disassociate_auditor_with_the_organization_by_username.html"</para>
+        /// </summary>
+        public async Task<DisassociateAuditorWithOrganizationByUsernameResponse> DisassociateAuditorWithOrganizationByUsername(Guid? guid, DisassociateAuditorWithOrganizationByUsernameRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/auditors", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<DisassociateAuditorWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Disassociate Billing Manager with the Organization by Username
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/disassociate_billing_manager_with_the_organization_by_username.html"</para>
+        /// </summary>
+        public async Task<DisassociateBillingManagerWithOrganizationByUsernameResponse> DisassociateBillingManagerWithOrganizationByUsername(Guid? guid, DisassociateBillingManagerWithOrganizationByUsernameRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/billing_managers", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<DisassociateBillingManagerWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Disassociate Manager with the Organization by Username
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/disassociate_manager_with_the_organization_by_username.html"</para>
+        /// </summary>
+        public async Task<DisassociateManagerWithOrganizationByUsernameResponse> DisassociateManagerWithOrganizationByUsername(Guid? guid, DisassociateManagerWithOrganizationByUsernameRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/managers", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<DisassociateManagerWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Disassociate User with the Organization by Username
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/disassociate_user_with_the_organization_by_username.html"</para>
+        /// </summary>
+        public async Task<DisassociateUserWithOrganizationByUsernameResponse> DisassociateUserWithOrganizationByUsername(Guid? guid, DisassociateUserWithOrganizationByUsernameRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "v2/organizations/{0}/users", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<DisassociateUserWithOrganizationByUsernameResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Get Organization summary
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/get_organization_summary.html"</para>
+        /// </summary>
+        public async Task<GetOrganizationSummaryResponse> GetOrganizationSummary(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/summary", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<GetOrganizationSummaryResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// List all Auditors for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_auditors_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid)
+        {
+            return await ListAllAuditorsForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Auditors for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_auditors_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllAuditorsForOrganizationResponse>> ListAllAuditorsForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllAuditorsForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Billing Managers for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_billing_managers_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid)
+        {
+            return await ListAllBillingManagersForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Billing Managers for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_billing_managers_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllBillingManagersForOrganizationResponse>> ListAllBillingManagersForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllBillingManagersForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Domains for the Organization (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid)
+        {
+            return await ListAllDomainsForOrganizationDeprecated(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Domains for the Organization (deprecated)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllDomainsForOrganizationDeprecatedResponse>> ListAllDomainsForOrganizationDeprecated(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/domains", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllDomainsForOrganizationDeprecatedResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Managers for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_managers_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid)
+        {
+            return await ListAllManagersForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Managers for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_managers_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllManagersForOrganizationResponse>> ListAllManagersForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllManagersForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Organizations
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_organizations.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllOrganizationsResponse>> ListAllOrganizations()
+        {
+            return await ListAllOrganizations(new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Organizations
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_organizations.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllOrganizationsResponse>> ListAllOrganizations(RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/organizations";
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllOrganizationsResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Private Domains for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_private_domains_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid)
+        {
+            return await ListAllPrivateDomainsForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Private Domains for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_private_domains_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsForOrganizationResponse>> ListAllPrivateDomainsForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/private_domains", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllPrivateDomainsForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Services for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_services_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid)
+        {
+            return await ListAllServicesForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Services for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_services_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServicesForOrganizationResponse>> ListAllServicesForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/services", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllServicesForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Space Quota Definitions for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_space_quota_definitions_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid)
+        {
+            return await ListAllSpaceQuotaDefinitionsForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Space Quota Definitions for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_space_quota_definitions_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpaceQuotaDefinitionsForOrganizationResponse>> ListAllSpaceQuotaDefinitionsForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/space_quota_definitions", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSpaceQuotaDefinitionsForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Spaces for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_spaces_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid)
+        {
+            return await ListAllSpacesForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Spaces for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_spaces_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSpacesForOrganizationResponse>> ListAllSpacesForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/spaces", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSpacesForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// List all Users for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_users_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid)
+        {
+            return await ListAllUsersForOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Users for the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/list_all_users_for_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllUsersForOrganizationResponse>> ListAllUsersForOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllUsersForOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// Remove Auditor from the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/remove_auditor_from_the_organization.html"</para>
+        /// </summary>
+        public async Task RemoveAuditorFromOrganization(Guid? guid, Guid? auditor_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/auditors/{1}", guid, auditor_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Remove Billing Manager from the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/remove_billing_manager_from_the_organization.html"</para>
+        /// </summary>
+        public async Task RemoveBillingManagerFromOrganization(Guid? guid, Guid? billing_manager_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/billing_managers/{1}", guid, billing_manager_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Remove Manager from the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/remove_manager_from_the_organization.html"</para>
+        /// </summary>
+        public async Task RemoveManagerFromOrganization(Guid? guid, Guid? manager_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/managers/{1}", guid, manager_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Remove Private Domain from the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/remove_private_domain_from_the_organization.html"</para>
+        /// </summary>
+        public async Task RemovePrivateDomainFromOrganization(Guid? guid, Guid? private_domain_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/private_domains/{1}", guid, private_domain_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// Remove User from the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/remove_user_from_the_organization.html"</para>
+        /// </summary>
+        public async Task RemoveUserFromOrganization(Guid? guid, Guid? user_guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/users/{1}", guid, user_guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
         /// Retrieve a Particular Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organizations/retrieve_a_particular_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/retrieve_a_particular_organization.html"</para>
         /// </summary>
         public async Task<RetrieveOrganizationResponse> RetrieveOrganization(Guid? guid)
         {
@@ -938,6 +844,104 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveOrganizationResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Retrieving organization instance usage
+        /// <para>This endpoint returns a count of started app instances under an organization.</para>
+        /// <para>Note that crashing apps are included in this count.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/retrieving_organization_instance_usage.html"</para>
+        /// </summary>
+        public async Task<RetrievingOrganizationInstanceUsageResponse> RetrievingOrganizationInstanceUsage(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/instance_usage", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrievingOrganizationInstanceUsageResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Retrieving organization memory usage
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/retrieving_organization_memory_usage.html"</para>
+        /// </summary>
+        public async Task<RetrievingOrganizationMemoryUsageResponse> RetrievingOrganizationMemoryUsage(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/memory_usage", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrievingOrganizationMemoryUsageResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Retrieving the roles of all Users in the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/retrieving_the_roles_of_all_users_in_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<RetrievingRolesOfAllUsersInOrganizationResponse>> RetrievingRolesOfAllUsersInOrganization(Guid? guid)
+        {
+            return await RetrievingRolesOfAllUsersInOrganization(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// Retrieving the roles of all Users in the Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/retrieving_the_roles_of_all_users_in_the_organization.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<RetrievingRolesOfAllUsersInOrganizationResponse>> RetrievingRolesOfAllUsersInOrganization(Guid? guid, RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}/user_roles", guid);
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<RetrievingRolesOfAllUsersInOrganizationResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// Update an Organization
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organizations/update_an_organization.html"</para>
+        /// </summary>
+        public async Task<UpdateOrganizationResponse> UpdateOrganization(Guid? guid, UpdateOrganizationRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/organizations/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateOrganizationResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

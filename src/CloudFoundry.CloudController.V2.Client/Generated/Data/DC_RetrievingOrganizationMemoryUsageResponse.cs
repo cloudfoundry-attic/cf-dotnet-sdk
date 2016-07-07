@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.RetrievingOrganizationMemoryUsage()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organizations/retrieving_organization_memory_usage.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organizations/retrieving_organization_memory_usage.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrievingOrganizationMemoryUsageResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrievingOrganizationMemoryUsageResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.RetrievingOrganizationMemoryUsage()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organizations/retrieving_organization_memory_usage.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organizations/retrieving_organization_memory_usage.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrievingOrganizationMemoryUsageResponse : IResponse

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.UpdateOrganizationQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateOrganizationQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateOrganizationQuotaDefinitionResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.UpdateOrganizationQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateOrganizationQuotaDefinitionResponse : IResponse
@@ -132,36 +132,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? AppInstanceLimit
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The App Task Limit</para>
-        /// </summary>
-        [JsonProperty("app_task_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public int? AppTaskLimit
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Total Service Keys</para>
-        /// </summary>
-        [JsonProperty("total_service_keys", NullValueHandling = NullValueHandling.Ignore)]
-        public int? TotalServiceKeys
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Total Reserved Route Ports</para>
-        /// </summary>
-        [JsonProperty("total_reserved_route_ports", NullValueHandling = NullValueHandling.Ignore)]
-        public int? TotalReservedRoutePorts
         {
             get;
             set;

@@ -101,9 +101,6 @@
     <Compile Include="Deserialization\Test_private_domains.cs" />
     <Compile Include="Deserialization\Test_resource_match.cs" />
     <Compile Include="Deserialization\Test_routes.cs" />
-    <Compile Include="Deserialization\Test_routes_mapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Deserialization\Test_security_groups.cs" />
     <Compile Include="Deserialization\Test_security_group_running_defaults.cs" />
     <Compile Include="Deserialization\Test_security_group_staging_defaults.cs" />
@@ -138,7 +135,6 @@
     <Compile Include="Fake\Test_private_domains.cs" />
     <Compile Include="Fake\Test_resource_match.cs" />
     <Compile Include="Fake\Test_routes.cs" />
-    <Compile Include="Fake\Test_routes_mapping.cs" />
     <Compile Include="Fake\Test_security_groups.cs" />
     <Compile Include="Fake\Test_security_group_running_defaults.cs" />
     <Compile Include="Fake\Test_security_group_staging_defaults.cs" />
@@ -180,7 +176,6 @@
     <Compile Include="Serialization\Test_private_domains.cs" />
     <Compile Include="Serialization\Test_resource_match.cs" />
     <Compile Include="Serialization\Test_routes.cs" />
-    <Compile Include="Serialization\Test_routes_mapping.cs" />
     <Compile Include="Serialization\Test_security_groups.cs" />
     <Compile Include="Serialization\Test_security_group_running_defaults.cs" />
     <Compile Include="Serialization\Test_security_group_staging_defaults.cs" />

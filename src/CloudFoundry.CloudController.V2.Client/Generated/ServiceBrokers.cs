@@ -52,29 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_brokers/retrieve_a_particular_service_broker.html"</para>
-        /// </summary>
-        public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_brokers/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServiceBrokerResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Create a Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_brokers/create_a_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_brokers/create_a_service_broker.html"</para>
         /// </summary>
         public async Task<CreateServiceBrokerResponse> CreateServiceBroker(CreateServiceBrokerRequest value)
         {
@@ -97,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_brokers/delete_a_particular_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_brokers/delete_a_particular_service_broker.html"</para>
         /// </summary>
         public async Task DeleteServiceBroker(Guid? guid)
         {
@@ -118,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Brokers
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_brokers/list_all_service_brokers.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_brokers/list_all_service_brokers.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBrokersResponse>> ListAllServiceBrokers()
         {
@@ -127,7 +106,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Brokers
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_brokers/list_all_service_brokers.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_brokers/list_all_service_brokers.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBrokersResponse>> ListAllServiceBrokers(RequestOptions options)
         {
@@ -148,8 +127,29 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Retrieve a Particular Service Broker
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_brokers/retrieve_a_particular_service_broker.html"</para>
+        /// </summary>
+        public async Task<RetrieveServiceBrokerResponse> RetrieveServiceBroker(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_brokers/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServiceBrokerResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Update a Service Broker
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_brokers/update_a_service_broker.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_brokers/update_a_service_broker.html"</para>
         /// </summary>
         public async Task<UpdateServiceBrokerResponse> UpdateServiceBroker(Guid? guid, UpdateServiceBrokerRequest value)
         {

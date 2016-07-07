@@ -26,106 +26,35 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
     public class ProcessesExperimentalEndpoint
 {
         [TestMethod]
-        public void GetDetailedStatsForAppsProcessTest()
+        public void GetProcessTest()
         {
             using (ShimsContext.Create())
             {
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""resources"": [
-    {
-      ""type"": ""web"",
-      ""index"": 0,
-      ""state"": ""RUNNING"",
-      ""usage"": {
-        ""time"": ""2016-03-30 10:15:11 UTC"",
-        ""cpu"": 80,
-        ""mem"": 128,
-        ""disk"": 1024
-      },
-      ""host"": ""toast"",
-      ""port"": 8080,
-      ""uptime"": 1,
-      ""mem_quota"": 1073741824,
-      ""disk_quota"": 1073741824,
-      ""fds_quota"": 16384
+  ""guid"": ""2242625a-25c7-4a91-8fbf-30201f3c36b2"",
+  ""type"": ""web"",
+  ""command"": null,
+  ""instances"": 1,
+  ""memory_in_mb"": 1024,
+  ""disk_in_mb"": 1024,
+  ""created_at"": ""2016-07-07T09:17:15Z"",
+  ""updated_at"": ""2016-07-07T09:17:15Z"",
+  ""links"": {
+    ""self"": {
+      ""href"": ""/v3/processes/37e82c8c-4f79-4301-b15a-fce3ef4fe61d""
+    },
+    ""scale"": {
+      ""href"": ""/v3/processes/37e82c8c-4f79-4301-b15a-fce3ef4fe61d/scale"",
+      ""method"": ""PUT""
+    },
+    ""app"": {
+      ""href"": ""/v3/apps/c8dc9e9b-cfd7-4b5a-a0a7-6645f5ce9b30""
+    },
+    ""space"": {
+      ""href"": ""/v2/spaces/56022427-7f9d-4c5e-92bd-e4a02a11a10d""
     }
-  ],
-  ""pagination"": {
-    ""total_results"": 1,
-    ""first"": {
-      ""href"": ""/v3/apps/e7b1a2c2-8890-4b9a-8907-c0423165b076/processes/web/stats""
-    },
-    ""last"": {
-      ""href"": ""/v3/apps/e7b1a2c2-8890-4b9a-8907-c0423165b076/processes/web/stats""
-    },
-    ""next"": null,
-    ""previous"": null
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-                dynamic type = null;
-
-
-                var obj = cfClient.ProcessesExperimental.GetDetailedStatsForAppsProcess(guid, type).Result;
-
-                Assert.AreEqual("web", TestUtil.ToTestableString(obj[0].Type), true);
-                Assert.AreEqual("0", TestUtil.ToTestableString(obj[0].Index), true);
-                Assert.AreEqual("RUNNING", TestUtil.ToTestableString(obj[0].State), true);
-                Assert.AreEqual("toast", TestUtil.ToTestableString(obj[0].Host), true);
-                Assert.AreEqual("8080", TestUtil.ToTestableString(obj[0].Port), true);
-                Assert.AreEqual("1", TestUtil.ToTestableString(obj[0].Uptime), true);
-                Assert.AreEqual("1073741824", TestUtil.ToTestableString(obj[0].MemQuota), true);
-                Assert.AreEqual("1073741824", TestUtil.ToTestableString(obj[0].DiskQuota), true);
-                Assert.AreEqual("16384", TestUtil.ToTestableString(obj[0].FdsQuota), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void GetDetailedStatsForProcessTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""resources"": [
-    {
-      ""type"": ""web"",
-      ""index"": 0,
-      ""state"": ""RUNNING"",
-      ""usage"": {
-        ""time"": ""2016-03-30 10:15:10 UTC"",
-        ""cpu"": 80,
-        ""mem"": 128,
-        ""disk"": 1024
-      },
-      ""host"": ""toast"",
-      ""port"": 8080,
-      ""uptime"": 1,
-      ""mem_quota"": 1073741824,
-      ""disk_quota"": 1073741824,
-      ""fds_quota"": 16384
-    }
-  ],
-  ""pagination"": {
-    ""total_results"": 1,
-    ""first"": {
-      ""href"": ""/v3/processes/b833a85a-89d7-4527-a8a0-c10b15adcab1/stats""
-    },
-    ""last"": {
-      ""href"": ""/v3/processes/b833a85a-89d7-4527-a8a0-c10b15adcab1/stats""
-    },
-    ""next"": null,
-    ""previous"": null
   }
 }";
                 clients.JsonResponse = json;
@@ -136,37 +65,17 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 Guid? guid = Guid.NewGuid();
 
 
-                var obj = cfClient.ProcessesExperimental.GetDetailedStatsForProcess(guid).Result;
-
-                Assert.AreEqual("web", TestUtil.ToTestableString(obj[0].Type), true);
-                Assert.AreEqual("0", TestUtil.ToTestableString(obj[0].Index), true);
-                Assert.AreEqual("RUNNING", TestUtil.ToTestableString(obj[0].State), true);
-                Assert.AreEqual("toast", TestUtil.ToTestableString(obj[0].Host), true);
-                Assert.AreEqual("8080", TestUtil.ToTestableString(obj[0].Port), true);
-                Assert.AreEqual("1", TestUtil.ToTestableString(obj[0].Uptime), true);
-                Assert.AreEqual("1073741824", TestUtil.ToTestableString(obj[0].MemQuota), true);
-                Assert.AreEqual("1073741824", TestUtil.ToTestableString(obj[0].DiskQuota), true);
-                Assert.AreEqual("16384", TestUtil.ToTestableString(obj[0].FdsQuota), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void TerminatingProcessInstanceTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                clients.ExpectedStatusCode = (HttpStatusCode)204;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-                int? index = 0;
+                var obj = cfClient.ProcessesExperimental.GetProcess(guid).Result;
 
 
-                cfClient.ProcessesExperimental.TerminatingProcessInstance(guid, index).Wait();
+                Assert.AreEqual("2242625a-25c7-4a91-8fbf-30201f3c36b2", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
+                Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
+                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
+                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -194,52 +103,52 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""resources"": [
     {
-      ""guid"": ""9ce1dc48-c751-4f08-a150-5a71b7c399f2"",
+      ""guid"": ""a3c920a5-75c0-4f84-937a-c7a7b69fc702"",
       ""type"": ""web"",
       ""command"": null,
       ""instances"": 1,
       ""memory_in_mb"": 1024,
       ""disk_in_mb"": 1024,
-      ""created_at"": ""2016-03-30T10:15:11Z"",
-      ""updated_at"": ""2016-03-30T10:15:11Z"",
+      ""created_at"": ""2016-07-07T09:17:15Z"",
+      ""updated_at"": ""2016-07-07T09:17:15Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/processes/0c9aac4c-839d-4796-b759-70320f440a7f""
+          ""href"": ""/v3/processes/889df296-d82a-4b61-8493-bdfcaea3a88b""
         },
         ""scale"": {
-          ""href"": ""/v3/processes/0c9aac4c-839d-4796-b759-70320f440a7f/scale"",
+          ""href"": ""/v3/processes/889df296-d82a-4b61-8493-bdfcaea3a88b/scale"",
           ""method"": ""PUT""
         },
         ""app"": {
-          ""href"": ""/v3/apps/fc868b48-32a1-485c-a056-18220ca6ebde""
+          ""href"": ""/v3/apps/fd62c98f-03ed-430e-a202-7f21b12917f5""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/38a6018f-0fe3-40e3-a3b8-8024278890ec""
+          ""href"": ""/v2/spaces/d9fe7c00-c912-4937-852f-7a89e4dcb753""
         }
       }
     },
     {
-      ""guid"": ""9ce1dc48-c751-4f08-a150-5a71b7c399f2"",
+      ""guid"": ""a3c920a5-75c0-4f84-937a-c7a7b69fc702"",
       ""type"": ""web"",
       ""command"": null,
       ""instances"": 1,
       ""memory_in_mb"": 1024,
       ""disk_in_mb"": 1024,
-      ""created_at"": ""2016-03-30T10:15:11Z"",
-      ""updated_at"": ""2016-03-30T10:15:11Z"",
+      ""created_at"": ""2016-07-07T09:17:15Z"",
+      ""updated_at"": ""2016-07-07T09:17:15Z"",
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/processes/445e549f-09ab-40ec-bbd9-e49e95086884""
+          ""href"": ""/v3/processes/60be1b2c-a14b-4a18-abe4-7eaa45bcbced""
         },
         ""scale"": {
-          ""href"": ""/v3/processes/445e549f-09ab-40ec-bbd9-e49e95086884/scale"",
+          ""href"": ""/v3/processes/60be1b2c-a14b-4a18-abe4-7eaa45bcbced/scale"",
           ""method"": ""PUT""
         },
         ""app"": {
           ""href"": ""/v3/apps/""
         },
         ""space"": {
-          ""href"": ""/v2/spaces/38a6018f-0fe3-40e3-a3b8-8024278890ec""
+          ""href"": ""/v2/spaces/d9fe7c00-c912-4937-852f-7a89e4dcb753""
         }
       }
     }
@@ -253,55 +162,55 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.ProcessesExperimental.ListAllProcesses().Result;
 
-                Assert.AreEqual("9ce1dc48-c751-4f08-a150-5a71b7c399f2", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("a3c920a5-75c0-4f84-937a-c7a7b69fc702", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj[0].Type), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].Command), true);
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj[0].Instances), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj[0].MemoryInMb), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj[0].DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-                Assert.AreEqual("9ce1dc48-c751-4f08-a150-5a71b7c399f2", TestUtil.ToTestableString(obj[1].Guid), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
+                Assert.AreEqual("a3c920a5-75c0-4f84-937a-c7a7b69fc702", TestUtil.ToTestableString(obj[1].Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj[1].Type), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].Command), true);
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj[1].Instances), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj[1].MemoryInMb), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj[1].DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
 
             }
         }
 
         [TestMethod]
-        public void GetProcessTest()
+        public void ScalingProcessTest()
         {
             using (ShimsContext.Create())
             {
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""9faa1e35-396e-473e-9511-bbda56c4e866"",
+  ""guid"": ""3cd15332-7b75-4550-adf9-54a7f26b5ff4"",
   ""type"": ""web"",
   ""command"": null,
-  ""instances"": 1,
-  ""memory_in_mb"": 1024,
-  ""disk_in_mb"": 1024,
-  ""created_at"": ""2016-03-30T10:15:10Z"",
-  ""updated_at"": ""2016-03-30T10:15:10Z"",
+  ""instances"": 3,
+  ""memory_in_mb"": 100,
+  ""disk_in_mb"": 100,
+  ""created_at"": ""2016-07-07T09:17:15Z"",
+  ""updated_at"": ""2016-07-07T09:17:15Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/840b0b0d-722b-4fa3-afc7-6eda55c4af2c""
+      ""href"": ""/v3/processes/db4a1298-c1f9-421d-8703-039cef4d069a""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/840b0b0d-722b-4fa3-afc7-6eda55c4af2c/scale"",
+      ""href"": ""/v3/processes/db4a1298-c1f9-421d-8703-039cef4d069a/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
-      ""href"": ""/v3/apps/acb62e3b-52f7-42af-8c63-063e68ad8bff""
+      ""href"": ""/v3/apps/a56861c2-c2fc-43d1-aead-e496456e121e""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/cdb9545d-0327-4f9b-80e2-236998773c5d""
+      ""href"": ""/v2/spaces/5e5296b1-11dd-4ce3-a566-87709cda4d12""
     }
   }
 }";
@@ -312,83 +221,26 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 Guid? guid = Guid.NewGuid();
 
-
-                var obj = cfClient.ProcessesExperimental.GetProcess(guid).Result;
-
-
-                Assert.AreEqual("9faa1e35-396e-473e-9511-bbda56c4e866", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
-                Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
-                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
-                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void ScalingProcessFromItsAppTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""guid"": ""d85416b7-3e62-4834-b7e8-34dac488e596"",
-  ""type"": ""web"",
-  ""command"": null,
-  ""instances"": 3,
-  ""memory_in_mb"": 100,
-  ""disk_in_mb"": 100,
-  ""created_at"": ""2016-03-30T10:15:10Z"",
-  ""updated_at"": ""2016-03-30T10:15:10Z"",
-  ""links"": {
-    ""self"": {
-      ""href"": ""/v3/processes/7040f073-6446-418e-a9fd-4254378cdbc5""
-    },
-    ""scale"": {
-      ""href"": ""/v3/processes/7040f073-6446-418e-a9fd-4254378cdbc5/scale"",
-      ""method"": ""PUT""
-    },
-    ""app"": {
-      ""href"": ""/v3/apps/4e541023-d0a4-4b21-a9cd-c613f44f3ceb""
-    },
-    ""space"": {
-      ""href"": ""/v2/spaces/8ffe109c-f843-4666-86f9-617d95064f84""
-    }
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)202;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-                dynamic type = null;
-
-                ScalingProcessFromItsAppRequest value = new ScalingProcessFromItsAppRequest();
+                ScalingProcessRequest value = new ScalingProcessRequest();
 
 
-                var obj = cfClient.ProcessesExperimental.ScalingProcessFromItsApp(guid, type, value).Result;
+                var obj = cfClient.ProcessesExperimental.ScalingProcess(guid, value).Result;
 
 
-                Assert.AreEqual("d85416b7-3e62-4834-b7e8-34dac488e596", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("3cd15332-7b75-4550-adf9-54a7f26b5ff4", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
                 Assert.AreEqual("3", TestUtil.ToTestableString(obj.Instances), true);
                 Assert.AreEqual("100", TestUtil.ToTestableString(obj.MemoryInMb), true);
                 Assert.AreEqual("100", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
 
         [TestMethod]
-        public void TerminatingProcessInstanceFromItsAppTest()
+        public void TerminatingProcessInstanceTest()
         {
             using (ShimsContext.Create())
             {
@@ -399,12 +251,10 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 Guid? guid = Guid.NewGuid();
 
-                dynamic type = null;
-
                 int? index = 0;
 
 
-                cfClient.ProcessesExperimental.TerminatingProcessInstanceFromItsApp(guid, type, index).Wait();
+                cfClient.ProcessesExperimental.TerminatingProcessInstance(guid, index).Wait();
 
             }
         }
@@ -417,27 +267,27 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""cf3c9a0e-e6f3-4c1a-8503-cceefc8833b7"",
+  ""guid"": ""25e2f097-bf52-4718-83ca-5cbfec2bed17"",
   ""type"": ""web"",
   ""command"": ""X"",
   ""instances"": 1,
   ""memory_in_mb"": 1024,
   ""disk_in_mb"": 1024,
-  ""created_at"": ""2016-03-30T10:15:10Z"",
-  ""updated_at"": ""2016-03-30T10:15:10Z"",
+  ""created_at"": ""2016-07-07T09:17:15Z"",
+  ""updated_at"": ""2016-07-07T09:17:15Z"",
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/processes/c00ef63c-d35a-4594-a342-8ea6b6c8d3e3""
+      ""href"": ""/v3/processes/5ee885ae-b24d-4b57-a90b-827000fd34e1""
     },
     ""scale"": {
-      ""href"": ""/v3/processes/c00ef63c-d35a-4594-a342-8ea6b6c8d3e3/scale"",
+      ""href"": ""/v3/processes/5ee885ae-b24d-4b57-a90b-827000fd34e1/scale"",
       ""method"": ""PUT""
     },
     ""app"": {
       ""href"": ""/v3/apps/""
     },
     ""space"": {
-      ""href"": ""/v2/spaces/1f35044c-f1f3-4e92-8d92-92d364f4b1df""
+      ""href"": ""/v2/spaces/d6c4f9a8-af31-4960-8ba8-53a059e0fca8""
     }
   }
 }";
@@ -454,197 +304,14 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.ProcessesExperimental.UpdateProcess(guid, value).Result;
 
 
-                Assert.AreEqual("cf3c9a0e-e6f3-4c1a-8503-cceefc8833b7", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("25e2f097-bf52-4718-83ca-5cbfec2bed17", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
                 Assert.AreEqual("X", TestUtil.ToTestableString(obj.Command), true);
                 Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
                 Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void ListAssociatedProcessesTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""pagination"": {
-    ""total_results"": 1,
-    ""first"": {
-      ""href"": ""/v3/apps/f8d180f0-c190-4acb-9e18-bb11f41d6cb1/processes?page=1=50""
-    },
-    ""last"": {
-      ""href"": ""/v3/apps/f8d180f0-c190-4acb-9e18-bb11f41d6cb1/processes?page=1=50""
-    },
-    ""next"": null,
-    ""previous"": null
-  },
-  ""resources"": [
-    {
-      ""guid"": ""5c21d7c1-19ca-4684-81b6-feadf46b2c7c"",
-      ""type"": ""web"",
-      ""command"": null,
-      ""instances"": 1,
-      ""memory_in_mb"": 1024,
-      ""disk_in_mb"": 1024,
-      ""created_at"": ""2016-03-30T10:15:11Z"",
-      ""updated_at"": ""2016-03-30T10:15:11Z"",
-      ""links"": {
-        ""self"": {
-          ""href"": ""/v3/processes/90eed8d4-f761-472d-98c8-104efa64f360""
-        },
-        ""scale"": {
-          ""href"": ""/v3/processes/90eed8d4-f761-472d-98c8-104efa64f360/scale"",
-          ""method"": ""PUT""
-        },
-        ""app"": {
-          ""href"": ""/v3/apps/f8d180f0-c190-4acb-9e18-bb11f41d6cb1""
-        },
-        ""space"": {
-          ""href"": ""/v2/spaces/2016d53f-df46-4064-84a9-73cf1b326d41""
-        }
-      }
-    }
-  ]
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-
-                var obj = cfClient.ProcessesExperimental.ListAssociatedProcesses(guid).Result;
-
-                Assert.AreEqual("5c21d7c1-19ca-4684-81b6-feadf46b2c7c", TestUtil.ToTestableString(obj[0].Guid), true);
-                Assert.AreEqual("web", TestUtil.ToTestableString(obj[0].Type), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj[0].Command), true);
-                Assert.AreEqual("1", TestUtil.ToTestableString(obj[0].Instances), true);
-                Assert.AreEqual("1024", TestUtil.ToTestableString(obj[0].MemoryInMb), true);
-                Assert.AreEqual("1024", TestUtil.ToTestableString(obj[0].DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void GetProcessFromAppTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""guid"": ""63ef7cc2-56e7-46aa-8d40-71d203880c2f"",
-  ""type"": ""web"",
-  ""command"": null,
-  ""instances"": 1,
-  ""memory_in_mb"": 1024,
-  ""disk_in_mb"": 1024,
-  ""created_at"": ""2016-03-30T10:15:10Z"",
-  ""updated_at"": ""2016-03-30T10:15:10Z"",
-  ""links"": {
-    ""self"": {
-      ""href"": ""/v3/processes/1e91d448-ace8-4f09-9c7e-52b4c4f24057""
-    },
-    ""scale"": {
-      ""href"": ""/v3/processes/1e91d448-ace8-4f09-9c7e-52b4c4f24057/scale"",
-      ""method"": ""PUT""
-    },
-    ""app"": {
-      ""href"": ""/v3/apps/9d6d00c6-476b-46fb-b5c1-cc4853f46a52""
-    },
-    ""space"": {
-      ""href"": ""/v2/spaces/bac463ca-ff6a-454d-b009-5585703c1058""
-    }
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-                dynamic type = null;
-
-
-                var obj = cfClient.ProcessesExperimental.GetProcessFromApp(guid, type).Result;
-
-
-                Assert.AreEqual("63ef7cc2-56e7-46aa-8d40-71d203880c2f", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
-                Assert.AreEqual("1", TestUtil.ToTestableString(obj.Instances), true);
-                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryInMb), true);
-                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:10Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void ScalingProcessTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""guid"": ""c86065f7-d11f-4c51-803e-d8baeb9ab41c"",
-  ""type"": ""web"",
-  ""command"": null,
-  ""instances"": 3,
-  ""memory_in_mb"": 100,
-  ""disk_in_mb"": 100,
-  ""created_at"": ""2016-03-30T10:15:11Z"",
-  ""updated_at"": ""2016-03-30T10:15:11Z"",
-  ""links"": {
-    ""self"": {
-      ""href"": ""/v3/processes/f44167ff-2d50-4d84-98dd-e78579bf9674""
-    },
-    ""scale"": {
-      ""href"": ""/v3/processes/f44167ff-2d50-4d84-98dd-e78579bf9674/scale"",
-      ""method"": ""PUT""
-    },
-    ""app"": {
-      ""href"": ""/v3/apps/79545aa5-14b6-4b8b-8f58-3280405eb7a2""
-    },
-    ""space"": {
-      ""href"": ""/v2/spaces/ddc5e240-1462-4630-a235-e8b917d5ef0a""
-    }
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)202;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-                ScalingProcessRequest value = new ScalingProcessRequest();
-
-
-                var obj = cfClient.ProcessesExperimental.ScalingProcess(guid, value).Result;
-
-
-                Assert.AreEqual("c86065f7-d11f-4c51-803e-d8baeb9ab41c", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("web", TestUtil.ToTestableString(obj.Type), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.Command), true);
-                Assert.AreEqual("3", TestUtil.ToTestableString(obj.Instances), true);
-                Assert.AreEqual("100", TestUtil.ToTestableString(obj.MemoryInMb), true);
-                Assert.AreEqual("100", TestUtil.ToTestableString(obj.DiskInMb), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:11Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:15Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }

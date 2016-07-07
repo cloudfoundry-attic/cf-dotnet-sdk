@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.UpdateRoute()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/routes/update_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/routes/update_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateRouteRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateRouteRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.UpdateRoute()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/routes/update_a_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/routes/update_a_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateRouteRequest
@@ -80,7 +80,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The host portion of the route. Required for shared-domains.</para>
+        /// <para>The host portion of the route</para>
         /// </summary>
         [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic Host
@@ -90,7 +90,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The path for a route as raw text. 1) Paths must be between 2 and 128 characters 2) Paths must start with a forward slash "/" 3) Paths must not contain a "?"</para>
+        /// <para>The path for a route as raw text. 1) Paths must be between 2 and 128 characters 2) Paths must start with a / 3) Paths must not contain a "?"</para>
         /// </summary>
         [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
         public string Path

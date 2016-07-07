@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.GetEnvForApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps__experimental_/get_the_env_for_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/apps__experimental_/get_the_env_for_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetEnvForAppResponse : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractGetEnvForAppResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V3.Client.AppsExperimentalEndpoint.GetEnvForApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/apps__experimental_/get_the_env_for_an_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/apps__experimental_/get_the_env_for_an_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetEnvForAppResponse
@@ -64,16 +64,6 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         /// </summary>
         [JsonProperty("running_env_json", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> RunningEnvJson
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The System Env Json</para>
-        /// </summary>
-        [JsonProperty("system_env_json", NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, dynamic> SystemEnvJson
         {
             get;
             set;

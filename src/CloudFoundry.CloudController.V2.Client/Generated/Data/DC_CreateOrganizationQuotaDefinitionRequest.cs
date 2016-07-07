@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateOrganizationQuotaDefinitionRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateOrganizationQuotaDefinitionRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.OrganizationQuotaDefinitionsEndpoint.CreateOrganizationQuotaDefinition()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateOrganizationQuotaDefinitionRequest
@@ -60,7 +60,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>How many services an organization can have. (-1 represents an unlimited amount)</para>
+        /// <para>How many services an organization can have.</para>
         /// </summary>
         [JsonProperty("total_services", NullValueHandling = NullValueHandling.Ignore)]
         public int? TotalServices
@@ -70,7 +70,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>How many routes an organization can have. (-1 represents an unlimited amount)</para>
+        /// <para>How many routes an organization can have.</para>
         /// </summary>
         [JsonProperty("total_routes", NullValueHandling = NullValueHandling.Ignore)]
         public int? TotalRoutes
@@ -104,36 +104,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? AppInstanceLimit
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The number of tasks that can be run per app. (-1 represents an unlimited amount)</para>
-        /// </summary>
-        [JsonProperty("app_task_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public int? AppTaskLimit
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>How many routes an organization can have that use a reserved port. These routes count toward total_routes. (-1 represents an unlimited amount)</para>
-        /// </summary>
-        [JsonProperty("total_reserved_route_ports", NullValueHandling = NullValueHandling.Ignore)]
-        public int? TotalReservedRoutePorts
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>How many service keys an organization can have. (-1 represents an unlimited amount)</para>
-        /// </summary>
-        [JsonProperty("total_service_keys", NullValueHandling = NullValueHandling.Ignore)]
-        public string TotalServiceKeys
         {
             get;
             set;

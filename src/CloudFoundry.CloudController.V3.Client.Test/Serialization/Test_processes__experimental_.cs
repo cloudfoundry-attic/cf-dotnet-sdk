@@ -28,7 +28,7 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
     {
 
         [TestMethod]
-        public void TestScalingProcessFromItsAppRequest()
+        public void TestScalingProcessRequest()
         {
             string json = @"{
   ""instances"": 3,
@@ -36,7 +36,7 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
   ""disk_in_mb"": 100
 }";
 
-            ScalingProcessFromItsAppRequest request = new ScalingProcessFromItsAppRequest();
+            ScalingProcessRequest request = new ScalingProcessRequest();
 
             request.Instances = 3;
             request.MemoryInMb = 100;
@@ -54,23 +54,6 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
             UpdateProcessRequest request = new UpdateProcessRequest();
 
             request.Command = "X";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestScalingProcessRequest()
-        {
-            string json = @"{
-  ""instances"": 3,
-  ""memory_in_mb"": 100,
-  ""disk_in_mb"": 100
-}";
-
-            ScalingProcessRequest request = new ScalingProcessRequest();
-
-            request.Instances = 3;
-            request.MemoryInMb = 100;
-            request.DiskInMb = 100;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

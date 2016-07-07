@@ -31,12 +31,46 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
         public void TestAssignDropletAsAppsCurrentDropletRequest()
         {
             string json = @"{
-  ""droplet_guid"": ""727745b5-8216-41f4-8ef9-cd118c6d0a20""
+  ""droplet_guid"": ""de0acb8f-500e-4103-8deb-626a9a6882c5""
 }";
 
             AssignDropletAsAppsCurrentDropletRequest request = new AssignDropletAsAppsCurrentDropletRequest();
 
-            request.DropletGuid = new Guid("727745b5-8216-41f4-8ef9-cd118c6d0a20");
+            request.DropletGuid = new Guid("de0acb8f-500e-4103-8deb-626a9a6882c5");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateAppRequest()
+        {
+            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-1215""}},""relationships"":{""space"":{""guid"":""ab8ed42d-82bd-492b-ba08-bb77b96b41b2""}}}";
+
+            CreateAppRequest request = new CreateAppRequest();
+
+            request.Name = "my_app";
+            request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""open"":""source""}");
+
+            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-1215""}}");
+
+            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""ab8ed42d-82bd-492b-ba08-bb77b96b41b2""}}");
+
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestScalingProcessFromItsAppRequest()
+        {
+            string json = @"{
+  ""instances"": 3,
+  ""memory_in_mb"": 100,
+  ""disk_in_mb"": 100
+}";
+
+            ScalingProcessFromItsAppRequest request = new ScalingProcessFromItsAppRequest();
+
+            request.Instances = 3;
+            request.MemoryInMb = 100;
+            request.DiskInMb = 100;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
@@ -64,40 +98,6 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
             request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""MY_ENV_VAR"":""foobar"",""FOOBAR"":""MY_ENV_VAR""}");
 
             request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""buildpack"":""http://gitwheel.org/my-app"",""stack"":""redhat""}}");
-
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateDockerAppRequest()
-        {
-            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""docker"",""data"":{}},""relationships"":{""space"":{""guid"":""35043e48-ef58-4d78-b546-3dcc8b03b9b5""}}}";
-
-            CreateDockerAppRequest request = new CreateDockerAppRequest();
-
-            request.Name = "my_app";
-            request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""open"":""source""}");
-
-            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""docker"",""data"":{}}");
-
-            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""35043e48-ef58-4d78-b546-3dcc8b03b9b5""}}");
-
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateAppRequest()
-        {
-            string json = @"{""name"":""my_app"",""environment_variables"":{""open"":""source""},""lifecycle"":{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-365""}},""relationships"":{""space"":{""guid"":""b4a598ef-a8d1-4481-9eda-2540429094c8""}}}";
-
-            CreateAppRequest request = new CreateAppRequest();
-
-            request.Name = "my_app";
-            request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""open"":""source""}");
-
-            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""stack"":null,""buildpack"":""name-365""}}");
-
-            request.Relationships = TestUtil.GetJsonDictonary(@"{""space"":{""guid"":""b4a598ef-a8d1-4481-9eda-2540429094c8""}}");
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);

@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsEndpoint.RetrieveServiceUsageEvent()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveServiceUsageEventResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveServiceUsageEventResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceUsageEventsEndpoint.RetrieveServiceUsageEvent()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/service_usage_events/retrieve_a_particular_service_usage_event.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveServiceUsageEventResponse : IResponse

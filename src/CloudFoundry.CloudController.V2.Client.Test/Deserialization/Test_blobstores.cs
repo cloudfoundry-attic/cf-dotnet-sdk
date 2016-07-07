@@ -30,22 +30,22 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""90ee28a1-9f26-487f-ae09-c497ee8338ae"",
-    ""created_at"": ""2016-05-26T11:34:45Z"",
-    ""url"": ""/v2/jobs/7e0212d2-bdae-4f83-b5d8-1b111c0f2208""
+    ""guid"": ""784dad12-38c6-47f8-9c97-6ff607f1f3e0"",
+    ""created_at"": ""2016-07-07T09:16:56Z"",
+    ""url"": ""/v2/jobs/d78788e9-7b6d-49a9-8e6e-dd4432dc2ffa""
   },
   ""entity"": {
-    ""guid"": ""90ee28a1-9f26-487f-ae09-c497ee8338ae"",
+    ""guid"": ""784dad12-38c6-47f8-9c97-6ff607f1f3e0"",
     ""status"": ""queued""
   }
 }";
 
             DeleteAllBlobsInBuildpackCacheBlobstoreResponse obj = Utilities.DeserializeJson<DeleteAllBlobsInBuildpackCacheBlobstoreResponse>(json);
 
-            Assert.AreEqual("90ee28a1-9f26-487f-ae09-c497ee8338ae", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("2016-05-26T11:34:45Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("/v2/jobs/7e0212d2-bdae-4f83-b5d8-1b111c0f2208", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("90ee28a1-9f26-487f-ae09-c497ee8338ae", TestUtil.ToTestableString(obj.Guid), true);
+            Assert.AreEqual("784dad12-38c6-47f8-9c97-6ff607f1f3e0", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("2016-07-07T09:16:56Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/jobs/d78788e9-7b6d-49a9-8e6e-dd4432dc2ffa", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("784dad12-38c6-47f8-9c97-6ff607f1f3e0", TestUtil.ToTestableString(obj.Guid), true);
             Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
         }
     }
