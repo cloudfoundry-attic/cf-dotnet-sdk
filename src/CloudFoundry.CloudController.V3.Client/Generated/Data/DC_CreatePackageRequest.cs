@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.CreatePackage()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/packages__experimental_/create_a_package.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/packages__experimental_/create_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreatePackageRequest : CloudFoundry.CloudController.V3.Client.Data.Base.AbstractCreatePackageRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V3.Client.PackagesExperimentalEndpoint.CreatePackage()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/233/packages__experimental_/create_a_package.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/packages__experimental_/create_a_package.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreatePackageRequest
@@ -50,10 +50,40 @@ namespace CloudFoundry.CloudController.V3.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>Location of docker image.  Required for docker packages.</para>
+        /// <para>Data for docker packages.  Can be empty for bits packages.</para>
         /// </summary>
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, dynamic> Data
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Location of docker image.  Required for docker packages.</para>
+        /// </summary>
+        [JsonProperty("data_image", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic DataImage
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Credentials for private docker image, available fields are user, password, email, login server.</para>
+        /// </summary>
+        [JsonProperty("data_credentials", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic DataCredentials
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>Whether or not the backend should cache the image. defaults to false</para>
+        /// </summary>
+        [JsonProperty("data_store_image", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic DataStoreImage
         {
             get;
             set;

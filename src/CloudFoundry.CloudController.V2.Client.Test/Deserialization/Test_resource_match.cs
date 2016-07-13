@@ -30,14 +30,14 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         {
             string json = @"[
   {
-    ""sha1"": ""75c66aa61bff12b933e1101b1e883562bc982398"",
+    ""sha1"": ""cfe78bf53fdb4d9245a662eb6d945a37cd806066"",
     ""size"": 36
   }
 ]";
 
             ListAllMatchingResourcesResponse[] obj = Utilities.DeserializeJsonArray<ListAllMatchingResourcesResponse>(json);
 
-            Assert.AreEqual("75c66aa61bff12b933e1101b1e883562bc982398", TestUtil.ToTestableString(obj[0].Sha1), true);
+            Assert.AreEqual("cfe78bf53fdb4d9245a662eb6d945a37cd806066", TestUtil.ToTestableString(obj[0].Sha1), true);
             Assert.AreEqual("36", TestUtil.ToTestableString(obj[0].Size), true);
         }
     }

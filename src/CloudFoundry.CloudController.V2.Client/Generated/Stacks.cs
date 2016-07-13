@@ -52,8 +52,31 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Create a Stack
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/stacks/create_a_stack.html"</para>
+        /// </summary>
+        public async Task<CreateStackResponse> CreateStack(CreateStackRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/stacks";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Post;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateStackResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Delete a Particular Stack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/stacks/delete_a_particular_stack.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/stacks/delete_a_particular_stack.html"</para>
         /// </summary>
         public async Task DeleteStack(Guid? guid)
         {
@@ -73,29 +96,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Stack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/stacks/retrieve_a_particular_stack.html"</para>
-        /// </summary>
-        public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/stacks/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// List all Stacks
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/stacks/list_all_stacks.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/stacks/list_all_stacks.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks()
         {
@@ -104,7 +106,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Stacks
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/stacks/list_all_stacks.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/stacks/list_all_stacks.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllStacksResponse>> ListAllStacks(RequestOptions options)
         {
@@ -125,26 +127,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Create a Stack
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/stacks/create_a_stack.html"</para>
+        /// Retrieve a Particular Stack
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/stacks/retrieve_a_particular_stack.html"</para>
         /// </summary>
-        public async Task<CreateStackResponse> CreateStack(CreateStackRequest value)
+        public async Task<RetrieveStackResponse> RetrieveStack(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/stacks";
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/stacks/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
+            client.Method = HttpMethod.Get;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateStackResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<RetrieveStackResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

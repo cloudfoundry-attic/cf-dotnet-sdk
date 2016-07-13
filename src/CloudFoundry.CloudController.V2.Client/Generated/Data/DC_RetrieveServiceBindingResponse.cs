@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceBindingsEndpoint.RetrieveServiceBinding()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/service_bindings/retrieve_a_particular_service_binding.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/service_bindings/retrieve_a_particular_service_binding.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveServiceBindingResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveServiceBindingResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceBindingsEndpoint.RetrieveServiceBinding()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/service_bindings/retrieve_a_particular_service_binding.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/service_bindings/retrieve_a_particular_service_binding.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveServiceBindingResponse : IResponse
@@ -112,16 +112,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("syslog_drain_url", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic SyslogDrainUrl
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Volume Mounts</para>
-        /// </summary>
-        [JsonProperty("volume_mounts", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic[] VolumeMounts
         {
             get;
             set;

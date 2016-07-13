@@ -26,6 +26,60 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
     public class PackagesExperimentalEndpoint
 {
         [TestMethod]
+        public void CopyPackageTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""guid"": ""9283ab6e-9ef9-46a1-b1ad-c4ec525608ad"",
+  ""type"": ""docker"",
+  ""data"": {
+    ""hash"": {
+      ""type"": ""sha1"",
+      ""value"": null
+    },
+    ""error"": null,
+    ""image"": ""http://awesome-sauce.com"",
+    ""credentials"": {
+
+    },
+    ""store_image"": false
+  },
+  ""state"": ""READY"",
+  ""created_at"": ""2016-07-07T09:17:16Z"",
+  ""updated_at"": null,
+  ""links"": {
+    ""self"": {
+      ""href"": ""/v3/packages/d541ebdf-186b-4f74-8d2c-50931d704ce6""
+    },
+    ""app"": {
+      ""href"": ""/v3/apps/4cdce3c2-09d7-4826-aa12-0de8e95c3c61""
+    }
+  }
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)201;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+
+                var obj = cfClient.PackagesExperimental.CopyPackage(guid).Result;
+
+
+                Assert.AreEqual("9283ab6e-9ef9-46a1-b1ad-c4ec525608ad", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("docker", TestUtil.ToTestableString(obj.Type), true);
+                Assert.AreEqual("READY", TestUtil.ToTestableString(obj.State), true);
+                Assert.AreEqual("2016-07-07T09:17:16Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
+
+            }
+        }
+
+        [TestMethod]
         public void CreatePackageTest()
         {
             using (ShimsContext.Create())
@@ -33,24 +87,32 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""99ff3cf1-0c68-4c0e-a246-f1b46401c7e3"",
+  ""guid"": ""84120290-c0fd-4de6-bad5-baf52d968fd0"",
   ""type"": ""docker"",
   ""data"": {
-    ""image"": ""registry/image:latest""
+    ""hash"": {
+      ""type"": ""sha1"",
+      ""value"": null
+    },
+    ""error"": null,
+    ""image"": ""registry/image:latest"",
+    ""credentials"": {
+      ""user"": ""user name"",
+      ""email"": ""root@admin.example.com"",
+      ""password"": ""very secret password"",
+      ""login_server"": ""https://index.docker.io/v1""
+    },
+    ""store_image"": true
   },
   ""state"": ""READY"",
-  ""created_at"": ""2016-03-30T10:15:14Z"",
+  ""created_at"": ""2016-07-07T09:17:16Z"",
   ""updated_at"": null,
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/packages/b6c16bf5-cab9-444f-b4fb-f326734a5438""
-    },
-    ""stage"": {
-      ""href"": ""/v3/packages/b6c16bf5-cab9-444f-b4fb-f326734a5438/droplets"",
-      ""method"": ""POST""
+      ""href"": ""/v3/packages/749fa305-e31b-4a77-b649-be9efabe82d9""
     },
     ""app"": {
-      ""href"": ""/v3/apps/dece0071-1236-40b0-8672-0031cefe78e0""
+      ""href"": ""/v3/apps/553def5a-3c79-4878-af65-8065994d9c5a""
     }
   }
 }";
@@ -67,11 +129,29 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.PackagesExperimental.CreatePackage(guid, value).Result;
 
 
-                Assert.AreEqual("99ff3cf1-0c68-4c0e-a246-f1b46401c7e3", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("84120290-c0fd-4de6-bad5-baf52d968fd0", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("docker", TestUtil.ToTestableString(obj.Type), true);
                 Assert.AreEqual("READY", TestUtil.ToTestableString(obj.State), true);
-                Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:16Z", TestUtil.ToTestableString(obj.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void DeletePackageTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                clients.ExpectedStatusCode = (HttpStatusCode)204;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+
+                cfClient.PackagesExperimental.DeletePackage(guid).Wait();
 
             }
         }
@@ -84,36 +164,36 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 MockClients clients = new MockClients();
 
                 string json = @"{
-  ""guid"": ""c9086031-d485-4e0a-a36a-c728ae77ad51"",
+  ""guid"": ""67bfc1f1-46b1-4240-92cb-b7589a5a95ec"",
   ""type"": ""bits"",
   ""data"": {
-    ""error"": null,
     ""hash"": {
       ""type"": ""sha1"",
       ""value"": null
-    }
+    },
+    ""error"": null
   },
   ""state"": ""AWAITING_UPLOAD"",
-  ""created_at"": ""2016-03-30T10:15:15Z"",
+  ""created_at"": ""2016-07-07T09:17:16Z"",
   ""updated_at"": null,
   ""links"": {
     ""self"": {
-      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355""
+      ""href"": ""/v3/packages/7c838f50-6511-49c5-a5d1-2f923a0035b7""
     },
     ""upload"": {
-      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355/upload"",
+      ""href"": ""/v3/packages/7c838f50-6511-49c5-a5d1-2f923a0035b7/upload"",
       ""method"": ""POST""
     },
     ""download"": {
-      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355/download"",
+      ""href"": ""/v3/packages/7c838f50-6511-49c5-a5d1-2f923a0035b7/download"",
       ""method"": ""GET""
     },
     ""stage"": {
-      ""href"": ""/v3/packages/fb19b59b-5036-44e8-b5a4-8a452b8c6355/droplets"",
+      ""href"": ""/v3/packages/7c838f50-6511-49c5-a5d1-2f923a0035b7/droplets"",
       ""method"": ""POST""
     },
     ""app"": {
-      ""href"": ""/v3/apps/9311cb97-2df3-4b3e-b2d9-459ff7f81d70""
+      ""href"": ""/v3/apps/c481c8ec-b1ac-4f81-8b0b-9a7f0e06cdff""
     }
   }
 }";
@@ -128,198 +208,11 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
                 var obj = cfClient.PackagesExperimental.GetPackage(guid).Result;
 
 
-                Assert.AreEqual("c9086031-d485-4e0a-a36a-c728ae77ad51", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("67bfc1f1-46b1-4240-92cb-b7589a5a95ec", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("bits", TestUtil.ToTestableString(obj.Type), true);
                 Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(obj.State), true);
-                Assert.AreEqual("2016-03-30T10:15:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:16Z", TestUtil.ToTestableString(obj.CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void CopyPackageTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""guid"": ""de7c8a78-0c0b-4925-8cfb-1ecdab28af2c"",
-  ""type"": ""docker"",
-  ""data"": {
-    ""image"": ""http://awesome-sauce.com""
-  },
-  ""state"": ""READY"",
-  ""created_at"": ""2016-03-30T10:15:14Z"",
-  ""updated_at"": null,
-  ""links"": {
-    ""self"": {
-      ""href"": ""/v3/packages/8908a7d5-eb28-4f5d-9b64-82e367e51140""
-    },
-    ""stage"": {
-      ""href"": ""/v3/packages/8908a7d5-eb28-4f5d-9b64-82e367e51140/droplets"",
-      ""method"": ""POST""
-    },
-    ""app"": {
-      ""href"": ""/v3/apps/d0d30db4-c403-4124-a44c-6098ab6784f3""
-    }
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)201;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-
-                var obj = cfClient.PackagesExperimental.CopyPackage(guid).Result;
-
-
-                Assert.AreEqual("de7c8a78-0c0b-4925-8cfb-1ecdab28af2c", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("docker", TestUtil.ToTestableString(obj.Type), true);
-                Assert.AreEqual("READY", TestUtil.ToTestableString(obj.State), true);
-                Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void ListAssociatedPackagesTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""pagination"": {
-    ""total_results"": 1,
-    ""first"": {
-      ""href"": ""/v3/apps/79ad15e1-bf92-41fd-b4dc-e52ab03c1628/packages?page=1=50""
-    },
-    ""last"": {
-      ""href"": ""/v3/apps/79ad15e1-bf92-41fd-b4dc-e52ab03c1628/packages?page=1=50""
-    },
-    ""next"": null,
-    ""previous"": null
-  },
-  ""resources"": [
-    {
-      ""guid"": ""98028801-441f-41ef-9495-4898262cc237"",
-      ""type"": ""bits"",
-      ""data"": {
-        ""error"": null,
-        ""hash"": {
-          ""type"": ""sha1"",
-          ""value"": null
-        }
-      },
-      ""state"": ""AWAITING_UPLOAD"",
-      ""created_at"": ""2016-03-30T10:15:14Z"",
-      ""updated_at"": null,
-      ""links"": {
-        ""self"": {
-          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a""
-        },
-        ""upload"": {
-          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a/upload"",
-          ""method"": ""POST""
-        },
-        ""download"": {
-          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a/download"",
-          ""method"": ""GET""
-        },
-        ""stage"": {
-          ""href"": ""/v3/packages/22de0b8b-171c-49ea-80d8-364fea67d72a/droplets"",
-          ""method"": ""POST""
-        },
-        ""app"": {
-          ""href"": ""/v3/apps/79ad15e1-bf92-41fd-b4dc-e52ab03c1628""
-        }
-      }
-    }
-  ]
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-
-                var obj = cfClient.PackagesExperimental.ListAssociatedPackages(guid).Result;
-
-                Assert.AreEqual("98028801-441f-41ef-9495-4898262cc237", TestUtil.ToTestableString(obj[0].Guid), true);
-                Assert.AreEqual("bits", TestUtil.ToTestableString(obj[0].Type), true);
-                Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(obj[0].State), true);
-                Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
-                Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void DownloadBitsForPackageTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""guid"": ""d892112a-f835-496d-9073-bdbcb192f6cb"",
-  ""type"": ""bits"",
-  ""data"": {
-    ""error"": null,
-    ""hash"": {
-      ""type"": ""sha1"",
-      ""value"": null
-    }
-  },
-  ""state"": ""PROCESSING_UPLOAD"",
-  ""created_at"": ""2016-03-30T10:15:15Z"",
-  ""updated_at"": ""2016-03-30T10:15:15Z"",
-  ""links"": {
-    ""self"": {
-      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53""
-    },
-    ""upload"": {
-      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53/upload"",
-      ""method"": ""POST""
-    },
-    ""download"": {
-      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53/download"",
-      ""method"": ""GET""
-    },
-    ""stage"": {
-      ""href"": ""/v3/packages/9a16c8e4-2711-4195-934a-bbdf30765f53/droplets"",
-      ""method"": ""POST""
-    },
-    ""app"": {
-      ""href"": ""/v3/apps/4852bcb2-4b13-4023-83d2-0a74b61f7c0f""
-    }
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-                dynamic value = null;
-
-
-                var obj = cfClient.PackagesExperimental.DownloadBitsForPackage(guid, value).Result;
-
-
-                Assert.AreEqual("d892112a-f835-496d-9073-bdbcb192f6cb", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("bits", TestUtil.ToTestableString(obj.Type), true);
-                Assert.AreEqual("PROCESSING_UPLOAD", TestUtil.ToTestableString(obj.State), true);
-                Assert.AreEqual("2016-03-30T10:15:15Z", TestUtil.ToTestableString(obj.CreatedAt), true);
-                Assert.AreEqual("2016-03-30T10:15:15Z", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }
@@ -347,58 +240,63 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
   },
   ""resources"": [
     {
-      ""guid"": ""517e37a3-28f9-4610-b9d6-e3d9b68b2b2c"",
+      ""guid"": ""95d16faf-7a70-4c40-8bfc-abcebef23ba8"",
       ""type"": ""bits"",
       ""data"": {
-        ""error"": null,
         ""hash"": {
           ""type"": ""sha1"",
           ""value"": null
-        }
+        },
+        ""error"": null
       },
       ""state"": ""AWAITING_UPLOAD"",
-      ""created_at"": ""2016-03-30T10:15:14Z"",
+      ""created_at"": ""2016-07-07T09:17:16Z"",
       ""updated_at"": null,
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b""
+          ""href"": ""/v3/packages/04151e70-a031-49b8-b6b8-0b54bbd800ea""
         },
         ""upload"": {
-          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b/upload"",
+          ""href"": ""/v3/packages/04151e70-a031-49b8-b6b8-0b54bbd800ea/upload"",
           ""method"": ""POST""
         },
         ""download"": {
-          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b/download"",
+          ""href"": ""/v3/packages/04151e70-a031-49b8-b6b8-0b54bbd800ea/download"",
           ""method"": ""GET""
         },
         ""stage"": {
-          ""href"": ""/v3/packages/f2e2c0e0-b9f7-46ea-bea1-e202d5e3260b/droplets"",
+          ""href"": ""/v3/packages/04151e70-a031-49b8-b6b8-0b54bbd800ea/droplets"",
           ""method"": ""POST""
         },
         ""app"": {
-          ""href"": ""/v3/apps/e13827a2-d1d5-4d7b-ba4a-57b587ca8fb4""
+          ""href"": ""/v3/apps/db506ca4-9491-4ed9-8124-f9578c1dd8be""
         }
       }
     },
     {
-      ""guid"": ""517e37a3-28f9-4610-b9d6-e3d9b68b2b2c"",
+      ""guid"": ""95d16faf-7a70-4c40-8bfc-abcebef23ba8"",
       ""type"": ""docker"",
       ""data"": {
-        ""image"": ""http://location-of-image.com""
+        ""hash"": {
+          ""type"": ""sha1"",
+          ""value"": null
+        },
+        ""error"": null,
+        ""image"": ""http://location-of-image.com"",
+        ""credentials"": {
+
+        },
+        ""store_image"": false
       },
       ""state"": ""READY"",
-      ""created_at"": ""2016-03-30T10:15:14Z"",
+      ""created_at"": ""2016-07-07T09:17:16Z"",
       ""updated_at"": null,
       ""links"": {
         ""self"": {
-          ""href"": ""/v3/packages/cbadafb5-2bb8-4923-b0f1-68cafd2f62fb""
-        },
-        ""stage"": {
-          ""href"": ""/v3/packages/cbadafb5-2bb8-4923-b0f1-68cafd2f62fb/droplets"",
-          ""method"": ""POST""
+          ""href"": ""/v3/packages/16a7c9bc-67df-49b5-a04b-51e5dc13e5ca""
         },
         ""app"": {
-          ""href"": ""/v3/apps/e13827a2-d1d5-4d7b-ba4a-57b587ca8fb4""
+          ""href"": ""/v3/apps/db506ca4-9491-4ed9-8124-f9578c1dd8be""
         }
       }
     }
@@ -412,34 +310,117 @@ namespace CloudFoundry.CloudController.V3.Client.Test.Fake
 
                 var obj = cfClient.PackagesExperimental.ListAllPackages().Result;
 
-                Assert.AreEqual("517e37a3-28f9-4610-b9d6-e3d9b68b2b2c", TestUtil.ToTestableString(obj[0].Guid), true);
+                Assert.AreEqual("95d16faf-7a70-4c40-8bfc-abcebef23ba8", TestUtil.ToTestableString(obj[0].Guid), true);
                 Assert.AreEqual("bits", TestUtil.ToTestableString(obj[0].Type), true);
                 Assert.AreEqual("AWAITING_UPLOAD", TestUtil.ToTestableString(obj[0].State), true);
-                Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:16Z", TestUtil.ToTestableString(obj[0].CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[0].UpdatedAt), true);
-                Assert.AreEqual("517e37a3-28f9-4610-b9d6-e3d9b68b2b2c", TestUtil.ToTestableString(obj[1].Guid), true);
+                Assert.AreEqual("95d16faf-7a70-4c40-8bfc-abcebef23ba8", TestUtil.ToTestableString(obj[1].Guid), true);
                 Assert.AreEqual("docker", TestUtil.ToTestableString(obj[1].Type), true);
                 Assert.AreEqual("READY", TestUtil.ToTestableString(obj[1].State), true);
-                Assert.AreEqual("2016-03-30T10:15:14Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
+                Assert.AreEqual("2016-07-07T09:17:16Z", TestUtil.ToTestableString(obj[1].CreatedAt), true);
                 Assert.AreEqual("", TestUtil.ToTestableString(obj[1].UpdatedAt), true);
 
             }
         }
 
         [TestMethod]
-        public void DeletePackageTest()
+        public void StagePackageTest()
         {
             using (ShimsContext.Create())
             {
                 MockClients clients = new MockClients();
 
-                clients.ExpectedStatusCode = (HttpStatusCode)204;
+                string json = @"{
+  ""guid"": ""9f486b79-1c04-47f2-976f-ec4a020ff378"",
+  ""state"": ""PENDING"",
+  ""error"": null,
+  ""lifecycle"": {
+    ""type"": ""buildpack"",
+    ""data"": {
+      ""buildpack"": ""http://github.com/myorg/awesome-buildpack"",
+      ""stack"": ""cflinuxfs2""
+    }
+  },
+  ""memory_limit"": 1024,
+  ""disk_limit"": 4096,
+  ""result"": {
+    ""buildpack"": null,
+    ""stack"": ""cflinuxfs2"",
+    ""process_types"": null,
+    ""hash"": {
+      ""type"": ""sha1"",
+      ""value"": null
+    },
+    ""execution_metadata"": null
+  },
+  ""environment_variables"": {
+    ""CUSTOM_ENV_VAR"": ""hello"",
+    ""VCAP_APPLICATION"": {
+      ""limits"": {
+        ""mem"": 1024,
+        ""disk"": 4096,
+        ""fds"": 16384
+      },
+      ""application_id"": ""1f9169b7-6640-4fc0-b135-917a5ba40b97"",
+      ""application_version"": ""whatuuid"",
+      ""application_name"": ""name-2404"",
+      ""application_uris"": [
+
+      ],
+      ""version"": ""whatuuid"",
+      ""name"": ""name-2404"",
+      ""space_name"": ""name-2401"",
+      ""space_id"": ""06bc564d-ae95-46d7-be69-91079fa1952f"",
+      ""uris"": [
+
+      ],
+      ""users"": null
+    },
+    ""CF_STACK"": ""cflinuxfs2"",
+    ""MEMORY_LIMIT"": 1024,
+    ""VCAP_SERVICES"": {
+
+    }
+  },
+  ""created_at"": ""2016-07-07T09:17:16Z"",
+  ""updated_at"": null,
+  ""links"": {
+    ""self"": {
+      ""href"": ""/v3/droplets/whatuuid""
+    },
+    ""package"": {
+      ""href"": ""/v3/packages/092c3d83-1000-4924-a2ac-62eb6c2dfa9e""
+    },
+    ""app"": {
+      ""href"": ""/v3/apps/1f9169b7-6640-4fc0-b135-917a5ba40b97""
+    },
+    ""assign_current_droplet"": {
+      ""href"": ""/v3/apps/1f9169b7-6640-4fc0-b135-917a5ba40b97/current_droplet"",
+      ""method"": ""PUT""
+    }
+  }
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)201;
                 var cfClient = clients.CreateCloudFoundryClient();
 
                 Guid? guid = Guid.NewGuid();
 
+                StagePackageRequest value = new StagePackageRequest();
 
-                cfClient.PackagesExperimental.DeletePackage(guid).Wait();
+
+                var obj = cfClient.PackagesExperimental.StagePackage(guid, value).Result;
+
+
+                Assert.AreEqual("9f486b79-1c04-47f2-976f-ec4a020ff378", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("PENDING", TestUtil.ToTestableString(obj.State), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.Error), true);
+                Assert.AreEqual("1024", TestUtil.ToTestableString(obj.MemoryLimit), true);
+                Assert.AreEqual("4096", TestUtil.ToTestableString(obj.DiskLimit), true);
+                Assert.AreEqual("2016-07-07T09:17:16Z", TestUtil.ToTestableString(obj.CreatedAt), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.UpdatedAt), true);
 
             }
         }

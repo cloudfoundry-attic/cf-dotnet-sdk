@@ -52,60 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// List all Service Keys
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_keys/list_all_service_keys.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceKeysResponse>> ListAllServiceKeys()
-        {
-            return await ListAllServiceKeys(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Service Keys
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_keys/list_all_service_keys.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServiceKeysResponse>> ListAllServiceKeys(RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/service_keys";
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServiceKeysResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Service Key
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_keys/retrieve_a_particular_service_key.html"</para>
-        /// </summary>
-        public async Task<RetrieveServiceKeyResponse> RetrieveServiceKey(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_keys/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServiceKeyResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Create a Service Key
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_keys/create_a_service_key.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_keys/create_a_service_key.html"</para>
         /// </summary>
         public async Task<CreateServiceKeyResponse> CreateServiceKey(CreateServiceKeyRequest value)
         {
@@ -128,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Key
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/service_keys/delete_a_particular_service_key.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_keys/delete_a_particular_service_key.html"</para>
         /// </summary>
         public async Task DeleteServiceKey(Guid? guid)
         {
@@ -145,6 +93,58 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             client.ContentType = "application/x-www-form-urlencoded";
             var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
+        /// List all Service Keys
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_keys/list_all_service_keys.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceKeysResponse>> ListAllServiceKeys()
+        {
+            return await ListAllServiceKeys(new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Service Keys
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_keys/list_all_service_keys.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServiceKeysResponse>> ListAllServiceKeys(RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/service_keys";
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllServiceKeysResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// Retrieve a Particular Service Key
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/service_keys/retrieve_a_particular_service_key.html"</para>
+        /// </summary>
+        public async Task<RetrieveServiceKeyResponse> RetrieveServiceKey(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/service_keys/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveServiceKeyResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

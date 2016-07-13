@@ -52,73 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Updating a Organization Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
-        /// </summary>
-        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/quota_definitions/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Organization Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/delete_a_particular_organization_quota_definition.html"</para>
-        /// </summary>
-        public async Task DeleteOrganizationQuotaDefinition(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/quota_definitions/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Retrieve a Particular Organization Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/retrieve_a_particular_organization_quota_definition.html"</para>
-        /// </summary>
-        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/quota_definitions/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
         /// Creating a Organization Quota Definition
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/creating_a_organization_quota_definition.html"</para>
         /// </summary>
         public async Task<CreateOrganizationQuotaDefinitionResponse> CreateOrganizationQuotaDefinition(CreateOrganizationQuotaDefinitionRequest value)
         {
@@ -140,8 +75,29 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Delete a Particular Organization Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/delete_a_particular_organization_quota_definition.html"</para>
+        /// </summary>
+        public async Task DeleteOrganizationQuotaDefinition(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/quota_definitions/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+        }
+
+        /// <summary>
         /// List all Organization Quota Definitions
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions()
         {
@@ -150,7 +106,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Organization Quota Definitions
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/237/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/list_all_organization_quota_definitions.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllOrganizationQuotaDefinitionsResponse>> ListAllOrganizationQuotaDefinitions(RequestOptions options)
         {
@@ -168,6 +124,50 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializePage<ListAllOrganizationQuotaDefinitionsResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// Retrieve a Particular Organization Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/retrieve_a_particular_organization_quota_definition.html"</para>
+        /// </summary>
+        public async Task<RetrieveOrganizationQuotaDefinitionResponse> RetrieveOrganizationQuotaDefinition(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/quota_definitions/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Updating a Organization Quota Definition
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/organization_quota_definitions/updating_a_organization_quota_definition.html"</para>
+        /// </summary>
+        public async Task<UpdateOrganizationQuotaDefinitionResponse> UpdateOrganizationQuotaDefinition(Guid? guid, UpdateOrganizationQuotaDefinitionRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/quota_definitions/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Put;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

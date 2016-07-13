@@ -52,23 +52,13 @@ namespace CloudFoundry.CloudController.V3.Client.Base
         }
 
         /// <summary>
-        /// Get Detailed Stats for an App's Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/get_detailed_stats_for_an_app's_process.html"</para>
+        /// Get a Process
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/processes__experimental_/get_a_process.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<GetDetailedStatsForAppsProcessResponse>> GetDetailedStatsForAppsProcess(Guid? guid, dynamic type)
-        {
-            return await GetDetailedStatsForAppsProcess(guid, type, new RequestOptions());
-        }
-
-        /// <summary>
-        /// Get Detailed Stats for an App's Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/get_detailed_stats_for_an_app's_process.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<GetDetailedStatsForAppsProcessResponse>> GetDetailedStatsForAppsProcess(Guid? guid, dynamic type, RequestOptions options)
+        public async Task<GetProcessResponse> GetProcess(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/apps/{0}/processes/{1}/stats", guid, type);
-            uriBuilder.Query = options.ToString();
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -77,68 +67,14 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/json";
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<GetDetailedStatsForAppsProcessResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Get Detailed Stats for a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/get_detailed_stats_for_a_process.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<GetDetailedStatsForProcessResponse>> GetDetailedStatsForProcess(Guid? guid)
-        {
-            return await GetDetailedStatsForProcess(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// Get Detailed Stats for a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/get_detailed_stats_for_a_process.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<GetDetailedStatsForProcessResponse>> GetDetailedStatsForProcess(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}/stats", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/json";
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<GetDetailedStatsForProcessResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Terminating a Process instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/terminating_a_process_instance.html"</para>
-        /// </summary>
-        public async Task TerminatingProcessInstance(Guid? guid, int? index)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}/instances/{1}", guid, index);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<GetProcessResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// List all Processes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/list_all_processes.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/processes__experimental_/list_all_processes.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllProcessesResponse>> ListAllProcesses()
         {
@@ -147,7 +83,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// List all Processes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/list_all_processes.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/processes__experimental_/list_all_processes.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllProcessesResponse>> ListAllProcesses(RequestOptions options)
         {
@@ -168,34 +104,13 @@ namespace CloudFoundry.CloudController.V3.Client.Base
         }
 
         /// <summary>
-        /// Get a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/get_a_process.html"</para>
+        /// Scaling a Process
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/processes__experimental_/scaling_a_process.html"</para>
         /// </summary>
-        public async Task<GetProcessResponse> GetProcess(Guid? guid)
+        public async Task<ScalingProcessResponse> ScalingProcess(Guid? guid, ScalingProcessRequest value)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetProcessResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Scaling a Process from its App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/scaling_a_process_from_its_app.html"</para>
-        /// </summary>
-        public async Task<ScalingProcessFromItsAppResponse> ScalingProcessFromItsApp(Guid? guid, dynamic type, ScalingProcessFromItsAppRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/apps/{0}/processes/{1}/scale", guid, type);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}/scale", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Put;
@@ -204,21 +119,21 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/json";
+            client.ContentType = "application/x-www-form-urlencoded";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 202;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<ScalingProcessFromItsAppResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<ScalingProcessResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Terminating a Process instance from its App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/terminating_a_process_instance_from_its_app.html"</para>
+        /// Terminating a Process instance
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/processes__experimental_/terminating_a_process_instance.html"</para>
         /// </summary>
-        public async Task TerminatingProcessInstanceFromItsApp(Guid? guid, dynamic type, int? index)
+        public async Task TerminatingProcessInstance(Guid? guid, int? index)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/apps/{0}/processes/{1}/instances/{2}", guid, type, index);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}/instances/{1}", guid, index);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Delete;
@@ -234,7 +149,7 @@ namespace CloudFoundry.CloudController.V3.Client.Base
 
         /// <summary>
         /// Updating a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/updating_a_process.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/processes__experimental_/updating_a_process.html"</para>
         /// </summary>
         public async Task<UpdateProcessResponse> UpdateProcess(Guid? guid, UpdateProcessRequest value)
         {
@@ -248,86 +163,11 @@ namespace CloudFoundry.CloudController.V3.Client.Base
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/json";
+            client.ContentType = "application/x-www-form-urlencoded";
             client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<UpdateProcessResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// List associated processes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/list_associated_processes.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAssociatedProcessesResponse>> ListAssociatedProcesses(Guid? guid)
-        {
-            return await ListAssociatedProcesses(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List associated processes
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/list_associated_processes.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAssociatedProcessesResponse>> ListAssociatedProcesses(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/apps/{0}/processes", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAssociatedProcessesResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
-        /// Get a Process from an App
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/get_a_process_from_an_app.html"</para>
-        /// </summary>
-        public async Task<GetProcessFromAppResponse> GetProcessFromApp(Guid? guid, dynamic type)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/apps/{0}/processes/{1}", guid, type);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<GetProcessFromAppResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Scaling a Process
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/233/processes__experimental_/scaling_a_process.html"</para>
-        /// </summary>
-        public async Task<ScalingProcessResponse> ScalingProcess(Guid? guid, ScalingProcessRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v3/processes/{0}/scale", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/json";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 202;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<ScalingProcessResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

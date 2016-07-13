@@ -26,101 +26,35 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
-        public void TestRetrieveAppUsageEventResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""e724d32b-89ce-4c1e-a915-f08e8f4f9c19"",
-    ""url"": ""/v2/app_usage_events/fb357c1a-a86c-4722-97e1-8e4ca4a1187f"",
-    ""created_at"": ""2016-05-26T11:34:45Z""
-  },
-  ""entity"": {
-    ""state"": ""STARTED"",
-    ""previous_state"": null,
-    ""memory_in_mb_per_instance"": 564,
-    ""previous_memory_in_mb_per_instance"": null,
-    ""instance_count"": 1,
-    ""previous_instance_count"": null,
-    ""app_guid"": ""e724d32b-89ce-4c1e-a915-f08e8f4f9c19"",
-    ""app_name"": ""name-2227"",
-    ""space_guid"": ""e724d32b-89ce-4c1e-a915-f08e8f4f9c19"",
-    ""space_name"": ""name-2228"",
-    ""org_guid"": ""e724d32b-89ce-4c1e-a915-f08e8f4f9c19"",
-    ""buildpack_guid"": ""e724d32b-89ce-4c1e-a915-f08e8f4f9c19"",
-    ""buildpack_name"": ""name-2229"",
-    ""package_state"": ""STAGED"",
-    ""previous_package_state"": null,
-    ""parent_app_guid"": null,
-    ""parent_app_name"": null,
-    ""process_type"": ""web"",
-    ""task_name"": null,
-    ""task_guid"": null
-  }
-}";
-
-            RetrieveAppUsageEventResponse obj = Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(json);
-
-            Assert.AreEqual("e724d32b-89ce-4c1e-a915-f08e8f4f9c19", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/app_usage_events/fb357c1a-a86c-4722-97e1-8e4ca4a1187f", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-05-26T11:34:45Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("STARTED", TestUtil.ToTestableString(obj.State), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.PreviousState), true);
-            Assert.AreEqual("564", TestUtil.ToTestableString(obj.MemoryInMbPerInstance), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.PreviousMemoryInMbPerInstance), true);
-            Assert.AreEqual("1", TestUtil.ToTestableString(obj.InstanceCount), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.PreviousInstanceCount), true);
-            Assert.AreEqual("e724d32b-89ce-4c1e-a915-f08e8f4f9c19", TestUtil.ToTestableString(obj.AppGuid), true);
-            Assert.AreEqual("name-2227", TestUtil.ToTestableString(obj.AppName), true);
-            Assert.AreEqual("e724d32b-89ce-4c1e-a915-f08e8f4f9c19", TestUtil.ToTestableString(obj.SpaceGuid), true);
-            Assert.AreEqual("name-2228", TestUtil.ToTestableString(obj.SpaceName), true);
-            Assert.AreEqual("e724d32b-89ce-4c1e-a915-f08e8f4f9c19", TestUtil.ToTestableString(obj.OrgGuid), true);
-            Assert.AreEqual("e724d32b-89ce-4c1e-a915-f08e8f4f9c19", TestUtil.ToTestableString(obj.BuildpackGuid), true);
-            Assert.AreEqual("name-2229", TestUtil.ToTestableString(obj.BuildpackName), true);
-            Assert.AreEqual("STAGED", TestUtil.ToTestableString(obj.PackageState), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.PreviousPackageState), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ParentAppGuid), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ParentAppName), true);
-            Assert.AreEqual("web", TestUtil.ToTestableString(obj.ProcessType), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.TaskName), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.TaskGuid), true);
-        }
-
-        [TestMethod]
         public void TestListAllAppUsageEventsResponse()
         {
             string json = @"{
   ""total_results"": 2,
   ""total_pages"": 2,
   ""prev_url"": null,
-  ""next_url"": ""/v2/app_usage_events?after_guid=40d6fa2d-9169-48cc-86e3-3280d98836d7=asc=2=1"",
+  ""next_url"": ""/v2/app_usage_events?after_guid=05ebb6c2-d18c-472a-a482-f1cc16df85dc=asc=2=1"",
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""bb787b48-5adb-4e03-834c-36472d90f862"",
-        ""url"": ""/v2/app_usage_events/d898422c-15e8-49b2-8089-171553b5c2e7"",
-        ""created_at"": ""2016-05-26T11:34:45Z""
+        ""guid"": ""cec0287e-272d-4248-bd2d-30b82c9dfed9"",
+        ""url"": ""/v2/app_usage_events/ca7e06c6-d642-429b-9977-d43852836a2d"",
+        ""created_at"": ""2016-07-07T09:17:18Z""
       },
       ""entity"": {
         ""state"": ""STARTED"",
-        ""previous_state"": null,
         ""memory_in_mb_per_instance"": 564,
-        ""previous_memory_in_mb_per_instance"": null,
         ""instance_count"": 1,
-        ""previous_instance_count"": null,
-        ""app_guid"": ""bb787b48-5adb-4e03-834c-36472d90f862"",
-        ""app_name"": ""name-2221"",
-        ""space_guid"": ""bb787b48-5adb-4e03-834c-36472d90f862"",
-        ""space_name"": ""name-2222"",
-        ""org_guid"": ""bb787b48-5adb-4e03-834c-36472d90f862"",
-        ""buildpack_guid"": ""bb787b48-5adb-4e03-834c-36472d90f862"",
-        ""buildpack_name"": ""name-2223"",
+        ""app_guid"": ""cec0287e-272d-4248-bd2d-30b82c9dfed9"",
+        ""app_name"": ""name-2497"",
+        ""space_guid"": ""cec0287e-272d-4248-bd2d-30b82c9dfed9"",
+        ""space_name"": ""name-2498"",
+        ""org_guid"": ""cec0287e-272d-4248-bd2d-30b82c9dfed9"",
+        ""buildpack_guid"": ""cec0287e-272d-4248-bd2d-30b82c9dfed9"",
+        ""buildpack_name"": ""name-2499"",
         ""package_state"": ""STAGED"",
-        ""previous_package_state"": null,
         ""parent_app_guid"": null,
         ""parent_app_name"": null,
-        ""process_type"": ""web"",
-        ""task_name"": null,
-        ""task_guid"": null
+        ""process_type"": ""web""
       }
     }
   ]
@@ -131,30 +65,72 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("2", TestUtil.ToTestableString(page.Properties.TotalResults), true);
             Assert.AreEqual("2", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
-            Assert.AreEqual("/v2/app_usage_events?after_guid=40d6fa2d-9169-48cc-86e3-3280d98836d7=asc=2=1", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("bb787b48-5adb-4e03-834c-36472d90f862", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/app_usage_events/d898422c-15e8-49b2-8089-171553b5c2e7", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2016-05-26T11:34:45Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("/v2/app_usage_events?after_guid=05ebb6c2-d18c-472a-a482-f1cc16df85dc=asc=2=1", TestUtil.ToTestableString(page.Properties.NextUrl), true);
+            Assert.AreEqual("cec0287e-272d-4248-bd2d-30b82c9dfed9", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/app_usage_events/ca7e06c6-d642-429b-9977-d43852836a2d", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-07T09:17:18Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("STARTED", TestUtil.ToTestableString(page[0].State), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].PreviousState), true);
             Assert.AreEqual("564", TestUtil.ToTestableString(page[0].MemoryInMbPerInstance), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].PreviousMemoryInMbPerInstance), true);
             Assert.AreEqual("1", TestUtil.ToTestableString(page[0].InstanceCount), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].PreviousInstanceCount), true);
-            Assert.AreEqual("bb787b48-5adb-4e03-834c-36472d90f862", TestUtil.ToTestableString(page[0].AppGuid), true);
-            Assert.AreEqual("name-2221", TestUtil.ToTestableString(page[0].AppName), true);
-            Assert.AreEqual("bb787b48-5adb-4e03-834c-36472d90f862", TestUtil.ToTestableString(page[0].SpaceGuid), true);
-            Assert.AreEqual("name-2222", TestUtil.ToTestableString(page[0].SpaceName), true);
-            Assert.AreEqual("bb787b48-5adb-4e03-834c-36472d90f862", TestUtil.ToTestableString(page[0].OrgGuid), true);
-            Assert.AreEqual("bb787b48-5adb-4e03-834c-36472d90f862", TestUtil.ToTestableString(page[0].BuildpackGuid), true);
-            Assert.AreEqual("name-2223", TestUtil.ToTestableString(page[0].BuildpackName), true);
+            Assert.AreEqual("cec0287e-272d-4248-bd2d-30b82c9dfed9", TestUtil.ToTestableString(page[0].AppGuid), true);
+            Assert.AreEqual("name-2497", TestUtil.ToTestableString(page[0].AppName), true);
+            Assert.AreEqual("cec0287e-272d-4248-bd2d-30b82c9dfed9", TestUtil.ToTestableString(page[0].SpaceGuid), true);
+            Assert.AreEqual("name-2498", TestUtil.ToTestableString(page[0].SpaceName), true);
+            Assert.AreEqual("cec0287e-272d-4248-bd2d-30b82c9dfed9", TestUtil.ToTestableString(page[0].OrgGuid), true);
+            Assert.AreEqual("cec0287e-272d-4248-bd2d-30b82c9dfed9", TestUtil.ToTestableString(page[0].BuildpackGuid), true);
+            Assert.AreEqual("name-2499", TestUtil.ToTestableString(page[0].BuildpackName), true);
             Assert.AreEqual("STAGED", TestUtil.ToTestableString(page[0].PackageState), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].PreviousPackageState), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].ParentAppGuid), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].ParentAppName), true);
             Assert.AreEqual("web", TestUtil.ToTestableString(page[0].ProcessType), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].TaskName), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(page[0].TaskGuid), true);
+        }
+
+        [TestMethod]
+        public void TestRetrieveAppUsageEventResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""b969f296-eb3d-4e17-b2f9-93983babf28b"",
+    ""url"": ""/v2/app_usage_events/aa177097-ed40-44c6-846b-5e662b157009"",
+    ""created_at"": ""2016-07-07T09:17:18Z""
+  },
+  ""entity"": {
+    ""state"": ""STARTED"",
+    ""memory_in_mb_per_instance"": 564,
+    ""instance_count"": 1,
+    ""app_guid"": ""b969f296-eb3d-4e17-b2f9-93983babf28b"",
+    ""app_name"": ""name-2503"",
+    ""space_guid"": ""b969f296-eb3d-4e17-b2f9-93983babf28b"",
+    ""space_name"": ""name-2504"",
+    ""org_guid"": ""b969f296-eb3d-4e17-b2f9-93983babf28b"",
+    ""buildpack_guid"": ""b969f296-eb3d-4e17-b2f9-93983babf28b"",
+    ""buildpack_name"": ""name-2505"",
+    ""package_state"": ""STAGED"",
+    ""parent_app_guid"": null,
+    ""parent_app_name"": null,
+    ""process_type"": ""web""
+  }
+}";
+
+            RetrieveAppUsageEventResponse obj = Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(json);
+
+            Assert.AreEqual("b969f296-eb3d-4e17-b2f9-93983babf28b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/app_usage_events/aa177097-ed40-44c6-846b-5e662b157009", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-07T09:17:18Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("STARTED", TestUtil.ToTestableString(obj.State), true);
+            Assert.AreEqual("564", TestUtil.ToTestableString(obj.MemoryInMbPerInstance), true);
+            Assert.AreEqual("1", TestUtil.ToTestableString(obj.InstanceCount), true);
+            Assert.AreEqual("b969f296-eb3d-4e17-b2f9-93983babf28b", TestUtil.ToTestableString(obj.AppGuid), true);
+            Assert.AreEqual("name-2503", TestUtil.ToTestableString(obj.AppName), true);
+            Assert.AreEqual("b969f296-eb3d-4e17-b2f9-93983babf28b", TestUtil.ToTestableString(obj.SpaceGuid), true);
+            Assert.AreEqual("name-2504", TestUtil.ToTestableString(obj.SpaceName), true);
+            Assert.AreEqual("b969f296-eb3d-4e17-b2f9-93983babf28b", TestUtil.ToTestableString(obj.OrgGuid), true);
+            Assert.AreEqual("b969f296-eb3d-4e17-b2f9-93983babf28b", TestUtil.ToTestableString(obj.BuildpackGuid), true);
+            Assert.AreEqual("name-2505", TestUtil.ToTestableString(obj.BuildpackName), true);
+            Assert.AreEqual("STAGED", TestUtil.ToTestableString(obj.PackageState), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ParentAppGuid), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ParentAppName), true);
+            Assert.AreEqual("web", TestUtil.ToTestableString(obj.ProcessType), true);
         }
     }
 }

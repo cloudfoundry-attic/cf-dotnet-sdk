@@ -28,6 +28,30 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestCreateUserProvidedServiceInstanceRequest()
+        {
+            string json = @"{
+  ""space_guid"": ""31fa1102-7ab7-468b-b62a-7b6f61a8a94a"",
+  ""name"": ""my-user-provided-instance"",
+  ""credentials"": {
+    ""somekey"": ""somevalue""
+  },
+  ""syslog_drain_url"": ""syslog://example.com"",
+  ""route_service_url"": ""https://logger.example.com""
+}";
+
+            CreateUserProvidedServiceInstanceRequest request = new CreateUserProvidedServiceInstanceRequest();
+
+            request.SpaceGuid = new Guid("31fa1102-7ab7-468b-b62a-7b6f61a8a94a");
+            request.Name = "my-user-provided-instance";
+            request.Credentials = TestUtil.GetJsonDictonary(@"{""somekey"":""somevalue""}");
+
+            request.SyslogDrainUrl = "syslog://example.com";
+            request.RouteServiceUrl = "https://logger.example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestUpdateUserProvidedServiceInstanceRequest()
         {
             string json = @"{
@@ -40,30 +64,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             request.Credentials = TestUtil.GetJsonDictonary(@"{""somekey"":""somenewvalue""}");
 
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateUserProvidedServiceInstanceRequest()
-        {
-            string json = @"{
-  ""space_guid"": ""704337aa-a8e5-48cb-8f1b-c190eedb3df2"",
-  ""name"": ""my-user-provided-instance"",
-  ""credentials"": {
-    ""somekey"": ""somevalue""
-  },
-  ""syslog_drain_url"": ""syslog://example.com"",
-  ""route_service_url"": ""https://logger.example.com""
-}";
-
-            CreateUserProvidedServiceInstanceRequest request = new CreateUserProvidedServiceInstanceRequest();
-
-            request.SpaceGuid = new Guid("704337aa-a8e5-48cb-8f1b-c190eedb3df2");
-            request.Name = "my-user-provided-instance";
-            request.Credentials = TestUtil.GetJsonDictonary(@"{""somekey"":""somevalue""}");
-
-            request.SyslogDrainUrl = "syslog://example.com";
-            request.RouteServiceUrl = "https://logger.example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

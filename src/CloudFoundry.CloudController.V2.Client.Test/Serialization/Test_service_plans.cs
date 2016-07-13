@@ -28,15 +28,40 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
-        public void TestUpdateServicePlanRequest()
+        public void TestCreateServicePlanDeprecatedRequest()
         {
             string json = @"{
-  ""public"": false
+  ""name"": ""100mb"",
+  ""free"": true,
+  ""description"": ""Let's you put data in your database!"",
+  ""service_guid"": ""fc72c5f3-682e-472c-bf7a-ce7d36030cca""
 }";
 
-            UpdateServicePlanRequest request = new UpdateServicePlanRequest();
+            CreateServicePlanDeprecatedRequest request = new CreateServicePlanDeprecatedRequest();
 
-            request.Public = false;
+            request.Name = "100mb";
+            request.Free = true;
+            request.Description = "Let's you put data in your database!";
+            request.ServiceGuid = new Guid("fc72c5f3-682e-472c-bf7a-ce7d36030cca");
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestUpdateServicePlanDeprecatedRequest()
+        {
+            string json = @"{
+  ""name"": ""100mb"",
+  ""free"": true,
+  ""description"": ""Let's you put data in your database!"",
+  ""service_guid"": ""73c45988-2dbf-4e73-b4fd-a887c8e18ab8""
+}";
+
+            UpdateServicePlanDeprecatedRequest request = new UpdateServicePlanDeprecatedRequest();
+
+            request.Name = "100mb";
+            request.Free = true;
+            request.Description = "Let's you put data in your database!";
+            request.ServiceGuid = new Guid("73c45988-2dbf-4e73-b4fd-a887c8e18ab8");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

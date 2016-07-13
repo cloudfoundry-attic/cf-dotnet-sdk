@@ -26,204 +26,6 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
-        public void TestGetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse()
-        {
-            string json = @"{
-  ""name"": ""space_scoped_private_broker_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
-}";
-
-            GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse obj = Utilities.DeserializeJson<GetSpaceScopedPrivateBrokerCreationFeatureFlagExperimentalResponse>(json);
-
-            Assert.AreEqual("space_scoped_private_broker_creation", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetUserOrgCreationFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""user_org_creation"",
-  ""enabled"": false,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/user_org_creation""
-}";
-
-            GetUserOrgCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetUserOrgCreationFeatureFlagResponse>(json);
-
-            Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetUnsetUserRolesFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""unset_roles_by_username"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
-}";
-
-            GetUnsetUserRolesFeatureFlagResponse obj = Utilities.DeserializeJson<GetUnsetUserRolesFeatureFlagResponse>(json);
-
-            Assert.AreEqual("unset_roles_by_username", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestSetFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""user_org_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/user_org_creation""
-}";
-
-            SetFeatureFlagResponse obj = Utilities.DeserializeJson<SetFeatureFlagResponse>(json);
-
-            Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetSetUserRolesFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""set_roles_by_username"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/set_roles_by_username""
-}";
-
-            GetSetUserRolesFeatureFlagResponse obj = Utilities.DeserializeJson<GetSetUserRolesFeatureFlagResponse>(json);
-
-            Assert.AreEqual("set_roles_by_username", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/set_roles_by_username", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetRouteCreationFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""route_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/route_creation""
-}";
-
-            GetRouteCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetRouteCreationFeatureFlagResponse>(json);
-
-            Assert.AreEqual("route_creation", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/route_creation", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetAppBitsUploadFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""app_bits_upload"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/app_bits_upload""
-}";
-
-            GetAppBitsUploadFeatureFlagResponse obj = Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(json);
-
-            Assert.AreEqual("app_bits_upload", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/app_bits_upload", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetDiegoDockerFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""diego_docker"",
-  ""enabled"": false,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/diego_docker""
-}";
-
-            GetDiegoDockerFeatureFlagResponse obj = Utilities.DeserializeJson<GetDiegoDockerFeatureFlagResponse>(json);
-
-            Assert.AreEqual("diego_docker", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/diego_docker", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse()
-        {
-            string json = @"{
-  ""name"": ""space_developer_env_var_visibility"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/space_developer_env_var_visibility""
-}";
-
-            GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse obj = Utilities.DeserializeJson<GetSpaceDeveloperEnvironmentVariableVisibilityFeatureFlagExperimentalResponse>(json);
-
-            Assert.AreEqual("space_developer_env_var_visibility", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/space_developer_env_var_visibility", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetPrivateDomainCreationFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""private_domain_creation"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/private_domain_creation""
-}";
-
-            GetPrivateDomainCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(json);
-
-            Assert.AreEqual("private_domain_creation", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/private_domain_creation", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
-        public void TestGetAppScalingFeatureFlagResponse()
-        {
-            string json = @"{
-  ""name"": ""app_scaling"",
-  ""enabled"": true,
-  ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/app_scaling""
-}";
-
-            GetAppScalingFeatureFlagResponse obj = Utilities.DeserializeJson<GetAppScalingFeatureFlagResponse>(json);
-
-            Assert.AreEqual("app_scaling", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/app_scaling", TestUtil.ToTestableString(obj.Url), true);
-        }
-
-        [TestMethod]
         public void TestGetAllFeatureFlagsResponse()
         {
             string json = @"[
@@ -280,24 +82,6 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     ""enabled"": true,
     ""error_message"": null,
     ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
-  },
-  {
-    ""name"": ""task_creation"",
-    ""enabled"": false,
-    ""error_message"": null,
-    ""url"": ""/v2/config/feature_flags/task_creation""
-  },
-  {
-    ""name"": ""space_scoped_private_broker_creation"",
-    ""enabled"": true,
-    ""error_message"": null,
-    ""url"": ""/v2/config/feature_flags/space_scoped_private_broker_creation""
-  },
-  {
-    ""name"": ""space_developer_env_var_visibility"",
-    ""enabled"": true,
-    ""error_message"": null,
-    ""url"": ""/v2/config/feature_flags/space_developer_env_var_visibility""
   }
 ]";
 
@@ -339,18 +123,96 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("true", TestUtil.ToTestableString(obj[8].Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj[8].ErrorMessage), true);
             Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj[8].Url), true);
-            Assert.AreEqual("task_creation", TestUtil.ToTestableString(obj[9].Name), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj[9].Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj[9].ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/task_creation", TestUtil.ToTestableString(obj[9].Url), true);
-            Assert.AreEqual("space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj[10].Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj[10].ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/space_scoped_private_broker_creation", TestUtil.ToTestableString(obj[10].Url), true);
-            Assert.AreEqual("space_developer_env_var_visibility", TestUtil.ToTestableString(obj[11].Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj[11].Enabled), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj[11].ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/space_developer_env_var_visibility", TestUtil.ToTestableString(obj[11].Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetAppBitsUploadFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""app_bits_upload"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/app_bits_upload""
+}";
+
+            GetAppBitsUploadFeatureFlagResponse obj = Utilities.DeserializeJson<GetAppBitsUploadFeatureFlagResponse>(json);
+
+            Assert.AreEqual("app_bits_upload", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/app_bits_upload", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetAppScalingFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""app_scaling"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/app_scaling""
+}";
+
+            GetAppScalingFeatureFlagResponse obj = Utilities.DeserializeJson<GetAppScalingFeatureFlagResponse>(json);
+
+            Assert.AreEqual("app_scaling", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/app_scaling", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetDiegoDockerFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""diego_docker"",
+  ""enabled"": false,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/diego_docker""
+}";
+
+            GetDiegoDockerFeatureFlagResponse obj = Utilities.DeserializeJson<GetDiegoDockerFeatureFlagResponse>(json);
+
+            Assert.AreEqual("diego_docker", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/diego_docker", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetPrivateDomainCreationFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""private_domain_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/private_domain_creation""
+}";
+
+            GetPrivateDomainCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetPrivateDomainCreationFeatureFlagResponse>(json);
+
+            Assert.AreEqual("private_domain_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/private_domain_creation", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetRouteCreationFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""route_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/route_creation""
+}";
+
+            GetRouteCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetRouteCreationFeatureFlagResponse>(json);
+
+            Assert.AreEqual("route_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/route_creation", TestUtil.ToTestableString(obj.Url), true);
         }
 
         [TestMethod]
@@ -372,21 +234,75 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         }
 
         [TestMethod]
-        public void TestGetTaskCreationFeatureFlagExperimentalResponse()
+        public void TestGetSetUserRolesFeatureFlagResponse()
         {
             string json = @"{
-  ""name"": ""task_creation"",
-  ""enabled"": false,
+  ""name"": ""set_roles_by_username"",
+  ""enabled"": true,
   ""error_message"": null,
-  ""url"": ""/v2/config/feature_flags/task_creation""
+  ""url"": ""/v2/config/feature_flags/set_roles_by_username""
 }";
 
-            GetTaskCreationFeatureFlagExperimentalResponse obj = Utilities.DeserializeJson<GetTaskCreationFeatureFlagExperimentalResponse>(json);
+            GetSetUserRolesFeatureFlagResponse obj = Utilities.DeserializeJson<GetSetUserRolesFeatureFlagResponse>(json);
 
-            Assert.AreEqual("task_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("set_roles_by_username", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/set_roles_by_username", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetUnsetUserRolesFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""unset_roles_by_username"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/unset_roles_by_username""
+}";
+
+            GetUnsetUserRolesFeatureFlagResponse obj = Utilities.DeserializeJson<GetUnsetUserRolesFeatureFlagResponse>(json);
+
+            Assert.AreEqual("unset_roles_by_username", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/unset_roles_by_username", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestGetUserOrgCreationFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""user_org_creation"",
+  ""enabled"": false,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/user_org_creation""
+}";
+
+            GetUserOrgCreationFeatureFlagResponse obj = Utilities.DeserializeJson<GetUserOrgCreationFeatureFlagResponse>(json);
+
+            Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.Enabled), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
-            Assert.AreEqual("/v2/config/feature_flags/task_creation", TestUtil.ToTestableString(obj.Url), true);
+            Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
+        }
+
+        [TestMethod]
+        public void TestSetFeatureFlagResponse()
+        {
+            string json = @"{
+  ""name"": ""user_org_creation"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/user_org_creation""
+}";
+
+            SetFeatureFlagResponse obj = Utilities.DeserializeJson<SetFeatureFlagResponse>(json);
+
+            Assert.AreEqual("user_org_creation", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+            Assert.AreEqual("/v2/config/feature_flags/user_org_creation", TestUtil.ToTestableString(obj.Url), true);
         }
     }
 }

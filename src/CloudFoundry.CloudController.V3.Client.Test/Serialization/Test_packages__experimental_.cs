@@ -33,14 +33,46 @@ namespace CloudFoundry.CloudController.V3.Test.Serialization
             string json = @"{
   ""type"": ""docker"",
   ""data"": {
-    ""image"": ""registry/image:latest""
+    ""image"": ""registry/image:latest"",
+    ""credentials"": {
+      ""user"": ""user name"",
+      ""password"": ""very secret password"",
+      ""email"": ""root@admin.example.com"",
+      ""login_server"": ""https://index.docker.io/v1""
+    },
+    ""store_image"": true
   }
 }";
 
             CreatePackageRequest request = new CreatePackageRequest();
 
             request.Type = "docker";
-            request.Data = TestUtil.GetJsonDictonary(@"{""image"":""registry/image:latest""}");
+            request.Data = TestUtil.GetJsonDictonary(@"{""image"":""registry/image:latest"",""credentials"":{""user"":""user name"",""password"":""very secret password"",""email"":""root@admin.example.com"",""login_server"":""https://index.docker.io/v1""},""store_image"":true}");
+
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestStagePackageRequest()
+        {
+            string json = @"{
+  ""environment_variables"": {
+    ""CUSTOM_ENV_VAR"": ""hello""
+  },
+  ""lifecycle"": {
+    ""type"": ""buildpack"",
+    ""data"": {
+      ""buildpack"": ""http://github.com/myorg/awesome-buildpack"",
+      ""stack"": ""cflinuxfs2""
+    }
+  }
+}";
+
+            StagePackageRequest request = new StagePackageRequest();
+
+            request.EnvironmentVariables = TestUtil.GetJsonDictonary(@"{""CUSTOM_ENV_VAR"":""hello""}");
+
+            request.Lifecycle = TestUtil.GetJsonDictonary(@"{""type"":""buildpack"",""data"":{""buildpack"":""http://github.com/myorg/awesome-buildpack"",""stack"":""cflinuxfs2""}}");
 
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);

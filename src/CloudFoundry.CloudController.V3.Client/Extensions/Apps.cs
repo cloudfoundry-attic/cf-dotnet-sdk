@@ -126,7 +126,7 @@ namespace CloudFoundry.CloudController.V3.Client
             stagePackage.MemoryLimit = memoryLimit;
             stagePackage.DiskLimit = diskLimit;
             
-            StagePackageResponse stageResponse = await this.Client.DropletsExperimental.StagePackage(packageId, stagePackage);
+            StagePackageResponse stageResponse = await this.Client.PackagesExperimental.StagePackage(packageId, stagePackage);
             if (this.CheckCancellation())
             {
                 return;

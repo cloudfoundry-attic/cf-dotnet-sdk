@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.ListAllDomainsForOrganizationDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllDomainsForOrganizationDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllDomainsForOrganizationDeprecatedResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.ListAllDomainsForOrganizationDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/237/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/organizations/list_all_domains_for_the_organization_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllDomainsForOrganizationDeprecatedResponse : IResponse
@@ -62,16 +62,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("router_group_guid", NullValueHandling = NullValueHandling.Ignore)]
         public Guid? RouterGroupGuid
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
-        /// <para>The Router Group Type</para>
-        /// </summary>
-        [JsonProperty("router_group_type", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic RouterGroupType
         {
             get;
             set;

@@ -7,7 +7,7 @@
     {
         /// <inheritdoc/>
         [JsonProperty("unique_id", NullValueHandling = NullValueHandling.Ignore)]
-        public new string UniqueId
+        public string UniqueId
         {
             get;
             set;
