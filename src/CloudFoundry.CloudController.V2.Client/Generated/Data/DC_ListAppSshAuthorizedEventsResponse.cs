@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListAppSshAuthorizedEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/events/list_app_ssh_authorized_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/events/list_app_ssh_authorized_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAppSshAuthorizedEventsResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAppSshAuthorizedEventsResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.EventsEndpoint.ListAppSshAuthorizedEvents()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/events/list_app_ssh_authorized_events.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/events/list_app_ssh_authorized_events.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAppSshAuthorizedEventsResponse : IResponse

@@ -243,6 +243,14 @@ namespace CloudFoundry.CloudController.V2.Client
         public RoutesEndpoint Routes { get; private set; }
 
         /// <summary>
+        /// Gets the routes mapping endpoint.
+        /// </summary>
+        /// <value>
+        /// The routes mapping endpoint.
+        /// </value>
+        public RoutesMappingEndpoint RoutesMapping { get; private set; }
+
+        /// <summary>
         /// Gets the security group running defaults endpoint.
         /// </summary>
         /// <value>
@@ -485,6 +493,7 @@ namespace CloudFoundry.CloudController.V2.Client
             this.PrivateDomains = new PrivateDomainsEndpoint(this);
             this.ResourceMatch = new ResourceMatchEndpoint(this);
             this.Routes = new RoutesEndpoint(this);
+            this.RoutesMapping = new RoutesMappingEndpoint(this);
             this.SecurityGroupRunningDefaults = new SecurityGroupRunningDefaultsEndpoint(this);
             this.SecurityGroups = new SecurityGroupsEndpoint(this);
             this.SecurityGroupStagingDefaults = new SecurityGroupStagingDefaultsEndpoint(this);

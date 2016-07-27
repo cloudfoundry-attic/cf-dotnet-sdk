@@ -32,7 +32,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"[
   {
-    ""sha1"": ""cfe78bf53fdb4d9245a662eb6d945a37cd806066"",
+    ""sha1"": ""3dc230cb3f2064d7cfc1884c2e6e4bf6dede771a"",
     ""size"": 36
   },
   {
@@ -45,7 +45,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
 
             request[0] = new ListAllMatchingResourcesRequest();
 
-            request[0].Sha1 = "cfe78bf53fdb4d9245a662eb6d945a37cd806066";
+            request[0].Sha1 = "3dc230cb3f2064d7cfc1884c2e6e4bf6dede771a";
             request[0].Size = 36;
             request[1] = new ListAllMatchingResourcesRequest();
 

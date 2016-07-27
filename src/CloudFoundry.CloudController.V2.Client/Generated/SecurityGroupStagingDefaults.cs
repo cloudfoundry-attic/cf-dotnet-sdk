@@ -52,29 +52,30 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Removing a Security Group as a default for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/security_group_staging_defaults/removing_a_security_group_as_a_default_for_staging.html"</para>
+        /// Set a Security Group as a default for staging
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/security_group_staging_defaults/set_a_security_group_as_a_default_for_staging.html"</para>
         /// </summary>
-        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
+        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/config/staging_security_groups/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Put;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// Return the Security Groups used for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging()
         {
@@ -83,7 +84,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Return the Security Groups used for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/security_group_staging_defaults/return_the_security_groups_used_for_staging.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ReturnSecurityGroupsUsedForStagingResponse>> ReturnSecurityGroupsUsedForStaging(RequestOptions options)
         {
@@ -104,25 +105,24 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Set a Security Group as a default for staging
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/security_group_staging_defaults/set_a_security_group_as_a_default_for_staging.html"</para>
+        /// Removing a Security Group as a default for staging
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/security_group_staging_defaults/removing_a_security_group_as_a_default_for_staging.html"</para>
         /// </summary>
-        public async Task<SetSecurityGroupAsDefaultForStagingResponse> SetSecurityGroupAsDefaultForStaging(Guid? guid)
+        public async Task RemovingSecurityGroupAsDefaultForStaging(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/config/staging_security_groups/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 200;
+            var expectedReturnStatus = 204;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<SetSecurityGroupAsDefaultForStagingResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

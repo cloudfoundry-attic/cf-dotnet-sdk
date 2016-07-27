@@ -26,43 +26,141 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
+        public void TestUpdateOrganizationQuotaDefinitionResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""64d32bfb-808e-43f2-9810-b9e3ad71e546"",
+    ""url"": ""/v2/quota_definitions/a5eed2ec-5c47-488b-b3d6-7c0c28608630"",
+    ""created_at"": ""2016-07-27T14:02:38Z"",
+    ""updated_at"": ""2016-07-27T14:02:38Z""
+  },
+  ""entity"": {
+    ""name"": ""name-618"",
+    ""non_basic_services_allowed"": true,
+    ""total_services"": 60,
+    ""total_routes"": 1000,
+    ""total_private_domains"": -1,
+    ""memory_limit"": 20480,
+    ""trial_db_allowed"": false,
+    ""instance_memory_limit"": -1,
+    ""app_instance_limit"": -1,
+    ""app_task_limit"": -1,
+    ""total_service_keys"": -1,
+    ""total_reserved_route_ports"": 5
+  }
+}";
+
+            UpdateOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(json);
+
+            Assert.AreEqual("64d32bfb-808e-43f2-9810-b9e3ad71e546", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/a5eed2ec-5c47-488b-b3d6-7c0c28608630", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:38Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("2016-07-27T14:02:38Z", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("name-618", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
+            Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
+            Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalPrivateDomains), true);
+            Assert.AreEqual("20480", TestUtil.ToTestableString(obj.MemoryLimit), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.TrialDbAllowed), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServiceKeys), true);
+            Assert.AreEqual("5", TestUtil.ToTestableString(obj.TotalReservedRoutePorts), true);
+        }
+
+        [TestMethod]
+        public void TestRetrieveOrganizationQuotaDefinitionResponse()
+        {
+            string json = @"{
+  ""metadata"": {
+    ""guid"": ""87ddc16b-26b5-4cde-bfde-1e532978d2f7"",
+    ""url"": ""/v2/quota_definitions/88ffe713-dc61-4ccf-8df9-c49bc0d80818"",
+    ""created_at"": ""2016-07-27T14:02:38Z"",
+    ""updated_at"": null
+  },
+  ""entity"": {
+    ""name"": ""name-619"",
+    ""non_basic_services_allowed"": true,
+    ""total_services"": 60,
+    ""total_routes"": 1000,
+    ""total_private_domains"": -1,
+    ""memory_limit"": 20480,
+    ""trial_db_allowed"": false,
+    ""instance_memory_limit"": -1,
+    ""app_instance_limit"": -1,
+    ""app_task_limit"": -1,
+    ""total_service_keys"": -1,
+    ""total_reserved_route_ports"": 5
+  }
+}";
+
+            RetrieveOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(json);
+
+            Assert.AreEqual("87ddc16b-26b5-4cde-bfde-1e532978d2f7", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/88ffe713-dc61-4ccf-8df9-c49bc0d80818", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:38Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
+            Assert.AreEqual("name-619", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
+            Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
+            Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalPrivateDomains), true);
+            Assert.AreEqual("20480", TestUtil.ToTestableString(obj.MemoryLimit), true);
+            Assert.AreEqual("false", TestUtil.ToTestableString(obj.TrialDbAllowed), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServiceKeys), true);
+            Assert.AreEqual("5", TestUtil.ToTestableString(obj.TotalReservedRoutePorts), true);
+        }
+
+        [TestMethod]
         public void TestCreateOrganizationQuotaDefinitionResponse()
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""a00e3ae3-96ae-404b-9fc0-7965359d0ede"",
-    ""url"": ""/v2/quota_definitions/e467775d-7209-45f6-aa8e-daefd4b10fbc"",
-    ""created_at"": ""2016-07-07T09:17:14Z"",
+    ""guid"": ""5af5faf8-7155-4448-a79c-b3336aebad80"",
+    ""url"": ""/v2/quota_definitions/e4582b13-4029-4411-94da-48f510317d86"",
+    ""created_at"": ""2016-07-27T14:02:38Z"",
     ""updated_at"": null
   },
   ""entity"": {
     ""name"": ""gold_quota"",
     ""non_basic_services_allowed"": true,
-    ""total_services"": 5,
-    ""total_routes"": 10,
+    ""total_services"": -1,
+    ""total_routes"": 4,
     ""total_private_domains"": -1,
     ""memory_limit"": 5120,
     ""trial_db_allowed"": false,
     ""instance_memory_limit"": 10240,
-    ""app_instance_limit"": 10
+    ""app_instance_limit"": 10,
+    ""app_task_limit"": 5,
+    ""total_service_keys"": -1,
+    ""total_reserved_route_ports"": 3
   }
 }";
 
             CreateOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<CreateOrganizationQuotaDefinitionResponse>(json);
 
-            Assert.AreEqual("a00e3ae3-96ae-404b-9fc0-7965359d0ede", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/e467775d-7209-45f6-aa8e-daefd4b10fbc", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:17:14Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("5af5faf8-7155-4448-a79c-b3336aebad80", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/e4582b13-4029-4411-94da-48f510317d86", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:38Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("gold_quota", TestUtil.ToTestableString(obj.Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
-            Assert.AreEqual("5", TestUtil.ToTestableString(obj.TotalServices), true);
-            Assert.AreEqual("10", TestUtil.ToTestableString(obj.TotalRoutes), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServices), true);
+            Assert.AreEqual("4", TestUtil.ToTestableString(obj.TotalRoutes), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalPrivateDomains), true);
             Assert.AreEqual("5120", TestUtil.ToTestableString(obj.MemoryLimit), true);
             Assert.AreEqual("false", TestUtil.ToTestableString(obj.TrialDbAllowed), true);
             Assert.AreEqual("10240", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
             Assert.AreEqual("10", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
+            Assert.AreEqual("5", TestUtil.ToTestableString(obj.AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalServiceKeys), true);
+            Assert.AreEqual("3", TestUtil.ToTestableString(obj.TotalReservedRoutePorts), true);
         }
 
         [TestMethod]
@@ -76,9 +174,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""7d3c00bb-f4f5-4d0f-a1cd-3114bc57bfd7"",
-        ""url"": ""/v2/quota_definitions/8c556e17-565f-4b44-b132-c6ef53f6515e"",
-        ""created_at"": ""2016-07-07T09:16:48Z"",
+        ""guid"": ""4d968387-82c0-410f-af9f-fecc2311e54e"",
+        ""url"": ""/v2/quota_definitions/da27fe63-ead3-4a2b-81fd-b4b5821b1133"",
+        ""created_at"": ""2016-07-27T14:02:33Z"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -90,7 +188,10 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
         ""memory_limit"": 10240,
         ""trial_db_allowed"": false,
         ""instance_memory_limit"": -1,
-        ""app_instance_limit"": -1
+        ""app_instance_limit"": -1,
+        ""app_task_limit"": -1,
+        ""total_service_keys"": -1,
+        ""total_reserved_route_ports"": 0
       }
     }
   ]
@@ -102,9 +203,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("7d3c00bb-f4f5-4d0f-a1cd-3114bc57bfd7", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/8c556e17-565f-4b44-b132-c6ef53f6515e", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:16:48Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("4d968387-82c0-410f-af9f-fecc2311e54e", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/quota_definitions/da27fe63-ead3-4a2b-81fd-b4b5821b1133", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:33Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("default", TestUtil.ToTestableString(page[0].Name), true);
             Assert.AreEqual("true", TestUtil.ToTestableString(page[0].NonBasicServicesAllowed), true);
@@ -115,86 +216,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("false", TestUtil.ToTestableString(page[0].TrialDbAllowed), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].InstanceMemoryLimit), true);
             Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].AppInstanceLimit), true);
-        }
-
-        [TestMethod]
-        public void TestRetrieveOrganizationQuotaDefinitionResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""7f4c764a-b2a1-4d07-b979-4cb66c6ad300"",
-    ""url"": ""/v2/quota_definitions/edc70de1-6379-4bbe-80c7-984ed1d9aa62"",
-    ""created_at"": ""2016-07-07T09:17:14Z"",
-    ""updated_at"": null
-  },
-  ""entity"": {
-    ""name"": ""name-2300"",
-    ""non_basic_services_allowed"": true,
-    ""total_services"": 60,
-    ""total_routes"": 1000,
-    ""total_private_domains"": -1,
-    ""memory_limit"": 20480,
-    ""trial_db_allowed"": false,
-    ""instance_memory_limit"": -1,
-    ""app_instance_limit"": -1
-  }
-}";
-
-            RetrieveOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<RetrieveOrganizationQuotaDefinitionResponse>(json);
-
-            Assert.AreEqual("7f4c764a-b2a1-4d07-b979-4cb66c6ad300", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/edc70de1-6379-4bbe-80c7-984ed1d9aa62", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:17:14Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-2300", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
-            Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
-            Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
-            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalPrivateDomains), true);
-            Assert.AreEqual("20480", TestUtil.ToTestableString(obj.MemoryLimit), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.TrialDbAllowed), true);
-            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
-            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
-        }
-
-        [TestMethod]
-        public void TestUpdateOrganizationQuotaDefinitionResponse()
-        {
-            string json = @"{
-  ""metadata"": {
-    ""guid"": ""a1ed2f7a-cd75-4d9b-a21a-02ea630c2759"",
-    ""url"": ""/v2/quota_definitions/96fd43b4-5ba3-4a8f-9b78-d2dab972257b"",
-    ""created_at"": ""2016-07-07T09:17:14Z"",
-    ""updated_at"": ""2016-07-07T09:17:14Z""
-  },
-  ""entity"": {
-    ""name"": ""name-2301"",
-    ""non_basic_services_allowed"": true,
-    ""total_services"": 60,
-    ""total_routes"": 1000,
-    ""total_private_domains"": -1,
-    ""memory_limit"": 20480,
-    ""trial_db_allowed"": false,
-    ""instance_memory_limit"": -1,
-    ""app_instance_limit"": -1
-  }
-}";
-
-            UpdateOrganizationQuotaDefinitionResponse obj = Utilities.DeserializeJson<UpdateOrganizationQuotaDefinitionResponse>(json);
-
-            Assert.AreEqual("a1ed2f7a-cd75-4d9b-a21a-02ea630c2759", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/quota_definitions/96fd43b4-5ba3-4a8f-9b78-d2dab972257b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:17:14Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-            Assert.AreEqual("2016-07-07T09:17:14Z", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("name-2301", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("true", TestUtil.ToTestableString(obj.NonBasicServicesAllowed), true);
-            Assert.AreEqual("60", TestUtil.ToTestableString(obj.TotalServices), true);
-            Assert.AreEqual("1000", TestUtil.ToTestableString(obj.TotalRoutes), true);
-            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.TotalPrivateDomains), true);
-            Assert.AreEqual("20480", TestUtil.ToTestableString(obj.MemoryLimit), true);
-            Assert.AreEqual("false", TestUtil.ToTestableString(obj.TrialDbAllowed), true);
-            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.InstanceMemoryLimit), true);
-            Assert.AreEqual("-1", TestUtil.ToTestableString(obj.AppInstanceLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].AppTaskLimit), true);
+            Assert.AreEqual("-1", TestUtil.ToTestableString(page[0].TotalServiceKeys), true);
+            Assert.AreEqual("0", TestUtil.ToTestableString(page[0].TotalReservedRoutePorts), true);
         }
     }
 }

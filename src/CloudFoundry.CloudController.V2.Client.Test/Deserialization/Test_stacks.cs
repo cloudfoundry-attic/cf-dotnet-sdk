@@ -26,29 +26,29 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
 
 
         [TestMethod]
-        public void TestCreateStackResponse()
+        public void TestRetrieveStackResponse()
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""ee32715d-bb69-4216-8f97-3d7a395cac14"",
-    ""url"": ""/v2/stacks/4882d7e7-21c6-4fb1-94cf-91e9b7ea52de"",
-    ""created_at"": ""2016-07-07T09:17:17Z"",
+    ""guid"": ""e9d907ed-9c00-4d36-856d-77a50510c7b9"",
+    ""url"": ""/v2/stacks/451be13a-6ca5-4ea7-8c70-409fb6daa6ce"",
+    ""created_at"": ""2016-07-27T14:02:33Z"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""example_stack"",
-    ""description"": ""Description for the example stack""
+    ""name"": ""cflinuxfs2"",
+    ""description"": ""cflinuxfs2""
   }
 }";
 
-            CreateStackResponse obj = Utilities.DeserializeJson<CreateStackResponse>(json);
+            RetrieveStackResponse obj = Utilities.DeserializeJson<RetrieveStackResponse>(json);
 
-            Assert.AreEqual("ee32715d-bb69-4216-8f97-3d7a395cac14", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/4882d7e7-21c6-4fb1-94cf-91e9b7ea52de", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:17:17Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("e9d907ed-9c00-4d36-856d-77a50510c7b9", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/451be13a-6ca5-4ea7-8c70-409fb6daa6ce", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:33Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("example_stack", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("Description for the example stack", TestUtil.ToTestableString(obj.Description), true);
+            Assert.AreEqual("cflinuxfs2", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("cflinuxfs2", TestUtil.ToTestableString(obj.Description), true);
         }
 
         [TestMethod]
@@ -62,9 +62,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
   ""resources"": [
     {
       ""metadata"": {
-        ""guid"": ""a13c38a6-6926-44a9-9527-68fbd27f1286"",
-        ""url"": ""/v2/stacks/7a14c36f-8147-450d-8d1f-5920e1a1cb46"",
-        ""created_at"": ""2016-07-07T09:16:48Z"",
+        ""guid"": ""67fa6345-126e-4e13-9895-a9a5584ce82f"",
+        ""url"": ""/v2/stacks/451be13a-6ca5-4ea7-8c70-409fb6daa6ce"",
+        ""created_at"": ""2016-07-27T14:02:33Z"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -74,9 +74,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     },
     {
       ""metadata"": {
-        ""guid"": ""a13c38a6-6926-44a9-9527-68fbd27f1286"",
-        ""url"": ""/v2/stacks/51ce774e-3af7-483b-bd2d-5e3d1b70b445"",
-        ""created_at"": ""2016-07-07T09:16:48Z"",
+        ""guid"": ""67fa6345-126e-4e13-9895-a9a5584ce82f"",
+        ""url"": ""/v2/stacks/fcf5ad60-9f64-487c-9fbe-f099a71ee21e"",
+        ""created_at"": ""2016-07-27T14:02:33Z"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -86,9 +86,9 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
     },
     {
       ""metadata"": {
-        ""guid"": ""a13c38a6-6926-44a9-9527-68fbd27f1286"",
-        ""url"": ""/v2/stacks/e12dea27-b6c1-4631-bbf7-b7ae4c73c366"",
-        ""created_at"": ""2016-07-07T09:16:48Z"",
+        ""guid"": ""67fa6345-126e-4e13-9895-a9a5584ce82f"",
+        ""url"": ""/v2/stacks/a278c7f8-2069-4c18-bcee-e5c94dcb4077"",
+        ""created_at"": ""2016-07-27T14:02:33Z"",
         ""updated_at"": null
       },
       ""entity"": {
@@ -105,50 +105,50 @@ namespace CloudFoundry.CloudController.V2.Test.Deserialization
             Assert.AreEqual("1", TestUtil.ToTestableString(page.Properties.TotalPages), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.PreviousUrl), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page.Properties.NextUrl), true);
-            Assert.AreEqual("a13c38a6-6926-44a9-9527-68fbd27f1286", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/7a14c36f-8147-450d-8d1f-5920e1a1cb46", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:16:48Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("67fa6345-126e-4e13-9895-a9a5584ce82f", TestUtil.ToTestableString(page[0].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/451be13a-6ca5-4ea7-8c70-409fb6daa6ce", TestUtil.ToTestableString(page[0].EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:33Z", TestUtil.ToTestableString(page[0].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[0].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("cflinuxfs2", TestUtil.ToTestableString(page[0].Name), true);
             Assert.AreEqual("cflinuxfs2", TestUtil.ToTestableString(page[0].Description), true);
-            Assert.AreEqual("a13c38a6-6926-44a9-9527-68fbd27f1286", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/51ce774e-3af7-483b-bd2d-5e3d1b70b445", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:16:48Z", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("67fa6345-126e-4e13-9895-a9a5584ce82f", TestUtil.ToTestableString(page[1].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/fcf5ad60-9f64-487c-9fbe-f099a71ee21e", TestUtil.ToTestableString(page[1].EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:33Z", TestUtil.ToTestableString(page[1].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[1].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("default-stack-name", TestUtil.ToTestableString(page[1].Name), true);
             Assert.AreEqual("default-stack-description", TestUtil.ToTestableString(page[1].Description), true);
-            Assert.AreEqual("a13c38a6-6926-44a9-9527-68fbd27f1286", TestUtil.ToTestableString(page[2].EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/e12dea27-b6c1-4631-bbf7-b7ae4c73c366", TestUtil.ToTestableString(page[2].EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:16:48Z", TestUtil.ToTestableString(page[2].EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("67fa6345-126e-4e13-9895-a9a5584ce82f", TestUtil.ToTestableString(page[2].EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/a278c7f8-2069-4c18-bcee-e5c94dcb4077", TestUtil.ToTestableString(page[2].EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:33Z", TestUtil.ToTestableString(page[2].EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(page[2].EntityMetadata.UpdatedAt), true);
             Assert.AreEqual("cider", TestUtil.ToTestableString(page[2].Name), true);
             Assert.AreEqual("cider-description", TestUtil.ToTestableString(page[2].Description), true);
         }
 
         [TestMethod]
-        public void TestRetrieveStackResponse()
+        public void TestCreateStackResponse()
         {
             string json = @"{
   ""metadata"": {
-    ""guid"": ""c0f9f4cb-061e-49b9-8ec7-5cceef372f29"",
-    ""url"": ""/v2/stacks/7a14c36f-8147-450d-8d1f-5920e1a1cb46"",
-    ""created_at"": ""2016-07-07T09:16:48Z"",
+    ""guid"": ""e1637020-d2bd-4c6e-a5f7-1a58c8888f8f"",
+    ""url"": ""/v2/stacks/fa58f841-5472-4923-9b92-6e2e3cb8594d"",
+    ""created_at"": ""2016-07-27T14:02:46Z"",
     ""updated_at"": null
   },
   ""entity"": {
-    ""name"": ""cflinuxfs2"",
-    ""description"": ""cflinuxfs2""
+    ""name"": ""example_stack"",
+    ""description"": ""Description for the example stack""
   }
 }";
 
-            RetrieveStackResponse obj = Utilities.DeserializeJson<RetrieveStackResponse>(json);
+            CreateStackResponse obj = Utilities.DeserializeJson<CreateStackResponse>(json);
 
-            Assert.AreEqual("c0f9f4cb-061e-49b9-8ec7-5cceef372f29", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-            Assert.AreEqual("/v2/stacks/7a14c36f-8147-450d-8d1f-5920e1a1cb46", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-            Assert.AreEqual("2016-07-07T09:16:48Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+            Assert.AreEqual("e1637020-d2bd-4c6e-a5f7-1a58c8888f8f", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+            Assert.AreEqual("/v2/stacks/fa58f841-5472-4923-9b92-6e2e3cb8594d", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+            Assert.AreEqual("2016-07-27T14:02:46Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
             Assert.AreEqual("", TestUtil.ToTestableString(obj.EntityMetadata.UpdatedAt), true);
-            Assert.AreEqual("cflinuxfs2", TestUtil.ToTestableString(obj.Name), true);
-            Assert.AreEqual("cflinuxfs2", TestUtil.ToTestableString(obj.Description), true);
+            Assert.AreEqual("example_stack", TestUtil.ToTestableString(obj.Name), true);
+            Assert.AreEqual("Description for the example stack", TestUtil.ToTestableString(obj.Description), true);
         }
     }
 }

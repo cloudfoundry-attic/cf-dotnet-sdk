@@ -28,25 +28,40 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestUpdateSpaceQuotaDefinitionRequest()
+        {
+            string json = @"{
+  ""name"": ""new_name""
+}";
+
+            UpdateSpaceQuotaDefinitionRequest request = new UpdateSpaceQuotaDefinitionRequest();
+
+            request.Name = "new_name";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateSpaceQuotaDefinitionRequest()
         {
             string json = @"{
   ""name"": ""gold_quota"",
   ""non_basic_services_allowed"": true,
-  ""total_services"": 5,
+  ""total_services"": -1,
   ""total_routes"": 10,
   ""memory_limit"": 5120,
-  ""organization_guid"": ""cf0f2ab4-79c5-4664-aa29-8ef087eb47e7""
+  ""organization_guid"": ""a2104f80-b5e2-46a9-ae5d-708e496a413d"",
+  ""total_reserved_route_ports"": 5
 }";
 
             CreateSpaceQuotaDefinitionRequest request = new CreateSpaceQuotaDefinitionRequest();
 
             request.Name = "gold_quota";
             request.NonBasicServicesAllowed = true;
-            request.TotalServices = 5;
+            request.TotalServices = -1;
             request.TotalRoutes = 10;
             request.MemoryLimit = 5120;
-            request.OrganizationGuid = new Guid("cf0f2ab4-79c5-4664-aa29-8ef087eb47e7");
+            request.OrganizationGuid = new Guid("a2104f80-b5e2-46a9-ae5d-708e496a413d");
+            request.TotalReservedRoutePorts = 5;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
