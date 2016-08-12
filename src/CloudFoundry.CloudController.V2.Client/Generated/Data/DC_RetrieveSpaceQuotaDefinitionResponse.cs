@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.RetrieveSpaceQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RetrieveSpaceQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRetrieveSpaceQuotaDefinitionResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.RetrieveSpaceQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/space_quota_definitions/retrieve_a_particular_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRetrieveSpaceQuotaDefinitionResponse : IResponse
@@ -122,6 +122,36 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("app_instance_limit", NullValueHandling = NullValueHandling.Ignore)]
         public int? AppInstanceLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The App Task Limit</para>
+        /// </summary>
+        [JsonProperty("app_task_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public int? AppTaskLimit
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Total Service Keys</para>
+        /// </summary>
+        [JsonProperty("total_service_keys", NullValueHandling = NullValueHandling.Ignore)]
+        public int? TotalServiceKeys
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Total Reserved Route Ports</para>
+        /// </summary>
+        [JsonProperty("total_reserved_route_ports", NullValueHandling = NullValueHandling.Ignore)]
+        public int? TotalReservedRoutePorts
         {
             get;
             set;

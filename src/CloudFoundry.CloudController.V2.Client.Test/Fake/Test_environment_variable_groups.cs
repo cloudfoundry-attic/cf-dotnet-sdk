@@ -52,7 +52,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
-        public void GettingContentsOfStagingEnvironmentVariableGroupTest()
+        public void UpdateContentsOfStagingEnvironmentVariableGroupTest()
         {
             using (ShimsContext.Create())
             {
@@ -67,8 +67,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
                 var cfClient = clients.CreateCloudFoundryClient();
 
+                UpdateContentsOfStagingEnvironmentVariableGroupRequest value = new UpdateContentsOfStagingEnvironmentVariableGroupRequest();
 
-                var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfStagingEnvironmentVariableGroup().Result;
+
+                var obj = cfClient.EnvironmentVariableGroups.UpdateContentsOfStagingEnvironmentVariableGroup(value).Result;
 
 
                 Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);
@@ -106,7 +108,7 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
-        public void UpdateContentsOfStagingEnvironmentVariableGroupTest()
+        public void GettingContentsOfStagingEnvironmentVariableGroupTest()
         {
             using (ShimsContext.Create())
             {
@@ -121,10 +123,8 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 clients.ExpectedStatusCode = (HttpStatusCode)200;
                 var cfClient = clients.CreateCloudFoundryClient();
 
-                UpdateContentsOfStagingEnvironmentVariableGroupRequest value = new UpdateContentsOfStagingEnvironmentVariableGroupRequest();
 
-
-                var obj = cfClient.EnvironmentVariableGroups.UpdateContentsOfStagingEnvironmentVariableGroup(value).Result;
+                var obj = cfClient.EnvironmentVariableGroups.GettingContentsOfStagingEnvironmentVariableGroup().Result;
 
 
                 Assert.AreEqual("123", TestUtil.ToTestableString(obj.Abc), true);

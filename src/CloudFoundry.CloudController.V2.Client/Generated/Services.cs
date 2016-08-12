@@ -52,67 +52,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Creating a Service (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/creating_a_service_(deprecated).html"</para>
+        /// Retrieve a Particular Service
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/services/retrieve_a_particular_service.html"</para>
         /// </summary>
-        public async Task<CreateServiceDeprecatedResponse> CreateServiceDeprecated(CreateServiceDeprecatedRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/services";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/delete_a_particular_service.html"</para>
-        /// </summary>
-        public async Task DeleteService(Guid? guid)
+        public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/services/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// List all Service Plans for the Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/list_all_service_plans_for_the_service.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid)
-        {
-            return await ListAllServicePlansForService(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Service Plans for the Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/list_all_service_plans_for_the_service.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/services/{0}/service_plans", guid);
-            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -123,12 +69,12 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllServicePlansForServiceResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializeJson<RetrieveServiceResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
         /// List all Services
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/list_all_services.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/services/list_all_services.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesResponse>> ListAllServices()
         {
@@ -137,7 +83,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Services
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/list_all_services.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/services/list_all_services.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicesResponse>> ListAllServices(RequestOptions options)
         {
@@ -158,13 +104,23 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Service
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/retrieve_a_particular_service.html"</para>
+        /// List all Service Plans for the Service
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/services/list_all_service_plans_for_the_service.html"</para>
         /// </summary>
-        public async Task<RetrieveServiceResponse> RetrieveService(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid)
+        {
+            return await ListAllServicePlansForService(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Service Plans for the Service
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/services/list_all_service_plans_for_the_service.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllServicePlansForServiceResponse>> ListAllServicePlansForService(Guid? guid, RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/services/{0}", guid);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/services/{0}/service_plans", guid);
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -175,30 +131,30 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveServiceResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllServicePlansForServiceResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
-        /// Updating a Service (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/services/updating_a_service_(deprecated).html"</para>
+        /// Delete a Particular Service
+        /// <para>Deleting with async not set to true will return a 204 status code and an empty response body.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/services/delete_a_particular_service.html"</para>
         /// </summary>
-        public async Task<UpdateServiceDeprecatedResponse> UpdateServiceDeprecated(UpdateServiceDeprecatedRequest value)
+        public async Task<DeleteServiceResponse> DeleteService(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/services";
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/services/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Put;
+            client.Method = HttpMethod.Delete;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
             client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
+            var expectedReturnStatus = 202;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<UpdateServiceDeprecatedResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializeJson<DeleteServiceResponse>(await response.ReadContentAsStringAsync());
         }
     }
 }

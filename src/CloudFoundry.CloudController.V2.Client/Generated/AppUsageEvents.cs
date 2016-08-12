@@ -52,31 +52,13 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// List all App Usage Events
-        /// <para>Events are sorted by internal database IDs. This order may differ from created_at.</para>
-        /// <para></para>
-        /// <para>Events close to the current time should not be processed because other events may still have open</para>
-        /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/app_usage_events/list_all_app_usage_events.html"</para>
+        /// Retrieve a Particular App Usage Event
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents()
-        {
-            return await ListAllAppUsageEvents(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all App Usage Events
-        /// <para>Events are sorted by internal database IDs. This order may differ from created_at.</para>
-        /// <para></para>
-        /// <para>Events close to the current time should not be processed because other events may still have open</para>
-        /// <para>transactions that will change their order in the results.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/app_usage_events/list_all_app_usage_events.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents(RequestOptions options)
+        public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/app_usage_events";
-            uriBuilder.Query = options.ToString();
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/app_usage_events/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -87,7 +69,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllAppUsageEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
@@ -98,7 +80,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         /// <para>There is the potential race condition if apps are currently being started, stopped, or scaled.</para>
         /// <para></para>
         /// <para>The seeded usage events will have the same guid as the app.</para>
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/app_usage_events/purge_and_reseed_app_usage_events.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/app_usage_events/purge_and_reseed_app_usage_events.html"</para>
         /// </summary>
         public async Task PurgeAndReseedAppUsageEvents()
         {
@@ -118,13 +100,31 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular App Usage Event
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/app_usage_events/retrieve_a_particular_app_usage_event.html"</para>
+        /// List all App Usage Events
+        /// <para>Events are sorted by internal database IDs. This order may differ from created_at.</para>
+        /// <para></para>
+        /// <para>Events close to the current time should not be processed because other events may still have open</para>
+        /// <para>transactions that will change their order in the results.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/app_usage_events/list_all_app_usage_events.html"</para>
         /// </summary>
-        public async Task<RetrieveAppUsageEventResponse> RetrieveAppUsageEvent(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents()
+        {
+            return await ListAllAppUsageEvents(new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all App Usage Events
+        /// <para>Events are sorted by internal database IDs. This order may differ from created_at.</para>
+        /// <para></para>
+        /// <para>Events close to the current time should not be processed because other events may still have open</para>
+        /// <para>transactions that will change their order in the results.</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/app_usage_events/list_all_app_usage_events.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllAppUsageEventsResponse>> ListAllAppUsageEvents(RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/app_usage_events/{0}", guid);
+            uriBuilder.Path = "/v2/app_usage_events";
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -135,7 +135,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrieveAppUsageEventResponse>(await response.ReadContentAsStringAsync());
+            return Utilities.DeserializePage<ListAllAppUsageEventsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
     }
 }

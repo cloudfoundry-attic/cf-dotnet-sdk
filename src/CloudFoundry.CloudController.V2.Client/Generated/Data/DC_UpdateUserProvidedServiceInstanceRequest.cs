@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for serializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.UpdateUserProvidedServiceInstance()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class UpdateUserProvidedServiceInstanceRequest : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractUpdateUserProvidedServiceInstanceRequest
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for serializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.UpdateUserProvidedServiceInstance()" Request
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/238/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/user_provided_service_instances/updating_a_user_provided_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractUpdateUserProvidedServiceInstanceRequest
@@ -64,6 +64,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("syslog_drain_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SyslogDrainUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>URL to which requests for bound routes will be forwarded.</para>
+        /// </summary>
+        [JsonProperty("route_service_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string RouteServiceUrl
         {
             get;
             set;

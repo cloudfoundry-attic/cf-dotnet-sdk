@@ -31,15 +31,15 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestCreateRouteRequest()
         {
             string json = @"{
-  ""domain_guid"": ""632232d8-fdad-4bc5-b099-9831b9a5f09a"",
-  ""space_guid"": ""632232d8-fdad-4bc5-b099-9831b9a5f09a"",
+  ""domain_guid"": ""09e696cd-d8a3-4299-8be2-eb83ed96d0b3"",
+  ""space_guid"": ""09e696cd-d8a3-4299-8be2-eb83ed96d0b3"",
   ""port"": 10000
 }";
 
             CreateRouteRequest request = new CreateRouteRequest();
 
-            request.DomainGuid = new Guid("632232d8-fdad-4bc5-b099-9831b9a5f09a");
-            request.SpaceGuid = new Guid("632232d8-fdad-4bc5-b099-9831b9a5f09a");
+            request.DomainGuid = new Guid("09e696cd-d8a3-4299-8be2-eb83ed96d0b3");
+            request.SpaceGuid = new Guid("09e696cd-d8a3-4299-8be2-eb83ed96d0b3");
             request.Port = 10000;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
@@ -48,12 +48,12 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestUpdateRouteRequest()
         {
             string json = @"{
-  ""port"": 12000
+  ""port"": 10000
 }";
 
             UpdateRouteRequest request = new UpdateRouteRequest();
 
-            request.Port = 12000;
+            request.Port = 10000;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

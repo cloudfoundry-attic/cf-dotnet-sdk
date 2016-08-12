@@ -52,83 +52,8 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Create a Shared Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/create_a_shared_domain.html"</para>
-        /// </summary>
-        public async Task<CreateSharedDomainResponse> CreateSharedDomain(CreateSharedDomainRequest value)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/shared_domains";
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Post;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
-            var expectedReturnStatus = 201;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<CreateSharedDomainResponse>(await response.ReadContentAsStringAsync());
-        }
-
-        /// <summary>
-        /// Delete a Particular Shared Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/delete_a_particular_shared_domain.html"</para>
-        /// </summary>
-        public async Task DeleteSharedDomain(Guid? guid)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/shared_domains/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-        }
-
-        /// <summary>
-        /// Filtering Shared Domains by name
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/filtering_shared_domains_by_name.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName()
-        {
-            return await FilterSharedDomainsByName(new RequestOptions());
-        }
-
-        /// <summary>
-        /// Filtering Shared Domains by name
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/filtering_shared_domains_by_name.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName(RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = "/v2/shared_domains";
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<FilterSharedDomainsByNameResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
-
-        /// <summary>
         /// List all Shared Domains
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/list_all_shared_domains.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/list_all_shared_domains.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSharedDomainsResponse>> ListAllSharedDomains()
         {
@@ -137,7 +62,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Shared Domains
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/list_all_shared_domains.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/list_all_shared_domains.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSharedDomainsResponse>> ListAllSharedDomains(RequestOptions options)
         {
@@ -159,7 +84,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Shared Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/238/shared_domains/retrieve_a_particular_shared_domain.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/retrieve_a_particular_shared_domain.html"</para>
         /// </summary>
         public async Task<RetrieveSharedDomainResponse> RetrieveSharedDomain(Guid? guid)
         {
@@ -176,6 +101,81 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<RetrieveSharedDomainResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Create a Shared Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/create_a_shared_domain.html"</para>
+        /// </summary>
+        public async Task<CreateSharedDomainResponse> CreateSharedDomain(CreateSharedDomainRequest value)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/shared_domains";
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Post;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            client.Content = ((string)JsonConvert.SerializeObject(value)).ConvertToStream();
+            var expectedReturnStatus = 201;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<CreateSharedDomainResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
+        /// Filtering Shared Domains by name
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/filtering_shared_domains_by_name.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName()
+        {
+            return await FilterSharedDomainsByName(new RequestOptions());
+        }
+
+        /// <summary>
+        /// Filtering Shared Domains by name
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/filtering_shared_domains_by_name.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<FilterSharedDomainsByNameResponse>> FilterSharedDomainsByName(RequestOptions options)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = "/v2/shared_domains";
+            uriBuilder.Query = options.ToString();
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Get;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<FilterSharedDomainsByNameResponse>(await response.ReadContentAsStringAsync(), this.Client);
+        }
+
+        /// <summary>
+        /// Delete a Particular Shared Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/shared_domains/delete_a_particular_shared_domain.html"</para>
+        /// </summary>
+        public async Task DeleteSharedDomain(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/shared_domains/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
     }
 }
