@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerAppExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/apps/creating_a_docker_app_(experimental).html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/apps/creating_a_docker_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class CreateDockerAppExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateDockerAppExperimentalResponse
+    public partial class CreateDockerAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateDockerAppResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerAppExperimental()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/apps/creating_a_docker_app_(experimental).html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.CreateDockerApp()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/apps/creating_a_docker_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractCreateDockerAppExperimentalResponse : IResponse
+    public abstract class AbstractCreateDockerAppResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -102,6 +102,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("detected_buildpack", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DetectedBuildpack
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Detected Buildpack Guid</para>
+        /// </summary>
+        [JsonProperty("detected_buildpack_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? DetectedBuildpackGuid
         {
             get;
             set;

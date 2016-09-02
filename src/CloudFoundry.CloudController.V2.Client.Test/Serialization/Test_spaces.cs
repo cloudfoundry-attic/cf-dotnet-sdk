@@ -123,13 +123,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""development"",
-  ""organization_guid"": ""0b9eefb7-c2b9-4963-bb1b-0d0406ef057c""
+  ""organization_guid"": ""f34d7b8f-6aa6-4af4-9056-6f40e3de9c16""
 }";
 
             CreateSpaceRequest request = new CreateSpaceRequest();
 
             request.Name = "development";
-            request.OrganizationGuid = new Guid("0b9eefb7-c2b9-4963-bb1b-0d0406ef057c");
+            request.OrganizationGuid = new Guid("f34d7b8f-6aa6-4af4-9056-6f40e3de9c16");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

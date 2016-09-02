@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceBrokersEndpoint.CreateServiceBroker()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/service_brokers/create_a_service_broker.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/service_brokers/create_a_service_broker.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class CreateServiceBrokerResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractCreateServiceBrokerResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceBrokersEndpoint.CreateServiceBroker()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/service_brokers/create_a_service_broker.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/service_brokers/create_a_service_broker.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractCreateServiceBrokerResponse : IResponse

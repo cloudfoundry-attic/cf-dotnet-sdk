@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.AssociateAppWithRoute()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/routes/associate_app_with_the_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/routes/associate_app_with_the_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class AssociateAppWithRouteResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractAssociateAppWithRouteResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.RoutesEndpoint.AssociateAppWithRoute()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/routes/associate_app_with_the_route.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/routes/associate_app_with_the_route.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractAssociateAppWithRouteResponse : IResponse

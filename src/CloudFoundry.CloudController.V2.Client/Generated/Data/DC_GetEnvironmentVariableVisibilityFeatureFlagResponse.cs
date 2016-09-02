@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.BuildpacksEndpoint.LockOrUnlockBuildpack()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/buildpacks/lock_or_unlock_a_buildpack.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetEnvironmentVariableVisibilityFeatureFlag()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/feature_flags/get_the_environment_variable_visibility_feature_flag.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class LockOrUnlockBuildpackResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractLockOrUnlockBuildpackResponse
+    public partial class GetEnvironmentVariableVisibilityFeatureFlagResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetEnvironmentVariableVisibilityFeatureFlagResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.BuildpacksEndpoint.LockOrUnlockBuildpack()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/buildpacks/lock_or_unlock_a_buildpack.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetEnvironmentVariableVisibilityFeatureFlag()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/feature_flags/get_the_environment_variable_visibility_feature_flag.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractLockOrUnlockBuildpackResponse : IResponse
+    public abstract class AbstractGetEnvironmentVariableVisibilityFeatureFlagResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity
@@ -58,16 +58,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Position</para>
-        /// </summary>
-        [JsonProperty("position", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Position
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
         /// <para>The Enabled</para>
         /// </summary>
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
@@ -78,20 +68,20 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The Locked</para>
+        /// <para>The Error Message</para>
         /// </summary>
-        [JsonProperty("locked", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Locked
+        [JsonProperty("error_message", NullValueHandling = NullValueHandling.Ignore)]
+        public dynamic ErrorMessage
         {
             get;
             set;
         }
 
         /// <summary> 
-        /// <para>The Filename</para>
+        /// <para>The Url</para>
         /// </summary>
-        [JsonProperty("filename", NullValueHandling = NullValueHandling.Ignore)]
-        public string Filename
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
+        public string Url
         {
             get;
             set;

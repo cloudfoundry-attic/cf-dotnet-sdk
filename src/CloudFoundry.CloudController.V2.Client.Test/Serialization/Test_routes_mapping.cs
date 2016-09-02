@@ -31,15 +31,15 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         public void TestMappingAppAndRouteRequest()
         {
             string json = @"{
-  ""app_guid"": ""0226530e-e999-4682-a869-b4b2a1ccdd8a"",
-  ""route_guid"": ""0226530e-e999-4682-a869-b4b2a1ccdd8a"",
+  ""app_guid"": ""a1d87f14-db81-4ad1-b65f-35ade2172970"",
+  ""route_guid"": ""a1d87f14-db81-4ad1-b65f-35ade2172970"",
   ""app_port"": 8888
 }";
 
             MappingAppAndRouteRequest request = new MappingAppAndRouteRequest();
 
-            request.AppGuid = new Guid("0226530e-e999-4682-a869-b4b2a1ccdd8a");
-            request.RouteGuid = new Guid("0226530e-e999-4682-a869-b4b2a1ccdd8a");
+            request.AppGuid = new Guid("a1d87f14-db81-4ad1-b65f-35ade2172970");
+            request.RouteGuid = new Guid("a1d87f14-db81-4ad1-b65f-35ade2172970");
             request.AppPort = 8888;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);

@@ -45,7 +45,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
         {
             string json = @"{
   ""name"": ""my_super_app"",
-  ""space_guid"": ""e8565431-c700-4e4f-aad1-c77b6e8f30c1"",
+  ""space_guid"": ""48d1b9a9-eab6-4dbe-9436-9425c248e153"",
   ""diego"": true,
   ""ports"": [
     1024,
@@ -56,7 +56,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             CreateAppRequest request = new CreateAppRequest();
 
             request.Name = "my_super_app";
-            request.SpaceGuid = new Guid("e8565431-c700-4e4f-aad1-c77b6e8f30c1");
+            request.SpaceGuid = new Guid("48d1b9a9-eab6-4dbe-9436-9425c248e153");
             request.Diego = true;
             request.Ports = Array.ConvertAll(TestUtil.GetJsonArray(@"[1024,2000]"), (p => (int?)Convert.ToInt32(p))); 
 
@@ -64,32 +64,32 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestCopyAppBitsForAppRequest()
-        {
-            string json = @"{""source_app_guid"":""50072e41-5c99-4fd2-bde4-5457f561388b""}";
-
-            CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
-
-            request.SourceAppGuid = new Guid("50072e41-5c99-4fd2-bde4-5457f561388b");
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateDockerAppExperimentalRequest()
+        public void TestCreateDockerAppRequest()
         {
             string json = @"{
   ""name"": ""docker_app"",
-  ""space_guid"": ""67a67c37-08c4-4c7c-8829-962e328ec07f"",
+  ""space_guid"": ""99dd35e7-2975-43bd-8b78-52bb995f700c"",
   ""docker_image"": ""cloudfoundry/diego-docker-app"",
   ""diego"": true
 }";
 
-            CreateDockerAppExperimentalRequest request = new CreateDockerAppExperimentalRequest();
+            CreateDockerAppRequest request = new CreateDockerAppRequest();
 
             request.Name = "docker_app";
-            request.SpaceGuid = new Guid("67a67c37-08c4-4c7c-8829-962e328ec07f");
+            request.SpaceGuid = new Guid("99dd35e7-2975-43bd-8b78-52bb995f700c");
             request.DockerImage = "cloudfoundry/diego-docker-app";
             request.Diego = true;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCopyAppBitsForAppRequest()
+        {
+            string json = @"{""source_app_guid"":""0ee3eab6-01ed-4253-a017-de087546c197""}";
+
+            CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
+
+            request.SourceAppGuid = new Guid("0ee3eab6-01ed-4253-a017-de087546c197");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

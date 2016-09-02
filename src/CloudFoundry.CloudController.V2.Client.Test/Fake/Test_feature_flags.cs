@@ -512,6 +512,36 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
         }
 
         [TestMethod]
+        public void GetEnvironmentVariableVisibilityFeatureFlagTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""name"": ""env_var_visibility"",
+  ""enabled"": true,
+  ""error_message"": null,
+  ""url"": ""/v2/config/feature_flags/env_var_visibility""
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+
+                var obj = cfClient.FeatureFlags.GetEnvironmentVariableVisibilityFeatureFlag().Result;
+
+
+                Assert.AreEqual("env_var_visibility", TestUtil.ToTestableString(obj.Name), true);
+                Assert.AreEqual("true", TestUtil.ToTestableString(obj.Enabled), true);
+                Assert.AreEqual("", TestUtil.ToTestableString(obj.ErrorMessage), true);
+                Assert.AreEqual("/v2/config/feature_flags/env_var_visibility", TestUtil.ToTestableString(obj.Url), true);
+
+            }
+        }
+
+        [TestMethod]
         public void GetServiceInstanceCreationFeatureFlagTest()
         {
             using (ShimsContext.Create())

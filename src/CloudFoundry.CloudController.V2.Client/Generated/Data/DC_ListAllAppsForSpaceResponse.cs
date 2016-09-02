@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllAppsForSpace()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/spaces/list_all_apps_for_the_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/list_all_apps_for_the_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllAppsForSpaceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllAppsForSpaceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.ListAllAppsForSpace()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/spaces/list_all_apps_for_the_space.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/list_all_apps_for_the_space.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllAppsForSpaceResponse : IResponse
@@ -102,6 +102,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("detected_buildpack", NullValueHandling = NullValueHandling.Ignore)]
         public dynamic DetectedBuildpack
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Detected Buildpack Guid</para>
+        /// </summary>
+        [JsonProperty("detected_buildpack_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? DetectedBuildpackGuid
         {
             get;
             set;
