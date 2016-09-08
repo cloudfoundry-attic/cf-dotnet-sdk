@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Binding a Service Instance to a Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/binding_a_service_instance_to_a_route.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/binding_a_service_instance_to_a_route.html"</para>
         /// </summary>
         public async Task<BindingServiceInstanceToRouteResponse> BindingServiceInstanceToRoute(Guid? service_instance_guid, Guid? route_guid, BindingServiceInstanceToRouteRequest value)
         {
@@ -76,7 +76,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieving permissions on a Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/retrieving_permissions_on_a_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/retrieving_permissions_on_a_service_instance.html"</para>
         /// </summary>
         public async Task<RetrievingPermissionsOnServiceInstanceResponse> RetrievingPermissionsOnServiceInstance(Guid? guid)
         {
@@ -97,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_routes_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_routes_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForServiceInstanceResponse>> ListAllRoutesForServiceInstance(Guid? guid)
         {
@@ -106,7 +106,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Routes for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_routes_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_routes_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllRoutesForServiceInstanceResponse>> ListAllRoutesForServiceInstance(Guid? guid, RequestOptions options)
         {
@@ -128,7 +128,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_instances.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_instances.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances()
         {
@@ -137,7 +137,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_instances.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_instances.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesResponse>> ListAllServiceInstances(RequestOptions options)
         {
@@ -159,7 +159,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/retrieve_a_particular_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/retrieve_a_particular_service_instance.html"</para>
         /// </summary>
         public async Task<RetrieveServiceInstanceResponse> RetrieveServiceInstance(Guid? guid)
         {
@@ -180,7 +180,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Creating a Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/creating_a_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/creating_a_service_instance.html"</para>
         /// </summary>
         public async Task<CreateServiceInstanceResponse> CreateServiceInstance(CreateServiceInstanceRequest value)
         {
@@ -203,7 +203,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Keys for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceKeysForServiceInstanceResponse>> ListAllServiceKeysForServiceInstance(Guid? guid)
         {
@@ -212,7 +212,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Keys for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceKeysForServiceInstanceResponse>> ListAllServiceKeysForServiceInstance(Guid? guid, RequestOptions options)
         {
@@ -234,7 +234,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/delete_a_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/delete_a_service_instance.html"</para>
         /// </summary>
         public async Task<DeleteServiceInstanceResponse> DeleteServiceInstance(Guid? guid)
         {
@@ -256,7 +256,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Unbinding a service instance from a route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/unbinding_a_service_instance_from_a_route.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/unbinding_a_service_instance_from_a_route.html"</para>
         /// </summary>
         public async Task UnbindingServiceInstanceFromRoute(Guid? service_instance_guid, Guid? route_guid)
         {
@@ -277,7 +277,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid)
         {
@@ -286,7 +286,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Bindings for the Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_bindings_for_the_service_instance.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceBindingsForServiceInstanceResponse>> ListAllServiceBindingsForServiceInstance(Guid? guid, RequestOptions options)
         {
@@ -308,7 +308,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Update a Service Instance
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_instances/update_a_service_instance.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_instances/update_a_service_instance.html"</para>
         /// </summary>
         public async Task<UpdateServiceInstanceResponse> UpdateServiceInstance(Guid? guid, UpdateServiceInstanceRequest value)
         {

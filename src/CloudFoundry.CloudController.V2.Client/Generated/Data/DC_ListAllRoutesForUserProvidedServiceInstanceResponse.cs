@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.ListAllRoutesForUserProvidedServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/user_provided_service_instances/list_all_routes_for_the_user_provided_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/user_provided_service_instances/list_all_routes_for_the_user_provided_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllRoutesForUserProvidedServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllRoutesForUserProvidedServiceInstanceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UserProvidedServiceInstancesEndpoint.ListAllRoutesForUserProvidedServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/user_provided_service_instances/list_all_routes_for_the_user_provided_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/user_provided_service_instances/list_all_routes_for_the_user_provided_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllRoutesForUserProvidedServiceInstanceResponse : IResponse

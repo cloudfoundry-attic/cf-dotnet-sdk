@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Domain (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/delete_a_particular_domain_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/delete_a_particular_domain_(deprecated).html"</para>
         /// </summary>
         public async Task DeleteDomainDeprecated(Guid? guid)
         {
@@ -74,7 +74,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Create a Domain owned by the given Organization (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/create_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/create_a_domain_owned_by_the_given_organization_(deprecated).html"</para>
         /// </summary>
         public async Task<CreateDomainOwnedByGivenOrganizationDeprecatedResponse> CreateDomainOwnedByGivenOrganizationDeprecated(CreateDomainOwnedByGivenOrganizationDeprecatedRequest value)
         {
@@ -97,7 +97,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Domain (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/list_all_spaces_for_the_domain_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/list_all_spaces_for_the_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid)
         {
@@ -106,7 +106,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Spaces for the Domain (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/list_all_spaces_for_the_domain_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/list_all_spaces_for_the_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllSpacesForDomainDeprecatedResponse>> ListAllSpacesForDomainDeprecated(Guid? guid, RequestOptions options)
         {
@@ -128,7 +128,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Domain (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/retrieve_a_particular_domain_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/retrieve_a_particular_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<RetrieveDomainDeprecatedResponse> RetrieveDomainDeprecated(Guid? guid)
         {
@@ -149,7 +149,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Create a Shared Domain (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/create_a_shared_domain_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/create_a_shared_domain_(deprecated).html"</para>
         /// </summary>
         public async Task<CreateSharedDomainDeprecatedResponse> CreateSharedDomainDeprecated(CreateSharedDomainDeprecatedRequest value)
         {
@@ -172,7 +172,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Domains (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/list_all_domains_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/list_all_domains_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated()
         {
@@ -181,7 +181,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Domains (deprecated)
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/domains__deprecated_/list_all_domains_(deprecated).html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/domains__deprecated_/list_all_domains_(deprecated).html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllDomainsDeprecatedResponse>> ListAllDomainsDeprecated(RequestOptions options)
         {

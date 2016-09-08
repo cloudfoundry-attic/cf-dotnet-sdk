@@ -53,7 +53,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Delete a Particular Service Plans
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/delete_a_particular_service_plans.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/delete_a_particular_service_plans.html"</para>
         /// </summary>
         public async Task DeleteServicePlans(Guid? guid)
         {
@@ -74,7 +74,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Retrieve a Particular Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/retrieve_a_particular_service_plan.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/retrieve_a_particular_service_plan.html"</para>
         /// </summary>
         public async Task<RetrieveServicePlanResponse> RetrieveServicePlan(Guid? guid)
         {
@@ -95,7 +95,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plans
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/list_all_service_plans.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/list_all_service_plans.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans()
         {
@@ -104,7 +104,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Plans
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/list_all_service_plans.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/list_all_service_plans.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServicePlansResponse>> ListAllServicePlans(RequestOptions options)
         {
@@ -126,7 +126,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances for the Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid)
         {
@@ -135,7 +135,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// List all Service Instances for the Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/list_all_service_instances_for_the_service_plan.html"</para>
         /// </summary>
         public async Task<PagedResponseCollection<ListAllServiceInstancesForServicePlanResponse>> ListAllServiceInstancesForServicePlan(Guid? guid, RequestOptions options)
         {
@@ -157,7 +157,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
 
         /// <summary>
         /// Updating a Service Plan
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/239/service_plans/updating_a_service_plan.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/service_plans/updating_a_service_plan.html"</para>
         /// </summary>
         public async Task<UpdateServicePlanResponse> UpdateServicePlan(UpdateServicePlanRequest value)
         {

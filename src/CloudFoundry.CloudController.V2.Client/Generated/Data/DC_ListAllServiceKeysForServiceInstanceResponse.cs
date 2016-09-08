@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.ListAllServiceKeysForServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServiceKeysForServiceInstanceResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServiceKeysForServiceInstanceResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServiceInstancesEndpoint.ListAllServiceKeysForServiceInstance()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/239/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/service_instances/list_all_service_keys_for_the_service_instance.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServiceKeysForServiceInstanceResponse : IResponse
