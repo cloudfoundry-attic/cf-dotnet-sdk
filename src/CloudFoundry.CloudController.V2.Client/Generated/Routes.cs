@@ -285,36 +285,5 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             var response = await this.SendAsync(client, expectedReturnStatus);
             return Utilities.DeserializeJson<UpdateRouteResponse>(await response.ReadContentAsStringAsync());
         }
-
-        /// <summary>
-        /// List all Route Mappings for the Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/routes/list_all_route_mappings_for_the_route.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllRouteMappingsForRouteResponse>> ListAllRouteMappingsForRoute(Guid? guid)
-        {
-            return await ListAllRouteMappingsForRoute(guid, new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Route Mappings for the Route
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/routes/list_all_route_mappings_for_the_route.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllRouteMappingsForRouteResponse>> ListAllRouteMappingsForRoute(Guid? guid, RequestOptions options)
-        {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/routes/{0}/route_mappings", guid);
-            uriBuilder.Query = options.ToString();
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllRouteMappingsForRouteResponse>(await response.ReadContentAsStringAsync(), this.Client);
-        }
     }
 }

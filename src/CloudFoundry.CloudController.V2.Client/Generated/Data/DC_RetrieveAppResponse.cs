@@ -211,7 +211,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// <para>The Staging Task Id</para>
         /// </summary>
         [JsonProperty("staging_task_id", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic StagingTaskId
+        public Guid? StagingTaskId
         {
             get;
             set;

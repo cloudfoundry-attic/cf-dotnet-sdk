@@ -78,6 +78,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             client.Apps.PushProgress += Apps_PushProgress;
 
+            File.WriteAllText(Path.Combine(tempAppPath, "Procfile"), "web:");
             File.WriteAllText(Path.Combine(tempAppPath, "content.txt"), "dummy content");
         }
 
