@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="BaseEndpoint.cs" />
     <Compile Include="Extensions\Data\DC_GetV2InfoResponse.cs" />
+    <Compile Include="Extensions\Data\DC_CreateDockerAppRequest.cs" />
     <Compile Include="Extensions\Data\DC_ListAllMatchingResourcesRequest.cs" />
     <Compile Include="Extensions\Data\DC_ListAllServicePlansForServiceResponse.cs" />
     <Compile Include="Extensions\Data\DC_ListAllServicePlansResponse.cs" />

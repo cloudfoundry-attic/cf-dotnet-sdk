@@ -60,6 +60,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateAppResponse newApp = null;
             GetAppSummaryResponse readApp = null;
             UpdateAppResponse updateApp = null;
+            CreateDockerAppResponse dockerApp = null;
 
             CreateAppRequest app = new CreateAppRequest();
             app.Name = Guid.NewGuid().ToString();
@@ -67,6 +68,13 @@ namespace CloudFoundry.CloudController.Test.Integration
             app.Instances = 1;
             app.Memory = 256;
             app.StackGuid = stackGuid;
+
+            CreateDockerAppRequest docker = new CreateDockerAppRequest();
+            docker.Name = Guid.NewGuid().ToString();
+            docker.Instances = 1;
+            docker.Memory = 256;
+            docker.SpaceGuid= spaceGuid;
+            docker.StackGuid = stackGuid;
 
             try
             {
@@ -77,6 +85,16 @@ namespace CloudFoundry.CloudController.Test.Integration
                 Assert.Fail("Error creating app: {0}", ex.ToString());
             }
             Assert.IsNotNull(newApp);
+
+            try
+            {
+                dockerApp = client.Apps.CreateDockerApp(docker).Result;
+            }
+            catch(Exception ex)
+            {
+                Assert.Fail("Error creating docker app: {0}", ex.ToString());
+            }
+            Assert.IsNotNull(dockerApp);
 
             try
             {
