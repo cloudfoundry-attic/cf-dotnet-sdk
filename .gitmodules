@@ -1,0 +1,3 @@
+[submodule "CloudFoundry.Doppler.DropsondeProtocol/dropsonde-protocol"]
+	path = CloudFoundry.Doppler.DropsondeProtocol/dropsonde-protocol
+	url = https://github.com/cloudfoundry/dropsonde-protocol
