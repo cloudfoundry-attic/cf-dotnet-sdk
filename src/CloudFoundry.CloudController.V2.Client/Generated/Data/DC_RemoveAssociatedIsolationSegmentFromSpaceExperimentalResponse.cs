@@ -20,11 +20,11 @@ using System.Collections.Generic;
 namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
-    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.AssociateDeveloperWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/associate_developer_with_the_space_by_username.html"</para>
+    /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveAssociatedIsolationSegmentFromSpaceExperimental()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/remove_the_associated_isolation_segment_from_the_space_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public partial class AssociateDeveloperWithSpaceByUsernameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractAssociateDeveloperWithSpaceByUsernameResponse
+    public partial class RemoveAssociatedIsolationSegmentFromSpaceExperimentalResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveAssociatedIsolationSegmentFromSpaceExperimentalResponse
     {
     }
 }
@@ -32,11 +32,11 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
-    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.AssociateDeveloperWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/associate_developer_with_the_space_by_username.html"</para>
+    /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveAssociatedIsolationSegmentFromSpaceExperimental()" Response
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/remove_the_associated_isolation_segment_from_the_space_(experimental).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
-    public abstract class AbstractAssociateDeveloperWithSpaceByUsernameResponse : IResponse
+    public abstract class AbstractRemoveAssociatedIsolationSegmentFromSpaceExperimentalResponse : IResponse
     {
         /// <summary>
         /// Contains the Metadata for this Entity

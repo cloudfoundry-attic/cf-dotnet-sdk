@@ -821,6 +821,28 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
+        /// Remove the associated Isolation Segment from the Space (experimental)
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/spaces/remove_the_associated_isolation_segment_from_the_space_(experimental).html"</para>
+        /// </summary>
+        public async Task<RemoveAssociatedIsolationSegmentFromSpaceExperimentalResponse> RemoveAssociatedIsolationSegmentFromSpaceExperimental(Guid? guid)
+        {
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/spaces/{0}/isolation_segment (experimental)", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 200;
+            var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializeJson<RemoveAssociatedIsolationSegmentFromSpaceExperimentalResponse>(await response.ReadContentAsStringAsync());
+        }
+
+        /// <summary>
         /// Associate Auditor with the Space
         /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/spaces/associate_auditor_with_the_space.html"</para>
         /// </summary>

@@ -78,6 +78,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
+        /// <para>The Isolation Segment Guid</para>
+        /// </summary>
+        [JsonProperty("isolation_segment_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? IsolationSegmentGuid
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
         /// <para>The Allow Ssh</para>
         /// </summary>
         [JsonProperty("allow_ssh", NullValueHandling = NullValueHandling.Ignore)]

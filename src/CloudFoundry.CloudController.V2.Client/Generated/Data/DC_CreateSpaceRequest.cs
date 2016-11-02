@@ -128,5 +128,15 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
             get;
             set;
         }
+
+        /// <summary> 
+        /// <para>The guid for the isolation segment</para>
+        /// </summary>
+        [JsonProperty("isolation_segment_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? IsolationSegmentGuid
+        {
+            get;
+            set;
+        }
     }
 }

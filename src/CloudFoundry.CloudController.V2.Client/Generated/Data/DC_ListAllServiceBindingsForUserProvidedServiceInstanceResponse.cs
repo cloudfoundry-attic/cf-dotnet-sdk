@@ -128,16 +128,6 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         }
 
         /// <summary> 
-        /// <para>The App Url</para>
-        /// </summary>
-        [JsonProperty("app_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string AppUrl
-        {
-            get;
-            set;
-        }
-
-        /// <summary> 
         /// <para>The Service Instance Url</para>
         /// </summary>
         [JsonProperty("service_instance_url", NullValueHandling = NullValueHandling.Ignore)]
