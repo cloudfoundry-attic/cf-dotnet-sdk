@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CloudFoundry.Loggregator.Client;
-
+using System.Net;
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
@@ -118,9 +118,9 @@ namespace CloudFoundry.CloudController.Test.Integration
                 }
             }
 
-            if (client.Info.GetInfo().Result.LoggingEndpoint == null)
+            if (!HasLoggregator(client.Info.GetInfo().Result))
             {
-                Assert.Inconclusive("CloudFoundry target does not have a loggregator endpoint");
+                Assert.Inconclusive("CloudFoundry target does not have a working loggregator endpoint");
             }
 
             var logClient = new LoggregatorLog(
@@ -152,9 +152,9 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             Guid appGuid = app.EntityMetadata.Guid;
 
-            if (client.Info.GetInfo().Result.LoggingEndpoint == null)
+            if (!HasLoggregator(client.Info.GetInfo().Result))
             {
-                Assert.Inconclusive("CloudFoundry target does not have a loggregator endpoint");
+                Assert.Inconclusive("CloudFoundry target does not have a working loggregator endpoint");
             }
 
             var logClient = new LoggregatorLog(
@@ -165,7 +165,7 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             var logs = new List<string>();
 
-            logClient.MessageReceived += delegate(object sender, MessageEventArgs e)
+            logClient.MessageReceived += delegate (object sender, MessageEventArgs e)
             {
                 long timeInMilliSeconds = e.LogMessage.Timestamp / 1000 / 1000;
                 var logTimeStamp = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(timeInMilliSeconds);
@@ -174,7 +174,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             };
 
 
-            logClient.ErrorReceived += delegate(object sender, CloudFoundry.Loggregator.Client.ErrorEventArgs e)
+            logClient.ErrorReceived += delegate (object sender, CloudFoundry.Loggregator.Client.ErrorEventArgs e)
             {
                 Assert.Fail("Loggregator error: {0}", e.Error.ToString());
             };
@@ -217,6 +217,36 @@ namespace CloudFoundry.CloudController.Test.Integration
 
             client.Apps.DeleteApp(appGuid).Wait();
             Directory.Delete(tempAppPath, true);
+        }
+
+        public bool HasLoggregator(GetInfoResponse cfInfo)
+        {
+            if (cfInfo.LoggingEndpoint == null)
+            {
+                return false;
+            }
+
+            UriBuilder dopplerUri = new UriBuilder(cfInfo.LoggingEndpoint);
+            dopplerUri.Scheme = dopplerUri.Scheme == "ws" ? "http" : "https";
+
+            var request = HttpWebRequest.CreateHttp(dopplerUri.Uri);
+            request.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
+
+            try
+            {
+                var response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (System.Net.WebException ex)
+            {
+                if (ex.Response.Headers["X-Cf-Routererror"] == "unknown_route")
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

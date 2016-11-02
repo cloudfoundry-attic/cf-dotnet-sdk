@@ -71,6 +71,7 @@
     <Compile Include="BuildpackTest.cs" />
     <Compile Include="CancelTest.cs" />
     <Compile Include="CertificateValidationTest.cs" />
+    <Compile Include="DopplerTest.cs" />
     <Compile Include="InfoTest.cs" />
     <Compile Include="LoggregatorTest.cs" />
     <Compile Include="OrgTest.cs" />
@@ -100,6 +101,10 @@
     <ProjectReference Include="..\CloudFoundry.Doppler.Client.Net45\CloudFoundry.Doppler.Client.Net45.csproj">
       <Project>{9c8575bd-a191-49f4-811c-ce694bb094fe}</Project>
       <Name>CloudFoundry.Doppler.Client.Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.Doppler.DropsondeProtocol\CloudFoundry.Doppler.DropsondeProtocol.csproj">
+      <Project>{dcf74b1c-5c6f-482b-9556-458d1c28634d}</Project>
+      <Name>CloudFoundry.Doppler.DropsondeProtocol</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.Loggregator.Client.Net45\CloudFoundry.Loggregator.Client.Net45.csproj">
       <Project>{693ac6f7-3a96-41c9-b844-1e3f1ed6346c}</Project>
