@@ -85,10 +85,6 @@
     <Compile Include="v3\PushTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CloudFoundry.Doppler.Client.Net45\CloudFoundry.Doppler.Client.Net45.csproj">
-      <Project>{9c8575bd-a191-49f4-811c-ce694bb094fe}</Project>
-      <Name>CloudFoundry.Doppler.Client.Net45</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.CloudController.Common.Net45\CloudFoundry.CloudController.Common.Net45.csproj">
       <Project>{126aeda2-fa3b-42eb-b728-770a975def2b}</Project>
       <Name>CloudFoundry.CloudController.Common.Net45</Name>
@@ -100,6 +96,10 @@
     <ProjectReference Include="..\CloudFoundry.CloudController.V3.Client\CloudFoundry.CloudController.V3.Client.csproj">
       <Project>{d1931738-1f49-48e0-8cac-5caad8cc2244}</Project>
       <Name>CloudFoundry.CloudController.V3.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudFoundry.Doppler.Client.Net45\CloudFoundry.Doppler.Client.Net45.csproj">
+      <Project>{9c8575bd-a191-49f4-811c-ce694bb094fe}</Project>
+      <Name>CloudFoundry.Doppler.Client.Net45</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.Loggregator.Client.Net45\CloudFoundry.Loggregator.Client.Net45.csproj">
       <Project>{693ac6f7-3a96-41c9-b844-1e3f1ed6346c}</Project>

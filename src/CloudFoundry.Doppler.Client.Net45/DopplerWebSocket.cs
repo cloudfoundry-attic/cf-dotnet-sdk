@@ -68,11 +68,11 @@
             }
         }
 
-        public void Open(Uri appLogEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
+        public void Open(Uri dopplerEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
         {
-            if (appLogEndpoint == null)
+            if (dopplerEndpoint == null)
             {
-                throw new ArgumentNullException("appLogEndpoint");
+                throw new ArgumentNullException("dopplerEndpoint");
             }
 
             if (httpProxy != null)
@@ -94,7 +94,7 @@
                 headers.Add(new KeyValuePair<string, string>("AUTHORIZATION", authenticationToken));
             }
 
-            this.webSocket = new WebSocket(appLogEndpoint.ToString(), string.Empty, null, headers);
+            this.webSocket = new WebSocket(dopplerEndpoint.ToString(), string.Empty, null, headers);
 
             this.webSocket.Security.AllowNameMismatchCertificate = skipCertificateValidation;
             this.webSocket.Security.AllowUnstrustedCertificate = skipCertificateValidation;

@@ -9,11 +9,13 @@
     public class MessageEventArgs : EventArgs
     {
         /// <summary>
-        /// Gets the message that was received from Loggregator.
+        /// Gets the message that was received from Doppler.
         /// </summary>
         /// <value>
-        /// The message that was received from Loggregator.
+        /// The message that was received from Doppler.
         /// </value>
+        [CLSCompliant(false)]
+
         public Envelope LogMessage
         {
             get;

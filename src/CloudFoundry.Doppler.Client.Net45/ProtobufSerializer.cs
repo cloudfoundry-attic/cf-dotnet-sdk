@@ -23,10 +23,10 @@
         }
 
         /// <summary>
-        /// Deserializes an ApplicationLog based on raw data using protobuf
+        /// Deserializes an Envelope based on raw data using protobuf
         /// </summary>
         /// <param name="data">byte[] data</param>
-        /// <returns>An ApplicationLog instance</returns>
+        /// <returns>An Envelope instance</returns>
         public Envelope DeserializeEnvelope(byte[] data)
         {
             Type applicationLogType = typeof(Envelope);

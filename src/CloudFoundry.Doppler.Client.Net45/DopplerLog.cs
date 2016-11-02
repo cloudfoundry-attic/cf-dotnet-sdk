@@ -192,6 +192,7 @@
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="System.ArgumentNullException">appGuid</exception>
         /// <returns></returns>
+        [CLSCompliant(false)]
         public async Task<Envelope[]> Recent(string appGuid, CancellationToken cancellationToken)
         {
             if (appGuid == null)
