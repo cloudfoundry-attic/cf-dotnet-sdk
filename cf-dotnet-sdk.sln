@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudControlle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.CloudController.V3.Client.Test", "src\CloudFoundry.CloudController.V3.Client.Test\CloudFoundry.CloudController.V3.Client.Test.csproj", "{FC18073C-1282-4A26-8447-45046D3AB8E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Doppler.Client.Net45", "CloudFoundry.Doppler.Client.Net45\CloudFoundry.Doppler.Client.Net45.csproj", "{9C8575BD-A191-49F4-811C-CE694BB094FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFoundry.Doppler.DropsondeProtocol", "CloudFoundry.Doppler.DropsondeProtocol\CloudFoundry.Doppler.DropsondeProtocol.csproj", "{DCF74B1C-5C6F-482B-9556-458D1C28634D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +112,14 @@ Global
 		{FC18073C-1282-4A26-8447-45046D3AB8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC18073C-1282-4A26-8447-45046D3AB8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC18073C-1282-4A26-8447-45046D3AB8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C8575BD-A191-49F4-811C-CE694BB094FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8575BD-A191-49F4-811C-CE694BB094FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8575BD-A191-49F4-811C-CE694BB094FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8575BD-A191-49F4-811C-CE694BB094FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF74B1C-5C6F-482B-9556-458D1C28634D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF74B1C-5C6F-482B-9556-458D1C28634D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF74B1C-5C6F-482B-9556-458D1C28634D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF74B1C-5C6F-482B-9556-458D1C28634D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

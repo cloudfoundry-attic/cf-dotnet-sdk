@@ -85,6 +85,10 @@
     <Compile Include="v3\PushTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CloudFoundry.Doppler.Client.Net45\CloudFoundry.Doppler.Client.Net45.csproj">
+      <Project>{9c8575bd-a191-49f4-811c-ce694bb094fe}</Project>
+      <Name>CloudFoundry.Doppler.Client.Net45</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CloudFoundry.CloudController.Common.Net45\CloudFoundry.CloudController.Common.Net45.csproj">
       <Project>{126aeda2-fa3b-42eb-b728-770a975def2b}</Project>
       <Name>CloudFoundry.CloudController.Common.Net45</Name>
