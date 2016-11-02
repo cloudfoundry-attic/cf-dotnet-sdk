@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Net;
+    using SuperSocket.ClientEngine.Proxy;
     using WebSocket4Net;
-    using WebSocket4Net.ProxyUtilities;
 
     internal class LoggregatorWebSocket : ILoggregatorWebSocket, IDisposable
     {
@@ -95,7 +95,9 @@
             }
 
             this.webSocket = new WebSocket(appLogEndpoint.ToString(), string.Empty, null, headers);
-            this.webSocket.AllowUnstrustedCertificate = true;
+
+            this.webSocket.Security.AllowNameMismatchCertificate = skipCertificateValidation;
+            this.webSocket.Security.AllowUnstrustedCertificate = skipCertificateValidation;
 
             this.webSocket.DataReceived += (sender, e) =>
                 {
@@ -133,8 +135,6 @@
             {
                 this.webSocket.Proxy = new HttpConnectProxy(new DnsEndPoint(httpProxy.Host, httpProxy.Port));
             }
-
-            this.webSocket.AllowUnstrustedCertificate = skipCertificateValidation;
 
             // HACK: this is a workaround when WebSocket4net skips messages.
             // 64 was just an arbitrary value set that seems to get all messages.

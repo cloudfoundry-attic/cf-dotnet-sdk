@@ -1,22 +1,20 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CloudFoundry.CloudController.Common.Exceptions;
+using CloudFoundry.CloudController.Common.PushTools;
 using CloudFoundry.CloudController.V2;
 using CloudFoundry.CloudController.V2.Client;
 using CloudFoundry.CloudController.V2.Client.Data;
-using System.Threading;
 using CloudFoundry.UAA;
-using System.IO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Net;
-using System.IO.Compression;
-using CloudFoundry.CloudController.Common.Exceptions;
-using CloudFoundry.CloudController.Common.PushTools;
-using System.Security.Cryptography;
-
 
 namespace CloudFoundry.CloudController.Test.Integration
 {
@@ -289,7 +287,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             string binContentSha1 = null;
 
             // https://github.com/cloudfoundry/cf-release/blob/master/jobs/cloud_controller_ng/spec#L242
-            long binContentSize = 65536 *3;
+            long binContentSize = 65536 * 3;
             using (FileStream stream = new FileStream(binContentFilePath, FileMode.Create))
             {
                 var rng = new Random();
