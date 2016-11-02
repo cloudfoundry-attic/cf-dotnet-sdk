@@ -10,14 +10,14 @@
     public class DopplerException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoggregatorException"/> class.
+        /// Initializes a new instance of the <see cref="DopplerException"/> class.
         /// </summary>
         public DopplerException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoggregatorException"/> class.
+        /// Initializes a new instance of the <see cref="DopplerException"/> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         public DopplerException(string message)

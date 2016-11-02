@@ -61,7 +61,7 @@
                     print.FileName = print.FileName.Replace(Path.DirectorySeparatorChar, '/');
                 }
 
-                print.SHA1 = await this.CalculateSHA1(fileInfo.FullName, cancellationToken);
+                print.SHA1 = await CalculateSHA1(fileInfo.FullName, cancellationToken);
 
                 if (fingerprints.ContainsKey(print.SHA1))
                 {
@@ -140,7 +140,7 @@
             return this.GetZippedPayload(files, cancellationToken);
         }
 
-        private async Task<string> CalculateSHA1(string filePath, System.Threading.CancellationToken cancellationToken)
+        private static async Task<string> CalculateSHA1(string filePath, System.Threading.CancellationToken cancellationToken)
         {
             string formattedSHA1 = string.Empty;
             using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
