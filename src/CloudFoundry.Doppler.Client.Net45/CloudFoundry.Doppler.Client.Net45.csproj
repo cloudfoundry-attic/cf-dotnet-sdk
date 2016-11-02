@@ -7,8 +7,8 @@
     <ProjectGuid>{9C8575BD-A191-49F4-811C-CE694BB094FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CloudFoundry.Doppler.Client.Net45</RootNamespace>
-    <AssemblyName>CloudFoundry.Doppler.Client.Net45</AssemblyName>
+    <RootNamespace>CloudFoundry.Doppler.Client</RootNamespace>
+    <AssemblyName>CloudFoundry.Doppler.Client</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\cf-dotnet-sdk.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\lib\doppler-net45\CloudFoundry.Doppler.Client.Net45.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\doppler-net45\CloudFoundry.Doppler.Client.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\lib\doppler-net45\CloudFoundry.Doppler.Client.Net45.XML</DocumentationFile>
+    <DocumentationFile>..\..\lib\doppler-net45\CloudFoundry.Doppler.Client.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
