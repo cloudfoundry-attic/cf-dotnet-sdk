@@ -1,12 +1,12 @@
-﻿namespace CloudFoundry.Loggregator.Client
+﻿namespace CloudFoundry.Doppler.Client
 {
+    using SuperSocket.ClientEngine.Proxy;
     using System;
     using System.Collections.Generic;
     using System.Net;
-    using SuperSocket.ClientEngine.Proxy;
     using WebSocket4Net;
 
-    internal class LoggregatorWebSocket : ILoggregatorWebSocket, IDisposable
+    internal class DopplerWebSocket : IDisposable
     {
         private const int MagicWebSocketReceiveBufferSize = 64;
 
@@ -14,7 +14,7 @@
         private WebSocket webSocket = null;
         private bool disposed;
 
-        ~LoggregatorWebSocket()
+        ~DopplerWebSocket()
         {
             this.Dispose(false);
         }
@@ -68,11 +68,11 @@
             }
         }
 
-        public void Open(Uri appLogEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
+        public void Open(Uri dopplerEndpoint, string authenticationToken, Uri httpProxy, bool skipCertificateValidation)
         {
-            if (appLogEndpoint == null)
+            if (dopplerEndpoint == null)
             {
-                throw new ArgumentNullException("appLogEndpoint");
+                throw new ArgumentNullException("dopplerEndpoint");
             }
 
             if (httpProxy != null)
@@ -94,7 +94,7 @@
                 headers.Add(new KeyValuePair<string, string>("AUTHORIZATION", authenticationToken));
             }
 
-            this.webSocket = new WebSocket(appLogEndpoint.ToString(), string.Empty, null, headers);
+            this.webSocket = new WebSocket(dopplerEndpoint.ToString(), string.Empty, null, headers);
 
             this.webSocket.Security.AllowNameMismatchCertificate = skipCertificateValidation;
             this.webSocket.Security.AllowUnstrustedCertificate = skipCertificateValidation;
@@ -103,7 +103,7 @@
                 {
                     if (DataReceived != null)
                     {
-                        DataReceived(sender, new DataEventArgs() { Data = this.protobufSerializer.DeserializeApplicationLog(e.Data) });
+                        DataReceived(sender, new DataEventArgs() { Data = this.protobufSerializer.DeserializeEnvelope(e.Data) });
                     }
                 };
 
@@ -135,10 +135,6 @@
             {
                 this.webSocket.Proxy = new HttpConnectProxy(new DnsEndPoint(httpProxy.Host, httpProxy.Port));
             }
-
-            // HACK: this is a workaround when WebSocket4net skips messages.
-            // 64 was just an arbitrary value set that seems to get all messages.
-            this.webSocket.ReceiveBufferSize = LoggregatorWebSocket.MagicWebSocketReceiveBufferSize;
 
             this.webSocket.Open();
         }
