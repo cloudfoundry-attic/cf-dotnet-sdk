@@ -14,6 +14,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         static Guid orgGuid;
         static Guid spaceGuid;
         static Guid stackGuid;
+        static Guid dockerGuid;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -47,7 +48,9 @@ namespace CloudFoundry.CloudController.Test.Integration
 
         [ClassCleanup]
         public static void ClassCleanup()
-        {
+        {   
+            client.Apps.DeleteApp(dockerGuid).Wait();
+
             client.Spaces.DeleteSpace(spaceGuid).Wait();
 
             client.Organizations.DeleteOrganization(orgGuid).Wait();
@@ -96,6 +99,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             }
             Assert.IsNotNull(dockerApp);
 
+            dockerGuid = dockerApp.EntityMetadata.Guid;
             try
             {
                 readApp = client.Apps.GetAppSummary(newApp.EntityMetadata.Guid).Result;

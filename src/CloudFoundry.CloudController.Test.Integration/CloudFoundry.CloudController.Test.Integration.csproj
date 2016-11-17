@@ -75,6 +75,7 @@
     <Compile Include="BuildpackTest.cs" />
     <Compile Include="CancelTest.cs" />
     <Compile Include="CertificateValidationTest.cs" />
+    <Compile Include="DockerTest.cs" />
     <Compile Include="DopplerTest.cs" />
     <Compile Include="InfoTest.cs" />
     <Compile Include="LoggregatorTest.cs" />
