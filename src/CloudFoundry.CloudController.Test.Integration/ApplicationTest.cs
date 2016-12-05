@@ -14,6 +14,7 @@ namespace CloudFoundry.CloudController.Test.Integration
         static Guid orgGuid;
         static Guid spaceGuid;
         static Guid stackGuid;
+        static Guid dockerGuid;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -47,7 +48,9 @@ namespace CloudFoundry.CloudController.Test.Integration
 
         [ClassCleanup]
         public static void ClassCleanup()
-        {
+        {   
+            client.Apps.DeleteApp(dockerGuid).Wait();
+
             client.Spaces.DeleteSpace(spaceGuid).Wait();
 
             client.Organizations.DeleteOrganization(orgGuid).Wait();
@@ -60,6 +63,7 @@ namespace CloudFoundry.CloudController.Test.Integration
             CreateAppResponse newApp = null;
             GetAppSummaryResponse readApp = null;
             UpdateAppResponse updateApp = null;
+            CreateDockerAppResponse dockerApp = null;
 
             CreateAppRequest app = new CreateAppRequest();
             app.Name = Guid.NewGuid().ToString();
@@ -67,6 +71,13 @@ namespace CloudFoundry.CloudController.Test.Integration
             app.Instances = 1;
             app.Memory = 256;
             app.StackGuid = stackGuid;
+
+            CreateDockerAppRequest docker = new CreateDockerAppRequest();
+            docker.Name = Guid.NewGuid().ToString();
+            docker.Instances = 1;
+            docker.Memory = 256;
+            docker.SpaceGuid= spaceGuid;
+            docker.StackGuid = stackGuid;
 
             try
             {
@@ -78,6 +89,17 @@ namespace CloudFoundry.CloudController.Test.Integration
             }
             Assert.IsNotNull(newApp);
 
+            try
+            {
+                dockerApp = client.Apps.CreateDockerApp(docker).Result;
+            }
+            catch(Exception ex)
+            {
+                Assert.Fail("Error creating docker app: {0}", ex.ToString());
+            }
+            Assert.IsNotNull(dockerApp);
+
+            dockerGuid = dockerApp.EntityMetadata.Guid;
             try
             {
                 readApp = client.Apps.GetAppSummary(newApp.EntityMetadata.Guid).Result;
