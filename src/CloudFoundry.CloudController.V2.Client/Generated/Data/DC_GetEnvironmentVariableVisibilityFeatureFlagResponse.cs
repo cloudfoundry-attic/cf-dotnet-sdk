@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetEnvironmentVariableVisibilityFeatureFlag()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/feature_flags/get_the_environment_variable_visibility_feature_flag.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/feature_flags/get_the_environment_variable_visibility_feature_flag.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetEnvironmentVariableVisibilityFeatureFlagResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetEnvironmentVariableVisibilityFeatureFlagResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.FeatureFlagsEndpoint.GetEnvironmentVariableVisibilityFeatureFlag()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/feature_flags/get_the_environment_variable_visibility_feature_flag.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/feature_flags/get_the_environment_variable_visibility_feature_flag.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetEnvironmentVariableVisibilityFeatureFlagResponse : IResponse

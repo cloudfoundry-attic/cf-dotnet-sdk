@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.ListAllManagedOrganizationsForUser()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/users/list_all_managed_organizations_for_the_user.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/users/list_all_managed_organizations_for_the_user.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllManagedOrganizationsForUserResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllManagedOrganizationsForUserResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.UsersEndpoint.ListAllManagedOrganizationsForUser()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/users/list_all_managed_organizations_for_the_user.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/users/list_all_managed_organizations_for_the_user.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllManagedOrganizationsForUserResponse : IResponse
@@ -82,6 +82,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Default Isolation Segment Guid</para>
+        /// </summary>
+        [JsonProperty("default_isolation_segment_guid", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? DefaultIsolationSegmentGuid
         {
             get;
             set;

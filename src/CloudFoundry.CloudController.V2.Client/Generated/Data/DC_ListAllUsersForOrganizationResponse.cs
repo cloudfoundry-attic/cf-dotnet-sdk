@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.ListAllUsersForOrganization()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/organizations/list_all_users_for_the_organization.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/organizations/list_all_users_for_the_organization.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllUsersForOrganizationResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllUsersForOrganizationResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.OrganizationsEndpoint.ListAllUsersForOrganization()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/organizations/list_all_users_for_the_organization.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/organizations/list_all_users_for_the_organization.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllUsersForOrganizationResponse : IResponse

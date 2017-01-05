@@ -49,7 +49,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
   ""total_services"": -1,
   ""total_routes"": 10,
   ""memory_limit"": 5120,
-  ""organization_guid"": ""d7a23f73-26f7-4c8f-b13b-4b3652aa1fe4"",
+  ""organization_guid"": ""12f6ff86-1398-4481-b4b6-238c88fbcdce"",
   ""total_reserved_route_ports"": 5
 }";
 
@@ -60,7 +60,7 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.TotalServices = -1;
             request.TotalRoutes = 10;
             request.MemoryLimit = 5120;
-            request.OrganizationGuid = new Guid("d7a23f73-26f7-4c8f-b13b-4b3652aa1fe4");
+            request.OrganizationGuid = new Guid("12f6ff86-1398-4481-b4b6-238c88fbcdce");
             request.TotalReservedRoutePorts = 5;
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);

@@ -28,6 +28,23 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestUpdateServiceBrokerRequest()
+        {
+            string json = @"{
+  ""auth_username"": ""admin-user"",
+  ""auth_password"": ""some-secret"",
+  ""broker_url"": ""https://mybroker.example.com""
+}";
+
+            UpdateServiceBrokerRequest request = new UpdateServiceBrokerRequest();
+
+            request.AuthUsername = "admin-user";
+            request.AuthPassword = "some-secret";
+            request.BrokerUrl = "https://mybroker.example.com";
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestCreateServiceBrokerRequest()
         {
             string json = @"{
@@ -43,23 +60,6 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             request.BrokerUrl = "https://broker.example.com";
             request.AuthUsername = "admin";
             request.AuthPassword = "secretpassw0rd";
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestUpdateServiceBrokerRequest()
-        {
-            string json = @"{
-  ""auth_username"": ""admin-user"",
-  ""auth_password"": ""some-secret"",
-  ""broker_url"": ""https://mybroker.example.com""
-}";
-
-            UpdateServiceBrokerRequest request = new UpdateServiceBrokerRequest();
-
-            request.AuthUsername = "admin-user";
-            request.AuthPassword = "some-secret";
-            request.BrokerUrl = "https://mybroker.example.com";
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

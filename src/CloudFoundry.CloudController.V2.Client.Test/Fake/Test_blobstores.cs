@@ -34,12 +34,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"{
   ""metadata"": {
-    ""guid"": ""908a5ff7-8254-4510-a7fd-9101b7a31843"",
-    ""created_at"": ""2016-10-12T12:29:09Z"",
-    ""url"": ""/v2/jobs/1eea6cc0-a76a-462e-a15a-e5dea01f9f1c""
+    ""guid"": ""f6b7a8ee-1c8b-4240-a317-c04c93370c28"",
+    ""created_at"": ""2017-01-04T15:58:53Z"",
+    ""url"": ""/v2/jobs/40c5d6de-f304-432f-923b-69dd550c040b""
   },
   ""entity"": {
-    ""guid"": ""908a5ff7-8254-4510-a7fd-9101b7a31843"",
+    ""guid"": ""f6b7a8ee-1c8b-4240-a317-c04c93370c28"",
     ""status"": ""queued""
   }
 }";
@@ -52,10 +52,10 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.Blobstores.DeleteAllBlobsInBuildpackCacheBlobstore().Result;
 
 
-                Assert.AreEqual("908a5ff7-8254-4510-a7fd-9101b7a31843", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("2016-10-12T12:29:09Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-                Assert.AreEqual("/v2/jobs/1eea6cc0-a76a-462e-a15a-e5dea01f9f1c", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("908a5ff7-8254-4510-a7fd-9101b7a31843", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("f6b7a8ee-1c8b-4240-a317-c04c93370c28", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("2017-01-04T15:58:53Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("/v2/jobs/40c5d6de-f304-432f-923b-69dd550c040b", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("f6b7a8ee-1c8b-4240-a317-c04c93370c28", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
 
             }

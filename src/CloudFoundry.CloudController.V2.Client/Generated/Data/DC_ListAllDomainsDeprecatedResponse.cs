@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.ListAllDomainsDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/domains__deprecated_/list_all_domains_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/domains__deprecated_/list_all_domains_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllDomainsDeprecatedResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllDomainsDeprecatedResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.DomainsDeprecatedEndpoint.ListAllDomainsDeprecated()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/domains__deprecated_/list_all_domains_(deprecated).html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/domains__deprecated_/list_all_domains_(deprecated).html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllDomainsDeprecatedResponse : IResponse
