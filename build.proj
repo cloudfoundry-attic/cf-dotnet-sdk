@@ -46,7 +46,8 @@
     <build Condition="'$(BUILD_NUMBER)' != ''">$(BUILD_NUMBER)</build>
     <commit Condition="'$(GIT_COMMIT)' == ''">?</commit>
     <commit Condition="'$(GIT_COMMIT)' != ''">$(GIT_COMMIT)</commit>
-    <version>$(major).$(minor).$(revision).$(build)</version>
+    <version Condition="'$(BUILD_NUMBER)' != ''">$(major).$(minor).$(revision).$(build)</version>
+    <version Condition="'$(BUILD_NUMBER)' == ''">$(major).$(minor).$(revision)</version>
   </PropertyGroup>  
  
   <PropertyGroup>
