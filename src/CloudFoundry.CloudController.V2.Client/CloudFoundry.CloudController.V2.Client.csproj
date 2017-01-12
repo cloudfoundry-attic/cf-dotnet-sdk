@@ -269,7 +269,9 @@
     <Compile Include="Generated\Data\DC_ListAppStartEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAppStopEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListAppUpdateEventsResponse.cs" />
+    <Compile Include="Generated\Data\DC_ListAssociateRoleSpaceEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListEventsAssociatedWithAppSinceJanuary12014Response.cs" />
+    <Compile Include="Generated\Data\DC_ListRemoveRoleSpaceEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListRouteCreateEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListRouteDeleteEventsResponse.cs" />
     <Compile Include="Generated\Data\DC_ListRouteUpdateEventsResponse.cs" />
@@ -354,6 +356,8 @@
     <Compile Include="Generated\Data\DC_ReturnSecurityGroupsUsedForStagingResponse.cs" />
     <Compile Include="Generated\Data\DC_SetFeatureFlagRequest.cs" />
     <Compile Include="Generated\Data\DC_SetFeatureFlagResponse.cs" />
+    <Compile Include="Generated\Data\DC_SetIsolationSegmentForSpaceExperimentalRequest.cs" />
+    <Compile Include="Generated\Data\DC_SetIsolationSegmentForSpaceExperimentalResponse.cs" />
     <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForRunningAppsResponse.cs" />
     <Compile Include="Generated\Data\DC_SetSecurityGroupAsDefaultForStagingResponse.cs" />
     <Compile Include="Generated\Data\DC_UpdateAppRequest.cs" />

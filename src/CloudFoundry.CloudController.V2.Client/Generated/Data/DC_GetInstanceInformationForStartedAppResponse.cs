@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetInstanceInformationForStartedApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/apps/get_the_instance_information_for_a_started_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/apps/get_the_instance_information_for_a_started_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class GetInstanceInformationForStartedAppResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractGetInstanceInformationForStartedAppResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.AppsEndpoint.GetInstanceInformationForStartedApp()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/apps/get_the_instance_information_for_a_started_app.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/apps/get_the_instance_information_for_a_started_app.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractGetInstanceInformationForStartedAppResponse : IResponse

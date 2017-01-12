@@ -28,6 +28,48 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
     {
 
         [TestMethod]
+        public void TestCreateDockerAppRequest()
+        {
+            string json = @"{
+  ""name"": ""docker_app"",
+  ""space_guid"": ""633585d7-7aa4-41fd-9125-1622584747e1"",
+  ""docker_image"": ""cloudfoundry/diego-docker-app"",
+  ""diego"": true
+}";
+
+            CreateDockerAppRequest request = new CreateDockerAppRequest();
+
+            request.Name = "docker_app";
+            request.SpaceGuid = new Guid("633585d7-7aa4-41fd-9125-1622584747e1");
+            request.DockerImage = "cloudfoundry/diego-docker-app";
+            request.Diego = true;
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
+        public void TestCreateAppRequest()
+        {
+            string json = @"{
+  ""name"": ""my_super_app"",
+  ""space_guid"": ""e780b657-e5a5-4b61-86f9-3c18e7ae1dce"",
+  ""diego"": true,
+  ""ports"": [
+    1024,
+    2000
+  ]
+}";
+
+            CreateAppRequest request = new CreateAppRequest();
+
+            request.Name = "my_super_app";
+            request.SpaceGuid = new Guid("e780b657-e5a5-4b61-86f9-3c18e7ae1dce");
+            request.Diego = true;
+            request.Ports = Array.ConvertAll(TestUtil.GetJsonArray(@"[1024,2000]"), (p => (int?)Convert.ToInt32(p))); 
+
+            string result = JsonConvert.SerializeObject(request, Formatting.None);
+            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
+        }
+        [TestMethod]
         public void TestUpdateAppRequest()
         {
             string json = @"{
@@ -41,55 +83,13 @@ namespace CloudFoundry.CloudController.V2.Test.Serialization
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }
         [TestMethod]
-        public void TestCreateAppRequest()
-        {
-            string json = @"{
-  ""name"": ""my_super_app"",
-  ""space_guid"": ""19afc942-1b9b-4237-bfac-d8ca9231d348"",
-  ""diego"": true,
-  ""ports"": [
-    1024,
-    2000
-  ]
-}";
-
-            CreateAppRequest request = new CreateAppRequest();
-
-            request.Name = "my_super_app";
-            request.SpaceGuid = new Guid("19afc942-1b9b-4237-bfac-d8ca9231d348");
-            request.Diego = true;
-            request.Ports = Array.ConvertAll(TestUtil.GetJsonArray(@"[1024,2000]"), (p => (int?)Convert.ToInt32(p))); 
-
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
-        public void TestCreateDockerAppRequest()
-        {
-            string json = @"{
-  ""name"": ""docker_app"",
-  ""space_guid"": ""c0eea382-05da-4d9c-af86-7326b0f11140"",
-  ""docker_image"": ""cloudfoundry/diego-docker-app"",
-  ""diego"": true
-}";
-
-            CreateDockerAppRequest request = new CreateDockerAppRequest();
-
-            request.Name = "docker_app";
-            request.SpaceGuid = new Guid("c0eea382-05da-4d9c-af86-7326b0f11140");
-            request.DockerImage = "cloudfoundry/diego-docker-app";
-            request.Diego = true;
-            string result = JsonConvert.SerializeObject(request, Formatting.None);
-            Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
-        }
-        [TestMethod]
         public void TestCopyAppBitsForAppRequest()
         {
-            string json = @"{""source_app_guid"":""29d2dba9-6a0d-4f5d-a6d1-dc6d48708a25""}";
+            string json = @"{""source_app_guid"":""6cde7a0f-9fa1-4fbc-b417-b98a15d60e65""}";
 
             CopyAppBitsForAppRequest request = new CopyAppBitsForAppRequest();
 
-            request.SourceAppGuid = new Guid("29d2dba9-6a0d-4f5d-a6d1-dc6d48708a25");
+            request.SourceAppGuid = new Guid("6cde7a0f-9fa1-4fbc-b417-b98a15d60e65");
             string result = JsonConvert.SerializeObject(request, Formatting.None);
             Assert.AreEqual(TestUtil.ToUnformatedJsonString(json), result);
         }

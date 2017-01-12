@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicePlansEndpoint.ListAllServicePlans()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/service_plans/list_all_service_plans.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/service_plans/list_all_service_plans.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllServicePlansResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllServicePlansResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.ServicePlansEndpoint.ListAllServicePlans()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/service_plans/list_all_service_plans.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/service_plans/list_all_service_plans.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllServicePlansResponse : IResponse
@@ -112,6 +112,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("public", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Public
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Bindable</para>
+        /// </summary>
+        [JsonProperty("bindable", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Bindable
         {
             get;
             set;

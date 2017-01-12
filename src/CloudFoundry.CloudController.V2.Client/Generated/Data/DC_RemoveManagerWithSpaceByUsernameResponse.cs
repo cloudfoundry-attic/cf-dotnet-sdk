@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveManagerWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/remove_manager_with_the_space_by_username.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/spaces/remove_manager_with_the_space_by_username.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class RemoveManagerWithSpaceByUsernameResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractRemoveManagerWithSpaceByUsernameResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpacesEndpoint.RemoveManagerWithSpaceByUsername()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/spaces/remove_manager_with_the_space_by_username.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/spaces/remove_manager_with_the_space_by_username.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractRemoveManagerWithSpaceByUsernameResponse : IResponse
@@ -202,6 +202,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("security_groups_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SecurityGroupsUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Staging Security Groups Url</para>
+        /// </summary>
+        [JsonProperty("staging_security_groups_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string StagingSecurityGroupsUrl
         {
             get;
             set;

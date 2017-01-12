@@ -52,40 +52,19 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// Retrieve a Particular Private Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/retrieve_a_particular_private_domain.html"</para>
+        /// Filtering Private Domains by name
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/filtering_private_domains_by_name.html"</para>
         /// </summary>
-        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
+        public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
         {
-            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}", guid);
-            var client = this.GetHttpClient();
-            client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Get;
-            var authHeader = await BuildAuthenticationHeader();
-            if (!string.IsNullOrWhiteSpace(authHeader.Key))
-            {
-                client.Headers.Add(authHeader);
-            }
-            var expectedReturnStatus = 200;
-            var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
+            return await FilterPrivateDomainsByName(new RequestOptions());
         }
 
         /// <summary>
-        /// List all Private Domains
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/list_all_private_domains.html"</para>
+        /// Filtering Private Domains by name
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/filtering_private_domains_by_name.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
-        {
-            return await ListAllPrivateDomains(new RequestOptions());
-        }
-
-        /// <summary>
-        /// List all Private Domains
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/list_all_private_domains.html"</para>
-        /// </summary>
-        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
+        public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/private_domains";
@@ -100,33 +79,43 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
-        /// Delete a Particular Private Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/delete_a_particular_private_domain.html"</para>
+        /// List all Shared Organizations for the Private Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
         /// </summary>
-        public async Task DeletePrivateDomain(Guid? guid)
+        public async Task<PagedResponseCollection<ListAllSharedOrganizationsForPrivateDomainResponse>> ListAllSharedOrganizationsForPrivateDomain(Guid? guid)
+        {
+            return await ListAllSharedOrganizationsForPrivateDomain(guid, new RequestOptions());
+        }
+
+        /// <summary>
+        /// List all Shared Organizations for the Private Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+        /// </summary>
+        public async Task<PagedResponseCollection<ListAllSharedOrganizationsForPrivateDomainResponse>> ListAllSharedOrganizationsForPrivateDomain(Guid? guid, RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}", guid);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}/shared_organizations", guid);
+            uriBuilder.Query = options.ToString();
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
-            client.Method = HttpMethod.Delete;
+            client.Method = HttpMethod.Get;
             var authHeader = await BuildAuthenticationHeader();
             if (!string.IsNullOrWhiteSpace(authHeader.Key))
             {
                 client.Headers.Add(authHeader);
             }
-            client.ContentType = "application/x-www-form-urlencoded";
-            var expectedReturnStatus = 204;
+            var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
+            return Utilities.DeserializePage<ListAllSharedOrganizationsForPrivateDomainResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
 
         /// <summary>
         /// Create a Private Domain owned by the given Organization
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/create_a_private_domain_owned_by_the_given_organization.html"</para>
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/create_a_private_domain_owned_by_the_given_organization.html"</para>
         /// </summary>
         public async Task<CreatePrivateDomainOwnedByGivenOrganizationResponse> CreatePrivateDomainOwnedByGivenOrganization(CreatePrivateDomainOwnedByGivenOrganizationRequest value)
         {
@@ -148,23 +137,34 @@ namespace CloudFoundry.CloudController.V2.Client.Base
         }
 
         /// <summary>
-        /// List all Shared Organizations for the Private Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+        /// Delete a Particular Private Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/delete_a_particular_private_domain.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllSharedOrganizationsForPrivateDomainResponse>> ListAllSharedOrganizationsForPrivateDomain(Guid? guid)
+        public async Task DeletePrivateDomain(Guid? guid)
         {
-            return await ListAllSharedOrganizationsForPrivateDomain(guid, new RequestOptions());
+            UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}", guid);
+            var client = this.GetHttpClient();
+            client.Uri = uriBuilder.Uri;
+            client.Method = HttpMethod.Delete;
+            var authHeader = await BuildAuthenticationHeader();
+            if (!string.IsNullOrWhiteSpace(authHeader.Key))
+            {
+                client.Headers.Add(authHeader);
+            }
+            client.ContentType = "application/x-www-form-urlencoded";
+            var expectedReturnStatus = 204;
+            var response = await this.SendAsync(client, expectedReturnStatus);
         }
 
         /// <summary>
-        /// List all Shared Organizations for the Private Domain
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/list_all_shared_organizations_for_the_private_domain.html"</para>
+        /// Retrieve a Particular Private Domain
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/retrieve_a_particular_private_domain.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<ListAllSharedOrganizationsForPrivateDomainResponse>> ListAllSharedOrganizationsForPrivateDomain(Guid? guid, RequestOptions options)
+        public async Task<RetrievePrivateDomainResponse> RetrievePrivateDomain(Guid? guid)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
-            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}/shared_organizations", guid);
-            uriBuilder.Query = options.ToString();
+            uriBuilder.Path = string.Format(CultureInfo.InvariantCulture, "/v2/private_domains/{0}", guid);
             var client = this.GetHttpClient();
             client.Uri = uriBuilder.Uri;
             client.Method = HttpMethod.Get;
@@ -175,23 +175,23 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<ListAllSharedOrganizationsForPrivateDomainResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializeJson<RetrievePrivateDomainResponse>(await response.ReadContentAsStringAsync());
         }
 
         /// <summary>
-        /// Filtering Private Domains by name
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/filtering_private_domains_by_name.html"</para>
+        /// List all Private Domains
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/list_all_private_domains.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName()
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains()
         {
-            return await FilterPrivateDomainsByName(new RequestOptions());
+            return await ListAllPrivateDomains(new RequestOptions());
         }
 
         /// <summary>
-        /// Filtering Private Domains by name
-        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/241/private_domains/filtering_private_domains_by_name.html"</para>
+        /// List all Private Domains
+        /// <para>For detailed information, see online documentation at: "http://apidocs.cloudfoundry.org/250/private_domains/list_all_private_domains.html"</para>
         /// </summary>
-        public async Task<PagedResponseCollection<FilterPrivateDomainsByNameResponse>> FilterPrivateDomainsByName(RequestOptions options)
+        public async Task<PagedResponseCollection<ListAllPrivateDomainsResponse>> ListAllPrivateDomains(RequestOptions options)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Client.CloudTarget);
             uriBuilder.Path = "/v2/private_domains";
@@ -206,7 +206,7 @@ namespace CloudFoundry.CloudController.V2.Client.Base
             }
             var expectedReturnStatus = 200;
             var response = await this.SendAsync(client, expectedReturnStatus);
-            return Utilities.DeserializePage<FilterPrivateDomainsByNameResponse>(await response.ReadContentAsStringAsync(), this.Client);
+            return Utilities.DeserializePage<ListAllPrivateDomainsResponse>(await response.ReadContentAsStringAsync(), this.Client);
         }
     }
 }

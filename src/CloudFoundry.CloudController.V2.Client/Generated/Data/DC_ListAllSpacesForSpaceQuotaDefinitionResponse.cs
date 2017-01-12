@@ -21,7 +21,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data
 {
     /// <summary>
     /// Data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.ListAllSpacesForSpaceQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public partial class ListAllSpacesForSpaceQuotaDefinitionResponse : CloudFoundry.CloudController.V2.Client.Data.Base.AbstractListAllSpacesForSpaceQuotaDefinitionResponse
@@ -33,7 +33,7 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
 {
     /// <summary>
     /// Base abstract data class used for deserializing the "CloudFoundry.CloudController.V2.Client.SpaceQuotaDefinitionsEndpoint.ListAllSpacesForSpaceQuotaDefinition()" Response
-    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/241/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
+    /// <para>For usage information, see online documentation at "http://apidocs.cloudfoundry.org/250/space_quota_definitions/list_all_spaces_for_the_space_quota_definition.html"</para>
     /// </summary>
     [GeneratedCodeAttribute("cf-sdk-builder", "1.0.0.0")]
     public abstract class AbstractListAllSpacesForSpaceQuotaDefinitionResponse : IResponse
@@ -212,6 +212,16 @@ namespace CloudFoundry.CloudController.V2.Client.Data.Base
         /// </summary>
         [JsonProperty("security_groups_url", NullValueHandling = NullValueHandling.Ignore)]
         public string SecurityGroupsUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary> 
+        /// <para>The Staging Security Groups Url</para>
+        /// </summary>
+        [JsonProperty("staging_security_groups_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string StagingSecurityGroupsUrl
         {
             get;
             set;

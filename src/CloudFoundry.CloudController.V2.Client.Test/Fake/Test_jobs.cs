@@ -26,44 +26,6 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
     public class JobsEndpoint
 {
         [TestMethod]
-        public void RetrieveJobThatWasSuccessfulTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""metadata"": {
-    ""guid"": ""6d37f1b1-3fc9-40e8-b7c0-06b9bc9a3a55"",
-    ""created_at"": ""1970-01-01T00:00:00Z"",
-    ""url"": ""/v2/jobs/0""
-  },
-  ""entity"": {
-    ""guid"": ""6d37f1b1-3fc9-40e8-b7c0-06b9bc9a3a55"",
-    ""status"": ""finished""
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-
-                var obj = cfClient.Jobs.RetrieveJobThatWasSuccessful(guid).Result;
-
-
-                Assert.AreEqual("6d37f1b1-3fc9-40e8-b7c0-06b9bc9a3a55", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("1970-01-01T00:00:00Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-                Assert.AreEqual("/v2/jobs/0", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("6d37f1b1-3fc9-40e8-b7c0-06b9bc9a3a55", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("finished", TestUtil.ToTestableString(obj.Status), true);
-
-            }
-        }
-
-        [TestMethod]
         public void RetrieveJobWithKnownFailureTest()
         {
             using (ShimsContext.Create())
@@ -72,12 +34,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"{
   ""metadata"": {
-    ""guid"": ""43a69ebb-5b2b-4cbb-a886-b6993962ea0e"",
-    ""created_at"": ""2016-10-12T12:29:09Z"",
-    ""url"": ""/v2/jobs/c04dcf40-a11f-4408-9084-620d5bcf8e2c""
+    ""guid"": ""c0b3c5ce-2ab9-472b-bba0-b060b082e27f"",
+    ""created_at"": ""2017-01-04T15:59:08Z"",
+    ""url"": ""/v2/jobs/56dc1a2c-88d1-46cf-a770-8bab5f2e98bf""
   },
   ""entity"": {
-    ""guid"": ""43a69ebb-5b2b-4cbb-a886-b6993962ea0e"",
+    ""guid"": ""c0b3c5ce-2ab9-472b-bba0-b060b082e27f"",
     ""status"": ""failed"",
     ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
     ""error_details"": {
@@ -98,50 +60,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.Jobs.RetrieveJobWithKnownFailure(guid).Result;
 
 
-                Assert.AreEqual("43a69ebb-5b2b-4cbb-a886-b6993962ea0e", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("2016-10-12T12:29:09Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-                Assert.AreEqual("/v2/jobs/c04dcf40-a11f-4408-9084-620d5bcf8e2c", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("43a69ebb-5b2b-4cbb-a886-b6993962ea0e", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("c0b3c5ce-2ab9-472b-bba0-b060b082e27f", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("2017-01-04T15:59:08Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("/v2/jobs/56dc1a2c-88d1-46cf-a770-8bab5f2e98bf", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("c0b3c5ce-2ab9-472b-bba0-b060b082e27f", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
                 Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
-
-            }
-        }
-
-        [TestMethod]
-        public void RetrieveJobThatIsQueuedTest()
-        {
-            using (ShimsContext.Create())
-            {
-                MockClients clients = new MockClients();
-
-                string json = @"{
-  ""metadata"": {
-    ""guid"": ""b081ed9a-5e9f-4804-b1c4-fb6a79eb0102"",
-    ""created_at"": ""2016-10-12T12:29:09Z"",
-    ""url"": ""/v2/jobs/4cfeec63-96d0-4fce-aefe-4171fc3aa4d1""
-  },
-  ""entity"": {
-    ""guid"": ""b081ed9a-5e9f-4804-b1c4-fb6a79eb0102"",
-    ""status"": ""queued""
-  }
-}";
-                clients.JsonResponse = json;
-
-                clients.ExpectedStatusCode = (HttpStatusCode)200;
-                var cfClient = clients.CreateCloudFoundryClient();
-
-                Guid? guid = Guid.NewGuid();
-
-
-                var obj = cfClient.Jobs.RetrieveJobThatIsQueued(guid).Result;
-
-
-                Assert.AreEqual("b081ed9a-5e9f-4804-b1c4-fb6a79eb0102", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("2016-10-12T12:29:09Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-                Assert.AreEqual("/v2/jobs/4cfeec63-96d0-4fce-aefe-4171fc3aa4d1", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("b081ed9a-5e9f-4804-b1c4-fb6a79eb0102", TestUtil.ToTestableString(obj.Guid), true);
-                Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
 
             }
         }
@@ -155,12 +79,12 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
 
                 string json = @"{
   ""metadata"": {
-    ""guid"": ""00b01a59-65e4-48d2-9360-78d65b88f5d9"",
-    ""created_at"": ""2016-10-12T12:29:09Z"",
-    ""url"": ""/v2/jobs/98527921-a09b-4a3a-a56c-d875eeacace9""
+    ""guid"": ""e9cab0ef-293f-49e2-a72d-4d0eaa20d5c5"",
+    ""created_at"": ""2017-01-04T15:59:09Z"",
+    ""url"": ""/v2/jobs/2a8bc9bb-0fac-4767-9393-b4dd7cd1cc76""
   },
   ""entity"": {
-    ""guid"": ""00b01a59-65e4-48d2-9360-78d65b88f5d9"",
+    ""guid"": ""e9cab0ef-293f-49e2-a72d-4d0eaa20d5c5"",
     ""status"": ""failed"",
     ""error"": ""Use of entity>error is deprecated in favor of entity>error_details."",
     ""error_details"": {
@@ -181,12 +105,88 @@ namespace CloudFoundry.CloudController.V2.Client.Test.Fake
                 var obj = cfClient.Jobs.RetrieveJobWithUnknownFailure(guid).Result;
 
 
-                Assert.AreEqual("00b01a59-65e4-48d2-9360-78d65b88f5d9", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
-                Assert.AreEqual("2016-10-12T12:29:09Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
-                Assert.AreEqual("/v2/jobs/98527921-a09b-4a3a-a56c-d875eeacace9", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
-                Assert.AreEqual("00b01a59-65e4-48d2-9360-78d65b88f5d9", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("e9cab0ef-293f-49e2-a72d-4d0eaa20d5c5", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("2017-01-04T15:59:09Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("/v2/jobs/2a8bc9bb-0fac-4767-9393-b4dd7cd1cc76", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("e9cab0ef-293f-49e2-a72d-4d0eaa20d5c5", TestUtil.ToTestableString(obj.Guid), true);
                 Assert.AreEqual("failed", TestUtil.ToTestableString(obj.Status), true);
                 Assert.AreEqual("Use of entity>error is deprecated in favor of entity>error_details.", TestUtil.ToTestableString(obj.Error), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void RetrieveJobThatIsQueuedTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""metadata"": {
+    ""guid"": ""7f6f10bd-2f40-4433-8a78-f11408ea9311"",
+    ""created_at"": ""2017-01-04T15:59:08Z"",
+    ""url"": ""/v2/jobs/484ff707-4d25-40f6-aa52-d2bea73edf88""
+  },
+  ""entity"": {
+    ""guid"": ""7f6f10bd-2f40-4433-8a78-f11408ea9311"",
+    ""status"": ""queued""
+  }
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+
+                var obj = cfClient.Jobs.RetrieveJobThatIsQueued(guid).Result;
+
+
+                Assert.AreEqual("7f6f10bd-2f40-4433-8a78-f11408ea9311", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("2017-01-04T15:59:08Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("/v2/jobs/484ff707-4d25-40f6-aa52-d2bea73edf88", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("7f6f10bd-2f40-4433-8a78-f11408ea9311", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("queued", TestUtil.ToTestableString(obj.Status), true);
+
+            }
+        }
+
+        [TestMethod]
+        public void RetrieveJobThatWasSuccessfulTest()
+        {
+            using (ShimsContext.Create())
+            {
+                MockClients clients = new MockClients();
+
+                string json = @"{
+  ""metadata"": {
+    ""guid"": ""9f7a8d9f-237b-44d0-9384-66606b6c684b"",
+    ""created_at"": ""1970-01-01T00:00:00Z"",
+    ""url"": ""/v2/jobs/0""
+  },
+  ""entity"": {
+    ""guid"": ""9f7a8d9f-237b-44d0-9384-66606b6c684b"",
+    ""status"": ""finished""
+  }
+}";
+                clients.JsonResponse = json;
+
+                clients.ExpectedStatusCode = (HttpStatusCode)200;
+                var cfClient = clients.CreateCloudFoundryClient();
+
+                Guid? guid = Guid.NewGuid();
+
+
+                var obj = cfClient.Jobs.RetrieveJobThatWasSuccessful(guid).Result;
+
+
+                Assert.AreEqual("9f7a8d9f-237b-44d0-9384-66606b6c684b", TestUtil.ToTestableString(obj.EntityMetadata.Guid), true);
+                Assert.AreEqual("1970-01-01T00:00:00Z", TestUtil.ToTestableString(obj.EntityMetadata.CreatedAt), true);
+                Assert.AreEqual("/v2/jobs/0", TestUtil.ToTestableString(obj.EntityMetadata.Url), true);
+                Assert.AreEqual("9f7a8d9f-237b-44d0-9384-66606b6c684b", TestUtil.ToTestableString(obj.Guid), true);
+                Assert.AreEqual("finished", TestUtil.ToTestableString(obj.Status), true);
 
             }
         }
