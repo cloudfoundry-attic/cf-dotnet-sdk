@@ -53,7 +53,7 @@
     <file src="lib\uaa-net45\CloudFoundry.UAA.Client.dll"                     target="lib\Net45\CloudFoundry.UAA.Client.dll" />
     <file src="lib\uaa-net45\CloudFoundry.UAA.Client.xml"                     target="lib\Net45\CloudFoundry.UAA.Client.XML" />
     <file src="lib\CloudFoundry.Manifests.dll"                                target="lib\Net45\CloudFoundry.Manifests.dll" />
-    <file src="lib\CloudFoundry.Manifests.dll"                                target="lib\Net45\CloudFoundry.Manifests.XML" />
+    <file src="lib\CloudFoundry.Manifests.xml"                                target="lib\Net45\CloudFoundry.Manifests.XML" />
 
     <file src="lib\CloudFoundry.CloudController.V2.Client.dll"                target="lib\Win8\CloudFoundry.CloudController.V2.Client.dll" />
     <file src="lib\CloudFoundry.CloudController.V2.Client.xml"                target="lib\Win8\CloudFoundry.CloudController.V2.Client.xml" />
